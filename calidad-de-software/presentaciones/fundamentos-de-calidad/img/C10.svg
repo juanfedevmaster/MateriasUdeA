@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="C10 dos circulos con grieta en la interseccion">
+<title>C10 dos circulos con grieta en la interseccion</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<circle cx="452.0" cy="450.0" r="232.0" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.1"/>
+<circle cx="700.0" cy="450.0" r="232.0" stroke="#8c2d4a" stroke-width="3.2" opacity="1" fill="#541734" fill-opacity="0.42"/>
+<path d="M 576.0,236.0 L 593.5,289.5 L 572.2,343.0 L 564.2,396.5 L 597.2,450.0 L 556.5,503.5 L 583.6,557.0 L 584.4,610.5 L 576.0,664.0" stroke="#f0debb" stroke-width="4.6" opacity="1" fill="none" fill-opacity="1"/>
+<circle cx="576.0" cy="450.0" r="9.0" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="#f0debb" fill-opacity="1"/>
+</g>
+</svg>

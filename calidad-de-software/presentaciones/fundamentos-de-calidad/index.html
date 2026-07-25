@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundamentos de Calidad — Semana 1</title>
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 1 · Fundamentos de Calidad</div>
+      <div class="deck-actions">
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/fundamentos-de-calidad.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage">
+      <img class="deck-watermark" src="../../../assets/img/logo-vertical-cream.png" alt="Universidad de Antioquia" />
+
+      <section class="slide type-portada" id="s01">
+        <img class="slide-bg-visual" src="img/C1.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 1 — Qué es calidad y qué es un defecto</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <img class="slide-bg-visual" src="img/C2.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cómo funciona este curso</h1>
+          <p><strong>El bloque semanal son 4 horas divididas en dos</strong></p>
+          <ul>
+            <li>2 horas de cátedra — con el docente, en vivo</li>
+            <li>2 horas de taller — en salas de Zoom asignadas, en grupo</li>
+            <li>El entregable se sube <strong>dentro</strong> de esas dos horas. No después.</li>
+            <li>Antes de cada cátedra hay material que leer. La clase asume que ya lo leyeron.</li>
+          </ul>
+          </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s03">
+        <img class="slide-bg-visual" src="img/C2.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cómo se califica</h1>
+          <table>
+            <thead>
+              <tr><th>Rubro</th><th>Peso</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Seguimiento semanal (15 entregas, se descartan las 2 más bajas)</td><td>20 %</td></tr>
+              <tr><td>Trabajo 1 — Plan de pruebas y diseño de casos</td><td>25 %</td></tr>
+              <tr><td>Trabajo 2 — Ejecución, métricas, CI y automatización</td><td>25 %</td></tr>
+              <tr><td>Fábrica-Escuela (3 entregables)</td><td>30 %</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Al entregar, cada integrante reporta en privado quién trabajó.</strong><br>Quien no asista a la sala y no participe en la entrega obtiene 0 esa semana.</p>
+          </div>
+      </section>
+
+      <section class="slide type-impacto" id="s04">
+        <img class="slide-bg-visual" src="img/C3.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>45 minutos<br>440 millones de dólares</h1>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Knight Capital, en cifras</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Knight Capital Americas LLC — bróker-dealer, Jersey City, NJ</td></tr>
+              <tr><th>Peso en el mercado</th><td>~10 % de todo el trading de acciones listadas en EE. UU.</td></tr>
+              <tr><th>Sistema implicado</th><td>SMARS — router algorítmico de órdenes de alta velocidad</td></tr>
+              <tr><th>Fecha</th><td>1 de agosto de 2012, 9:30–10:15 a. m.</td></tr>
+              <tr><th>Duración</th><td>~45 minutos</td></tr>
+              <tr><th>Pérdida (SEC)</th><td>Más de 460 millones de dólares</td></tr>
+              <tr><th>Sanción SEC</th><td>12 millones de dólares, censura y orden de cese</td></tr>
+              <tr><th>Desenlace</th><td>2013: Knight se fusiona con GETCO — deja de existir como empresa independiente</td></tr>
+            </tbody>
+          </table>
+          <blockquote>La cifra de <strong>440 millones</strong> que abrió esta sesión es la que Knight Capital comunicó antes de impuestos. La orden de la SEC —la fuente oficial— dice <strong>"más de 460 millones"</strong>. Ambas cifras circulan; cuando cites una, cita también la fuente.</blockquote>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <img class="slide-bg-visual" src="img/C5.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Contexto técnico</p>
+          <h1>Cómo funciona SMARS</h1>
+          <p>SMARS recibe <strong>órdenes padre</strong> desde otros componentes de la plataforma y las descompone en <strong>órdenes hija</strong> que envía al mercado hasta completar la orden padre.</p>
+          <p>El mecanismo de parada es una <strong>función de cantidad acumulada</strong>: cuenta cuántas acciones de la orden padre ya se ejecutaron y detiene el envío de hijas al llegar al total.</p>
+          <p><strong>Ese contador es la pieza que falla en este caso — y no porque tuviera un error de lógica.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s07">
+        <img class="slide-bg-visual" src="img/C7.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Anatomía técnica</p>
+          <h1>Los cuatro ingredientes del desastre</h1>
+          <ol>
+            <li><strong>2003 — Código muerto que sigue vivo.</strong> Knight deja de usar <em>Power Peg</em>, pero no borra el código de producción: sigue ahí, invocable.</li>
+            <li><strong>2005 — Un cambio sin regresión.</strong> La función de cantidad acumulada se mueve de lugar. Nadie vuelve a probar <em>Power Peg</em>. Queda sin condición de parada: un defecto latente, invisible durante siete años.</li>
+            <li><strong>Julio 2012 — Una bandera reutilizada.</strong> Para el nuevo programa RLP, Knight reutiliza la misma bandera que antes activaba <em>Power Peg</em>.</li>
+            <li><strong>27 jul – 1 ago 2012 — Un despliegue manual incompleto.</strong> El código nuevo se copia a los servidores en días distintos. Un técnico omite uno de los ocho. No existe un procedimiento escrito que exija revisión por una segunda persona.</li>
+          </ol>
+          <p><strong>Ningún ingrediente por sí solo hunde a la empresa. Juntos, sí.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Cronología</p>
+          <h1>La cadena causal del 1 de agosto</h1>
+          <ol>
+            <li>Llegan órdenes con la bandera activada.</li>
+            <li>Los siete servidores actualizados las procesan con normalidad.</li>
+            <li>El octavo interpreta la bandera como "activar <em>Power Peg</em>" e invoca el código de 2003.</li>
+            <li>Como el contador se movió en 2005, <em>Power Peg</em> no sabe cuándo detenerse: dispara órdenes hija sin parar.</li>
+            <li>Otra parte del sistema sí sabía que las órdenes ya estaban completas — esa información nunca llegó a SMARS.</li>
+          </ol>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s09">
+        <img class="slide-bg-visual" src="img/C8.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Punto ciego</p>
+          <h1>Las 97 alertas que nadie leyó</h1>
+          <p>Desde las <strong>8:01 a. m.</strong> — 89 minutos antes de la apertura — un sistema interno envía correos automáticos con el mensaje "Power Peg disabled". Se enviaron <strong>97</strong> antes de las 9:30.</p>
+          <blockquote>"Knight no diseñó esos mensajes como alertas de sistema, y el personal de Knight, por lo general, no los revisaba al recibirlos." — Orden de la SEC</blockquote>
+          <p><strong>Los mensajes existían, llegaban en tiempo real, señalaban la causa exacta — y no eran alertas.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s10">
+        <img class="slide-bg-visual" src="img/C10.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Punto de giro</p>
+          <h1>La respuesta que empeoró el incidente</h1>
+          <p>Knight no tenía procedimientos de respuesta a incidentes. Con el sistema ya enviando órdenes erróneas, el equipo intentó diagnosticar en producción — y en uno de esos intentos <strong>desinstaló el código nuevo de los siete servidores donde sí funcionaba bien</strong>.</p>
+          <p><strong>Resultado: las órdenes entrantes empezaron a activar Power Peg también en esos siete servidores.</strong> Un rollback sin diagnóstico multiplicó el daño por ocho.</p>
+          <blockquote>"Knight necesitaba una guía clara sobre cuándo desconectar del mercado un sistema que está fallando." — Orden de la SEC</blockquote>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s11">
+        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso</p>
+          <h1>Controles que existían — y por qué no sirvieron</h1>
+          <table>
+            <thead>
+              <tr><th>Control existente</th><th>Por qué no funcionó</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Anti-órdenes erróneas en cliente, OMS y ejecución interna</td><td>Estaban antes de SMARS; ninguno después, justo antes de salir al mercado</td></tr>
+              <tr><td>Tope de precio (9,5 % del mejor precio nacional)</td><td>No aplicaba a órdenes recibidas antes de la apertura — exactamente las 212 que fallaron</td></tr>
+              <tr><td>Límite de posición de 2 millones USD</td><td>No estaba enlazado a ningún control automático: era un número sin consecuencia</td></tr>
+              <tr><td>Monitoreo de posiciones (PMON)</td><td>Sin alertas automáticas, y se degradaba justo en los momentos de mayor volumen</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Knight sí tenía controles. El problema no fue su ausencia: fue su ubicación, su acoplamiento y su comportamiento bajo carga.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <img class="slide-bg-visual" src="img/C5.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Tres cosas distintas pasaron aquí</h1>
+          <table>
+            <thead>
+              <tr><th>Qué ocurrió</th><th>Dónde estuvo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Omitir el octavo servidor. Reutilizar un bit ya usado.</td><td>En la cabeza de una persona</td></tr>
+              <tr><td>El octavo servidor con <em>Power Peg</em> activable</td><td>En el sistema desplegado</td></tr>
+              <tr><td>4 millones de operaciones erróneas en 45 minutos</td><td>En el comportamiento observado</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Estas tres cosas tienen nombres distintos. Confundirlos es el error más común del curso.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <img class="slide-bg-visual" src="img/C6.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Error, defecto, falla</h1>
+          <p><strong>Error</strong> <em>(error, mistake)</em><br>Acción humana que produce un resultado incorrecto. Ocurre en la persona.</p>
+          <p><strong>Defecto</strong> <em>(defect, fault, bug)</em><br>La huella que ese error deja en un artefacto: código, documento, configuración.</p>
+          <p><strong>Falla</strong> <em>(failure)</em><br>La desviación observable del comportamiento cuando el defecto se ejecuta.</p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <img class="slide-bg-visual" src="img/C6.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Aplicado al caso</h1>
+          <table>
+            <tbody>
+              <tr><th>Error</th><td>El técnico omite el octavo servidor. Alguien decide reutilizar un bit asociado a código muerto.</td></tr>
+              <tr><th>Defecto</th><td>El octavo servidor conserva <em>Power Peg</em> activable por la bandera reutilizada.</td></tr>
+              <tr><th>Falla</th><td>4 millones de operaciones erróneas durante 45 minutos.</td></tr>
+            </tbody>
+          </table>
+          </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s15">
+        <img class="slide-bg-visual" src="img/C7.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Un defecto que no falla</h1>
+          <pre><code>def calcular_descuento(monto, tipo_cliente):
+    if tipo_cliente == "premium":
+        return monto * 0.20
+    elif tipo_cliente == "corporativo":
+        return monto * 1.30      # defecto: recarga en vez de descuento
+    return monto * 0.05</code></pre>
+          <p><strong>Si ningún cliente corporativo compra, el sistema nunca falla.</strong><br>El defecto está ahí desde el primer día.</p>
+          </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s16">
+        <img class="slide-bg-visual" src="img/C7.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El caso inverso</h1>
+          <p><strong>¿Puede haber una falla sin defecto en el código?</strong></p>
+          <ul>
+            <li>El código cumple la especificación al pie de la letra</li>
+            <li>La especificación estaba equivocada</li>
+            <li>El usuario observa un comportamiento incorrecto</li>
+          </ul>
+          <p><strong>Hay falla. El defecto está en el documento de requisitos, no en el código.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <img class="slide-bg-visual" src="img/C8.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio de clasificación</h1>
+          <p><strong>Recordatorio rápido — ¿dónde ocurrió cada cosa?</strong></p>
+          <ul>
+            <li><strong>Error</strong> — en la persona, al equivocarse</li>
+            <li><strong>Defecto</strong> — en el artefacto: código, documento, configuración</li>
+            <li><strong>Falla</strong> — en el comportamiento, cuando el defecto se ejecuta</li>
+          </ul>
+          <p><strong>Clasifica cada situación como error, defecto o falla:</strong></p>
+          <ol>
+            <li>El analista escribe "el campo acepta hasta 10 caracteres" cuando el negocio pide 20.</li>
+            <li>El formulario corta el nombre del usuario en el carácter 10.</li>
+            <li>Un usuario reporta que su apellido aparece incompleto en la factura.</li>
+            <li>El código valida <code>edad &gt; 18</code> cuando la regla dice <code>edad &gt;= 18</code>.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat o en voz alta</p>
+          </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <img class="slide-bg-visual" src="img/C8.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Cambio de tema</h1>
+          <p><strong>¿Esta aplicación es de calidad?</strong></p>
+          <p><em>(proyectar la pantalla de una app conocida: banca, streaming, o el portal académico)</em></p>
+          <p>Respuestas típicas — todas contradictorias entre sí, y todas defendibles:</p>
+          <ul>
+            <li>"Se ve elegante" / "es fea"</li>
+            <li>"Es rápida", "tiene muchas funciones"</li>
+            <li>"Es difícil de usar"</li>
+            <li>"Nunca se cae", "cumple lo que promete"</li>
+            <li>"Es buena para lo que cuesta"</li>
+          </ul>
+          <p class="slide-eyebrow">Nadie está equivocado. Están usando definiciones distintas de calidad sin saberlo.</p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>David Garvin, Harvard, 1984</h1>
+          <p>En plena crisis de calidad de la industria estadounidense frente a la japonesa —cuando "calidad" era el tema de moda en gestión y nadie se entendía— Garvin hizo un movimiento distinto: no propuso una sexta definición mejor.</p>
+          <p><strong>Argumentó que "calidad" no es un concepto ambiguo: son cinco conceptos distintos que comparten una palabra.</strong></p>
+          <p>Cada uno lo desarrolló una disciplina distinta, en aislamiento, y ninguna estaba equivocada dentro de su propio dominio:</p>
+          <ul>
+            <li><strong>Filosofía</strong> → la definición trascendente</li>
+            <li><strong>Economía</strong> → basada en el producto y basada en el valor</li>
+            <li><strong>Marketing</strong> → basada en el usuario</li>
+            <li><strong>Gestión de operaciones</strong> → basada en la manufactura</li>
+          </ul>
+          <blockquote>"¿Cuál es la verdadera definición de calidad?" es una pregunta mal planteada. Garvin no la resuelve — la disuelve.</blockquote>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s20">
+        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Garvin: cinco maneras de decir calidad</h1>
+          <table>
+            <thead>
+              <tr><th>Enfoque</th><th>Calidad es...</th><th>Lo dirías así</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Trascendente</td><td>Excelencia reconocible pero no definible</td><td>"Se ve elegante" / "es fea"</td></tr>
+              <tr><td>Basado en el producto</td><td>Mayor cantidad de un atributo deseable</td><td>"Es más rápida", "tiene más funciones"</td></tr>
+              <tr><td>Basado en el usuario</td><td>Adecuación a lo que el usuario necesita</td><td>"Es difícil de usar"</td></tr>
+              <tr><td>Basado en la fabricación</td><td>Conformidad con la especificación</td><td>"Nunca se cae", "cumple lo que promete"</td></tr>
+              <tr><td>Basado en el valor</td><td>Rendimiento aceptable a un costo aceptable</td><td>"Es buena para lo que cuesta"</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Son las mismas respuestas contradictorias de la diapositiva anterior.</strong> Cada una es válida — bajo un enfoque distinto, y sin que quien la dijo supiera cuál estaba usando.</p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s21">
+        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Philip Crosby y "cero defectos"</h1>
+          <p>Crosby no era académico: era ingeniero de control de calidad. En los años 60, en el programa de misiles Pershing de Martin Company, lideró un experimento que cambiaría todo: exigir cero defectos no como aspiración, sino como objetivo de proceso — prevenir en vez de inspeccionar después de que el error ya ocurrió.</p>
+          <p>Después pasó 14 años como vicepresidente de calidad en ITT, una multinacional con decenas de divisiones en todo el mundo. Ahí aprendió algo que marcó su carrera: a los gerentes no los convencía la estadística, los convencía el dinero.</p>
+          <p><strong>En 1979 publicó "Quality Is Free" ("La calidad es gratis"), y con eso volvió la calidad un tema de la alta dirección — no solo del área de ingeniería.</strong></p>
+          <blockquote>"Cero defectos" nació en una línea de producción de misiles, muy controlada. Al llevarlo a software y a gestión general se volvió más un principio motivacional que un método estadístico: a diferencia de Deming, Crosby fija el objetivo pero no entrega las herramientas para alcanzarlo.</blockquote>
+          <p class="slide-eyebrow">Sus ideas se condensan en cuatro afirmaciones — la que sigue es la primera.</p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s22">
+        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Crosby: conformidad con los requisitos</h1>
+          <p><strong>Philip Crosby</strong></p>
+          <ul>
+            <li>Calidad = <strong>conformidad con los requisitos</strong>. No "bondad" ni "elegancia".</li>
+            <li>Meta: <strong>cero defectos</strong></li>
+            <li><em>"La calidad es gratis"</em> — lo caro es la no-conformidad</li>
+            <li>Ventaja: es medible. Se cuenta lo que no conforma.</li>
+          </ul>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s23">
+        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Joseph Juran y la mirada del usuario</h1>
+          <p>Juran nació en Rumania en 1904, emigró de niño a Estados Unidos, y empezó su carrera en el departamento de inspección de Western Electric — la misma planta de Hawthorne donde se documentó por primera vez el "efecto Hawthorne". Ahí aplicó el principio de Pareto a los defectos: pocas causas explican la mayoría de los problemas.</p>
+          <p>En 1954 viajó a Japón, invitado a enseñarle gestión de calidad a la alta dirección — no a los técnicos. Junto con Deming, es una de las dos personas a las que la industria japonesa señala como origen de su revolución de calidad de posguerra. Treinta años después, esa misma revolución fue la crisis que llevó a Garvin a escribir sus cinco definiciones.</p>
+          <p><strong>Su aporte central fue correr el criterio de calidad del documento al usuario: no importa qué tan bien esté escrita la especificación si no sirve para lo que la gente necesita.</strong></p>
+          <blockquote>Su otro legado es la "trilogía de Juran" — planificar, controlar, mejorar — tomada del lenguaje del presupuesto financiero, no de la ingeniería. Es una forma de gestión, no un método estadístico: por eso "adecuación al uso" es más difícil de medir que "conformidad con los requisitos", y la industria del testing históricamente se apoyó más en Crosby.</blockquote>
+          <p class="slide-eyebrow">Esa dificultad para medirlo es justo lo que provoca la tensión con Crosby que viene más adelante.</p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s24">
+        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Juran: adecuación al uso</h1>
+          <p><strong>Joseph Juran</strong></p>
+          <ul>
+            <li>Calidad = <strong>adecuación al uso</strong> <em>(fitness for use)</em></li>
+            <li>Lo decide quien usa el producto, no quien lo especifica</li>
+            <li>Trilogía: planificar · controlar · mejorar</li>
+            <li>Ventaja: no se puede "cumplir la especificación" y fracasar al mismo tiempo</li>
+          </ul>
+          </div>
+      </section>
+
+      <section class="slide type-tension" id="s25">
+        <img class="slide-bg-visual" src="img/C10.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Dónde chocan</h1>
+          <p><strong>Un sistema de matrícula cumple el 100 % de sus requisitos.</strong><br><strong>Ningún estudiante logra matricularse sin ayuda.</strong></p>
+          <ul>
+            <li>Según Crosby: <strong>es de calidad.</strong> Conforma con todo lo especificado.</li>
+            <li>Según Juran: <strong>no lo es.</strong> Nadie puede usarlo.</li>
+          </ul>
+          <p><strong>¿Quién tiene razón?</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s26">
+        <img class="slide-bg-visual" src="img/C11.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tres lugares donde vive la calidad</h1>
+          <table>
+            <thead>
+              <tr><th>Calidad de...</th><th>Se pregunta</th><th>Se mide con</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Producto</strong></td><td>¿Cómo es el software construido?</td><td>ISO/IEC 25010</td></tr>
+              <tr><td><strong>Proceso</strong></td><td>¿Cómo se construyó?</td><td>ISO/IEC 12207, CMMI</td></tr>
+              <tr><td><strong>Uso</strong></td><td>¿Le sirve a quien lo usa, en su contexto?</td><td>ISO/IEC 25010 (calidad en uso)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Premisa de todo el curso: la calidad del proceso condiciona la del producto.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s27">
+        <img class="slide-bg-visual" src="img/C12.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué cuesta la calidad</h1>
+          <p><strong>Precio de la conformidad</strong> — lo que se invierte para que salga bien</p>
+          <ul>
+            <li>Prevención: capacitación, estándares, revisiones de diseño</li>
+            <li>Evaluación: pruebas, inspecciones, auditorías</li>
+          </ul>
+          <p><strong>Precio de la no-conformidad</strong> — lo que cuesta que salga mal</p>
+          <ul>
+            <li>Fallas internas: retrabajo antes de entregar</li>
+            <li>Fallas externas: soporte, parches, multas, reputación, litigios</li>
+          </ul>
+          </div>
+      </section>
+
+      <section class="slide type-disputa" id="s28">
+        <img class="slide-bg-visual" src="img/C12.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>La curva del costo de corregir</h1>
+          <p><strong>Afirmación clásica:</strong> corregir un defecto cuesta más cuanto más tarde se encuentra.</p>
+          <p>Requisitos → Diseño → Código → Pruebas → Producción<br><em>(costo creciente por fase)</em></p>
+          <blockquote><strong>Advertencia:</strong> los multiplicadores concretos que circulan (1 : 10 : 100 : 1000) <strong>no tienen respaldo empírico sólido.</strong></blockquote>
+          </div>
+      </section>
+
+      <section class="slide type-caso" id="s29">
+        <img class="slide-bg-visual" src="img/C12.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Antecedente</p>
+          <h1>El precedente ignorado</h1>
+          <p>Diez meses antes, en una prueba de recuperación de desastres, un equipo siguió usando datos de prueba el lunes siguiente, ya en producción. Pérdida: <strong>~7,5 millones de dólares</strong>.</p>
+          <p>La respuesta de Knight fue local: limitar el sistema al horario de mercado, detener cotizaciones tras la primera ejecución, y agregar un ítem a una lista de verificación.</p>
+          <blockquote>"Knight reaccionó de forma estricta al síntoma, limitando su respuesta a evitar que ese problema puntual se repitiera." — Orden de la SEC</blockquote>
+          <p><strong>Nadie preguntó si los controles alcanzaban para impedir órdenes erróneas en general.</strong> Es el ejemplo de un análisis causal que se detiene en el síntoma.</p>
+          </div>
+      </section>
+
+      <section class="slide type-cierre-caso" id="s30">
+        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Cierre de caso</p>
+          <h1>Volver al principio</h1>
+          <p><strong>¿En qué momento se pudo detener Knight Capital?</strong></p>
+          <ul>
+            <li>Al eliminar el código muerto en 2003–2012</li>
+            <li>Al prohibir la reutilización de banderas asociadas a código viejo</li>
+            <li>Al exigir revisión de un segundo técnico</li>
+            <li>Al automatizar la verificación de que los 8 servidores quedaran iguales</li>
+            <li>Al probar el despliegue en un entorno equivalente a producción</li>
+          </ul>
+          <p><strong>212 órdenes de entrada → 4 millones de ejecuciones de salida.</strong> Un factor de amplificación de ~18 900×.</p>
+          </div>
+      </section>
+
+      <section class="slide type-tension" id="s31">
+        <img class="slide-bg-visual" src="img/C10.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Caso · Perspectiva</p>
+          <h1>¿Bastaba con un doble chequeo?</h1>
+          <p>La propia SEC razona en modo contrafactual: un procedimiento simple de doble verificación del despliegue podría haber detectado el servidor faltante y evitado todo lo demás.</p>
+          <p>Existe una crítica seria a ese razonamiento, desde la ingeniería de resiliencia: los contrafactuales describen un mundo que no existió. Después del accidente siempre se identifica la barrera que faltaba; antes, competía con cientos de barreras igual de plausibles.</p>
+          <p><strong>La pregunta productiva no es "¿qué barrera faltaba?" sino "¿qué hacía que su ausencia pareciera razonable a gente competente?"</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s32">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>Error, defecto y falla</strong> son tres cosas distintas y no intercambiables.</li>
+            <li>Un defecto puede existir <strong>sin producir jamás</strong> una falla.</li>
+            <li><strong>Calidad no tiene una sola definición.</strong> Crosby mide contra la especificación; Juran, contra el uso.</li>
+            <li>Cuando la especificación está mal, <strong>conformar con ella produce un producto defectuoso</strong>.</li>
+            <li>La calidad se juega en el <strong>producto</strong>, en el <strong>proceso</strong> y en el <strong>uso</strong>.</li>
+          </ol>
+          </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s33">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy</h1>
+          <p><strong>Cazar defectos — 2 horas, en sala de Zoom asignada</strong></p>
+          <p>Cada grupo recibe una aplicación (la misma). Deben entregar <strong>6 hallazgos</strong>, cada uno con:</p>
+          <ul>
+            <li>Descripción y pasos de reproducción</li>
+            <li>Evidencia: captura con fecha y hora visibles</li>
+            <li>Clasificación: error, defecto o falla — <strong>con justificación</strong></li>
+            <li>Característica ISO/IEC 25010 comprometida</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong></p>
+          </div>
+      </section>
+
+      <section class="slide type-cierre" id="s34">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+          <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 2, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Verificación vs. validación — dos páginas, el modelo en V</li>
+            <li>El ciclo de aseguramiento de la calidad</li>
+          </ul>
+          <p><strong>En la semana 2 arrancan las defensas.</strong> Dos o tres grupos elegidos al azar explican el trabajo de hoy. El docente escoge quién responde.</p>
+          </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 34</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+</body>
+</html>
