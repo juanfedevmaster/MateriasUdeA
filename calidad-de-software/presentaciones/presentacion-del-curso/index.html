@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentación del curso — Calidad de Software</title>
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Presentación del curso</div>
+      <div class="deck-actions">
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/presentacion-del-curso.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage">
+      <img class="deck-watermark" src="../../../assets/img/logo-vertical-cream.png" alt="Universidad de Antioquia" />
+
+      <section class="slide type-portada" id="s01">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Presentación del curso</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554703</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Datos generales</p>
+          <h1>Ficha del curso</h1>
+          <table>
+            <tbody>
+              <tr><th>Créditos</th><td>3</td></tr>
+              <tr><th>Modalidad</th><td>Virtual</td></tr>
+              <tr><th>Duración</th><td>16 semanas</td></tr>
+              <tr><th>Metodología</th><td>Cátedra + aula invertida</td></tr>
+              <tr><th>Bloque semanal</th><td>4 horas (2 h cátedra + 2 h taller autónomo)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s03">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cómo funciona el bloque de 4 horas</h1>
+          <table>
+            <thead>
+              <tr><th>Momento</th><th>Duración</th><th>Qué ocurre</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Defensa del entregable anterior</td><td>10 min</td><td>Dos o tres equipos al azar explican su entrega de la semana previa.</td></tr>
+              <tr><td>Cátedra</td><td>1 h 50 min</td><td>Orientación conceptual. Asume lectura previa hecha.</td></tr>
+              <tr><td>Taller en salas de Zoom</td><td>2 h consecutivas</td><td>Trabajo en grupo en salas asignadas por el docente.</td></tr>
+              <tr><td>Entrega</td><td>—</td><td>Se sube <strong>dentro de las dos horas</strong>, no después.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Qué asegura cada control</h1>
+          <table>
+            <thead>
+              <tr><th>Control</th><th>Qué resuelve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sesión de Zoom con salas asignadas</td><td>Asistencia verificable, sin colusión entre equipos</td></tr>
+              <tr><td>Ventana de 2 horas consecutivas</td><td>Acota el esfuerzo al tiempo declarado</td></tr>
+              <tr><td>Insumo diferenciado por equipo</td><td>Las entregas no son intercambiables entre grupos</td></tr>
+              <tr><td><strong>Defensa aleatoria de 10 min</strong></td><td><strong>Autoría real: quien no trabajó no sostiene el entregable</strong></td></tr>
+            </tbody>
+          </table>
+          <p><strong>Con ocho equipos y rotación, cada uno defiende unas dos veces por semestre.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s05">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Evaluación</p>
+          <h1>Cómo se califica</h1>
+          <table>
+            <thead>
+              <tr><th>Rubro</th><th>Peso</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Seguimiento semanal (15 entregas, se descartan las 2 más bajas)</td><td>20 %</td></tr>
+              <tr><td>Trabajo 1 — Plan de pruebas y diseño de casos</td><td>25 %</td></tr>
+              <tr><td>Trabajo 2 — Ejecución, métricas, CI y automatización</td><td>25 %</td></tr>
+              <tr><td>Fábrica-Escuela (3 entregables)</td><td>30 %</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Dos circuitos separados:</strong> el seguimiento semanal se practica sobre sistemas públicos neutros; los dos trabajos del 25 % aplican esas mismas técnicas al proyecto de Fábrica-Escuela.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Política de grupos</p>
+          <h1>Cómo se conforman los equipos</h1>
+          <table>
+            <thead>
+              <tr><th>Semanas</th><th>Conformación</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1 – 5</td><td>Aleatorios, sorteo al inicio de cada unidad</td></tr>
+              <tr><td>6 – 16</td><td>Equipos fijos de Fábrica-Escuela</td></tr>
+            </tbody>
+          </table>
+          <p>Las salas de Zoom las genera el docente, no se autoconforman — para los grupos aleatorios y para los equipos de Fábrica por igual.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Trabajo en equipo</p>
+          <h1>Autorreporte de contribución</h1>
+          <p><strong>No hay reparto de roles asignado.</strong> Cada equipo se organiza como pueda, y al entregar cada integrante declara — <strong>en privado y por separado</strong> — quiénes trabajaron y quiénes no.</p>
+          <p>El envío es individual, no consensuado dentro del documento del equipo: así la discrepancia entre reportes del mismo equipo se vuelve la señal para revisar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s08">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Trabajo en equipo</p>
+          <h1>Regla de calificación individual</h1>
+          <table>
+            <thead>
+              <tr><th>Asistencia</th><th>Reporte del equipo</th><th>Nota</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sí</td><td>Contribuyó</td><td>Nota del equipo</td></tr>
+              <tr><td>Sí</td><td>Reportado como no contribuyente por la mayoría</td><td>Defensa dirigida. Si no sostiene el entregable: 0</td></tr>
+              <tr><td>No</td><td>—</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Calendario</p>
+          <h1>Mapa del semestre</h1>
+          <table>
+            <thead>
+              <tr><th>Semanas</th><th>Unidad</th><th>Grupos</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1 – 3</td><td>Fundamentos de calidad</td><td>Aleatorios</td></tr>
+              <tr><td>4 – 5</td><td>Referentes para la adopción de prácticas</td><td>Aleatorios</td></tr>
+              <tr><td>6 – 8</td><td>Fundamentación en pruebas</td><td>Fábrica-Escuela</td></tr>
+              <tr><td>9 – 12</td><td>Implementación del aseguramiento de calidad</td><td>Fábrica-Escuela</td></tr>
+              <tr><td>13 – 15</td><td>Prácticas de automatización</td><td>Fábrica-Escuela</td></tr>
+              <tr><td>16</td><td>Consolidación y cierre</td><td>Fábrica-Escuela</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Calendario · Semanas 1 – 5</p>
+          <h1>Fundamentos y referentes</h1>
+          <ul>
+            <li><strong>Semana 1</strong> — Concepto de calidad, error–defecto–falla, costo de la no-calidad.</li>
+            <li><strong>Semana 2</strong> — Proceso de aseguramiento de la calidad, verificación vs. validación.</li>
+            <li><strong>Semana 3</strong> — Historias de usuario, criterios de aceptación, plan de aseguramiento (SQAP).</li>
+            <li><strong>Semana 4</strong> — Referentes normativos: ISO 9000, ISO 25000, CMMI, IEEE-730.</li>
+            <li><strong>Semana 5</strong> — Deuda técnica, buenas prácticas y herramientas de apoyo.</li>
+          </ul>
+          <p class="slide-eyebrow">Semana 5: entrega 1 de Fábrica-Escuela.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Calendario · Semanas 6 – 12</p>
+          <h1>Pruebas y aseguramiento</h1>
+          <ul>
+            <li><strong>Semana 6</strong> — Plan de pruebas: alcance, estrategia, criterios de entrada y salida.</li>
+            <li><strong>Semana 7</strong> — Tipos de pruebas: funcional, regresión, humo, rendimiento, seguridad.</li>
+            <li><strong>Semana 8</strong> — Técnicas de caja negra y caja blanca. Pirámide de pruebas.</li>
+            <li><strong>Semana 9</strong> — Ciclo de vida del defecto, severidad vs. prioridad. <em>Inicio: entrega del Trabajo 1.</em></li>
+            <li><strong>Semana 10</strong> — Pruebas unitarias, frameworks, test doubles.</li>
+            <li><strong>Semana 11</strong> — Métricas de calidad: densidad de defectos, DRE, cobertura. <em>Entrega 2 de Fábrica-Escuela.</em></li>
+            <li><strong>Semana 12</strong> — Integración continua: build, test, cobertura, análisis estático.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Calendario · Semanas 13 – 16</p>
+          <h1>Automatización y cierre</h1>
+          <ul>
+            <li><strong>Semana 13</strong> — Frameworks de automatización: Selenium, Playwright, Cypress, REST Assured.</li>
+            <li><strong>Semana 14</strong> — Patrones de diseño para pruebas automatizadas: Page Object, data-driven. <em>Entrega 3 de Fábrica-Escuela.</em></li>
+            <li><strong>Semana 15</strong> — Integración de la suite al pipeline. Pruebas inestables (<em>flaky tests</em>).</li>
+            <li><strong>Semana 16</strong> — Entrega del Trabajo 2. Socialización por equipos y cierre del curso.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s13">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Los dos trabajos del 25 %</p>
+          <h1>Qué se entrega y cuándo</h1>
+          <table>
+            <thead>
+              <tr><th>Trabajo</th><th>Piso</th><th>Producto</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Trabajo 1</strong><br>Plan de pruebas y diseño de casos</td><td>Semana 9</td><td>Plan de pruebas, matriz de casos y criterios de aceptación del proyecto de Fábrica. No requiere código ejecutable.</td></tr>
+              <tr><td><strong>Trabajo 2</strong><br>Ejecución, métricas, CI y automatización</td><td>Semana 15 – 16</td><td>Suite ejecutable, pipeline de CI, métricas, registro de defectos y automatización con patrones de diseño.</td></tr>
+            </tbody>
+          </table>
+          <p>Ambos se desarrollan con las 5 horas semanales de trabajo independiente — no consumen el bloque de 4 horas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s14">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Seguimiento semanal — 20 %</p>
+          <h1>Sistemas de práctica</h1>
+          <table>
+            <thead>
+              <tr><th>Sitio</th><th>Qué ofrece</th><th>Semanas</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>ParaBank</td><td>Banca en línea con defectos intencionales</td><td>6, 9</td></tr>
+              <tr><td>SauceDemo</td><td>E-commerce con credenciales de comportamiento diferenciado</td><td>7, 15</td></tr>
+              <tr><td>automationexercise.com</td><td>Flujo e-commerce completo</td><td>8</td></tr>
+              <tr><td>The Internet (Herokuapp)</td><td>Base para automatización</td><td>13</td></tr>
+            </tbody>
+          </table>
+          <p><strong>15 entregables</strong>, uno por semana (1 a 15). Se descartan las <strong>2 notas más bajas</strong>: cuentan 13.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s15">
+        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Para empezar</p>
+          <h1>Antes de la semana 1</h1>
+          <ul>
+            <li>Revisar el esquema de evaluación y confirmar dudas sobre los pesos.</li>
+            <li>Tener listo el acceso a Zoom, GitHub y las herramientas del curso.</li>
+            <li>Leer el material de la semana 1 antes de la primera cátedra.</li>
+          </ul>
+          <p><strong>La clase de la semana 1 asume que la lectura previa ya se hizo.</strong></p>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 15</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+</body>
+</html>

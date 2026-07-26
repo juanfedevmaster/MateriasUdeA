@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción a la Programación — Semana 1</title>
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 1 · Introducción a la Programación</div>
+      <div class="deck-actions">
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/introduccion-a-la-programacion.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage">
+      <img class="deck-watermark" src="../../../assets/img/logo-vertical-cream.png" alt="Universidad de Antioquia" />
+
+      <section class="slide type-portada" id="s01">
+        <img class="slide-bg-visual" src="img/S01-portada.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Semana 1 — Introducción a la Programación</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <img class="slide-bg-visual" src="img/S02-lenguajes.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Lenguajes de programación</p>
+          <h1>El lenguaje de programación Java</h1>
+          <p>En el universo de lenguajes de programación existen los de propósito general, y los más populares son:</p>
+          <ul>
+            <li>C</li>
+            <li>C++</li>
+            <li>C#</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li><strong>Java</strong> — lo aprenderemos durante este curso</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s03">
+        <img class="slide-bg-visual" src="img/S03-camel-intro.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Convenciones de nombres · 1/4</p>
+          <h1>Notación Camel en Java</h1>
+          <p>La notación camel en Java es una práctica para escribir nombres de métodos, funciones, variables, clases, paquetes y constantes.</p>
+          <p><strong>La razón es simple:</strong> tener un formato único y legible al escribir código en Java.</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s04">
+        <img class="slide-bg-visual" src="img/S04-camel-clases.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Convenciones de nombres · 2/4</p>
+          <h1>Clases, métodos y funciones</h1>
+          <p><strong>Clase:</strong> el nombre debe ser un sustantivo, acorde al objetivo que cumple en el programa, como <code>Lease</code> o <code>Logger</code>. Si el nombre es compuesto, cada palabra inicia con mayúscula, por ejemplo <code>LeasesRenters</code>.</p>
+          <p><strong>Método o función:</strong> se supone que hace algo, por lo tanto debe ser un verbo. La primera letra va en minúscula y, si hay una segunda palabra, esta inicia en mayúscula. Por ejemplo:</p>
+          <ul>
+            <li><code>getLeases()</code></li>
+            <li><code>getRenters()</code></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s05">
+        <img class="slide-bg-visual" src="img/S05-camel-interfaces.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Convenciones de nombres · 3/4</p>
+          <h1>Interfaces y variables</h1>
+          <p><strong>Interfaces:</strong> son adjetivos y comienzan con mayúscula. En general se puede agregar la palabra "able" si es necesario, por ejemplo:</p>
+          <ul>
+            <li><code>Runnable</code></li>
+            <li><code>Remote</code></li>
+            <li><code>Serializable</code></li>
+          </ul>
+          <p><strong>Variables:</strong> el nombre debe ser corto y significativo. Si tiene más de una palabra, la segunda inicia en mayúscula:</p>
+          <ul>
+            <li><code>flag</code></li>
+            <li><code>name</code></li>
+            <li><code>lastName</code></li>
+            <li><code>cellphone</code></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s06">
+        <img class="slide-bg-visual" src="img/S06-camel-constantes.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Convenciones de nombres · 4/4</p>
+          <h1>Constantes y paquetes</h1>
+          <p><strong>Constantes:</strong> al igual que las variables, deben ser cortas y significativas, pero completamente en mayúsculas con palabras separadas por guion bajo ("_"):</p>
+          <p><code>COMPANY_NAME = "UdeA"</code></p>
+          <p><strong>Paquetes:</strong> el prefijo de un nombre de paquete se escribe siempre en minúsculas ASCII y debe ser uno de los dominios de nivel superior, como com, edu, gov, mil, net, org.</p>
+          <p><code>java.util.Scanner;</code><br><code>java.io.*;</code></p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s07">
+        <img class="slide-bg-visual" src="img/S07-jdk-jre.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Introducción al lenguaje Java</p>
+          <h1>JDK vs. JRE</h1>
+          <p><strong>JDK (Java Development Kit):</strong> usaremos Java 21 en la medida de lo posible, condicionado a la disponibilidad en las salas de cómputo.</p>
+          <p><strong>JRE (Java Runtime):</strong> la última versión es la 8. La diferencia con el JDK es que el JRE solo instala lo necesario para ejecutar programas ya compilados en Java.</p>
+          <p class="slide-eyebrow">Descarga del JDK: adoptium.net/temurin/releases</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s08">
+        <img class="slide-bg-visual" src="img/S08-netbeans.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Introducción al lenguaje Java</p>
+          <h1>IDE del curso: Apache NetBeans 22</h1>
+          <p>Usaremos Apache NetBeans 22 como entorno de desarrollo integrado (IDE) durante el curso.</p>
+          <p class="slide-eyebrow">Descarga: netbeans.apache.org/download</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s09">
+        <img class="slide-bg-visual" src="img/S09-hola-mundo.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Introducción al lenguaje Java</p>
+          <h1>Primer programa: Hola Mundo</h1>
+          <pre><code>public class Main {
+    public static void main(String[] args)
+    {
+        System.out.println("Hola Mundo");
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s10">
+        <img class="slide-bg-visual" src="img/S10-condicionales.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Introducción al lenguaje Java</p>
+          <h1>Condicionales</h1>
+          <p><strong>Operadores relacionales:</strong></p>
+          <ul>
+            <li>Menor que: <code>a &lt; b</code></li>
+            <li>Menor o igual que: <code>a &lt;= b</code></li>
+            <li>Mayor que: <code>a &gt; b</code></li>
+            <li>Mayor o igual que: <code>a &gt;= b</code></li>
+            <li>Igual a: <code>a == b</code></li>
+            <li>Distinto de: <code>a != b</code></li>
+          </ul>
+          <p><strong>Sentencias condicionales:</strong> <code>if(condición)</code>, <code>else</code>, <code>else if(condición)</code>, <code>switch</code></p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s11">
+        <img class="slide-bg-visual" src="img/S11-tipos-objetos.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Introducción al lenguaje Java</p>
+          <h1>Tipos de objetos en Java</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo primitivo</th><th>Tipo objeto</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>boolean</code></td><td>Boolean</td></tr>
+              <tr><td><code>char</code></td><td>Char</td></tr>
+              <tr><td><code>byte</code></td><td>Byte</td></tr>
+              <tr><td><code>short</code></td><td>Short</td></tr>
+              <tr><td><code>int</code></td><td>Integer</td></tr>
+              <tr><td><code>long</code></td><td>Long</td></tr>
+              <tr><td><code>float</code></td><td>Float</td></tr>
+              <tr><td><code>double</code></td><td>Double</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s12">
+        <img class="slide-bg-visual" src="img/S12-cierre.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Para la próxima clase</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Instalar el JDK 21 (o la versión disponible en las salas de cómputo).</li>
+            <li>Instalar Apache NetBeans 22.</li>
+            <li>Verificar que el programa <code>Hola Mundo</code> compile y se ejecute correctamente.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 12</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+</body>
+</html>

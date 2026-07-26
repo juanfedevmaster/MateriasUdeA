@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Terminal con el símbolo de sistema y una línea de salida">
+<title>Terminal con el símbolo de sistema y una línea de salida</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="300.0" y="260.0" width="1000.0" height="400.0" rx="14" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<line x1="300.0" y1="326.0" x2="1300.0" y2="326.0" stroke="#f0debb" stroke-width="3.2" opacity="0.5"/>
+<circle cx="338.0" cy="293.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="0.55"/>
+<circle cx="370.0" cy="293.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="0.4"/>
+<circle cx="402.0" cy="293.0" r="9.0" stroke="none" fill="#541734" fill-opacity="0.55"/>
+<path d="M 360.0,400.0 L 420.0,440.0 L 360.0,480.0" stroke="#59a87d" stroke-width="4.6" opacity="1"/>
+<line x1="440.0" y1="480.0" x2="560.0" y2="480.0" stroke="#59a87d" stroke-width="4.6" opacity="1"/>
+<line x1="360.0" y1="540.0" x2="700.0" y2="540.0" stroke="#f0debb" stroke-width="4.0" opacity="0.8"/>
+<line x1="360.0" y1="590.0" x2="560.0" y2="590.0" stroke="#f0debb" stroke-width="4.0" opacity="0.5"/>
+<line x1="900.0" y1="530.0" x2="900.0" y2="580.0" stroke="#541734" stroke-width="7.0" opacity="0.6"/>
+</g>
+</svg>

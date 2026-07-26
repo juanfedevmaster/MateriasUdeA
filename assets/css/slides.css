@@ -425,6 +425,24 @@
     overflow: visible !important;
   }
 
+  .slide-content table {
+    font-size: 0.72rem;
+    margin: 6px 0 8px;
+  }
+
+  .slide-content th,
+  .slide-content td {
+    padding: 4px 8px;
+  }
+
+  .slide-content h1 {
+    margin: 0 0 10px;
+  }
+
+  .slide-content .slide-eyebrow {
+    margin-top: 2px;
+  }
+
   .deck-watermark {
     position: fixed !important;
   }

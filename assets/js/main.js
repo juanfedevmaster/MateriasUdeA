@@ -5,7 +5,7 @@
   const frag = document.createDocumentFragment();
 
   TOPICS.forEach((topic) => {
-    const weekLabel = `Semana ${topic.week}`;
+    const weekLabel = topic.week === 0 ? "Presentación" : `Semana ${topic.week}`;
     const card = document.createElement(topic.available ? "a" : "div");
 
     card.className = "topic-card" + (topic.available ? "" : " disabled");

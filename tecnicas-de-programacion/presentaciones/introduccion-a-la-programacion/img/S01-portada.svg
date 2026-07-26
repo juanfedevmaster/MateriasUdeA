@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Laptop con editor de código abriéndose">
+<title>Laptop con editor de código abriéndose</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<path d="M 420.0,650.0 L 1180.0,650.0 L 1120.0,690.0 L 480.0,690.0 Z" stroke="#f0debb" stroke-width="3.2" opacity="0.85" fill="none"/>
+<rect x="460.0" y="280.0" width="680.0" height="380.0" rx="14" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<path d="M 720.0,400.0 L 660.0,470.0 L 720.0,540.0" stroke="#59a87d" stroke-width="4.6" opacity="1"/>
+<path d="M 880.0,400.0 L 940.0,470.0 L 880.0,540.0" stroke="#59a87d" stroke-width="4.6" opacity="1"/>
+<line x1="1000.0" y1="470.0" x2="1000.0" y2="530.0" stroke="#541734" stroke-width="6.0" opacity="0.55"/>
+<circle cx="1160.0" cy="260.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="0.6"/>
+<circle cx="1200.0" cy="300.0" r="6.0" stroke="none" fill="#f0debb" fill-opacity="0.5"/>
+<circle cx="1120.0" cy="230.0" r="5.0" stroke="none" fill="#541734" fill-opacity="0.6"/>
+</g>
+</svg>

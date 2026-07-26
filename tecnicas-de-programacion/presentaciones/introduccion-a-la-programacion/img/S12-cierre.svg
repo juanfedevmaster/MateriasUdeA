@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Lista de verificación con una flecha ascendente de progreso">
+<title>Lista de verificación con una flecha ascendente de progreso</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="320.0" y="260.0" width="420.0" height="380.0" rx="14" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<rect x="360.0" y="320.0" width="46.0" height="46.0" rx="8" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.16"/>
+<path d="M 372.0,344.0 L 384.0,358.0 L 402.0,332.0" stroke="#59a87d" stroke-width="4.4" opacity="1"/>
+<line x1="430.0" y1="343.0" x2="680.0" y2="343.0" stroke="#f0debb" stroke-width="3.2" opacity="0.55"/>
+<rect x="360.0" y="400.0" width="46.0" height="46.0" rx="8" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.16"/>
+<path d="M 372.0,424.0 L 384.0,438.0 L 402.0,412.0" stroke="#59a87d" stroke-width="4.4" opacity="1"/>
+<line x1="430.0" y1="423.0" x2="640.0" y2="423.0" stroke="#f0debb" stroke-width="3.2" opacity="0.55"/>
+<rect x="360.0" y="480.0" width="46.0" height="46.0" rx="8" stroke="#f0debb" stroke-width="3.2" opacity="0.5" fill="none"/>
+<line x1="430.0" y1="503.0" x2="600.0" y2="503.0" stroke="#f0debb" stroke-width="3.2" opacity="0.3"/>
+<path d="M 1000.0,620.0 L 1000.0,320.0 M 940.0,400.0 L 1000.0,320.0 L 1060.0,400.0" stroke="#541734" stroke-width="6.0" opacity="0.7"/>
+</g>
+</svg>

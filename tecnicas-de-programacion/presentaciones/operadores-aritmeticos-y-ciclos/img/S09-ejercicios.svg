@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Lápiz escribiendo sobre una lista de ejercicios">
+<title>Lápiz escribiendo sobre una lista de ejercicios</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="440.0" y="260.0" width="480.0" height="420.0" rx="14" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<line x1="500.0" y1="350.0" x2="860.0" y2="350.0" stroke="#f0debb" stroke-width="3.2" opacity="0.5"/>
+<line x1="500.0" y1="420.0" x2="820.0" y2="420.0" stroke="#f0debb" stroke-width="3.2" opacity="0.4"/>
+<line x1="500.0" y1="490.0" x2="860.0" y2="490.0" stroke="#f0debb" stroke-width="3.2" opacity="0.4"/>
+<line x1="500.0" y1="560.0" x2="780.0" y2="560.0" stroke="#f0debb" stroke-width="3.2" opacity="0.35"/>
+<path d="M 940.0,600.0 L 1160.0,380.0 L 1220.0,440.0 L 1000.0,660.0 L 930.0,670.0 Z" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.16"/>
+<line x1="1140.0" y1="400.0" x2="1200.0" y2="460.0" stroke="#59a87d" stroke-width="3.2" opacity="0.8"/>
+</g>
+</svg>

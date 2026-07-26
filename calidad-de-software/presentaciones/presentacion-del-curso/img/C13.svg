@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="C13 checklist con lupa">
+<title>C13 checklist con lupa</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="248.0" y="232.0" width="372.0" height="434.0" rx="18" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none" fill-opacity="1"/>
+<rect x="374.0" y="190.0" width="120.0" height="36.0" rx="10" stroke="#f0debb" stroke-width="3.2" opacity="0.85" fill="none" fill-opacity="1"/>
+<rect x="286.0" y="290.0" width="52.0" height="52.0" rx="8" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.16"/>
+<path d="M 298.0,316.0 L 310.0,331.0 L 330.0,300.0" stroke="#59a87d" stroke-width="4.6" opacity="1" fill="none" fill-opacity="1"/>
+<line x1="360.0" y1="316.0" x2="574.0" y2="316.0" stroke="#f0debb" stroke-width="3.2" opacity="0.55"/>
+<rect x="286.0" y="378.0" width="52.0" height="52.0" rx="8" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.16"/>
+<path d="M 298.0,404.0 L 310.0,419.0 L 330.0,388.0" stroke="#59a87d" stroke-width="4.6" opacity="1" fill="none" fill-opacity="1"/>
+<line x1="360.0" y1="404.0" x2="498.0" y2="404.0" stroke="#f0debb" stroke-width="3.2" opacity="0.55"/>
+<rect x="286.0" y="466.0" width="52.0" height="52.0" rx="8" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.16"/>
+<path d="M 298.0,492.0 L 310.0,507.0 L 330.0,476.0" stroke="#59a87d" stroke-width="4.6" opacity="1" fill="none" fill-opacity="1"/>
+<line x1="360.0" y1="492.0" x2="574.0" y2="492.0" stroke="#f0debb" stroke-width="3.2" opacity="0.55"/>
+<rect x="286.0" y="554.0" width="52.0" height="52.0" rx="8" stroke="#f0debb" stroke-width="3.2" opacity="0.55" fill="none" fill-opacity="0"/>
+<line x1="360.0" y1="580.0" x2="498.0" y2="580.0" stroke="#f0debb" stroke-width="3.2" opacity="0.28"/>
+<circle cx="848.0" cy="556.0" r="86.0" stroke="#f0debb" stroke-width="3.2" opacity="0.42" fill="none" fill-opacity="1"/>
+<circle cx="848.0" cy="556.0" r="72.0" stroke="#f0debb" stroke-width="2.2" opacity="0.16" fill="none" fill-opacity="1"/>
+<line x1="909.1" y1="617.1" x2="978.7" y2="686.7" stroke="#f0debb" stroke-width="7" opacity="0.42"/>
+</g>
+</svg>

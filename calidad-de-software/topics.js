@@ -7,6 +7,13 @@
  */
 const TOPICS = [
   {
+    week: 0,
+    slug: "presentacion-del-curso",
+    title: "Presentación del curso",
+    subtitle: "Evaluación, calendario y políticas del semestre",
+    available: true,
+  },
+  {
     week: 1,
     slug: "fundamentos-de-calidad",
     title: "Fundamentos de Calidad",

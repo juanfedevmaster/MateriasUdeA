@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Interruptor invirtiendo entre verdadero y falso">
+<title>Interruptor invirtiendo entre verdadero y falso</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="560.0" y="380.0" width="480.0" height="140.0" rx="70" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<circle cx="700.0" cy="450.0" r="55.0" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.2"/>
+<path d="M 780.0,410.0 L 940.0,490.0" stroke="#541734" stroke-width="6.0" opacity="0.7"/>
+<path d="M 900.0,410.0 L 940.0,490.0 L 980.0,410.0" stroke="none"/>
+<circle cx="900.0" cy="450.0" r="55.0" stroke="#541734" stroke-width="3.2" opacity="0.5" fill="none"/>
+<path d="M 500.0,300.0 A 240.0 240.0 0 0 1 500.0,600.0" stroke="#f0debb" stroke-width="2.4" opacity="0.35"/>
+<path d="M 470.0,320.0 L 500.0,300.0 L 505.0,335.0" stroke="#f0debb" stroke-width="2.4" opacity="0.35"/>
+</g>
+</svg>

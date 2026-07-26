@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Función lambda transformando una entrada en una salida">
+<title>Función lambda transformando una entrada en una salida</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="280.0" y="380.0" width="150.0" height="110.0" rx="12" stroke="#59a87d" stroke-width="3.2" opacity="0.9" fill="#59a87d" fill-opacity="0.12"/>
+<path d="M 460.0,435.0 L 590.0,435.0 M 560.0,410.0 L 590.0,435.0 L 560.0,460.0" stroke="#f0debb" stroke-width="3.2" opacity="0.7"/>
+<path d="M 700.0,600.0 L 800.0,260.0 M 700.0,600.0 L 760.0,440.0 L 900.0,600.0" stroke="#f0debb" stroke-width="6.0" opacity="0.85"/>
+<path d="M 1010.0,435.0 L 1140.0,435.0 M 1110.0,410.0 L 1140.0,435.0 L 1110.0,460.0" stroke="#f0debb" stroke-width="3.2" opacity="0.7"/>
+<rect x="1170.0" y="380.0" width="150.0" height="110.0" rx="12" stroke="#541734" stroke-width="3.2" opacity="0.9" fill="#541734" fill-opacity="0.14"/>
+<circle cx="800.0" cy="640.0" r="10.0" stroke="none" fill="#59a87d" fill-opacity="0.6"/>
+<circle cx="920.0" cy="660.0" r="7.0" stroke="none" fill="#f0debb" fill-opacity="0.5"/>
+<circle cx="680.0" cy="660.0" r="7.0" stroke="none" fill="#f0debb" fill-opacity="0.5"/>
+</g>
+</svg>

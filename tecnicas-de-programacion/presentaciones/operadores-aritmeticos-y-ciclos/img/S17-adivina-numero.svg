@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Diana con una flecha y un dado representando un número aleatorio">
+<title>Diana con una flecha y un dado representando un número aleatorio</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<circle cx="620.0" cy="450.0" r="150.0" stroke="#f0debb" stroke-width="3.2" opacity="0.85" fill="none"/>
+<circle cx="620.0" cy="450.0" r="95.0" stroke="#f0debb" stroke-width="2.4" opacity="0.55" fill="none"/>
+<circle cx="620.0" cy="450.0" r="40.0" stroke="#541734" stroke-width="3.2" opacity="1" fill="#541734" fill-opacity="0.2"/>
+<line x1="950.0" y1="260.0" x2="640.0" y2="430.0" stroke="#f0debb" stroke-width="4.4" opacity="0.85"/>
+<path d="M 900.0,240.0 L 950.0,260.0 L 930.0,310.0" stroke="#f0debb" stroke-width="3.2" opacity="0.6"/>
+<rect x="1000.0" y="470.0" width="160.0" height="160.0" rx="24" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.12"/>
+<circle cx="1040.0" cy="510.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="1"/>
+<circle cx="1120.0" cy="510.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="1"/>
+<circle cx="1080.0" cy="550.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="1"/>
+<circle cx="1040.0" cy="590.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="1"/>
+<circle cx="1120.0" cy="590.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="1"/>
+</g>
+</svg>

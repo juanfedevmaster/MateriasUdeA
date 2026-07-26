@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Taza de café de Java entre etiquetas de otros lenguajes">
+<title>Taza de café de Java entre etiquetas de otros lenguajes</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="340.0" y="260.0" width="180.0" height="60.0" rx="10" stroke="#f0debb" stroke-width="2.4" opacity="0.35" fill="none"/>
+<rect x="1080.0" y="300.0" width="180.0" height="60.0" rx="10" stroke="#f0debb" stroke-width="2.4" opacity="0.3" fill="none"/>
+<rect x="1020.0" y="600.0" width="180.0" height="60.0" rx="10" stroke="#f0debb" stroke-width="2.4" opacity="0.3" fill="none"/>
+<rect x="620.0" y="440.0" width="220.0" height="180.0" rx="16" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<path d="M 840.0,470.0 C 920.0,470.0 920.0,570.0 840.0,570.0" stroke="#f0debb" stroke-width="3.2" opacity="1"/>
+<ellipse cx="730.0" cy="632.0" rx="150.0" ry="18.0" stroke="#f0debb" stroke-width="2.4" opacity="0.5"/>
+<path d="M 660.0,420.0 C 640.0,390.0 680.0,380.0 660.0,350.0" stroke="#59a87d" stroke-width="4.0" opacity="0.75"/>
+<path d="M 720.0,420.0 C 700.0,390.0 740.0,380.0 720.0,350.0" stroke="#59a87d" stroke-width="4.0" opacity="0.75"/>
+<path d="M 780.0,420.0 C 760.0,390.0 800.0,380.0 780.0,350.0" stroke="#59a87d" stroke-width="4.0" opacity="0.75"/>
+</g>
+</svg>

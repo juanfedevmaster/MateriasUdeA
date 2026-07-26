@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operadores Aritméticos y Ciclos — Semana 1</title>
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 1 · Operadores Aritméticos y Ciclos</div>
+      <div class="deck-actions">
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/operadores-aritmeticos-y-ciclos.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage">
+      <img class="deck-watermark" src="../../../assets/img/logo-vertical-cream.png" alt="Universidad de Antioquia" />
+
+      <section class="slide type-portada" id="s01">
+        <img class="slide-bg-visual" src="img/S01-portada.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Semana 1 — Operadores Aritméticos y Ciclos</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <img class="slide-bg-visual" src="img/S02-expresiones.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Expresiones aritméticas en Java</p>
+          <h1>Variables, literales y operadores</h1>
+          <p>Recordemos: una <strong>variable</strong> es una posición de memoria en la que se puede almacenar un valor que puede cambiar durante la ejecución de un programa. Un <strong>literal</strong> es la representación de un valor en el código fuente del programa.</p>
+          <table>
+            <thead>
+              <tr><th>Operador</th><th>Significado</th><th>Ejemplo</th><th>Resultado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>+</code></td><td>Suma</td><td><code>a + b</code></td><td>Suma de a y b</td></tr>
+              <tr><td><code>-</code></td><td>Resta</td><td><code>a - b</code></td><td>Resta de a y b</td></tr>
+              <tr><td><code>*</code></td><td>Multiplicación</td><td><code>a * b</code></td><td>Producto de a por b</td></tr>
+              <tr><td><code>/</code></td><td>División</td><td><code>a / b</code></td><td>Cociente de a entre b</td></tr>
+              <tr><td><code>%</code></td><td>Residuo</td><td><code>a % b</code></td><td>Residuo de a entre b</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s03">
+        <img class="slide-bg-visual" src="img/S03-jerarquia.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Expresiones aritméticas en Java</p>
+          <h1>Jerarquía de operadores aritméticos</h1>
+          <table>
+            <thead>
+              <tr><th>Operador</th><th>Precedencia</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>()</code></td><td>Se evalúa en primer lugar.</td></tr>
+              <tr><td><code>* / %</code></td><td>Se evalúa en segundo lugar.</td></tr>
+              <tr><td><code>+ -</code></td><td>Se evalúa al último.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s04">
+        <img class="slide-bg-visual" src="img/S04-traducir.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Expresiones aritméticas en Java</p>
+          <h1>Ejercicio: traducir expresiones algebraicas a Java</h1>
+          <p>Escribe las siguientes expresiones algebraicas en Java:</p>
+          <ul>
+            <li><strong>a.</strong> e = a² + 3bc + 2</li>
+            <li><strong>b.</strong> z = (a + b + 2) / (a² + 1) + 2ab</li>
+            <li><strong>c.</strong> prom = (n1 + n2 + n3 + n4) / 4</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s05">
+        <img class="slide-bg-visual" src="img/S05-and.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Operadores lógicos</p>
+          <h1>Operador Y (&amp;&amp;)</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>true</th><th>false</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>true</strong></td><td>true</td><td>false</td></tr>
+              <tr><td><strong>false</strong></td><td>false</td><td>false</td></tr>
+            </tbody>
+          </table>
+          <pre><code>int a = 5;
+int b = -1;
+(a > b) &amp;&amp; (b < 0); // true</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s06">
+        <img class="slide-bg-visual" src="img/S06-or.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Operadores lógicos</p>
+          <h1>Operador O (||)</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>true</th><th>false</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>true</strong></td><td>true</td><td>true</td></tr>
+              <tr><td><strong>false</strong></td><td>true</td><td>false</td></tr>
+            </tbody>
+          </table>
+          <pre><code>int a = 5;
+int b = -1;
+(b > 0) || (a < b); // true</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s07">
+        <img class="slide-bg-visual" src="img/S07-not.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Operadores lógicos</p>
+          <h1>Negación (!)</h1>
+          <p>El operador de negación evalúa un único operando lógico y devuelve como resultado su valor invertido. Es decir, si el operando tiene el valor <code>true</code>, este operador devolverá <code>false</code>, y viceversa.</p>
+          <pre><code>int a = 9;
+!(a == 9); // false</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s08">
+        <img class="slide-bg-visual" src="img/S08-bonificacion.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Operadores lógicos · Bonificación</p>
+          <h1>¿Cuál es el resultado de este programa?</h1>
+          <pre><code>String name = null;
+if (name != null &amp; name.contains("juan")) {
+    System.out.println("Juan is contained in the string");
+} else {
+    System.out.println("Juan is not contained in the string");
+}</code></pre>
+          <p><strong>Pista:</strong> a diferencia de <code>&amp;&amp;</code>, el operador <code>&amp;</code> no aplica cortocircuito: evalúa ambos lados aunque el primero ya sea <code>false</code>. Aquí eso provoca una <code>NullPointerException</code> al intentar llamar <code>.contains()</code> sobre <code>null</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s09">
+        <img class="slide-bg-visual" src="img/S09-ejercicios.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Práctica</p>
+          <h1>Ejercicios</h1>
+          <ol>
+            <li>Declara dos variables numéricas (con el valor que quieras) y muestra por consola la suma, resta, multiplicación, división y módulo (residuo de la división).</li>
+            <li>Declara dos variables numéricas e indica cuál es mayor de las dos. Si son iguales, indícalo también. Cambia los valores para comprobar que funciona.</li>
+            <li>Declara un String con tu nombre y muestra un mensaje de bienvenida por consola. Por ejemplo: si ingreso "Fernando", obtengo "Bienvenido Fernando".</li>
+            <li>Modifica la aplicación anterior para que pida por teclado el nombre que queremos ingresar.</li>
+            <li>Crea una aplicación que calcule el área de un círculo (pi*R²). El radio se pedirá por teclado.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s10">
+        <img class="slide-bg-visual" src="img/S10-acumulador-contador.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Acumulador y contador</p>
+          <h1>Operadores de incremento y decremento</h1>
+          <pre><code>int count = 1;
+count = count + 1;   // Operación: incrementar en 1
+count++;             // Expresión en Java para incrementar en 1
+
+int acum = 1;
+acum = acum + (acum * 2);  // Operación: acumular un valor en la misma variable
+acum += (acum * 2);        // Expresión en Java para acumular</code></pre>
+          <table>
+            <thead>
+              <tr><th>Nombre</th><th>Operador</th><th>Variante</th><th>Uso</th><th>Explicación</th></tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="2">Incremento</td><td rowspan="2"><code>++</code></td><td>Prefijo</td><td><code>++a</code></td><td>Incrementa a en 1 y luego usa el nuevo valor.</td></tr>
+              <tr><td>Postfijo</td><td><code>a++</code></td><td>Usa el valor actual de a y luego lo incrementa en 1.</td></tr>
+              <tr><td rowspan="2">Decremento</td><td rowspan="2"><code>--</code></td><td>Prefijo</td><td><code>--a</code></td><td>Decrementa a en 1 y luego usa el nuevo valor.</td></tr>
+              <tr><td>Postfijo</td><td><code>a--</code></td><td>Usa el valor actual de a y luego lo decrementa en 1.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s11">
+        <img class="slide-bg-visual" src="img/S11-for.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Ciclos en Java</p>
+          <h1>Ciclo "For"</h1>
+          <p>El ciclo <code>for</code> permite ejecutar una sentencia de Java múltiples veces, y se usa principalmente cuando se conoce el número total de repeticiones antes de la ejecución.</p>
+          <p><strong>Sintaxis:</strong> el ciclo <code>for</code> tiene tres partes: la primera itera la posición del arreglo, la segunda valida cuándo termina el ciclo, y la tercera incrementa la iteración.</p>
+          <pre><code>for (int i = 0; i < arrayList.length; i++) {
+    System.out.println(arrayList[i]);
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s12">
+        <img class="slide-bg-visual" src="img/S12-while.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Ciclos en Java</p>
+          <h1>Ciclo "While"</h1>
+          <p>El ciclo <code>while</code> permite ejecutar una sentencia de Java múltiples veces hasta que se cumpla la condición. Tiene dos partes: primero la condición, antes de entrar al ciclo, y luego la iteración durante el ciclo.</p>
+          <pre><code>var i = 0;
+while (i < arrayList.length) {
+    System.out.println(arrayList[i]);
+    i++;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s13">
+        <img class="slide-bg-visual" src="img/S13-do-while.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Ciclos en Java</p>
+          <h1>Ciclo "Do while"</h1>
+          <p>El ciclo <code>do while</code> permite ejecutar una sentencia de Java múltiples veces hasta que se cumpla la condición. Tiene dos partes: primero la iteración durante el ciclo, y luego la condición, después de entrar al ciclo.</p>
+          <pre><code>var i = 0;
+do {
+    System.out.println(arrayList[i]);
+    i++;
+} while (i < arrayList.length);</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s14">
+        <img class="slide-bg-visual" src="img/S14-foreach.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Ciclos en Java</p>
+          <h1>Ciclo "ForEach"</h1>
+          <p>El uso de <code>forEach</code> nos permite recorrer la lista de elementos de forma más compacta. Solo hace falta declarar la variable con el tipo del objeto que se va a iterar.</p>
+          <pre><code>for (int number : arrayList) {
+    System.out.println(number);
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s15">
+        <img class="slide-bg-visual" src="img/S15-conversion-tipos.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Conversión y Casting</p>
+          <h1>Compatibilidad de tipos y parsing de String</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo origen</th><th>Tipo destino</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>byte</td><td>double, float, long, int, char, short</td></tr>
+              <tr><td>short</td><td>double, float, long, int</td></tr>
+              <tr><td>char</td><td>double, float, long, int</td></tr>
+              <tr><td>int</td><td>double, float, long</td></tr>
+              <tr><td>long</td><td>double, float</td></tr>
+              <tr><td>float</td><td>double</td></tr>
+            </tbody>
+          </table>
+          <pre><code>String s = "200";
+int    a = Integer.parseInt(s);
+double b = Double.parseDouble(s);
+float  c = Float.parseFloat(s);</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s16">
+        <img class="slide-bg-visual" src="img/S16-casting.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Conversión y Casting</p>
+          <h1>Casting implícito y explícito</h1>
+          <p><strong>Widening casting (ampliación):</strong> se hace automáticamente al pasar de un tipo de menor tamaño a uno de mayor tamaño.</p>
+          <pre><code>int myInt = 9;
+double myDouble = myInt; // Conversión automática: int a double
+
+System.out.println(myInt);     // Imprime 9
+System.out.println(myDouble);  // Imprime 9.0</code></pre>
+          <p><strong>Narrowing casting (reducción):</strong> debe hacerse manualmente colocando el tipo entre paréntesis delante del valor.</p>
+          <pre><code>double myDouble = 9.78d;
+int myInt = (int) myDouble; // Conversión manual: double a int
+
+System.out.println(myDouble);  // Imprime 9.78
+System.out.println(myInt);     // Imprime 9</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s17">
+        <img class="slide-bg-visual" src="img/S17-adivina-numero.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Ejercicio</p>
+          <h1>Adivina el número</h1>
+          <p>Usa <code>Math.random()</code> para elegir un número entre 1 y 100.</p>
+          <p>Crea una aplicación que permita adivinar un número: la aplicación genera un número aleatorio entre 1 y 100 y luego pide números, respondiendo si el número a adivinar es mayor o menor que el ingresado, además de los intentos restantes (tienes 10 intentos para adivinarlo).</p>
+          <p>El programa termina cuando se adivina el número (indicando en cuántos intentos se logró); si se llega al límite de intentos, muestra el número que se había generado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <img class="slide-bg-visual" src="img/S18-cierre.svg" alt="" aria-hidden="true" />
+        <div class="slide-content">
+          <p class="slide-kicker">Para llevar</p>
+          <h1>Ideas clave de la sesión</h1>
+          <ul>
+            <li>La jerarquía de operadores decide el orden de evaluación: paréntesis, luego <code>* / %</code>, y al final <code>+ -</code>.</li>
+            <li><code>&amp;&amp;</code> y <code>||</code> aplican cortocircuito; <code>&amp;</code> y <code>|</code> no — evalúan siempre ambos lados, lo que puede causar errores como el de la bonificación.</li>
+            <li>Elige <code>for</code> cuando conoces el número de repeticiones, <code>while</code>/<code>do while</code> cuando depende de una condición, y <code>forEach</code> para recorrer colecciones.</li>
+            <li>El widening casting es automático; el narrowing casting siempre debe hacerse explícito con paréntesis.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+</body>
+</html>

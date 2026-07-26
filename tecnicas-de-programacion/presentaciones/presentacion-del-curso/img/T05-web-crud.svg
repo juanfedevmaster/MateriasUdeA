@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Ventana de navegador con lista de operaciones CRUD">
+<title>Ventana de navegador con lista de operaciones CRUD</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="260.0" y="220.0" width="1080.0" height="460.0" rx="16" stroke="#f0debb" stroke-width="3.2" opacity="1" fill="none"/>
+<line x1="260.0" y1="286.0" x2="1340.0" y2="286.0" stroke="#f0debb" stroke-width="3.2" opacity="0.5"/>
+<circle cx="298.0" cy="253.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="0.5"/>
+<circle cx="330.0" cy="253.0" r="9.0" stroke="none" fill="#59a87d" fill-opacity="0.35"/>
+<circle cx="362.0" cy="253.0" r="9.0" stroke="none" fill="#541734" fill-opacity="0.5"/>
+<rect x="420.0" y="238.0" width="600.0" height="30.0" rx="15" stroke="#f0debb" stroke-width="2.2" opacity="0.35" fill="none"/>
+<line x1="320.0" y1="360.0" x2="760.0" y2="360.0" stroke="#f0debb" stroke-width="3.2" opacity="0.5"/>
+<path d="M 980.0,340.0 L 980.0,380.0 M 960.0,360.0 L 1000.0,360.0" stroke="#59a87d" stroke-width="4.6" opacity="0.9"/>
+<line x1="320.0" y1="450.0" x2="760.0" y2="450.0" stroke="#f0debb" stroke-width="3.2" opacity="0.5"/>
+<path d="M 950.0,470.0 L 1010.0,430.0 M 1000.0,422.0 L 1014.0,436.0 L 1000.0,450.0" stroke="#59a87d" stroke-width="4.0" opacity="0.9"/>
+<line x1="320.0" y1="540.0" x2="760.0" y2="540.0" stroke="#f0debb" stroke-width="3.2" opacity="0.5"/>
+<path d="M 960.0,522.0 L 1000.0,522.0 L 995.0,562.0 L 965.0,562.0 Z M 970.0,522.0 L 970.0,512.0 L 990.0,512.0 L 990.0,522.0" stroke="#541734" stroke-width="3.2" opacity="0.9"/>
+</g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Fila de elementos de una lista con una flecha recorriéndolos">
+<title>Fila de elementos de una lista con una flecha recorriéndolos</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
+<rect x="400.0" y="420.0" width="110.0" height="110.0" rx="10" stroke="#f0debb" stroke-width="3.2" opacity="0.9" fill="none"/>
+<rect x="530.0" y="420.0" width="110.0" height="110.0" rx="10" stroke="#f0debb" stroke-width="3.2" opacity="0.9" fill="none"/>
+<rect x="660.0" y="420.0" width="110.0" height="110.0" rx="10" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.18"/>
+<rect x="790.0" y="420.0" width="110.0" height="110.0" rx="10" stroke="#f0debb" stroke-width="3.2" opacity="0.9" fill="none"/>
+<rect x="920.0" y="420.0" width="110.0" height="110.0" rx="10" stroke="#f0debb" stroke-width="3.2" opacity="0.9" fill="none"/>
+<path d="M 400.0,360.0 L 1030.0,360.0" stroke="#541734" stroke-width="3.2" opacity="0.6"/>
+<path d="M 1000.0,340.0 L 1030.0,360.0 L 1000.0,380.0" stroke="#541734" stroke-width="3.2" opacity="0.6"/>
+<path d="M 715.0,380.0 L 715.0,415.0" stroke="#59a87d" stroke-width="3.6" opacity="0.9"/>
+</g>
+</svg>
