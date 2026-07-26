@@ -26,12 +26,11 @@
       <div class="progress-fill" id="progress-fill"></div>
     </div>
 
-    <div class="deck-stage" id="deck-stage">
-      <img class="deck-watermark" src="../../../assets/img/logo-vertical-cream.png" alt="Universidad de Antioquia" />
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
 
       <section class="slide type-portada" id="s01">
-        <img class="slide-bg-visual" src="img/S01-portada.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
+          <img class="portada-icon" src="img/java.svg" alt="Java" />
           <p class="slide-kicker">Portada</p>
           <h1>Técnicas de Programación</h1>
           <h2>Semana 1 — Introducción a la Programación</h2>
@@ -40,7 +39,6 @@
       </section>
 
       <section class="slide type-encuadre" id="s02">
-        <img class="slide-bg-visual" src="img/S02-lenguajes.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Lenguajes de programación</p>
           <h1>El lenguaje de programación Java</h1>
@@ -53,21 +51,35 @@
             <li>Python</li>
             <li><strong>Java</strong> — lo aprenderemos durante este curso</li>
           </ul>
+          <div class="lang-collage">
+            <img class="lang-chip" src="img/languages/c.svg" alt="C" style="--r: -7deg" />
+            <img class="lang-chip" src="img/languages/cplusplus.svg" alt="C++" style="--r: 5deg" />
+            <img class="lang-chip" src="img/languages/csharp.svg" alt="C#" style="--r: -4deg" />
+            <img class="lang-chip" src="img/languages/javascript.svg" alt="JavaScript" style="--r: 6deg" />
+            <img class="lang-chip" src="img/languages/python.svg" alt="Python" style="--r: -6deg" />
+            <img class="lang-chip" src="img/languages/java.svg" alt="Java" style="--r: 4deg" />
+          </div>
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s03">
-        <img class="slide-bg-visual" src="img/S03-camel-intro.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Convenciones de nombres · 1/4</p>
           <h1>Notación Camel en Java</h1>
           <p>La notación camel en Java es una práctica para escribir nombres de métodos, funciones, variables, clases, paquetes y constantes.</p>
           <p><strong>La razón es simple:</strong> tener un formato único y legible al escribir código en Java.</p>
+          <ul>
+            <li>Mejora la legibilidad del código, tanto para quien lo escribe como para quien lo mantiene después.</li>
+            <li>Evita ambigüedades: un mismo nombre siempre se interpreta de la misma forma.</li>
+            <li>Facilita el trabajo en equipo, ya que todos siguen las mismas reglas.</li>
+            <li>Es la convención oficial recomendada por Oracle para el lenguaje Java.</li>
+            <li>Permite identificar rápidamente si un identificador es una clase, un método, una constante o un paquete, solo por su forma.</li>
+          </ul>
+          <img class="portada-icon" src="img/openjdk.svg" alt="OpenJDK" style="display:block;width:256px;height:256px;margin:0 auto" />
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s04">
-        <img class="slide-bg-visual" src="img/S04-camel-clases.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Convenciones de nombres · 2/4</p>
           <h1>Clases, métodos y funciones</h1>
@@ -76,12 +88,15 @@
           <ul>
             <li><code>getLeases()</code></li>
             <li><code>getRenters()</code></li>
+            <li><code>calculateTotal()</code></li>
+            <li><code>isValidEmail()</code></li>
+            <li><code>findUserById()</code></li>
           </ul>
+          <p><strong>Evita:</strong> nombres genéricos como <code>Data</code>, <code>Info</code> o abreviaturas poco claras; prefiere nombres que describan el propósito real de la clase o el método.</p>
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s05">
-        <img class="slide-bg-visual" src="img/S05-camel-interfaces.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Convenciones de nombres · 3/4</p>
           <h1>Interfaces y variables</h1>
@@ -102,40 +117,54 @@
       </section>
 
       <section class="slide type-encuadre" id="s06">
-        <img class="slide-bg-visual" src="img/S06-camel-constantes.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Convenciones de nombres · 4/4</p>
           <h1>Constantes y paquetes</h1>
           <p><strong>Constantes:</strong> al igual que las variables, deben ser cortas y significativas, pero completamente en mayúsculas con palabras separadas por guion bajo ("_"):</p>
           <p><code>COMPANY_NAME = "UdeA"</code></p>
+          <ul>
+            <li><code>MAX_USERS = 100</code></li>
+            <li><code>PI = 3.1416</code></li>
+          </ul>
           <p><strong>Paquetes:</strong> el prefijo de un nombre de paquete se escribe siempre en minúsculas ASCII y debe ser uno de los dominios de nivel superior, como com, edu, gov, mil, net, org.</p>
           <p><code>java.util.Scanner;</code><br><code>java.io.*;</code></p>
+          <ul>
+            <li><code>com.udea.tecnicasdeprogramacion</code></li>
+            <li><code>org.apache.commons</code></li>
+          </ul>
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s07">
-        <img class="slide-bg-visual" src="img/S07-jdk-jre.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Introducción al lenguaje Java</p>
           <h1>JDK vs. JRE</h1>
           <p><strong>JDK (Java Development Kit):</strong> usaremos Java 21 en la medida de lo posible, condicionado a la disponibilidad en las salas de cómputo.</p>
           <p><strong>JRE (Java Runtime):</strong> la última versión es la 8. La diferencia con el JDK es que el JRE solo instala lo necesario para ejecutar programas ya compilados en Java.</p>
-          <p class="slide-eyebrow">Descarga del JDK: adoptium.net/temurin/releases</p>
+          <ul>
+            <li><strong>JVM (Java Virtual Machine):</strong> el motor que ejecuta el bytecode de Java; está incluida tanto en el JDK como en el JRE.</li>
+            <li><strong>JRE = JVM + bibliotecas estándar</strong> necesarias para ejecutar aplicaciones ya compiladas.</li>
+            <li><strong>JDK = JRE + herramientas de desarrollo:</strong> compilador (<code>javac</code>), depurador (<code>jdb</code>), generador de documentación (<code>javadoc</code>) y empaquetador (<code>jar</code>).</li>
+            <li>Si solo vas a <em>ejecutar</em> programas Java, basta con el JRE.</li>
+            <li>Si vas a <em>escribir y compilar</em> código Java — como en este curso —, necesitas el JDK.</li>
+          </ul>
+          <p><strong>Distribuciones comunes:</strong> Oracle JDK, Eclipse Temurin (antes AdoptOpenJDK), Amazon Corretto y OpenJDK. Todas implementan el mismo estándar del lenguaje Java.</p>
+          <p>En la práctica, las distribuciones modernas del JDK ya incluyen todo lo necesario tanto para compilar como para ejecutar, por lo que instalar solo el JDK es suficiente para este curso.</p>
+          <p class="slide-eyebrow">Descarga del JDK: <a href="https://adoptium.net/temurin/releases" target="_blank" rel="noopener">adoptium.net/temurin/releases</a></p>
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s08">
-        <img class="slide-bg-visual" src="img/S08-netbeans.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Introducción al lenguaje Java</p>
           <h1>IDE del curso: Apache NetBeans 22</h1>
           <p>Usaremos Apache NetBeans 22 como entorno de desarrollo integrado (IDE) durante el curso.</p>
-          <p class="slide-eyebrow">Descarga: netbeans.apache.org/download</p>
+          <p class="slide-eyebrow">Descarga: <a href="https://netbeans.apache.org/download/index.html" target="_blank" rel="noopener">netbeans.apache.org/download</a></p>
+          <img class="portada-icon" src="img/netbeans.svg" alt="Apache NetBeans" style="display:block;width:400px;height:400px;margin:16px auto 0" />
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s09">
-        <img class="slide-bg-visual" src="img/S09-hola-mundo.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Introducción al lenguaje Java</p>
           <h1>Primer programa: Hola Mundo</h1>
@@ -145,11 +174,11 @@
         System.out.println("Hola Mundo");
     }
 }</code></pre>
+          <img class="portada-icon" src="img/openjdk.svg" alt="OpenJDK" style="display:block;width:256px;height:256px;margin:80px auto 0" />
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s10">
-        <img class="slide-bg-visual" src="img/S10-condicionales.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Introducción al lenguaje Java</p>
           <h1>Condicionales</h1>
@@ -163,11 +192,11 @@
             <li>Distinto de: <code>a != b</code></li>
           </ul>
           <p><strong>Sentencias condicionales:</strong> <code>if(condición)</code>, <code>else</code>, <code>else if(condición)</code>, <code>switch</code></p>
+          <img class="portada-icon" src="img/openjdk.svg" alt="OpenJDK" style="display:block;width:256px;height:256px;margin:80px auto 0" />
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s11">
-        <img class="slide-bg-visual" src="img/S11-tipos-objetos.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Introducción al lenguaje Java</p>
           <h1>Tipos de objetos en Java</h1>
@@ -186,11 +215,11 @@
               <tr><td><code>double</code></td><td>Double</td></tr>
             </tbody>
           </table>
+          <img class="portada-icon" src="img/openjdk.svg" alt="OpenJDK" style="display:block;width:256px;height:256px;margin:16px auto 0" />
         </div>
       </section>
 
       <section class="slide type-cierre" id="s12">
-        <img class="slide-bg-visual" src="img/S12-cierre.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Para la próxima clase</p>
           <h1>Antes de la próxima sesión</h1>
@@ -199,6 +228,7 @@
             <li>Instalar Apache NetBeans 22.</li>
             <li>Verificar que el programa <code>Hola Mundo</code> compile y se ejecute correctamente.</li>
           </ul>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Lista de tareas" style="display:block;width:200px;height:auto;margin:80px auto 0" />
         </div>
       </section>
 

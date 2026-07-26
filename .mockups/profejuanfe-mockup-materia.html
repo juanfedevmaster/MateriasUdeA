@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Técnicas de Programación — Mockup materia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint: #0F2038;
+    --blueprint-deep: #0A182C;
+    --line: #BFDCEF;
+    --line-dim: rgba(191,220,239,0.18);
+    --vellum: #F1EEE3;
+    --vellum-dim: #E7E2D2;
+    --ink: #16233A;
+    --ink-soft: #4A5773;
+    --amber: #E2A63B;
+    --amber-dim: rgba(226,166,59,0.15);
+    --green-live: #2E7D4F;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--vellum);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .display{font-family:'Space Grotesk', sans-serif;}
+
+  .reg-mark{position:absolute; width:22px; height:22px; pointer-events:none;}
+  .reg-mark::before, .reg-mark::after{content:""; position:absolute; background:var(--line);}
+  .reg-mark::before{top:50%; left:0; width:100%; height:1px; transform:translateY(-50%);}
+  .reg-mark::after{left:50%; top:0; height:100%; width:1px; transform:translateX(-50%);}
+  .reg-mark.tl{top:14px; left:14px;}
+  .reg-mark.tr{top:14px; right:14px;}
+
+  /* ---------- HERO (misma hoja de plano que el home, versión compacta) ---------- */
+  .sheet{
+    position:relative;
+    background:
+      linear-gradient(var(--line-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dim) 1px, transparent 1px),
+      linear-gradient(135deg, var(--blueprint), var(--blueprint-deep));
+    background-size: 32px 32px, 32px 32px, cover;
+    color:var(--line);
+    padding: 40px 24px 44px;
+    overflow:hidden;
+  }
+  .sheet-inner{max-width:1040px; margin:0 auto; position:relative;}
+
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:40px; font-size:14px;
+  }
+  .nav .brand{display:flex; align-items:center; gap:10px; color:var(--line); text-decoration:none;}
+  .brand-mark{
+    width:28px; height:28px; border:1px solid var(--amber); display:flex; align-items:center; justify-content:center;
+    font-size:11px; color:var(--amber);
+  }
+  .breadcrumb{color:#7C97B4; text-decoration:none; display:flex; align-items:center; gap:8px; font-size:13.5px;}
+  .breadcrumb:hover{color:var(--amber);}
+  .breadcrumb svg{transform:rotate(180deg);}
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--amber); margin-bottom:20px;
+  }
+  .eyebrow::before{content:""; width:18px; height:1px; background:var(--amber);}
+  h1.course-title{
+    font-size:clamp(30px, 5vw, 46px);
+    line-height:1.08; margin:0 0 14px; font-weight:600;
+  }
+  .course-sub{
+    max-width:56ch; font-size:15.5px; color:#AFC7DE; line-height:1.6; margin:0 0 30px;
+  }
+
+  .title-block{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top:1px solid var(--line-dim);
+    margin-top:8px;
+  }
+  .title-block div{ padding:14px 18px; border-right:1px solid var(--line-dim); }
+  .title-block div:last-child{border-right:none;}
+  .tb-label{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#7C97B4; margin-bottom:5px;}
+  .tb-value{font-size:13px; color:var(--line);}
+  @media (max-width: 720px){
+    .title-block{grid-template-columns: repeat(2, 1fr);}
+    .title-block div:nth-child(2){border-right:none;}
+  }
+
+  /* ---------- CONTENIDO ---------- */
+  .content{max-width:1040px; margin:0 auto; padding:48px 24px 90px;}
+  .content-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:26px; border-bottom:1px solid rgba(22,35,58,0.14); padding-bottom:16px;}
+  .content-head h2{font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-soft); margin:0; font-weight:600;}
+  .content-head span{font-size:12.5px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;}
+
+  .grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:rgba(22,35,58,0.14); border:1px solid rgba(22,35,58,0.14);}
+  @media (max-width:940px){ .grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:560px){ .grid{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--vellum); padding:24px 22px 20px; position:relative;
+    transition: background .25s ease;
+    display:flex; flex-direction:column; min-height:210px;
+  }
+  .card:hover{background:#FFFDF7;}
+  .card-top{margin-bottom:16px;}
+  .tag-week{
+    font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .tag-week.presentacion{color:var(--amber);}
+
+  .card h3{font-size:17px; margin:0 0 8px; font-weight:600; line-height:1.25;}
+  .card p{font-size:13.5px; color:var(--ink-soft); line-height:1.55; margin:0; flex-grow:1;}
+  .card .go{
+    margin-top:16px; display:flex; justify-content:flex-end;
+  }
+  .card .go svg{color:var(--ink-soft); transition:transform .2s ease, color .2s ease;}
+  .card:hover .go svg{transform:translateX(3px); color:var(--amber);}
+
+  .card::before{
+    content:""; position:absolute; top:10px; left:10px; width:9px; height:9px;
+    border-top:1px solid var(--amber-dim); border-left:1px solid var(--amber-dim);
+  }
+  .card:hover::before{border-color:var(--amber);}
+
+  footer{
+    background:var(--blueprint-deep); color:#7C97B4; padding:30px 24px; font-size:12.5px;
+    display:flex; justify-content:center; gap:12px; font-family:'IBM Plex Mono', monospace; text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<section class="sheet">
+  <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
+  <div class="sheet-inner">
+    <div class="nav">
+      <a class="brand" href="#">
+        <span class="brand-mark mono">JF</span>
+        <span class="mono">profejuanfe.dev</span>
+      </a>
+      <a class="breadcrumb" href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        Todas las materias
+      </a>
+    </div>
+
+    <div class="eyebrow">Ingeniería de Sistemas · Universidad de Antioquia</div>
+    <h1 class="course-title display">Técnicas de Programación</h1>
+    <p class="course-sub">Presentaciones del curso, semana a semana.</p>
+
+    <div class="title-block mono">
+      <div>
+        <div class="tb-label">Sheet</div>
+        <div class="tb-value">2508307</div>
+      </div>
+      <div>
+        <div class="tb-label">Docente</div>
+        <div class="tb-value">Juan Felipe Quintana G.</div>
+      </div>
+      <div>
+        <div class="tb-label">Semestre</div>
+        <div class="tb-value">2026-2</div>
+      </div>
+      <div>
+        <div class="tb-label">Estado</div>
+        <div class="tb-value">En curso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="content-head">
+    <h2>Contenido del curso</h2>
+    <span>4 sesiones publicadas</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-top"><span class="tag-week presentacion">Presentación</span></div>
+      <h3 class="display">Presentación del curso</h3>
+      <p>Unidades, laboratorios y esquema de evaluación.</p>
+      <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="tag-week">Semana 1</span></div>
+      <h3 class="display">Introducción a la Programación</h3>
+      <p>Lenguaje Java, notación camel, JDK/JRE y primer programa.</p>
+      <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="tag-week">Semana 1</span></div>
+      <h3 class="display">Tópicos Generales de Ingeniería de Software</h3>
+      <p>Sintaxis, semántica, pragmática y panorama de la industria.</p>
+      <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="tag-week">Semana 1</span></div>
+      <h3 class="display">Operadores Aritméticos y Ciclos</h3>
+      <p>Operadores lógicos, acumuladores, ciclos y casting en Java.</p>
+      <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Técnicas de Programación (2508307) · Material de clase · profejuanfe.dev
+</footer>
+
+</body>
+</html>

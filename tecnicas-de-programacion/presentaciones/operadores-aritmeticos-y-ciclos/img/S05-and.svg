@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Diagrama de Venn con la intersección resaltada, representando el operador Y">
-<title>Diagrama de Venn con la intersección resaltada, representando el operador Y</title>
-<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
-<circle cx="680.0" cy="450.0" r="180.0" stroke="#f0debb" stroke-width="3.2" opacity="0.7" fill="none"/>
-<circle cx="920.0" cy="450.0" r="180.0" stroke="#f0debb" stroke-width="3.2" opacity="0.7" fill="none"/>
-<path d="M 800.0,300.0 A 180.0 180.0 0 0 1 800.0,600.0 A 180.0 180.0 0 0 1 800.0,300.0 Z" stroke="#59a87d" stroke-width="3.2" opacity="1" fill="#59a87d" fill-opacity="0.22"/>
-</g>
-</svg>

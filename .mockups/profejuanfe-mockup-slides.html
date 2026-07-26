@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visor de slides — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint: #0F2038;
+    --blueprint-deep: #0A182C;
+    --line: #BFDCEF;
+    --line-dim: rgba(191,220,239,0.18);
+    --line-faint: rgba(191,220,239,0.08);
+    --vellum: #F1EEE3;
+    --ink: #16233A;
+    --ink-soft: #4A5773;
+    --amber: #E2A63B;
+    --amber-dim: rgba(226,166,59,0.15);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; height:100vh; overflow:hidden;
+    background:var(--blueprint-deep);
+    color:var(--line);
+    font-family:'IBM Plex Sans', sans-serif;
+    display:flex; flex-direction:column;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .display{font-family:'Space Grotesk', sans-serif;}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 22px; background:var(--blueprint);
+    border-bottom:1px solid var(--line-dim);
+    position:relative;
+  }
+  .topbar::after{
+    content:""; position:absolute; left:0; bottom:-1px; height:2px; width:8.3%;
+    background:var(--amber);
+  }
+  .crumbs{display:flex; align-items:center; gap:16px; font-size:14px; min-width:0;}
+  .back{
+    display:flex; align-items:center; gap:6px; color:#AFC7DE; text-decoration:none; flex-shrink:0;
+  }
+  .back:hover{color:var(--amber);}
+  .sep{color:var(--line-dim); flex-shrink:0;}
+  .crumbs .current{color:var(--line); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+  .actions{display:flex; gap:10px; flex-shrink:0;}
+  .btn{
+    font-family:'IBM Plex Sans', sans-serif; font-size:13px; padding:9px 16px;
+    border:1px solid var(--line-dim); background:transparent; color:var(--line);
+    cursor:pointer; display:flex; align-items:center; gap:8px;
+  }
+  .btn:hover{border-color:var(--line);}
+  .btn.primary{
+    background:var(--amber); border-color:var(--amber); color:var(--blueprint-deep); font-weight:600;
+  }
+  .btn.primary:hover{background:#EEB758;}
+
+  /* ---------- STAGE ---------- */
+  .stage{
+    flex:1; position:relative; display:flex; align-items:center; justify-content:center;
+    background:
+      linear-gradient(var(--line-faint) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-faint) 1px, transparent 1px),
+      var(--blueprint-deep);
+    background-size:36px 36px, 36px 36px;
+    padding:40px;
+  }
+  .slide-frame{
+    width:min(920px, 100%); aspect-ratio:16/9;
+    border:1px solid var(--line-dim);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    background:rgba(191,220,239,0.02);
+  }
+  .slide-frame .reg-mark{position:absolute; width:20px; height:20px;}
+  .slide-frame .reg-mark::before, .slide-frame .reg-mark::after{content:""; position:absolute; background:var(--amber);}
+  .slide-frame .reg-mark::before{top:50%; left:0; width:100%; height:1px;}
+  .slide-frame .reg-mark::after{left:50%; top:0; height:100%; width:1px;}
+  .slide-frame .reg-mark.tl{top:-10px; left:-10px;}
+  .slide-frame .reg-mark.br{bottom:-10px; right:-10px;}
+
+  .slide-content{ text-align:center; padding:40px; }
+  .slide-eyebrow{
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin-bottom:20px;
+  }
+  .slide-title{
+    font-size:clamp(28px, 4vw, 44px); font-weight:600; margin:0 0 16px; line-height:1.1;
+  }
+  .slide-subtitle{
+    font-size:clamp(18px, 2.3vw, 24px); font-weight:500; color:#AFC7DE; margin:0 0 22px;
+  }
+  .slide-meta{ font-size:13.5px; color:#7C97B4; }
+  .slide-meta .dot{ margin:0 8px; }
+
+  /* corner sheet number on the slide itself, echoing the title-block idea */
+  .sheet-tag{
+    position:absolute; bottom:16px; right:20px; font-size:11px; color:#7C97B4;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:.05em;
+  }
+  .uni-tag{
+    position:absolute; bottom:16px; left:20px; font-size:11px; color:#7C97B4;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:.05em;
+  }
+
+  /* ---------- BOTTOM NAV ---------- */
+  .bottombar{
+    display:flex; align-items:center; justify-content:center; gap:22px;
+    padding:16px; background:var(--blueprint); border-top:1px solid var(--line-dim);
+  }
+  .nav-btn{
+    width:34px; height:34px; border:1px solid var(--line-dim); background:transparent;
+    color:var(--line); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .nav-btn:hover{border-color:var(--amber); color:var(--amber);}
+  .page-count{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:#AFC7DE; letter-spacing:.04em; }
+  .page-count strong{ color:var(--amber); font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="crumbs">
+    <a class="back" href="#">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" transform="rotate(180 12 12)"/></svg>
+      Curso
+    </a>
+    <span class="sep">/</span>
+    <span class="current mono">Semana 1 · Introducción a la Programación</span>
+  </div>
+  <div class="actions">
+    <button class="btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+      Pantalla completa
+    </button>
+    <button class="btn primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Descargar PDF
+    </button>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="slide-frame">
+    <span class="reg-mark tl"></span><span class="reg-mark br"></span>
+    <div class="slide-content">
+      <div class="slide-eyebrow mono">Portada</div>
+      <h1 class="slide-title display">Técnicas de Programación</h1>
+      <p class="slide-subtitle display">Semana 1 — Introducción a la Programación</p>
+      <p class="slide-meta mono">Universidad de Antioquia <span class="dot">·</span> Ingeniería de Sistemas <span class="dot">·</span> 2508307</p>
+    </div>
+    <span class="uni-tag">UDEA · 1803</span>
+    <span class="sheet-tag">SHEET 2508307 / S1</span>
+  </div>
+</div>
+
+<div class="bottombar">
+  <button class="nav-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" transform="rotate(180 12 12)"/></svg>
+  </button>
+  <span class="page-count"><strong>01</strong> / 12</span>
+  <button class="nav-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+</body>
+</html>

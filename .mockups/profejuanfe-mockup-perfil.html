@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil del Profesor — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint: #0F2038;
+    --blueprint-deep: #0A182C;
+    --line: #BFDCEF;
+    --line-dim: rgba(191,220,239,0.18);
+    --vellum: #F1EEE3;
+    --vellum-dim: #E7E2D2;
+    --ink: #16233A;
+    --ink-soft: #4A5773;
+    --amber: #E2A63B;
+    --amber-dim: rgba(226,166,59,0.15);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--vellum); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .display{font-family:'Space Grotesk', sans-serif;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px;}
+
+  .reg-mark{position:absolute; width:20px; height:20px;}
+  .reg-mark::before, .reg-mark::after{content:""; position:absolute; background:var(--line);}
+  .reg-mark::before{top:50%; left:0; width:100%; height:1px;}
+  .reg-mark::after{left:50%; top:0; height:100%; width:1px;}
+  .reg-mark.tl{top:14px; left:14px;} .reg-mark.tr{top:14px; right:14px;}
+
+  /* ---------- HERO ---------- */
+  .sheet{
+    position:relative;
+    background:
+      linear-gradient(var(--line-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dim) 1px, transparent 1px),
+      linear-gradient(135deg, var(--blueprint), var(--blueprint-deep));
+    background-size: 32px 32px, 32px 32px, cover;
+    color:var(--line); padding: 40px 0 0; overflow:hidden;
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; margin-bottom:44px; font-size:14px; }
+  .nav .brand{ display:flex; align-items:center; gap:10px; color:var(--line); text-decoration:none; }
+  .brand-mark{ width:28px; height:28px; border:1px solid var(--amber); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--amber); }
+  .breadcrumb{ color:#7C97B4; text-decoration:none; display:flex; align-items:center; gap:8px; font-size:13.5px; }
+  .breadcrumb:hover{ color:var(--amber); }
+  .breadcrumb svg{ transform:rotate(180deg); }
+
+  .profile-head{ display:flex; gap:32px; align-items:flex-end; padding-bottom:36px; flex-wrap:wrap; }
+  .avatar{
+    width:96px; height:96px; border:1px solid var(--amber); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--amber);
+    background:rgba(226,166,59,0.08);
+  }
+  h1.name{ font-size:clamp(28px,4vw,40px); margin:0 0 10px; font-weight:600; }
+  .role-line{ font-size:14.5px; color:#AFC7DE; line-height:1.6; max-width:60ch; margin:0 0 16px; }
+  .contact{ display:flex; gap:18px; flex-wrap:wrap; }
+  .contact a{ color:var(--line); text-decoration:none; font-size:13.5px; display:flex; align-items:center; gap:7px; border-bottom:1px solid transparent; }
+  .contact a:hover{ border-color:var(--amber); color:var(--amber); }
+
+  .title-block{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line-dim); }
+  .title-block div{ padding:14px 0; border-right:1px solid var(--line-dim); padding-right:14px; }
+  .title-block div:last-child{ border-right:none; }
+  .tb-label{ font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#7C97B4; margin-bottom:5px; }
+  .tb-value{ font-size:13px; color:var(--line); }
+  @media (max-width:720px){ .title-block{grid-template-columns:repeat(2,1fr);} .title-block div:nth-child(2){border-right:none;} }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:52px 0; border-bottom:1px solid rgba(22,35,58,0.12); }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:26px; }
+  .sec-head h2{ font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-soft); margin:0; font-weight:600; }
+  .sec-head span{ font-size:12px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
+
+  .extracto p{ font-size:15px; line-height:1.75; color:var(--ink-soft); max-width:74ch; margin:0 0 16px; }
+
+  /* courses grid, reused pattern */
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(22,35,58,0.14); border:1px solid rgba(22,35,58,0.14); }
+  @media (max-width:720px){ .grid{grid-template-columns:1fr;} }
+  .card{ background:var(--vellum); padding:24px 22px; position:relative; }
+  .card:hover{ background:#FFFDF7; }
+  .card::before{ content:""; position:absolute; top:9px; left:9px; width:8px; height:8px; border-top:1px solid var(--amber-dim); border-left:1px solid var(--amber-dim); }
+  .card:hover::before{ border-color:var(--amber); }
+  .card h3{ font-size:16px; margin:0 0 8px; font-weight:600; }
+  .card p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
+
+  /* tech badges */
+  .tech-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .tech-badge{
+    display:flex; align-items:center; gap:9px; padding:9px 14px; border:1px solid rgba(22,35,58,0.18);
+    font-size:13px; color:var(--ink-soft);
+  }
+  .tech-badge .dot{ width:6px; height:6px; background:var(--amber); flex-shrink:0; }
+
+  /* experience timeline */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{ content:""; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:rgba(22,35,58,0.16); }
+  .job{ position:relative; padding-bottom:34px; }
+  .job:last-child{ padding-bottom:0; }
+  .job::before{ content:""; position:absolute; left:-28px; top:4px; width:9px; height:9px; background:var(--vellum); border:1.5px solid var(--amber); }
+  .job .period{ font-size:11.5px; font-family:'IBM Plex Mono', monospace; color:var(--ink-soft); letter-spacing:.04em; text-transform:uppercase; margin-bottom:6px; }
+  .job h3{ font-size:16.5px; margin:0 0 3px; font-weight:600; }
+  .job .org{ font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+  .job ul{ margin:0; padding-left:18px; }
+  .job li{ font-size:13.5px; color:var(--ink-soft); line-height:1.65; margin-bottom:4px; }
+
+  /* two-column compact sections */
+  .cols2{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  @media (max-width:720px){ .cols2{grid-template-columns:1fr;} }
+  .entry{ margin-bottom:18px; }
+  .entry:last-child{ margin-bottom:0; }
+  .entry .t{ font-size:14.5px; font-weight:600; margin-bottom:3px; }
+  .entry .s{ font-size:13px; color:var(--ink-soft); }
+
+  footer{ background:var(--blueprint-deep); color:#7C97B4; padding:30px 24px; font-size:12.5px; text-align:center; font-family:'IBM Plex Mono', monospace; }
+</style>
+</head>
+<body>
+
+<section class="sheet" style="border-bottom:none; padding-top:0;">
+  <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#"><span class="brand-mark mono">JF</span><span class="mono">profejuanfe.dev</span></a>
+      <a class="breadcrumb" href="#">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        Materias
+      </a>
+    </div>
+
+    <div class="profile-head">
+      <div class="avatar mono">JFQ</div>
+      <div>
+        <h1 class="name display">Juan Felipe Quintana Gómez</h1>
+        <p class="role-line">Senior Technical Consultant · Solution Architecture · Azure · .NET · Arquitecturas orientadas a eventos · Soluciones de IA · Profesor universitario</p>
+        <div class="contact">
+          <a href="mailto:jufequinta@gmail.com">✉ jufequinta@gmail.com</a>
+          <a href="#">in LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="title-block mono">
+      <div><div class="tb-label">Rol actual</div><div class="tb-value">Line Manager · Sr. Technical Consultant</div></div>
+      <div><div class="tb-label">Empresa</div><div class="tb-value">Perficient</div></div>
+      <div><div class="tb-label">Docencia desde</div><div class="tb-value">Enero 2023</div></div>
+      <div><div class="tb-label">Sheet</div><div class="tb-value">UDEA-IS-PROF</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <section class="extracto">
+    <div class="sec-head"><h2>Extracto</h2></div>
+    <p>Senior Technical Consultant y profesional de software con más de 15 años de experiencia en el diseño y construcción de soluciones basadas en tecnologías Microsoft, especialmente .NET y Azure. He participado en proyectos empresariales como desarrollador senior, líder técnico y asesor de confianza, contribuyendo a la implementación, el diseño de soluciones, la toma de decisiones de arquitectura y la mentoría técnica.</p>
+    <p>Mi experiencia incluye arquitecturas escalables y mantenibles para integraciones, sistemas backend y aplicaciones distribuidas, con servicios como Azure Service Bus, Event Grid, Logic Apps, Cosmos DB, Hangfire y soluciones basadas en microservicios. Actualmente propongo arquitecturas orientadas a eventos para mejorar escalabilidad, resiliencia y desacoplamiento en proyectos de integración.</p>
+    <p>Mi perfil profesional se fortalece con mi experiencia académica en la Universidad de Antioquia, donde acompaño la formación de futuros ingenieros bajo una visión estructurada de construcción de software de alta calidad.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Cursos que dicto en la Universidad de Antioquia</h2><span>5 asignaturas</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3 class="display">Lógica y Representación II</h3>
+        <p>Diseño y análisis de algoritmos avanzados: complejidad computacional, recursividad, estructuras de datos, árboles, grafos, programación dinámica y NP-completitud. Python y trabajo colaborativo.</p>
+      </div>
+      <div class="card">
+        <h3 class="display">Análisis y Diseño II</h3>
+        <p>Análisis y diseño de sistemas de software reutilizables y mantenibles, dentro de un proceso orientado a la calidad y el ejercicio profesional ético.</p>
+      </div>
+      <div class="card">
+        <h3 class="display">Técnicas de Programación</h3>
+        <p>Aprendizaje de un lenguaje de programación y sus principales paradigmas, con énfasis en trabajo en equipo y buenas prácticas.</p>
+      </div>
+      <div class="card">
+        <h3 class="display">Arquitectura de Software</h3>
+        <p>Patrones y estilos arquitectónicos (MVC, capas, microkernel, SOA, hexagonal, microservicios), SOLID/DRY/KISS, UML y arquitecturas cloud native.</p>
+      </div>
+      <div class="card">
+        <h3 class="display">Calidad de Software</h3>
+        <p>Aseguramiento de calidad: ISO 9000, CMMI, ISO 25000, IEEE-730, métricas, pruebas unitarias, integración continua y automatización.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Aptitudes y tecnologías</h2></div>
+    <div class="tech-grid mono">
+      <span class="tech-badge"><span class="dot"></span>.NET / C#</span>
+      <span class="tech-badge"><span class="dot"></span>Azure</span>
+      <span class="tech-badge"><span class="dot"></span>Azure Service Bus</span>
+      <span class="tech-badge"><span class="dot"></span>Event Grid</span>
+      <span class="tech-badge"><span class="dot"></span>Logic Apps</span>
+      <span class="tech-badge"><span class="dot"></span>Cosmos DB</span>
+      <span class="tech-badge"><span class="dot"></span>Hangfire</span>
+      <span class="tech-badge"><span class="dot"></span>Service Fabric</span>
+      <span class="tech-badge"><span class="dot"></span>Microservicios</span>
+      <span class="tech-badge"><span class="dot"></span>Arquitectura orientada a eventos</span>
+      <span class="tech-badge"><span class="dot"></span>Agentes inteligentes</span>
+      <span class="tech-badge"><span class="dot"></span>Clean Architecture / SOLID</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Experiencia</h2></div>
+    <div class="timeline">
+      <div class="job">
+        <div class="period">Agosto 2025 — Presente</div>
+        <h3 class="display">Line Manager · Senior Technical Consultant</h3>
+        <div class="org">Perficient · Medellín, Antioquia, Colombia</div>
+        <ul>
+          <li>Acompañamiento técnico y profesional para seguimiento de progreso, identificación de bloqueos y oportunidades de crecimiento.</li>
+          <li>Mentoría en SOLID, Clean Code y TDD, y guía en el uso adecuado de patrones de diseño.</li>
+          <li>Fomento de aprendizaje continuo y adopción de herramientas modernas como GitHub Copilot y GPT.</li>
+          <li>Guía en diseño arquitectónico escalable basado en microservicios y orquestadores.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="period">Junio 2022 — Agosto 2025</div>
+        <h3 class="display">Senior Technical Consultant</h3>
+        <div class="org">Perficient · Medellín, Antioquia, Colombia</div>
+        <ul>
+          <li>Full Stack Developer para cliente Assurant: integraciones, MVC y back-end sobre tecnologías Microsoft.</li>
+          <li>Hangfire, Service Fabric, Cosmos DB, Event Grids, Azure Service Bus, Azure Storage y Logic Apps.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="period">Enero 2023 — Presente</div>
+        <h3 class="display">Profesor</h3>
+        <div class="org">Universidad de Antioquia · Medellín, Antioquia, Colombia</div>
+        <ul>
+          <li>Docencia en Lógica y Representación II, Análisis y Diseño II, Técnicas de Programación, Arquitectura de Software y Calidad de Software.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="period">Enero 2024 — Septiembre 2024</div>
+        <h3 class="display">Profesor</h3>
+        <div class="org">Universidad Nacional Tecnológica · Medellín, Antioquia, Colombia</div>
+        <ul><li>Docencia en Implementación de Bases de Datos I y II.</li></ul>
+      </div>
+      <div class="job">
+        <div class="period">Julio 2019 — Junio 2022</div>
+        <h3 class="display">Senior Software Engineer / Developer</h3>
+        <div class="org">Growth Acceleration Partners · Envigado, Antioquia, Colombia</div>
+      </div>
+      <div class="job">
+        <div class="period">Agosto 2015 — Febrero 2019</div>
+        <h3 class="display">Analista I</h3>
+        <div class="org">Satrack · Medellín, Colombia</div>
+        <ul><li>Desarrollo móvil Android/iOS con C# y Xamarin; liderazgo técnico en el área de Desarrollo de Productos.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Educación &amp; Certificaciones</h2></div>
+    <div class="cols2">
+      <div>
+        <div class="entry">
+          <div class="t">Institución Universitaria de Envigado</div>
+          <div class="s mono">Ingeniería de Sistemas, Desarrollo de Software · 2006—2011</div>
+        </div>
+        <div class="entry">
+          <div class="t">Universidad Pontificia Bolivariana</div>
+          <div class="s mono">Ingeniería Informática · 2003—2006</div>
+        </div>
+      </div>
+      <div>
+        <div class="entry"><div class="t">AI Agents Fundamentals</div></div>
+        <div class="entry"><div class="t">CSD — Certified Scrum Developer</div></div>
+        <div class="entry"><div class="t">Exam 487: Developing Microsoft Azure and Web Services</div></div>
+        <div class="entry"><div class="t">MTS Windows Mobile 5.0</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="sec-head"><h2>Idiomas &amp; Reconocimientos</h2></div>
+    <div class="cols2">
+      <div class="entry"><div class="t">Inglés</div><div class="s">Full Professional</div></div>
+      <div class="entry"><div class="t">Beca Universidad Nacional</div><div class="s">Excelencia en el desempeño en el desarrollo de productos</div></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Juan Felipe Quintana Gómez · Ingeniería de Sistemas, UdeA · Perfil del profesor</footer>
+
+</body>
+</html>

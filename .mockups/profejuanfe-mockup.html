@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materias — Ingeniería de Sistemas (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint: #0F2038;
+    --blueprint-deep: #0A182C;
+    --line: #BFDCEF;
+    --line-dim: rgba(191,220,239,0.18);
+    --vellum: #F1EEE3;
+    --vellum-dim: #E7E2D2;
+    --ink: #16233A;
+    --ink-soft: #4A5773;
+    --amber: #E2A63B;
+    --amber-dim: rgba(226,166,59,0.15);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--vellum);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .display{font-family:'Space Grotesk', sans-serif;}
+
+  /* ---------- corner registration marks ---------- */
+  .reg-mark{position:absolute; width:22px; height:22px; pointer-events:none;}
+  .reg-mark::before, .reg-mark::after{content:""; position:absolute; background:var(--line);}
+  .reg-mark::before{top:50%; left:0; width:100%; height:1px; transform:translateY(-50%);}
+  .reg-mark::after{left:50%; top:0; height:100%; width:1px; transform:translateX(-50%);}
+  .reg-mark.tl{top:14px; left:14px;}
+  .reg-mark.tr{top:14px; right:14px;}
+  .reg-mark.bl{bottom:14px; left:14px;}
+  .reg-mark.br{bottom:14px; right:14px;}
+  .reg-mark.dark::before, .reg-mark.dark::after{background:var(--ink-soft);}
+
+  /* ---------- HEADER / HERO (blueprint sheet) ---------- */
+  .sheet{
+    position:relative;
+    background:
+      linear-gradient(var(--line-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dim) 1px, transparent 1px),
+      linear-gradient(135deg, var(--blueprint), var(--blueprint-deep));
+    background-size: 32px 32px, 32px 32px, cover;
+    color:var(--line);
+    padding: 64px 24px 40px;
+    overflow:hidden;
+  }
+  .sheet-inner{max-width:1040px; margin:0 auto; position:relative;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--amber); margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:18px; height:1px; background:var(--amber);}
+  h1.hero-title{
+    font-size:clamp(34px, 5.5vw, 58px);
+    line-height:1.05; margin:0 0 18px; font-weight:600;
+    max-width:15ch;
+  }
+  .hero-sub{
+    max-width:56ch; font-size:16.5px; color:#AFC7DE; line-height:1.6; margin:0 0 40px;
+  }
+  /* title block, like a real architectural drawing */
+  .title-block{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top:1px solid var(--line-dim);
+    margin-top:36px;
+  }
+  .title-block div{
+    padding:14px 18px; border-right:1px solid var(--line-dim);
+  }
+  .title-block div:last-child{border-right:none;}
+  .tb-label{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#7C97B4; margin-bottom:5px;}
+  .tb-value{font-size:13.5px; color:var(--line);}
+  @media (max-width: 720px){
+    .title-block{grid-template-columns: repeat(2, 1fr);}
+    .title-block div:nth-child(2){border-right:none;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:relative; display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:56px; font-size:14px;
+  }
+  .nav .brand{display:flex; align-items:center; gap:10px; color:var(--line); text-decoration:none;}
+  .brand-mark{
+    width:28px; height:28px; border:1px solid var(--amber); display:flex; align-items:center; justify-content:center;
+    font-size:11px; color:var(--amber);
+  }
+  .nav a.profile-link{
+    color:#AFC7DE; text-decoration:none; border-bottom:1px solid transparent;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav a.profile-link:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* ---------- CREDIBILITY LINE (una sola línea; el resto vive en /perfil-del-profesor) ---------- */
+  .credibility{
+    max-width:1040px; margin:0 auto; padding:22px 24px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border-bottom:1px solid rgba(22,35,58,0.12);
+  }
+  .credibility p{
+    font-size:14px; color:var(--ink-soft); margin:0; line-height:1.5;
+  }
+  .credibility strong{color:var(--ink); font-weight:600;}
+  .credibility a{
+    font-size:13px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--amber);
+    white-space:nowrap; margin-left:auto;
+  }
+  .credibility a:hover{color:var(--amber);}
+
+  /* ---------- COURSES (index of sheets) ---------- */
+  .courses{max-width:1040px; margin:0 auto; padding:16px 24px 90px;}
+  .courses-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:28px; border-bottom:1px solid rgba(22,35,58,0.14); padding-bottom:16px;}
+  .courses-head h2{font-size:22px; margin:0; font-weight:600;}
+  .courses-head span{font-size:12.5px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;}
+
+  .grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:rgba(22,35,58,0.14); border:1px solid rgba(22,35,58,0.14);}
+  @media (max-width:720px){ .grid{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--vellum); padding:28px 26px 24px; position:relative;
+    transition: background .25s ease;
+    display:flex; flex-direction:column; min-height:190px;
+  }
+  .card:hover{background:#FFFDF7;}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;}
+  .sheet-no{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); letter-spacing:.02em;}
+  .status{
+    font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px;
+    border:1px solid currentColor;
+  }
+  .status.live{color:#2E7D4F;}
+  .status.soon{color:var(--ink-soft); border-style:dashed;}
+
+  .card h3{font-size:19px; margin:0 0 8px; font-weight:600;}
+  .card p{font-size:14px; color:var(--ink-soft); line-height:1.55; margin:0 0 auto; flex-grow:1;}
+  .card .go{
+    margin-top:20px; font-size:13.5px; display:inline-flex; align-items:center; gap:6px;
+    color:var(--ink); text-decoration:none; font-weight:500;
+  }
+  .card .go svg{transition:transform .2s ease;}
+  .card:hover .go svg{transform:translateX(3px);}
+  .card.disabled .go{color:var(--ink-soft); pointer-events:none;}
+
+  /* corner ticks on each card */
+  .card::before{
+    content:""; position:absolute; top:10px; left:10px; width:9px; height:9px;
+    border-top:1px solid var(--amber-dim); border-left:1px solid var(--amber-dim);
+  }
+  .card:hover::before{border-color:var(--amber);}
+
+  footer{
+    background:var(--blueprint-deep); color:#7C97B4; padding:34px 24px; font-size:12.5px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'IBM Plex Mono', monospace;
+  }
+  footer strong{color:var(--line);}
+</style>
+</head>
+<body>
+
+<section class="sheet">
+  <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
+  <div class="sheet-inner">
+    <div class="nav">
+      <a class="brand" href="#">
+        <span class="brand-mark mono">JF</span>
+        <span class="mono">profejuanfe.dev</span>
+      </a>
+      <a class="profile-link" href="#">
+        Perfil del profesor
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</div>
+    <h1 class="hero-title display">Planos de curso, no solo presentaciones.</h1>
+    <p class="hero-sub">Material de clase organizado por asignatura — pensado para diseñar software con el mismo rigor con el que se diseña una estructura: por capas, por decisiones, por planos.</p>
+
+    <div class="title-block mono">
+      <div>
+        <div class="tb-label">Docente</div>
+        <div class="tb-value">Juan Felipe Quintana G.</div>
+      </div>
+      <div>
+        <div class="tb-label">Enfoque</div>
+        <div class="tb-value">Azure · .NET · Arquitectura</div>
+      </div>
+      <div>
+        <div class="tb-label">Semestre</div>
+        <div class="tb-value">2026-2</div>
+      </div>
+      <div>
+        <div class="tb-label">Sheet</div>
+        <div class="tb-value">UDEA-IS-00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="credibility">
+  <p><strong>15+ años</strong> en la industria (Senior Technical Consultant, Azure/.NET/Arquitectura) — hoy también en el aula.</p>
+  <a href="#">Trayectoria completa →</a>
+</section>
+
+<section class="courses">
+  <div class="courses-head">
+    <h2 class="display">Asignaturas</h2>
+    <span>4 sheets · 2026-2</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-top">
+        <span class="sheet-no">SHEET 2508307</span>
+        <span class="status live">Disponible</span>
+      </div>
+      <h3 class="display">Técnicas de Programación</h3>
+      <p>Paradigmas y técnicas avanzadas de programación.</p>
+      <a class="go" href="#">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="sheet-no">SHEET 2554703</span>
+        <span class="status live">Disponible</span>
+      </div>
+      <h3 class="display">Calidad de Software</h3>
+      <p>Fundamentos, verificación, pruebas y aseguramiento de calidad.</p>
+      <a class="go" href="#">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="card disabled">
+      <div class="card-top">
+        <span class="sheet-no">SHEET 2554608</span>
+        <span class="status soon">Próximamente</span>
+      </div>
+      <h3 class="display">Arquitectura de Software</h3>
+      <p>Estilos, patrones y arquitecturas modernas.</p>
+      <a class="go" href="#">En construcción</a>
+    </div>
+
+    <div class="card disabled">
+      <div class="card-top">
+        <span class="sheet-no">SHEET 2554506</span>
+        <span class="status soon">Próximamente</span>
+      </div>
+      <h3 class="display">Análisis y Diseño 2</h3>
+      <p>Diseño de software y modelado.</p>
+      <a class="go" href="#">En construcción</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 <strong>Juan Felipe Quintana Gómez</strong> · Ingeniería de Sistemas, UdeA</span>
+  <span>Rev. 2026-2 · profejuanfe.dev</span>
+</footer>
+
+</body>
+</html>

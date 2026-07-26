@@ -4,35 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil del Profesor — Juan Felipe Quintana Gómez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/variables.css" />
-  <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/profile.css" />
 </head>
 <body>
-  <header class="site-header profile-header">
-    <a class="back-link" href="../index.html">&larr; Materias</a>
-    <picture>
-      <source media="(max-width: 600px)" srcset="../assets/img/logo-vertical-cream.png" />
-      <img class="site-logo" src="../assets/img/logo-horizontal-cream.png" alt="Universidad de Antioquia" />
-    </picture>
-    <span class="eyebrow">Ingeniería de Sistemas · Universidad de Antioquia</span>
-    <img class="avatar-photo" src="../assets/img/juanfe-profile.png" alt="Juan Felipe Quintana Gómez" />
-    <h1>Juan Felipe Quintana Gómez</h1>
-    <p class="role">
-      Senior Technical Consultant · Solution Architecture · Azure · .NET ·
-      Arquitecturas orientadas a eventos · Soluciones de IA · Profesor universitario
-    </p>
-    <div class="contact-bar">
-      <a class="contact-pill" href="mailto:jufequinta@gmail.com">✉ jufequinta@gmail.com</a>
-      <a class="contact-pill" href="https://www.linkedin.com/in/juan-felipe-quintana-g%C3%B3mez-94b86337" target="_blank" rel="noopener">in LinkedIn</a>
-    </div>
-  </header>
 
-  <main class="container">
+  <section class="profile-sheet">
+    <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
+    <div class="profile-sheet-inner">
+      <div class="profile-nav">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark home-mono">JF</span>
+          <span class="home-mono">profejuanfe.dev</span>
+        </a>
+        <a class="breadcrumb" href="../index.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          Materias
+        </a>
+      </div>
+
+      <div class="profile-head">
+        <img class="avatar-photo" src="../assets/img/juanfe-profile.png" alt="Juan Felipe Quintana Gómez" />
+        <div>
+          <h1 class="profile-name home-display">Juan Felipe Quintana Gómez</h1>
+          <p class="profile-role">Senior Technical Consultant · Solution Architecture · Azure · .NET · Arquitecturas orientadas a eventos · Soluciones de IA · Profesor universitario</p>
+          <div class="profile-contact">
+            <a href="mailto:jufequinta@gmail.com">✉ jufequinta@gmail.com</a>
+            <a href="https://www.linkedin.com/in/juan-felipe-quintana-g%C3%B3mez-94b86337" target="_blank" rel="noopener">in LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="title-block home-mono">
+        <div>
+          <div class="tb-label">Rol actual</div>
+          <div class="tb-value">Line Manager · Sr. Technical Consultant</div>
+        </div>
+        <div>
+          <div class="tb-label">Empresa</div>
+          <div class="tb-value">Perficient</div>
+        </div>
+        <div>
+          <div class="tb-label">Docencia desde</div>
+          <div class="tb-value">Enero 2023</div>
+        </div>
+        <div>
+          <div class="tb-label">Sheet</div>
+          <div class="tb-value">UDEA-IS-PROF</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="profile-wrap">
 
     <section class="profile-section">
-      <p class="section-label">Extracto</p>
-      <div class="profile-summary summary-card">
+      <div class="sec-head"><h2>Acerca de mí</h2></div>
+      <div class="profile-summary">
         <p>
           Soy Senior Technical Consultant y profesional de software con más de 15 años de experiencia
           en el diseño y construcción de soluciones basadas en tecnologías Microsoft, especialmente
@@ -69,36 +99,39 @@
     </section>
 
     <section class="profile-section">
-      <p class="section-label">Cursos que dicto en la Universidad de Antioquia</p>
+      <div class="sec-head">
+        <h2>Cursos que dicto en la Universidad de Antioquia</h2>
+        <span class="home-mono">5 asignaturas</span>
+      </div>
       <div class="course-grid">
         <div class="course-card">
-          <h4>Lógica y Representación II</h4>
+          <h4 class="home-display">Lógica y Representación II</h4>
           <p>Diseño y análisis de algoritmos avanzados: complejidad computacional, recursividad e
             iteración, estructuras de datos (pilas, colas, heaps), árboles, grafos, programación
             dinámica y NP-completitud. Desarrolla pensamiento analítico y programación en Python
             mediante trabajo colaborativo.</p>
         </div>
         <div class="course-card">
-          <h4>Análisis y Diseño II</h4>
+          <h4 class="home-display">Análisis y Diseño II</h4>
           <p>Desarrolla competencias para analizar y diseñar sistemas de software reutilizables y
             mantenibles, dentro de un proceso de desarrollo orientado a la calidad, promoviendo el
             ejercicio profesional con responsabilidad ética.</p>
         </div>
         <div class="course-card">
-          <h4>Técnicas de Programación</h4>
+          <h4 class="home-display">Técnicas de Programación</h4>
           <p>Acompaña al estudiante en el aprendizaje de un lenguaje de programación y los
             principales paradigmas, desarrollando habilidades para resolver problemas reales, con
             énfasis en trabajo en equipo y buenas prácticas.</p>
         </div>
         <div class="course-card">
-          <h4>Arquitectura de Software</h4>
+          <h4 class="home-display">Arquitectura de Software</h4>
           <p>Diseño y evaluación de arquitecturas de software: patrones y estilos arquitectónicos
             (MVC, capas, microkernel, SOA, hexagonal, microservicios), principios SOLID/DRY/KISS,
             modelado UML, servicios web y arquitecturas cloud native (DDD, CQRS, API Gateway,
             Serverless), además de seguridad en el ciclo de vida del software.</p>
         </div>
-        <div class="course-card">
-          <h4>Calidad de Software</h4>
+        <div class="course-card course-card-wide">
+          <h4 class="home-display">Calidad de Software</h4>
           <p>Aseguramiento de la calidad en el ciclo de desarrollo: estándares internacionales (ISO
             9000, CMMI, ISO 25000, IEEE-730), métricas de calidad, pruebas unitarias, integración
             continua, planes y técnicas de pruebas, y frameworks de automatización.</p>
@@ -107,30 +140,30 @@
     </section>
 
     <section class="profile-section">
-      <p class="section-label">Aptitudes y tecnologías</p>
-      <div class="badge-row">
-        <span class="badge">.NET / C#</span>
-        <span class="badge">Azure</span>
-        <span class="badge">Azure Service Bus</span>
-        <span class="badge">Event Grid</span>
-        <span class="badge">Logic Apps</span>
-        <span class="badge">Cosmos DB</span>
-        <span class="badge">Hangfire</span>
-        <span class="badge">Microsoft Service Fabric</span>
-        <span class="badge">Microservicios</span>
-        <span class="badge">Arquitectura orientada a eventos</span>
-        <span class="badge">Agentes inteligentes</span>
-        <span class="badge">Clean Architecture / SOLID</span>
+      <div class="sec-head"><h2>Aptitudes y tecnologías</h2></div>
+      <div class="tech-grid home-mono">
+        <span class="badge"><span class="dot"></span>.NET / C#</span>
+        <span class="badge"><span class="dot"></span>Azure</span>
+        <span class="badge"><span class="dot"></span>Azure Service Bus</span>
+        <span class="badge"><span class="dot"></span>Event Grid</span>
+        <span class="badge"><span class="dot"></span>Logic Apps</span>
+        <span class="badge"><span class="dot"></span>Cosmos DB</span>
+        <span class="badge"><span class="dot"></span>Hangfire</span>
+        <span class="badge"><span class="dot"></span>Microsoft Service Fabric</span>
+        <span class="badge"><span class="dot"></span>Microservicios</span>
+        <span class="badge"><span class="dot"></span>Arquitectura orientada a eventos</span>
+        <span class="badge"><span class="dot"></span>Agentes inteligentes</span>
+        <span class="badge"><span class="dot"></span>Clean Architecture / SOLID</span>
       </div>
     </section>
 
     <section class="profile-section">
-      <p class="section-label">Experiencia</p>
+      <div class="sec-head"><h2>Experiencia</h2></div>
       <div class="timeline">
 
         <div class="timeline-item">
           <div class="period">Agosto 2025 — Presente</div>
-          <h3>Line Manager · Senior Technical Consultant</h3>
+          <h3 class="home-display">Line Manager · Senior Technical Consultant</h3>
           <p class="org">Perficient · Medellín, Antioquia, Colombia</p>
           <ul>
             <li>Acompañamiento técnico y profesional para seguimiento de progreso, identificación de bloqueos y oportunidades de crecimiento.</li>
@@ -143,7 +176,7 @@
 
         <div class="timeline-item">
           <div class="period">Junio 2022 — Agosto 2025</div>
-          <h3>Senior Technical Consultant</h3>
+          <h3 class="home-display">Senior Technical Consultant</h3>
           <p class="org">Perficient · Medellín, Antioquia, Colombia</p>
           <ul>
             <li>Full Stack Developer para cliente Assurant: integraciones, MVC y back-end sobre tecnologías Microsoft.</li>
@@ -153,7 +186,7 @@
 
         <div class="timeline-item">
           <div class="period">Enero 2023 — Presente</div>
-          <h3>Profesor</h3>
+          <h3 class="home-display">Profesor</h3>
           <p class="org">Universidad de Antioquia · Medellín, Antioquia, Colombia</p>
           <ul>
             <li>Docencia en Lógica y Representación II, Análisis y Diseño II, Técnicas de Programación, Arquitectura de Software y Calidad de Software.</li>
@@ -163,7 +196,7 @@
 
         <div class="timeline-item">
           <div class="period">Enero 2024 — Septiembre 2024</div>
-          <h3>Profesor</h3>
+          <h3 class="home-display">Profesor</h3>
           <p class="org">Universidad Nacional Tecnológica · Medellín, Antioquia, Colombia</p>
           <ul>
             <li>Docencia en Implementación de Bases de Datos I y II.</li>
@@ -172,19 +205,19 @@
 
         <div class="timeline-item">
           <div class="period">Noviembre 2019 — Diciembre 2019</div>
-          <h3>Experto Temático · Diseño de Software</h3>
+          <h3 class="home-display">Experto Temático · Diseño de Software</h3>
           <p class="org">ITM — Instituto Tecnológico Metropolitano · Medellín, Colombia</p>
         </div>
 
         <div class="timeline-item">
           <div class="period">Julio 2019 — Junio 2022</div>
-          <h3>Senior Software Engineer / Senior Software Developer</h3>
+          <h3 class="home-display">Senior Software Engineer / Senior Software Developer</h3>
           <p class="org">Growth Acceleration Partners · Envigado, Antioquia, Colombia</p>
         </div>
 
         <div class="timeline-item">
           <div class="period">Junio 2016 — Enero 2019</div>
-          <h3>Desarrollador Freelance</h3>
+          <h3 class="home-display">Desarrollador Freelance</h3>
           <p class="org">Seminario Redemptoris Mater de Medellín</p>
           <ul>
             <li>Creación de una plataforma web para la administración interna de miembros y eventos.</li>
@@ -193,7 +226,7 @@
 
         <div class="timeline-item">
           <div class="period">Agosto 2015 — Febrero 2019</div>
-          <h3>Analista I</h3>
+          <h3 class="home-display">Analista I</h3>
           <p class="org">Satrack · Medellín, Colombia</p>
           <ul>
             <li>Desarrollo de dispositivos móviles Android e iOS con C# y Xamarin.</li>
@@ -203,7 +236,7 @@
 
         <div class="timeline-item">
           <div class="period">Junio 2011 — Agosto 2015</div>
-          <h3>Analista II</h3>
+          <h3 class="home-display">Analista II</h3>
           <p class="org">Satrack · Medellín, Colombia</p>
           <ul>
             <li>Desarrollo y mejora de productos de software móvil (Android/iOS) en C# con Xamarin.</li>
@@ -212,13 +245,13 @@
 
         <div class="timeline-item">
           <div class="period">Marzo 2009 — Mayo 2011</div>
-          <h3>Ingeniero de Desarrollo</h3>
+          <h3 class="home-display">Ingeniero de Desarrollo</h3>
           <p class="org">Intergrupo</p>
         </div>
 
         <div class="timeline-item">
           <div class="period">Abril 2008 — Marzo 2009</div>
-          <h3>Asesor de Mesa de Ayuda</h3>
+          <h3 class="home-display">Asesor de Mesa de Ayuda</h3>
           <p class="org">Intergrupo</p>
           <ul>
             <li>Soporte a usuarios y servicio al cliente para Familia Sancela, incluyendo soporte de cómputo en sitio.</li>
@@ -231,7 +264,7 @@
     <section class="profile-section">
       <div class="two-col">
         <div>
-          <p class="section-label">Educación</p>
+          <div class="sec-head"><h2>Educación</h2></div>
           <div class="simple-list">
             <div>
               <p class="item-title">Institución Universitaria de Envigado</p>
@@ -245,7 +278,7 @@
         </div>
 
         <div>
-          <p class="section-label">Certificaciones</p>
+          <div class="sec-head"><h2>Certificaciones</h2></div>
           <div class="simple-list">
             <div>
               <p class="item-title">AI Agents Fundamentals</p>
@@ -267,7 +300,7 @@
     <section class="profile-section">
       <div class="two-col">
         <div>
-          <p class="section-label">Idiomas</p>
+          <div class="sec-head"><h2>Idiomas</h2></div>
           <div class="simple-list">
             <div>
               <p class="item-title">Inglés</p>
@@ -277,7 +310,7 @@
         </div>
 
         <div>
-          <p class="section-label">Reconocimientos</p>
+          <div class="sec-head"><h2>Reconocimientos</h2></div>
           <div class="simple-list">
             <div>
               <p class="item-title">Beca Universidad Nacional</p>
@@ -290,10 +323,11 @@
       </div>
     </section>
 
-  </main>
+  </div>
 
-  <footer class="site-footer">
-    Ingeniería de Sistemas · Universidad de Antioquia · Perfil del profesor
+  <footer class="profile-footer home-mono">
+    Juan Felipe Quintana Gómez · Ingeniería de Sistemas · Perfil del profesor
   </footer>
+
 </body>
 </html>

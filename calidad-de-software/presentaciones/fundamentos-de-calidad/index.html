@@ -26,21 +26,19 @@
       <div class="progress-fill" id="progress-fill"></div>
     </div>
 
-    <div class="deck-stage" id="deck-stage">
-      <img class="deck-watermark" src="../../../assets/img/logo-vertical-cream.png" alt="Universidad de Antioquia" />
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
 
       <section class="slide type-portada" id="s01">
-        <img class="slide-bg-visual" src="img/C1.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Portada</p>
           <h1>Calidad de Software</h1>
           <h2>Semana 1 — Qué es calidad y qué es un defecto</h2>
           <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/award.svg" alt="Calidad de software" style="display:block;width:300px;height:300px;margin:50px auto 0" />
         </div>
       </section>
 
       <section class="slide type-encuadre" id="s02">
-        <img class="slide-bg-visual" src="img/C2.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Encuadre</p>
           <h1>Cómo funciona este curso</h1>
@@ -51,11 +49,11 @@
             <li>El entregable se sube <strong>dentro</strong> de esas dos horas. No después.</li>
             <li>Antes de cada cátedra hay material que leer. La clase asume que ya lo leyeron.</li>
           </ul>
+          <img class="portada-icon" src="img/zoom.svg" alt="Zoom" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-encuadre" id="s03">
-        <img class="slide-bg-visual" src="img/C2.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Encuadre</p>
           <h1>Cómo se califica</h1>
@@ -71,19 +69,19 @@
             </tbody>
           </table>
           <p><strong>Al entregar, cada integrante reporta en privado quién trabajó.</strong><br>Quien no asista a la sala y no participe en la entrega obtiene 0 esa semana.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Evaluación" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-impacto" id="s04">
-        <img class="slide-bg-visual" src="img/C3.svg" alt="" aria-hidden="true" />
         <div class="slide-content">
           <p class="slide-kicker">Apertura</p>
           <h1>45 minutos<br>440 millones de dólares</h1>
+          <img class="portada-icon" src="img/arrow-trend-down.svg" alt="Pérdida financiera" style="display:block;width:300px;height:300px;margin:50px auto 0" />
         </div>
       </section>
 
       <section class="slide type-caso" id="s05">
-        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Ficha técnica</p>
           <h1>Knight Capital, en cifras</h1>
@@ -104,18 +102,17 @@
       </section>
 
       <section class="slide type-caso" id="s06">
-        <img class="slide-bg-visual" src="img/C5.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Contexto técnico</p>
           <h1>Cómo funciona SMARS</h1>
           <p>SMARS recibe <strong>órdenes padre</strong> desde otros componentes de la plataforma y las descompone en <strong>órdenes hija</strong> que envía al mercado hasta completar la orden padre.</p>
           <p>El mecanismo de parada es una <strong>función de cantidad acumulada</strong>: cuenta cuántas acciones de la orden padre ya se ejecutaron y detiene el envío de hijas al llegar al total.</p>
           <p><strong>Ese contador es la pieza que falla en este caso — y no porque tuviera un error de lógica.</strong></p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Enrutamiento de órdenes" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-caso" id="s07">
-        <img class="slide-bg-visual" src="img/C7.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Anatomía técnica</p>
           <h1>Los cuatro ingredientes del desastre</h1>
@@ -130,7 +127,6 @@
       </section>
 
       <section class="slide type-caso" id="s08">
-        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Cronología</p>
           <h1>La cadena causal del 1 de agosto</h1>
@@ -141,33 +137,33 @@
             <li>Como el contador se movió en 2005, <em>Power Peg</em> no sabe cuándo detenerse: dispara órdenes hija sin parar.</li>
             <li>Otra parte del sistema sí sabía que las órdenes ya estaban completas — esa información nunca llegó a SMARS.</li>
           </ol>
+          <img class="portada-icon" src="img/link.svg" alt="Cadena causal" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-caso" id="s09">
-        <img class="slide-bg-visual" src="img/C8.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Punto ciego</p>
           <h1>Las 97 alertas que nadie leyó</h1>
           <p>Desde las <strong>8:01 a. m.</strong> — 89 minutos antes de la apertura — un sistema interno envía correos automáticos con el mensaje "Power Peg disabled". Se enviaron <strong>97</strong> antes de las 9:30.</p>
           <blockquote>"Knight no diseñó esos mensajes como alertas de sistema, y el personal de Knight, por lo general, no los revisaba al recibirlos." — Orden de la SEC</blockquote>
           <p><strong>Los mensajes existían, llegaban en tiempo real, señalaban la causa exacta — y no eran alertas.</strong></p>
+          <img class="portada-icon" src="img/bell-slash.svg" alt="Alertas ignoradas" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-caso" id="s10">
-        <img class="slide-bg-visual" src="img/C10.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Punto de giro</p>
           <h1>La respuesta que empeoró el incidente</h1>
           <p>Knight no tenía procedimientos de respuesta a incidentes. Con el sistema ya enviando órdenes erróneas, el equipo intentó diagnosticar en producción — y en uno de esos intentos <strong>desinstaló el código nuevo de los siete servidores donde sí funcionaba bien</strong>.</p>
           <p><strong>Resultado: las órdenes entrantes empezaron a activar Power Peg también en esos siete servidores.</strong> Un rollback sin diagnóstico multiplicó el daño por ocho.</p>
           <blockquote>"Knight necesitaba una guía clara sobre cuándo desconectar del mercado un sistema que está fallando." — Orden de la SEC</blockquote>
+          <img class="portada-icon" src="img/rotate-left.svg" alt="Rollback sin diagnóstico" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-caso" id="s11">
-        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso</p>
           <h1>Controles que existían — y por qué no sirvieron</h1>
@@ -187,7 +183,6 @@
       </section>
 
       <section class="slide type-transicion" id="s12">
-        <img class="slide-bg-visual" src="img/C5.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Transición</p>
           <h1>Tres cosas distintas pasaron aquí</h1>
@@ -202,22 +197,22 @@
             </tbody>
           </table>
           <p><strong>Estas tres cosas tienen nombres distintos. Confundirlos es el error más común del curso.</strong></p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Tres lugares distintos" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-concepto" id="s13">
-        <img class="slide-bg-visual" src="img/C6.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Error, defecto, falla</h1>
           <p><strong>Error</strong> <em>(error, mistake)</em><br>Acción humana que produce un resultado incorrecto. Ocurre en la persona.</p>
           <p><strong>Defecto</strong> <em>(defect, fault, bug)</em><br>La huella que ese error deja en un artefacto: código, documento, configuración.</p>
           <p><strong>Falla</strong> <em>(failure)</em><br>La desviación observable del comportamiento cuando el defecto se ejecuta.</p>
+          <img class="portada-icon" src="img/bug.svg" alt="Error, defecto, falla" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-concepto" id="s14">
-        <img class="slide-bg-visual" src="img/C6.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Aplicado al caso</h1>
@@ -228,11 +223,11 @@
               <tr><th>Falla</th><td>4 millones de operaciones erróneas durante 45 minutos.</td></tr>
             </tbody>
           </table>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Análisis del caso" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-contraejemplo" id="s15">
-        <img class="slide-bg-visual" src="img/C7.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Contraejemplo</p>
           <h1>Un defecto que no falla</h1>
@@ -243,11 +238,11 @@
         return monto * 1.30      # defecto: recarga en vez de descuento
     return monto * 0.05</code></pre>
           <p><strong>Si ningún cliente corporativo compra, el sistema nunca falla.</strong><br>El defecto está ahí desde el primer día.</p>
+          <img class="portada-icon" src="img/bug-slash.svg" alt="Defecto latente" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-contraejemplo" id="s16">
-        <img class="slide-bg-visual" src="img/C7.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Contraejemplo</p>
           <h1>El caso inverso</h1>
@@ -258,11 +253,11 @@
             <li>El usuario observa un comportamiento incorrecto</li>
           </ul>
           <p><strong>Hay falla. El defecto está en el documento de requisitos, no en el código.</strong></p>
+          <img class="portada-icon" src="img/file-circle-exclamation.svg" alt="Documento de requisitos" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-interaccion" id="s17">
-        <img class="slide-bg-visual" src="img/C8.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Interacción</p>
           <h1>Ejercicio de clasificación</h1>
@@ -284,7 +279,6 @@
       </section>
 
       <section class="slide type-interaccion" id="s18">
-        <img class="slide-bg-visual" src="img/C8.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Interacción</p>
           <h1>Cambio de tema</h1>
@@ -303,7 +297,6 @@
       </section>
 
       <section class="slide type-concepto" id="s19">
-        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto · Origen</p>
           <h1>David Garvin, Harvard, 1984</h1>
@@ -321,7 +314,6 @@
       </section>
 
       <section class="slide type-concepto" id="s20">
-        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Garvin: cinco maneras de decir calidad</h1>
@@ -342,7 +334,6 @@
       </section>
 
       <section class="slide type-concepto" id="s21">
-        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto · Origen</p>
           <h1>Philip Crosby y "cero defectos"</h1>
@@ -355,7 +346,6 @@
       </section>
 
       <section class="slide type-concepto" id="s22">
-        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Crosby: conformidad con los requisitos</h1>
@@ -366,11 +356,11 @@
             <li><em>"La calidad es gratis"</em> — lo caro es la no-conformidad</li>
             <li>Ventaja: es medible. Se cuenta lo que no conforma.</li>
           </ul>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Conformidad" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-concepto" id="s23">
-        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto · Origen</p>
           <h1>Joseph Juran y la mirada del usuario</h1>
@@ -383,7 +373,6 @@
       </section>
 
       <section class="slide type-concepto" id="s24">
-        <img class="slide-bg-visual" src="img/C9.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Juran: adecuación al uso</h1>
@@ -394,11 +383,11 @@
             <li>Trilogía: planificar · controlar · mejorar</li>
             <li>Ventaja: no se puede "cumplir la especificación" y fracasar al mismo tiempo</li>
           </ul>
+          <img class="portada-icon" src="img/user-check.svg" alt="Adecuación al uso" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-tension" id="s25">
-        <img class="slide-bg-visual" src="img/C10.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Tensión conceptual</p>
           <h1>Dónde chocan</h1>
@@ -408,11 +397,11 @@
             <li>Según Juran: <strong>no lo es.</strong> Nadie puede usarlo.</li>
           </ul>
           <p><strong>¿Quién tiene razón?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-concepto" id="s26">
-        <img class="slide-bg-visual" src="img/C11.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Tres lugares donde vive la calidad</h1>
@@ -427,11 +416,11 @@
             </tbody>
           </table>
           <p><strong>Premisa de todo el curso: la calidad del proceso condiciona la del producto.</strong></p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Producto, proceso, uso" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-concepto" id="s27">
-        <img class="slide-bg-visual" src="img/C12.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
           <h1>Qué cuesta la calidad</h1>
@@ -445,22 +434,22 @@
             <li>Fallas internas: retrabajo antes de entregar</li>
             <li>Fallas externas: soporte, parches, multas, reputación, litigios</li>
           </ul>
+          <img class="portada-icon" src="img/coins.svg" alt="Costo de la calidad" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-disputa" id="s28">
-        <img class="slide-bg-visual" src="img/C12.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Concepto en disputa</p>
           <h1>La curva del costo de corregir</h1>
           <p><strong>Afirmación clásica:</strong> corregir un defecto cuesta más cuanto más tarde se encuentra.</p>
           <p>Requisitos → Diseño → Código → Pruebas → Producción<br><em>(costo creciente por fase)</em></p>
           <blockquote><strong>Advertencia:</strong> los multiplicadores concretos que circulan (1 : 10 : 100 : 1000) <strong>no tienen respaldo empírico sólido.</strong></blockquote>
+          <img class="portada-icon" src="img/chart-line.svg" alt="Curva de costo" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-caso" id="s29">
-        <img class="slide-bg-visual" src="img/C12.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Antecedente</p>
           <h1>El precedente ignorado</h1>
@@ -468,11 +457,11 @@
           <p>La respuesta de Knight fue local: limitar el sistema al horario de mercado, detener cotizaciones tras la primera ejecución, y agregar un ítem a una lista de verificación.</p>
           <blockquote>"Knight reaccionó de forma estricta al síntoma, limitando su respuesta a evitar que ese problema puntual se repitiera." — Orden de la SEC</blockquote>
           <p><strong>Nadie preguntó si los controles alcanzaban para impedir órdenes erróneas en general.</strong> Es el ejemplo de un análisis causal que se detiene en el síntoma.</p>
+          <img class="portada-icon" src="img/clock-rotate-left.svg" alt="Precedente ignorado" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-cierre-caso" id="s30">
-        <img class="slide-bg-visual" src="img/C4.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Cierre de caso</p>
           <h1>Volver al principio</h1>
@@ -485,22 +474,22 @@
             <li>Al probar el despliegue en un entorno equivalente a producción</li>
           </ul>
           <p><strong>212 órdenes de entrada → 4 millones de ejecuciones de salida.</strong> Un factor de amplificación de ~18 900×.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Puntos de control" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-tension" id="s31">
-        <img class="slide-bg-visual" src="img/C10.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Caso · Perspectiva</p>
           <h1>¿Bastaba con un doble chequeo?</h1>
           <p>La propia SEC razona en modo contrafactual: un procedimiento simple de doble verificación del despliegue podría haber detectado el servidor faltante y evitado todo lo demás.</p>
           <p>Existe una crítica seria a ese razonamiento, desde la ingeniería de resiliencia: los contrafactuales describen un mundo que no existió. Después del accidente siempre se identifica la barrera que faltaba; antes, competía con cientos de barreras igual de plausibles.</p>
           <p><strong>La pregunta productiva no es "¿qué barrera faltaba?" sino "¿qué hacía que su ausencia pareciera razonable a gente competente?"</strong></p>
+          <img class="portada-icon" src="img/circle-question.svg" alt="Pregunta abierta" style="display:block;width:200px;height:200px;margin:30px auto 0" />
           </div>
       </section>
 
       <section class="slide type-sintesis" id="s32">
-        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Síntesis</p>
           <h1>Lo que hay que llevarse de hoy</h1>
@@ -511,11 +500,11 @@
             <li>Cuando la especificación está mal, <strong>conformar con ella produce un producto defectuoso</strong>.</li>
             <li>La calidad se juega en el <strong>producto</strong>, en el <strong>proceso</strong> y en el <strong>uso</strong>.</li>
           </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-instrucciones" id="s33">
-        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Instrucciones</p>
           <h1>Taller de hoy</h1>
@@ -528,11 +517,11 @@
             <li>Característica ISO/IEC 25010 comprometida</li>
           </ul>
           <p><strong>La entrega cierra al terminar las dos horas.</strong></p>
+          <img class="portada-icon" src="img/bug.svg" alt="Cazar defectos" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 
       <section class="slide type-cierre" id="s34">
-        <img class="slide-bg-visual" src="img/C13.svg" alt="" aria-hidden="true" />
           <div class="slide-content">
           <p class="slide-kicker">Cierre</p>
           <h1>Para la próxima semana</h1>
@@ -542,6 +531,7 @@
             <li>El ciclo de aseguramiento de la calidad</li>
           </ul>
           <p><strong>En la semana 2 arrancan las defensas.</strong> Dos o tres grupos elegidos al azar explican el trabajo de hoy. El docente escoge quién responde.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:50px auto 0" />
           </div>
       </section>
 

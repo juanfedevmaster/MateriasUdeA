@@ -1,0 +1,348 @@
+/* ---------- Home (blueprint sheet) — usa la paleta de variables.css ---------- */
+
+.home-display {
+  font-family: "Space Grotesk", var(--font-body);
+}
+
+.home-mono {
+  font-family: "IBM Plex Mono", var(--font-mono);
+}
+
+/* ---------- corner registration marks ---------- */
+.reg-mark {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+.reg-mark::before,
+.reg-mark::after {
+  content: "";
+  position: absolute;
+  background: rgba(240, 222, 187, 0.35);
+}
+.reg-mark::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.reg-mark::after {
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+.reg-mark.tl {
+  top: 14px;
+  left: 14px;
+}
+.reg-mark.tr {
+  top: 14px;
+  right: 14px;
+}
+
+/* ---------- HERO (blueprint sheet) ---------- */
+.home-sheet {
+  position: relative;
+  background: linear-gradient(rgba(240, 222, 187, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 222, 187, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, var(--surface), var(--bg));
+  background-size: 32px 32px, 32px 32px, cover;
+  color: var(--text);
+  padding: 48px 24px 40px;
+  overflow: hidden;
+}
+
+.home-sheet-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.home-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  font-size: 14px;
+}
+
+.home-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.home-nav a.profile-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition), border-color var(--transition);
+}
+.home-nav a.profile-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.home-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h1.hero-title {
+  font-size: clamp(34px, 5.5vw, 58px);
+  line-height: 1.05;
+  margin: 0 0 18px;
+  font-weight: 600;
+  max-width: 15ch;
+  color: var(--text);
+}
+
+.hero-sub {
+  max-width: 56ch;
+  font-size: 16.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 40px;
+}
+
+/* title block, como un plano arquitectónico */
+.title-block {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  margin-top: 36px;
+}
+.title-block div {
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+}
+.title-block div:last-child {
+  border-right: none;
+}
+.tb-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.tb-value {
+  font-size: 13.5px;
+  color: var(--text);
+}
+@media (max-width: 720px) {
+  .title-block {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .title-block div:nth-child(2) {
+    border-right: none;
+  }
+}
+
+/* ---------- CREDIBILITY LINE ---------- */
+.credibility {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+.credibility p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+.credibility strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.credibility a {
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  white-space: nowrap;
+  margin-left: auto;
+  transition: color var(--transition);
+}
+.credibility a:hover {
+  color: var(--accent);
+}
+
+/* ---------- COURSES (index of sheets) ---------- */
+.home-courses {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 16px 24px 90px;
+}
+.courses-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+.courses-head h2 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+.courses-head span {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+@media (max-width: 720px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-card {
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  padding: 28px 26px 24px;
+  position: relative;
+  transition: background var(--transition);
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+}
+.home-card:hover {
+  background: linear-gradient(160deg, var(--surface-2) 0%, var(--surface) 100%);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.sheet-no {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.home-status {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+}
+.home-status.live {
+  color: var(--accent);
+}
+.home-status.soon {
+  color: var(--text-muted);
+  border-style: dashed;
+}
+
+.home-card h3 {
+  font-size: 19px;
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: var(--text);
+}
+.home-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0 0 auto;
+  flex-grow: 1;
+}
+.home-card .go {
+  margin-top: 20px;
+  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+.home-card .go svg {
+  transition: transform 0.2s ease;
+}
+.home-card:hover .go svg {
+  transform: translateX(3px);
+}
+.home-card.disabled .go {
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* corner ticks en cada tarjeta */
+.home-card::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid rgba(89, 168, 125, 0.35);
+  border-left: 1px solid rgba(89, 168, 125, 0.35);
+}
+.home-card:hover::before {
+  border-color: var(--accent);
+}
+
+.home-footer {
+  background: var(--bg);
+  color: var(--text-muted);
+  padding: 34px 24px;
+  font-size: 12.5px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+}
+.home-footer strong {
+  color: var(--text);
+}

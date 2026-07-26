@@ -4,75 +4,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Materias — Ingeniería de Sistemas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/variables.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/profile.css" />
+  <link rel="stylesheet" href="assets/css/home.css" />
 </head>
 <body>
-  <header class="site-header">
-    <picture>
-      <source media="(max-width: 600px)" srcset="assets/img/logo-vertical-cream.png" />
-      <img class="site-logo" src="assets/img/logo-horizontal-cream.png" alt="Universidad de Antioquia" />
-    </picture>
-    <span class="eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</span>
-    <h1>Materias</h1>
-    <p>Presentaciones de clase, organizadas por asignatura</p>
-  </header>
 
-  <main class="container">
-    <a class="profile-link-card" href="perfil-del-profesor/index.html">
-      <div>
-        <p class="eyebrow-small">Perfil del profesor</p>
-        <h2>Juan Felipe Quintana Gómez</h2>
-        <p>Senior Technical Consultant · Solution Architecture · Azure · .NET</p>
-      </div>
-      <div class="arrow">→</div>
-    </a>
-
-    <p class="section-label">Asignaturas</p>
-    <div class="topic-grid">
-
-      <a class="topic-card" href="tecnicas-de-programacion/index.html">
-        <div>
-          <div class="week">2508307</div>
-          <h2>Técnicas de Programación</h2>
-          <p class="subtitle">Paradigmas y técnicas avanzadas de programación</p>
-        </div>
-        <div class="arrow">→</div>
-      </a>
-
-      <div class="topic-card disabled">
-        <div>
-          <div class="week">2554506</div>
-          <h2>Análisis y Diseño 2</h2>
-          <p class="subtitle">Diseño de software y modelado</p>
-        </div>
-        <div class="status">Próximamente</div>
+  <section class="home-sheet">
+    <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
+    <div class="home-sheet-inner">
+      <div class="home-nav">
+        <a class="brand" href="#">
+          <span class="brand-mark home-mono">JF</span>
+          <span class="home-mono">profejuanfe.dev</span>
+        </a>
       </div>
 
-      <div class="topic-card disabled">
+      <div class="home-eyebrow">Ingeniería de Sistemas</div>
+      <h1 class="hero-title home-display">Arquitectura antes que sintaxis.</h1>
+      <p class="hero-sub">Material de clase organizado por asignatura — pensado para diseñar software con el mismo rigor con el que se diseña una estructura: por capas, por decisiones, por planos.</p>
+
+      <div class="title-block home-mono">
         <div>
-          <div class="week">2554608</div>
-          <h2>Arquitectura de Software</h2>
-          <p class="subtitle">Estilos, patrones y arquitecturas modernas</p>
+          <div class="tb-label">Docente</div>
+          <div class="tb-value">Juan Felipe Quintana G.</div>
         </div>
-        <div class="status">Próximamente</div>
+        <div>
+          <div class="tb-label">Enfoque</div>
+          <div class="tb-value">Azure · .NET · Arquitectura</div>
+        </div>
+        <div>
+          <div class="tb-label">Semestre</div>
+          <div class="tb-value">2026-2</div>
+        </div>
+        <div>
+          <div class="tb-label">Sheet</div>
+          <div class="tb-value">UDEA-IS-00</div>
+        </div>
       </div>
-
-      <a class="topic-card" href="calidad-de-software/index.html">
-        <div>
-          <div class="week">2554703</div>
-          <h2>Calidad de Software</h2>
-          <p class="subtitle">Fundamentos, verificación, pruebas y aseguramiento de calidad</p>
-        </div>
-        <div class="arrow">→</div>
-      </a>
-
     </div>
-  </main>
+  </section>
 
-  <footer class="site-footer">
-    Ingeniería de Sistemas · Material de clase
+  <section class="credibility">
+    <p><strong>15+ años</strong> en la industria (Senior Technical Consultant, Azure/.NET/Arquitectura) — hoy también en el aula.</p>
+    <a href="perfil-del-profesor/index.html">Trayectoria completa (Perfil de Profesor) →</a>
+  </section>
+
+  <section class="home-courses">
+    <div class="courses-head">
+      <h2 class="home-display">Asignaturas · Universidad de Antioquia</h2>
+      <span class="home-mono">4 sheets · 2026-2</span>
+    </div>
+
+    <div class="home-grid">
+      <a class="home-card" href="tecnicas-de-programacion/index.html">
+        <div class="card-top">
+          <span class="sheet-no home-mono">SHEET 2508307</span>
+          <span class="home-status live">Disponible</span>
+        </div>
+        <h3 class="home-display">Técnicas de Programación</h3>
+        <p>Paradigmas y técnicas avanzadas de programación.</p>
+        <span class="go">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="home-card" href="calidad-de-software/index.html">
+        <div class="card-top">
+          <span class="sheet-no home-mono">SHEET 2554703</span>
+          <span class="home-status live">Disponible</span>
+        </div>
+        <h3 class="home-display">Calidad de Software</h3>
+        <p>Fundamentos, verificación, pruebas y aseguramiento de calidad.</p>
+        <span class="go">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <div class="home-card disabled">
+        <div class="card-top">
+          <span class="sheet-no home-mono">SHEET 2554608</span>
+          <span class="home-status soon">Próximamente</span>
+        </div>
+        <h3 class="home-display">Arquitectura de Software</h3>
+        <p>Estilos, patrones y arquitecturas modernas.</p>
+        <span class="go">En construcción</span>
+      </div>
+
+      <div class="home-card disabled">
+        <div class="card-top">
+          <span class="sheet-no home-mono">SHEET 2554506</span>
+          <span class="home-status soon">Próximamente</span>
+        </div>
+        <h3 class="home-display">Análisis y Diseño 2</h3>
+        <p>Diseño de software y modelado.</p>
+        <span class="go">En construcción</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="home-footer home-mono">
+    <span>© 2026 <strong>Juan Felipe Quintana Gómez</strong> · Ingeniería de Sistemas</span>
+    <span>Rev. 2026-2 · profejuanfe.dev</span>
   </footer>
+
 </body>
 </html>

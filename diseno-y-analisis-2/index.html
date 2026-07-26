@@ -4,29 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Análisis y Diseño 2 — Presentaciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/variables.css" />
-  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="back-link" href="../index.html">&larr; Materias</a>
-    <picture>
-      <source media="(max-width: 600px)" srcset="../assets/img/logo-vertical-cream.png" />
-      <img class="site-logo" src="../assets/img/logo-horizontal-cream.png" alt="Universidad de Antioquia" />
-    </picture>
-    <span class="eyebrow">Ingeniería de Sistemas · Universidad de Antioquia</span>
-    <h1>Análisis y Diseño 2</h1>
-    <p>Presentaciones del curso, semana a semana</p>
-  </header>
 
-  <main class="container">
-    <p class="section-label">Contenido del curso</p>
-    <div class="topic-grid" id="topic-grid"></div>
-    <p class="subtitle">Aún no hay contenido publicado para este curso.</p>
-  </main>
+  <section class="course-sheet">
+    <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
+    <div class="course-sheet-inner">
+      <div class="course-nav">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark home-mono">JF</span>
+          <span class="home-mono">profejuanfe.dev</span>
+        </a>
+        <a class="breadcrumb" href="../index.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          Todas las materias
+        </a>
+      </div>
 
-  <footer class="site-footer">
-    Análisis y Diseño 2 (2554506) · Material de clase
+      <div class="course-eyebrow">Ingeniería de Sistemas · Universidad de Antioquia</div>
+      <h1 class="course-title home-display">Análisis y Diseño 2</h1>
+      <p class="course-sub">Presentaciones del curso, semana a semana.</p>
+
+      <div class="title-block home-mono">
+        <div>
+          <div class="tb-label">Sheet</div>
+          <div class="tb-value">2554506</div>
+        </div>
+        <div>
+          <div class="tb-label">Docente</div>
+          <div class="tb-value">Juan Felipe Quintana G.</div>
+        </div>
+        <div>
+          <div class="tb-label">Semestre</div>
+          <div class="tb-value">2026-2</div>
+        </div>
+        <div>
+          <div class="tb-label">Estado</div>
+          <div class="tb-value">Próximamente</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="course-content">
+    <div class="content-head">
+      <h2>Contenido del curso</h2>
+      <span class="home-mono" id="content-stats"></span>
+    </div>
+    <div id="weeks-container"></div>
+  </section>
+
+  <footer class="course-footer home-mono">
+    Análisis y Diseño 2 (2554506) · Material de clase · profejuanfe.dev
   </footer>
 
   <script src="topics.js"></script>

@@ -1,0 +1,310 @@
+/* ---------- Página de materia (hoja de plano) — usa la paleta de variables.css ---------- */
+
+.home-display {
+  font-family: "Space Grotesk", var(--font-body);
+}
+
+.home-mono {
+  font-family: "IBM Plex Mono", var(--font-mono);
+}
+
+.reg-mark {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+.reg-mark::before,
+.reg-mark::after {
+  content: "";
+  position: absolute;
+  background: rgba(240, 222, 187, 0.35);
+}
+.reg-mark::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.reg-mark::after {
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+.reg-mark.tl {
+  top: 14px;
+  left: 14px;
+}
+.reg-mark.tr {
+  top: 14px;
+  right: 14px;
+}
+
+/* ---------- HERO (misma hoja de plano que el home, versión compacta) ---------- */
+.course-sheet {
+  position: relative;
+  background: linear-gradient(rgba(240, 222, 187, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 222, 187, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, var(--surface), var(--bg));
+  background-size: 32px 32px, 32px 32px, cover;
+  color: var(--text);
+  padding: 40px 24px 44px;
+  overflow: hidden;
+}
+.course-sheet-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.course-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+.course-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.breadcrumb {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  transition: color var(--transition);
+}
+.breadcrumb:hover {
+  color: var(--accent);
+}
+.breadcrumb svg {
+  transform: rotate(180deg);
+}
+
+.course-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.course-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+}
+h1.course-title {
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.08;
+  margin: 0 0 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.course-sub {
+  max-width: 56ch;
+  font-size: 15.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 30px;
+}
+
+.title-block {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+.title-block div {
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+}
+.title-block div:last-child {
+  border-right: none;
+}
+.tb-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.tb-value {
+  font-size: 13px;
+  color: var(--text);
+}
+@media (max-width: 720px) {
+  .title-block {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .title-block div:nth-child(2) {
+    border-right: none;
+  }
+}
+
+/* ---------- CONTENIDO ---------- */
+.course-content {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px 90px;
+}
+.content-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+.content-head h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 600;
+}
+.content-head span {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.course-empty {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  padding: 32px 0;
+  border: 1px dashed var(--border);
+  text-align: center;
+}
+
+/* ---------- WEEK GROUPS ---------- */
+.week {
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.week-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 20px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+.week-head .num {
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+.week-head .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.week-head .count {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+.week.standalone .week-head {
+  background: rgba(89, 168, 125, 0.12);
+}
+.week.standalone .num {
+  color: var(--accent);
+}
+
+.session {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.session:last-child {
+  border-bottom: none;
+}
+a.session:hover {
+  background: var(--surface-2);
+}
+.session .idx {
+  font-size: 12px;
+  color: var(--text-muted);
+  width: 22px;
+  flex-shrink: 0;
+}
+.session .body {
+  flex-grow: 1;
+}
+.session h4 {
+  font-size: 15px;
+  margin: 0 0 4px;
+  font-weight: 600;
+  color: var(--text);
+}
+.session p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+.session .go svg {
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+a.session:hover .go svg {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+
+.session.disabled {
+  opacity: 0.6;
+}
+.session.disabled h4 {
+  color: var(--text-muted);
+}
+.session .soon-tag {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+.course-footer {
+  background: var(--bg);
+  color: var(--text-muted);
+  padding: 30px 24px;
+  font-size: 12.5px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
