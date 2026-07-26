@@ -1,0 +1,241 @@
+.profile-header .avatar-photo {
+  display: block;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.profile-header .role {
+  max-width: 640px;
+  margin: 0 auto 20px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--surface-2);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.contact-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.profile-section {
+  margin: 0 0 56px;
+}
+
+.profile-section:last-child {
+  margin-bottom: 0;
+}
+
+.profile-section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin: 0 0 20px;
+  color: var(--text);
+}
+
+.profile-summary {
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.summary-card {
+  padding: 18px 16px;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.profile-summary p {
+  margin: 0 0 16px;
+}
+
+.profile-summary p:last-child {
+  margin-bottom: 0;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-item {
+  padding: 22px 24px;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.timeline-item .period {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.timeline-item h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin: 8px 0 2px;
+  line-height: 1.3;
+}
+
+.timeline-item .org {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.timeline-item ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.timeline-item ul li {
+  margin-bottom: 4px;
+}
+
+.timeline-item ul li:last-child {
+  margin-bottom: 0;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.course-card {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.course-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+
+.course-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.87rem;
+  line-height: 1.55;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.simple-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.simple-list .item-title {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.simple-list .item-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.profile-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  margin: 0 0 32px;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.profile-link-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.profile-link-card .eyebrow-small {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+
+.profile-link-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin: 0 0 4px;
+}
+
+.profile-link-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.profile-link-card .arrow {
+  font-size: 1.3rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}

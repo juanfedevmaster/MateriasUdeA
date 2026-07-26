@@ -6,16 +6,29 @@
   <title>Materias — Ingeniería de Sistemas</title>
   <link rel="stylesheet" href="assets/css/variables.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/profile.css" />
 </head>
 <body>
   <header class="site-header">
-    <img class="site-logo" src="assets/img/logo-horizontal-cream.png" alt="Universidad de Antioquia" />
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/img/logo-vertical-cream.png" />
+      <img class="site-logo" src="assets/img/logo-horizontal-cream.png" alt="Universidad de Antioquia" />
+    </picture>
     <span class="eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</span>
     <h1>Materias</h1>
     <p>Presentaciones de clase, organizadas por asignatura</p>
   </header>
 
   <main class="container">
+    <a class="profile-link-card" href="perfil-del-profesor/index.html">
+      <div>
+        <p class="eyebrow-small">Perfil del profesor</p>
+        <h2>Juan Felipe Quintana Gómez</h2>
+        <p>Senior Technical Consultant · Solution Architecture · Azure · .NET</p>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
     <p class="section-label">Asignaturas</p>
     <div class="topic-grid">
 
@@ -42,6 +55,15 @@
           <div class="week">2554506</div>
           <h2>Análisis y Diseño 2</h2>
           <p class="subtitle">Diseño de software y modelado</p>
+        </div>
+        <div class="status">Próximamente</div>
+      </div>
+
+      <div class="topic-card disabled">
+        <div>
+          <div class="week">2508307</div>
+          <h2>Técnicas de Programación</h2>
+          <p class="subtitle">Paradigmas y técnicas avanzadas de programación</p>
         </div>
         <div class="status">Próximamente</div>
       </div>

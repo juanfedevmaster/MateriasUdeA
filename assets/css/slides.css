@@ -370,7 +370,12 @@
 
 @media (max-width: 720px) {
   .slide {
-    padding: 28px 22px 90px;
+    align-items: flex-start;
+    padding: 40px 24px 90px;
+  }
+
+  .slide-content {
+    padding-top: 10vh;
   }
 
   .deck-title {
