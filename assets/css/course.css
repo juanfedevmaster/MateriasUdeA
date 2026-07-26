@@ -85,6 +85,11 @@
   color: var(--accent);
   flex-shrink: 0;
 }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
 .breadcrumb {
   color: var(--text-muted);
   text-decoration: none;
@@ -95,6 +100,23 @@
   transition: color var(--transition);
 }
 .breadcrumb:hover {
+  color: var(--accent);
+}
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition);
+}
+.share-btn:hover,
+.share-btn.copied {
   color: var(--accent);
 }
 .breadcrumb svg {

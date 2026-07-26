@@ -91,17 +91,21 @@
   flex-shrink: 0;
 }
 
-.home-nav a.profile-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+.share-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color var(--transition), border-color var(--transition);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition);
 }
-.home-nav a.profile-link:hover {
-  border-color: var(--accent);
+.share-btn:hover,
+.share-btn.copied {
   color: var(--accent);
 }
 
