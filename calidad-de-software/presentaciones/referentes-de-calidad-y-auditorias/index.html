@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Referentes de Calidad y Auditorías — Semana 4</title>
+  <meta name="description" content="ISO 9000, ISO/IEC 25000 (SQuaRE), CMMI, IEEE-730, y cómo funcionan las revisiones, walkthroughs y auditorías de calidad — Calidad de Software, Semana 4." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/referentes-de-calidad-y-auditorias/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Referentes de Calidad y Auditorías — Semana 4" />
+  <meta property="og:description" content="ISO 9000, ISO/IEC 25000 (SQuaRE), CMMI, IEEE-730, y cómo funcionan las revisiones, walkthroughs y auditorías de calidad — Calidad de Software, Semana 4." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/referentes-de-calidad-y-auditorias/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Referentes de Calidad y Auditorías — Semana 4" />
+  <meta name="twitter:description" content="ISO 9000, ISO/IEC 25000 (SQuaRE), CMMI, IEEE-730, y cómo funcionan las revisiones, walkthroughs y auditorías de calidad — Calidad de Software, Semana 4." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 4 · Referentes de Calidad y Auditorías</div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/referentes-de-calidad-y-auditorias.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 4 — Referentes de calidad: ISO 9000, SQuaRE, CMMI, IEEE-730 y las auditorías</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/ieee.svg" alt="IEEE" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 3</h1>
+          <ul>
+            <li>Una <strong>historia de usuario</strong> que cumple <strong>INVEST</strong> es negociable, valiosa, pequeña y testeable.</li>
+            <li>Los <strong>criterios de aceptación</strong> se escriben en <strong>Gherkin</strong> (Dado-Cuando-Entonces), antes de programar.</li>
+            <li>El <strong>SQAP</strong> (IEEE-730) hace, a nivel de proyecto, lo que los criterios hacen a nivel de historia.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: el panorama completo</h1>
+          <p>Llevamos tres semanas viendo normas de a una: <strong>ISO/IEC 25010</strong> (semana 1), <strong>ISO/IEC 12207</strong> y <strong>CMMI</strong> (semana 1), <strong>IEEE-730</strong> (semana 3). Hoy las ubicamos en un solo mapa, agregamos las que faltan —<strong>ISO 9000</strong> y la familia <strong>SQuaRE</strong>— y vemos cómo se aplican en la práctica: revisiones, walkthroughs y auditorías.</p>
+          <p class="slide-eyebrow">Esta unidad está comprimida a dos semanas — hoy y la semana 5.</p>
+          <img class="portada-icon" src="img/map.svg" alt="El panorama completo" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>ISO 9000: el estándar detrás de los estándares</h1>
+          <p><strong>ISO 9000</strong> no es específico de software: es la familia de normas de <strong>gestión de la calidad</strong> más usada del mundo, publicada por la ISO desde 1987, basada en un estándar británico previo (BS 5750).</p>
+          <p>Define siete principios que cualquier organización —una fábrica, un hospital, un equipo de software— debería seguir para gestionar calidad:</p>
+          <ul>
+            <li>Enfoque al cliente · Liderazgo · Compromiso de las personas</li>
+            <li>Enfoque a procesos · Mejora continua</li>
+            <li>Toma de decisiones basada en evidencia · Gestión de las relaciones</li>
+          </ul>
+          <img class="portada-icon" src="img/globe.svg" alt="ISO 9000" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>ISO 9000 no es lo mismo que ISO 9001</h1>
+          <table>
+            <tbody>
+              <tr><th>ISO 9000</th><td>Vocabulario y principios. Define qué significa "gestión de calidad" y sus términos. No es certificable.</td></tr>
+              <tr><th>ISO 9001</th><td>Requisitos concretos que un sistema de gestión de calidad debe cumplir. Una organización <strong>sí</strong> se certifica en ISO 9001.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Confusión común:</strong> se dice "estamos certificados en ISO 9000" cuando lo correcto es "certificados en ISO 9001, bajo el marco conceptual de ISO 9000".</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De lo genérico a software</h1>
+          <p>ISO 9000 sirve para cualquier producto. El software tiene sus propias formas de fallar —no se "desgasta", pero sí acumula deuda técnica, sus requisitos cambian, y "conforme a la especificación" no siempre significa "usable". Por eso existe una familia específica.</p>
+          <img class="portada-icon" src="img/laptop-code.svg" alt="De lo genérico a software" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es SQuaRE (ISO/IEC 25000)</h1>
+          <p><strong>SQuaRE</strong> — <em>Software Product Quality Requirements and Evaluation</em> — es la familia de normas <strong>ISO/IEC 25000</strong>, publicada desde 2005 para reemplazar y unificar dos estándares anteriores que no se comunicaban bien entre sí: ISO 9126 (modelo de calidad) e ISO 14598 (proceso de evaluación).</p>
+          <p><strong>ISO/IEC 25010</strong>, que ya conocemos desde la semana 1 —las 8 características de calidad de producto—, es solo <strong>una norma dentro</strong> de esta familia más amplia.</p>
+          <img class="portada-icon" src="img/boxes-stacked.svg" alt="SQuaRE" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Las cinco divisiones de SQuaRE</h1>
+          <table>
+            <tbody>
+              <tr><th>2500n — Gestión</th><td>Guías generales para gestionar los requisitos y la evaluación de calidad</td></tr>
+              <tr><th>2501n — Modelo de calidad</th><td>Aquí vive <strong>ISO/IEC 25010</strong>: qué características definen la calidad</td></tr>
+              <tr><th>2502n — Medición</th><td>Cómo cuantificar cada característica con métricas concretas</td></tr>
+              <tr><th>2503n — Requisitos</th><td>Cómo especificar requisitos de calidad para un sistema nuevo</td></tr>
+              <tr><th>2504n — Evaluación</th><td>El proceso para evaluar si un producto cumple lo especificado</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del estándar al mapa completo</h1>
+          <p>Ya tenemos todas las piezas sueltas de las últimas tres semanas. Antes de seguir, vale la pena verlas juntas — porque en un examen o en el trabajo real, la confusión más común es no saber cuál norma responde cuál pregunta.</p>
+          <img class="portada-icon" src="img/route.svg" alt="El mapa completo" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Cómo se relacionan los cinco referentes</h1>
+          <table>
+            <tbody>
+              <tr><th>ISO 9000/9001</th><td>Gestión de calidad en general — no es específico de software</td></tr>
+              <tr><th>ISO/IEC 25010 (SQuaRE)</th><td>¿Qué características debe tener <strong>este producto</strong> de software?</td></tr>
+              <tr><th>ISO/IEC 12207</th><td>¿Qué procesos debería tener la organización para construirlo?</td></tr>
+              <tr><th>CMMI</th><td>¿Qué tan bien y consistentemente ejecuta esos procesos la organización?</td></tr>
+              <tr><th>IEEE-730 (SQAP)</th><td>¿Cómo se aplica todo lo anterior en <strong>este proyecto</strong> concreto?</td></tr>
+            </tbody>
+          </table>
+          <p><strong>De lo general a lo específico: gestión → producto → proceso → madurez → plan del proyecto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>CMMI: dos formas de representarlo</h1>
+          <p>Ya vimos los 5 niveles de CMMI en la semana 1 (Inicial, Gestionado, Definido, Gestionado cuantitativamente, En optimización). Lo que no vimos: CMMI se puede aplicar de dos formas distintas.</p>
+          <ul>
+            <li><strong>Representación escalonada</strong> <em>(staged)</em>: la organización completa avanza por los 5 niveles en bloque, uno a la vez. Más fácil de comunicar y certificar.</li>
+            <li><strong>Representación continua</strong> <em>(continuous)</em>: cada área de proceso (gestión de requisitos, gestión de proyecto, etc.) madura a su propio ritmo. Más flexible, más difícil de resumir en un solo número.</li>
+          </ul>
+          <img class="portada-icon" src="img/stairs.svg" alt="CMMI" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cómo se revisa el trabajo</h1>
+          <p>Todos estos estándares dicen qué debería pasar. Falta la pregunta operativa: en la práctica del día a día, <strong>¿cómo se comprueba</strong> que un artefacto —código, diseño, documento— está bien?</p>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Cómo se revisa el trabajo" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una revisión de calidad</h1>
+          <p>Es una <strong>actividad de verificación</strong> —en el vocabulario de la semana 2— donde una o más personas examinan un artefacto para encontrar defectos antes de que avance a la siguiente fase.</p>
+          <ul>
+            <li>No evalúa a la persona que hizo el trabajo, evalúa <strong>el artefacto</strong>.</li>
+            <li>Es más barata que encontrar el mismo defecto en producción — el argumento de la curva del costo de corregir, semana 1.</li>
+            <li>Existe en un espectro que va de muy informal a muy formal.</li>
+          </ul>
+          <img class="portada-icon" src="img/eye.svg" alt="Revisión de calidad" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El espectro de revisiones (IEEE 1028)</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Formalidad</th><th>Propósito</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Revisión informal</td><td>Muy baja</td><td>Retroalimentación rápida, sin acta ni proceso fijo</td></tr>
+              <tr><td>Walkthrough</td><td>Baja-media</td><td>El autor guía a los revisores por su propio trabajo</td></tr>
+              <tr><td>Revisión técnica</td><td>Media</td><td>Evalúa decisiones técnicas contra alternativas y estándares</td></tr>
+              <tr><td>Inspección</td><td>Alta</td><td>Proceso formal con roles fijos y métricas de defectos</td></tr>
+              <tr><td>Auditoría</td><td>Muy alta</td><td>Verifica conformidad con un estándar, de forma independiente</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un walkthrough</h1>
+          <p>Es una revisión donde <strong>el propio autor</strong> del artefacto —un fragmento de código, un diseño— lo presenta paso a paso a un grupo pequeño, explicando su razonamiento en voz alta.</p>
+          <ul>
+            <li><strong>Objetivo:</strong> encontrar defectos temprano, no evaluar el desempeño de quien lo hizo.</li>
+            <li>Suele ser <strong>informal</strong>: sin roles estrictos, aunque conviene que alguien tome nota de los hallazgos.</li>
+            <li>Funciona mejor sobre artefactos pequeños — un método, no un sistema completo.</li>
+          </ul>
+          <img class="portada-icon" src="img/person-chalkboard.svg" alt="Walkthrough" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una auditoría de calidad</h1>
+          <p>Es la revisión <strong>más formal</strong> del espectro: alguien <strong>independiente</strong> del equipo que hizo el trabajo verifica si un proceso o producto cumple un estándar —un SQAP, una norma ISO, una política interna.</p>
+          <ul>
+            <li>Produce <strong>hallazgos</strong> formales, cada uno con severidad.</li>
+            <li>No busca "mejorar en el momento" como un walkthrough: busca <strong>certificar conformidad</strong>.</li>
+            <li>Knight Capital, semana 1: nunca hubo una auditoría que verificara que los ocho servidores quedaran idénticos.</li>
+          </ul>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Auditoría de calidad" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Severidad de un hallazgo</h1>
+          <p>Cada hallazgo de una revisión se clasifica por <strong>qué tanto daño causa</strong> si no se corrige — no confundir con prioridad, que es qué tan rápido se debe atender:</p>
+          <ul>
+            <li><strong>Crítica:</strong> el sistema no funciona o hay riesgo de seguridad/pérdida de datos.</li>
+            <li><strong>Alta:</strong> una funcionalidad importante falla, sin alternativa razonable.</li>
+            <li><strong>Media:</strong> el sistema funciona, pero con un problema notable o una solución alterna incómoda.</li>
+            <li><strong>Baja:</strong> defectos cosméticos o de conveniencia, sin impacto funcional.</li>
+          </ul>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Severidad" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un acta de walkthrough</h1>
+          <p>Es el registro escrito de lo que pasó en la sesión — la evidencia de que la revisión ocurrió y de qué se encontró. Una plantilla mínima:</p>
+          <ul>
+            <li><strong>Encabezado:</strong> fecha, participantes, artefacto revisado.</li>
+            <li><strong>Hallazgos:</strong> uno por fila — identificador, descripción, severidad, característica de ISO/IEC 25010 comprometida.</li>
+            <li><strong>Decisión final:</strong> aprobado, aprobado con cambios menores, o requiere otra revisión.</li>
+          </ul>
+          <img class="portada-icon" src="img/file-signature.svg" alt="Acta de walkthrough" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un walkthrough resuelto</h1>
+          <pre><code>def calcular_interes(saldo, tasa_anual, dias):
+    interes = saldo * tasa_anual * dias / 365
+    return interes  # no redondea a 2 decimales</code></pre>
+          <table>
+            <thead>
+              <tr><th>Hallazgo</th><th>Severidad</th><th>ISO 25010</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>No redondea el resultado a 2 decimales</td><td>Media</td><td>Adecuación funcional</td></tr>
+              <tr><td>No valida <code>dias</code> negativos</td><td>Alta</td><td>Confiabilidad</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: clasifiquen la severidad</h1>
+          <p><strong>5 minutos — en el chat o en voz alta:</strong></p>
+          <ol>
+            <li>El botón "Cancelar" queda 2 píxeles desalineado en móvil.</li>
+            <li>Un usuario puede ver el saldo de otra cuenta cambiando un número en la URL.</li>
+            <li>El reporte mensual tarda 40 segundos en generarse en vez de 5.</li>
+            <li>La app se cierra al intentar subir una foto de perfil.</li>
+          </ol>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>ISO 9000</strong> es gestión de calidad en general; <strong>ISO 9001</strong> es lo certificable.</li>
+            <li><strong>SQuaRE (ISO/IEC 25000)</strong> es la familia completa — ISO/IEC 25010 es solo una parte de ella.</li>
+            <li>De lo general a lo específico: <strong>gestión → producto → proceso → madurez → plan del proyecto.</strong></li>
+            <li>Las revisiones van de informales a formales: <strong>walkthrough, revisión técnica, inspección, auditoría.</strong></li>
+            <li>Cada hallazgo se documenta con <strong>severidad</strong> y la característica de calidad que compromete.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: acta de walkthrough</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — grupo aleatorio de la semana</strong></p>
+          <p>El docente entrega un fragmento de código con <strong>defectos plantados</strong>. Cada equipo hace un walkthrough y entrega un acta con:</p>
+          <ul>
+            <li>Encabezado: fecha, integrantes del equipo, artefacto revisado.</li>
+            <li>Cada hallazgo, con <strong>severidad</strong> y la <strong>característica de ISO/IEC 25010</strong> comprometida.</li>
+            <li>Decisión final: aprobado, aprobado con cambios, o requiere otra revisión.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 5, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Deuda técnica: qué es y cómo se acumula.</li>
+            <li>Buenas prácticas y herramientas de apoyo al proceso de calidad.</li>
+          </ul>
+          <p>Cierra la <strong>Unidad 2</strong> y con ella los grupos <strong>aleatorios</strong> — desde la semana 6 se trabaja en los equipos fijos de Fábrica-Escuela. El taller de la semana 5: análisis de un repositorio con <strong>SonarCloud</strong>, tres hallazgos priorizados. También se entrega el primer avance de Fábrica-Escuela.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

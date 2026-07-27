@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deuda Técnica y Herramientas de Calidad — Semana 5</title>
+  <meta name="description" content="Deuda técnica, code smells, refactorización, análisis estático y SonarCloud — Calidad de Software, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/deuda-tecnica-y-herramientas-de-calidad/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Deuda Técnica y Herramientas de Calidad — Semana 5" />
+  <meta property="og:description" content="Deuda técnica, code smells, refactorización, análisis estático y SonarCloud — Calidad de Software, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/deuda-tecnica-y-herramientas-de-calidad/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Deuda Técnica y Herramientas de Calidad — Semana 5" />
+  <meta name="twitter:description" content="Deuda técnica, code smells, refactorización, análisis estático y SonarCloud — Calidad de Software, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 5 · Deuda Técnica y Herramientas de Calidad</div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/deuda-tecnica-y-herramientas-de-calidad.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 5 — Deuda técnica, buenas prácticas y herramientas de apoyo</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/coins.svg" alt="Deuda técnica" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Última semana de grupos aleatorios</h1>
+          <p>Desde la semana 6 se trabaja en los <strong>equipos fijos de Fábrica-Escuela</strong> — el mismo equipo hasta el final del semestre. Dos cosas cierran hoy la Unidad 2:</p>
+          <ul>
+            <li>El último taller con grupo aleatorio de la semana.</li>
+            <li>La <strong>entrega 1 de Fábrica-Escuela</strong> (10 % de la nota), con los temas propios del proyecto de cada equipo.</li>
+          </ul>
+          <img class="portada-icon" src="img/shuffle.svg" alt="Grupos aleatorios" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 4</h1>
+          <ul>
+            <li><strong>ISO 9000</strong> es gestión de calidad en general; <strong>SQuaRE</strong> es la familia específica de software donde vive ISO/IEC 25010.</li>
+            <li>Las revisiones van de informales a formales: <strong>walkthrough, revisión técnica, inspección, auditoría.</strong></li>
+            <li>Cada hallazgo se documenta con <strong>severidad</strong> y la característica de calidad comprometida.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: de las normas a la práctica diaria</h1>
+          <p>Las últimas cuatro semanas hablaron de normas, procesos y revisiones formales. Hoy bajamos al terreno del día a día: el código que se escribe entre una revisión y la siguiente, y cómo se degrada silenciosamente si nadie lo cuida.</p>
+          <img class="portada-icon" src="img/laptop-code.svg" alt="De las normas a la práctica" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Qué es la deuda técnica</h1>
+          <p>El término lo acuñó <strong>Ward Cunningham</strong> en 1992 —el mismo Cunningham que años después crearía el primer wiki— como metáfora para explicarle a un cliente por qué el equipo necesitaba tiempo para reescribir código.</p>
+          <p>La idea: escribir código rápido y no del todo limpio es como pedir un préstamo. Se puede hacer, y a veces es la decisión correcta — pero la deuda genera <strong>interés</strong>, y ese interés se paga en esfuerzo extra cada vez que alguien toca ese código después.</p>
+          <img class="portada-icon" src="img/money-bill-wave.svg" alt="Deuda técnica" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El cuadrante de Martin Fowler</h1>
+          <p>Fowler propuso que no toda deuda técnica es un error — depende de si fue una decisión consciente y de si fue razonable tomarla:</p>
+          <table>
+            <thead>
+              <tr><th></th><th>Deliberada</th><th>Inadvertida</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Prudente</th><td>"Sabemos que esto no es ideal, pero entregamos ya y lo arreglamos después."</td><td>"Ahora que lo terminamos, vemos cómo debimos haberlo hecho."</td></tr>
+              <tr><th>Imprudente</th><td>"No tenemos tiempo para hacer las cosas bien."</td><td>"¿Qué es diseño de capas?"</td></tr>
+            </tbody>
+          </table>
+          <p><strong>La deuda prudente y deliberada, bien documentada, es una herramienta legítima — no siempre es una falla.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se acumula la deuda técnica</h1>
+          <ul>
+            <li><strong>Plazos apretados:</strong> se prioriza entregar sobre hacerlo bien.</li>
+            <li><strong>Falta de pruebas:</strong> nadie se atreve a refactorizar sin una red de seguridad.</li>
+            <li><strong>Requisitos que cambian:</strong> el diseño original ya no encaja, pero nadie lo actualiza.</li>
+            <li><strong>Rotación del equipo:</strong> se pierde el contexto de por qué el código quedó así.</li>
+            <li><strong>Código copiado y pegado</strong> en vez de reutilizado: el mismo defecto se multiplica.</li>
+          </ul>
+          <img class="portada-icon" src="img/hourglass-half.svg" alt="Cómo se acumula" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El interés de la deuda técnica</h1>
+          <p>Igual que una deuda financiera, cuanto más tiempo pasa sin pagarse, <strong>más caro sale cada cambio nuevo</strong>: hay que entender código enredado, rodear el problema en vez de resolverlo, y el riesgo de romper algo al tocarlo crece.</p>
+          <p>La trampa común: como el interés no se ve en un balance contable, es fácil ignorarlo hasta que un cambio simple —que debería tomar una hora— termina tomando una semana.</p>
+          <img class="portada-icon" src="img/chart-line.svg" alt="El interés de la deuda" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cómo se detecta la deuda técnica</h1>
+          <p>La deuda técnica no siempre se ve a simple vista en la funcionalidad —el sistema puede seguir "funcionando"—, pero sí deja señales reconocibles en la estructura del código.</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Cómo se detecta" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un code smell</h1>
+          <p>El término lo popularizaron Kent Beck y Martin Fowler en el libro <em>"Refactoring"</em> (1999): un <strong>"olor a código"</strong> es una señal superficial —no un error en sí mismo— que suele indicar un problema más profundo de diseño.</p>
+          <ul>
+            <li><strong>Método largo:</strong> hace demasiadas cosas para entenderlo de un vistazo.</li>
+            <li><strong>Código duplicado:</strong> la misma lógica repetida en varios lugares.</li>
+            <li><strong>Clase gigante:</strong> acumula responsabilidades que deberían estar separadas.</li>
+            <li><strong>Lista larga de parámetros:</strong> señal de que faltan abstracciones.</li>
+          </ul>
+          <img class="portada-icon" src="img/broom.svg" alt="Code smell" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es refactorizar</h1>
+          <p>Fowler lo define con precisión: <strong>cambiar la estructura interna de un código sin cambiar su comportamiento observable.</strong> Es la manera en que se paga la deuda técnica.</p>
+          <ul>
+            <li><strong>No es lo mismo que reescribir</strong> — reescribir empieza de cero; refactorizar transforma en pasos pequeños y verificables.</li>
+            <li>Necesita pruebas automatizadas que confirmen, en cada paso, que el comportamiento no cambió.</li>
+            <li>Se hace en pasos pequeños, no en una sola operación gigante y arriesgada.</li>
+          </ul>
+          <img class="portada-icon" src="img/wrench.svg" alt="Refactorizar" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas para no acumular deuda</h1>
+          <ul>
+            <li><strong>Nombres significativos:</strong> una variable llamada <code>d</code> es deuda técnica el día en que se escribe.</li>
+            <li><strong>Funciones pequeñas, una responsabilidad cada una:</strong> más fáciles de leer, probar y reutilizar.</li>
+            <li><strong>No te repitas (DRY):</strong> cada pieza de lógica debería vivir en un solo lugar.</li>
+            <li><strong>Comentarios solo cuando hacen falta:</strong> si el código necesita un comentario para explicarse, primero considera si se puede reescribir para que no lo necesite.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cómo se mide todo esto automáticamente</h1>
+          <p>Encontrar code smells leyendo código a mano no escala a un repositorio con miles de líneas. Existe una categoría de herramientas que lo hace por nosotros: el <strong>análisis estático</strong>.</p>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Cómo se mide" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es el análisis estático</h1>
+          <p>Es examinar el código <strong>sin ejecutarlo</strong> —a diferencia de una prueba, que sí lo ejecuta— buscando patrones que suelen indicar bugs, vulnerabilidades o code smells. En el vocabulario de la semana 2, es una técnica de <strong>verificación</strong>: compara el código contra reglas, no contra la necesidad del usuario.</p>
+          <p>Ya se mencionó de pasada en la semana 2 como una de las técnicas de verificación — hoy se ve en detalle, con una herramienta real.</p>
+          <img class="portada-icon" src="img/microscope.svg" alt="Análisis estático" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>Qué es SonarCloud</h1>
+          <p><strong>SonarCloud</strong> es la versión en la nube de SonarQube, la herramienta de análisis estático de SonarSource. Se conecta directamente al repositorio (GitHub, GitLab) y analiza el código en cada commit o pull request.</p>
+          <p>Es <strong>gratuita para proyectos de código abierto</strong> — por eso es la herramienta que se usa en este curso y la que van a integrar a su pipeline de Fábrica-Escuela más adelante.</p>
+          <img class="portada-icon" src="img/sonarcloud.svg" alt="SonarCloud" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué mide SonarCloud</h1>
+          <table>
+            <tbody>
+              <tr><th>Bugs</th><td>Código que probablemente se comporta de forma distinta a la esperada</td></tr>
+              <tr><th>Vulnerabilidades</th><td>Puntos débiles explotables de seguridad</td></tr>
+              <tr><th>Code Smells</th><td>Señales de mantenibilidad — los mismos que vimos hace unas diapositivas</td></tr>
+              <tr><th>Cobertura</th><td>Porcentaje del código ejercitado por pruebas automatizadas</td></tr>
+              <tr><th>Duplicación</th><td>Porcentaje de código repetido en el proyecto</td></tr>
+              <tr><th>Complejidad ciclomática</th><td>Qué tan enredado es el flujo de un método — se profundiza en la semana 11</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El Quality Gate</h1>
+          <p>Es un conjunto de condiciones —definidas por el equipo— que un análisis debe cumplir para considerarse <strong>aprobado</strong>: por ejemplo, "cero bugs nuevos", "cobertura mayor al 80 % en código nuevo", "cero vulnerabilidades críticas".</p>
+          <p>Si el análisis no cumple el Quality Gate, queda en <strong>rojo</strong> — una señal visual e inmediata de que algo no está listo para fusionarse. Es la pieza que, más adelante en el curso, se conecta con el pipeline de integración continua.</p>
+          <img class="portada-icon" src="img/gauge-high.svg" alt="Quality Gate" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La severidad en SonarCloud</h1>
+          <p>SonarCloud usa su propia escala, distinta —pero comparable— a la Crítica/Alta/Media/Baja que vimos en la semana 4:</p>
+          <table>
+            <tbody>
+              <tr><th>Blocker</th><td>Debe corregirse antes de continuar — riesgo muy alto de bug o vulnerabilidad</td></tr>
+              <tr><th>Critical</th><td>Impacto grave en el comportamiento o la seguridad</td></tr>
+              <tr><th>Major</th><td>Afecta la mantenibilidad de forma importante</td></tr>
+              <tr><th>Minor / Info</th><td>Mejoras menores, sin urgencia</td></tr>
+            </tbody>
+          </table>
+          <p><strong>La herramienta asigna la severidad automáticamente — priorizar sigue siendo trabajo humano.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un plan de remediación</h1>
+          <p>Encontrar un hallazgo no es suficiente: hay que decidir <strong>qué hacer con él</strong>. Un plan de remediación, por cada hallazgo priorizado, responde:</p>
+          <ul>
+            <li><strong>Qué cambio concreto</strong> corrige el problema.</li>
+            <li><strong>Cuánto esfuerzo estimado</strong> toma —en horas, o en una escala relativa (pequeño/mediano/grande).</li>
+            <li><strong>Cuándo se aborda</strong> — no todo se corrige de inmediato; a veces se documenta como deuda deliberada y se agenda para después.</li>
+          </ul>
+          <img class="portada-icon" src="img/clipboard-list.svg" alt="Plan de remediación" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un hallazgo con plan de remediación</h1>
+          <table>
+            <tbody>
+              <tr><th>Hallazgo</th><td>Método <code>procesarPago()</code> con complejidad ciclomática de 24 (18 anidamientos de <code>if</code>)</td></tr>
+              <tr><th>Severidad</th><td>Major</td></tr>
+              <tr><th>Por qué importa</th><td>Casi imposible de probar exhaustivamente; alto riesgo al modificarlo</td></tr>
+              <tr><th>Remediación</th><td>Extraer cada rama en un método propio; considerar un patrón de estrategia</td></tr>
+              <tr><th>Esfuerzo estimado</th><td>Mediano (~6 horas, con pruebas de regresión antes y después)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: encuentren el code smell</h1>
+          <pre><code>def procesar(a, b, c, d, e, f, tipo, activo, fecha, extra):
+    if tipo == 1:
+        if activo:
+            if fecha is not None:
+                # ... 40 líneas más de lógica anidada</code></pre>
+          <p><strong>5 minutos:</strong> ¿qué code smell(s) identifican? ¿Cómo empezarían a refactorizarlo?</p>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿La herramienta reemplaza el juicio humano?</h1>
+          <p>Es tentador tratar "Quality Gate en verde" como sinónimo de "código de calidad". No lo es: SonarCloud detecta <strong>patrones</strong>, no intención — produce falsos positivos, y un código puede tener 0 % de hallazgos y aun así resolver mal el problema del usuario.</p>
+          <p>El riesgo simétrico es "perseguir el número": subir cobertura con pruebas triviales que no verifican nada real, solo para que el porcentaje se vea bien.</p>
+          <blockquote>Las métricas son una brújula, no un mapa: señalan dirección, no reemplazan la revisión humana que vimos la semana pasada.</blockquote>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Debate sobre las herramientas" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>La <strong>deuda técnica</strong> no siempre es un error — depende de si fue deliberada y prudente.</li>
+            <li>Un <strong>code smell</strong> no es un bug: es una señal de un problema de diseño más profundo.</li>
+            <li><strong>Refactorizar</strong> cambia la estructura, no el comportamiento — y necesita pruebas para hacerse con seguridad.</li>
+            <li>El <strong>análisis estático</strong> examina código sin ejecutarlo; el <strong>Quality Gate</strong> define cuándo un análisis se considera aprobado.</li>
+            <li>Priorizar y estimar el esfuerzo de remediar sigue siendo <strong>trabajo humano</strong>, no algo que la herramienta decide sola.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: análisis con SonarCloud</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — grupo aleatorio de la semana</strong></p>
+          <p>El docente asigna un repositorio distinto a cada equipo. Cada equipo debe analizarlo con SonarCloud y entregar:</p>
+          <ul>
+            <li><strong>Tres hallazgos priorizados</strong>, cada uno con su severidad reportada por la herramienta.</li>
+            <li>Un <strong>plan de remediación</strong> por hallazgo: qué cambio concreto lo corrige.</li>
+            <li>Una <strong>estimación de esfuerzo</strong> por hallazgo.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s25">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 6, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Plan de pruebas: alcance, estrategia, criterios de entrada y salida, riesgos, recursos.</li>
+          </ul>
+          <p>Empieza la <strong>Unidad 4 — Fundamentación en pruebas</strong>, con los equipos fijos de <strong>Fábrica-Escuela</strong> desde hoy hasta el final del semestre. El taller de la semana 6: plan de pruebas de una página para ParaBank.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 25</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

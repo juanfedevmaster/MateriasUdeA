@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verificación, Validación y Aseguramiento — Semana 2</title>
+  <meta name="description" content="El proceso de aseguramiento de la calidad, verificación vs. validación, el modelo en V y los roles de un equipo de QA — Calidad de Software, Semana 2." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/verificacion-validacion-y-aseguramiento/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Verificación, Validación y Aseguramiento — Semana 2" />
+  <meta property="og:description" content="El proceso de aseguramiento de la calidad, verificación vs. validación, el modelo en V y los roles de un equipo de QA — Calidad de Software, Semana 2." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/verificacion-validacion-y-aseguramiento/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Verificación, Validación y Aseguramiento — Semana 2" />
+  <meta name="twitter:description" content="El proceso de aseguramiento de la calidad, verificación vs. validación, el modelo en V y los roles de un equipo de QA — Calidad de Software, Semana 2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 2 · Verificación, Validación y Aseguramiento</div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/verificacion-validacion-y-aseguramiento.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 2 — Verificación, validación y el proceso de aseguramiento</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/magnifying-glass-chart.svg" alt="Aseguramiento de calidad" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 1</h1>
+          <ul>
+            <li><strong>Error, defecto y falla</strong> son tres cosas distintas: la persona, el artefacto y el comportamiento.</li>
+            <li><strong>Crosby:</strong> calidad = conformidad con los requisitos. <strong>Juran:</strong> calidad = adecuación al uso.</li>
+            <li>La calidad vive en tres lugares: <strong>producto</strong> (ISO/IEC 25010), <strong>proceso</strong> (ISO/IEC 12207, CMMI) y <strong>uso</strong>.</li>
+            <li>Premisa de cierre: <strong>la calidad del proceso condiciona la del producto.</strong></li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: el proceso</h1>
+          <p>Si la calidad del proceso condiciona la del producto, hace falta un nombre para "cuidar el proceso": eso es el <strong>aseguramiento de la calidad</strong>.</p>
+          <p>Dentro de ese aseguramiento hay dos preguntas que se confunden todo el tiempo — y un modelo clásico que las organiza — y un debate sobre quién debe hacerlas.</p>
+          <img class="portada-icon" src="img/route.svg" alt="El proceso" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es el aseguramiento de la calidad (QA)</h1>
+          <p><strong>QA</strong> — <em>Quality Assurance</em> — es, según el estándar IEEE, un <strong>conjunto planeado y sistemático de actividades</strong> que da confianza en que el proceso y sus productos cumplen los requisitos técnicos y de gestión establecidos.</p>
+          <p>No es "probar el software al final": es un conjunto de actividades distribuidas a lo largo de todo el proceso — estándares, revisiones, auditorías, capacitación — que buscan <strong>evitar</strong> que el defecto llegue a existir, no solo encontrarlo.</p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Aseguramiento de calidad" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>QA no es QC</h1>
+          <p>Son dos siglas que se usan como sinónimos y no lo son. El curso distingue el <strong>aseguramiento</strong> (QA) del <strong>control</strong> (QC) de calidad:</p>
+          <table>
+            <thead>
+              <tr><th></th><th>QA — Aseguramiento</th><th>QC — Control</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Enfoque</th><td>El proceso</td><td>El producto</td></tr>
+              <tr><th>Naturaleza</th><td>Preventiva</td><td>Detectiva</td></tr>
+              <tr><th>Pregunta</th><td>¿Estamos siguiendo un buen proceso?</td><td>¿Este artefacto tiene defectos?</td></tr>
+              <tr><th>Ejemplos</th><td>Estándares, revisiones de diseño, capacitación</td><td>Pruebas, inspecciones de código, auditorías de producto</td></tr>
+            </tbody>
+          </table>
+          <p><strong>El testing es una actividad de QC que ocurre dentro de un programa de QA</strong> — no es lo mismo que todo el programa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El ciclo de aseguramiento: Planificar–Hacer–Verificar–Actuar</h1>
+          <p>Walter Shewhart lo propuso y Deming lo popularizó como <strong>PDCA</strong> <em>(Plan–Do–Check–Act)</em>. Es el mismo espíritu que la trilogía de Juran de la semana pasada, aplicado como ciclo que se repite:</p>
+          <ul>
+            <li><strong>Planificar:</strong> definir el estándar o proceso a seguir y qué se espera lograr.</li>
+            <li><strong>Hacer:</strong> ejecutar el proceso a pequeña escala o en el trabajo real.</li>
+            <li><strong>Verificar:</strong> comparar el resultado obtenido contra lo planeado.</li>
+            <li><strong>Actuar:</strong> ajustar el proceso con lo aprendido, y volver a planificar.</li>
+          </ul>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Ciclo PDCA" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Dos preguntas distintas dentro del aseguramiento</h1>
+          <p>El ciclo PDCA tiene un paso que dice "Verificar" — pero en aseguramiento de calidad de software esa palabra se separa en dos, porque responden preguntas distintas y se confunden constantemente en la práctica.</p>
+          <img class="portada-icon" src="img/circle-question.svg" alt="Dos preguntas" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Verificación: ¿lo estamos construyendo correctamente?</h1>
+          <p>Evalúa si los <strong>artefactos de una fase</strong> —un diseño, un módulo de código, un documento— cumplen las condiciones que se impusieron al comenzar esa fase. Es una comprobación de <strong>conformidad interna</strong>.</p>
+          <ul>
+            <li>Técnicas típicas: revisiones de código, inspecciones, walkthroughs, análisis estático.</li>
+            <li>Ocurre <strong>durante</strong> el desarrollo, fase por fase — no hace falta que el sistema completo esté ejecutándose.</li>
+            <li>Responde: ¿esto respeta la especificación que se le dio?</li>
+          </ul>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Verificación" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Validación: ¿estamos construyendo lo correcto?</h1>
+          <p>Evalúa si el <strong>producto</strong> —normalmente ya en ejecución, completo o parcial— satisface la <strong>necesidad real</strong> de quien lo va a usar. Es una comprobación contra el mundo, no contra un documento.</p>
+          <ul>
+            <li>Técnicas típicas: pruebas funcionales, pruebas de aceptación, demostraciones con usuarios reales.</li>
+            <li>Ocurre normalmente <strong>al final</strong> de una fase o del proyecto, cuando hay algo ejecutable que mostrar.</li>
+            <li>Responde: ¿esto resuelve el problema que el usuario tiene?</li>
+          </ul>
+          <img class="portada-icon" src="img/user-check.svg" alt="Validación" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Origen</p>
+          <h1>Barry Boehm, 1979</h1>
+          <p>Boehm es ingeniero de software, entonces en TRW Defense Systems, y más tarde una de las figuras centrales en la creación del modelo espiral de desarrollo. En 1979 publicó un artículo sobre verificación y validación de software que dejó la formulación que hasta hoy se enseña en toda introducción al tema.</p>
+          <p>No inventó los conceptos —ya se usaban en ingeniería de sistemas antes que en software— pero les dio la frase que los volvió memorables y que separa, de una vez, cualquier confusión entre ambos:</p>
+          <blockquote><strong>"Verification: are we building the product right? Validation: are we building the right product?"</strong></blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Verificación y validación, lado a lado</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Verificación</th><th>Validación</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Pregunta</th><td>¿Lo construimos correctamente?</td><td>¿Construimos lo correcto?</td></tr>
+              <tr><th>Se mide contra</th><td>La especificación</td><td>La necesidad real del usuario</td></tr>
+              <tr><th>Cuándo</th><td>Durante cada fase</td><td>Con el producto ejecutándose</td></tr>
+              <tr><th>Técnicas</th><td>Revisiones, inspecciones, análisis estático</td><td>Pruebas funcionales, aceptación, demos</td></tr>
+              <tr><th>Puede fallar aunque...</th><td>...el usuario esté satisfecho</td><td>...la especificación se haya cumplido al pie de la letra</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Aplicado</p>
+          <h1>El sistema de matrícula, otra vez</h1>
+          <p>La semana pasada usamos este ejemplo para hablar de Crosby y Juran. Con el vocabulario de hoy, se dice más preciso:</p>
+          <ul>
+            <li><strong>Verificación: aprobada.</strong> El sistema conforma con el 100 % de lo especificado.</li>
+            <li><strong>Validación: fallida.</strong> Ningún estudiante logra matricularse sin ayuda.</li>
+          </ul>
+          <p><strong>Se puede verificar con éxito y validar con fracaso al mismo tiempo — son ejes independientes, no dos nombres de lo mismo.</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Verificación sí, validación no" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿verificación o validación?</h1>
+          <p><strong>Clasifica cada actividad — 5 minutos, en el chat o en voz alta:</strong></p>
+          <ol>
+            <li>Un compañero revisa tu código antes de fusionarlo a la rama principal.</li>
+            <li>Un grupo de usuarios reales prueba la app y da su opinión sobre si les sirve.</li>
+            <li>Se compara el diseño de la base de datos contra el documento de requisitos.</li>
+            <li>El cliente aprueba la funcionalidad entregada al final del sprint.</li>
+          </ol>
+          <p class="slide-eyebrow">Esta dinámica es un calentamiento para la matriz del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El modelo en V</h1>
+          <p>Es un modelo de ciclo de vida que <strong>empareja</strong> cada fase de desarrollo con su fase de prueba correspondiente, definida desde el principio — no al final, como una ocurrencia tardía.</p>
+          <table>
+            <thead>
+              <tr><th>Fase de desarrollo</th><th>Fase de prueba correspondiente</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Requisitos de usuario</td><td>Pruebas de aceptación</td></tr>
+              <tr><td>Especificación funcional / diseño arquitectónico</td><td>Pruebas de sistema</td></tr>
+              <tr><td>Diseño detallado</td><td>Pruebas de integración</td></tr>
+              <tr><td>Codificación</td><td>Pruebas unitarias</td></tr>
+            </tbody>
+          </table>
+          <p>La codificación está en la punta de la "V", uniendo la rama de desarrollo (baja) con la de pruebas (sube).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué resuelve el modelo en V</h1>
+          <p>Cada prueba se <strong>diseña en la misma fase que su contraparte de desarrollo</strong>, no después de escribir el código:</p>
+          <ul>
+            <li>Los criterios de aceptación se escriben junto con los requisitos, no al entregar.</li>
+            <li>Si un requisito no tiene un criterio de aceptación claro, <strong>la prueba correspondiente no se puede diseñar</strong> — el hueco queda visible temprano.</li>
+            <li>Fuerza a pensar en cómo se va a probar algo antes de construirlo.</li>
+          </ul>
+          <img class="portada-icon" src="img/bezier-curve.svg" alt="Diseño temprano de pruebas" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>Una crítica común al modelo en V</h1>
+          <p>El modelo en V asume que los requisitos quedan fijos desde el principio y que las fases ocurren una sola vez, en secuencia. En proyectos ágiles, donde los requisitos cambian sprint a sprint, esa suposición no se sostiene.</p>
+          <p>La alternativa habitual no es abandonar la idea de emparejar desarrollo con pruebas, sino <strong>repetir ese emparejamiento en cada iteración</strong> en vez de una sola vez al inicio del proyecto.</p>
+          <blockquote>El modelo en V no está "mal": describe bien un proyecto con requisitos estables. El problema aparece cuando se aplica sin cuestionar a un contexto que no lo es.</blockquote>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Crítica al modelo" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora: quién hace esto</h1>
+          <p>Ya sabemos qué preguntas responder y en qué momento del ciclo. Falta la última pieza: quién es responsable de responderlas dentro de un equipo real.</p>
+          <img class="portada-icon" src="img/users.svg" alt="Quién hace QA" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Roles típicos en un equipo de QA</h1>
+          <ul>
+            <li><strong>QA Lead / Manager:</strong> define la estrategia de calidad del proyecto, los estándares a seguir y coordina al resto del equipo de QA.</li>
+            <li><strong>Analista / diseñador de pruebas:</strong> convierte requisitos en casos de prueba concretos — el rol más cercano a lo que hará el Trabajo 1 de este curso.</li>
+            <li><strong>Tester manual:</strong> ejecuta pruebas exploratorias y casos que aún no vale la pena automatizar.</li>
+            <li><strong>Ingeniero de automatización:</strong> a veces llamado <strong>SDET</strong> <em>(Software Development Engineer in Test)</em> — escribe código para automatizar pruebas repetitivas.</li>
+          </ul>
+          <p>En equipos pequeños, una sola persona cubre varios de estos roles a la vez.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>QA en equipos ágiles: responsabilidad compartida</h1>
+          <p>En metodologías ágiles, el tester no es una <strong>puerta al final</strong> del proceso: se integra al equipo desde el primer día del sprint, participa en la planeación y ayuda a escribir los criterios de aceptación.</p>
+          <p>La calidad deja de ser trabajo exclusivo de "el área de QA" y pasa a ser <strong>responsabilidad de todo el equipo</strong> — desarrolladores incluidos.</p>
+          <p class="slide-eyebrow">Conecta con Knight Capital: faltó justo eso — que una segunda persona revisara el despliegue antes de que saliera a producción.</p>
+          <img class="portada-icon" src="img/handshake.svg" alt="Responsabilidad compartida" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Hace falta un rol de QA dedicado?</h1>
+          <p>Si la calidad es "responsabilidad de todo el equipo", ¿para qué contratar testers dedicados? Un argumento fuerte en contra de eliminarlos: quien escribe el código tiende a probar lo que <strong>cree</strong> que construyó, no lo que realmente construyó — sus propios supuestos son invisibles para sí mismo.</p>
+          <p>El contraargumento: un rol separado puede volverse, otra vez, una puerta al final que retrasa la entrega y le quita presión al desarrollador para escribir código correcto desde el principio.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Debate sobre el rol de QA" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Niveles de independencia de las pruebas</h1>
+          <ol>
+            <li><strong>Sin independencia:</strong> la misma persona que escribió el código prueba su propio trabajo.</li>
+            <li><strong>Independencia dentro del equipo:</strong> otro desarrollador del mismo equipo prueba el código.</li>
+            <li><strong>Equipo de pruebas independiente:</strong> un equipo separado dentro de la misma organización.</li>
+            <li><strong>Independencia externa:</strong> una organización distinta certifica el producto.</li>
+          </ol>
+          <p><strong>A mayor independencia, menos sesgo pero menos contexto y más fricción de coordinación.</strong> No hay un nivel "correcto" universal — depende del riesgo del sistema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Aplicado</p>
+          <h1>De vuelta a Knight Capital</h1>
+          <p>Con el vocabulario de hoy, dos momentos distintos del caso de la semana pasada tienen nombre propio:</p>
+          <ul>
+            <li><strong>Falla de verificación:</strong> en 2005 se movió la función de cantidad acumulada y nadie volvió a revisar ni probar el código de <em>Power Peg</em> tras el cambio.</li>
+            <li><strong>Falla de validación:</strong> el 1 de agosto, el sistema desplegado no se comportó como el mercado —su usuario real— necesitaba, aunque cada pieza por separado "funcionara".</li>
+          </ul>
+          <p><strong>Un solo caso, dos tipos de falla distintos — encadenados.</strong></p>
+          <img class="portada-icon" src="img/link.svg" alt="Dos fallas encadenadas" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>QA no es QC.</strong> Aseguramiento es preventivo y mira el proceso; control es detectivo y mira el producto.</li>
+            <li><strong>Verificación</strong> pregunta si lo construimos correctamente; <strong>validación</strong>, si construimos lo correcto.</li>
+            <li>Se puede verificar con éxito y <strong>validar con fracaso</strong> al mismo tiempo.</li>
+            <li>El <strong>modelo en V</strong> empareja desarrollo y pruebas desde el inicio — útil con requisitos estables, cuestionable en entornos ágiles.</li>
+            <li>La calidad ya no es solo de "el área de QA": es <strong>responsabilidad compartida</strong> de todo el equipo.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s25">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: Matriz V&amp;V</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — grupo aleatorio de la semana</strong></p>
+          <p>El docente entrega un proyecto narrado con <strong>12 actividades</strong> de su ciclo de vida (revisiones, pruebas, demos, aprobaciones). Cada equipo debe:</p>
+          <ul>
+            <li>Clasificar cada actividad como <strong>verificación</strong> o <strong>validación</strong>.</li>
+            <li>Justificar cada clasificación en una o dos frases, usando el vocabulario de hoy.</li>
+            <li>Señalar, si lo hay, algún hueco: una fase de desarrollo sin su contraparte de prueba.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Matriz V&V" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s26">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 3, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Historias de usuario y criterios de aceptación.</li>
+            <li>Plan de aseguramiento de la calidad — SQAP, norma IEEE-730.</li>
+          </ul>
+          <p>Los grupos siguen siendo <strong>aleatorios</strong> hasta la semana 5. El taller de la semana 3: escribir 5 historias de usuario con criterios de aceptación en <strong>Gherkin</strong>, sobre un dominio asignado por grupo.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 25</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

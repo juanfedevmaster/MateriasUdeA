@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historias de Usuario, Criterios de Aceptación y SQAP — Semana 3</title>
+  <meta name="description" content="Historias de usuario, INVEST, criterios de aceptación en Gherkin y el plan de aseguramiento de la calidad (SQAP, IEEE-730) — Calidad de Software, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/historias-de-usuario-y-criterios-de-aceptacion/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Historias de Usuario, Criterios de Aceptación y SQAP — Semana 3" />
+  <meta property="og:description" content="Historias de usuario, INVEST, criterios de aceptación en Gherkin y el plan de aseguramiento de la calidad (SQAP, IEEE-730) — Calidad de Software, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/historias-de-usuario-y-criterios-de-aceptacion/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Historias de Usuario, Criterios de Aceptación y SQAP — Semana 3" />
+  <meta name="twitter:description" content="Historias de usuario, INVEST, criterios de aceptación en Gherkin y el plan de aseguramiento de la calidad (SQAP, IEEE-730) — Calidad de Software, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-title">Semana 3 · Historias de Usuario y SQAP</div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/historias-de-usuario-y-criterios-de-aceptacion.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 3 — Historias de usuario, criterios de aceptación y el plan de aseguramiento</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Historias de usuario" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 2</h1>
+          <ul>
+            <li><strong>QA</strong> es preventivo y mira el proceso; <strong>QC</strong> es detectivo y mira el producto.</li>
+            <li><strong>Verificación:</strong> ¿lo construimos correctamente? <strong>Validación:</strong> ¿construimos lo correcto?</li>
+            <li>El <strong>modelo en V</strong> empareja cada fase de desarrollo con su fase de prueba, desde el inicio.</li>
+            <li>La calidad es <strong>responsabilidad de todo el equipo</strong>, no solo de un rol dedicado.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: bajamos del proceso al artefacto</h1>
+          <p>El modelo en V pone <strong>pruebas de aceptación</strong> frente a los <strong>requisitos de usuario</strong>. Hasta ahora hemos hablado de esa pareja en abstracto — hoy vemos con qué artefacto concreto se escribe cada lado.</p>
+          <p>Ese artefacto es la <strong>historia de usuario</strong>, y el lenguaje para probarla es <strong>Gherkin</strong>.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Del proceso al artefacto" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una historia de usuario</h1>
+          <p>Es una <strong>descripción breve e informal</strong> de una funcionalidad, escrita desde la perspectiva de quien la va a usar — no una especificación técnica exhaustiva. Formato clásico:</p>
+          <blockquote><strong>Como</strong> &lt;tipo de usuario&gt;, <strong>quiero</strong> &lt;una funcionalidad&gt;, <strong>para</strong> &lt;un beneficio o razón&gt;.</blockquote>
+          <p>Ejemplo: <em>"Como cliente de la clínica, quiero recibir un recordatorio por correo un día antes de mi turno, para no olvidarlo."</em></p>
+          <img class="portada-icon" src="img/user-pen.svg" alt="Historia de usuario" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Origen</p>
+          <h1>Kent Beck, Ron Jeffries y la Extreme Programming</h1>
+          <p>Las historias de usuario nacieron a finales de los 90 dentro de <strong>Extreme Programming (XP)</strong>, la metodología ágil que Kent Beck lideró en el proyecto C3 de Chrysler. Ron Jeffries, coautor de XP, buscaba una forma de planear que no dependiera de documentos de requisitos extensos y difíciles de cambiar.</p>
+          <p>La idea: tarjetas físicas, cortas a propósito, que sirvieran de <strong>recordatorio para una conversación</strong> —no como contrato cerrado— entre el equipo y quien pide la funcionalidad.</p>
+          <blockquote>Jeffries resumió la idea en tres palabras que siguen citándose: <strong>"Card, Conversation, Confirmation"</strong> — la tarjeta, la conversación que provoca, y la confirmación (los criterios de aceptación) de que quedó bien entendida.</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>INVEST: seis criterios de una buena historia</h1>
+          <p>En 2003, Bill Wake propuso un acrónimo para revisar si una historia está bien escrita antes de aceptarla en el plan de trabajo:</p>
+          <ul>
+            <li><strong>Independiente:</strong> se puede planear y entregar sin depender de otra historia.</li>
+            <li><strong>Negociable:</strong> es punto de partida para conversar, no un contrato cerrado.</li>
+            <li><strong>Valiosa:</strong> entrega valor claro a quien la pidió.</li>
+            <li><strong>Estimable:</strong> el equipo puede darle un tamaño aproximado.</li>
+            <li><strong>Pequeña:</strong> cabe dentro de una sola iteración.</li>
+            <li><strong>Testeable:</strong> existe una forma clara de comprobar que quedó hecha.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un criterio de aceptación</h1>
+          <p>Es la respuesta a la "T" de INVEST: la <strong>condición concreta y verificable</strong> que el equipo y quien pidió la historia acuerdan como definición de "hecho". No es la historia misma, es lo que la hace <strong>testeable</strong>.</p>
+          <ul>
+            <li>Una historia normalmente tiene <strong>varios</strong> criterios de aceptación.</li>
+            <li>Se escriben <strong>antes</strong> de programar, no después — son parte del acuerdo, no una ocurrencia tardía.</li>
+            <li>Si no se puede escribir un criterio de aceptación claro, probablemente la historia no está lista.</li>
+          </ul>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Criterio de aceptación" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>De la historia a la prueba</h1>
+          <p>Aquí se cierra el emparejamiento del modelo en V que vimos la semana pasada:</p>
+          <p><strong>Historia de usuario</strong> (el requisito) → <strong>criterios de aceptación</strong> (la condición de éxito) → <strong>prueba de aceptación</strong> (la comprobación real, con el sistema en ejecución).</p>
+          <p>Cada criterio de aceptación es, en potencia, una prueba de aceptación ya redactada — solo falta ejecutarla.</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="De la historia a la prueba" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Falta un lenguaje común</h1>
+          <p>"El sistema debe validar bien las fechas" es un criterio de aceptación mal escrito: ambiguo, no ejecutable, interpretable de mil formas distintas por distintas personas.</p>
+          <p>Hace falta una estructura fija para escribir criterios de aceptación que cualquiera —negocio, desarrollo, pruebas— lea igual.</p>
+          <img class="portada-icon" src="img/comments.svg" alt="Lenguaje común" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Qué es Gherkin</h1>
+          <p><strong>Gherkin</strong> es un lenguaje estructurado, en texto plano y en el idioma de quien lo escribe, para redactar criterios de aceptación como escenarios legibles por personas <strong>y</strong> ejecutables por una herramienta.</p>
+          <p>Nació junto con <strong>Cucumber</strong>, la herramienta que Aslak Hellesøy creó en 2008 para conectar esos escenarios directamente con pruebas automatizadas — de ahí que ambos compartan nombre de vegetal.</p>
+          <img class="portada-icon" src="img/cucumber.svg" alt="Gherkin / Cucumber" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La estructura Given-When-Then</h1>
+          <p>En español, <strong>Dado-Cuando-Entonces</strong>. Todo escenario en Gherkin se arma con tres partes:</p>
+          <ul>
+            <li><strong>Dado</strong> <em>(Given)</em> — el contexto inicial, cómo empieza el mundo antes de actuar.</li>
+            <li><strong>Cuando</strong> <em>(When)</em> — la acción concreta que dispara el comportamiento.</li>
+            <li><strong>Entonces</strong> <em>(Then)</em> — el resultado esperado, lo que se debe poder comprobar.</li>
+          </ul>
+          <p>Se pueden encadenar pasos con <strong>Y</strong> <em>(And)</em> o <strong>Pero</strong> <em>(But)</em> cuando un bloque necesita más de una condición.</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Given-When-Then" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un escenario en Gherkin</h1>
+          <p>Para la historia de recordatorio de turno de la diapositiva 4:</p>
+          <pre><code>Feature: Recordatorio de turno por correo
+
+  Scenario: Enviar recordatorio un día antes
+    Given un cliente tiene un turno agendado para mañana
+    And el cliente tiene un correo válido registrado
+    When el sistema ejecuta el proceso diario de recordatorios
+    Then el cliente recibe un correo con la fecha y hora del turno</code></pre>
+          <p><strong>Cada Scenario es, literalmente, un criterio de aceptación ejecutable.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Gherkin dentro de BDD</h1>
+          <p>Gherkin es la notación; la práctica que lo envuelve se llama <strong>BDD</strong> <em>(Behavior-Driven Development, desarrollo guiado por comportamiento)</em>, propuesta por Dan North en 2003 como una evolución del desarrollo guiado por pruebas (TDD).</p>
+          <p>La idea de BDD: describir el comportamiento esperado <strong>en el lenguaje del negocio</strong> antes de escribir código, para que negocio, desarrollo y pruebas discutan sobre el mismo texto — no sobre interpretaciones distintas de un documento técnico.</p>
+          <img class="portada-icon" src="img/wand-magic-sparkles.svg" alt="BDD" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Una historia mal escrita</h1>
+          <p><strong>Mal:</strong> <em>"Como usuario, quiero que el sistema sea rápido y fácil de usar."</em></p>
+          <ul>
+            <li>No dice quién es el usuario ni qué acción concreta realiza.</li>
+            <li>"Rápido" y "fácil" no son testeables sin un criterio de aceptación que los aterrice.</li>
+            <li>Incumple varias letras de INVEST: no es pequeña, no es estimable, no es testeable.</li>
+          </ul>
+          <p><strong>Mejor:</strong> <em>"Como recepcionista, quiero agendar un turno en menos de tres clics, para atender la fila sin hacer esperar al siguiente cliente."</em> — con un criterio de aceptación que mida esos tres clics.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: escriban un Dado-Cuando-Entonces</h1>
+          <p><strong>5 minutos — en el chat o en voz alta:</strong></p>
+          <p>Historia: <em>"Como cliente, quiero cancelar un turno con más de 2 horas de anticipación, para liberar el espacio a otro cliente."</em></p>
+          <p>Escriban un escenario Gherkin completo (Dado / Cuando / Entonces) que sirva como criterio de aceptación de esa historia.</p>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora: quién escribe esto</h1>
+          <p>Historias y criterios no los escribe una sola persona en aislamiento — igual que la responsabilidad compartida de QA que vimos la semana pasada.</p>
+          <img class="portada-icon" src="img/users.svg" alt="Quién escribe esto" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Quién escribe las historias y sus criterios</h1>
+          <ul>
+            <li><strong>Product Owner</strong> (o quien haga ese papel): propone la historia y su "para qué" — el valor de negocio.</li>
+            <li><strong>El equipo de desarrollo:</strong> aporta viabilidad técnica y ayuda a partir historias grandes en pequeñas.</li>
+            <li><strong>QA / testers:</strong> empujan los criterios de aceptación hacia lo testeable — suelen ver los casos límite que a los demás se les escapan.</li>
+          </ul>
+          <p><strong>La conversación de las "tres Cs" de Jeffries es literalmente esta reunión de tres perspectivas.</strong></p>
+          <img class="portada-icon" src="img/handshake.svg" alt="Autoría compartida" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del criterio a la política</h1>
+          <p>Las historias y sus criterios funcionan a nivel de una funcionalidad. Pero, ¿cómo se asegura la calidad a nivel de <strong>todo el proyecto</strong>, de principio a fin? Con un documento que ya se mencionó hace dos semanas y nunca se explicó: el <strong>SQAP</strong>.</p>
+          <img class="portada-icon" src="img/file-contract.svg" alt="Del criterio a la política" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un SQAP (IEEE-730)</h1>
+          <p><strong>SQAP</strong> — <em>Software Quality Assurance Plan</em>, Plan de Aseguramiento de la Calidad del Software — es el documento que describe, para un proyecto específico, <strong>cómo se va a aplicar el aseguramiento de calidad (QA)</strong> que vimos la semana pasada: qué estándares se siguen, quién revisa qué, y con qué frecuencia.</p>
+          <p>El estándar que define su estructura es <strong>IEEE-730</strong>, publicado originalmente en 1979 —el mismo año del artículo de Boehm— y actualizado varias veces desde entonces.</p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="SQAP" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué contiene un SQAP</h1>
+          <table>
+            <tbody>
+              <tr><th>Propósito y alcance</th><td>Qué cubre el plan y a qué proyecto aplica</td></tr>
+              <tr><th>Documentación</th><td>Qué documentos deben existir y quién los aprueba</td></tr>
+              <tr><th>Estándares y convenciones</th><td>Normas de código, nomenclatura, revisiones de diseño</td></tr>
+              <tr><th>Revisiones y auditorías</th><td>Cuándo y cómo se revisa el trabajo</td></tr>
+              <tr><th>Pruebas</th><td>Qué se prueba, con qué técnicas, en qué niveles</td></tr>
+              <tr><th>Reporte de problemas</th><td>Cómo se registra y da seguimiento a un defecto</td></tr>
+              <tr><th>Control de código y medios</th><td>Versionamiento, backups, gestión de configuración</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Vale la pena un SQAP completo en un equipo ágil pequeño?</h1>
+          <p>IEEE-730 nació pensando en proyectos grandes, con contratos formales y entregas por fases. Un equipo de cuatro personas en un sprint de dos semanas difícilmente va a escribir un documento de quince secciones antes de programar.</p>
+          <p>La postura pragmática, no la del estándar al pie de la letra: usar la <strong>lista de temas</strong> de IEEE-730 como checklist de decisiones que el equipo debe tomar y dejar por escrito en algún lugar —un README, un wiki— aunque no exista un documento formal llamado "SQAP".</p>
+          <blockquote>El riesgo real no es "no tener un PDF llamado SQAP": es no haber decidido, para el proyecto, cómo se van a revisar, probar y versionar las cosas.</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Aplicado</p>
+          <h1>De vuelta a Knight Capital</h1>
+          <p>Con el vocabulario de hoy, el caso de la semana 1 se puede leer como un SQAP con huecos concretos:</p>
+          <ul>
+            <li><strong>Sin control de código:</strong> nada impedía que código muerto de 2003 siguiera en producción nueve años después.</li>
+            <li><strong>Sin revisión obligatoria:</strong> el despliegue de ocho servidores lo hizo una sola persona, sin segunda revisión.</li>
+            <li><strong>Sin reporte de problemas funcional:</strong> las 97 alertas existían, pero nadie las trataba como reporte de problemas.</li>
+          </ul>
+          <p><strong>No es que a Knight le faltara buena voluntad: le faltaba un plan escrito que alguien pudiera auditar.</strong></p>
+          <img class="portada-icon" src="img/link.svg" alt="Huecos del SQAP en Knight Capital" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una historia de usuario es un <strong>recordatorio para una conversación</strong>, no un contrato cerrado.</li>
+            <li><strong>INVEST</strong> es el checklist para saber si una historia está lista.</li>
+            <li>Los <strong>criterios de aceptación</strong> son lo que vuelve una historia testeable — se escriben antes de programar.</li>
+            <li><strong>Gherkin</strong> (Dado-Cuando-Entonces) da un lenguaje único para escribirlos, legible y ejecutable.</li>
+            <li>El <strong>SQAP</strong> (IEEE-730) hace a nivel de proyecto lo que los criterios hacen a nivel de historia: dejar por escrito cómo se asegura la calidad.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: historias de usuario en Gherkin</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — grupo aleatorio de la semana</strong></p>
+          <p>El docente asigna un dominio distinto a cada equipo (por ejemplo: una app de domicilios, un sistema de biblioteca, una plataforma de citas médicas). Cada equipo debe entregar:</p>
+          <ul>
+            <li><strong>5 historias de usuario</strong> en el formato "Como... quiero... para...", que cumplan INVEST.</li>
+            <li>Al menos <strong>un criterio de aceptación en Gherkin</strong> (Dado-Cuando-Entonces) por cada historia.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de historias de usuario" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s25">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 4, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Referentes básicos: ISO 9000, ISO/IEC 25000 (SQuaRE), CMMI, IEEE-730.</li>
+            <li>Evaluaciones, revisiones y auditorías de calidad.</li>
+          </ul>
+          <p>Empieza la <strong>Unidad 2</strong>, comprimida a dos semanas. Los grupos siguen siendo <strong>aleatorios</strong> hasta la semana 5. El taller de la semana 4: acta de walkthrough sobre un fragmento de código con defectos plantados.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 25</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
