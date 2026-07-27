@@ -103,21 +103,30 @@
   }
   .nav a.profile-link:hover{border-color:var(--amber); color:var(--amber);}
 
-  /* ---------- CREDIBILITY LINE (una sola línea; el resto vive en /perfil-del-profesor) ---------- */
-  .credibility{
-    max-width:1040px; margin:0 auto; padding:22px 24px;
-    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  /* ---------- PRESENTACIÓN (foto, nombre, cargo, contacto) ---------- */
+  .presenta{
+    max-width:1040px; margin:0 auto; padding:30px 24px;
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
     border-bottom:1px solid rgba(22,35,58,0.12);
   }
-  .credibility p{
-    font-size:14px; color:var(--ink-soft); margin:0; line-height:1.5;
+  .presenta .avatar{
+    width:64px; height:64px; flex-shrink:0; border:1px solid var(--amber);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--amber);
+    background:var(--amber-dim);
+    overflow:hidden;
   }
-  .credibility strong{color:var(--ink); font-weight:600;}
-  .credibility a{
-    font-size:13px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--amber);
-    white-space:nowrap; margin-left:auto;
+  .presenta .avatar img{width:100%; height:100%; object-fit:cover;}
+  .presenta .who{flex-grow:1; min-width:220px;}
+  .presenta .who .name{font-size:16.5px; font-weight:600; color:var(--ink); margin-bottom:2px;}
+  .presenta .who .role{font-size:13.5px; color:var(--ink-soft);}
+  .presenta .contact{display:flex; gap:16px; flex-wrap:wrap; margin-left:auto;}
+  .presenta .contact a{
+    font-size:13px; color:var(--ink); text-decoration:none; display:flex; align-items:center; gap:6px;
+    border-bottom:1px solid transparent;
   }
-  .credibility a:hover{color:var(--amber);}
+  .presenta .contact a:hover{color:var(--amber); border-color:var(--amber);}
+  .presenta .contact svg{flex-shrink:0;}
 
   /* ---------- COURSES (index of sheets) ---------- */
   .courses{max-width:1040px; margin:0 auto; padding:16px 24px 90px;}
@@ -184,7 +193,7 @@
     </div>
 
     <div class="eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</div>
-    <h1 class="hero-title display">Planos de curso, no solo presentaciones.</h1>
+    <h1 class="hero-title display">Arquitectura antes que sintaxis.</h1>
     <p class="hero-sub">Material de clase organizado por asignatura — pensado para diseñar software con el mismo rigor con el que se diseña una estructura: por capas, por decisiones, por planos.</p>
 
     <div class="title-block mono">
@@ -208,9 +217,26 @@
   </div>
 </section>
 
-<section class="credibility">
-  <p><strong>15+ años</strong> en la industria (Senior Technical Consultant, Azure/.NET/Arquitectura) — hoy también en el aula.</p>
-  <a href="#">Trayectoria completa →</a>
+<section class="presenta">
+  <div class="avatar mono">
+    <img src="https://profejuanfe.dev/assets/img/juanfe-profile.png" alt="Juan Felipe Quintana Gómez" onerror="this.remove()">
+    JFQ
+  </div>
+  <div class="who">
+    <div class="name display">Juan Felipe Quintana Gómez</div>
+    <div class="role">Senior Technical Consultant · Azure/.NET/Arquitectura — hoy también en el aula</div>
+  </div>
+  <div class="contact mono">
+    <a href="mailto:jufequinta@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+      Correo
+    </a>
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0v8"/></svg>
+      LinkedIn
+    </a>
+    <a href="#">Trayectoria completa →</a>
+  </div>
 </section>
 
 <section class="courses">

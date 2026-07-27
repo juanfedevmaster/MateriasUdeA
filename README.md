@@ -77,6 +77,24 @@ Cada deck es un HTML con secciones `<section class="slide" id="sNN">` dentro de
 un slide por página tamaño 1280×720, reduce fuentes/íconos para que quepan en una página
 por diapositiva. Ver "Generar los PDF" abajo.
 
+### Navegación entre presentaciones (`deck-nav.js`)
+
+En la topbar de cada deck, donde antes había un texto fijo con el título, ahora hay
+`<button id="deck-prev-btn">`, `<select id="deck-picker">` y `<button id="deck-next-btn">`.
+`deck-nav.js` los llena en tiempo de carga:
+- lee el `<script src="../../topics.js">` que cada deck ahora incluye (antes de
+  `deck-nav.js`, después debe estar cargado `TOPICS`),
+- detecta el slug del deck actual a partir de `location.pathname` (busca el segmento
+  después de `presentaciones/`),
+- filtra `TOPICS` a `available: true` y ubica la posición del deck actual en esa lista,
+- llena el `<select>` con todas las presentaciones disponibles del curso (saltar a
+  cualquiera navega directo), y habilita/deshabilita los botones anterior/siguiente según
+  si existe un deck adyacente.
+
+Como todo depende de `topics.js`, **agregar una semana nueva a `topics.js` la conecta
+automáticamente** a la navegación de todos los demás decks del curso — no hay que tocar
+nada más.
+
 ## Cómo agregar una semana/sesión nueva
 
 1. Copia una presentación existente como plantilla (ej. `tecnicas-de-programacion/presentaciones/introduccion-a-la-programacion/`).

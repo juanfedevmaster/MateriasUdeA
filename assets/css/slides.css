@@ -16,7 +16,7 @@
 .deck-topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 14px;
   padding: 12px 20px;
   background: var(--surface);
@@ -40,16 +40,136 @@
   color: var(--accent);
 }
 
-.deck-title {
-  flex: 1;
+.deck-nav-group {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.deck-nav-arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), opacity var(--transition), background-color var(--transition);
+}
+
+.deck-nav-arrow:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.deck-nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.deck-picker {
+  position: relative;
+  flex-shrink: 0;
+  width: 350px;
+}
+
+.deck-picker-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--text);
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.deck-picker-btn:hover,
+.deck-picker-btn.open {
+  border-color: var(--accent);
+  background-color: var(--surface);
+}
+
+.deck-picker-label {
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 14px;
-  border-left: 1px solid var(--border);
+}
+
+.deck-picker-chevron {
+  flex-shrink: 0;
+  color: var(--accent);
+  transition: transform var(--transition);
+}
+
+.deck-picker-btn.open .deck-picker-chevron {
+  transform: rotate(180deg);
+}
+
+.deck-picker-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 300px;
+  max-width: min(420px, 90vw);
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  z-index: 50;
+  display: none;
+}
+
+.deck-picker-menu.open {
+  display: block;
+}
+
+.deck-picker-menu li + li {
+  margin-top: 2px;
+}
+
+.deck-picker-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 9px 10px;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.deck-picker-menu button:hover {
+  background: var(--surface-2);
+  color: var(--accent);
+}
+
+.deck-picker-menu button.current {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .deck-actions {
@@ -420,7 +540,7 @@
 }
 
 @media (max-width: 720px) {
-  .deck-title {
+  .deck-nav-group {
     display: none;
   }
 

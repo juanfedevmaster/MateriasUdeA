@@ -177,38 +177,75 @@ h1.hero-title {
   }
 }
 
-/* ---------- CREDIBILITY LINE ---------- */
-.credibility {
+/* ---------- PRESENTACIÓN (foto, nombre, cargo, contacto) ---------- */
+.presenta {
   max-width: 1040px;
   margin: 0 auto;
   padding: 22px 24px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 24px;
   flex-wrap: wrap;
   border-bottom: 1px solid var(--border);
 }
-.credibility p {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.5;
+.presenta-avatar {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: rgba(89, 168, 125, 0.12);
 }
-.credibility strong {
-  color: var(--text);
+.presenta-who {
+  flex-grow: 1;
+  min-width: 220px;
+}
+.presenta-name {
+  font-size: 16px;
   font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
 }
-.credibility a {
+.presenta-role {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.presenta-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+.presenta-links a {
   font-size: 13px;
   color: var(--text);
   text-decoration: none;
-  border-bottom: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+.presenta-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.presenta-more {
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
   white-space: nowrap;
   margin-left: auto;
+  border-bottom: 1px solid var(--accent);
   transition: color var(--transition);
 }
-.credibility a:hover {
+.presenta-more:hover {
   color: var(--accent);
+}
+.presenta-contact .icon {
+  flex-shrink: 0;
 }
 
 /* ---------- COURSES (index of sheets) ---------- */
