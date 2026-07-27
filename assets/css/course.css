@@ -214,6 +214,63 @@ h1.course-title {
   color: var(--text-muted);
 }
 
+/* ---------- FILTRO DE PRESENTACIONES ---------- */
+.course-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  background: var(--surface-2);
+  transition: border-color var(--transition);
+}
+.course-filter:focus-within {
+  border-color: var(--accent);
+}
+.course-filter svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+.course-filter-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+.course-filter-input::placeholder {
+  color: var(--text-muted);
+}
+.course-filter-clear {
+  flex-shrink: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.course-filter-clear.visible {
+  display: inline-flex;
+}
+.course-filter-clear:hover {
+  color: var(--accent);
+}
+
+.week.is-hidden,
+.session.is-hidden {
+  display: none !important;
+}
+
 .course-empty {
   color: var(--text-muted);
   font-size: 14.5px;

@@ -80,6 +80,13 @@
       <h2>Contenido del curso</h2>
       <span class="home-mono" id="content-stats"></span>
     </div>
+    <div class="course-filter" id="course-filter">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="search" id="course-filter-input" class="course-filter-input" placeholder="Buscar por título o tema…" autocomplete="off" />
+      <button class="course-filter-clear" id="course-filter-clear" type="button" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
     <div id="weeks-container"></div>
   </section>
 
@@ -89,6 +96,7 @@
 
   <script src="topics.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/course-filter.js"></script>
   <script src="../assets/js/share.js"></script>
 </body>
 </html>
