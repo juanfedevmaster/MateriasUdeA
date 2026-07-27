@@ -301,6 +301,28 @@
   margin-bottom: 18px;
 }
 
+.slide-split {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(24px, 4vw, 48px);
+  margin-top: 18px;
+}
+
+.slide-split-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.app-screenshot {
+  display: block;
+  flex: 0 0 auto;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(240, 222, 187, 0.18);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
 .slide.type-impacto .slide-content {
   text-align: center;
 }
@@ -566,6 +588,10 @@
     width: 200px !important;
     height: 200px !important;
     margin-bottom: 10px;
+  }
+
+  .app-screenshot {
+    width: 220px !important;
   }
 
   .lang-collage {

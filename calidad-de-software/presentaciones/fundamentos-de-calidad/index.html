@@ -440,6 +440,73 @@
           </div>
       </section>
 
+      <section class="slide type-concepto" id="s26a">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Estándares</p>
+          <h1>ISO/IEC 25010: calidad de producto</h1>
+          <p>Define <strong>8 características</strong> para evaluar cómo está construido el software — la norma que se usará en el taller de hoy para clasificar cada hallazgo.</p>
+          <ul>
+            <li><strong>Adecuación funcional:</strong> hace lo que el usuario necesita, de forma completa y correcta.</li>
+            <li><strong>Eficiencia de desempeño:</strong> tiempos de respuesta y uso de recursos adecuados.</li>
+            <li><strong>Compatibilidad:</strong> coexiste con otros sistemas e intercambia información con ellos.</li>
+            <li><strong>Usabilidad:</strong> fácil de entender, aprender, operar y atractiva para el usuario.</li>
+            <li><strong>Confiabilidad:</strong> se mantiene funcionando en condiciones normales y ante fallos.</li>
+            <li><strong>Seguridad:</strong> protege información y datos de accesos no autorizados.</li>
+            <li><strong>Mantenibilidad:</strong> fácil de modificar, corregir y mejorar sin introducir defectos.</li>
+            <li><strong>Portabilidad:</strong> se puede transferir de un entorno de hardware/software a otro.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s26b">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Estándares</p>
+          <h1>ISO/IEC 25010: calidad en uso</h1>
+          <p>La misma norma define un segundo modelo, con <strong>5 características</strong>, para cuando el software ya está en manos de alguien resolviendo una tarea real:</p>
+          <ul>
+            <li><strong>Efectividad:</strong> el usuario logra sus objetivos con precisión y completitud.</li>
+            <li><strong>Eficiencia:</strong> logra esos objetivos usando pocos recursos (tiempo, esfuerzo).</li>
+            <li><strong>Satisfacción:</strong> el resultado es útil, cómodo de usar y genera confianza.</li>
+            <li><strong>Libertad de riesgo:</strong> no genera consecuencias negativas (económicas, de salud, ambientales).</li>
+            <li><strong>Cobertura de contexto:</strong> funciona bien tanto en el contexto previsto como en otros no previstos.</li>
+          </ul>
+          <p><strong>Diferencia clave:</strong> "calidad de producto" se mide sobre el software en sí; "calidad en uso" se mide sobre el resultado de usarlo.</p>
+          <img class="portada-icon" src="img/face-smile.svg" alt="Calidad en uso" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s26c">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Estándares</p>
+          <h1>ISO/IEC 12207: procesos del ciclo de vida</h1>
+          <p>No evalúa el software, sino <strong>qué procesos</strong> debería tener una organización para construirlo — desde el acuerdo con el cliente hasta el retiro del sistema.</p>
+          <ul>
+            <li><strong>Procesos de acuerdo:</strong> adquisición y suministro entre las partes.</li>
+            <li><strong>Procesos de habilitación organizacional:</strong> gestión del portafolio de proyectos, recursos humanos, infraestructura.</li>
+            <li><strong>Procesos de proyecto:</strong> planeación, control, gestión de riesgos, de la configuración.</li>
+            <li><strong>Procesos técnicos:</strong> requisitos, arquitectura, diseño, implementación, integración, verificación, validación, operación, mantenimiento.</li>
+          </ul>
+          <p>Es un <strong>marco de referencia</strong>: dice qué procesos deberían existir, no qué tan bien se ejecutan — eso lo mide CMMI.</p>
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s26d">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Estándares</p>
+          <h1>CMMI: qué tan maduro es el proceso</h1>
+          <p>CMMI (Capability Maturity Model Integration) evalúa <strong>qué tan consistente y controlada</strong> es la forma en que una organización ejecuta sus procesos, en 5 niveles:</p>
+          <ol>
+            <li><strong>Inicial:</strong> el trabajo es ad hoc, impredecible; depende de héroes individuales.</li>
+            <li><strong>Gestionado:</strong> hay planeación y seguimiento básico a nivel de proyecto.</li>
+            <li><strong>Definido:</strong> los procesos están estandarizados en toda la organización.</li>
+            <li><strong>Gestionado cuantitativamente:</strong> el desempeño se mide y controla con datos estadísticos.</li>
+            <li><strong>En optimización:</strong> mejora continua basada en esos mismos datos.</li>
+          </ol>
+          <p><strong>ISO/IEC 12207 dice qué procesos deben existir; CMMI dice qué tan bien y de forma cuán consistente se ejecutan.</strong></p>
+          <img class="portada-icon" src="img/stairs.svg" alt="Niveles de madurez CMMI" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+          </div>
+      </section>
+
       <section class="slide type-concepto" id="s27">
           <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
@@ -529,15 +596,19 @@
           <p class="slide-kicker">Instrucciones</p>
           <h1>Taller de hoy</h1>
           <p><strong>Cazar defectos — 2 horas, en sala de Zoom asignada</strong></p>
-          <p>Cada grupo recibe una aplicación (la misma). Deben entregar <strong>6 hallazgos</strong>, cada uno con:</p>
-          <ul>
-            <li>Descripción y pasos de reproducción</li>
-            <li>Evidencia: captura con fecha y hora visibles</li>
-            <li>Clasificación: error, defecto o falla — <strong>con justificación</strong></li>
-            <li>Característica ISO/IEC 25010 comprometida</li>
-          </ul>
-          <p><strong>La entrega cierra al terminar las dos horas.</strong></p>
-          <img class="portada-icon" src="img/bug.svg" alt="Cazar defectos" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+          <div class="slide-split">
+            <div class="slide-split-text">
+              <p>Cada equipo debe ingresar a la aplicación que se indica al lado. La deben revisar y entregar como mínimo <strong>3 hallazgos</strong>, cada uno con:</p>
+              <ul>
+                <li>Descripción y pasos de reproducción</li>
+                <li>Clasificación: error, defecto o falla — <strong>con justificación</strong></li>
+                <li>Característica ISO/IEC 25010 comprometida</li>
+                <li>Generar un archivo markdown con el reporte de errores</li>
+              </ul>
+              <p><strong>Aplicación a probar:</strong> <a href="https://parabank-ui.onrender.com" target="_blank" rel="noopener">parabank-ui.onrender.com</a> · <strong>La entrega cierra al terminar las dos horas.</strong></p>
+            </div>
+            <img class="app-screenshot" src="img/parabank-app.png" alt="ParaBank — pantalla de inicio de sesión" />
+          </div>
           </div>
       </section>
 
@@ -559,7 +630,7 @@
 
     <div class="deck-bottombar">
       <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
-      <span class="slide-counter" id="slide-counter">01 / 34</span>
+      <span class="slide-counter" id="slide-counter">01 / 38</span>
       <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
     </div>
   </div>
