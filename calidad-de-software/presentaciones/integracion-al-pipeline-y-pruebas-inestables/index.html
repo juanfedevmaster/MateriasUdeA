@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integración al Pipeline y Pruebas Inestables — Semana 15</title>
+  <meta name="description" content="Integrar la suite automatizada al pipeline de CI, qué son las pruebas inestables (flaky tests), sus causas y el costo de mantener una suite en el tiempo — Calidad de Software, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/integracion-al-pipeline-y-pruebas-inestables/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Integración al Pipeline y Pruebas Inestables — Semana 15" />
+  <meta property="og:description" content="Integrar la suite automatizada al pipeline de CI, qué son las pruebas inestables (flaky tests), sus causas y el costo de mantener una suite en el tiempo — Calidad de Software, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/integracion-al-pipeline-y-pruebas-inestables/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Integración al Pipeline y Pruebas Inestables — Semana 15" />
+  <meta name="twitter:description" content="Integrar la suite automatizada al pipeline de CI, qué son las pruebas inestables (flaky tests), sus causas y el costo de mantener una suite en el tiempo — Calidad de Software, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/integracion-al-pipeline-y-pruebas-inestables.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 15 — Integración al pipeline y pruebas inestables</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/shuffle.svg" alt="Pruebas inestables" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de las semanas 13 y 14</h1>
+          <ul>
+            <li>Un <strong>framework de automatización</strong> (Selenium, Playwright o Cypress) con un primer test E2E, y un <strong>pipeline de CI</strong> desde la semana 12 (build, test, cobertura, análisis estático).</li>
+            <li>Una suite <strong>refactorizada con Page Object</strong>: los selectores viven en una clase por pantalla, no repetidos en cada test.</li>
+            <li>Lo que falta: esa suite todavía se ejecuta <strong>a mano</strong>, no en cada <code>commit</code>. Y nadie ha preguntado qué pasa si un test falla sin que nada haya cambiado.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>84 % de las pruebas que cambian de verde a rojo en Google no señalan un bug</h1>
+          <p class="slide-eyebrow">Son inestables. El código no cambió — la prueba sí. John Micco, Google, 2016.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real · Ficha</p>
+          <h1>El estudio de Google sobre pruebas inestables</h1>
+          <table>
+            <thead>
+              <tr><th>Dato</th><th>Detalle</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Quién</strong></td><td>John Micco, equipo de infraestructura de pruebas de Google.</td></tr>
+              <tr><td><strong>Cuándo</strong></td><td>Google Test Automation Conference (GTAC), 2016.</td></tr>
+              <tr><td><strong>Escala</strong></td><td>Cientos de miles de pruebas automatizadas, millones de ejecuciones diarias sobre el monorepo interno de Google.</td></tr>
+              <tr><td><strong>Hallazgo</strong></td><td>~1,5 % de todas las ejecuciones de prueba mostraban un resultado inestable — a veces verde, a veces rojo, sin ningún cambio de código de por medio.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/google.svg" alt="Google" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real · Qué hizo Google</p>
+          <h1>Un 1,5 % que cuesta miles de horas de ingeniería</h1>
+          <p>El número parece pequeño, pero a esa escala se traduce en <strong>cientos de miles de ejecuciones inestables por día</strong>. Cada una obliga a alguien a detenerse, revisar un fallo que no era real y decidir si reintentar o investigar. Google respondió con tres medidas, no con una sola:</p>
+          <ul>
+            <li>Un <strong>puntaje de inestabilidad (flakiness score)</strong> por prueba, calculado con el historial de ejecuciones.</li>
+            <li><strong>Reintento automático</strong> de pruebas con puntaje alto antes de marcar el build como roto.</li>
+            <li><strong>Desactivación automática</strong> de pruebas que superan un umbral de inestabilidad, con alerta al equipo dueño.</li>
+          </ul>
+          <img class="portada-icon" src="img/chart-line.svg" alt="Mitigación a escala" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: conectar la suite al pipeline, y aprender a convivir con la inestabilidad</h1>
+          <p>No hace falta la escala de Google para toparse con este problema — una suite de diez pruebas E2E ya puede tener una inestable. Hoy resolvemos dos cosas: <strong>cómo</strong> se integra la suite automatizada al pipeline de CI de la semana 12, y <strong>qué hacer</strong> cuando una prueba de esa suite empieza a fallar sin razón aparente.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Qué resolvemos hoy" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una prueba inestable (flaky test)</h1>
+          <p>Es una prueba automatizada que produce <strong>resultados distintos en ejecuciones distintas, sobre el mismo código</strong>: a veces pasa, a veces falla, sin que nadie haya tocado ni la aplicación ni la prueba. No es un test que falla siempre por un bug real — ese es un test <strong>útil</strong>, aunque incómodo.</p>
+          <p>El problema de fondo no es que falle. Es que <strong>deja de ser una señal confiable</strong>: si un test falla y el 84 % de las veces es ruido, el equipo aprende a ignorar los fallos — incluido el día en que el fallo sí es un bug real.</p>
+          <img class="portada-icon" src="img/shuffle.svg" alt="Prueba inestable" style="display:block;width:170px;height:170px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Causas comunes de inestabilidad</h1>
+          <table>
+            <thead>
+              <tr><th>Causa</th><th>Qué pasa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Esperas fijas (<code>sleep</code>)</strong></td><td>La prueba asume que un elemento carga en X segundos; si la red va más lenta ese día, falla.</td></tr>
+              <tr><td><strong>Estado compartido entre pruebas</strong></td><td>Un test deja datos que otro test asume que no existen; el orden de ejecución cambia el resultado.</td></tr>
+              <tr><td><strong>Dependencias externas</strong></td><td>La prueba llama una API de terceros, un servicio de correo o un reloj del sistema fuera de nuestro control.</td></tr>
+              <tr><td><strong>Concurrencia</strong></td><td>Dos operaciones asíncronas terminan en distinto orden según la carga del entorno de ejecución.</td></tr>
+              <tr><td><strong>Datos de prueba no deterministas</strong></td><td>La prueba genera un valor aleatorio o depende de la fecha del día sin fijarlos.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/table-list.svg" alt="Causas de inestabilidad" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Antes</p>
+          <h1>Espera fija: funciona en la máquina del desarrollador, falla en CI</h1>
+          <pre><code>def test_agregar_al_carrito(page):
+    page.click("#add-to-cart-sauce-labs-backpack")
+    time.sleep(1)  # "seguro que ya cargó"
+    assert page.locator(".shopping_cart_badge").text_content() == "1"</code></pre>
+          <p>En la laptop del desarrollador, un segundo alcanza. En el runner de CI, compartido y más lento en horas pico, a veces no. El test no prueba la aplicación — prueba qué tan rápido estuvo el servidor de CI esa ejecución.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Después</p>
+          <h1>Espera explícita: condicionada al estado, no al reloj</h1>
+          <pre><code>def test_agregar_al_carrito(page):
+    page.click("#add-to-cart-sauce-labs-backpack")
+    page.wait_for_selector(".shopping_cart_badge", timeout=5000)
+    assert page.locator(".shopping_cart_badge").text_content() == "1"</code></pre>
+          <p>La prueba espera <strong>hasta que el elemento exista</strong>, con un tope máximo razonable — no un tiempo fijo adivinado. Si el badge tarda 200 ms o 3 segundos, la prueba sigue siendo determinista frente al mismo resultado final.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Aislamiento de pruebas (test isolation)</h1>
+          <p>Cada prueba debe poder ejecutarse <strong>sola, en cualquier orden, y llegar al mismo resultado</strong>. Eso exige que no dependa de datos que dejó otra prueba, ni de que una prueba anterior haya corrido primero.</p>
+          <p>En la práctica: cada prueba prepara su propio estado inicial (con una <em>fixture</em>, semana 14) y no asume nada sobre lo que quedó de la ejecución anterior. Si dos pruebas comparten el mismo usuario o el mismo carrito sin aislarse, una modifica lo que la otra necesita intacto.</p>
+          <img class="portada-icon" src="img/flask-vial.svg" alt="Aislamiento de pruebas" style="display:block;width:170px;height:170px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Dos pruebas que solo pasan juntas, en orden</h1>
+          <pre><code>def test_1_login(page):
+    LoginPage(page).login("standard_user", "secret_sauce")
+    # deja la sesión abierta para el siguiente test
+
+def test_2_agregar_al_carrito(page):
+    # asume que test_1_login ya corrió antes en esta misma página
+    page.click("#add-to-cart-sauce-labs-backpack")</code></pre>
+          <p>Si <code>test_2</code> corre solo, o el framework decide ejecutar las pruebas en paralelo o en otro orden, falla — no porque la aplicación tenga un defecto, sino porque la prueba nunca declaró su propia dependencia. Cada prueba debe iniciar sesión por su cuenta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Con una suite más confiable, toca conectarla al pipeline</h1>
+          <p>El pipeline de la semana 12 ya ejecuta pruebas unitarias en cada <code>commit</code>. Una suite E2E es distinta: más lenta, necesita un navegador y no puede correr en el mismo paso que el build. Se agrega como una <strong>etapa adicional</strong>, no como un reemplazo.</p>
+          <img class="portada-icon" src="img/githubactions.svg" alt="Pipeline" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué cambia al integrar E2E al pipeline</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Pruebas unitarias (semana 12)</th><th>Suite E2E (hoy)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Duración</strong></td><td>Segundos</td><td>Minutos — abre navegador real o headless</td></tr>
+              <tr><td><strong>Entorno</strong></td><td>Solo el código</td><td>Necesita la aplicación desplegada o corriendo localmente</td></tr>
+              <tr><td><strong>Cuándo corre</strong></td><td>En cada <code>commit</code>, siempre</td><td>En cada <code>commit</code>, en una etapa aparte y en paralelo si el pipeline lo permite</td></tr>
+              <tr><td><strong>Si falla</strong></td><td>Bloquea el build casi siempre</td><td>Bloquea, salvo pruebas en cuarentena (ver más adelante)</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/table-list.svg" alt="Comparativa" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>La suite E2E como job separado en GitHub Actions</h1>
+          <pre><code>jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pytest tests/unit
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - run: playwright install --with-deps
+      - run: pytest tests/e2e --browser=chromium --headless</code></pre>
+          <p><code>e2e-tests</code> solo arranca si <code>unit-tests</code> pasó primero (<code>needs</code>), y corre el navegador en modo <code>headless</code> — sin interfaz gráfica, como necesita un runner de CI.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué hacer con una prueba que ya se sabe inestable</h1>
+          <ul>
+            <li><strong>Arreglar la causa raíz</strong> (esperas explícitas, aislamiento) — siempre la primera opción.</li>
+            <li><strong>Reintento automático (retry):</strong> repetir la prueba una o dos veces antes de marcarla como fallida. Mitiga el ruido, no arregla la causa.</li>
+            <li><strong>Cuarentena (quarantine):</strong> sacar la prueba del conjunto que bloquea el pipeline, pero seguir ejecutándola y reportando su resultado por separado, hasta corregirla.</li>
+          </ul>
+          <p>La cuarentena no es "borrar el test" ni "ignorarlo para siempre": es una casilla temporal con dueño y fecha de revisión.</p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Cuarentena" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>El reintento automático, ¿ayuda o esconde el problema?</h1>
+          <p>Configurar reintentos es rápido: una línea en el pipeline y los builds rojos por ruido bajan de inmediato. El equipo respira. Pero un reintento que siempre pasa a la segunda vez <strong>nunca vuelve a la lista de pendientes</strong> — la causa raíz queda enterrada bajo un mecanismo que la disimula, y la suite se vuelve cada vez más lenta porque cada prueba corre dos o tres veces.</p>
+          <p><strong>El reintento es una mitigación temporal con fecha de vencimiento, no una política permanente.</strong> Cada prueba en retry automático debería tener asignado quién la va a arreglar y para cuándo — igual que la cuarentena.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Tensión" style="display:block;width:170px;height:170px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El costo de mantenimiento de una suite automatizada</h1>
+          <p>Escribir la suite es solo el primer costo. Después de eso, cada semana que la aplicación cambia, alguien tiene que:</p>
+          <table>
+            <thead>
+              <tr><th>Actividad</th><th>Por qué recurre</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Actualizar selectores</strong></td><td>La interfaz cambia — mitigado, no eliminado, por Page Object (semana 14).</td></tr>
+              <tr><td><strong>Investigar fallos inestables</strong></td><td>Distinguir un bug real de ruido consume tiempo de ingeniería en cada ejecución roja.</td></tr>
+              <tr><td><strong>Revisar la cola de cuarentena</strong></td><td>Pruebas aparcadas que nadie revisa se acumulan y dejan de probar nada.</td></tr>
+              <tr><td><strong>Ajustar tiempos de ejecución</strong></td><td>Una suite que tarda 40 minutos frena cada <code>commit</code> — hay que paralelizar o podar.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/hourglass-half.svg" alt="Costo de mantenimiento" style="display:block;width:140px;height:140px;margin:5px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿cuál es la causa?</h1>
+          <p><strong>5 minutos, respondan en el chat:</strong></p>
+          <ol>
+            <li>Una prueba de checkout falla solo los lunes, cuando el equipo de datos recarga el catálogo de productos de prueba.</li>
+            <li>Una prueba pasa siempre que se ejecuta sola, pero falla si corre después de la prueba de "eliminar cuenta".</li>
+            <li>Una prueba que verifica una notificación falla una de cada cinco veces, sin patrón aparente de horario ni de datos.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Más pruebas automatizadas es siempre mejor?</h1>
+          <p>La semana 11 vio la cobertura como métrica: alta cobertura no garantiza calidad, solo dice qué porcentaje del código se ejecutó. Hoy se suma un segundo matiz: una suite grande y <strong>inestable</strong> puede ser peor que una suite pequeña y confiable — porque erosiona la confianza del equipo en el pipeline completo, no solo en esa prueba.</p>
+          <p>La pregunta correcta no es "¿cuántas pruebas E2E tenemos?", sino "¿cuántas de nuestras pruebas E2E el equipo revisa de verdad cuando fallan?". Una suite que se ignora no está probando nada, aunque aparezca verde.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Disputa" style="display:block;width:170px;height:170px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una <strong>prueba inestable</strong> no falla por un bug: falla de forma distinta sobre el mismo código, y erosiona la confianza en toda la suite.</li>
+            <li>Sus causas más comunes: <strong>esperas fijas, estado compartido, dependencias externas, concurrencia y datos no deterministas.</strong></li>
+            <li><strong>Esperas explícitas</strong> y <strong>aislamiento de pruebas</strong> son las correcciones de raíz, no atajos.</li>
+            <li>La suite E2E se integra al pipeline de la semana 12 como <strong>etapa aparte</strong>, más lenta y con su propio entorno.</li>
+            <li><strong>Reintento y cuarentena</strong> son mitigaciones temporales, con dueño y fecha — no una forma de esconder el problema.</li>
+            <li>El costo de una suite automatizada no termina al escribirla: <strong>mantenerla es el costo mayor.</strong></li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:190px;height:190px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: la suite, integrada al pipeline</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela, sobre SauceDemo</strong></p>
+          <ul>
+            <li>Construyan (o retomen si ya la tienen) una suite E2E sobre <strong>SauceDemo</strong>, con la credencial asignada a su equipo, aplicando Page Object (semana 14) y aislamiento de pruebas (hoy): login, agregar producto al carrito y checkout, como mínimo.</li>
+            <li>Agreguen la suite al <strong>pipeline de CI</strong> que su equipo construyó en la semana 12, como una etapa separada de las pruebas unitarias, ejecutando el navegador en modo <em>headless</em>.</li>
+            <li>La suite debe quedar <strong>ejecutándose automáticamente en cada <code>commit</code></strong> — no a mano.</li>
+          </ul>
+          <img class="portada-icon" src="img/saucelabs.svg" alt="SauceDemo" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable: pipeline en verde y reporte de inestabilidad</h1>
+          <p>Además del pipeline operativo, el equipo entrega un documento breve con:</p>
+          <ul>
+            <li><strong>Evidencia</strong> de al menos una ejecución del pipeline disparada por un <code>commit</code> real, con la etapa E2E visible y en verde.</li>
+            <li>Un reporte de <strong>si encontraron algún comportamiento inestable</strong> durante el taller (una prueba que falló sin motivo aparente) y qué causa de la sección de hoy explica mejor lo que vieron — aunque no alcancen a corregirlo del todo.</li>
+            <li>Si aplicaron reintento o cuarentena a alguna prueba, indicar cuál y por qué.</li>
+          </ul>
+          <p><strong>Formato:</strong> enlace al repositorio con el pipeline configurado y un archivo markdown con el reporte · <strong>La entrega cierra al terminar las dos horas.</strong> Cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/code-merge.svg" alt="Entregable del taller" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>La semana 16 no trae contenido nuevo:</strong> es la semana de consolidación y cierre del curso.</p>
+          <ul>
+            <li>Se entrega el <strong>Trabajo 2</strong> (25 %): suite ejecutable, pipeline de CI, informe de métricas, registro de defectos y suite automatizada con patrones de diseño — todo lo trabajado desde la semana 9.</li>
+            <li>Hay <strong>socialización por equipos</strong> del proyecto de Fábrica-Escuela, como cierre del semestre.</li>
+          </ul>
+          <p>Revisen ahora el punto de control de la semana 13 y el estado de su pipeline: es la última semana con bloque de taller antes de la entrega final.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 24</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

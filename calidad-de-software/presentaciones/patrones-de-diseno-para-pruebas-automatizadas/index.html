@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones de Diseño para Pruebas Automatizadas — Semana 14</title>
+  <meta name="description" content="Page Object, Screenplay, data-driven y fixtures: patrones de diseño para que una suite automatizada sea mantenible — Calidad de Software, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/patrones-de-diseno-para-pruebas-automatizadas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones de Diseño para Pruebas Automatizadas — Semana 14" />
+  <meta property="og:description" content="Page Object, Screenplay, data-driven y fixtures: patrones de diseño para que una suite automatizada sea mantenible — Calidad de Software, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/patrones-de-diseno-para-pruebas-automatizadas/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones de Diseño para Pruebas Automatizadas — Semana 14" />
+  <meta name="twitter:description" content="Page Object, Screenplay, data-driven y fixtures: patrones de diseño para que una suite automatizada sea mantenible — Calidad de Software, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/patrones-de-diseno-para-pruebas-automatizadas.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 14 — Patrones de diseño para pruebas automatizadas</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Patrones de diseño para pruebas" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 13</h1>
+          <ul>
+            <li>Un <strong>framework de automatización</strong> (Selenium, Playwright o Cypress) que controla el navegador y ejecuta pasos por nosotros.</li>
+            <li>Un <strong>primer test E2E</strong> que abre una página, llena campos y hace una aserción — con evidencia de ejecución.</li>
+            <li>Una advertencia pendiente: ese script funciona, pero si el <code>id</code> de un campo cambia, hay que corregirlo en cada prueba que lo use.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un solo cambio de diseño rompió 40 pruebas el mismo día</h1>
+          <p class="slide-eyebrow">No cambió la lógica de negocio. Cambió el <code>id</code> de un botón. Las 40 pruebas tenían ese <code>id</code> copiado y pegado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El problema no es automatizar, es cómo se organiza el código que automatiza</h1>
+          <p>La semana 13 resolvió <strong>con qué</strong> se automatiza. Hoy resolvemos <strong>cómo se estructura</strong> esa automatización para que un cambio en la aplicación cueste corregir un solo lugar, no cuarenta.</p>
+          <img class="portada-icon" src="img/code-compare.svg" alt="Qué falta" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un patrón de diseño de pruebas</h1>
+          <p>Es una forma probada de <strong>organizar el código de una suite automatizada</strong> para que sea legible, no duplique conocimiento de la interfaz y sobreviva a los cambios normales de la aplicación. No cambia qué se prueba, cambia <strong>cómo queda escrito</strong> lo que se prueba.</p>
+          <p>Hoy vemos cuatro: <strong>Page Object</strong> y <strong>Screenplay</strong> (formas de organizar la interacción con la interfaz), y <strong>fixtures</strong> y <strong>datos guiados por datos (data-driven)</strong> (formas de organizar la preparación y la repetición de pruebas).</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Patrón de diseño" style="display:block;width:180px;height:180px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Page Object: una clase por pantalla</h1>
+          <p>El patrón más usado en automatización de UI. Cada pantalla (o componente importante) de la aplicación se representa con una <strong>clase</strong> que expone dos cosas: los <strong>localizadores</strong> de sus elementos (dónde están el campo de usuario, el botón de enviar) y <strong>métodos de alto nivel</strong> para interactuar con ella (<code>login(usuario, clave)</code>).</p>
+          <p>El test deja de conocer <code>id</code>s o selectores CSS. Solo llama métodos de la clase. Si la pantalla cambia, se corrige <strong>una sola clase</strong>, no cada test que la usa.</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Page Object" style="display:block;width:180px;height:180px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Antes</p>
+          <h1>Sin Page Object: el selector, repetido en cada test</h1>
+          <pre><code>def test_login_exitoso(page):
+    page.goto("https://the-internet.herokuapp.com/login")
+    page.fill("#username", "tomsmith")
+    page.fill("#password", "SuperSecretPassword!")
+    page.click("button[type='submit']")
+    assert "You logged into a secure area" in page.content()
+
+def test_login_fallido(page):
+    page.goto("https://the-internet.herokuapp.com/login")
+    page.fill("#username", "usuario_malo")
+    page.fill("#password", "clave_mala")
+    page.click("button[type='submit']")
+    assert "invalid" in page.content()</code></pre>
+          <p>Dos tests, los mismos tres selectores copiados dos veces. Si <code>#username</code> cambia mañana, hay que tocar los dos — y todos los que vengan después.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Después</p>
+          <h1>Con Page Object: el selector vive en un solo lugar</h1>
+          <pre><code>class LoginPage:
+    def __init__(self, page):
+        self.page = page
+        self.user = "#username"
+        self.pwd = "#password"
+        self.submit = "button[type='submit']"
+
+    def login(self, usuario, clave):
+        self.page.goto("https://the-internet.herokuapp.com/login")
+        self.page.fill(self.user, usuario)
+        self.page.fill(self.pwd, clave)
+        self.page.click(self.submit)
+
+def test_login_exitoso(page):
+    LoginPage(page).login("tomsmith", "SuperSecretPassword!")
+    assert "You logged into a secure area" in page.content()</code></pre>
+          <p>El test ya no sabe qué es un <code>id</code>. Habla en el lenguaje del negocio: <code>login(usuario, clave)</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué esto mejora la mantenibilidad</h1>
+          <table>
+            <thead>
+              <tr><th>Beneficio</th><th>Qué resuelve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Encapsulación</strong></td><td>El selector vive en un solo archivo, no disperso en decenas de tests.</td></tr>
+              <tr><td><strong>Fuente única de verdad</strong></td><td>Un cambio de interfaz se corrige en un lugar y todos los tests quedan al día.</td></tr>
+              <tr><td><strong>Legibilidad</strong></td><td>El test se lee como una historia de usuario (<code>login</code>, <code>agregarAlCarrito</code>), no como manipulación de HTML.</td></tr>
+              <tr><td><strong>Reutilización</strong></td><td>Cualquier test que necesite iniciar sesión reutiliza la misma clase, sin copiar y pegar.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/circle-check.svg" alt="Beneficios" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Un Page Object mal hecho: aserciones dentro de la clase</h1>
+          <pre><code>class LoginPage:
+    def login_y_verificar(self, usuario, clave):
+        self.page.fill(self.user, usuario)
+        self.page.fill(self.pwd, clave)
+        self.page.click(self.submit)
+        assert "secure area" in self.page.content()  # NO va aquí</code></pre>
+          <p>El Page Object describe <strong>cómo interactuar</strong> con la pantalla, no <strong>qué se espera</strong> del resultado. Meter <code>assert</code> dentro de la clase mezcla dos responsabilidades: si dos tests esperan resultados distintos del mismo flujo, uno de los dos queda mal servido. Las aserciones se quedan en el test; el Page Object solo actúa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Screenplay: actores que ejecutan tareas</h1>
+          <p>Alternativa a Page Object, pensada para suites grandes. En vez de una clase por pantalla, se modela la prueba como un <strong>actor</strong> (quien prueba) que tiene <strong>habilidades</strong> (ej. navegar en un navegador), ejecuta <strong>tareas</strong> (secuencias de pasos con sentido de negocio, como "iniciar sesión") y responde <strong>preguntas</strong> (consultas sobre el estado de la aplicación, usadas luego en la aserción).</p>
+          <p>La diferencia central con Page Object: Screenplay separa <strong>quién actúa</strong> de <strong>qué pantalla usa</strong>, lo que facilita reutilizar la misma tarea aunque cambie el canal (web hoy, móvil mañana).</p>
+          <img class="portada-icon" src="img/masks-theater.svg" alt="Screenplay" style="display:block;width:180px;height:180px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>El mismo login, en Screenplay</h1>
+          <pre><code>tomsmith = Actor.named("Tomsmith").whoCan(BrowseTheWeb.using(browser))
+
+tomsmith.attemptsTo(
+    Navigate.to("https://the-internet.herokuapp.com/login"),
+    Enter.theValue("tomsmith").into(USERNAME_FIELD),
+    Enter.theValue("SuperSecretPassword!").into(PASSWORD_FIELD),
+    Click.on(SUBMIT_BUTTON),
+)
+
+assert tomsmith.asks_for(Text.of(BANNER)) == "You logged into a secure area"</code></pre>
+          <p>La tarea <code>attemptsTo(...)</code> es la secuencia de negocio; la pregunta <code>asks_for(...)</code> es lo que se verifica. El actor es intercambiable — el mismo guion sirve para "Alice" o "Bob" con distintas credenciales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Page Object domina la industria, no Screenplay</h1>
+          <p>Screenplay resuelve problemas reales que Page Object arrastra en suites grandes: pantallas que crecen hasta volverse clases de cientos de métodos, y dificultad para reutilizar pasos entre distintos canales. Sobre el papel, es el diseño más limpio.</p>
+          <p>Aun así, la gran mayoría de suites en producción usan Page Object. La razón no es técnica: Screenplay tiene <strong>curva de aprendizaje más alta</strong>, menos tutoriales y menos soporte en los frameworks populares. <strong>La opción "mejor diseñada" no siempre gana si el equipo no la puede sostener.</strong> Para un equipo de Fábrica-Escuela con una suite pequeña, Page Object es la opción razonable hoy.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Tensión" style="display:block;width:170px;height:170px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Fixtures: preparar y limpiar sin repetir código</h1>
+          <p>Una <strong>fixture</strong> es una función que prepara el estado que un test necesita antes de correr (abrir el navegador, iniciar sesión, cargar datos) y lo limpia después (cerrar sesión, cerrar el navegador) — sin que cada test tenga que escribir esos pasos.</p>
+          <p>Resuelve un problema distinto al de Page Object: no es <strong>cómo</strong> se interactúa con la pantalla, sino <strong>qué debe existir</strong> antes de que el test empiece a correr.</p>
+          <img class="portada-icon" src="img/screwdriver-wrench.svg" alt="Fixtures" style="display:block;width:180px;height:180px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Una fixture de sesión iniciada, en pytest</h1>
+          <pre><code>import pytest
+
+@pytest.fixture
+def sesion_iniciada(page):
+    LoginPage(page).login("tomsmith", "SuperSecretPassword!")
+    yield page              # el test corre aquí
+    page.click("a.button")  # logout, al terminar
+
+def test_ver_area_segura(sesion_iniciada):
+    assert "Secure Area" in sesion_iniciada.content()</code></pre>
+          <p>Cada test que reciba <code>sesion_iniciada</code> como parámetro arranca ya autenticado, sin repetir el flujo de login en su propio cuerpo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Data-driven: un test, muchos datos</h1>
+          <p>Pruebas <strong>guiadas por datos (data-driven)</strong>: en vez de escribir un test por cada combinación de entradas, se escribe <strong>un solo test</strong> y se le pasa una tabla de datos — cada fila se ejecuta como un caso independiente, con su propio resultado de aprobado o fallido.</p>
+          <p>Conecta directo con la semana 8: las particiones de equivalencia y los valores límite que ahí se diseñaron a mano son, en la práctica, las filas de esa tabla.</p>
+          <img class="portada-icon" src="img/table-list.svg" alt="Data-driven" style="display:block;width:180px;height:180px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un test, cuatro casos de login</h1>
+          <pre><code>import pytest
+
+@pytest.mark.parametrize("usuario, clave, resultado_esperado", [
+    ("tomsmith", "SuperSecretPassword!", "secure area"),
+    ("tomsmith", "clave_mala",           "invalid"),
+    ("usuario_malo", "SuperSecretPassword!", "invalid"),
+    ("", "", "invalid"),
+])
+def test_login(page, usuario, clave, resultado_esperado):
+    LoginPage(page).login(usuario, clave)
+    assert resultado_esperado in page.content()</code></pre>
+          <p>Cuatro casos, cero duplicación de pasos. Agregar un quinto caso es agregar una fila, no un test nuevo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿qué patrón usarían?</h1>
+          <p><strong>5 minutos, respondan en el chat:</strong></p>
+          <ol>
+            <li>La suite necesita probar el mismo formulario con 15 combinaciones distintas de campos válidos e inválidos.</li>
+            <li>Cada test de la suite necesita empezar con un carrito de compras ya cargado con dos productos.</li>
+            <li>Tres pantallas distintas comparten el mismo encabezado con el mismo botón de "cerrar sesión".</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Page Object siempre vale el esfuerzo?</h1>
+          <p>Es tentador presentar Page Object como una regla sin excepciones: "toda suite automatizada debe tener Page Objects". La realidad es más matizada. Para una suite de dos o tres pruebas que no va a crecer, envolver cada pantalla en una clase agrega una capa de indirección que cuesta más de escribir y mantener de lo que ahorra.</p>
+          <p><strong>El patrón paga cuando la suite crece</strong> — cuando el mismo flujo se repite en varios tests o cuando la interfaz cambia con frecuencia. La pregunta correcta no es "¿aplico Page Object?", sino "¿esta suite va a vivir lo suficiente y crecer lo suficiente para que la inversión se pague?".</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Disputa" style="display:block;width:170px;height:170px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>Page Object</strong> mueve los selectores de la interfaz a una clase por pantalla — un cambio se corrige en un solo lugar.</li>
+            <li>Las <strong>aserciones se quedan en el test</strong>, nunca dentro del Page Object.</li>
+            <li><strong>Screenplay</strong> modela actores, tareas y preguntas — más limpio en teoría, menos adoptado en la práctica por su curva de aprendizaje.</li>
+            <li><strong>Fixtures</strong> preparan y limpian el estado que un test necesita, sin repetir esos pasos en cada uno.</li>
+            <li><strong>Data-driven</strong> convierte un test en una tabla de casos — conecta con las particiones y valores límite de la semana 8.</li>
+            <li>Ningún patrón es gratis: <strong>se paga cuando la suite crece</strong>, no antes.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: refactorizar aplicando Page Object</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <ul>
+            <li>Partan de la suite E2E que su equipo construyó en el taller de la semana 13 sobre <strong>The Internet (Herokuapp)</strong>.</li>
+            <li><strong>Refactoricen</strong> esa suite aplicando el patrón Page Object: extraigan una clase por cada pantalla involucrada, con sus localizadores y sus métodos de alto nivel. Los tests deben seguir corriendo en verde después del cambio.</li>
+            <li>Las aserciones se quedan en el test — ningún <code>assert</code> dentro de la clase de Page Object.</li>
+          </ul>
+          <img class="portada-icon" src="img/cubes.svg" alt="Refactorización con Page Object" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable: comparativa antes/después</h1>
+          <p>Además del código refactorizado, el equipo entrega un documento breve con:</p>
+          <ul>
+            <li>El <strong>código antes</strong> (semana 13) y el <strong>código después</strong> (con Page Object), uno junto al otro.</li>
+            <li>Una tabla de <strong>mantenibilidad</strong>: líneas de código repetidas, cuántos archivos hay que tocar si el sistema cambia un selector, y cuánto costaría agregar un test nuevo del mismo flujo — antes vs. después.</li>
+            <li><strong>Evidencia de ejecución</strong> de la suite refactorizada corriendo en verde.</li>
+          </ul>
+          <p><strong>Formato:</strong> repositorio o carpeta compartida con el código de ambas versiones y un archivo markdown con la comparativa · <strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/code-compare.svg" alt="Comparativa antes y después" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 15, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Integración de la suite automatizada al pipeline de CI, y qué son las pruebas inestables (<em>flaky tests</em>).</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. La semana 15 conecta la suite de hoy con el pipeline de la semana 12, para que corra en cada <code>commit</code>.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

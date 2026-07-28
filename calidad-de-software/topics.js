@@ -97,4 +97,32 @@ const TOPICS = [
     subtitle: "Build, test, cobertura, análisis estático y GitHub Actions",
     available: true,
   },
+  {
+    week: 13,
+    slug: "frameworks-de-automatizacion",
+    title: "Frameworks de Automatización",
+    subtitle: "Selenium, Playwright, Cypress y REST Assured según el contexto",
+    available: true,
+  },
+  {
+    week: 14,
+    slug: "patrones-de-diseno-para-pruebas-automatizadas",
+    title: "Patrones de Diseño para Pruebas Automatizadas",
+    subtitle: "Page Object, Screenplay, data-driven y fixtures",
+    available: true,
+  },
+  {
+    week: 15,
+    slug: "integracion-al-pipeline-y-pruebas-inestables",
+    title: "Integración al Pipeline y Pruebas Inestables",
+    subtitle: "Flaky tests: causas, mitigación y costo de mantenimiento de la suite",
+    available: true,
+  },
+  {
+    week: 16,
+    slug: "consolidacion-y-cierre",
+    title: "Consolidación y Cierre",
+    subtitle: "Recorrido del semestre, entrega del Trabajo 2 y retroalimentación del curso",
+    available: true,
+  },
 ];

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frameworks de Automatización — Semana 13</title>
+  <meta name="description" content="Selenium, Playwright, Cypress y REST Assured: cómo elegir un framework de automatización según el contexto — Calidad de Software, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/frameworks-de-automatizacion/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Frameworks de Automatización — Semana 13" />
+  <meta property="og:description" content="Selenium, Playwright, Cypress y REST Assured: cómo elegir un framework de automatización según el contexto — Calidad de Software, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/frameworks-de-automatizacion/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Frameworks de Automatización — Semana 13" />
+  <meta name="twitter:description" content="Selenium, Playwright, Cypress y REST Assured: cómo elegir un framework de automatización según el contexto — Calidad de Software, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/frameworks-de-automatizacion.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 13 — Frameworks de automatización</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/selenium.svg" alt="Automatización de pruebas" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 12</h1>
+          <ul>
+            <li>Un <strong>pipeline de CI</strong> encadena build, test, cobertura y análisis estático — si una etapa falla, las siguientes no corren.</li>
+            <li><strong>GitHub Actions</strong> dispara ese pipeline solo, en cada <code>push</code> o <code>pull request</code>.</li>
+            <li>Un pipeline verde es necesario, pero no suficiente: solo verifica lo que alguien pensó en automatizar.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Una prueba de regresión manual, ejecutada a mano, cada semana, durante años</h1>
+          <p class="slide-eyebrow">Así prueban muchos equipos que nunca automatizaron su suite E2E — hasta que el sistema crece demasiado para sostenerlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El pipeline necesita algo que ejecutar</h1>
+          <p>La semana 12 automatizó <strong>cuándo</strong> corre la suite. Hoy resolvemos <strong>con qué se construye</strong> esa suite cuando el nivel a probar ya no es una función aislada (semana 10), sino la aplicación completa, a través de su interfaz o su API.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Qué falta" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un framework de automatización de pruebas</h1>
+          <p>Es una biblioteca o herramienta que permite <strong>escribir código que controla una aplicación</strong> —un navegador, una API— para ejecutar los mismos pasos que seguiría una persona probando a mano, pero de forma repetible y sin intervención humana.</p>
+          <p>Corresponde al nivel más alto de la <strong>pirámide de Cohn</strong> (semana 8): pocas pruebas, pero de <strong>extremo a extremo (E2E)</strong> — cubren el sistema completo, incluida la integración entre sus partes.</p>
+          <img class="portada-icon" src="img/circle-check.svg" alt="Framework de automatización" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>Selenium</h1>
+          <p>El framework más antiguo y extendido para automatizar navegadores (2004). Implementa <strong>WebDriver</strong>, un protocolo estándar que le habla directamente al navegador —Chrome, Firefox, Edge— para simular clics, escritura y navegación.</p>
+          <ul>
+            <li><strong>Ventaja:</strong> soporta prácticamente cualquier lenguaje (Java, Python, C#, JavaScript) y cualquier navegador.</li>
+            <li><strong>Costo:</strong> más verboso que las alternativas modernas — hay que esperar manualmente a que los elementos aparezcan (<em>waits</em> explícitos), o la prueba falla de forma intermitente.</li>
+          </ul>
+          <img class="portada-icon" src="img/selenium.svg" alt="Selenium" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>Playwright</h1>
+          <p>Framework de Microsoft (2020), diseñado explícitamente para resolver los dolores de Selenium. Su diferencia central: <strong>auto-espera (auto-wait)</strong> — antes de interactuar con un elemento, espera sola a que esté visible y listo, sin que el código lo pida explícitamente.</p>
+          <ul>
+            <li>Controla Chromium, Firefox y WebKit con la misma API.</li>
+            <li>Incluye herramientas propias de depuración: grabación de pruebas, captura de video y <em>trace viewer</em> para ver paso a paso por qué falló una ejecución.</li>
+          </ul>
+          <img class="portada-icon" src="img/playwright.svg" alt="Playwright" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>Cypress</h1>
+          <p>Framework centrado solo en JavaScript/TypeScript, con una diferencia arquitectónica importante: <strong>corre dentro del propio navegador</strong>, junto a la aplicación, en vez de controlarlo desde afuera como Selenium o Playwright.</p>
+          <ul>
+            <li>Eso le da acceso directo al DOM y a las peticiones de red de la aplicación, con recarga en vivo mientras se escribe la prueba.</li>
+            <li><strong>Límite conocido:</strong> por su arquitectura, no soporta múltiples pestañas ni dominios distintos con la misma facilidad que Selenium o Playwright.</li>
+          </ul>
+          <img class="portada-icon" src="img/cypress.svg" alt="Cypress" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>REST Assured</h1>
+          <p>Los tres frameworks anteriores automatizan la <strong>interfaz</strong>. REST Assured automatiza otra capa: llama directamente a una <strong>API REST</strong> —sin pasar por ninguna pantalla— y valida la respuesta: código de estado, estructura del JSON, tiempos.</p>
+          <p>Es una biblioteca de Java, pensada para integrarse con JUnit (semana 10). Al saltarse la interfaz, sus pruebas son más rápidas y más estables que las de UI — pero no verifican que lo que el usuario ve en pantalla sea correcto.</p>
+          <img class="portada-icon" src="img/server.svg" alt="REST Assured" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Los cuatro, uno al lado del otro</h1>
+          <table>
+            <thead>
+              <tr><th>Framework</th><th>Capa que prueba</th><th>Lenguaje(s)</th><th>Particularidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Selenium</td><td>UI (navegador)</td><td>Cualquiera</td><td>El más soportado, el más verboso</td></tr>
+              <tr><td>Playwright</td><td>UI (navegador)</td><td>JS/TS, Python, Java, .NET</td><td>Auto-espera, depuración incluida</td></tr>
+              <tr><td>Cypress</td><td>UI (navegador)</td><td>JS/TS</td><td>Corre dentro del navegador</td></tr>
+              <tr><td>REST Assured</td><td>API</td><td>Java</td><td>No usa interfaz, más rápido y estable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Selección según contexto: qué preguntar antes de elegir</h1>
+          <ul>
+            <li><strong>¿Qué capa hay que probar?</strong> Si es API pura, REST Assured (u otra biblioteca de API testing) gana por velocidad y estabilidad — no tiene sentido pasar por la UI para verificar un contrato de datos.</li>
+            <li><strong>¿Qué lenguaje domina el equipo?</strong> Cypress exige JavaScript; Selenium y Playwright dan flexibilidad si el equipo ya trabaja en Java o Python.</li>
+            <li><strong>¿Cuántos navegadores hay que cubrir?</strong> Selenium y Playwright cubren más combinaciones que Cypress.</li>
+            <li><strong>¿Qué tan nuevo es el proyecto?</strong> Sin código heredado en Selenium, Playwright suele ser hoy la opción con menos fricción para empezar.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un primer test E2E con Playwright</h1>
+          <pre><code>from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    page.goto("https://the-internet.herokuapp.com/login")
+    page.fill("#username", "tomsmith")
+    page.fill("#password", "SuperSecretPassword!")
+    page.click("button[type='submit']")
+    assert "You logged into a secure area" in page.content()
+    browser.close()</code></pre>
+          <p>Cinco pasos: abrir el navegador, navegar, llenar dos campos, hacer clic y verificar el resultado. Ni un solo <em>wait</em> explícito — Playwright espera solo a que cada elemento esté listo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un script suelto a una suite mantenible</h1>
+          <p>El ejemplo anterior funciona, pero si el <code>id</code> de un campo cambia, hay que corregirlo en cada prueba que lo use. La semana 14 resuelve exactamente ese problema con el patrón <strong>Page Object</strong>. Hoy el objetivo es más simple: que el primer test corra.</p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="De script a suite" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿qué framework usarían?</h1>
+          <p><strong>5 minutos, respondan en el chat:</strong></p>
+          <ol>
+            <li>Un equipo prueba solo los endpoints de una API de pagos, sin interfaz visual todavía.</li>
+            <li>Un equipo JavaScript necesita pruebas rápidas de un solo dominio, sin pestañas múltiples.</li>
+            <li>Un equipo Java necesita cubrir Chrome, Firefox y Safari por igual.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Más automatización de UI siempre es mejor?</h1>
+          <p>Es tentador leer "automatizar más" como progreso automático. Pero la pirámide de Cohn (semana 8) advierte lo contrario: las pruebas E2E son <strong>lentas, costosas de mantener y frágiles</strong> ante cualquier cambio de interfaz — un cambio de diseño puede romper decenas de pruebas que no tienen nada que ver con la lógica de negocio.</p>
+          <p><strong>La discusión real de la industria no es "automatizar o no", sino en qué nivel.</strong> Muchos equipos maduros invierten deliberadamente más en pruebas unitarias y de API, y reservan la UI para los flujos críticos que de verdad necesitan verse funcionando de punta a punta.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Debate sobre automatización de UI" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición pendiente: evidencia de ejecución</h1>
+          <p>El taller de hoy pide <strong>evidencia de ejecución</strong>: no basta con que el código de la prueba exista, hay que demostrar que corrió y qué resultado dio.</p>
+          <ul>
+            <li>Una <strong>captura de pantalla</strong> de la consola o terminal mostrando el test en verde.</li>
+            <li>O un <strong>reporte HTML</strong> que el propio framework puede generar (Playwright y Cypress lo hacen nativamente).</li>
+          </ul>
+          <img class="portada-icon" src="img/globe.svg" alt="Evidencia de ejecución" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>Selenium</strong> es el más portable y el más verboso; requiere esperas explícitas.</li>
+            <li><strong>Playwright</strong> resuelve la espera con auto-wait y trae depuración incluida.</li>
+            <li><strong>Cypress</strong> corre dentro del navegador — rápido y simple, pero limitado a JS y un solo dominio.</li>
+            <li><strong>REST Assured</strong> prueba la API directamente, sin interfaz — más rápido y estable.</li>
+            <li>Elegir framework depende del <strong>contexto</strong>: capa a probar, lenguaje del equipo, navegadores y madurez del proyecto.</li>
+            <li>Más automatización de UI <strong>no es automáticamente mejor</strong> — la pirámide de Cohn sigue aplicando.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: primer test E2E automatizado</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>Sobre <strong>The Internet (Herokuapp)</strong>, escriban y ejecuten un primer test automatizado de extremo a extremo, con el framework que el equipo elija (Selenium, Playwright o Cypress) justificando la elección según los criterios de la sesión de hoy.</p>
+          <ul>
+            <li>El test debe cubrir un flujo completo (ej. login exitoso y login fallido) con al menos una aserción real sobre el resultado.</li>
+            <li><strong>Evidencia de ejecución obligatoria:</strong> captura de pantalla o reporte HTML del test corriendo en verde.</li>
+            <li>Entregable: el código del test + la evidencia, en un repositorio o carpeta compartida por el equipo.</li>
+          </ul>
+          <p><strong>Herramienta:</strong> <a href="https://the-internet.herokuapp.com" target="_blank" rel="noopener">the-internet.herokuapp.com</a> · <strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/circle-check.svg" alt="Taller de hoy" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 14, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Patrones de diseño para pruebas automatizadas: Page Object, Screenplay, data-driven, fixtures.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. El taller de la semana 14: refactorizar la suite de hoy aplicando Page Object, con comparativa antes/después en mantenibilidad.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
