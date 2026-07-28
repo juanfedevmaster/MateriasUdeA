@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Métricas de Calidad de Software — Semana 11</title>
+  <meta name="description" content="Densidad de defectos, DRE, cobertura y complejidad ciclomática — qué revela y qué oculta cada métrica de calidad de software. Calidad de Software, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/metricas-de-calidad-de-software/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Métricas de Calidad de Software — Semana 11" />
+  <meta property="og:description" content="Densidad de defectos, DRE, cobertura y complejidad ciclomática — qué revela y qué oculta cada métrica de calidad de software. Calidad de Software, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/metricas-de-calidad-de-software/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Métricas de Calidad de Software — Semana 11" />
+  <meta name="twitter:description" content="Densidad de defectos, DRE, cobertura y complejidad ciclomática — qué revela y qué oculta cada métrica de calidad de software. Calidad de Software, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/metricas-de-calidad-de-software.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 11 — Métricas de calidad: densidad de defectos, DRE, cobertura y complejidad ciclomática</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/chart-column.svg" alt="Métricas de calidad" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Hoy se entrega el avance 2 de Fábrica-Escuela</h1>
+          <p>Esta semana corresponde la <strong>entrega 2 de Fábrica-Escuela</strong> (10 % de la nota), con los temas propios del proyecto de cada equipo — independiente del taller de seguimiento de hoy.</p>
+          <p>Seguimos en la <strong>Unidad 3 — Implementación del proceso de aseguramiento</strong>, con los equipos fijos.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Entrega 2" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 10</h1>
+          <ul>
+            <li>Una prueba unitaria es <strong>rápida, aislada, determinista y enfocada</strong>.</li>
+            <li><strong>Arrange-Act-Assert</strong> ordena cualquier prueba en tres pasos.</li>
+            <li>Un <strong>test double</strong> reemplaza una dependencia real: stub, mock o fake.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: medir la calidad con números</h1>
+          <p>Hasta ahora hemos hablado de calidad con palabras: características, tipos, técnicas. Hoy se traduce parte de eso a <strong>números</strong> — indicadores que permiten comparar, hacer seguimiento en el tiempo, y tomar decisiones basadas en evidencia en vez de impresiones.</p>
+          <img class="portada-icon" src="img/calculator.svg" alt="Medir con números" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una métrica de software</h1>
+          <p>Es una <strong>medida cuantitativa</strong> del grado en que un sistema, componente o proceso posee un atributo dado. No es lo mismo que una simple medición: la métrica típicamente <strong>combina</strong> mediciones —por ejemplo, defectos y líneas de código— en un indicador con significado propio.</p>
+          <p>Hoy vemos cuatro métricas clásicas de calidad de software: densidad de defectos, DRE, cobertura y complejidad ciclomática.</p>
+          <img class="portada-icon" src="img/ruler.svg" alt="Qué es una métrica" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué medir</h1>
+          <p>Una métrica sirve para <strong>tomar decisiones</strong>: dónde concentrar el esfuerzo de pruebas, si un módulo necesita refactorización, si el equipo está mejorando de un sprint a otro.</p>
+          <p><strong>Ninguna métrica de este curso se sostiene sola.</strong> Cada una revela una parte de la historia y oculta otra — por eso el taller de hoy no pide solo calcular números, sino <strong>interpretarlos</strong> con sentido crítico.</p>
+          <img class="portada-icon" src="img/bullseye.svg" alt="Por qué medir" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Empezamos por los defectos</h1>
+          <p>La primera métrica responde la pregunta más directa: de todo lo que se construyó, ¿cuánto tiene defectos?</p>
+          <img class="portada-icon" src="img/bug.svg" alt="Empezamos por los defectos" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Densidad de defectos</h1>
+          <p>Mide <strong>cuántos defectos hay por unidad de tamaño</strong> del software — normalmente por cada mil líneas de código (KLOC):</p>
+          <blockquote>Densidad de defectos = Número de defectos ÷ Tamaño (en KLOC)</blockquote>
+          <p><strong>Ejemplo:</strong> un módulo de 4.000 líneas con 12 defectos reportados tiene una densidad de <strong>3 defectos por KLOC</strong>. Comparar esa cifra contra otros módulos —o contra el mismo módulo a lo largo del tiempo— es lo que la vuelve útil.</p>
+          <img class="portada-icon" src="img/bug.svg" alt="Densidad de defectos" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué revela y qué oculta la densidad de defectos</h1>
+          <table>
+            <tbody>
+              <tr><th>Revela</th><td>Qué módulos concentran más defectos en relación con su tamaño — útil para priorizar dónde revisar o refactorizar.</td></tr>
+              <tr><th>Oculta</th><td>La <strong>severidad</strong> de esos defectos (diez defectos triviales pesan igual que diez críticos en la fórmula), y si el conteo de líneas de código es siquiera una buena medida de "tamaño" o complejidad real.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Un módulo con baja densidad no es necesariamente un módulo de calidad — puede ser un módulo poco probado, con pocos defectos encontrados todavía.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué tan buena fue la red de pruebas</h1>
+          <p>La densidad de defectos cuenta cuántos hay. La siguiente métrica responde algo distinto: de los defectos que existían, ¿cuántos atrapó el proceso de pruebas <strong>antes</strong> de que el usuario los encontrara?</p>
+          <img class="portada-icon" src="img/filter.svg" alt="Qué tan buena fue la red" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>DRE — Eficiencia de eliminación de defectos</h1>
+          <p><strong>DRE</strong> <em>(Defect Removal Efficiency)</em> mide qué porcentaje de los defectos totales se encontró <strong>antes</strong> de que el software llegara a producción:</p>
+          <blockquote>DRE = Defectos encontrados antes del release ÷ (Defectos antes + Defectos encontrados después) × 100</blockquote>
+          <p>Es, en números, la misma idea detrás de los criterios de salida de un plan de pruebas (semana 6): cuánta confianza da el proceso de pruebas antes de soltar el software al mundo.</p>
+          <img class="portada-icon" src="img/percent.svg" alt="DRE" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Calculando el DRE</h1>
+          <p>Un equipo encontró <strong>45 defectos</strong> durante sus pruebas antes del release. En el primer mes en producción, los usuarios reportaron <strong>5 defectos</strong> más.</p>
+          <blockquote>DRE = 45 ÷ (45 + 5) × 100 = <strong>90 %</strong></blockquote>
+          <p>El 90 % de los defectos se atraparon antes de llegar al usuario. Un DRE del 100 % significaría que ningún defecto escapó a producción — en la práctica, casi imposible de sostener siempre.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué revela y qué oculta el DRE</h1>
+          <table>
+            <tbody>
+              <tr><th>Revela</th><td>Qué tan efectivo es el proceso de pruebas completo para atrapar problemas antes del release.</td></tr>
+              <tr><th>Oculta</th><td>Solo puede calcularse <strong>después</strong> de que pasó un tiempo en producción — no sirve como alerta temprana. Y un DRE alto no dice nada sobre defectos que <strong>nadie</strong> —ni pruebas ni usuarios— ha encontrado todavía.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cobertura, otra vez</h1>
+          <p>Ya se vio en la semana 5 (con SonarCloud) y en la semana 8 (sentencia, decisión, camino): qué porcentaje del código se ejecutó durante las pruebas. Hoy entra formalmente al catálogo de métricas del curso, con la misma advertencia de siempre.</p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Cobertura" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Recordatorio</p>
+          <h1>Qué revela y qué oculta la cobertura</h1>
+          <table>
+            <tbody>
+              <tr><th>Revela</th><td>Qué porcentaje del código se ejecutó al menos una vez durante las pruebas — útil para encontrar zonas completamente sin probar.</td></tr>
+              <tr><th>Oculta</th><td>Si el resultado de esa ejecución realmente se <strong>verificó</strong> con una aserción. Un 100 % de cobertura con pruebas sin aserciones significativas no dice nada sobre la calidad real del código.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Es la métrica más fácil de "inflar" artificialmente sin ganar calidad real — tema al que se vuelve más adelante en esta clase.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué tan enredado está el código por dentro</h1>
+          <p>Las tres métricas anteriores miran el código desde afuera —defectos, releases, ejecución—. La última mira su estructura interna: qué tan difícil es de seguir, probar y modificar.</p>
+          <img class="portada-icon" src="img/circle-nodes.svg" alt="Qué tan enredado está" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Complejidad ciclomática</h1>
+          <p>Propuesta por <strong>Thomas McCabe</strong> en 1976, mide el <strong>número de caminos independientes</strong> que puede recorrer un método o función — en la práctica, se calcula sumando 1 al número de puntos de decisión (<code>if</code>, <code>while</code>, <code>for</code>, <code>case</code>):</p>
+          <blockquote>Complejidad = Número de decisiones + 1</blockquote>
+          <p>Un método sin ningún <code>if</code> tiene complejidad 1: solo hay un camino posible. Cada decisión nueva multiplica las rutas que una suite de pruebas necesitaría cubrir para llegar a cobertura de camino completa (semana 8).</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Calculando la complejidad ciclomática</h1>
+          <pre><code>def clasificar_cliente(compras, antiguedad):
+    if compras &gt; 1000:               # decisión 1
+        if antiguedad &gt; 2:            # decisión 2
+            return "VIP"
+        return "Frecuente"
+    elif compras &gt; 100:              # decisión 3
+        return "Regular"
+    return "Nuevo"</code></pre>
+          <p><strong>3 decisiones + 1 = complejidad ciclomática 4.</strong> Hacen falta al menos 4 casos de prueba distintos para ejercitar cada camino posible de esta función.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué revela y qué oculta la complejidad ciclomática</h1>
+          <table>
+            <tbody>
+              <tr><th>Revela</th><td>Qué tan difícil es de probar exhaustivamente un método, y —de forma indirecta— qué tan difícil es de mantener sin introducir defectos.</td></tr>
+              <tr><th>Oculta</th><td>Si el código hace lo <strong>correcto</strong>. Un método con complejidad 1 puede estar completamente equivocado, y uno con complejidad alta puede ser perfectamente correcto si de verdad necesita esa lógica.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Las cuatro métricas, lado a lado</h1>
+          <table>
+            <thead>
+              <tr><th>Métrica</th><th>Mide</th><th>Punto ciego principal</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Densidad de defectos</td><td>Defectos por tamaño</td><td>No distingue severidad</td></tr>
+              <tr><td>DRE</td><td>% de defectos atrapados antes del release</td><td>Solo se sabe después</td></tr>
+              <tr><td>Cobertura</td><td>% de código ejecutado</td><td>No verifica el resultado</td></tr>
+              <tr><td>Complejidad ciclomática</td><td>Caminos posibles en el código</td><td>No dice si es correcto</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: interpretar una métrica</h1>
+          <p><strong>5 minutos:</strong> un módulo reporta <strong>0 defectos</strong> y <strong>95 % de cobertura</strong>. Un compañero concluye: "es el módulo con mejor calidad del sistema".</p>
+          <p>¿Qué le falta considerar a esa conclusión? Mencionen al menos dos puntos ciegos de las métricas usadas.</p>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Se pueden "engañar" las métricas?</h1>
+          <p>La Ley de Goodhart lo resume: <strong>"cuando una medida se convierte en objetivo, deja de ser una buena medida."</strong> Si a un equipo se le exige 90 % de cobertura, algunos escribirán pruebas triviales sin aserciones reales solo para subir el número. Si se penaliza la complejidad ciclomática alta, algunos dividirán funciones artificialmente sin simplificar nada de verdad.</p>
+          <p>La postura razonable: las métricas sirven para <strong>guiar preguntas</strong> —¿por qué este módulo tiene tanta complejidad?—, no para automatizar juicios de calidad sin revisión humana.</p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Debate sobre las métricas" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>Densidad de defectos</strong> compara defectos contra tamaño — no distingue severidad.</li>
+            <li><strong>DRE</strong> mide qué tan bien atrapó el proceso los defectos antes del release.</li>
+            <li><strong>Cobertura</strong> mide qué se ejecutó, no qué se verificó de verdad.</li>
+            <li><strong>Complejidad ciclomática</strong> mide caminos posibles, no si el código es correcto.</li>
+            <li>Ninguna métrica reemplaza el juicio humano — <strong>todas revelan algo y ocultan algo más.</strong></li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: calcular e interpretar métricas</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>Sobre un repositorio asignado por el docente (pueden usar <strong>SonarCloud</strong> para calcular varias de estas métricas automáticamente), cada equipo debe:</p>
+          <ul>
+            <li>Calcular <strong>densidad de defectos, cobertura y complejidad ciclomática</strong> del repositorio.</li>
+            <li>Escribir una <strong>interpretación</strong> de cada métrica: qué revela sobre este repositorio en particular, y qué información importante deja fuera.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/sonarcloud.svg" alt="SonarCloud" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s25">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 12, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Integración continua. Pipeline de calidad: build, test, cobertura, análisis estático.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. El taller de la semana 12: pipeline de CI operativo sobre el repositorio de práctica, que ejecute la suite y publique el reporte de cobertura.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 25</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

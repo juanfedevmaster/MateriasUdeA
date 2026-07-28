@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de Pruebas — Semana 6</title>
+  <meta name="description" content="Alcance, estrategia, criterios de entrada y salida, riesgos y recursos de un plan de pruebas — Calidad de Software, Semana 6." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/plan-de-pruebas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Plan de Pruebas — Semana 6" />
+  <meta property="og:description" content="Alcance, estrategia, criterios de entrada y salida, riesgos y recursos de un plan de pruebas — Calidad de Software, Semana 6." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/plan-de-pruebas/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Plan de Pruebas — Semana 6" />
+  <meta name="twitter:description" content="Alcance, estrategia, criterios de entrada y salida, riesgos y recursos de un plan de pruebas — Calidad de Software, Semana 6." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/plan-de-pruebas.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 6 — Plan de pruebas: alcance, estrategia, riesgos y recursos</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/ieee.svg" alt="IEEE" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Desde hoy: equipos fijos de Fábrica-Escuela</h1>
+          <p>Empieza la <strong>Unidad 4 — Fundamentación en pruebas</strong>, y con ella el cambio más grande del semestre en la dinámica de trabajo:</p>
+          <ul>
+            <li>Se acabaron los grupos aleatorios semanales — de aquí al final del semestre, el equipo es el mismo: su equipo de <strong>Fábrica-Escuela</strong>.</li>
+            <li>El seguimiento semanal sigue corriendo sobre sistemas de práctica neutros (hoy, ParaBank de nuevo).</li>
+            <li>Lo que aprenden aquí cada semana es lo que después aplican en los dos trabajos grandes sobre su propio proyecto.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Equipos fijos" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 5</h1>
+          <ul>
+            <li>La <strong>deuda técnica</strong> no siempre es un error — depende de si fue deliberada y prudente.</li>
+            <li>Un <strong>code smell</strong> es una señal de un problema de diseño, no el problema en sí.</li>
+            <li>El <strong>análisis estático</strong> examina código sin ejecutarlo; SonarCloud lo automatiza con un Quality Gate.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: antes de probar, hay que planear</h1>
+          <p>Hasta ahora hemos hablado de pruebas como actividades sueltas: un walkthrough, un análisis estático, una clasificación de hallazgos. A partir de hoy entramos a la <strong>Unidad 4</strong>, dedicada por completo a las pruebas — y empieza por el documento que las organiza antes de que se ejecute la primera: el <strong>plan de pruebas</strong>.</p>
+          <img class="portada-icon" src="img/compass-drafting.svg" alt="Antes de probar, hay que planear" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un plan de pruebas</h1>
+          <p>Es el documento que describe <strong>qué se va a probar, cómo, con qué recursos y bajo qué condiciones</strong>, antes de ejecutar una sola prueba. El estándar de referencia es <strong>IEEE 829</strong> (hoy absorbido por ISO/IEC/IEEE 29119), publicado por primera vez en 1983.</p>
+          <p>Sin un plan, cada persona prueba lo que se le ocurre, en el orden que se le ocurre, sin saber cuándo parar — el equivalente a programar sin ningún requisito escrito.</p>
+          <img class="portada-icon" src="img/clipboard-list.svg" alt="Plan de pruebas" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Plan de pruebas vs. estrategia de pruebas</h1>
+          <table>
+            <tbody>
+              <tr><th>Estrategia de pruebas</th><td>Documento general de la organización: qué niveles y técnicas de prueba se usan por defecto, en todos los proyectos.</td></tr>
+              <tr><th>Plan de pruebas</th><td>Documento específico de un proyecto: aplica la estrategia general a un alcance, un cronograma y unos riesgos concretos.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>La estrategia se escribe una vez y se reutiliza; el plan se escribe cada vez que hay un proyecto nuevo.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué contiene un plan de pruebas</h1>
+          <ul>
+            <li><strong>Alcance:</strong> qué se prueba y qué no.</li>
+            <li><strong>Estrategia/enfoque:</strong> qué niveles y técnicas de prueba se van a usar.</li>
+            <li><strong>Criterios de entrada y salida:</strong> cuándo empezar y cuándo dar por terminadas las pruebas.</li>
+            <li><strong>Criterios de suspensión y reanudación:</strong> cuándo pausar y cuándo retomar.</li>
+            <li><strong>Riesgos:</strong> qué puede amenazar el producto o el esfuerzo de prueba.</li>
+            <li><strong>Recursos:</strong> quién, con qué herramientas, en qué ambiente y en cuánto tiempo.</li>
+          </ul>
+          <p class="slide-eyebrow">El resto de la clase de hoy desarrolla cada uno de estos seis puntos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Empezamos por el alcance</h1>
+          <p>Antes de decidir cómo se prueba algo, hay que decidir <strong>qué es "algo"</strong> — dónde empieza y dónde termina lo que este plan cubre.</p>
+          <img class="portada-icon" src="img/ruler-combined.svg" alt="El alcance" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es el alcance de las pruebas</h1>
+          <p>Es la delimitación explícita de <strong>qué características, módulos o funcionalidades</strong> va a cubrir el esfuerzo de pruebas descrito en este plan — y, con la misma importancia, cuáles quedan explícitamente <strong>fuera</strong>.</p>
+          <p>Un alcance mal definido es la causa más común de discusiones tardías: "yo pensé que eso también se iba a probar" es una frase que un buen alcance debería hacer imposible.</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Alcance de las pruebas" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dentro y fuera de alcance</h1>
+          <table>
+            <thead>
+              <tr><th>Dentro de alcance (ejemplo)</th><th>Fuera de alcance (ejemplo)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Inicio de sesión y registro de usuarios</td><td>Integración con el sistema de nómina interno</td></tr>
+              <tr><td>Consulta de saldo y transferencias</td><td>Pruebas de carga con más de 500 usuarios simultáneos</td></tr>
+              <tr><td>Validaciones de formularios visibles al usuario</td><td>Compatibilidad con navegadores anteriores a 2020</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Lo que queda fuera de alcance no es "no importante" — es una decisión consciente sobre dónde se concentra el esfuerzo esta vez.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La estrategia o enfoque de pruebas</h1>
+          <p>Con el alcance ya delimitado, el enfoque responde <strong>cómo</strong> se va a probar cada parte: qué niveles (unitarias, integración, sistema, aceptación — el modelo en V de la semana 2) y qué técnicas (particiones de equivalencia, valores límite — semana 8) aplican a cada característica.</p>
+          <p>También define responsabilidades: qué prueba el equipo de desarrollo, qué prueba un tester dedicado, y qué se automatiza desde el principio.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Estrategia de pruebas" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cuándo empezar y cuándo parar</h1>
+          <p>Un plan sin fecha de inicio ni de fin no es un plan, es una intención. Hacen falta condiciones objetivas para las dos puntas del proceso.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cuándo empezar y parar" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Criterios de entrada</h1>
+          <p>Son las condiciones que deben cumplirse <strong>antes</strong> de que las pruebas puedan comenzar. Si no se cumplen, empezar a probar es desperdiciar tiempo del equipo.</p>
+          <ul>
+            <li>El código a probar compila y se despliega sin errores en el ambiente de pruebas.</li>
+            <li>Los casos de prueba están diseñados y revisados.</li>
+            <li>Los datos de prueba necesarios están disponibles.</li>
+            <li>Las historias de usuario involucradas tienen criterios de aceptación (semana 3).</li>
+          </ul>
+          <img class="portada-icon" src="img/door-open.svg" alt="Criterios de entrada" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Criterios de salida</h1>
+          <p>Son las condiciones que definen <strong>cuándo dar por terminado</strong> el esfuerzo de pruebas — no "cuando se acabe el tiempo", sino condiciones medibles acordadas de antemano.</p>
+          <ul>
+            <li>Se ejecutó el 100 % de los casos de prueba planeados (o un porcentaje acordado).</li>
+            <li>No quedan defectos abiertos de severidad crítica o alta (semana 4).</li>
+            <li>La cobertura de código alcanza el umbral definido en el Quality Gate (semana 5).</li>
+          </ul>
+          <p><strong>Sin criterios de salida claros, "terminamos de probar" se decide por cansancio, no por evidencia.</strong></p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Criterios de salida" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Criterios de suspensión y reanudación</h1>
+          <p>Distintos de entrada y salida: no marcan el inicio ni el fin, sino una <strong>pausa</strong> a mitad de camino.</p>
+          <ul>
+            <li><strong>Suspensión:</strong> condición que detiene las pruebas temporalmente — por ejemplo, un defecto bloqueante que impide seguir probando el resto del flujo.</li>
+            <li><strong>Reanudación:</strong> condición que indica que ya se puede retomar — por ejemplo, una vez ese defecto bloqueante queda corregido.</li>
+          </ul>
+          <p>Sin este criterio, un equipo puede seguir "probando" sobre un sistema roto y produciendo resultados que no significan nada.</p>
+          <img class="portada-icon" src="img/circle-pause.svg" alt="Suspensión y reanudación" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué puede salir mal</h1>
+          <p>Todo plan asume que algo puede fallar. La pregunta no es si habrá riesgos, sino si el equipo los anticipó por escrito o los va a descubrir en el peor momento posible.</p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Qué puede salir mal" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Riesgo de producto vs. riesgo de proyecto</h1>
+          <table>
+            <tbody>
+              <tr><th>Riesgo de producto</th><td>Algo en <strong>el software</strong> puede fallar: un módulo complejo, una integración externa frágil, un requisito ambiguo.</td></tr>
+              <tr><th>Riesgo de proyecto</th><td>Algo en <strong>el esfuerzo de probarlo</strong> puede fallar: falta de tiempo, un ambiente de pruebas inestable, personal con poca experiencia en el dominio.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Uno amenaza la calidad del producto; el otro amenaza la capacidad del equipo de verificarla a tiempo.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas basadas en riesgo</h1>
+          <p>Ningún equipo tiene tiempo de probar todo con la misma profundidad. Las <strong>pruebas basadas en riesgo</strong> resuelven eso: se prioriza el esfuerzo según dos preguntas por cada riesgo.</p>
+          <ul>
+            <li><strong>Probabilidad:</strong> ¿qué tan posible es que esto falle?</li>
+            <li><strong>Impacto:</strong> ¿qué tan grave es si falla?</li>
+          </ul>
+          <p>Un riesgo de alta probabilidad y alto impacto recibe más casos de prueba, más revisión y se ejecuta primero — no al azar, ni en el orden en que aparece en la lista de requisitos.</p>
+          <img class="portada-icon" src="img/bullseye.svg" alt="Pruebas basadas en riesgo" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Una matriz de riesgo priorizada</h1>
+          <table>
+            <thead>
+              <tr><th>Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Prioridad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>El módulo de pagos usa una librería externa poco probada</td><td>Alta</td><td>Alto</td><td>1</td></tr>
+              <tr><td>El ambiente de pruebas comparte base de datos con desarrollo</td><td>Media</td><td>Alto</td><td>2</td></tr>
+              <tr><td>El texto de dos botones no está traducido</td><td>Alta</td><td>Bajo</td><td>3</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Nótese que "alta probabilidad" solo no basta para priorizar primero — el impacto es el que decide.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué hace falta para ejecutar el plan</h1>
+          <p>Un plan perfecto sobre el papel no sirve si nadie tiene el tiempo, el acceso o las herramientas para ejecutarlo. Falta la última pieza: los recursos.</p>
+          <img class="portada-icon" src="img/toolbox.svg" alt="Qué hace falta" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los recursos del plan</h1>
+          <ul>
+            <li><strong>Roles:</strong> quién diseña casos, quién ejecuta, quién aprueba — recordando la responsabilidad compartida de la semana 2.</li>
+            <li><strong>Ambiente de pruebas:</strong> dónde se ejecuta — separado de producción, con datos representativos pero no reales.</li>
+            <li><strong>Herramientas:</strong> gestor de casos, herramientas de automatización, SonarCloud para análisis estático.</li>
+            <li><strong>Cronograma:</strong> cuánto tiempo real hay entre los criterios de entrada y los de salida.</li>
+          </ul>
+          <img class="portada-icon" src="img/screwdriver-wrench.svg" alt="Recursos" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un <strong>plan de pruebas</strong> aplica la estrategia general de la organización a un proyecto específico.</li>
+            <li>El <strong>alcance</strong> define qué se prueba y —con la misma importancia— qué no.</li>
+            <li>Los criterios de <strong>entrada, salida, suspensión y reanudación</strong> son cuatro condiciones distintas, no una sola.</li>
+            <li>El <strong>riesgo de producto</strong> amenaza la calidad; el <strong>riesgo de proyecto</strong> amenaza el esfuerzo de probarla.</li>
+            <li>Las <strong>pruebas basadas en riesgo</strong> priorizan por probabilidad × impacto, no por orden de llegada.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: plan de pruebas para ParaBank</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>Cada equipo construye un <strong>plan de pruebas de una página</strong> para ParaBank (<a href="https://parabank-ui.onrender.com" target="_blank" rel="noopener">parabank-ui.onrender.com</a>), con:</p>
+          <ul>
+            <li><strong>Alcance:</strong> qué funcionalidades entran y cuáles quedan fuera.</li>
+            <li><strong>Criterios de entrada y salida</strong> explícitos y medibles.</li>
+            <li><strong>Tres riesgos priorizados</strong>, clasificados por probabilidad e impacto.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 7, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Tipos de pruebas: funcional, regresión, humo, rendimiento, seguridad, usabilidad, accesibilidad.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. El taller de la semana 7: ejecutar pruebas de humo sobre <strong>SauceDemo</strong> con la credencial asignada al equipo, y construir la matriz de tipos de prueba aplicables.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 24</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

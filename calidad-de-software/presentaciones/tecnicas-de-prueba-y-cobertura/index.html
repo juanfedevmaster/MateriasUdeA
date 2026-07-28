@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Técnicas de Prueba y Cobertura — Semana 8</title>
+  <meta name="description" content="Caja negra (particiones de equivalencia, valores límite, tablas de decisión, transición de estados), caja blanca (cobertura de sentencia, decisión, camino) y la pirámide de Cohn — Calidad de Software, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/tecnicas-de-prueba-y-cobertura/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Técnicas de Prueba y Cobertura — Semana 8" />
+  <meta property="og:description" content="Caja negra (particiones de equivalencia, valores límite, tablas de decisión, transición de estados), caja blanca (cobertura de sentencia, decisión, camino) y la pirámide de Cohn — Calidad de Software, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/tecnicas-de-prueba-y-cobertura/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Técnicas de Prueba y Cobertura — Semana 8" />
+  <meta name="twitter:description" content="Caja negra (particiones de equivalencia, valores límite, tablas de decisión, transición de estados), caja blanca (cobertura de sentencia, decisión, camino) y la pirámide de Cohn — Calidad de Software, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/tecnicas-de-prueba-y-cobertura.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 8 — Técnicas de prueba: caja negra, caja blanca, niveles y la pirámide de Cohn</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/vial.svg" alt="Técnicas de prueba" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 7</h1>
+          <ul>
+            <li>Existen siete <strong>tipos</strong> de prueba: funcional, regresión, humo, rendimiento, seguridad, usabilidad, accesibilidad.</li>
+            <li>No todos aplican siempre — descartar uno con justificación es válido.</li>
+            <li>Humo es amplio y superficial; regresión es angosta y profunda.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: el "cómo" del diseño de casos</h1>
+          <p>Ya sabemos <strong>qué</strong> tipo de prueba responde cada pregunta (semana 7) y <strong>cuándo</strong> se ejecuta cada una según el nivel del modelo en V (semana 2). Falta la pieza que cierra el círculo: <strong>cómo</strong> se decide, de forma sistemática y no al ojo, cuáles casos concretos vale la pena escribir.</p>
+          <img class="portada-icon" src="img/gears.svg" alt="El cómo del diseño de casos" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una técnica de prueba</h1>
+          <p>Es un <strong>método sistemático</strong> para derivar casos de prueba a partir de un artefacto — un requisito, una historia de usuario, o el código mismo — en vez de inventarlos por intuición.</p>
+          <p>Las técnicas se agrupan en dos grandes familias, según <strong>qué información usan</strong> para diseñar los casos: si miran la especificación desde afuera, o el código desde adentro.</p>
+          <img class="portada-icon" src="img/object-group.svg" alt="Técnica de prueba" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Caja negra vs. caja blanca</h1>
+          <table>
+            <tbody>
+              <tr><th>Caja negra</th><td>Diseña casos a partir de la <strong>especificación</strong> — requisitos, historias de usuario — sin mirar el código. El sistema es una caja cerrada: importa la entrada y la salida.</td></tr>
+              <tr><th>Caja blanca</th><td>Diseña casos a partir de la <strong>estructura interna del código</strong> — sus sentencias, decisiones y caminos posibles.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Un buen plan de pruebas usa las dos — se complementan, no compiten.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Empezamos por caja negra</h1>
+          <p>Cuatro técnicas clásicas de caja negra, de la más común a la más específica: particiones de equivalencia, valores límite, tablas de decisión y transición de estados.</p>
+          <img class="portada-icon" src="img/eye-slash.svg" alt="Caja negra" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Particiones de equivalencia</h1>
+          <p>Divide las entradas posibles de un campo en <strong>grupos donde, si un valor del grupo falla, se espera que todos fallen igual</strong> — y viceversa. En vez de probar cada valor posible, se prueba <strong>uno representativo por grupo</strong>.</p>
+          <p><strong>Ejemplo:</strong> un campo "edad" que solo acepta 18 a 65 tiene tres particiones: menor a 18 (inválida), 18–65 (válida), mayor a 65 (inválida). Probar 10, 30 y 80 cubre las tres — probar además 15 o 50 no añade información nueva.</p>
+          <img class="portada-icon" src="img/object-group.svg" alt="Particiones de equivalencia" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Valores límite</h1>
+          <p>Los defectos rara vez viven en la mitad de una partición — viven en sus <strong>bordes</strong>. Un error de "mayor que" en vez de "mayor o igual que" solo se ve probando justo en el límite.</p>
+          <p><strong>Mismo ejemplo del campo "edad" (18–65):</strong> los valores a probar son 17, 18 y 19 (borde inferior) y 65, 66 (borde superior) — no el 30 del centro de la partición.</p>
+          <p class="slide-eyebrow">En la práctica casi siempre se combinan: particiones para saber dónde mirar, valores límite para saber exactamente qué probar ahí.</p>
+          <img class="portada-icon" src="img/ruler-horizontal.svg" alt="Valores límite" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Partición + valores límite, combinados</h1>
+          <p><strong>Campo:</strong> "cantidad", acepta enteros de 1 a 10.</p>
+          <table>
+            <thead>
+              <tr><th>Caso</th><th>Valor</th><th>Partición</th><th>¿Por qué se incluye?</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>0</td><td>Inválida (baja)</td><td>Límite inferior inválido</td></tr>
+              <tr><td>2</td><td>1</td><td>Válida</td><td>Límite inferior válido</td></tr>
+              <tr><td>3</td><td>5</td><td>Válida</td><td>Representante del centro</td></tr>
+              <tr><td>4</td><td>10</td><td>Válida</td><td>Límite superior válido</td></tr>
+              <tr><td>5</td><td>11</td><td>Inválida (alta)</td><td>Límite superior inválido</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tablas de decisión</h1>
+          <p>Sirve cuando el comportamiento depende de la <strong>combinación de varias condiciones</strong>, no de un solo campo. La tabla enumera cada combinación posible y la acción que le corresponde — nada queda implícito.</p>
+          <table>
+            <thead>
+              <tr><th>¿Usuario premium?</th><th>¿Monto &gt; $100?</th><th>Descuento aplicado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sí</td><td>Sí</td><td>20 %</td></tr>
+              <tr><td>Sí</td><td>No</td><td>10 %</td></tr>
+              <tr><td>No</td><td>Sí</td><td>5 %</td></tr>
+              <tr><td>No</td><td>No</td><td>0 %</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Transición de estados</h1>
+          <p>Sirve cuando el sistema se comporta distinto según <strong>en qué estado está</strong>, no solo según la entrada actual. Se diseñan casos para cada transición válida — y, con la misma importancia, para las <strong>transiciones inválidas</strong> que deberían quedar bloqueadas.</p>
+          <p><strong>Ejemplo:</strong> un pedido pasa por Pendiente → Pagado → Enviado → Entregado. Un caso válido prueba Pagado → Enviado. Un caso igual de valioso prueba que <strong>no</strong> se puede pasar de Pendiente directo a Entregado, saltándose los estados intermedios.</p>
+          <img class="portada-icon" src="img/circle-nodes.svg" alt="Transición de estados" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora caja blanca</h1>
+          <p>Las técnicas de caja negra ignoran el código a propósito. Las de caja blanca hacen justo lo contrario: usan la estructura del código para decidir qué tan a fondo se probó.</p>
+          <img class="portada-icon" src="img/eye.svg" alt="Caja blanca" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es la cobertura de código</h1>
+          <p>Es una <strong>métrica</strong>: qué porcentaje del código se ejecutó al menos una vez durante las pruebas. SonarCloud (semana 5) ya la reportaba — hoy se ve qué significa exactamente ese número, porque no todas las coberturas miden lo mismo.</p>
+          <p><strong>Advertencia que se repite en todo el curso:</strong> alta cobertura no es sinónimo de buenas pruebas — solo dice qué se ejecutó, no si se verificó el resultado correcto.</p>
+          <img class="portada-icon" src="img/percent.svg" alt="Cobertura de código" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cobertura de sentencia</h1>
+          <p>Mide qué porcentaje de <strong>líneas de código</strong> se ejecutó al menos una vez. Es la más fácil de alcanzar y la más débil: no garantiza que se haya probado cada decisión.</p>
+          <pre><code>if edad &gt;= 18:
+    permitir_acceso()
+else:
+    denegar_acceso()</code></pre>
+          <p>Un solo caso con <code>edad = 20</code> ejecuta la primera rama pero <strong>no</strong> la segunda — cobertura de sentencia parcial, aunque "la función se ejecutó".</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cobertura de decisión</h1>
+          <p>Mide qué porcentaje de <strong>decisiones</strong> (los <code>if</code>, los <code>while</code>) tomaron tanto el valor verdadero como el falso al menos una vez. Es más exigente que sentencia: para el ejemplo anterior, hacen falta <strong>dos</strong> casos —uno con <code>edad &gt;= 18</code> y otro con <code>edad &lt; 18</code>— para cubrir el 100 %.</p>
+          <p><strong>100 % de cobertura de decisión implica 100 % de cobertura de sentencia — lo contrario no es cierto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cobertura de camino</h1>
+          <p>Mide qué porcentaje de las <strong>combinaciones posibles de decisiones</strong> (los "caminos" que puede recorrer la ejecución de principio a fin) quedaron cubiertas. Es la más exigente de las tres — y la que casi nunca llega al 100 %: el número de caminos crece exponencialmente con cada decisión nueva.</p>
+          <p>Por eso en la práctica se usa más como guía para encontrar combinaciones olvidadas que como meta numérica estricta.</p>
+          <img class="portada-icon" src="img/circle-nodes.svg" alt="Cobertura de camino" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Las tres coberturas, de menos a más exigente</h1>
+          <table>
+            <thead>
+              <tr><th>Cobertura</th><th>Qué exige</th><th>Exigencia</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sentencia</td><td>Cada línea se ejecuta al menos una vez</td><td>Baja</td></tr>
+              <tr><td>Decisión</td><td>Cada condición toma verdadero y falso</td><td>Media</td></tr>
+              <tr><td>Camino</td><td>Cada combinación de decisiones se recorre</td><td>Alta</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Ninguna de las tres, ni siquiera al 100 %, garantiza ausencia de defectos — solo acota qué tanto del código quedó sin ejercitar.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cuánto de cada técnica, en qué nivel</h1>
+          <p>Con todas las técnicas sobre la mesa, falta la pregunta de distribución: si hay tiempo limitado, ¿dónde conviene invertir más esfuerzo — en pruebas unitarias, de integración, o de sistema completo?</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Cuánto de cada técnica" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>La pirámide de Cohn</h1>
+          <p>Propuesta por <strong>Mike Cohn</strong> en su libro <em>"Succeeding with Agile"</em> (2009), organiza las pruebas automatizadas en tres capas según su costo y velocidad:</p>
+          <ul>
+            <li><strong>Base — Unitarias:</strong> muchas, rápidas, baratas de mantener. Prueban una función o clase aislada.</li>
+            <li><strong>Medio — Servicio/Integración:</strong> menos cantidad, prueban cómo interactúan varios componentes.</li>
+            <li><strong>Punta — Interfaz/UI:</strong> pocas, lentas y frágiles. Prueban el sistema completo desde afuera.</li>
+          </ul>
+          <img class="portada-icon" src="img/mountain.svg" alt="Pirámide de Cohn" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿La pirámide sigue vigente?</h1>
+          <p>La pirámide asume que las pruebas de interfaz son lentas y frágiles por naturaleza — cierto en 2009, menos cierto hoy con mejores herramientas de automatización (semana 13). Algunos autores, como Kent C. Dodds, proponen un <strong>"trofeo de pruebas"</strong>: menos pruebas unitarias aisladas, más pruebas de integración, porque estas últimas dan más confianza por caso escrito.</p>
+          <blockquote>El principio que sí sobrevive a cualquier forma —pirámide o trofeo— es el mismo: <strong>preferir muchas pruebas rápidas y baratas sobre pocas lentas y costosas</strong>, sin importar cómo se llame la figura.</blockquote>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Debate sobre la pirámide" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: particiones y límites</h1>
+          <p><strong>5 minutos:</strong> un campo "porcentaje de descuento" acepta enteros de 0 a 50.</p>
+          <ol>
+            <li>¿Cuántas particiones tiene (válidas e inválidas)?</li>
+            <li>¿Qué valores límite probarían?</li>
+          </ol>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>Caja negra</strong> parte de la especificación; <strong>caja blanca</strong>, del código — se complementan.</li>
+            <li><strong>Particiones de equivalencia</strong> agrupan entradas; <strong>valores límite</strong> prueban justo los bordes de esos grupos.</li>
+            <li><strong>Tablas de decisión</strong> y <strong>transición de estados</strong> cubren combinaciones de condiciones y comportamientos dependientes del estado.</li>
+            <li>Cobertura de <strong>sentencia, decisión y camino</strong> exigen cada vez más — ninguna garantiza ausencia de defectos.</li>
+            <li>La <strong>pirámide de Cohn</strong>: muchas pruebas rápidas en la base, pocas lentas en la punta.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: casos sobre automationexercise.com</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>Sobre el <strong>formulario de registro</strong> de <a href="https://automationexercise.com" target="_blank" rel="noopener">automationexercise.com</a>, cada equipo debe:</p>
+          <ul>
+            <li>Diseñar casos de prueba usando <strong>particiones de equivalencia</strong> y <strong>valores límite</strong> sobre al menos dos campos del formulario.</li>
+            <li><strong>Ejecutar</strong> esos casos contra el sitio real.</li>
+            <li><strong>Reportar las discrepancias</strong> encontradas entre el comportamiento esperado y el observado.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 9, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Introducción al proceso de pruebas. Ciclo de vida del defecto. Severidad vs. prioridad. Reporte de defectos.</li>
+          </ul>
+          <p>Arranca la <strong>Unidad 3 — Implementación del proceso de aseguramiento</strong>. Y algo importante: <strong>al inicio de la semana 9 se entrega el Trabajo 1</strong> (25 % de la nota) — el plan de pruebas y diseño de casos aplicado al proyecto de Fábrica-Escuela, con todo lo visto hasta hoy.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 24</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

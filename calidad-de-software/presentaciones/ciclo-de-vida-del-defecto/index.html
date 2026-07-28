@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ciclo de Vida del Defecto — Semana 9</title>
+  <meta name="description" content="El proceso de pruebas, el ciclo de vida del defecto, severidad vs. prioridad y cómo reportar un defecto — Calidad de Software, Semana 9." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/ciclo-de-vida-del-defecto/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Ciclo de Vida del Defecto — Semana 9" />
+  <meta property="og:description" content="El proceso de pruebas, el ciclo de vida del defecto, severidad vs. prioridad y cómo reportar un defecto — Calidad de Software, Semana 9." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/ciclo-de-vida-del-defecto/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ciclo de Vida del Defecto — Semana 9" />
+  <meta name="twitter:description" content="El proceso de pruebas, el ciclo de vida del defecto, severidad vs. prioridad y cómo reportar un defecto — Calidad de Software, Semana 9." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/ciclo-de-vida-del-defecto.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 9 — El proceso de pruebas, el ciclo de vida del defecto y su reporte</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/bug.svg" alt="Ciclo de vida del defecto" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Hoy se entrega el Trabajo 1</h1>
+          <p>Al inicio de esta semana se entrega el <strong>Trabajo 1 (25 %)</strong>: plan de pruebas y diseño de casos, aplicando todo lo visto en las Unidades 1, 2 y 4 al proyecto de Fábrica-Escuela.</p>
+          <p>Con esa entrega arranca la <strong>Unidad 3 — Implementación del proceso de aseguramiento</strong>: de aquí en adelante, el curso deja de hablar en abstracto y empieza a ejecutar el proceso completo, de principio a fin.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Trabajo 1" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 8</h1>
+          <ul>
+            <li><strong>Caja negra</strong> parte de la especificación; <strong>caja blanca</strong>, del código.</li>
+            <li>Particiones de equivalencia, valores límite, tablas de decisión y transición de estados diseñan casos de forma sistemática.</li>
+            <li>La <strong>pirámide de Cohn</strong>: muchas pruebas rápidas en la base, pocas lentas en la punta.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: el proceso completo, de principio a fin</h1>
+          <p>Ya tenemos todas las piezas sueltas: se planea (semana 6), se decide qué tipos aplican (semana 7), se diseñan los casos (semana 8). Hoy se unen en un solo proceso — y se ve qué pasa <strong>después</strong>, cuando una prueba efectivamente encuentra algo.</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="El proceso completo" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El proceso de pruebas, de un vistazo</h1>
+          <ol>
+            <li><strong>Planear</strong> — alcance, criterios, riesgos, recursos (semana 6).</li>
+            <li><strong>Diseñar</strong> — casos con las técnicas de caja negra y blanca (semana 8).</li>
+            <li><strong>Ejecutar</strong> — correr los casos contra el sistema real.</li>
+            <li><strong>Reportar</strong> — documentar cada discrepancia encontrada como un defecto.</li>
+            <li><strong>Verificar y cerrar</strong> — confirmar la corrección y cerrar el ciclo.</li>
+          </ol>
+          <p class="slide-eyebrow">Los pasos 4 y 5 son el tema de hoy — el resto ya se vio en semanas anteriores.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué pasa cuando una prueba falla</h1>
+          <p>Encontrar una discrepancia es solo el principio. Ese hallazgo tiene que viajar de quien lo encontró a quien lo corrige, y de ahí de vuelta — con un registro claro de en qué punto de ese viaje está en cada momento.</p>
+          <img class="portada-icon" src="img/circle-exclamation.svg" alt="Qué pasa cuando falla" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Recordatorio</p>
+          <h1>Defecto, otra vez</h1>
+          <p>Semana 1: un <strong>defecto</strong> es la huella que un error humano deja en un artefacto — código, configuración, documento. Es distinto de la <strong>falla</strong>, que es el comportamiento incorrecto observable cuando ese defecto se ejecuta.</p>
+          <p><strong>Hoy el defecto deja de ser solo un concepto y se vuelve un objeto que se gestiona</strong>: tiene un estado, cambia de dueño, y sigue un camino predecible desde que se encuentra hasta que se cierra.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El ciclo de vida del defecto</h1>
+          <p>Es el conjunto de <strong>estados por los que pasa un defecto</strong>, desde que se reporta hasta que se cierra, y las reglas que dicen qué transiciones son válidas:</p>
+          <ul>
+            <li><strong>Nuevo:</strong> recién reportado, sin revisar todavía.</li>
+            <li><strong>Asignado:</strong> un desarrollador lo tiene a cargo.</li>
+            <li><strong>En progreso:</strong> se está corrigiendo.</li>
+            <li><strong>Corregido / Listo para retest:</strong> el desarrollador dice que ya está solucionado.</li>
+            <li><strong>Cerrado:</strong> quien lo reportó confirmó que la corrección funciona.</li>
+            <li><strong>Reabierto:</strong> la corrección no funcionó — vuelve a "En progreso".</li>
+            <li><strong>Rechazado / Diferido:</strong> no se considera un defecto, o se pospone a propósito.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Quién puede mover cada estado</h1>
+          <table>
+            <thead>
+              <tr><th>Transición</th><th>Quién la hace</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Nuevo → Asignado</td><td>Líder técnico o el equipo, al triar el defecto</td></tr>
+              <tr><td>Asignado → En progreso</td><td>El desarrollador, al empezar a trabajarlo</td></tr>
+              <tr><td>En progreso → Corregido</td><td>El desarrollador, al terminar la corrección</td></tr>
+              <tr><td>Corregido → Cerrado</td><td>Quien reportó, tras confirmar que ya no falla</td></tr>
+              <tr><td>Corregido → Reabierto</td><td>Quien reportó, si la falla sigue presente</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Nadie cierra su propio defecto — cerrarlo le corresponde a quien lo encontró.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un defecto recorriendo el ciclo completo</h1>
+          <ol>
+            <li>QA reporta: "El botón Transferir permite montos negativos" → <strong>Nuevo</strong>.</li>
+            <li>El líder técnico lo revisa y lo asigna a un desarrollador → <strong>Asignado</strong>.</li>
+            <li>El desarrollador empieza a trabajarlo → <strong>En progreso</strong>.</li>
+            <li>Agrega la validación y sube el cambio → <strong>Corregido</strong>.</li>
+            <li>QA vuelve a probar con un monto negativo: el sistema sigue permitiéndolo en un segundo formulario que no se corrigió → <strong>Reabierto</strong>.</li>
+            <li>El desarrollador corrige también ese formulario → <strong>Corregido</strong>.</li>
+            <li>QA confirma que ya no falla en ningún formulario → <strong>Cerrado</strong>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>No todos los defectos son iguales</h1>
+          <p>Un defecto en "Nuevo" necesita que alguien decida dos cosas antes de asignarlo: qué tan grave es, y qué tan urgente es corregirlo. No son la misma pregunta.</p>
+          <img class="portada-icon" src="img/flag.svg" alt="No todos son iguales" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Recordatorio</p>
+          <h1>Severidad, otra vez</h1>
+          <p>Semana 4: la <strong>severidad</strong> mide <strong>qué tanto daño causa</strong> un defecto si no se corrige — Crítica, Alta, Media, Baja. Es una propiedad técnica del defecto: la decide quien lo encuentra, mirando el impacto real en el sistema.</p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Severidad" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es la prioridad</h1>
+          <p>La <strong>prioridad</strong> mide <strong>qué tan pronto</strong> debe corregirse un defecto, en relación con todo lo demás que compite por el tiempo del equipo. A diferencia de la severidad, <strong>es una decisión de negocio</strong>, no solo técnica — la toma quien planea el trabajo, considerando plazos, visibilidad del defecto para el cliente, y esfuerzo disponible.</p>
+          <p><strong>Un defecto puede ser grave y no urgente, o leve y muy urgente — por eso hacen falta las dos escalas, no una sola.</strong></p>
+          <img class="portada-icon" src="img/flag.svg" alt="Prioridad" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Severidad y prioridad, combinadas</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Prioridad alta</th><th>Prioridad baja</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Severidad alta</th><td>El sistema de pagos rechaza todas las transacciones</td><td>Un módulo interno, poco usado, calcula mal un reporte histórico</td></tr>
+              <tr><th>Severidad baja</th><td>El logo de la empresa se ve mal justo antes del lanzamiento de marca</td><td>Un texto de ayuda tiene una errata menor</td></tr>
+            </tbody>
+          </table>
+          <p><strong>La celda "severidad baja, prioridad alta" es la que más sorprende — y la más fácil de justificar mal si no se separan las dos escalas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cómo se documenta todo esto</h1>
+          <p>Un defecto que solo existe en la cabeza de quien lo encontró no sirve de nada. Necesita quedar escrito de una forma que cualquier otra persona del equipo pueda entender y reproducir, sin tener que preguntar.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Cómo se documenta" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>Qué es un reporte de defectos</h1>
+          <p>Es el documento —normalmente un ticket en una herramienta como <strong>Jira</strong>— que registra un defecto de forma que se pueda <strong>rastrear, priorizar y verificar</strong> a lo largo de todo su ciclo de vida. Es la unidad básica de comunicación entre quien encuentra el problema y quien lo corrige.</p>
+          <img class="portada-icon" src="img/jira.svg" alt="Jira" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué contiene un buen reporte</h1>
+          <ul>
+            <li><strong>Título claro:</strong> resume el problema en una línea — no "no funciona", sino qué exactamente no funciona.</li>
+            <li><strong>Pasos de reproducción:</strong> numerados, específicos, sin dar nada por sentado.</li>
+            <li><strong>Resultado esperado vs. observado:</strong> qué debía pasar y qué pasó en realidad.</li>
+            <li><strong>Severidad y prioridad.</strong></li>
+            <li><strong>Ambiente:</strong> navegador, sistema operativo, versión, credencial usada.</li>
+            <li><strong>Evidencia:</strong> captura de pantalla, video, o log — con fecha y hora visibles.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Un reporte que no sirve</h1>
+          <p><strong>Mal:</strong> <em>"El carrito de compras no funciona bien, revisar cuando puedan."</em></p>
+          <ul>
+            <li>No dice qué acción se hizo ni en qué pantalla.</li>
+            <li>No dice qué se esperaba ni qué pasó realmente.</li>
+            <li>Sin severidad, sin prioridad, sin evidencia — nadie puede reproducirlo ni priorizarlo.</li>
+          </ul>
+          <p><strong>Mejor:</strong> <em>"Al agregar 2 unidades del mismo producto al carrito, el subtotal muestra el precio de 1 unidad en vez de 2. Esperado: subtotal = precio × cantidad. Severidad: Alta. Prioridad: Alta (afecta el cobro real)."</em></p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: severidad y prioridad</h1>
+          <p><strong>5 minutos — clasifiquen cada caso:</strong></p>
+          <ol>
+            <li>El sitio se cae por completo para todos los usuarios.</li>
+            <li>Un descuento promocional del 50 % no se aplica, y la promoción termina mañana.</li>
+            <li>Un ícono decorativo en el pie de página está pixelado.</li>
+          </ol>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Quién decide la prioridad?</h1>
+          <p>Es tentador que el mismo tester que asigna la severidad también asigne la prioridad —al fin y al cabo, ya conoce el defecto a fondo. El problema: la prioridad depende de información de negocio que un tester no siempre tiene —plazos con el cliente, visibilidad de marca, presión comercial.</p>
+          <p>La práctica más sólida separa los roles: <strong>el tester propone</strong> una prioridad inicial basada en severidad, pero <strong>el equipo o el responsable del producto la confirma</strong> en la reunión de triage, con el contexto completo.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Quién decide la prioridad" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El proceso de pruebas no termina al ejecutar un caso — <strong>reportar y cerrar</strong> son parte de él.</li>
+            <li>Un defecto tiene un <strong>ciclo de vida</strong>: Nuevo → Asignado → En progreso → Corregido → Cerrado (o Reabierto).</li>
+            <li><strong>Severidad</strong> mide daño; <strong>prioridad</strong> mide urgencia — son ejes independientes.</li>
+            <li>Un buen reporte de defectos es <strong>reproducible</strong>: pasos claros, esperado vs. observado, evidencia con fecha y hora.</li>
+            <li>Cerrar un defecto le corresponde a <strong>quien lo encontró</strong>, no a quien lo corrigió.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: reportar 6 defectos en ParaBank</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>Con la credencial asignada, cada equipo debe encontrar y reportar <strong>6 defectos</strong> sobre <a href="https://parabank-ui.onrender.com" target="_blank" rel="noopener">ParaBank</a>, cada uno con:</p>
+          <ul>
+            <li><strong>Pasos de reproducción</strong> claros y numerados.</li>
+            <li><strong>Severidad y prioridad</strong>, cada una justificada por separado.</li>
+            <li><strong>Evidencia</strong> (captura o video) con <strong>marca de fecha y hora de la sesión</strong> visible.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 10, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Pruebas unitarias. Frameworks (JUnit / pytest). Test doubles: mocks, stubs, fakes.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>, dentro de la Unidad 3. El taller de la semana 10: suite de pruebas unitarias sobre una regla de negocio, con casos límite de la semana 8 y al menos un test double.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

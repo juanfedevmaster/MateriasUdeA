@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pruebas Unitarias y Test Doubles — Semana 10</title>
+  <meta name="description" content="Pruebas unitarias, el patrón Arrange-Act-Assert, JUnit y pytest, y test doubles (stubs, mocks, fakes) — Calidad de Software, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/pruebas-unitarias-y-test-doubles/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Pruebas Unitarias y Test Doubles — Semana 10" />
+  <meta property="og:description" content="Pruebas unitarias, el patrón Arrange-Act-Assert, JUnit y pytest, y test doubles (stubs, mocks, fakes) — Calidad de Software, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/pruebas-unitarias-y-test-doubles/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pruebas Unitarias y Test Doubles — Semana 10" />
+  <meta name="twitter:description" content="Pruebas unitarias, el patrón Arrange-Act-Assert, JUnit y pytest, y test doubles (stubs, mocks, fakes) — Calidad de Software, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/pruebas-unitarias-y-test-doubles.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 10 — Pruebas unitarias, frameworks y test doubles</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/cube.svg" alt="Pruebas unitarias" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 9</h1>
+          <ul>
+            <li>El proceso de pruebas no termina al ejecutar — <strong>reportar y cerrar</strong> también son parte de él.</li>
+            <li>Un defecto tiene un <strong>ciclo de vida</strong>: Nuevo → Asignado → En progreso → Corregido → Cerrado.</li>
+            <li><strong>Severidad</strong> mide daño; <strong>prioridad</strong> mide urgencia — son ejes distintos.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: la base de la pirámide</h1>
+          <p>La semana 8 cerró con la pirámide de Cohn: muchas pruebas rápidas y baratas en la base, pocas lentas y costosas en la punta. Hoy se construye esa base — las <strong>pruebas unitarias</strong> — y las herramientas para escribirlas de forma sistemática.</p>
+          <img class="portada-icon" src="img/mountain.svg" alt="La base de la pirámide" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una prueba unitaria</h1>
+          <p>Es una prueba automatizada que verifica el comportamiento de la <strong>unidad más pequeña</strong> de código con sentido propio — normalmente una función o un método — <strong>de forma aislada</strong> del resto del sistema.</p>
+          <ul>
+            <li><strong>Rápida:</strong> se mide en milisegundos, no en segundos.</li>
+            <li><strong>Aislada:</strong> no depende de una base de datos, una red, ni de otras pruebas.</li>
+            <li><strong>Determinista:</strong> el mismo código produce siempre el mismo resultado.</li>
+            <li><strong>Enfocada:</strong> prueba una sola cosa, y si falla, dice exactamente qué se rompió.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué "rápida y aislada" no es opcional</h1>
+          <p>La pirámide de Cohn solo funciona si la base es barata: un equipo puede correr <strong>miles</strong> de pruebas unitarias en segundos, después de cada cambio, sin pensarlo dos veces.</p>
+          <p>Una prueba "unitaria" que se conecta a una base de datos real ya dejó de ser rápida ni aislada — es, en realidad, una prueba de integración con otro nombre. La distinción no es cosmética: cambia cuántas veces el equipo está dispuesto a ejecutarla.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Arrange-Act-Assert (AAA)</h1>
+          <p>Es la estructura estándar de una prueba unitaria, en tres partes siempre en el mismo orden:</p>
+          <ul>
+            <li><strong>Arrange</strong> <em>(preparar)</em>: se crean los datos y objetos que la prueba necesita.</li>
+            <li><strong>Act</strong> <em>(actuar)</em>: se llama a la función o método que se está probando.</li>
+            <li><strong>Assert</strong> <em>(afirmar)</em>: se compara el resultado obtenido contra el esperado.</li>
+          </ul>
+          <p class="slide-eyebrow">Una prueba que mezcla estos tres pasos sin orden es más difícil de leer cuando falla — separarlos es casi siempre la diferencia entre una prueba clara y una confusa.</p>
+          <img class="portada-icon" src="img/list-ol.svg" alt="Arrange-Act-Assert" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una aserción</h1>
+          <p>Es la instrucción que realmente <strong>decide si la prueba pasa o falla</strong>: compara un valor obtenido contra un valor esperado, y detiene la prueba con un mensaje claro si no coinciden.</p>
+          <p>Sin al menos una aserción, una prueba "pasa" siempre — así el código esté completamente roto. Es el error más común en quien recién empieza a escribir pruebas: ejecutar código sin afirmar nada sobre su resultado.</p>
+          <img class="portada-icon" src="img/equals.svg" alt="Aserción" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Una prueba unitaria completa</h1>
+          <pre><code>def test_calcular_descuento_cliente_premium():
+    # Arrange
+    monto = 100
+    tipo_cliente = "premium"
+
+    # Act
+    resultado = calcular_descuento(monto, tipo_cliente)
+
+    # Assert
+    assert resultado == 20</code></pre>
+          <p>Tres líneas, tres responsabilidades — y si falla, el mensaje de la aserción dice exactamente qué valor se esperaba y cuál llegó.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Las herramientas para escribirlas</h1>
+          <p>Nadie escribe pruebas unitarias a mano desde cero — existen frameworks que dan la estructura (cómo declarar una prueba), las aserciones, y el reporte de qué pasó y qué falló.</p>
+          <img class="portada-icon" src="img/toolbox.svg" alt="Las herramientas" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>JUnit, para Java</h1>
+          <p>Creado por <strong>Kent Beck</strong> —el mismo de Extreme Programming, semana 3— y <strong>Erich Gamma</strong> —coautor del libro clásico de patrones de diseño "Gang of Four"— durante un vuelo en 1997. Es el origen de la familia <strong>xUnit</strong>, el patrón de frameworks de pruebas que después se replicó en casi todos los lenguajes.</p>
+          <p>Una prueba en JUnit se marca con la anotación <code>@Test</code>, y usa métodos como <code>assertEquals()</code> para las aserciones.</p>
+          <img class="portada-icon" src="img/junit5.svg" alt="JUnit" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>pytest, para Python</h1>
+          <p>A diferencia de JUnit, <strong>pytest</strong> no exige heredar de una clase especial ni usar anotaciones: cualquier función cuyo nombre empiece con <code>test_</code> ya es una prueba, y la palabra reservada <code>assert</code> de Python —la misma que se usa en cualquier script— es la aserción.</p>
+          <p>Esa simplicidad es su principal argumento de venta frente a <code>unittest</code>, el framework que viene incluido en Python pero que sí exige la estructura de clases al estilo xUnit.</p>
+          <img class="portada-icon" src="img/pytest.svg" alt="pytest" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué pasa cuando la unidad depende de algo más</h1>
+          <p>La regla era "aislada" — pero casi ninguna función real vive sola. Llama a una base de datos, a una API externa, o envía un correo. Probarla de verdad contra esas dependencias reales rompería la velocidad y el aislamiento. Hace falta una forma de "fingir" esas dependencias.</p>
+          <img class="portada-icon" src="img/masks-theater.svg" alt="Qué pasa con las dependencias" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Qué es un test double</h1>
+          <p>El término lo acuñó <strong>Gerard Meszaros</strong> en su libro <em>"xUnit Test Patterns"</em> (2007), tomando la metáfora del cine: un <strong>doble de riesgo</strong> reemplaza al actor real en una escena peligrosa — se parece lo suficiente para la escena, sin ser el actor de verdad.</p>
+          <p>Un <strong>test double</strong> es, igual, un objeto que reemplaza una dependencia real dentro de una prueba, imitando lo necesario para que la prueba funcione — sin la complejidad ni la lentitud de la dependencia real. Stub, mock y fake son los tres tipos más comunes.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Stub</h1>
+          <p>Es un test double que <strong>siempre devuelve una respuesta predefinida</strong>, sin importar cómo se le llame. No verifica nada sobre cómo fue usado — solo está ahí para que el código bajo prueba tenga algo que recibir.</p>
+          <p><strong>Ejemplo:</strong> un stub de "servicio de clima" que siempre devuelve <code>"soleado"</code>, para probar una función que decide si mostrar un mensaje de alerta según el clima — sin depender de un servicio meteorológico real.</p>
+          <img class="portada-icon" src="img/reply.svg" alt="Stub" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Mock</h1>
+          <p>Es un test double que, además de devolver respuestas predefinidas, <strong>verifica que se le llamó de la forma esperada</strong> — cuántas veces, con qué argumentos, en qué orden. Si la interacción esperada no ocurrió, el mock hace fallar la prueba.</p>
+          <p><strong>Ejemplo:</strong> un mock del "servicio de correo" que confirma que <code>enviar_correo()</code> se llamó exactamente una vez, con el destinatario correcto, al procesar un pedido — sin enviar un correo real.</p>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Mock" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Fake</h1>
+          <p>Es un test double con una <strong>implementación realmente funcional, pero simplificada</strong> — no solo devuelve datos fijos, de verdad hace el trabajo, solo que de forma más liviana que la dependencia original.</p>
+          <p><strong>Ejemplo:</strong> una base de datos en memoria que implementa guardar y consultar de verdad, en vez de conectarse a un servidor de base de datos real — se comporta como una base de datos, pero sin la infraestructura.</p>
+          <img class="portada-icon" src="img/database.svg" alt="Fake" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Stub, mock y fake, lado a lado</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Qué hace</th><th>Verifica interacción</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Stub</td><td>Devuelve respuestas predefinidas</td><td>No</td></tr>
+              <tr><td>Mock</td><td>Devuelve respuestas y registra cómo se le llamó</td><td>Sí</td></tr>
+              <tr><td>Fake</td><td>Implementación real simplificada</td><td>No</td></tr>
+            </tbody>
+          </table>
+          <p><strong>La pregunta para elegir cuál usar: ¿me importa qué devuelve (stub), cómo se le llamó (mock), o necesito que realmente funcione (fake)?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Una prueba con un mock</h1>
+          <pre><code>def test_procesar_pedido_envia_correo():
+    # Arrange
+    servicio_correo = Mock()
+    pedido = Pedido(cliente="ana@example.com", total=50)
+
+    # Act
+    procesar_pedido(pedido, servicio_correo)
+
+    # Assert
+    servicio_correo.enviar.assert_called_once_with(
+        destinatario="ana@example.com"
+    )</code></pre>
+          <p>La aserción no compara un valor de retorno — verifica que <code>enviar()</code> se haya llamado exactamente una vez, con el destinatario correcto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿stub, mock o fake?</h1>
+          <p><strong>5 minutos — clasifiquen cada caso:</strong></p>
+          <ol>
+            <li>Un objeto que siempre devuelve <code>true</code> al preguntar "¿el usuario tiene permiso?"</li>
+            <li>Un objeto que confirma que se llamó <code>guardar_log()</code> exactamente tres veces.</li>
+            <li>Una lista en memoria que reemplaza una tabla de base de datos, y de verdad permite agregar y buscar elementos.</li>
+          </ol>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Muchos mocks son señal de mal diseño?</h1>
+          <p>Una prueba que necesita cinco test doubles para aislar una sola función suele ser una señal —no del test, sino del código: esa función probablemente tiene demasiadas responsabilidades o dependencias mezcladas.</p>
+          <p>La postura razonable: los test doubles son una herramienta legítima y necesaria, pero cuando su cantidad crece sin control, <strong>el problema real casi siempre está en el diseño del código</strong>, no en la prueba — vale la pena refactorizar (semana 5) antes de agregar el mock número seis.</p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Debate sobre los mocks" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una prueba unitaria es <strong>rápida, aislada, determinista y enfocada</strong> — es la base de la pirámide de Cohn.</li>
+            <li><strong>Arrange-Act-Assert</strong> ordena cualquier prueba en tres pasos claros.</li>
+            <li><strong>JUnit</strong> (Java) y <strong>pytest</strong> (Python) son frameworks de la familia xUnit, con distinto nivel de formalidad.</li>
+            <li>Un <strong>test double</strong> reemplaza una dependencia real — <strong>stub</strong> devuelve datos fijos, <strong>mock</strong> verifica interacción, <strong>fake</strong> funciona de verdad, simplificado.</li>
+            <li>Demasiados mocks en una sola prueba suelen señalar un problema de diseño, no de la prueba.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: suite de pruebas unitarias</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>El docente entrega una <strong>regla de negocio</strong> para implementar. Cada equipo debe escribir una suite de pruebas unitarias que incluya:</p>
+          <ul>
+            <li>Casos derivados de <strong>particiones de equivalencia y valores límite</strong> (semana 8) sobre las entradas de la regla.</li>
+            <li>Al menos <strong>un test double</strong> (stub, mock o fake) para alguna dependencia externa de la regla.</li>
+            <li>Estructura <strong>Arrange-Act-Assert</strong> en cada prueba.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 11, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Métricas de calidad de software: densidad de defectos, DRE, cobertura, complejidad ciclomática.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. El taller de la semana 11: cálculo de métricas sobre un repositorio asignado, con interpretación escrita de qué revela y qué oculta cada una.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

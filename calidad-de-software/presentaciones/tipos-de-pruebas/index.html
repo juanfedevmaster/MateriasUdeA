@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tipos de Pruebas — Semana 7</title>
+  <meta name="description" content="Pruebas funcionales, de regresión, humo, rendimiento, seguridad, usabilidad y accesibilidad — Calidad de Software, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/tipos-de-pruebas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Tipos de Pruebas — Semana 7" />
+  <meta property="og:description" content="Pruebas funcionales, de regresión, humo, rendimiento, seguridad, usabilidad y accesibilidad — Calidad de Software, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/tipos-de-pruebas/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tipos de Pruebas — Semana 7" />
+  <meta name="twitter:description" content="Pruebas funcionales, de regresión, humo, rendimiento, seguridad, usabilidad y accesibilidad — Calidad de Software, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/tipos-de-pruebas.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 7 — Tipos de pruebas: funcional, regresión, humo, rendimiento, seguridad, usabilidad y accesibilidad</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/shapes.svg" alt="Tipos de pruebas" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 6</h1>
+          <ul>
+            <li>Un <strong>plan de pruebas</strong> define alcance, estrategia, criterios de entrada/salida, riesgos y recursos.</li>
+            <li>Las <strong>pruebas basadas en riesgo</strong> priorizan por probabilidad × impacto.</li>
+            <li>Hoy trabajamos con equipos fijos de <strong>Fábrica-Escuela</strong>.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: el "qué" de las pruebas</h1>
+          <p>La semana pasada el plan de pruebas mencionó "estrategia" sin entrar en detalle: qué niveles y técnicas aplican a cada característica. Hoy llenamos esa pieza — no con niveles (eso ya lo vimos en el modelo en V, semana 2) ni con técnicas (eso viene en la semana 8), sino con <strong>tipos de prueba</strong>: categorías según qué pregunta responden sobre el sistema.</p>
+          <img class="portada-icon" src="img/tags.svg" alt="El qué de las pruebas" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un tipo de prueba</h1>
+          <p>Un <strong>tipo de prueba</strong> agrupa pruebas según <strong>qué característica de calidad evalúan</strong> — no según en qué fase se ejecutan (eso es el <em>nivel</em>: unitaria, integración, sistema, aceptación) ni según cómo se diseñan los casos (eso es la <em>técnica</em>: partición de equivalencia, valores límite).</p>
+          <p>Un mismo tipo puede aplicarse en varios niveles: hay pruebas de seguridad a nivel de sistema y también a nivel de integración.</p>
+          <img class="portada-icon" src="img/shapes.svg" alt="Qué es un tipo de prueba" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas funcionales</h1>
+          <p>Verifican que el sistema <strong>hace lo que los requisitos dicen que debe hacer</strong> — la pregunta más directa de todas. Se basan en las historias de usuario y sus criterios de aceptación (semana 3): si hay un escenario Gherkin, hay una prueba funcional esperando ejecutarse.</p>
+          <p>Es el tipo de prueba más común y, para muchos equipos, el único que se hace de forma sistemática — lo cual, como se verá hoy, deja huecos importantes.</p>
+          <img class="portada-icon" src="img/check-double.svg" alt="Pruebas funcionales" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas de regresión</h1>
+          <p>Verifican que un <strong>cambio nuevo no rompió algo que ya funcionaba</strong>. No prueban la funcionalidad nueva — prueban que el resto del sistema sigue comportándose como antes.</p>
+          <p>Son las pruebas que Knight Capital (semana 1) nunca ejecutó: cuando movieron la función de cantidad acumulada en 2005, nadie volvió a probar <em>Power Peg</em> para confirmar que seguía funcionando. Por eso son las primeras candidatas a automatizar — se repiten en cada cambio, exactamente igual cada vez.</p>
+          <img class="portada-icon" src="img/clock-rotate-left.svg" alt="Pruebas de regresión" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Pruebas de humo</h1>
+          <p>El nombre viene de la electrónica: al encender un circuito nuevo por primera vez, la primera prueba es literal — <strong>"enciéndelo y mira si sale humo"</strong>. Si sale humo, ni siquiera vale la pena seguir probando el resto.</p>
+          <p>En software es análogo: una verificación <strong>rápida y superficial</strong> de que el sistema no está catastróficamente roto, antes de invertir tiempo en pruebas más profundas. Cubre los flujos más críticos, nada más.</p>
+          <img class="portada-icon" src="img/smog.svg" alt="Pruebas de humo" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas de rendimiento</h1>
+          <p>Verifican <strong>qué tan bien responde el sistema bajo carga de trabajo</strong> — no si hace lo correcto, sino si lo hace lo suficientemente rápido. Se dividen en tres subtipos:</p>
+          <ul>
+            <li><strong>Carga:</strong> comportamiento con el volumen de uso esperado.</li>
+            <li><strong>Estrés:</strong> comportamiento en el límite, o más allá del límite esperado.</li>
+            <li><strong>Escalabilidad:</strong> qué tan bien crece la capacidad al agregar más recursos.</li>
+          </ul>
+          <img class="portada-icon" src="img/gauge-high.svg" alt="Pruebas de rendimiento" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas de seguridad</h1>
+          <p>Verifican que el sistema <strong>protege datos y funciones</strong> de accesos, modificaciones o usos no autorizados — la característica "Seguridad" de ISO/IEC 25010 (semana 1), puesta a prueba activamente.</p>
+          <p>El referente más usado en la industria es <strong>OWASP</strong> <em>(Open Web Application Security Project)</em>, una organización sin ánimo de lucro que publica el "OWASP Top 10" — la lista de las vulnerabilidades web más críticas y frecuentes, actualizada periódicamente.</p>
+          <img class="portada-icon" src="img/owasp.svg" alt="OWASP" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas de usabilidad</h1>
+          <p>Verifican <strong>qué tan fácil es de aprender, usar y entender</strong> el sistema para una persona real — la definición de calidad de Juran (semana 1), "adecuación al uso", convertida en actividad de prueba.</p>
+          <p>Es el tipo más difícil de automatizar: normalmente requiere observar a personas reales usando el sistema, no solo comparar una salida contra un valor esperado.</p>
+          <img class="portada-icon" src="img/hand-pointer.svg" alt="Pruebas de usabilidad" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Pruebas de accesibilidad</h1>
+          <p>Verifican que el sistema es usable por personas con <strong>discapacidades visuales, auditivas, motrices o cognitivas</strong> — lectores de pantalla, contraste de color suficiente, navegación completa por teclado, subtítulos.</p>
+          <p>El referente es la <strong>WCAG</strong> <em>(Web Content Accessibility Guidelines)</em>, publicada por el <strong>W3C</strong> — el mismo consorcio que estandariza HTML y CSS.</p>
+          <img class="portada-icon" src="img/w3c.svg" alt="W3C" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Los siete tipos, lado a lado</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Pregunta que responde</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Funcional</td><td>¿Hace lo que los requisitos dicen?</td></tr>
+              <tr><td>Regresión</td><td>¿Lo que ya funcionaba sigue funcionando?</td></tr>
+              <tr><td>Humo</td><td>¿Está tan roto que no vale la pena seguir probando?</td></tr>
+              <tr><td>Rendimiento</td><td>¿Responde lo suficientemente rápido bajo carga?</td></tr>
+              <tr><td>Seguridad</td><td>¿Protege datos y funciones de accesos indebidos?</td></tr>
+              <tr><td>Usabilidad</td><td>¿Es fácil de aprender y usar?</td></tr>
+              <tr><td>Accesibilidad</td><td>¿Lo puede usar alguien con una discapacidad?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Nadie aplica los siete tipos siempre</h1>
+          <p>Siete tipos de prueba no significa siete esfuerzos obligatorios en cada proyecto. La pregunta operativa —y la que responde el taller de hoy— es <strong>cuáles aplican aquí, y cuáles se descartan con justificación.</strong></p>
+          <img class="portada-icon" src="img/filter.svg" alt="Cuáles aplican" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo decidir qué tipos aplican</h1>
+          <ul>
+            <li><strong>Naturaleza del sistema:</strong> una app sin datos sensibles necesita menos foco en seguridad que un sistema bancario.</li>
+            <li><strong>Riesgos identificados</strong> en el plan de pruebas (semana 6): un riesgo de rendimiento alto justifica pruebas de rendimiento, aunque no estuvieran planeadas al inicio.</li>
+            <li><strong>Recursos disponibles:</strong> las pruebas de usabilidad con usuarios reales cuestan tiempo y personas — no siempre hay margen para hacerlas cada sprint.</li>
+          </ul>
+          <p><strong>Descartar un tipo de prueba es una decisión legítima — siempre que quede escrita la razón.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Una matriz de tipos aplicables</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>¿Aplica?</th><th>Justificación</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Funcional</td><td>Sí</td><td>Base de cualquier plan — siempre aplica.</td></tr>
+              <tr><td>Regresión</td><td>Sí</td><td>El proyecto tiene entregas semanales; hay riesgo constante de romper algo.</td></tr>
+              <tr><td>Seguridad</td><td>Sí</td><td>Maneja datos de pago — riesgo alto identificado en el plan.</td></tr>
+              <tr><td>Rendimiento</td><td>No</td><td>Uso interno, menos de 50 usuarios simultáneos esperados.</td></tr>
+              <tr><td>Accesibilidad</td><td>No</td><td>Sin usuarios con discapacidad reportados; se reevalúa si cambia.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy profundizamos en las de humo</h1>
+          <p>De los siete tipos, el taller de hoy trabaja uno en concreto — porque es el que se ejecuta primero, casi siempre, y el que determina si vale la pena seguir.</p>
+          <img class="portada-icon" src="img/fire.svg" alt="Pruebas de humo en detalle" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pruebas de humo, en detalle</h1>
+          <ul>
+            <li><strong>Qué cubren:</strong> los flujos más críticos del sistema — iniciar sesión, cargar la página principal, completar la acción central. Nada exhaustivo.</li>
+            <li><strong>Cuándo se ejecutan:</strong> justo después de un build o despliegue nuevo, antes de cualquier otra prueba.</li>
+            <li><strong>Quién las corre:</strong> a menudo están automatizadas y corren solas en el pipeline de integración continua (tema de la semana 12).</li>
+            <li><strong>Resultado esperado:</strong> pasa/no pasa, rápido — minutos, no horas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Humo vs. regresión: la confusión más común</h1>
+          <table>
+            <tbody>
+              <tr><th>Humo</th><td>Amplia pero superficial. Cubre <strong>todo</strong> el sistema con muy pocos casos. Responde: "¿podemos seguir probando?"</td></tr>
+              <tr><th>Regresión</th><td>Angosta pero profunda. Cubre <strong>lo que cambió</strong> (y lo relacionado) con muchos casos. Responde: "¿el cambio rompió algo?"</td></tr>
+            </tbody>
+          </table>
+          <p><strong>No son sustitutos: un build puede pasar humo perfectamente y aun así tener una regresión seria en un módulo que humo nunca toca.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿es una prueba de humo?</h1>
+          <p><strong>5 minutos — sí o no, y por qué:</strong></p>
+          <ol>
+            <li>Verificar que la página de inicio de sesión carga y el botón "Entrar" responde.</li>
+            <li>Verificar los 14 casos límite del formulario de registro.</li>
+            <li>Verificar que, tras iniciar sesión, aparece el menú principal.</li>
+            <li>Verificar el tiempo de respuesta con 200 usuarios simultáneos.</li>
+          </ol>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Basta con pasar las pruebas de humo para confiar en un release?</h1>
+          <p>Un pipeline con pruebas de humo automatizadas da una falsa sensación de seguridad si el equipo deja de ejecutar algo más profundo: humo por diseño <strong>no</strong> encuentra defectos sutiles, de rendimiento, ni de seguridad.</p>
+          <p>La postura razonable: humo es una <strong>condición necesaria</strong> para avanzar, nunca una <strong>condición suficiente</strong> para dar por buena una entrega — es la puerta de entrada, no la de salida (los criterios de salida de la semana 6 siguen aplicando aparte).</p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Debate sobre las pruebas de humo" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un <strong>tipo de prueba</strong> agrupa por qué característica evalúa — distinto de nivel y de técnica.</li>
+            <li>Existen siete tipos comunes: <strong>funcional, regresión, humo, rendimiento, seguridad, usabilidad, accesibilidad.</strong></li>
+            <li>No todos aplican siempre — <strong>descartar uno con justificación es una decisión válida.</strong></li>
+            <li>Las pruebas de <strong>humo</strong> son amplias y superficiales; las de <strong>regresión</strong>, angostas y profundas.</li>
+            <li>Pasar pruebas de humo es <strong>necesario, no suficiente</strong>, para confiar en una entrega.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: pruebas de humo en SauceDemo</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>El docente asigna una credencial de <strong>SauceDemo</strong> (Swag Labs) a cada equipo — cada una simula un tipo distinto de comportamiento defectuoso. Cada equipo debe:</p>
+          <ul>
+            <li>Ejecutar <strong>pruebas de humo</strong> sobre los flujos críticos (login, catálogo, carrito, checkout) con la credencial asignada.</li>
+            <li>Construir la <strong>matriz de tipos de prueba aplicables</strong> a SauceDemo, justificando cada descarte.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/saucelabs.svg" alt="SauceDemo" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 8, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Técnicas de caja negra: particiones de equivalencia, valores límite, tablas de decisión, transición de estados.</li>
+            <li>Técnicas de caja blanca: cobertura de sentencia, decisión y camino.</li>
+            <li>Niveles de prueba y la pirámide de Cohn.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. El taller de la semana 8: diseñar casos con particiones de equivalencia y valores límite sobre automationexercise.com.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
