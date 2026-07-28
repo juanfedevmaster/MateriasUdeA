@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integración Continua y Pipeline de Calidad — Semana 12</title>
+  <meta name="description" content="Integración continua, el pipeline de calidad (build, test, cobertura, análisis estático) y GitHub Actions — Calidad de Software, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/calidad-de-software/presentaciones/integracion-continua-y-pipeline-de-calidad/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Integración Continua y Pipeline de Calidad — Semana 12" />
+  <meta property="og:description" content="Integración continua, el pipeline de calidad (build, test, cobertura, análisis estático) y GitHub Actions — Calidad de Software, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/calidad-de-software/presentaciones/integracion-continua-y-pipeline-de-calidad/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Integración Continua y Pipeline de Calidad — Semana 12" />
+  <meta name="twitter:description" content="Integración continua, el pipeline de calidad (build, test, cobertura, análisis estático) y GitHub Actions — Calidad de Software, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/integracion-continua-y-pipeline-de-calidad.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554703">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Calidad de Software</h1>
+          <h2>Semana 12 — Integración continua y el pipeline de calidad</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/githubactions.svg" alt="GitHub Actions" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Repaso relámpago</p>
+          <h1>Lo que ya tenemos de la semana 11</h1>
+          <ul>
+            <li><strong>Densidad de defectos</strong> compara defectos contra tamaño; <strong>DRE</strong> mide qué tan bien se atraparon antes del release.</li>
+            <li><strong>Cobertura</strong> mide qué se ejecutó, no qué se verificó; <strong>complejidad ciclomática</strong> mide caminos, no si el código es correcto.</li>
+            <li>Ninguna métrica reemplaza el juicio humano.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Repaso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: automatizar todo lo anterior</h1>
+          <p>Pruebas unitarias (semana 10), cobertura, análisis estático con SonarCloud (semana 5), métricas (semana 11) — hasta ahora, cada una se ejecutó manualmente, cuando alguien se acordaba. Hoy se conecta todo en un solo proceso que corre <strong>solo</strong>, cada vez que alguien sube un cambio.</p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Automatizar todo" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>Qué es la integración continua (CI)</h1>
+          <p>Es la práctica de <strong>integrar el código de todo el equipo con mucha frecuencia</strong> —varias veces al día— en una rama compartida, verificando automáticamente en cada integración que todo sigue funcionando.</p>
+          <p>Nació dentro de <strong>Extreme Programming</strong> (semana 3) y la popularizó <strong>Martin Fowler</strong> en un artículo influyente de 2000, en una época donde era común que los equipos integraran su código cada varias semanas — con resultados dolorosos.</p>
+          <img class="portada-icon" src="img/code-merge.svg" alt="Integración continua" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué integrar frecuentemente importa</h1>
+          <p>Cuando dos personas modifican el mismo código durante semanas antes de integrarlo, los conflictos que aparecen son grandes, difíciles de resolver, y nadie recuerda ya por qué se tomó cada decisión.</p>
+          <p><strong>Integrar todos los días —o varias veces al día— hace que cada conflicto sea pequeño</strong>, se resuelva rápido, y el costo de encontrar un problema sea mucho menor que dejar que se acumule en silencio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Qué hace un pipeline, paso a paso</h1>
+          <p>La verificación automática de la que habla la definición de CI no es un solo paso: es una secuencia de etapas, cada una con su propia responsabilidad.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Paso a paso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un pipeline de calidad</h1>
+          <p>Es la secuencia de <strong>etapas automatizadas</strong> que corren, en orden, cada vez que hay un cambio de código: si una etapa falla, las siguientes no se ejecutan y el cambio queda marcado como roto.</p>
+          <p>El pipeline de este curso tiene cuatro etapas: <strong>build, test, cobertura y análisis estático.</strong> Cada una responde una pregunta distinta sobre el mismo cambio.</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Pipeline de calidad" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Etapa 1 — Build</h1>
+          <p>Compila o empaqueta el código. Es la verificación más básica de todas: <strong>¿el código siquiera se puede construir?</strong></p>
+          <p>Si el build falla, ninguna etapa posterior tiene sentido — no hay nada que probar todavía. Es, casi siempre, la etapa más rápida y la primera en detectar un error de sintaxis o una dependencia faltante.</p>
+          <img class="portada-icon" src="img/hammer.svg" alt="Build" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Etapa 2 — Test</h1>
+          <p>Ejecuta la suite de pruebas automatizadas —empezando por las unitarias de la semana 10, la base de la pirámide de Cohn. <strong>¿El código hace lo que se espera que haga?</strong></p>
+          <p>Como estas pruebas corren en cada cambio, funcionan también como una red de <strong>pruebas de regresión</strong> constante (semana 7): cualquier cosa que se rompa por un cambio nuevo se detecta aquí, casi de inmediato.</p>
+          <img class="portada-icon" src="img/vial.svg" alt="Test" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Etapa 3 — Cobertura</h1>
+          <p>Genera y <strong>publica</strong> el reporte de cobertura (semanas 5, 8 y 11) del código que se acaba de probar. No prueba nada por sí sola — mide qué tanto del código ejercitaron las pruebas de la etapa anterior.</p>
+          <p>Publicarlo automáticamente, en cada cambio, es lo que permite ver la tendencia en el tiempo — no solo una foto aislada.</p>
+          <img class="portada-icon" src="img/percent.svg" alt="Cobertura" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Etapa 4 — Análisis estático</h1>
+          <p>Corre una herramienta como <strong>SonarCloud</strong> (semana 5) sobre el código, sin ejecutarlo, buscando bugs potenciales, vulnerabilidades y code smells. <strong>¿El código en sí tiene señales de problemas, más allá de si las pruebas pasan?</strong></p>
+          <p>Es la última etapa porque suele ser la más lenta, y porque no tiene sentido analizar a fondo un código que ni siquiera compila o pasa sus pruebas.</p>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Análisis estático" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis</p>
+          <h1>Las cuatro etapas, en orden</h1>
+          <table>
+            <thead>
+              <tr><th>Etapa</th><th>Pregunta que responde</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1. Build</td><td>¿El código se puede construir?</td></tr>
+              <tr><td>2. Test</td><td>¿Hace lo que se espera?</td></tr>
+              <tr><td>3. Cobertura</td><td>¿Qué tanto se probó?</td></tr>
+              <tr><td>4. Análisis estático</td><td>¿Hay señales de problemas en el código en sí?</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Si cualquier etapa falla, el pipeline se detiene ahí — las siguientes ni se ejecutan.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Quién ejecuta todo esto, automáticamente</h1>
+          <p>Nadie corre estas cuatro etapas a mano cada vez. Hace falta una herramienta que las dispare sola, cada vez que alguien sube un cambio.</p>
+          <img class="portada-icon" src="img/robot.svg" alt="Quién ejecuta esto" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramienta</p>
+          <h1>Qué es GitHub Actions</h1>
+          <p>Es el sistema de automatización integrado en GitHub —gratuito para repositorios públicos, la herramienta que usa este curso. Se configura con tres conceptos:</p>
+          <ul>
+            <li><strong>Workflow:</strong> el pipeline completo, definido en un archivo YAML dentro de <code>.github/workflows/</code>.</li>
+            <li><strong>Job:</strong> un conjunto de pasos que corre en una máquina — un workflow puede tener varios.</li>
+            <li><strong>Trigger:</strong> el evento que dispara el workflow — típicamente <code>on: push</code> o <code>on: pull_request</code>.</li>
+          </ul>
+          <img class="portada-icon" src="img/githubactions.svg" alt="GitHub Actions" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo</p>
+          <h1>Un workflow mínimo</h1>
+          <pre><code>name: Pipeline de calidad
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: mvn compile
+      - name: Test con cobertura
+        run: mvn test jacoco:report</code></pre>
+          <p>Cuatro pasos, dos triggers: cada <code>push</code> o cada <code>pull_request</code> ejecuta el build y las pruebas automáticamente, sin que nadie tenga que acordarse.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Recordatorio</p>
+          <h1>El Quality Gate, dentro del pipeline</h1>
+          <p>Semana 5: el Quality Gate son las condiciones —cero bugs nuevos, cobertura mínima— que un análisis debe cumplir para considerarse aprobado. Dentro del pipeline, ese Quality Gate se vuelve <strong>un paso más</strong>: si no se cumple, el pipeline completo queda en rojo.</p>
+          <img class="portada-icon" src="img/gauge-high.svg" alt="Quality Gate" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El pipeline como puerta, no como sugerencia</h1>
+          <p>La configuración más común —y la más útil— es que un <strong>pull request no se pueda fusionar</strong> a la rama principal mientras el pipeline esté en rojo. No es una recomendación que el equipo puede ignorar: es un bloqueo técnico.</p>
+          <p>Esto convierte al pipeline en el corrector automático que libera tiempo del docente —o del líder técnico— para revisar criterio y diseño, en vez de verificar a mano que las pruebas pasen.</p>
+          <img class="portada-icon" src="img/lock.svg" alt="El pipeline como puerta" style="display:block;width:200px;height:200px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Aplicado</p>
+          <h1>De vuelta a Knight Capital</h1>
+          <p>Un pipeline de CI con estas cuatro etapas no habría dejado pasar el defecto de 2005: al mover la función de cantidad acumulada, la etapa de <strong>test</strong> habría ejecutado la suite de regresión sobre <em>Power Peg</em> y habría fallado de inmediato.</p>
+          <p><strong>Y el despliegue manual e inconsistente en los ocho servidores —el ingrediente final del desastre— es exactamente el tipo de proceso que un pipeline automatizado elimina: todos los servidores reciben el mismo código, de la misma forma, cada vez.</strong></p>
+          <img class="portada-icon" src="img/link.svg" alt="Knight Capital" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido: ¿en qué etapa falla?</h1>
+          <p><strong>5 minutos:</strong></p>
+          <ol>
+            <li>Un archivo tiene un error de sintaxis.</li>
+            <li>El código compila, pero una prueba unitaria existente falla.</li>
+            <li>Todo pasa, pero SonarCloud reporta una vulnerabilidad de seguridad crítica.</li>
+          </ol>
+          <p>¿En cuál de las cuatro etapas se detiene el pipeline en cada caso?</p>
+          <p class="slide-eyebrow">Este ejercicio es el calentamiento del taller de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Un pipeline verde garantiza que se puede desplegar con confianza?</h1>
+          <p>Un pipeline en verde significa que el código compila, pasa las pruebas escritas, tiene la cobertura mínima y no tiene hallazgos críticos de SonarCloud. Es tentador leer eso como "está listo para producción".</p>
+          <p>Pero el pipeline solo verifica lo que alguien decidió automatizar. Si las pruebas no cubren un caso real de uso, o si nadie escribió una prueba de rendimiento, el pipeline puede estar perfectamente verde sobre un sistema con un problema serio. <strong>El pipeline automatiza la verificación existente — no genera verificación que nadie pensó en escribir.</strong></p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Debate sobre el pipeline" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>La <strong>integración continua</strong> integra código con frecuencia, verificando automáticamente en cada integración.</li>
+            <li>Un <strong>pipeline de calidad</strong> encadena build, test, cobertura y análisis estático — si una etapa falla, las siguientes no corren.</li>
+            <li><strong>GitHub Actions</strong> ejecuta el pipeline automáticamente ante eventos como <code>push</code> o <code>pull_request</code>.</li>
+            <li>El <strong>Quality Gate</strong> convierte al pipeline en una puerta real: bloquea el merge, no solo lo sugiere.</li>
+            <li>Un pipeline verde es <strong>necesario, no suficiente</strong> — solo verifica lo que alguien pensó en automatizar.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy: pipeline de CI operativo</h1>
+          <p><strong>2 horas, en sala de Zoom asignada — equipo fijo de Fábrica-Escuela</strong></p>
+          <p>Sobre el repositorio de práctica del equipo, configuren un pipeline con <strong>GitHub Actions</strong> que:</p>
+          <ul>
+            <li>Se dispare automáticamente en cada <code>push</code> o <code>pull request</code>.</li>
+            <li><strong>Ejecute la suite</strong> de pruebas automatizadas del proyecto.</li>
+            <li><strong>Publique el reporte de cobertura</strong> como parte del resultado del workflow.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar las dos horas.</strong> Recuerden: al enviar, cada integrante reporta en privado quién trabajó.</p>
+          <img class="portada-icon" src="img/githubactions.svg" alt="Taller de hoy" style="display:block;width:200px;height:200px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>Antes de la clase de la semana 13, hay que llegar con esto leído:</strong></p>
+          <ul>
+            <li>Frameworks de automatización: Selenium, Playwright, Cypress, REST Assured. Selección según contexto.</li>
+          </ul>
+          <p>Seguimos con los equipos fijos de <strong>Fábrica-Escuela</strong>. El taller de la semana 13: primer test end-to-end automatizado sobre The Internet (Herokuapp), con evidencia de ejecución.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:200px;height:200px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -90,4 +90,11 @@ const TOPICS = [
     subtitle: "Densidad de defectos, DRE, cobertura y complejidad ciclomática",
     available: true,
   },
+  {
+    week: 12,
+    slug: "integracion-continua-y-pipeline-de-calidad",
+    title: "Integración Continua y Pipeline de Calidad",
+    subtitle: "Build, test, cobertura, análisis estático y GitHub Actions",
+    available: true,
+  },
 ];
