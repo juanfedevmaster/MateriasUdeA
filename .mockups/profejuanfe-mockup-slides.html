@@ -37,10 +37,6 @@
     border-bottom:1px solid var(--line-dim);
     position:relative;
   }
-  .topbar::after{
-    content:""; position:absolute; left:0; bottom:-1px; height:2px; width:8.3%;
-    background:var(--amber);
-  }
   .crumbs{display:flex; align-items:center; gap:16px; font-size:14px; min-width:0;}
   .back{
     display:flex; align-items:center; gap:6px; color:#AFC7DE; text-decoration:none; flex-shrink:0;
@@ -48,6 +44,24 @@
   .back:hover{color:var(--amber);}
   .sep{color:var(--line-dim); flex-shrink:0;}
   .crumbs .current{color:var(--line); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+  /* ---------- DECK PICKER (navegación entre presentaciones del curso) ---------- */
+  .deck-nav-group{display:flex; align-items:center; gap:8px; flex-shrink:0;}
+  .deck-nav-arrow{
+    width:26px; height:26px; border:1px solid var(--line-dim); background:transparent; color:var(--line);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:15px;
+  }
+  .deck-nav-arrow:hover{border-color:var(--amber); color:var(--amber);}
+  .deck-nav-arrow:disabled{opacity:.35; cursor:default;}
+  .deck-nav-arrow:disabled:hover{border-color:var(--line-dim); color:var(--line);}
+  .deck-picker{position:relative;}
+  .deck-picker-btn{
+    display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    color:var(--line); background:transparent; border:1px solid var(--line-dim); padding:7px 12px; cursor:pointer;
+    max-width:220px;
+  }
+  .deck-picker-btn:hover{border-color:var(--amber); color:var(--amber);}
+  .deck-picker-label{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
   .actions{display:flex; gap:10px; flex-shrink:0;}
   .btn{
@@ -60,6 +74,10 @@
     background:var(--amber); border-color:var(--amber); color:var(--blueprint-deep); font-weight:600;
   }
   .btn.primary:hover{background:#EEB758;}
+
+  /* ---------- PROGRESS BAR ---------- */
+  .progress-track{ height:2px; background:var(--line-dim); }
+  .progress-fill{ height:100%; width:8.3%; background:var(--amber); }
 
   /* ---------- STAGE ---------- */
   .stage{
@@ -126,14 +144,27 @@
 
 <div class="topbar">
   <div class="crumbs">
-    <a class="back" href="#">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" transform="rotate(180 12 12)"/></svg>
-      Curso
+    <a class="back" href="#" title="Ir al inicio">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+      Inicio
     </a>
-    <span class="sep">/</span>
-    <span class="current mono">Semana 1 · Introducción a la Programación</span>
+    <a class="back" href="#">&larr; Curso</a>
+  </div>
+  <div class="deck-nav-group">
+    <button class="deck-nav-arrow" title="Presentación anterior" disabled>&lsaquo;</button>
+    <div class="deck-picker">
+      <button class="deck-picker-btn" type="button">
+        <span class="deck-picker-label mono">Semana 1 · Introducción a la Programación</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <button class="deck-nav-arrow" title="Presentación siguiente">&rsaquo;</button>
   </div>
   <div class="actions">
+    <button class="btn">
+      <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+      Compartir
+    </button>
     <button class="btn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
       Pantalla completa
@@ -143,6 +174,10 @@
       Descargar PDF
     </button>
   </div>
+</div>
+
+<div class="progress-track">
+  <div class="progress-fill"></div>
 </div>
 
 <div class="stage">
@@ -155,7 +190,7 @@
       <p class="slide-meta mono">Universidad de Antioquia <span class="dot">·</span> Ingeniería de Sistemas <span class="dot">·</span> 2508307</p>
     </div>
     <span class="uni-tag">UDEA · 1803</span>
-    <span class="sheet-tag">SHEET 2508307 / S1</span>
+    <span class="sheet-tag">CÓDIGO 2508307 / S1</span>
   </div>
 </div>
 

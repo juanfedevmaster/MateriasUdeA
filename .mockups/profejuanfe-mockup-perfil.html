@@ -44,16 +44,24 @@
   .nav{ display:flex; align-items:center; justify-content:space-between; margin-bottom:44px; font-size:14px; }
   .nav .brand{ display:flex; align-items:center; gap:10px; color:var(--line); text-decoration:none; }
   .brand-mark{ width:28px; height:28px; border:1px solid var(--amber); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--amber); }
+  .nav-actions{ display:flex; align-items:center; gap:22px; }
   .breadcrumb{ color:#7C97B4; text-decoration:none; display:flex; align-items:center; gap:8px; font-size:13.5px; }
   .breadcrumb:hover{ color:var(--amber); }
   .breadcrumb svg{ transform:rotate(180deg); }
+  .share-btn{
+    display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; color:var(--line); background:transparent; border:1px solid var(--line-dim);
+    padding:8px 14px; cursor:pointer;
+  }
+  .share-btn:hover{ border-color:var(--amber); color:var(--amber); }
 
   .profile-head{ display:flex; gap:32px; align-items:flex-end; padding-bottom:36px; flex-wrap:wrap; }
   .avatar{
     width:96px; height:96px; border:1px solid var(--amber); flex-shrink:0;
     display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--amber);
-    background:rgba(226,166,59,0.08);
+    background:rgba(226,166,59,0.08); overflow:hidden;
   }
+  .avatar img{ width:100%; height:100%; object-fit:cover; }
   h1.name{ font-size:clamp(28px,4vw,40px); margin:0 0 10px; font-weight:600; }
   .role-line{ font-size:14.5px; color:#AFC7DE; line-height:1.6; max-width:60ch; margin:0 0 16px; }
   .contact{ display:flex; gap:18px; flex-wrap:wrap; }
@@ -123,20 +131,29 @@
   <div class="wrap">
     <div class="nav">
       <a class="brand" href="#"><span class="brand-mark mono">JF</span><span class="mono">profejuanfe.dev</span></a>
-      <a class="breadcrumb" href="#">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        Materias
-      </a>
+      <div class="nav-actions">
+        <a class="breadcrumb" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          Materias
+        </a>
+        <button class="share-btn" title="Compartir">
+          <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          Compartir
+        </button>
+      </div>
     </div>
 
     <div class="profile-head">
-      <div class="avatar mono">JFQ</div>
+      <div class="avatar mono">
+        <img src="https://profejuanfe.dev/assets/img/juanfe-profile.png" alt="Juan Felipe Quintana Gómez" onerror="this.remove()">
+        JFQ
+      </div>
       <div>
         <h1 class="name display">Juan Felipe Quintana Gómez</h1>
         <p class="role-line">Senior Technical Consultant · Solution Architecture · Azure · .NET · Arquitecturas orientadas a eventos · Soluciones de IA · Profesor universitario</p>
         <div class="contact">
-          <a href="mailto:correo@gmail.com">✉ correo@gmail.com</a>
-          <a href="#">in LinkedIn</a>
+          <a href="mailto:juanfedevmaster@gmail.com">✉ juanfedevmaster@gmail.com</a>
+          <a href="https://www.linkedin.com/in/juan-felipe-quintana-g%C3%B3mez-94b86337" target="_blank" rel="noopener">in LinkedIn</a>
         </div>
       </div>
     </div>
@@ -153,9 +170,11 @@
 <div class="wrap">
 
   <section class="extracto">
-    <div class="sec-head"><h2>Extracto</h2></div>
+    <div class="sec-head"><h2>Acerca de mí</h2></div>
     <p>Senior Technical Consultant y profesional de software con más de 15 años de experiencia en el diseño y construcción de soluciones basadas en tecnologías Microsoft, especialmente .NET y Azure. He participado en proyectos empresariales como desarrollador senior, líder técnico y asesor de confianza, contribuyendo a la implementación, el diseño de soluciones, la toma de decisiones de arquitectura y la mentoría técnica.</p>
     <p>Mi experiencia incluye arquitecturas escalables y mantenibles para integraciones, sistemas backend y aplicaciones distribuidas, con servicios como Azure Service Bus, Event Grid, Logic Apps, Cosmos DB, Hangfire y soluciones basadas en microservicios. Actualmente propongo arquitecturas orientadas a eventos para mejorar escalabilidad, resiliencia y desacoplamiento en proyectos de integración.</p>
+    <p>Además de mis responsabilidades de entrega, apoyo activamente a mis compañeros mediante acompañamiento técnico, promoción de buenas prácticas, discusiones de arquitectura y resolución de problemas complejos. Disfruto ayudar a los equipos a crecer en temas como arquitectura limpia, principios SOLID, patrones de diseño y prácticas modernas de desarrollo.</p>
+    <p>También he contribuido en la definición de arquitecturas orientadas a soluciones de inteligencia artificial, explorando cómo integrar capacidades de IA en productos y procesos de negocio de manera práctica, sostenible y alineada con la generación de valor.</p>
     <p>Mi perfil profesional se fortalece con mi experiencia académica en la Universidad de Antioquia, donde acompaño la formación de futuros ingenieros bajo una visión estructurada de construcción de software de alta calidad.</p>
   </section>
 
@@ -164,23 +183,23 @@
     <div class="grid">
       <div class="card">
         <h3 class="display">Lógica y Representación II</h3>
-        <p>Diseño y análisis de algoritmos avanzados: complejidad computacional, recursividad, estructuras de datos, árboles, grafos, programación dinámica y NP-completitud. Python y trabajo colaborativo.</p>
+        <p>Diseño y análisis de algoritmos avanzados: complejidad computacional, recursividad e iteración, estructuras de datos (pilas, colas, heaps), árboles, grafos, programación dinámica y NP-completitud. Desarrolla pensamiento analítico y programación en Python mediante trabajo colaborativo.</p>
       </div>
       <div class="card">
         <h3 class="display">Análisis y Diseño II</h3>
-        <p>Análisis y diseño de sistemas de software reutilizables y mantenibles, dentro de un proceso orientado a la calidad y el ejercicio profesional ético.</p>
+        <p>Desarrolla competencias para analizar y diseñar sistemas de software reutilizables y mantenibles, dentro de un proceso de desarrollo orientado a la calidad, promoviendo el ejercicio profesional con responsabilidad ética.</p>
       </div>
       <div class="card">
         <h3 class="display">Técnicas de Programación</h3>
-        <p>Aprendizaje de un lenguaje de programación y sus principales paradigmas, con énfasis en trabajo en equipo y buenas prácticas.</p>
+        <p>Acompaña al estudiante en el aprendizaje de un lenguaje de programación y los principales paradigmas, desarrollando habilidades para resolver problemas reales, con énfasis en trabajo en equipo y buenas prácticas.</p>
       </div>
       <div class="card">
         <h3 class="display">Arquitectura de Software</h3>
-        <p>Patrones y estilos arquitectónicos (MVC, capas, microkernel, SOA, hexagonal, microservicios), SOLID/DRY/KISS, UML y arquitecturas cloud native.</p>
+        <p>Diseño y evaluación de arquitecturas de software: patrones y estilos arquitectónicos (MVC, capas, microkernel, SOA, hexagonal, microservicios), principios SOLID/DRY/KISS, modelado UML, servicios web y arquitecturas cloud native (DDD, CQRS, API Gateway, Serverless), además de seguridad en el ciclo de vida del software.</p>
       </div>
       <div class="card">
         <h3 class="display">Calidad de Software</h3>
-        <p>Aseguramiento de calidad: ISO 9000, CMMI, ISO 25000, IEEE-730, métricas, pruebas unitarias, integración continua y automatización.</p>
+        <p>Aseguramiento de la calidad en el ciclo de desarrollo: estándares internacionales (ISO 9000, CMMI, ISO 25000, IEEE-730), métricas de calidad, pruebas unitarias, integración continua, planes y técnicas de pruebas, y frameworks de automatización.</p>
       </div>
     </div>
   </section>
@@ -195,7 +214,7 @@
       <span class="tech-badge"><span class="dot"></span>Logic Apps</span>
       <span class="tech-badge"><span class="dot"></span>Cosmos DB</span>
       <span class="tech-badge"><span class="dot"></span>Hangfire</span>
-      <span class="tech-badge"><span class="dot"></span>Service Fabric</span>
+      <span class="tech-badge"><span class="dot"></span>Microsoft Service Fabric</span>
       <span class="tech-badge"><span class="dot"></span>Microservicios</span>
       <span class="tech-badge"><span class="dot"></span>Arquitectura orientada a eventos</span>
       <span class="tech-badge"><span class="dot"></span>Agentes inteligentes</span>
@@ -212,9 +231,10 @@
         <div class="org">Perficient · Medellín, Antioquia, Colombia</div>
         <ul>
           <li>Acompañamiento técnico y profesional para seguimiento de progreso, identificación de bloqueos y oportunidades de crecimiento.</li>
-          <li>Mentoría en SOLID, Clean Code y TDD, y guía en el uso adecuado de patrones de diseño.</li>
+          <li>Mentoría en buenas prácticas: SOLID, Clean Code y TDD, y guía en el uso adecuado de patrones de diseño.</li>
           <li>Fomento de aprendizaje continuo y adopción de herramientas modernas como GitHub Copilot y GPT.</li>
-          <li>Guía en diseño arquitectónico escalable basado en microservicios y orquestadores.</li>
+          <li>Desarrollo de habilidades de comunicación técnica en inglés para colaboración internacional.</li>
+          <li>Guía en diseño arquitectónico escalable basado en microservicios, orquestadores y separación de responsabilidades.</li>
         </ul>
       </div>
       <div class="job">
@@ -232,6 +252,7 @@
         <div class="org">Universidad de Antioquia · Medellín, Antioquia, Colombia</div>
         <ul>
           <li>Docencia en Lógica y Representación II, Análisis y Diseño II, Técnicas de Programación, Arquitectura de Software y Calidad de Software.</li>
+          <li>Acompañamiento en la formación de futuros ingenieros bajo una visión estructurada de construcción de software de alta calidad.</li>
         </ul>
       </div>
       <div class="job">
@@ -241,15 +262,46 @@
         <ul><li>Docencia en Implementación de Bases de Datos I y II.</li></ul>
       </div>
       <div class="job">
+        <div class="period">Noviembre 2019 — Diciembre 2019</div>
+        <h3 class="display">Experto Temático · Diseño de Software</h3>
+        <div class="org">ITM — Instituto Tecnológico Metropolitano · Medellín, Colombia</div>
+      </div>
+      <div class="job">
         <div class="period">Julio 2019 — Junio 2022</div>
-        <h3 class="display">Senior Software Engineer / Developer</h3>
+        <h3 class="display">Senior Software Engineer / Senior Software Developer</h3>
         <div class="org">Growth Acceleration Partners · Envigado, Antioquia, Colombia</div>
+      </div>
+      <div class="job">
+        <div class="period">Junio 2016 — Enero 2019</div>
+        <h3 class="display">Desarrollador Freelance</h3>
+        <div class="org">Seminario Redemptoris Mater de Medellín</div>
+        <ul><li>Creación de una plataforma web para la administración interna de miembros y eventos.</li></ul>
       </div>
       <div class="job">
         <div class="period">Agosto 2015 — Febrero 2019</div>
         <h3 class="display">Analista I</h3>
         <div class="org">Satrack · Medellín, Colombia</div>
-        <ul><li>Desarrollo móvil Android/iOS con C# y Xamarin; liderazgo técnico en el área de Desarrollo de Productos.</li></ul>
+        <ul>
+          <li>Desarrollo de dispositivos móviles Android e iOS con C# y Xamarin.</li>
+          <li>Líder técnico en dispositivos móviles del área de Desarrollo de Productos.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="period">Junio 2011 — Agosto 2015</div>
+        <h3 class="display">Analista II</h3>
+        <div class="org">Satrack · Medellín, Colombia</div>
+        <ul><li>Desarrollo y mejora de productos de software móvil (Android/iOS) en C# con Xamarin.</li></ul>
+      </div>
+      <div class="job">
+        <div class="period">Marzo 2009 — Mayo 2011</div>
+        <h3 class="display">Ingeniero de Desarrollo</h3>
+        <div class="org">Intergrupo</div>
+      </div>
+      <div class="job">
+        <div class="period">Abril 2008 — Marzo 2009</div>
+        <h3 class="display">Asesor de Mesa de Ayuda</h3>
+        <div class="org">Intergrupo</div>
+        <ul><li>Soporte a usuarios y servicio al cliente para Familia Sancela, incluyendo soporte de cómputo en sitio.</li></ul>
       </div>
     </div>
   </section>
@@ -277,16 +329,22 @@
   </section>
 
   <section style="border-bottom:none;">
-    <div class="sec-head"><h2>Idiomas &amp; Reconocimientos</h2></div>
     <div class="cols2">
-      <div class="entry"><div class="t">Inglés</div><div class="s">Full Professional</div></div>
-      <div class="entry"><div class="t">Beca Universidad Nacional</div><div class="s">Excelencia en el desempeño en el desarrollo de productos</div></div>
+      <div>
+        <div class="sec-head"><h2>Idiomas</h2></div>
+        <div class="entry"><div class="t">Inglés</div><div class="s">Full Professional</div></div>
+      </div>
+      <div>
+        <div class="sec-head"><h2>Reconocimientos</h2></div>
+        <div class="entry"><div class="t">Beca Universidad Nacional</div></div>
+        <div class="entry"><div class="t">Excelencia en el desempeño en el desarrollo de productos</div></div>
+      </div>
     </div>
   </section>
 
 </div>
 
-<footer>Juan Felipe Quintana Gómez · Ingeniería de Sistemas, UdeA · Perfil del profesor</footer>
+<footer>Juan Felipe Quintana Gómez · Ingeniería de Sistemas · Perfil del profesor</footer>
 
 </body>
 </html>

@@ -62,9 +62,26 @@
     width:28px; height:28px; border:1px solid var(--amber); display:flex; align-items:center; justify-content:center;
     font-size:11px; color:var(--amber);
   }
+  .nav-actions{display:flex; align-items:center; gap:22px;}
   .breadcrumb{color:#7C97B4; text-decoration:none; display:flex; align-items:center; gap:8px; font-size:13.5px;}
   .breadcrumb:hover{color:var(--amber);}
   .breadcrumb svg{transform:rotate(180deg);}
+  .share-btn{
+    display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; color:var(--line); background:transparent; border:1px solid var(--line-dim);
+    padding:8px 14px; cursor:pointer;
+  }
+  .share-btn:hover{border-color:var(--amber); color:var(--amber);}
+
+  .filter{
+    display:flex; align-items:center; gap:10px; margin-bottom:22px; padding:10px 14px;
+    border:1px solid rgba(22,35,58,0.18); color:var(--ink-soft);
+  }
+  .filter input{
+    border:none; outline:none; background:transparent; flex-grow:1; font-size:13.5px;
+    font-family:'IBM Plex Sans', sans-serif; color:var(--ink);
+  }
+  .filter input::placeholder{color:var(--ink-soft);}
 
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
@@ -184,10 +201,16 @@
         <span class="brand-mark mono">JF</span>
         <span class="mono">profejuanfe.dev</span>
       </a>
-      <a class="breadcrumb" href="#">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        Todas las materias
-      </a>
+      <div class="nav-actions">
+        <a class="breadcrumb" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          Todas las materias
+        </a>
+        <button class="share-btn" title="Compartir">
+          <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          Compartir
+        </button>
+      </div>
     </div>
 
     <div class="eyebrow">Ingeniería de Sistemas · Universidad de Antioquia</div>
@@ -196,7 +219,7 @@
 
     <div class="title-block mono">
       <div>
-        <div class="tb-label">Sheet</div>
+        <div class="tb-label">CÓDIGO</div>
         <div class="tb-value">2508307</div>
       </div>
       <div>
@@ -219,6 +242,11 @@
   <div class="content-head">
     <h2>Contenido del curso</h2>
     <span>2 semanas · 4 sesiones</span>
+  </div>
+
+  <div class="filter mono">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Buscar por título o tema…" />
   </div>
 
   <div class="week standalone">

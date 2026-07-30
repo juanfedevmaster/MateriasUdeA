@@ -102,6 +102,12 @@
     display:flex; align-items:center; gap:8px;
   }
   .nav a.profile-link:hover{border-color:var(--amber); color:var(--amber);}
+  .share-btn{
+    display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; color:var(--line); background:transparent; border:1px solid var(--line-dim);
+    padding:8px 14px; cursor:pointer;
+  }
+  .share-btn:hover{border-color:var(--amber); color:var(--amber);}
 
   /* ---------- PRESENTACIÓN (foto, nombre, cargo, contacto) ---------- */
   .presenta{
@@ -143,8 +149,13 @@
     display:flex; flex-direction:column; min-height:190px;
   }
   .card:hover{background:#FFFDF7;}
-  .card-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; flex-wrap:wrap; gap:8px 12px;}
+  .card-top-left{display:flex; align-items:center; flex-wrap:wrap; gap:8px;}
   .sheet-no{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); letter-spacing:.02em;}
+  .lang-badge{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px;
+    border:1px solid currentColor; color:var(--ink-soft);
+  }
   .status{
     font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px;
     border:1px solid currentColor;
@@ -186,13 +197,13 @@
         <span class="brand-mark mono">JF</span>
         <span class="mono">profejuanfe.dev</span>
       </a>
-      <a class="profile-link" href="#">
-        Perfil del profesor
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <button class="share-btn" title="Compartir">
+        <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+        Compartir
+      </button>
     </div>
 
-    <div class="eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</div>
+    <div class="eyebrow">Ingeniería de Sistemas</div>
     <h1 class="hero-title display">Arquitectura antes que sintaxis.</h1>
     <p class="hero-sub">Material de clase organizado por asignatura — pensado para diseñar software con el mismo rigor con el que se diseña una estructura: por capas, por decisiones, por planos.</p>
 
@@ -210,8 +221,8 @@
         <div class="tb-value">2026-2</div>
       </div>
       <div>
-        <div class="tb-label">Sheet</div>
-        <div class="tb-value">UDEA-IS-00</div>
+        <div class="tb-label">Área de Especialidad</div>
+        <div class="tb-value">Ingeniería de Software</div>
       </div>
     </div>
   </div>
@@ -227,11 +238,11 @@
     <div class="role">Senior Technical Consultant · Azure/.NET/Arquitectura — hoy también en el aula</div>
   </div>
   <div class="contact mono">
-    <a href="mailto:jufequinta@gmail.com">
+    <a href="mailto:juanfedevmaster@gmail.com">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
       Correo
     </a>
-    <a href="#">
+    <a href="https://www.linkedin.com/in/juan-felipe-quintana-g%C3%B3mez-94b86337" target="_blank" rel="noopener">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0v8"/></svg>
       LinkedIn
     </a>
@@ -241,14 +252,17 @@
 
 <section class="courses">
   <div class="courses-head">
-    <h2 class="display">Asignaturas</h2>
+    <h2 class="display">Asignaturas · Universidad de Antioquia</h2>
     <span>4 sheets · 2026-2</span>
   </div>
 
   <div class="grid">
     <div class="card">
       <div class="card-top">
-        <span class="sheet-no">SHEET 2508307</span>
+        <span class="card-top-left">
+          <span class="sheet-no">CÓDIGO 2508307</span>
+          <span class="lang-badge">Solo Español</span>
+        </span>
         <span class="status live">Disponible</span>
       </div>
       <h3 class="display">Técnicas de Programación</h3>
@@ -256,19 +270,25 @@
       <a class="go" href="#">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
 
-    <div class="card">
+    <div class="card disabled">
       <div class="card-top">
-        <span class="sheet-no">SHEET 2554703</span>
-        <span class="status live">Disponible</span>
+        <span class="card-top-left">
+          <span class="sheet-no">CÓDIGO 2554506</span>
+          <span class="lang-badge">Solo Español</span>
+        </span>
+        <span class="status soon">Próximamente</span>
       </div>
-      <h3 class="display">Calidad de Software</h3>
-      <p>Fundamentos, verificación, pruebas y aseguramiento de calidad.</p>
-      <a class="go" href="#">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <h3 class="display">Análisis y Diseño 2</h3>
+      <p>Diseño de software y modelado.</p>
+      <a class="go" href="#">En construcción</a>
     </div>
 
     <div class="card disabled">
       <div class="card-top">
-        <span class="sheet-no">SHEET 2554608</span>
+        <span class="card-top-left">
+          <span class="sheet-no">CÓDIGO 2554608</span>
+          <span class="lang-badge">Solo Español</span>
+        </span>
         <span class="status soon">Próximamente</span>
       </div>
       <h3 class="display">Arquitectura de Software</h3>
@@ -276,20 +296,23 @@
       <a class="go" href="#">En construcción</a>
     </div>
 
-    <div class="card disabled">
+    <div class="card">
       <div class="card-top">
-        <span class="sheet-no">SHEET 2554506</span>
-        <span class="status soon">Próximamente</span>
+        <span class="card-top-left">
+          <span class="sheet-no">CÓDIGO 2554703</span>
+          <span class="lang-badge">Solo Español</span>
+        </span>
+        <span class="status live">Disponible</span>
       </div>
-      <h3 class="display">Análisis y Diseño 2</h3>
-      <p>Diseño de software y modelado.</p>
-      <a class="go" href="#">En construcción</a>
+      <h3 class="display">Calidad de Software</h3>
+      <p>Fundamentos, verificación, pruebas y aseguramiento de calidad.</p>
+      <a class="go" href="#">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2026 <strong>Juan Felipe Quintana Gómez</strong> · Ingeniería de Sistemas, UdeA</span>
+  <span>© 2026 <strong>Juan Felipe Quintana Gómez</strong> · Ingeniería de Sistemas</span>
   <span>Rev. 2026-2 · profejuanfe.dev</span>
 </footer>
 

@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="assets/css/variables.css" />
   <link rel="stylesheet" href="assets/css/home.css" />
 </head>
-<body>
+<body data-i18n-page="home">
 
   <section class="home-sheet">
     <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
@@ -35,32 +35,38 @@
           <span class="brand-mark home-mono">JF</span>
           <span class="home-mono">profejuanfe.dev</span>
         </a>
-        <button class="share-btn" id="share-btn" title="Compartir">
-          <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
-          <span class="label">Compartir</span>
-        </button>
+        <div class="nav-actions">
+          <button class="share-btn" id="lang-toggle" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            <span class="label">English</span>
+          </button>
+          <button class="share-btn" id="share-btn" data-i18n-title="common.share" title="Compartir">
+            <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+            <span class="label" data-i18n="common.share">Compartir</span>
+          </button>
+        </div>
       </div>
 
-      <div class="home-eyebrow">Ingeniería de Sistemas</div>
-      <h1 class="hero-title home-display">Arquitectura antes que sintaxis.</h1>
-      <p class="hero-sub">Material de clase organizado por asignatura — pensado para diseñar software con el mismo rigor con el que se diseña una estructura: por capas, por decisiones, por planos.</p>
+      <div class="home-eyebrow" data-i18n="home.eyebrow">Ingeniería de Sistemas</div>
+      <h1 class="hero-title home-display" data-i18n="home.heroTitle">Arquitectura antes que sintaxis.</h1>
+      <p class="hero-sub" data-i18n="home.heroSub">Material de clase organizado por asignatura — pensado para diseñar software con el mismo rigor con el que se diseña una estructura: por capas, por decisiones, por planos.</p>
 
       <div class="title-block home-mono">
         <div>
-          <div class="tb-label">Docente</div>
-          <div class="tb-value">Juan Felipe Quintana G.</div>
+          <div class="tb-label" data-i18n="home.tbDocenteLabel">Docente</div>
+          <div class="tb-value" data-i18n="home.tbDocenteValue">Juan Felipe Quintana G.</div>
         </div>
         <div>
-          <div class="tb-label">Enfoque</div>
-          <div class="tb-value">Azure · .NET · Arquitectura</div>
+          <div class="tb-label" data-i18n="home.tbEnfoqueLabel">Enfoque</div>
+          <div class="tb-value" data-i18n="home.tbEnfoqueValue">Azure · .NET · Arquitectura</div>
         </div>
         <div>
-          <div class="tb-label">Semestre</div>
-          <div class="tb-value">2026-2</div>
+          <div class="tb-label" data-i18n="home.tbSemestreLabel">Semestre</div>
+          <div class="tb-value" data-i18n="home.tbSemestreValue">2026-2</div>
         </div>
         <div>
-          <div class="tb-label">Área de Especialidad</div>
-          <div class="tb-value">Ingeniería de Software</div>
+          <div class="tb-label" data-i18n="home.tbAreaLabel">Área de Especialidad</div>
+          <div class="tb-value" data-i18n="home.tbAreaValue">Ingeniería de Software</div>
         </div>
       </div>
     </div>
@@ -70,11 +76,11 @@
     <img class="presenta-avatar" src="assets/img/juanfe-profile.png" alt="Juan Felipe Quintana Gómez" />
     <div class="presenta-who">
       <div class="presenta-name home-display">Juan Felipe Quintana Gómez</div>
-      <div class="presenta-role">Senior Technical Consultant · Azure/.NET/Arquitectura — hoy también en el aula</div>
+      <div class="presenta-role" data-i18n="home.presentaRole">Senior Technical Consultant · Azure/.NET/Arquitectura — hoy también en el aula</div>
       <div class="presenta-links home-mono">
         <a href="mailto:juanfedevmaster@gmail.com">
           <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-          Correo
+          <span data-i18n="home.correo">Correo</span>
         </a>
         <a href="https://www.linkedin.com/in/juan-felipe-quintana-g%C3%B3mez-94b86337" target="_blank" rel="noopener">
           <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -82,63 +88,76 @@
         </a>
       </div>
     </div>
-    <a class="presenta-more home-mono" href="perfil-del-profesor/index.html">Trayectoria completa →</a>
+    <a class="presenta-more home-mono" href="perfil-del-profesor/index.html" data-i18n="home.trayectoria">Trayectoria completa →</a>
   </section>
 
   <section class="home-courses">
     <div class="courses-head">
-      <h2 class="home-display">Asignaturas · Universidad de Antioquia</h2>
-      <span class="home-mono">4 sheets · 2026-2</span>
+      <h2 class="home-display" data-i18n="home.coursesHead">Asignaturas · Universidad de Antioquia</h2>
+      <span class="home-mono" data-i18n="home.coursesCount">4 sheets · 2026-2</span>
     </div>
 
     <div class="home-grid">
       <a class="home-card" href="tecnicas-de-programacion/index.html">
         <div class="card-top">
-          <span class="sheet-no home-mono">CÓDIGO 2508307</span>
-          <span class="home-status live">Disponible</span>
+          <span class="card-top-left">
+            <span class="sheet-no home-mono" data-i18n="home.card1Code">CÓDIGO 2508307</span>
+            <span class="lang-badge home-mono" data-i18n="home.langOnly">Solo Español</span>
+          </span>
+          <span class="home-status live" data-i18n="home.statusLive">Disponible</span>
         </div>
-        <h3 class="home-display">Técnicas de Programación</h3>
-        <p>Paradigmas y técnicas avanzadas de programación.</p>
-        <span class="go">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <h3 class="home-display" data-i18n="home.card1Title">Técnicas de Programación</h3>
+        <p data-i18n="home.card1Desc">Paradigmas y técnicas avanzadas de programación.</p>
+        <span class="go"><span data-i18n="home.card1Cta">Ver material</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
       <div class="home-card disabled">
         <div class="card-top">
-          <span class="sheet-no home-mono">CÓDIGO 2554506</span>
-          <span class="home-status soon">Próximamente</span>
+          <span class="card-top-left">
+            <span class="sheet-no home-mono" data-i18n="home.card2Code">CÓDIGO 2554506</span>
+            <span class="lang-badge home-mono" data-i18n="home.langOnly">Solo Español</span>
+          </span>
+          <span class="home-status soon" data-i18n="home.statusSoon">Próximamente</span>
         </div>
-        <h3 class="home-display">Análisis y Diseño 2</h3>
-        <p>Diseño de software y modelado.</p>
-        <span class="go">En construcción</span>
+        <h3 class="home-display" data-i18n="home.card2Title">Análisis y Diseño 2</h3>
+        <p data-i18n="home.card2Desc">Diseño de software y modelado.</p>
+        <span class="go" data-i18n="home.card2Cta">En construcción</span>
       </div>
 
       <div class="home-card disabled">
         <div class="card-top">
-          <span class="sheet-no home-mono">CÓDIGO 2554608</span>
-          <span class="home-status soon">Próximamente</span>
+          <span class="card-top-left">
+            <span class="sheet-no home-mono" data-i18n="home.card3Code">CÓDIGO 2554608</span>
+            <span class="lang-badge home-mono" data-i18n="home.langOnly">Solo Español</span>
+          </span>
+          <span class="home-status soon" data-i18n="home.statusSoon">Próximamente</span>
         </div>
-        <h3 class="home-display">Arquitectura de Software</h3>
-        <p>Estilos, patrones y arquitecturas modernas.</p>
-        <span class="go">En construcción</span>
+        <h3 class="home-display" data-i18n="home.card3Title">Arquitectura de Software</h3>
+        <p data-i18n="home.card3Desc">Estilos, patrones y arquitecturas modernas.</p>
+        <span class="go" data-i18n="home.card3Cta">En construcción</span>
       </div>
 
       <a class="home-card" href="calidad-de-software/index.html">
         <div class="card-top">
-          <span class="sheet-no home-mono">CÓDIGO 2554703</span>
-          <span class="home-status live">Disponible</span>
+          <span class="card-top-left">
+            <span class="sheet-no home-mono" data-i18n="home.card4Code">CÓDIGO 2554703</span>
+            <span class="lang-badge home-mono" data-i18n="home.langOnly">Solo Español</span>
+          </span>
+          <span class="home-status live" data-i18n="home.statusLive">Disponible</span>
         </div>
-        <h3 class="home-display">Calidad de Software</h3>
-        <p>Fundamentos, verificación, pruebas y aseguramiento de calidad.</p>
-        <span class="go">Ver material <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <h3 class="home-display" data-i18n="home.card4Title">Calidad de Software</h3>
+        <p data-i18n="home.card4Desc">Fundamentos, verificación, pruebas y aseguramiento de calidad.</p>
+        <span class="go"><span data-i18n="home.card4Cta">Ver material</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
   </section>
 
   <footer class="home-footer home-mono">
-    <span>© 2026 <strong>Juan Felipe Quintana Gómez</strong> · Ingeniería de Sistemas</span>
-    <span>Rev. 2026-2 · profejuanfe.dev</span>
+    <span>© 2026 <strong>Juan Felipe Quintana Gómez</strong> · <span data-i18n="home.footerDept">Ingeniería de Sistemas</span></span>
+    <span data-i18n="home.footerRev">Rev. 2026-2 · profejuanfe.dev</span>
   </footer>
 
   <script src="assets/js/share.js"></script>
+  <script src="assets/js/i18n.js"></script>
 </body>
 </html>

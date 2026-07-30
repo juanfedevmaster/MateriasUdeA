@@ -19,7 +19,7 @@
 .reg-mark::after {
   content: "";
   position: absolute;
-  background: rgba(240, 222, 187, 0.35);
+  background: rgba(191, 220, 239, 0.35);
 }
 .reg-mark::before {
   top: 50%;
@@ -46,9 +46,16 @@
 
 /* ---------- HERO (blueprint sheet) ---------- */
 .home-sheet {
+  --bg: var(--blueprint);
+  --surface: var(--blueprint);
+  --surface-2: var(--blueprint-deep);
+  --text: var(--line);
+  --text-muted: var(--line-muted);
+  --border: var(--line-dim);
+
   position: relative;
-  background: linear-gradient(rgba(240, 222, 187, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240, 222, 187, 0.08) 1px, transparent 1px),
+  background: linear-gradient(rgba(191, 220, 239, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(191, 220, 239, 0.08) 1px, transparent 1px),
     linear-gradient(135deg, var(--surface), var(--bg));
   background-size: 32px 32px, 32px 32px, cover;
   color: var(--text);
@@ -89,6 +96,12 @@
   font-size: 11px;
   color: var(--accent);
   flex-shrink: 0;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 .share-btn {
@@ -138,7 +151,7 @@ h1.hero-title {
 .hero-sub {
   max-width: 56ch;
   font-size: 16.5px;
-  color: var(--text-muted);
+  color: var(--line-soft);
   line-height: 1.6;
   margin: 0 0 40px;
 }
@@ -195,7 +208,7 @@ h1.hero-title {
   border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
   object-fit: cover;
-  background: rgba(89, 168, 125, 0.12);
+  background: rgba(226, 166, 59, 0.12);
 }
 .presenta-who {
   flex-grow: 1;
@@ -303,11 +316,27 @@ h1.hero-title {
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.card-top-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .sheet-no {
   font-size: 12px;
   color: var(--text-muted);
   letter-spacing: 0.02em;
+}
+.lang-badge {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  color: var(--text-muted);
 }
 .home-status {
   font-size: 10.5px;
@@ -317,7 +346,7 @@ h1.hero-title {
   border: 1px solid currentColor;
 }
 .home-status.live {
-  color: var(--accent);
+  color: var(--green-live);
 }
 .home-status.soon {
   color: var(--text-muted);
@@ -366,14 +395,19 @@ h1.hero-title {
   left: 10px;
   width: 9px;
   height: 9px;
-  border-top: 1px solid rgba(89, 168, 125, 0.35);
-  border-left: 1px solid rgba(89, 168, 125, 0.35);
+  border-top: 1px solid rgba(226, 166, 59, 0.35);
+  border-left: 1px solid rgba(226, 166, 59, 0.35);
 }
 .home-card:hover::before {
   border-color: var(--accent);
 }
 
 .home-footer {
+  --bg: var(--blueprint-deep);
+  --text: var(--line);
+  --text-muted: var(--line-muted);
+  --border: var(--line-dim);
+
   background: var(--bg);
   color: var(--text-muted);
   padding: 34px 24px;

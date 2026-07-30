@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="../assets/css/variables.css" />
   <link rel="stylesheet" href="../assets/css/profile.css" />
 </head>
-<body>
+<body data-i18n-page="profile">
 
   <section class="profile-sheet">
     <span class="reg-mark tl"></span><span class="reg-mark tr"></span>
@@ -38,11 +38,15 @@
         <div class="nav-actions">
           <a class="breadcrumb" href="../index.html">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            Materias
+            <span data-i18n="profile.breadcrumb">Materias</span>
           </a>
-          <button class="share-btn" id="share-btn" title="Compartir">
+          <button class="share-btn" id="lang-toggle" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            <span class="label">English</span>
+          </button>
+          <button class="share-btn" id="share-btn" data-i18n-title="common.share" title="Compartir">
             <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
-            <span class="label">Compartir</span>
+            <span class="label" data-i18n="common.share">Compartir</span>
           </button>
         </div>
       </div>
@@ -51,7 +55,7 @@
         <img class="avatar-photo" src="../assets/img/juanfe-profile.png" alt="Juan Felipe Quintana Gómez" />
         <div>
           <h1 class="profile-name home-display">Juan Felipe Quintana Gómez</h1>
-          <p class="profile-role">Senior Technical Consultant · Solution Architecture · Azure · .NET · Arquitecturas orientadas a eventos · Soluciones de IA · Profesor universitario</p>
+          <p class="profile-role" data-i18n="profile.roleLine">Senior Technical Consultant · Solution Architecture · Azure · .NET · Arquitecturas orientadas a eventos · Soluciones de IA · Profesor universitario</p>
           <div class="profile-contact">
             <a href="mailto:juanfedevmaster@gmail.com">
               <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
@@ -67,20 +71,20 @@
 
       <div class="title-block home-mono">
         <div>
-          <div class="tb-label">Rol actual</div>
-          <div class="tb-value">Line Manager · Sr. Technical Consultant</div>
+          <div class="tb-label" data-i18n="profile.tbRolLabel">Rol actual</div>
+          <div class="tb-value" data-i18n="profile.tbRolValue">Line Manager · Sr. Technical Consultant</div>
         </div>
         <div>
-          <div class="tb-label">Empresa</div>
-          <div class="tb-value">Perficient</div>
+          <div class="tb-label" data-i18n="profile.tbEmpresaLabel">Empresa</div>
+          <div class="tb-value" data-i18n="profile.tbEmpresaValue">Perficient</div>
         </div>
         <div>
-          <div class="tb-label">Docencia desde</div>
-          <div class="tb-value">Enero 2023</div>
+          <div class="tb-label" data-i18n="profile.tbDocenciaLabel">Docencia desde</div>
+          <div class="tb-value" data-i18n="profile.tbDocenciaValue">Enero 2023</div>
         </div>
         <div>
-          <div class="tb-label">Sheet</div>
-          <div class="tb-value">UDEA-IS-PROF</div>
+          <div class="tb-label" data-i18n="profile.tbCodigoLabel">Código</div>
+          <div class="tb-value" data-i18n="profile.tbCodigoValue">UDEA-IS-PROF</div>
         </div>
       </div>
     </div>
@@ -89,9 +93,9 @@
   <div class="profile-wrap">
 
     <section class="profile-section">
-      <div class="sec-head"><h2>Acerca de mí</h2></div>
+      <div class="sec-head"><h2 data-i18n="profile.secAcerca">Acerca de mí</h2></div>
       <div class="profile-summary">
-        <p>
+        <p data-i18n="profile.acercaP1">
           Soy Senior Technical Consultant y profesional de software con más de 15 años de experiencia
           en el diseño y construcción de soluciones basadas en tecnologías Microsoft, especialmente
           .NET y Azure. A lo largo de mi carrera he participado en proyectos empresariales como
@@ -99,7 +103,7 @@
           implementación, sino también al diseño de soluciones, la toma de decisiones de arquitectura
           y la mentoría técnica.
         </p>
-        <p>
+        <p data-i18n="profile.acercaP2">
           Mi experiencia incluye el diseño de arquitecturas escalables y mantenibles para
           integraciones, sistemas backend y aplicaciones distribuidas. He trabajado con servicios y
           patrones como Azure Service Bus, Event Grid, Logic Apps, Cosmos DB, Hangfire y soluciones
@@ -107,18 +111,18 @@
           a eventos para mejorar la escalabilidad, resiliencia y desacoplamiento en proyectos de
           integración.
         </p>
-        <p>
+        <p data-i18n="profile.acercaP3">
           Además de mis responsabilidades de entrega, apoyo activamente a mis compañeros mediante
           acompañamiento técnico, promoción de buenas prácticas, discusiones de arquitectura y
           resolución de problemas complejos. Disfruto ayudar a los equipos a crecer en temas como
           arquitectura limpia, principios SOLID, patrones de diseño y prácticas modernas de desarrollo.
         </p>
-        <p>
+        <p data-i18n="profile.acercaP4">
           También he contribuido en la definición de arquitecturas orientadas a soluciones de
           inteligencia artificial, explorando cómo integrar capacidades de IA en productos y procesos
           de negocio de manera práctica, sostenible y alineada con la generación de valor.
         </p>
-        <p>
+        <p data-i18n="profile.acercaP5">
           Mi perfil profesional se fortalece con mi experiencia académica como profesor en la
           Universidad de Antioquia, donde acompaño la formación de futuros ingenieros y promuevo una
           visión estructurada sobre la construcción de sistemas de alta calidad.
@@ -128,39 +132,39 @@
 
     <section class="profile-section">
       <div class="sec-head">
-        <h2>Cursos que dicto en la Universidad de Antioquia</h2>
-        <span class="home-mono">5 asignaturas</span>
+        <h2 data-i18n="profile.secCursos">Cursos que dicto en la Universidad de Antioquia</h2>
+        <span class="home-mono" data-i18n="profile.cursosCount">5 asignaturas</span>
       </div>
       <div class="course-grid">
         <div class="course-card">
-          <h4 class="home-display">Lógica y Representación II</h4>
-          <p>Diseño y análisis de algoritmos avanzados: complejidad computacional, recursividad e
+          <h4 class="home-display" data-i18n="profile.course1Title">Lógica y Representación II</h4>
+          <p data-i18n="profile.course1Desc">Diseño y análisis de algoritmos avanzados: complejidad computacional, recursividad e
             iteración, estructuras de datos (pilas, colas, heaps), árboles, grafos, programación
             dinámica y NP-completitud. Desarrolla pensamiento analítico y programación en Python
             mediante trabajo colaborativo.</p>
         </div>
         <div class="course-card">
-          <h4 class="home-display">Análisis y Diseño II</h4>
-          <p>Desarrolla competencias para analizar y diseñar sistemas de software reutilizables y
+          <h4 class="home-display" data-i18n="profile.course2Title">Análisis y Diseño II</h4>
+          <p data-i18n="profile.course2Desc">Desarrolla competencias para analizar y diseñar sistemas de software reutilizables y
             mantenibles, dentro de un proceso de desarrollo orientado a la calidad, promoviendo el
             ejercicio profesional con responsabilidad ética.</p>
         </div>
         <div class="course-card">
-          <h4 class="home-display">Técnicas de Programación</h4>
-          <p>Acompaña al estudiante en el aprendizaje de un lenguaje de programación y los
+          <h4 class="home-display" data-i18n="profile.course3Title">Técnicas de Programación</h4>
+          <p data-i18n="profile.course3Desc">Acompaña al estudiante en el aprendizaje de un lenguaje de programación y los
             principales paradigmas, desarrollando habilidades para resolver problemas reales, con
             énfasis en trabajo en equipo y buenas prácticas.</p>
         </div>
         <div class="course-card">
-          <h4 class="home-display">Arquitectura de Software</h4>
-          <p>Diseño y evaluación de arquitecturas de software: patrones y estilos arquitectónicos
+          <h4 class="home-display" data-i18n="profile.course4Title">Arquitectura de Software</h4>
+          <p data-i18n="profile.course4Desc">Diseño y evaluación de arquitecturas de software: patrones y estilos arquitectónicos
             (MVC, capas, microkernel, SOA, hexagonal, microservicios), principios SOLID/DRY/KISS,
             modelado UML, servicios web y arquitecturas cloud native (DDD, CQRS, API Gateway,
             Serverless), además de seguridad en el ciclo de vida del software.</p>
         </div>
         <div class="course-card course-card-wide">
-          <h4 class="home-display">Calidad de Software</h4>
-          <p>Aseguramiento de la calidad en el ciclo de desarrollo: estándares internacionales (ISO
+          <h4 class="home-display" data-i18n="profile.course5Title">Calidad de Software</h4>
+          <p data-i18n="profile.course5Desc">Aseguramiento de la calidad en el ciclo de desarrollo: estándares internacionales (ISO
             9000, CMMI, ISO 25000, IEEE-730), métricas de calidad, pruebas unitarias, integración
             continua, planes y técnicas de pruebas, y frameworks de automatización.</p>
         </div>
@@ -168,7 +172,7 @@
     </section>
 
     <section class="profile-section">
-      <div class="sec-head"><h2>Aptitudes y tecnologías</h2></div>
+      <div class="sec-head"><h2 data-i18n="profile.secAptitudes">Aptitudes y tecnologías</h2></div>
       <div class="tech-grid home-mono">
         <span class="badge"><span class="dot"></span>.NET / C#</span>
         <span class="badge"><span class="dot"></span>Azure</span>
@@ -178,22 +182,22 @@
         <span class="badge"><span class="dot"></span>Cosmos DB</span>
         <span class="badge"><span class="dot"></span>Hangfire</span>
         <span class="badge"><span class="dot"></span>Microsoft Service Fabric</span>
-        <span class="badge"><span class="dot"></span>Microservicios</span>
-        <span class="badge"><span class="dot"></span>Arquitectura orientada a eventos</span>
-        <span class="badge"><span class="dot"></span>Agentes inteligentes</span>
+        <span class="badge"><span class="dot"></span><span data-i18n="profile.skillMicroservicios">Microservicios</span></span>
+        <span class="badge"><span class="dot"></span><span data-i18n="profile.skillEventDriven">Arquitectura orientada a eventos</span></span>
+        <span class="badge"><span class="dot"></span><span data-i18n="profile.skillAgentes">Agentes inteligentes</span></span>
         <span class="badge"><span class="dot"></span>Clean Architecture / SOLID</span>
       </div>
     </section>
 
     <section class="profile-section">
-      <div class="sec-head"><h2>Experiencia</h2></div>
+      <div class="sec-head"><h2 data-i18n="profile.secExperiencia">Experiencia</h2></div>
       <div class="timeline">
 
         <div class="timeline-item">
-          <div class="period">Agosto 2025 — Presente</div>
-          <h3 class="home-display">Line Manager · Senior Technical Consultant</h3>
-          <p class="org">Perficient · Medellín, Antioquia, Colombia</p>
-          <ul>
+          <div class="period" data-i18n="profile.job1Period">Agosto 2025 — Presente</div>
+          <h3 class="home-display" data-i18n="profile.job1Title">Line Manager · Senior Technical Consultant</h3>
+          <p class="org" data-i18n="profile.job1Org">Perficient · Medellín, Antioquia, Colombia</p>
+          <ul data-i18n="profile.job1Bullets">
             <li>Acompañamiento técnico y profesional para seguimiento de progreso, identificación de bloqueos y oportunidades de crecimiento.</li>
             <li>Mentoría en buenas prácticas: SOLID, Clean Code y TDD, y guía en el uso adecuado de patrones de diseño.</li>
             <li>Fomento de aprendizaje continuo y adopción de herramientas modernas como GitHub Copilot y GPT.</li>
@@ -203,85 +207,85 @@
         </div>
 
         <div class="timeline-item">
-          <div class="period">Junio 2022 — Agosto 2025</div>
-          <h3 class="home-display">Senior Technical Consultant</h3>
-          <p class="org">Perficient · Medellín, Antioquia, Colombia</p>
-          <ul>
+          <div class="period" data-i18n="profile.job2Period">Junio 2022 — Agosto 2025</div>
+          <h3 class="home-display" data-i18n="profile.job2Title">Senior Technical Consultant</h3>
+          <p class="org" data-i18n="profile.job2Org">Perficient · Medellín, Antioquia, Colombia</p>
+          <ul data-i18n="profile.job2Bullets">
             <li>Full Stack Developer para cliente Assurant: integraciones, MVC y back-end sobre tecnologías Microsoft.</li>
             <li>Hangfire, Service Fabric, Cosmos DB, Event Grids, Azure Service Bus, Azure Storage y Logic Apps.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Enero 2023 — Presente</div>
-          <h3 class="home-display">Profesor</h3>
-          <p class="org">Universidad de Antioquia · Medellín, Antioquia, Colombia</p>
-          <ul>
+          <div class="period" data-i18n="profile.job3Period">Enero 2023 — Presente</div>
+          <h3 class="home-display" data-i18n="profile.job3Title">Profesor</h3>
+          <p class="org" data-i18n="profile.job3Org">Universidad de Antioquia · Medellín, Antioquia, Colombia</p>
+          <ul data-i18n="profile.job3Bullets">
             <li>Docencia en Lógica y Representación II, Análisis y Diseño II, Técnicas de Programación, Arquitectura de Software y Calidad de Software.</li>
             <li>Acompañamiento en la formación de futuros ingenieros bajo una visión estructurada de construcción de software de alta calidad.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Enero 2024 — Septiembre 2024</div>
-          <h3 class="home-display">Profesor</h3>
-          <p class="org">Universidad Nacional Tecnológica · Medellín, Antioquia, Colombia</p>
-          <ul>
+          <div class="period" data-i18n="profile.job4Period">Enero 2024 — Septiembre 2024</div>
+          <h3 class="home-display" data-i18n="profile.job4Title">Profesor</h3>
+          <p class="org" data-i18n="profile.job4Org">Universidad Nacional Tecnológica · Medellín, Antioquia, Colombia</p>
+          <ul data-i18n="profile.job4Bullets">
             <li>Docencia en Implementación de Bases de Datos I y II.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Noviembre 2019 — Diciembre 2019</div>
-          <h3 class="home-display">Experto Temático · Diseño de Software</h3>
-          <p class="org">ITM — Instituto Tecnológico Metropolitano · Medellín, Colombia</p>
+          <div class="period" data-i18n="profile.job5Period">Noviembre 2019 — Diciembre 2019</div>
+          <h3 class="home-display" data-i18n="profile.job5Title">Experto Temático · Diseño de Software</h3>
+          <p class="org" data-i18n="profile.job5Org">ITM — Instituto Tecnológico Metropolitano · Medellín, Colombia</p>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Julio 2019 — Junio 2022</div>
-          <h3 class="home-display">Senior Software Engineer / Senior Software Developer</h3>
-          <p class="org">Growth Acceleration Partners · Envigado, Antioquia, Colombia</p>
+          <div class="period" data-i18n="profile.job6Period">Julio 2019 — Junio 2022</div>
+          <h3 class="home-display" data-i18n="profile.job6Title">Senior Software Engineer / Senior Software Developer</h3>
+          <p class="org" data-i18n="profile.job6Org">Growth Acceleration Partners · Envigado, Antioquia, Colombia</p>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Junio 2016 — Enero 2019</div>
-          <h3 class="home-display">Desarrollador Freelance</h3>
-          <p class="org">Seminario Redemptoris Mater de Medellín</p>
-          <ul>
+          <div class="period" data-i18n="profile.job7Period">Junio 2016 — Enero 2019</div>
+          <h3 class="home-display" data-i18n="profile.job7Title">Desarrollador Freelance</h3>
+          <p class="org" data-i18n="profile.job7Org">Seminario Redemptoris Mater de Medellín</p>
+          <ul data-i18n="profile.job7Bullets">
             <li>Creación de una plataforma web para la administración interna de miembros y eventos.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Agosto 2015 — Febrero 2019</div>
-          <h3 class="home-display">Analista I</h3>
-          <p class="org">Satrack · Medellín, Colombia</p>
-          <ul>
+          <div class="period" data-i18n="profile.job8Period">Agosto 2015 — Febrero 2019</div>
+          <h3 class="home-display" data-i18n="profile.job8Title">Analista I</h3>
+          <p class="org" data-i18n="profile.job8Org">Satrack · Medellín, Colombia</p>
+          <ul data-i18n="profile.job8Bullets">
             <li>Desarrollo de dispositivos móviles Android e iOS con C# y Xamarin.</li>
             <li>Líder técnico en dispositivos móviles del área de Desarrollo de Productos.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Junio 2011 — Agosto 2015</div>
-          <h3 class="home-display">Analista II</h3>
-          <p class="org">Satrack · Medellín, Colombia</p>
-          <ul>
+          <div class="period" data-i18n="profile.job9Period">Junio 2011 — Agosto 2015</div>
+          <h3 class="home-display" data-i18n="profile.job9Title">Analista II</h3>
+          <p class="org" data-i18n="profile.job9Org">Satrack · Medellín, Colombia</p>
+          <ul data-i18n="profile.job9Bullets">
             <li>Desarrollo y mejora de productos de software móvil (Android/iOS) en C# con Xamarin.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Marzo 2009 — Mayo 2011</div>
-          <h3 class="home-display">Ingeniero de Desarrollo</h3>
-          <p class="org">Intergrupo</p>
+          <div class="period" data-i18n="profile.job10Period">Marzo 2009 — Mayo 2011</div>
+          <h3 class="home-display" data-i18n="profile.job10Title">Ingeniero de Desarrollo</h3>
+          <p class="org" data-i18n="profile.job10Org">Intergrupo</p>
         </div>
 
         <div class="timeline-item">
-          <div class="period">Abril 2008 — Marzo 2009</div>
-          <h3 class="home-display">Asesor de Mesa de Ayuda</h3>
-          <p class="org">Intergrupo</p>
-          <ul>
+          <div class="period" data-i18n="profile.job11Period">Abril 2008 — Marzo 2009</div>
+          <h3 class="home-display" data-i18n="profile.job11Title">Asesor de Mesa de Ayuda</h3>
+          <p class="org" data-i18n="profile.job11Org">Intergrupo</p>
+          <ul data-i18n="profile.job11Bullets">
             <li>Soporte a usuarios y servicio al cliente para Familia Sancela, incluyendo soporte de cómputo en sitio.</li>
           </ul>
         </div>
@@ -292,33 +296,33 @@
     <section class="profile-section">
       <div class="two-col">
         <div>
-          <div class="sec-head"><h2>Educación</h2></div>
+          <div class="sec-head"><h2 data-i18n="profile.secEducacion">Educación</h2></div>
           <div class="simple-list">
             <div>
-              <p class="item-title">Institución Universitaria de Envigado</p>
-              <p class="item-meta">Ingeniería de Sistemas, Desarrollo de Software · 2006 — 2011</p>
+              <p class="item-title" data-i18n="profile.edu1Title">Institución Universitaria de Envigado</p>
+              <p class="item-meta" data-i18n="profile.edu1Meta">Ingeniería de Sistemas, Desarrollo de Software · 2006 — 2011</p>
             </div>
             <div>
-              <p class="item-title">Universidad Pontificia Bolivariana</p>
-              <p class="item-meta">Ingeniería Informática · 2003 — 2006</p>
+              <p class="item-title" data-i18n="profile.edu2Title">Universidad Pontificia Bolivariana</p>
+              <p class="item-meta" data-i18n="profile.edu2Meta">Ingeniería Informática · 2003 — 2006</p>
             </div>
           </div>
         </div>
 
         <div>
-          <div class="sec-head"><h2>Certificaciones</h2></div>
+          <div class="sec-head"><h2 data-i18n="profile.secCertificaciones">Certificaciones</h2></div>
           <div class="simple-list">
             <div>
-              <p class="item-title">AI Agents Fundamentals</p>
+              <p class="item-title" data-i18n="profile.cert1">AI Agents Fundamentals</p>
             </div>
             <div>
-              <p class="item-title">CSD — Certified Scrum Developer</p>
+              <p class="item-title" data-i18n="profile.cert2">CSD — Certified Scrum Developer</p>
             </div>
             <div>
-              <p class="item-title">Exam 487: Developing Microsoft Azure and Web Services</p>
+              <p class="item-title" data-i18n="profile.cert3">Exam 487: Developing Microsoft Azure and Web Services</p>
             </div>
             <div>
-              <p class="item-title">MTS Windows Mobile 5.0</p>
+              <p class="item-title" data-i18n="profile.cert4">MTS Windows Mobile 5.0</p>
             </div>
           </div>
         </div>
@@ -328,23 +332,23 @@
     <section class="profile-section">
       <div class="two-col">
         <div>
-          <div class="sec-head"><h2>Idiomas</h2></div>
+          <div class="sec-head"><h2 data-i18n="profile.secIdiomas">Idiomas</h2></div>
           <div class="simple-list">
             <div>
-              <p class="item-title">Inglés</p>
-              <p class="item-meta">Full Professional</p>
+              <p class="item-title" data-i18n="profile.idioma1Title">Inglés</p>
+              <p class="item-meta" data-i18n="profile.idioma1Meta">Full Professional</p>
             </div>
           </div>
         </div>
 
         <div>
-          <div class="sec-head"><h2>Reconocimientos</h2></div>
+          <div class="sec-head"><h2 data-i18n="profile.secReconocimientos">Reconocimientos</h2></div>
           <div class="simple-list">
             <div>
-              <p class="item-title">Beca Universidad Nacional</p>
+              <p class="item-title" data-i18n="profile.reco1">Beca Universidad Nacional</p>
             </div>
             <div>
-              <p class="item-title">Excelencia en el desempeño en el desarrollo de productos</p>
+              <p class="item-title" data-i18n="profile.reco2">Excelencia en el desempeño en el desarrollo de productos</p>
             </div>
           </div>
         </div>
@@ -353,10 +357,11 @@
 
   </div>
 
-  <footer class="profile-footer home-mono">
+  <footer class="profile-footer home-mono" data-i18n="profile.footerText">
     Juan Felipe Quintana Gómez · Ingeniería de Sistemas · Perfil del profesor
   </footer>
 
   <script src="../assets/js/share.js"></script>
+  <script src="../assets/js/i18n.js"></script>
 </body>
 </html>

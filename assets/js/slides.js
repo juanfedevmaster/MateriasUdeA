@@ -72,7 +72,7 @@
     if (counterEl)
       counterEl.innerHTML = `<strong>${String(current + 1).padStart(2, "0")}</strong> / ${total}`;
     if (progressEl) progressEl.style.width = `${((current + 1) / total) * 100}%`;
-    if (sheetTagEl) sheetTagEl.textContent = `SHEET ${sheetCode} / S${current + 1}`;
+    if (sheetTagEl) sheetTagEl.textContent = `CÓDIGO ${sheetCode} / S${current + 1}`;
     if (prevBtn) prevBtn.disabled = current === 0;
     if (nextBtn) nextBtn.disabled = current === total - 1;
     history.replaceState(null, "", `#${slides[current].id}`);

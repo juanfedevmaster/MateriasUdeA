@@ -18,7 +18,7 @@
 .reg-mark::after {
   content: "";
   position: absolute;
-  background: rgba(240, 222, 187, 0.35);
+  background: rgba(191, 220, 239, 0.35);
 }
 .reg-mark::before {
   top: 50%;
@@ -45,9 +45,16 @@
 
 /* ---------- HERO (misma hoja de plano que el home, versión compacta) ---------- */
 .course-sheet {
+  --bg: var(--blueprint);
+  --surface: var(--blueprint);
+  --surface-2: var(--blueprint-deep);
+  --text: var(--line);
+  --text-muted: var(--line-muted);
+  --border: var(--line-dim);
+
   position: relative;
-  background: linear-gradient(rgba(240, 222, 187, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240, 222, 187, 0.08) 1px, transparent 1px),
+  background: linear-gradient(rgba(191, 220, 239, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(191, 220, 239, 0.08) 1px, transparent 1px),
     linear-gradient(135deg, var(--surface), var(--bg));
   background-size: 32px 32px, 32px 32px, cover;
   color: var(--text);
@@ -149,7 +156,7 @@ h1.course-title {
 .course-sub {
   max-width: 56ch;
   font-size: 15.5px;
-  color: var(--text-muted);
+  color: var(--line-soft);
   line-height: 1.6;
   margin: 0 0 30px;
 }
@@ -308,7 +315,7 @@ h1.course-title {
   color: var(--text-muted);
 }
 .week.standalone .week-head {
-  background: rgba(89, 168, 125, 0.12);
+  background: rgba(226, 166, 59, 0.12);
 }
 .week.standalone .num {
   color: var(--accent);
@@ -377,6 +384,10 @@ a.session:hover .go svg {
 }
 
 .course-footer {
+  --bg: var(--blueprint-deep);
+  --text-muted: var(--line-muted);
+  --border: var(--line-dim);
+
   background: var(--bg);
   color: var(--text-muted);
   padding: 30px 24px;

@@ -70,7 +70,7 @@ Cada deck es un HTML con secciones `<section class="slide" id="sNN">` dentro de
   (`sizeFrame()`) y lo aplica como estilo inline a cada `.slide` (evita los bugs de
   `aspect-ratio` + posicionamiento absoluto),
 - maneja navegación (flechas, teclado, swipe táctil, hash de la URL),
-- dibuja las anotaciones de esquina ("UDEA · 1803" / "SHEET {código}/S{n}") leyendo
+- dibuja las anotaciones de esquina ("UDEA · 1803" / "CÓDIGO {código}/S{n}") leyendo
   `data-sheet="XXXXXXX"` del `#deck-stage`.
 
 **`@media print`** en `slides.css` redefine todo para exportar a PDF: quita el marco/grid,
