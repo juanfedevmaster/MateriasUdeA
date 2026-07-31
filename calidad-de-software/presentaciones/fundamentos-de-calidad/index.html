@@ -291,6 +291,18 @@
           </div>
       </section>
 
+      <section class="slide type-concepto" id="s16a">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Métrica</p>
+          <h1>Contar defectos no es lo mismo que medir calidad</h1>
+          <p>La métrica más simple —y más usada en la práctica— es la <strong>densidad de defectos</strong>:</p>
+          <blockquote>Densidad de defectos = número de defectos / tamaño del producto<br><em>(típicamente en KNCSS: miles de líneas de código sin comentarios)</em></blockquote>
+          <p>La industria reporta rangos de <strong>2 a 60 defectos por KNCSS</strong>. Pero un estudio de Adams encontró que solo el <strong>2 %</strong> de los defectos de un sistema grande causa una falla antes de cinco años de uso — el resto puede quedar dormido para siempre.</p>
+          <p><strong>Un producto con pocos defectos detectados no es necesariamente de alta calidad: puede significar, en cambio, que las pruebas fueron poco exhaustivas.</strong></p>
+          <img class="portada-icon" src="img/bug-slash.svg" alt="Densidad de defectos" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+          </div>
+      </section>
+
       <section class="slide type-interaccion" id="s17">
           <div class="slide-content">
           <p class="slide-kicker">Interacción</p>
@@ -367,6 +379,20 @@
           </div>
       </section>
 
+      <section class="slide type-concepto" id="s20a">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen</p>
+          <h1>W. Edwards Deming: el tercer nombre del trío clásico</h1>
+          <p>Estadístico de formación, aprendió control estadístico de procesos de Walter Shewhart en los Laboratorios Bell. En 1950 —dos años antes que Juran— viajó a Japón invitado por la JUSE a enseñar control estadístico a ingenieros y directivos, y su nombre quedó ligado al mayor premio de calidad del país: el Premio Deming.</p>
+          <ul>
+            <li>Calidad = <strong>"conformidad con los requisitos y confianza en el funcionamiento"</strong></li>
+            <li>Popularizó el ciclo <strong>PDCA</strong> (planear, hacer, verificar, actuar) como motor de mejora continua</li>
+            <li>A diferencia de Crosby, insiste en el <strong>control estadístico del proceso</strong>, no solo en la meta de cero defectos</li>
+          </ul>
+          <p><strong>"Confianza en el funcionamiento" agrega algo que Crosby no cubre: no basta con pasar la prueba hoy, el sistema debe seguir cumpliendo mañana.</strong></p>
+          </div>
+      </section>
+
       <section class="slide type-concepto" id="s21">
           <div class="slide-content">
           <p class="slide-kicker">Concepto · Origen</p>
@@ -432,6 +458,26 @@
           </ul>
           <p><strong>¿Quién tiene razón?</strong></p>
           <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s25a">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuatro visiones de la misma calidad</h1>
+          <table>
+            <thead>
+              <tr><th>Visión</th><th>Qué es</th><th>Quién la define</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Requerida</td><td>Lo que el cliente necesita, aunque no lo exprese del todo</td><td>El cliente</td></tr>
+              <tr><td>Programada</td><td>Lo que quedó escrito en la especificación</td><td>El equipo, al documentar</td></tr>
+              <tr><td>Realizada</td><td>Lo que el sistema termina haciendo</td><td>El equipo, al construir</td></tr>
+              <tr><td>Percibida</td><td>Intersección entre requerida y realizada — la única que el cliente valora</td><td>Nadie la declara; se mide</td></tr>
+            </tbody>
+          </table>
+          <p><strong>El sistema de matrícula de la diapositiva anterior tiene calidad programada = realizada (100 % de conformidad), pero calidad percibida casi nula: lo programado nunca capturó lo requerido.</strong></p>
+          <p class="slide-eyebrow">Toda calidad realizada que no coincide con la requerida es, literalmente, esfuerzo desperdiciado.</p>
           </div>
       </section>
 
@@ -518,6 +564,20 @@
           </ol>
           <p><strong>ISO/IEC 12207 dice qué procesos deben existir; CMMI dice qué tan bien y de forma cuán consistente se ejecutan.</strong></p>
           <img class="portada-icon" src="img/stairs.svg" alt="Niveles de madurez CMMI" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+          </div>
+      </section>
+
+      <section class="slide type-concepto" id="s26e">
+          <div class="slide-content">
+          <p class="slide-kicker">Concepto · Modelos de calidad</p>
+          <h1>Cómo se opera la calidad: factor → criterio → métrica</h1>
+          <p>ISO 25010 dice <em>qué</em> características medir. Los modelos de calidad clásicos, como el de <strong>McCall (1977)</strong>, explican <em>cómo</em> bajar eso a algo medible, en tres niveles:</p>
+          <ul>
+            <li><strong>Factor</strong> — la característica que ve el usuario (p. ej. "facilidad de mantenimiento")</li>
+            <li><strong>Criterio</strong> — atributos del producto que contribuyen al factor (p. ej. "modularidad", "simplicidad")</li>
+            <li><strong>Métrica</strong> — la medida cuantitativa de un criterio (p. ej. "número de módulos afectados por cambio")</li>
+          </ul>
+          <p><strong>La ventaja de este esquema: convierte "calidad" —una palabra que vimos que tiene cinco significados con Garvin— en algo que se puede contar.</strong></p>
           </div>
       </section>
 
