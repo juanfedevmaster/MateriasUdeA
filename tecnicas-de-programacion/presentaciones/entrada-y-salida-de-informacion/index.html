@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrada y Salida de Información — Semana 5</title>
+  <meta name="description" content="Scanner para leer datos del teclado, el bug clásico de mezclar nextInt() y nextLine(), y salida formateada con printf — Técnicas de Programación, Unidad 2, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/entrada-y-salida-de-informacion/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Entrada y Salida de Información — Semana 5" />
+  <meta property="og:description" content="Scanner para leer datos del teclado, el bug clásico de mezclar nextInt() y nextLine(), y salida formateada con printf — Técnicas de Programación, Unidad 2, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/entrada-y-salida-de-informacion/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Entrada y Salida de Información — Semana 5" />
+  <meta name="twitter:description" content="Scanner para leer datos del teclado, el bug clásico de mezclar nextInt() y nextLine(), y salida formateada con printf — Técnicas de Programación, Unidad 2, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/entrada-y-salida-de-informacion.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 2 — Paradigma Objetual: Entrada y Salida de Información</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/keyboard.svg" alt="Interacción con el usuario por teclado" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Todos tus programas, hasta hoy, corren siempre exactamente igual. Un programa útil tiene que escuchar a quien lo usa.</h1>
+          <img class="portada-icon" src="img/terminal.svg" alt="Un programa que conversa con su usuario" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De valores fijos a valores que llegan del usuario</h1>
+          <p>Hasta ahora, tus programas usaban valores escritos directamente en el código (<code>int promedio = 85;</code>). Eso es útil para practicar, pero un programa real necesita recibir datos <strong>en el momento en que se ejecuta</strong> — un nombre, una edad, un monto — y luego mostrar resultados de forma clara. Java resuelve esto con la clase <code>Scanner</code> para la entrada, y con <code>System.out</code> para la salida.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La clase <code>Scanner</code>: leer desde el teclado</h1>
+          <p><code>Scanner</code> vive en el paquete <code>java.util</code> y se conecta a <code>System.in</code> (la entrada estándar, normalmente el teclado) para leer lo que el usuario escribe en la consola.</p>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("¿Cuál es tu nombre? ");
+        String nombre = teclado.nextLine();
+        System.out.println("Hola, " + nombre);
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Un método de lectura por cada tipo de dato</h1>
+          <p><code>Scanner</code> ofrece un método distinto según el tipo de dato que se espera leer — todos bloquean el programa hasta que el usuario presiona Enter.</p>
+          <table>
+            <thead>
+              <tr><th>Método</th><th>Lee</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>nextInt()</code></td><td>Un número entero</td></tr>
+              <tr><td><code>nextDouble()</code></td><td>Un número decimal</td></tr>
+              <tr><td><code>next()</code></td><td>Una sola palabra (hasta el próximo espacio)</td></tr>
+              <tr><td><code>nextLine()</code></td><td>La línea completa, incluidos los espacios</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El bug clásico: mezclar <code>nextInt()</code> con <code>nextLine()</code></h1>
+          <p><code>nextInt()</code> lee <strong>solo el número</strong>, dejando el salto de línea (Enter) todavía esperando en el buffer. Si el siguiente <code>nextLine()</code> se ejecuta justo después, lee ese salto de línea sobrante en vez de esperar texto nuevo — y la variable queda vacía.</p>
+          <pre><code>Scanner teclado = new Scanner(System.in);
+System.out.print("Edad: ");
+int edad = teclado.nextInt();        // lee "20", deja el Enter pendiente
+
+System.out.print("Nombre: ");
+String nombre = teclado.nextLine();  // ¡lee el Enter sobrante, no el nombre!
+System.out.println("Hola " + nombre); // imprime: "Hola " (vacío)</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo evitarlo: consumir el salto de línea pendiente</h1>
+          <p>La solución más simple es agregar un <code>teclado.nextLine()</code> extra inmediatamente después de <code>nextInt()</code>/<code>nextDouble()</code>, solo para "limpiar" el salto de línea que quedó pendiente, antes de leer texto con <code>nextLine()</code>.</p>
+          <pre><code>System.out.print("Edad: ");
+int edad = teclado.nextInt();
+teclado.nextLine();   // consume el Enter pendiente, no guarda su resultado
+
+System.out.print("Nombre: ");
+String nombre = teclado.nextLine();   // ahora sí lee el nombre correctamente
+System.out.println("Hola " + nombre + ", tienes " + edad + " años.");</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Salida: <code>print</code>, <code>println</code> y <code>printf</code></h1>
+          <p>Java ofrece tres formas de escribir en consola a través de <code>System.out</code>, cada una con un propósito distinto.</p>
+          <table>
+            <thead>
+              <tr><th>Método</th><th>Comportamiento</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>print(x)</code></td><td>Escribe sin salto de línea al final</td></tr>
+              <tr><td><code>println(x)</code></td><td>Escribe y agrega un salto de línea al final</td></tr>
+              <tr><td><code>printf(formato, valores)</code></td><td>Escribe con formato controlado (decimales, ancho, alineación)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Especificadores de formato en <code>printf</code></h1>
+          <p><code>printf</code> usa una cadena de formato con marcadores <code>%</code> que se reemplazan, en orden, por los valores que le siguen.</p>
+          <pre><code>double promedio = 4.6666;
+String nombre = "Ana";
+
+System.out.printf("Estudiante: %s%n", nombre);
+System.out.printf("Promedio: %.2f%n", promedio);   // "Promedio: 4.67"
+System.out.printf("%-10s | %5d%n", "Total", 3);     // ancho y alineación</code></pre>
+          <p><strong><code>%s</code></strong> texto · <strong><code>%d</code></strong> entero · <strong><code>%f</code></strong> decimal (<code>%.2f</code> con 2 decimales) · <strong><code>%n</code></strong> salto de línea portable.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Y si el usuario escribe algo que no es un número?</h1>
+          <p>Si tu programa hace <code>teclado.nextInt()</code> y el usuario escribe "veinte" en vez de "20", Java lanza <code>InputMismatchException</code> y el programa se detiene abruptamente. Validar esa entrada de forma controlada requiere <code>try</code>/<code>catch</code> — un mecanismo de manejo de errores que todavía no hemos visto en el curso, y que se retoma más adelante. Por ahora, basta con saber que esta falla existe y por qué ocurre.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Un programa que lea y muestre datos</h1>
+          <p><strong>Individual: escriban un programa que use <code>Scanner</code> para leer el nombre, la edad y el promedio de un estudiante</strong>, mezclando <code>nextLine()</code> y <code>nextDouble()</code>/<code>nextInt()</code> a propósito, y luego muestren los resultados con <code>printf</code> usando al menos un <code>%.2f</code>.</p>
+          <p class="slide-eyebrow">6 minutos · si el resultado sale vacío, revisen el buffer pendiente del slide anterior</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><code>Scanner</code> (de <code>java.util</code>) conecta el programa con <code>System.in</code> para leer datos que escribe el usuario.</li>
+            <li>Cada tipo de dato tiene su propio método de lectura: <code>nextInt()</code>, <code>nextDouble()</code>, <code>next()</code>, <code>nextLine()</code>.</li>
+            <li>Mezclar <code>nextInt()</code>/<code>nextDouble()</code> con <code>nextLine()</code> sin consumir el salto de línea pendiente es el bug más común al leer datos.</li>
+            <li><code>printf</code> permite controlar el formato de salida con especificadores como <code>%s</code>, <code>%d</code>, <code>%.2f</code> y <code>%n</code>.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Implementar en el IDE un programa que lea al menos tres datos de tipos distintos con <code>Scanner</code> y los muestre con <code>printf</code> formateado.</li>
+            <li>Revisar el ejercicio del bug de <code>nextInt()</code>/<code>nextLine()</code> hasta poder explicar exactamente por qué ocurre.</li>
+          </ul>
+          <p><strong>La próxima sesión pasamos del diagrama de clases a la implementación completa en Java.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

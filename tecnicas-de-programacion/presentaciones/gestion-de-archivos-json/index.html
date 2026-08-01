@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Archivos: JSON — Semana 10</title>
+  <meta name="description" content="Sintaxis JSON, serialización y deserialización de objetos Java con la librería Gson — Técnicas de Programación, Unidad 4, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/gestion-de-archivos-json/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Gestión de Archivos: JSON — Semana 10" />
+  <meta property="og:description" content="Sintaxis JSON, serialización y deserialización de objetos Java con la librería Gson — Técnicas de Programación, Unidad 4, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/gestion-de-archivos-json/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gestión de Archivos: JSON — Semana 10" />
+  <meta name="twitter:description" content="Sintaxis JSON, serialización y deserialización de objetos Java con la librería Gson — Técnicas de Programación, Unidad 4, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gestion-de-archivos-json.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 4 — Gestión de Archivos: JSON</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/json.svg" alt="Formato de datos JSON" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Prácticamente toda API web con la que tu programa va a hablar responde en JSON — es el idioma común de los datos en internet.</h1>
+          <img class="portada-icon" src="img/file-import.svg" alt="Intercambio de datos entre sistemas" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De archivos de texto a datos estructurados</h1>
+          <p>La sesión pasada aprendiste a manejar excepciones con <code>try-catch</code> y a leer/escribir archivos de texto plano y CSV con <code>try-with-resources</code>, cerrando siempre el recurso automáticamente. Hoy das el siguiente paso: en vez de texto suelto o filas separadas por comas, vas a guardar y leer <strong>objetos completos, con estructura y anidamiento</strong>, usando el formato más usado para intercambiar datos: <strong>JSON</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es JSON?</h1>
+          <p><strong>JSON</strong> (<em>JavaScript Object Notation</em>) es un formato de texto para representar datos estructurados, fácil de leer para humanos y fácil de procesar para programas. A pesar del nombre, no es exclusivo de JavaScript — es un estándar independiente del lenguaje, usado por prácticamente cualquier tecnología moderna (Java, Python, APIs web, bases de datos NoSQL, archivos de configuración).</p>
+          <pre><code>{
+  "nombre": "Ana Gómez",
+  "edad": 21,
+  "activo": true,
+  "promedio": 4.35
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sintaxis: objetos, arrays y tipos</h1>
+          <p>JSON se construye a partir de dos estructuras que se pueden anidar entre sí:</p>
+          <table>
+            <thead><tr><th>Estructura</th><th>Sintaxis</th><th>Equivalente en Java</th></tr></thead>
+            <tbody>
+              <tr><td>Objeto</td><td><code>{ "clave": valor, ... }</code></td><td>Instancia de una clase (POJO)</td></tr>
+              <tr><td>Array</td><td><code>[ valor, valor, ... ]</code></td><td><code>ArrayList</code> o arreglo</td></tr>
+            </tbody>
+          </table>
+          <p>Los tipos de valor permitidos son: <strong>string</strong> (entre comillas dobles), <strong>number</strong> (entero o decimal, sin comillas), <strong>boolean</strong> (<code>true</code>/<code>false</code>), <strong>null</strong>, un <strong>objeto anidado</strong> o un <strong>array</strong>. No existen fechas ni comentarios como tipos nativos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Un ejemplo con anidamiento</h1>
+          <pre><code>{
+  "curso": "Técnicas de Programación",
+  "estudiantes": [
+    { "id": 1, "nombre": "Ana", "notas": [4.5, 3.8, 4.2] },
+    { "id": 2, "nombre": "Luis", "notas": [3.9, 4.0, 4.4] }
+  ],
+  "activo": true
+}</code></pre>
+          <p>El array <code>estudiantes</code> contiene objetos, y cada objeto tiene a su vez un array anidado (<code>notas</code>). Esta capacidad de anidar objetos y arrays libremente es justo lo que un CSV plano no puede representar sin trucos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>JSON vs. CSV vs. TXT plano</h1>
+          <p>Los tres son formatos de texto para persistir datos, pero cada uno sirve mejor a un tipo de contenido distinto:</p>
+          <table>
+            <thead><tr><th>Formato</th><th>Mejor para</th><th>Limitación principal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>TXT plano</strong></td><td>Texto libre, logs, notas</td><td>Sin estructura — hay que parsear a mano</td></tr>
+              <tr><td><strong>CSV</strong></td><td>Datos tabulares planos (una fila = un registro)</td><td>No representa anidamiento ni jerarquías</td></tr>
+              <tr><td><strong>JSON</strong></td><td>Datos anidados/estructurados (objetos con listas, objetos dentro de objetos)</td><td>Más texto por dato que un CSV equivalente</td></tr>
+            </tbody>
+          </table>
+          <p>Si cada estudiante solo tiene nombre y nota, un CSV alcanza. Si además tiene una lista de notas por corte y datos de contacto anidados, JSON representa esa estructura sin inventar columnas artificiales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la sintaxis a Java: la librería Gson</h1>
+          <p>Java no lee ni escribe JSON de forma nativa — se necesita una librería que convierta entre <strong>texto JSON</strong> y <strong>objetos Java</strong>. La opción que usarás en este curso es <strong>Gson</strong>, la librería de código abierto de Google para ese propósito.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Gson: preparar el proyecto</h1>
+          <p><strong>Gson</strong> es una librería de Google que convierte objetos Java a JSON y viceversa con muy poco código. Para usarla en un proyecto Maven, se agrega la dependencia al <code>pom.xml</code>:</p>
+          <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
+    &lt;artifactId&gt;gson&lt;/artifactId&gt;
+    &lt;version&gt;2.11.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+          <p>Y se crea una instancia reutilizable en el código:</p>
+          <pre><code>import com.google.gson.Gson;
+
+Gson gson = new Gson();</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El POJO: la clase modelo</h1>
+          <p>Antes de convertir cualquier cosa a JSON se necesita una clase Java simple —un <strong>POJO</strong> (<em>Plain Old Java Object</em>)— con atributos privados y sus getters/setters, que representa la estructura del dato. Gson usa los <em>nombres de los atributos</em> como claves del JSON, así que documentarla con Javadoc ayuda a quien la reutilice después.</p>
+          <pre><code>/**
+ * Representa a un estudiante inscrito en el curso.
+ */
+public class Estudiante {
+    private int id;
+    private String nombre;
+    private double promedio;
+
+    // getters y setters
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Serialización: de objeto Java a JSON</h1>
+          <p><strong>Serializar</strong> es convertir un objeto Java en su representación de texto JSON, con <code>gson.toJson(objeto)</code>. Gson recorre los atributos del objeto y genera automáticamente el texto correspondiente.</p>
+          <pre><code>Estudiante e = new Estudiante(1, "Ana Gómez", 4.35);
+String json = gson.toJson(e);
+System.out.println(json);
+
+// Salida:
+// {"id":1,"nombre":"Ana Gómez","promedio":4.35}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Deserialización: de JSON a objeto Java</h1>
+          <p><strong>Deserializar</strong> es el proceso inverso: tomar texto JSON y reconstruir un objeto Java a partir de él, con <code>gson.fromJson(json, MiClase.class)</code>. Gson necesita saber a qué clase convertir el texto, por eso se le pasa el <code>.class</code> como segundo argumento.</p>
+          <pre><code>String json = "{\"id\":1,\"nombre\":\"Ana Gómez\",\"promedio\":4.35}";
+Estudiante e = gson.fromJson(json, Estudiante.class);
+
+System.out.println(e.getNombre()); // Ana Gómez</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Deserializar colecciones con TypeToken</h1>
+          <p>Cuando el JSON es un <strong>array</strong> de objetos, <code>fromJson(json, Estudiante.class)</code> no alcanza — Java necesita conocer, en tiempo de ejecución, que se trata de una <code>List&lt;Estudiante&gt;</code> y no de un solo objeto. Para eso Gson ofrece <code>TypeToken</code>, que captura ese tipo genérico completo:</p>
+          <pre><code>import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
+Type tipoLista = new TypeToken&lt;List&lt;Estudiante&gt;&gt;(){}.getType();
+List&lt;Estudiante&gt; estudiantes = gson.fromJson(json, tipoLista);</code></pre>
+          <p>Sin <code>TypeToken</code>, Java "borra" el tipo genérico en tiempo de ejecución (fenómeno conocido como <em>type erasure</em>) y Gson no sabría a qué clase convertir cada elemento del array.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del objeto en memoria al archivo .json</h1>
+          <p>Serializar y deserializar en variables de texto es útil, pero el objetivo real es <strong>persistir</strong> esos datos: guardarlos en un archivo <code>.json</code> que sobreviva al cierre del programa, y volver a leerlos después. Para eso, Gson se combina con las clases de lectura/escritura de archivos que ya viste: <code>FileReader</code> y <code>FileWriter</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Escribir un archivo .json</h1>
+          <p>Gson puede escribir directamente sobre un <code>Writer</code>, evitando construir el <code>String</code> completo en memoria. Se usa <code>try-with-resources</code> para que el <code>FileWriter</code> se cierre automáticamente, tal como viste con los archivos de texto:</p>
+          <pre><code>try (FileWriter writer = new FileWriter("estudiantes.json")) {
+    gson.toJson(estudiantes, writer);
+} catch (IOException e) {
+    System.out.println("Error al escribir el archivo: " + e.getMessage());
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Leer un archivo .json</h1>
+          <p>De la misma forma, Gson puede leer directamente desde un <code>Reader</code> sin que el programador tenga que unir línea por línea el contenido del archivo:</p>
+          <pre><code>try (FileReader reader = new FileReader("estudiantes.json")) {
+    Type tipoLista = new TypeToken&lt;List&lt;Estudiante&gt;&gt;(){}.getType();
+    List&lt;Estudiante&gt; estudiantes = gson.fromJson(reader, tipoLista);
+    estudiantes.forEach(est -&gt; System.out.println(est.getNombre()));
+} catch (IOException e) {
+    System.out.println("Error al leer el archivo: " + e.getMessage());
+}</code></pre>
+          <p>La <code>IOException</code> se maneja igual que con cualquier otro archivo: puede lanzarse si el archivo no existe o no se puede acceder a él.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas al trabajar con Gson</h1>
+          <ul>
+            <li><strong>Documenta los POJOs con Javadoc</strong>: quien reciba la clase modelo debe entender qué representa cada atributo sin adivinar por el nombre.</li>
+            <li><strong>Una sola instancia de <code>Gson</code></strong> por aplicación (o por clase) — no hace falta crear una nueva cada vez que se serializa o deserializa, es reutilizable.</li>
+            <li><strong>Maneja siempre <code>IOException</code></strong> al leer o escribir el archivo, igual que con cualquier operación de E/S — el archivo puede no existir, estar bloqueado o no tener permisos.</li>
+            <li><strong>Usa <code>TypeToken</code> siempre que deserialices una colección</strong>, nunca intentes deserializar un array JSON directamente contra <code>MiClase.class</code>.</li>
+          </ul>
+          <img class="portada-icon" src="img/table-columns.svg" alt="Buenas prácticas al estructurar datos" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen la clase y el flujo</h1>
+          <p><strong>En parejas:</strong> tienen que guardar en un archivo <code>productos.json</code> una lista de productos, cada uno con <code>id</code>, <code>nombre</code>, <code>precio</code> y una lista de <code>String</code> con sus <code>categorias</code>.</p>
+          <ol>
+            <li>Escriban el POJO <code>Producto</code> con esos cuatro atributos.</li>
+            <li>Escriban el bloque <code>try-with-resources</code> que serializa una <code>List&lt;Producto&gt;</code> al archivo.</li>
+            <li>Escriban el bloque que la vuelve a leer, usando <code>TypeToken</code>.</li>
+          </ol>
+          <p class="slide-eyebrow">8 minutos · compartan pantalla en su sala de Zoom</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>toJson() con formato legible: setPrettyPrinting()</h1>
+          <p>Por defecto, <code>gson.toJson(objeto)</code> genera JSON compacto, en una sola línea. Para depurar o para archivos que un humano va a revisar, conviene un JSON indentado, usando <code>GsonBuilder</code>:</p>
+          <pre><code>import com.google.gson.GsonBuilder;
+
+Gson gson = new GsonBuilder()
+    .setPrettyPrinting()
+    .create();
+
+System.out.println(gson.toJson(e));
+// {
+//   "id": 1,
+//   "nombre": "Ana Gómez",
+//   "promedio": 4.35
+// }</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de la sesión</h1>
+          <ol>
+            <li>JSON representa datos con <strong>objetos</strong> (<code>{ }</code>) y <strong>arrays</strong> (<code>[ ]</code>), y admite anidamiento — lo que un CSV plano no puede hacer.</li>
+            <li>Gson convierte entre objeto Java y JSON con dos métodos: <code>toJson()</code> (serializar) y <code>fromJson()</code> (deserializar).</li>
+            <li>Para deserializar colecciones se necesita <code>TypeToken</code>, por el <em>type erasure</em> de los genéricos en Java.</li>
+            <li>Gson se combina con <code>FileReader</code>/<code>FileWriter</code> y <code>try-with-resources</code> para persistir JSON en disco, manejando siempre <code>IOException</code>.</li>
+          </ol>
+          <img class="portada-icon" src="img/file-export.svg" alt="Ideas clave sobre JSON" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar serializando y deserializando al menos una clase propia con listas anidadas.</li>
+            <li>Revisar la documentación oficial de Gson (<code>github.com/google/gson</code>) para casos con fechas o tipos personalizados, que no se cubrieron hoy.</li>
+          </ul>
+          <p><strong>Próxima sesión: Generación de PDF con Librerías (Apache PDFBox).</strong></p>
+          <img class="portada-icon" src="img/json.svg" alt="Hacia la siguiente sesión" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vectores en Java — Semana 2</title>
+  <meta name="description" content="Arreglos, matrices, ArrayList y taller grupal de cierre de Unidad 0 — Técnicas de Programación, Semana 2." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/vectores-en-java/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Vectores en Java — Semana 2" />
+  <meta property="og:description" content="Arreglos, matrices, ArrayList y taller grupal de cierre de Unidad 0 — Técnicas de Programación, Semana 2." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/vectores-en-java/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vectores en Java — Semana 2" />
+  <meta name="twitter:description" content="Arreglos, matrices, ArrayList y taller grupal de cierre de Unidad 0 — Técnicas de Programación, Semana 2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/vectores-en-java.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 0 — Vectores en Java</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/border-all.svg" alt="Vectores y matrices" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Una variable para cada dato...<br>o un vector para todos ellos.</h1>
+          <img class="portada-icon" src="img/shapes.svg" alt="Colección de datos" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un arreglo</h1>
+          <p>Un <strong>arreglo</strong> (<em>array</em>) es una estructura de datos de <strong>tamaño fijo</strong> que guarda varios valores del <strong>mismo tipo</strong>, uno detrás de otro en memoria, accesibles por su posición (índice), que empieza en <code>0</code>.</p>
+          <pre><code>int[] notas = new int[5];        // arreglo vacío de 5 enteros
+int[] edades = {18, 21, 19, 25}; // arreglo inicializado directamente</code></pre>
+          <p><strong>El tamaño se fija al crear el arreglo y no puede cambiar durante la ejecución</strong> — si se necesita más espacio, hay que crear un arreglo nuevo.</p>
+          <img class="portada-icon" src="img/list-ol.svg" alt="Arreglo" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Acceder y modificar posiciones</h1>
+          <pre><code>int[] edades = {18, 21, 19, 25};
+System.out.println(edades[0]);   // 18 — primer elemento
+edades[1] = 22;                  // modifica la segunda posición
+int ultimo = edades[edades.length - 1]; // último elemento</code></pre>
+          <p><code>edades.length</code> da el tamaño del arreglo (no es un método, es un atributo). Intentar acceder a una posición fuera de rango (<code>edades[10]</code> en un arreglo de 4) lanza <code>ArrayIndexOutOfBoundsException</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Recorrer un arreglo</h1>
+          <pre><code>double[] notas = {3.5, 4.0, 2.8, 4.5};
+for (int i = 0; i < notas.length; i++) {
+    System.out.println("Posición " + i + ": " + notas[i]);
+}</code></pre>
+          <p>Este es el patrón más común para recorrer arreglos cuando se necesita conocer el índice — por ejemplo, para modificar una posición específica mientras se recorre.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Matrices</h1>
+          <p>Java permite declarar arreglos de varios subíndices. Con dos, se comportan como una <strong>matriz</strong> (filas y columnas); con tres, como un cubo — más allá de eso se pierde la intuición geométrica, pero la sintaxis sigue funcionando.</p>
+          <pre><code>int[][] matriz = new int[3][3];   // matriz de 3x3, todo en 0
+matriz[1][2] = 7;                 // fila 1, columna 2
+int[][] tablero = {
+    {1, 2, 3},
+    {4, 5, 6}
+};</code></pre>
+          <img class="portada-icon" src="img/border-all.svg" alt="Matrices" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Recorrer una matriz</h1>
+          <pre><code>for (int fila = 0; fila < matriz.length; fila++) {
+    for (int col = 0; col < matriz[fila].length; col++) {
+        System.out.print(matriz[fila][col] + " ");
+    }
+    System.out.println();
+}</code></pre>
+          <p>Recorrer una matriz necesita <strong>dos ciclos anidados</strong>: el externo avanza por filas, el interno por columnas de esa fila.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>ArrayList: arreglos con tamaño dinámico</h1>
+          <table>
+            <thead><tr><th></th><th>Array</th><th>ArrayList</th></tr></thead>
+            <tbody>
+              <tr><td>Tamaño</td><td>Fijo, se define al crear</td><td>Dinámico, crece y decrece</td></tr>
+              <tr><td>Agregar/quitar elementos</td><td>No — hay que crear uno nuevo</td><td>Sí, con <code>.add()</code> y <code>.remove()</code></td></tr>
+              <tr><td>Tipos que acepta</td><td>Primitivos y objetos</td><td>Solo objetos (<code>Integer</code>, <code>String</code>, ...)</td></tr>
+            </tbody>
+          </table>
+          <pre><code>ArrayList&lt;String&gt; nombres = new ArrayList&lt;&gt;();
+nombres.add("Ana");
+nombres.add("Luis");
+nombres.remove("Ana");</code></pre>
+          <img class="portada-icon" src="img/layer-group.svg" alt="ArrayList" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>¿Cuál usar?</h1>
+          <p><strong>Array</strong> — cuando el tamaño es fijo y conocido de antemano, y se necesita el mejor rendimiento posible (por ejemplo, una matriz de 3x3 para un juego).</p>
+          <p><strong>ArrayList</strong> — cuando no se sabe cuántos elementos habrá, o se necesita agregar/quitar elementos mientras el programa corre (por ejemplo, una lista de usuarios conectados).</p>
+          <p><strong>No es una regla absoluta — es una decisión de diseño que se justifica según el problema.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un arreglo guarda varios valores del mismo tipo, con tamaño fijo, accesibles por índice desde 0.</li>
+            <li>Recorrer un arreglo con <code>for</code> es el patrón más común cuando se necesita el índice.</li>
+            <li>Una matriz es un arreglo de arreglos — recorrerla necesita dos ciclos anidados.</li>
+            <li><code>ArrayList</code> resuelve el problema del tamaño fijo, a cambio de solo aceptar objetos.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy</h1>
+          <p><strong>Taller de arreglos y matrices — 2 horas, en equipo</strong></p>
+          <ul>
+            <li>Resolver los ejercicios de arreglos y matrices que el docente entrega al inicio del taller.</li>
+            <li>Entregable: archivo(s) <code>.java</code> con la solución, subidos por el equipo a la tarea correspondiente en Moodle.</li>
+            <li>Cada integrante debe poder explicar cualquier parte del código entregado.</li>
+          </ul>
+          <p><strong>Plataforma de entrega:</strong> Moodle · <strong>La entrega cierra al terminar las dos horas del taller.</strong></p>
+          <img class="portada-icon" src="img/moodle.svg" alt="Moodle" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Cierre de la Unidad 0</h1>
+          <p><strong>Con esta sesión termina la Unidad 0</strong> — repaso de Java, paradigma imperativo y vectores.</p>
+          <ul>
+            <li>La próxima unidad (Unidad 2 — Paradigma Objetual) arranca en la semana 3 con clases, herencia y sobrecarga.</li>
+            <li>La Unidad 1 (Paradigmas) se evalúa aparte con el Caso de Estudio 1 — sin clase catedrática dedicada.</li>
+          </ul>
+          <img class="portada-icon" src="img/book-open.svg" alt="Cierre de unidad" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 12</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

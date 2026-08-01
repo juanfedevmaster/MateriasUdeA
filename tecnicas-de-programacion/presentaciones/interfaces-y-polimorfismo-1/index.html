@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interfaces y Polimorfismo (Parte 1) — Semana 4</title>
+  <meta name="description" content="Interfaces (contrato, implements, múltiples interfaces) e introducción al polimorfismo en Java — Técnicas de Programación, Unidad 2, Semana 4." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/interfaces-y-polimorfismo-1/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Interfaces y Polimorfismo (Parte 1) — Semana 4" />
+  <meta property="og:description" content="Interfaces (contrato, implements, múltiples interfaces) e introducción al polimorfismo en Java — Técnicas de Programación, Unidad 2, Semana 4." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/interfaces-y-polimorfismo-1/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Interfaces y Polimorfismo (Parte 1) — Semana 4" />
+  <meta name="twitter:description" content="Interfaces (contrato, implements, múltiples interfaces) e introducción al polimorfismo en Java — Técnicas de Programación, Unidad 2, Semana 4." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/interfaces-y-polimorfismo-1.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 2 — Paradigma Objetual: Interfaces y Polimorfismo (Parte 1)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Contrato entre clases" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un ave y un avión no comparten un ancestro común.<br>Pero ambos pueden prometer lo mismo: "yo sé volar".</h1>
+          <img class="portada-icon" src="img/share-nodes.svg" alt="Un mismo contrato, distintos implementadores" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cuando ni siquiera hay una superclase en común</h1>
+          <p>La clase abstracta que viste la sesión pasada resuelve bien el caso de <code>Figura</code>, <code>Circulo</code> y <code>Cuadrado</code>, porque las tres comparten una misma familia. Pero <code>Ave</code> y <code>Avion</code> no tienen nada más en común — no tendría sentido forzarlos a heredar de una misma superclase solo para compartir <code>volar()</code>. Java resuelve esto con un mecanismo distinto: la <strong>interfaz</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Interfaz: un contrato, no una familia</h1>
+          <p>Una <strong>interfaz</strong> declara <strong>qué</strong> métodos debe tener una clase, sin decir <strong>cómo</strong> los implementa — es un contrato puro. A diferencia de la herencia (que modela "es un/a" dentro de una misma familia de clases), implementar una interfaz solo promete: <strong>"esta clase sabe hacer esto"</strong>, sin importar su origen.</p>
+          <pre><code>public interface Volador {
+    void volar();
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sintaxis: <code>interface</code> e <code>implements</code></h1>
+          <p>Una clase se conecta a una interfaz con <code>implements</code> (no <code>extends</code>, que es exclusivo de herencia de clases) y está obligada a implementar <strong>todos</strong> los métodos que la interfaz declara.</p>
+          <pre><code>public class Ave implements Volador {
+    @Override
+    public void volar() {
+        System.out.println("El ave bate sus alas para volar.");
+    }
+}
+
+public class Avion implements Volador {
+    @Override
+    public void volar() {
+        System.out.println("El avión usa sus motores para volar.");
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Lo que una interfaz no puede tener</h1>
+          <p>A diferencia de una clase (abstracta o no), una interfaz <strong>no puede declarar atributos de instancia</strong> — solo constantes, que son <code>public static final</code> de forma implícita, aunque no se escriban esas palabras.</p>
+          <pre><code>public interface Volador {
+    int ALTURA_MAXIMA_METROS = 12000; // implícitamente public static final
+
+    // private int altitudActual; // Error: una interfaz no guarda estado propio
+    void volar();
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Una clase, varias interfaces</h1>
+          <p>Java permite heredar de <strong>una sola</strong> superclase (<code>extends</code>), pero implementar <strong>tantas interfaces como necesite</strong> (<code>implements</code> separadas por comas). Es una de las razones por las que las interfaces son tan usadas: dan flexibilidad que la herencia simple no permite.</p>
+          <pre><code>public interface Nadador {
+    void nadar();
+}
+
+public class Pato extends Ave implements Nadador {
+    @Override
+    public void nadar() {
+        System.out.println("El pato nada en la superficie.");
+    }
+    // volar() ya lo hereda de Ave, que implementa Volador
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Clase abstracta o interfaz?</h1>
+          <p>No son intercambiables — cada una responde a una pregunta distinta de diseño.</p>
+          <table>
+            <thead>
+              <tr><th></th><th>Clase abstracta</th><th>Interfaz</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Relación que modela</td><td>"Es un/a" (misma familia)</td><td>"Sabe hacer esto" (capacidad, sin importar la familia)</td></tr>
+              <tr><td>Puede tener estado (atributos de instancia)</td><td>Sí</td><td>No</td></tr>
+              <tr><td>Puede tener métodos con implementación</td><td>Sí</td><td>No (en este curso — hay una excepción avanzada con <code>default</code> que no cubrimos aquí)</td></tr>
+              <tr><td>Cuántas puede usar una misma clase</td><td>Una sola superclase</td><td>Varias interfaces a la vez</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Dos herramientas de diseño distintas" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Polimorfismo: una palabra, muchas formas</h1>
+          <p><strong>Polimorfismo</strong> (del griego "muchas formas") es la capacidad de tratar objetos de tipos distintos <strong>de manera uniforme</strong>, a través de un tipo común (una superclase o una interfaz), dejando que cada objeto responda <strong>a su propia manera</strong> cuando se le pide lo mismo.</p>
+          <p>Ya viste su base en la sesión de herencia: cuando <code>Profesor</code> sobrescribía <code>saludar()</code> con <code>@Override</code>, eso era polimorfismo en miniatura. Hoy lo llevamos a su forma completa, combinado con interfaces.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><em>Upcasting</em>: una referencia de tipo más general</h1>
+          <p>Una variable declarada del tipo de una interfaz (o de una superclase) puede referenciar un objeto de <strong>cualquier clase que la implemente</strong>. A esto se le llama <strong><em>upcasting</em></strong>, y Java lo hace automáticamente.</p>
+          <pre><code>Volador v1 = new Ave();     // una referencia Volador apunta a un objeto Ave
+Volador v2 = new Avion();   // la misma referencia, apuntando a un Avion
+
+v1.volar();  // "El ave bate sus alas para volar."
+v2.volar();  // "El avión usa sus motores para volar."</code></pre>
+          <p><strong>El método que realmente se ejecuta depende del objeto real, no del tipo de la variable</strong> — esto se decide en tiempo de ejecución, igual que con <code>@Override</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Polimorfismo en acción: una colección mixta</h1>
+          <p>La utilidad real del polimorfismo aparece al recorrer una colección de objetos de tipos distintos <strong>a través de un mismo tipo de referencia</strong>, sin necesitar un <code>if</code> por cada tipo concreto.</p>
+          <pre><code>Volador[] voladores = { new Ave(), new Avion() };
+
+for (Volador v : voladores) {
+    v.volar();  // cada uno ejecuta SU propia versión de volar()
+}
+// "El ave bate sus alas para volar."
+// "El avión usa sus motores para volar."</code></pre>
+          <img class="portada-icon" src="img/object-group.svg" alt="Distintos objetos, un mismo trato" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><em>Downcasting</em>: volver al tipo específico</h1>
+          <p>Si necesitas usar un método que <strong>no</strong> está en la interfaz (por ejemplo, algo exclusivo de <code>Avion</code>), debes convertir la referencia explícitamente de vuelta a su tipo concreto — esto se llama <strong><em>downcasting</em></strong>, y a diferencia del upcasting, <strong>no es automático</strong>.</p>
+          <pre><code>Volador v = new Avion();
+Avion a = (Avion) v;      // downcasting explícito
+a.aterrizarEnPista();     // método propio de Avion, no de Volador</code></pre>
+          <p><strong>Si el objeto real no fuera del tipo al que intentas convertirlo</strong>, Java lanza un error en tiempo de ejecución (<code>ClassCastException</code>) — por eso el downcasting se usa con cuidado, y casi siempre después de verificar el tipo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen el contrato compartido</h1>
+          <p><strong>En parejas: definan una interfaz <code>Pagable</code> con el método <code>calcularMonto()</code>, y dos clases sin relación de herencia entre sí que la implementen</strong> (ej. <code>Factura</code> y <code>Nomina</code>). Luego describan cómo recorrerían un arreglo mixto de ambas usando polimorfismo.</p>
+          <p class="slide-eyebrow">6 minutos · estén listos para explicar por qué usaron interfaz y no herencia</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una interfaz es un contrato puro: declara qué métodos debe tener una clase, sin estado propio ni implementación.</li>
+            <li>Una clase puede implementar varias interfaces a la vez, aunque solo pueda extender una única superclase.</li>
+            <li>El polimorfismo permite tratar objetos de tipos distintos de forma uniforme a través de un tipo común, y cada uno responde a su propia manera en tiempo de ejecución.</li>
+            <li>El upcasting es automático; el downcasting es explícito y puede fallar si el objeto no es del tipo esperado.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Implementar en el IDE la interfaz <code>Volador</code> con <code>Ave</code> y <code>Avion</code>, y recorrer un arreglo mixto comprobando que cada objeto ejecuta su propia versión de <code>volar()</code>.</li>
+            <li>Traer dudas sobre cuándo usarían interfaz vs. clase abstracta en un caso propio — se retoma con más ejemplos en la próxima sesión.</li>
+          </ul>
+          <p><strong>La próxima sesión es la Parte 2 de este tema: más ejemplos de polimorfismo aplicado, antes de pasar a entrada y salida de información.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 15</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

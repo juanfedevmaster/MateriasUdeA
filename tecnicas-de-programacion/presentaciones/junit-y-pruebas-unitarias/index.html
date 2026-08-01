@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JUnit y Pruebas Unitarias — Semana 11</title>
+  <meta name="description" content="Automatización de pruebas con JUnit 5: anotaciones, aserciones y buenas prácticas — Técnicas de Programación, Unidad 4, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/junit-y-pruebas-unitarias/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="JUnit y Pruebas Unitarias — Semana 11" />
+  <meta property="og:description" content="Automatización de pruebas con JUnit 5: anotaciones, aserciones y buenas prácticas — Técnicas de Programación, Unidad 4, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/junit-y-pruebas-unitarias/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JUnit y Pruebas Unitarias — Semana 11" />
+  <meta name="twitter:description" content="Automatización de pruebas con JUnit 5: anotaciones, aserciones y buenas prácticas — Técnicas de Programación, Unidad 4, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/junit-y-pruebas-unitarias.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 4 — Archivos, Errores/Excepciones y Pruebas: JUnit y Pruebas Unitarias</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/junit5.svg" alt="JUnit 5" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Si nadie más que tú verifica que tu código funciona, cada cambio nuevo es una apuesta a que no rompiste nada de lo viejo.</h1>
+          <img class="portada-icon" src="img/flask.svg" alt="Verificación experimental del código" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Empieza la Unidad 4</h1>
+          <p>En las últimas dos sesiones trabajaste con <strong>excepciones</strong> para manejar errores en tiempo de ejecución, y con <strong>archivos de texto, CSV y JSON</strong> para leer y escribir datos, además de generar reportes en <strong>PDF</strong>. Toda esa lógica —parsear un archivo, calcular un total, decidir si lanzar una excepción— necesita algo que la verifique de forma repetible: hoy aprendes a escribir <strong>pruebas unitarias</strong> con JUnit 5, en vez de probar todo a mano cada vez que cambias una línea.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es una prueba unitaria?</h1>
+          <p>Una <strong>prueba unitaria</strong> (<em>unit test</em>) es un pequeño programa que verifica <strong>automáticamente</strong> que una unidad de código —típicamente un método— se comporta como se espera, sin que una persona tenga que ejecutar la aplicación y revisar el resultado a simple vista.</p>
+          <ul>
+            <li>Le das al método unas <strong>entradas conocidas</strong>.</li>
+            <li>Comparas el <strong>resultado real</strong> contra el <strong>resultado esperado</strong>.</li>
+            <li>La prueba misma decide, sin intervención humana, si pasó o falló.</li>
+          </ul>
+          <p>Es la diferencia entre correr el programa y hacer clic para "ver si funciona", y tener un script que lo confirma en milisegundos, cada vez que lo necesites.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Por qué automatizar pruebas?</h1>
+          <table>
+            <thead><tr><th>Beneficio</th><th>En la práctica</th></tr></thead>
+            <tbody>
+              <tr><td>Detectar <strong>regresiones</strong> temprano</td><td>Si cambias un método y rompes otro que dependía de él, la prueba falla al instante — no meses después, en producción.</td></tr>
+              <tr><td><strong>Documentar</strong> el comportamiento esperado</td><td>Una prueba bien nombrada dice, en código ejecutable, qué se supone que hace el método — más confiable que un comentario que puede quedar desactualizado.</td></tr>
+              <tr><td>Dar <strong>confianza para refactorizar</strong></td><td>Puedes reescribir la implementación interna de un método (mejorar su Big-O, por ejemplo) sabiendo que si las pruebas siguen pasando, el comportamiento externo no cambió.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>JUnit 5: el framework de pruebas de Java</h1>
+          <p><strong>JUnit</strong> es el framework estándar de la industria para escribir y ejecutar pruebas unitarias en Java. Se agrega como una dependencia de Maven en el <code>pom.xml</code> del proyecto:</p>
+          <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;
+    &lt;version&gt;5.10.0&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+          <p>Con <code>scope: test</code>, la librería solo está disponible al compilar/ejecutar pruebas — no viaja con el programa final. Las clases de prueba viven, por convención, en <code>src/test/java</code>, en paralelo a <code>src/main/java</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La anotación <code>@Test</code></h1>
+          <p>La anotación <code>@Test</code> marca un método como una prueba: JUnit lo detecta y lo ejecuta automáticamente, sin que nadie lo llame desde un <code>main</code>.</p>
+          <pre><code>import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class CalculadoraTest {
+
+    @Test
+    void deberiaSumarDosNumerosPositivos() {
+        Calculadora calc = new Calculadora();
+        int resultado = calc.sumar(2, 3);
+        assertEquals(5, resultado);
+    }
+}</code></pre>
+          <p class="slide-eyebrow">Convención: la clase de prueba se llama igual que la clase probada + el sufijo <code>Test</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Preparar y limpiar: <code>@BeforeEach</code> / <code>@AfterEach</code></h1>
+          <p>Muchas pruebas necesitan preparar el mismo objeto antes de cada verificación. En vez de repetir ese código en cada método de prueba, <code>@BeforeEach</code> lo ejecuta automáticamente <strong>antes de cada</strong> <code>@Test</code>, y <code>@AfterEach</code> <strong>después de cada uno</strong> (útil para liberar recursos, cerrar archivos, etc.).</p>
+          <pre><code>class CalculadoraTest {
+    private Calculadora calc;
+
+    @BeforeEach
+    void inicializar() {
+        calc = new Calculadora();
+    }
+
+    @Test
+    void deberiaSumarDosNumerosPositivos() {
+        assertEquals(5, calc.sumar(2, 3));
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Una sola vez por clase: <code>@BeforeAll</code> / <code>@AfterAll</code></h1>
+          <p>A diferencia de <code>@BeforeEach</code>/<code>@AfterEach</code> (que corren en <strong>cada</strong> prueba), <code>@BeforeAll</code> y <code>@AfterAll</code> se ejecutan <strong>una sola vez</strong> por clase de prueba: antes de la primera prueba y después de la última. Se usan para recursos costosos de preparar (una conexión a base de datos, cargar un archivo grande) que no vale la pena repetir en cada prueba.</p>
+          <pre><code>@BeforeAll
+static void configurarUnaVez() {
+    // debe ser static: se ejecuta antes de crear
+    // cualquier instancia de la clase de prueba
+    System.out.println("Preparando recursos compartidos...");
+}</code></pre>
+          <p><strong>Importante:</strong> <code>@BeforeAll</code> y <code>@AfterAll</code> deben ser métodos <code>static</code>, porque JUnit los invoca antes de tener siquiera una instancia de la clase.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Aserciones: comparando lo esperado con lo real</h1>
+          <p>Una <strong>aserción</strong> (<em>assertion</em>) es la instrucción que realmente decide si la prueba pasa o falla: compara un valor <strong>esperado</strong> contra el valor <strong>real</strong> que produjo el código, y lanza un error de prueba si no coinciden. Todas viven en la clase <code>Assertions</code> (paquete <code>org.junit.jupiter.api</code>).</p>
+          <table>
+            <thead><tr><th>Método</th><th>Verifica</th></tr></thead>
+            <tbody>
+              <tr><td><code>assertEquals(esperado, actual)</code></td><td>Que dos valores sean iguales</td></tr>
+              <tr><td><code>assertTrue(condicion)</code> / <code>assertFalse(condicion)</code></td><td>Que una condición booleana sea verdadera/falsa</td></tr>
+              <tr><td><code>assertNull(valor)</code> / <code>assertNotNull(valor)</code></td><td>Que una referencia sea (o no) <code>null</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Probar que se lanza una excepción: <code>assertThrows</code></h1>
+          <p>Retomando lo visto en la sesión de <strong>excepciones</strong>: si un método debe lanzar una excepción en cierto caso (por ejemplo, saldo insuficiente), <code>assertThrows</code> verifica exactamente eso — que se lanzó la excepción <strong>correcta</strong>, no simplemente que el programa "falló".</p>
+          <pre><code>@Test
+void deberiaLanzarExcepcionCuandoSaldoEsInsuficiente() {
+    CuentaBancaria cuenta = new CuentaBancaria(100.0);
+
+    assertThrows(SaldoInsuficienteException.class, () -&gt; {
+        cuenta.retirar(500.0);
+    });
+}</code></pre>
+          <p>El segundo argumento es una <strong>expresión lambda</strong> (vista en la Unidad 2) que envuelve el código que se espera que falle. Si no lanza esa excepción exacta, la prueba falla.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Agrupar verificaciones: <code>assertAll</code></h1>
+          <p>Cuando una prueba necesita verificar varias condiciones sobre el mismo resultado, <code>assertAll(...)</code> las agrupa y ejecuta <strong>todas</strong>, aunque alguna falle — así el reporte muestra de una vez cuáles fallaron, en vez de detenerse en la primera.</p>
+          <pre><code>@Test
+void deberiaCrearEstudianteConDatosCorrectos() {
+    Estudiante e = new Estudiante("Ana", 20);
+
+    assertAll(
+        () -&gt; assertEquals("Ana", e.getNombre()),
+        () -&gt; assertEquals(20, e.getEdad()),
+        () -&gt; assertNotNull(e.getId())
+    );
+}</code></pre>
+          <p class="slide-eyebrow">Con aserciones simples (sin <code>assertAll</code>), la primera que falla detiene la prueba y oculta el resto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ciclo de vida: aislamiento entre pruebas</h1>
+          <p>Cada método <code>@Test</code> de una clase corre sobre una <strong>instancia nueva</strong> de esa clase de prueba. JUnit crea un objeto distinto por cada prueba, ejecuta <code>@BeforeEach</code>, corre el <code>@Test</code>, y luego <code>@AfterEach</code> — así una prueba nunca puede "heredar" un estado modificado por la prueba anterior.</p>
+          <p>Esto es lo que hace posible que las pruebas sean <strong>independientes entre sí</strong>: puedes ejecutarlas en cualquier orden, o solo una de ellas, y el resultado no cambia.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El patrón Arrange-Act-Assert</h1>
+          <p>La forma más clara de estructurar el cuerpo de una prueba es en tres pasos, siempre en el mismo orden:</p>
+          <ol>
+            <li><strong>Arrange</strong> (preparar): crear los objetos y datos de entrada necesarios.</li>
+            <li><strong>Act</strong> (ejecutar): llamar al método que se está probando.</li>
+            <li><strong>Assert</strong> (verificar): comparar el resultado real contra el esperado.</li>
+          </ol>
+          <pre><code>@Test
+void deberiaAplicarDescuentoDelDiez() {
+    // Arrange
+    Factura factura = new Factura(100.0);
+    // Act
+    double total = factura.aplicarDescuento(0.10);
+    // Assert
+    assertEquals(90.0, total);
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Nombres descriptivos, no genéricos</h1>
+          <p>El nombre del método de prueba debe describir, en lenguaje natural, <strong>qué comportamiento verifica</strong> — así, cuando falla en el reporte, se entiende el problema sin abrir el código.</p>
+          <table>
+            <thead><tr><th>Nombre genérico (evitar)</th><th>Nombre descriptivo (preferir)</th></tr></thead>
+            <tbody>
+              <tr><td><code>test1()</code></td><td><code>deberiaSumarDosNumerosPositivos()</code></td></tr>
+              <tr><td><code>testRetiro()</code></td><td><code>deberiaLanzarExcepcionCuandoSaldoEsInsuficiente()</code></td></tr>
+              <tr><td><code>testVacio()</code></td><td><code>deberiaRetornarListaVaciaCuandoNoHayResultados()</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Escriban la prueba que falta</h1>
+          <p><strong>En parejas:</strong> dado este método, escriban un método <code>@Test</code> completo (con nombre descriptivo, siguiendo Arrange-Act-Assert) que verifique que lanza la excepción correcta cuando la edad es negativa.</p>
+          <pre><code>public class Estudiante {
+    public Estudiante(String nombre, int edad) {
+        if (edad &lt; 0) {
+            throw new IllegalArgumentException("La edad no puede ser negativa");
+        }
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}</code></pre>
+          <p class="slide-eyebrow">8 minutos · usen <code>assertThrows</code></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas al escribir pruebas</h1>
+          <ul>
+            <li><strong>Una prueba, un comportamiento:</strong> si un método de prueba verifica cinco cosas distintas sin relación, y falla, no queda claro cuál se rompió. Prefiere varias pruebas pequeñas y enfocadas (o <code>assertAll</code> cuando de verdad son parte del mismo caso).</li>
+            <li><strong>Pruebas independientes:</strong> ninguna prueba debe depender de que otra se ejecutó antes, ni del orden en que JUnit las corra — el aislamiento de instancia (visto antes) ya ayuda, pero también evita compartir estado mutable entre pruebas (como campos <code>static</code>).</li>
+            <li><strong>Sin lógica compleja dentro de la prueba:</strong> evita <code>if</code>, ciclos o cálculos elaborados en el cuerpo de una prueba — una prueba con su propia lógica puede tener sus propios bugs, y entonces ¿quién prueba la prueba?</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de la sesión</h1>
+          <ol>
+            <li>Una prueba unitaria verifica automáticamente el comportamiento de un método, sin intervención manual.</li>
+            <li><code>@Test</code> marca una prueba; <code>@BeforeEach</code>/<code>@AfterEach</code> preparan y limpian antes/después de cada una; <code>@BeforeAll</code>/<code>@AfterAll</code> (static) lo hacen una sola vez por clase.</li>
+            <li><code>assertEquals</code>, <code>assertTrue/False</code>, <code>assertNull/NotNull</code>, <code>assertThrows</code> y <code>assertAll</code> son las aserciones base de <code>Assertions</code>.</li>
+            <li>Cada <code>@Test</code> corre en una instancia nueva de la clase — las pruebas están aisladas entre sí.</li>
+            <li>Arrange-Act-Assert + nombres descriptivos hacen que una prueba se lea como documentación del comportamiento esperado.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Escribe pruebas <code>@Test</code> para al menos dos métodos de un proyecto propio, aplicando Arrange-Act-Assert y nombres descriptivos.</li>
+            <li>Piensa en un método que lance una excepción y practica verificarlo con <code>assertThrows</code>.</li>
+          </ul>
+          <p><strong>Próxima sesión:</strong> librerías para análisis y visualización de datos (Apache Commons CSV/Math, JFreeChart) y principios de software inclusivo — cierre de la Unidad 4, antes del Laboratorio 2.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente sesión" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

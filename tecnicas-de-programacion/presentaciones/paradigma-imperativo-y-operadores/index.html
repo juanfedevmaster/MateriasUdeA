@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradigma Imperativo: Sintaxis y Operadores — Semana 1</title>
+  <meta name="description" content="Qué es el paradigma imperativo, sintaxis/semántica/pragmática, y operadores aritméticos y lógicos en Java — Técnicas de Programación, Unidad 0, Semana 1." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/paradigma-imperativo-y-operadores/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Paradigma Imperativo: Sintaxis y Operadores — Semana 1" />
+  <meta property="og:description" content="Qué es el paradigma imperativo, sintaxis/semántica/pragmática, y operadores aritméticos y lógicos en Java — Técnicas de Programación, Unidad 0, Semana 1." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/paradigma-imperativo-y-operadores/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Paradigma Imperativo: Sintaxis y Operadores — Semana 1" />
+  <meta name="twitter:description" content="Qué es el paradigma imperativo, sintaxis/semántica/pragmática, y operadores aritméticos y lógicos en Java — Técnicas de Programación, Unidad 0, Semana 1." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/paradigma-imperativo-y-operadores.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 0 — Paradigma Imperativo: Sintaxis y Operadores</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/list-ol.svg" alt="Secuencia de instrucciones" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Una instrucción a la vez.<br>En el orden exacto en que se escribió.</h1>
+          <img class="portada-icon" src="img/bolt.svg" alt="Ejecución secuencial" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El paradigma imperativo</h1>
+          <p>Un <strong>paradigma de programación</strong> es una forma de pensar y organizar la solución a un problema en código — no es un lenguaje, es un enfoque que varios lenguajes pueden compartir.</p>
+          <p>El <strong>paradigma imperativo</strong> describe un programa como una <strong>secuencia de instrucciones que modifican el estado</strong> del programa paso a paso: se asigna, se compara, se repite, se decide.</p>
+          <p><strong>Java, C, C# y Python (en su uso más común) siguen este paradigma</strong> — es el que usaremos como base durante todo este curso.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Paradigma imperativo" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sintaxis, semántica y pragmática</h1>
+          <table>
+            <thead>
+              <tr><th>Perspectiva</th><th>Qué estudia</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sintaxis</td><td>Las reglas para escribir una instrucción válida</td><td><code>int x = 5;</code> es válido; <code>int 5 = x;</code> no lo es</td></tr>
+              <tr><td>Semántica</td><td>El significado de esa instrucción</td><td><code>int x = 5;</code> significa "reservar memoria para un entero y guardar 5"</td></tr>
+              <tr><td>Pragmática</td><td>Cómo el contexto cambia la interpretación del problema</td><td>El mismo problema se resuelve distinto según el lenguaje y las herramientas disponibles</td></tr>
+            </tbody>
+          </table>
+          <p>Como en cualquier idioma: las letras forman palabras, las palabras forman oraciones. En un lenguaje de programación, los caracteres forman sentencias, y un conjunto de sentencias forma las instrucciones del programa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Un mismo significado, dos sintaxis</h1>
+          <pre><code>// Java
+System.out.println("Hola Mundo");
+
+# Python
+print("Hola Mundo")</code></pre>
+          <p>Ambas instrucciones tienen la <strong>misma semántica</strong> — imprimir un texto en consola — pero una <strong>sintaxis completamente distinta</strong>. Confundir "cómo se escribe" con "qué significa" es un error común al empezar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Repaso</p>
+          <h1>Variables y literales</h1>
+          <p>Una <strong>variable</strong> es un espacio de memoria cuyo valor puede cambiar durante la ejecución del programa; un <strong>literal</strong> es la representación directa de un valor en el código fuente (<code>5</code>, <code>"Hola"</code>, <code>true</code>).</p>
+          <pre><code>int edad = 20;     // edad es variable, 20 es literal
+edad = 21;         // el valor cambia, la variable sigue siendo la misma</code></pre>
+          <p><strong>Los operadores que siguen trabajan sobre estos dos elementos: variables y literales.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Operadores aritméticos en Java</h1>
+          <table>
+            <thead>
+              <tr><th>Operador</th><th>Significado</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>+</code></td><td>Suma</td><td><code>a + b</code></td></tr>
+              <tr><td><code>-</code></td><td>Resta</td><td><code>a - b</code></td></tr>
+              <tr><td><code>*</code></td><td>Multiplicación</td><td><code>a * b</code></td></tr>
+              <tr><td><code>/</code></td><td>División</td><td><code>a / b</code></td></tr>
+              <tr><td><code>%</code></td><td>Módulo (residuo de la división)</td><td><code>a % b</code></td></tr>
+            </tbody>
+          </table>
+          <p><strong>Ojo con la división entera:</strong> <code>7 / 2</code> en Java da <code>3</code>, no <code>3.5</code>, porque ambos operandos son <code>int</code>. Para obtener el decimal, al menos uno debe ser <code>double</code>.</p>
+          <img class="portada-icon" src="img/calculator.svg" alt="Operadores aritméticos" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Jerarquía y precedencia</h1>
+          <p>Igual que en álgebra, Java evalúa una expresión aritmética siguiendo un <strong>orden de precedencia</strong>: primero paréntesis, luego multiplicación/división/módulo, y por último suma/resta.</p>
+          <pre><code>int resultado = 2 + 3 * 4;     // 14, no 20
+int resultado2 = (2 + 3) * 4;  // 20</code></pre>
+          <p><strong>Cuando la precedencia no es obvia para quien lee el código, usar paréntesis explícitos es más claro que confiar en que todos recuerden el orden.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Operadores relacionales</h1>
+          <table>
+            <thead>
+              <tr><th>Operador</th><th>Significado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>&lt;</code></td><td>Menor que</td></tr>
+              <tr><td><code>&lt;=</code></td><td>Menor o igual que</td></tr>
+              <tr><td><code>&gt;</code></td><td>Mayor que</td></tr>
+              <tr><td><code>&gt;=</code></td><td>Mayor o igual que</td></tr>
+              <tr><td><code>==</code></td><td>Igual a</td></tr>
+              <tr><td><code>!=</code></td><td>Distinto de</td></tr>
+            </tbody>
+          </table>
+          <p>Todos devuelven un valor <code>boolean</code> (<code>true</code> o <code>false</code>) — <strong>son la base de cualquier condición</strong> que se evalúe más adelante.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Operadores lógicos: Y, O, NO</h1>
+          <table>
+            <thead>
+              <tr><th>Operador</th><th>Nombre</th><th>Se cumple cuando...</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>&amp;&amp;</code></td><td>Y (AND)</td><td>ambas condiciones son verdaderas</td></tr>
+              <tr><td><code>||</code></td><td>O (OR)</td><td>al menos una condición es verdadera</td></tr>
+              <tr><td><code>!</code></td><td>NO (NOT)</td><td>invierte el valor de la condición</td></tr>
+            </tbody>
+          </table>
+          <pre><code>boolean puedeVotar = edad >= 18 &amp;&amp; tieneCedula;
+boolean feriado = esDomingo || esFestivo;
+boolean estaCerrado = !estaAbierto;</code></pre>
+          <img class="portada-icon" src="img/toggle-on.svg" alt="Operadores lógicos" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Verdadero o falso?</h1>
+          <p><strong>Con <code>a = 5</code>, <code>b = 10</code> y <code>c = 15</code>, evalúen en papel (sin ejecutar) el resultado de estas expresiones:</strong></p>
+          <ol>
+            <li><code>a + b * 2 > c</code></li>
+            <li><code>(a &lt; b) &amp;&amp; (b &lt; c)</code></li>
+            <li><code>!(a == 5) || (c > 20)</code></li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · comparen su respuesta con la persona de al lado antes de correr el código</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El paradigma imperativo describe un programa como una secuencia de instrucciones que modifican el estado.</li>
+            <li>Sintaxis es la forma; semántica es el significado; pragmática es el contexto de uso.</li>
+            <li>Los operadores aritméticos siguen una jerarquía de precedencia — los paréntesis nunca sobran cuando hay duda.</li>
+            <li>Los operadores relacionales siempre devuelven <code>boolean</code>; los operadores lógicos (<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>) combinan esos booleanos.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar 3-4 expresiones aritméticas y lógicas por cuenta propia, verificando el resultado en el IDE.</li>
+            <li>Repasar la sintaxis de <code>if</code>/<code>else</code> en cualquier lenguaje que conozcan — se formaliza en Java en la próxima clase.</li>
+          </ul>
+          <p><strong>La próxima sesión toma estos operadores y los usa para construir condicionales y ciclos: las estructuras de control del paradigma imperativo.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

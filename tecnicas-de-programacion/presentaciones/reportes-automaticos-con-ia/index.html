@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Generación Automática de Reportes con IA — Semana 12</title>
+  <meta name="description" content="Arquitectura de un sistema de reportes generados con IA, validación humana y criterios responsables para elegir las librerías de soporte — Técnicas de Programación, Unidad 6, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/reportes-automaticos-con-ia/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Sistema de Generación Automática de Reportes con IA — Semana 12" />
+  <meta property="og:description" content="Arquitectura de un sistema de reportes generados con IA, validación humana y criterios responsables para elegir las librerías de soporte — Técnicas de Programación, Unidad 6, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/reportes-automaticos-con-ia/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sistema de Generación Automática de Reportes con IA — Semana 12" />
+  <meta name="twitter:description" content="Arquitectura de un sistema de reportes generados con IA, validación humana y criterios responsables para elegir las librerías de soporte — Técnicas de Programación, Unidad 6, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/reportes-automaticos-con-ia.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 6 — Sistema de Generación Automática de Reportes con IA</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/robot.svg" alt="Generación de reportes con inteligencia artificial" style="display:block;width:190px;height:190px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un medio publicó decenas de artículos financieros escritos por IA — más de la mitad tuvo que corregirse por errores de cálculo o de hechos.</h1>
+          <img class="portada-icon" src="img/newspaper.svg" alt="Contenido generado automáticamente" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>CNET y los artículos financieros generados por IA (enero de 2023)</h1>
+          <table>
+            <thead><tr><th>Dato</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Qué pasó</strong></td><td>El medio tecnológico <strong>CNET</strong> publicó decenas de artículos explicativos sobre finanzas personales generados por un sistema de IA, marcados con una nota de autoría genérica.</td></tr>
+              <tr><td><strong>Cómo se descubrió</strong></td><td>El medio <em>Futurism</em> investigó y encontró errores factuales y de cálculo (ej. fórmulas de interés compuesto mal aplicadas) en una parte significativa de las notas publicadas.</td></tr>
+              <tr><td><strong>Respuesta de CNET</strong></td><td>La editorial confirmó el uso de IA, revisó su banco de artículos y publicó correcciones en más de la mitad de las piezas generadas por el sistema.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>La lección de fondo</h1>
+          <p>El sistema de IA de CNET no falló porque la tecnología fuera inútil — falló porque los reportes se <strong>publicaron sin una revisión humana rigurosa</strong> antes de salir al público, en un dominio (finanzas personales) donde un error numérico tiene consecuencias reales para quien lee.</p>
+          <p><strong>La conclusión para el sistema que van a diseñar hoy:</strong> un generador de reportes con IA es una herramienta que acelera la redacción, no un reemplazo del criterio de quien construye y valida el reporte final.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De licenciar y empaquetar, a generar reportes con IA</h1>
+          <p>En la sesión pasada aprendieron a empaquetar y desplegar una librería propia con responsabilidad. Hoy usan ese mismo criterio de responsabilidad en otro contexto: construir un sistema que combina los datos que ya saben procesar (Unidad 4: CSV, Commons Math, JFreeChart) con un modelo de lenguaje que redacta la narrativa del reporte.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Arquitectura de un sistema de reportes con IA</h1>
+          <p>Un sistema de generación automática de reportes con IA sigue un flujo de cuatro pasos, cada uno apoyado en algo que ya construyeron este semestre:</p>
+          <ol>
+            <li><strong>Recolectar datos</strong>: leer el CSV/JSON de origen (Unidad 4).</li>
+            <li><strong>Calcular</strong>: obtener estadísticas descriptivas con Apache Commons Math (Unidad 4/6).</li>
+            <li><strong>Redactar</strong>: enviar esos datos calculados a un modelo de lenguaje (LLM) para que genere el texto narrativo del reporte.</li>
+            <li><strong>Publicar</strong>: combinar texto + gráficos (JFreeChart) en un documento final con PDFBox.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un LLM y cómo se consume desde Java?</h1>
+          <p>Un <strong>LLM</strong> (<em>Large Language Model</em>, modelo de lenguaje de gran escala) es un modelo de IA entrenado para generar texto a partir de una entrada de texto (<em>prompt</em>). Los proveedores de LLM exponen su modelo como un <strong>servicio web (API)</strong>: la aplicación Java no ejecuta el modelo localmente, sino que le envía una petición HTTP con el prompt y recibe el texto generado como respuesta.</p>
+          <p class="slide-eyebrow">Es el mismo patrón cliente-cualquier-API-REST que ya usarán en la Unidad 7 con JavaScript y SpringBoot — aquí se consume desde Java puro.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Llamar a la API desde Java: <code>HttpClient</code></h1>
+          <p>Java trae un cliente HTTP incorporado desde la versión 11 (<code>java.net.http.HttpClient</code>), suficiente para enviar el prompt y recibir la respuesta sin agregar una librería externa:</p>
+          <pre><code>HttpClient cliente = HttpClient.newHttpClient();
+
+String cuerpoJson = """
+    {"prompt": "Redacta un párrafo resumiendo que el promedio
+                 de ventas de marzo fue 4.2M con desviación 0.8M"}
+    """;
+
+HttpRequest peticion = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.proveedor-llm.com/v1/generar"))
+    .header("Content-Type", "application/json")
+    .header("Authorization", "Bearer " + apiKey)
+    .POST(HttpRequest.BodyPublishers.ofString(cuerpoJson))
+    .build();
+
+HttpResponse&lt;String&gt; respuesta = cliente.send(
+    peticion, HttpResponse.BodyHandlers.ofString());</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La clave de API no se escribe en el código</h1>
+          <p>El parámetro <code>apiKey</code> del ejemplo anterior es una credencial secreta: quien la tenga puede consumir el servicio a nombre de otra persona, generando costos. <strong>Nunca se escribe directamente en el código fuente</strong> —y mucho menos se sube a un repositorio público—, sino que se lee de una <strong>variable de entorno</strong>:</p>
+          <pre><code>String apiKey = System.getenv("LLM_API_KEY");</code></pre>
+          <p class="slide-eyebrow">La misma regla aplica a cualquier credencial: contraseñas de base de datos, tokens de GitHub, claves de cualquier API — nunca hardcodeadas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Diseñar el prompt: de datos crudos a instrucción clara</h1>
+          <p>Un <strong>prompt</strong> bien diseñado no le pide al modelo "escribe algo sobre estos datos" — le da <strong>contexto, datos concretos y el formato de salida esperado</strong>, igual que un método bien diseñado recibe parámetros explícitos en vez de adivinar qué necesita:</p>
+          <table>
+            <thead><tr><th>Prompt débil</th><th>Prompt bien diseñado</th></tr></thead>
+            <tbody>
+              <tr><td>"Analiza estas ventas."</td><td>"Con estos datos (promedio: 4.2M, desviación: 0.8M, mes: marzo), redacta un párrafo de máximo 60 palabras para un reporte ejecutivo, en tono formal, sin inventar cifras adicionales."</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El riesgo central: alucinaciones</h1>
+          <p>Un LLM genera texto <strong>estadísticamente plausible</strong>, no texto verificado contra una fuente de verdad — puede producir una cifra, un nombre o una conclusión que <strong>suena correcta pero es falsa</strong>. A eso se le llama <strong>alucinación</strong>. El caso de CNET (diapositiva 3) es exactamente esto: texto que parecía coherente pero contenía errores de cálculo reales.</p>
+          <p><strong>Mitigación práctica en el sistema de hoy:</strong> el LLM solo redacta el texto <em>a partir de</em> los números que ya calculó Java con Apache Commons Math — nunca se le pide al LLM que calcule él mismo el promedio o la desviación estándar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Human-in-the-loop: dónde entra la revisión humana</h1>
+          <p><strong>Human-in-the-loop</strong> (humano en el circuito) es el patrón de diseño donde el sistema automatizado no publica directamente su resultado, sino que lo deja en un estado de <strong>borrador pendiente de aprobación</strong> antes de convertirse en el PDF final:</p>
+          <pre><code>ReporteBorrador borrador = generarConIA(datosCalculados);
+if (borrador.necesitaRevision()) {
+    guardarComoPendiente(borrador);   // no se publica todavía
+} else {
+    publicarComoPdf(borrador);
+}</code></pre>
+          <p class="slide-eyebrow">Para un reporte académico o de bajo riesgo puede bastar con validación automática; para uno financiero o legal, la revisión humana antes de publicar no es opcional.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Encuentren el riesgo</h1>
+          <p><strong>En parejas:</strong> van a construir un sistema que genera automáticamente el boletín de notas de cada estudiante, incluyendo un párrafo de la IA con "recomendaciones para mejorar". Identifiquen un riesgo concreto de alucinación en ese párrafo, y propongan una mitigación (basada en lo visto hoy).</p>
+          <p class="slide-eyebrow">5 minutos · piensen en qué pasa si la IA "inventa" una nota o un dato del estudiante que no está en el CSV de origen</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El sistema depende de librerías — elegirlas bien también es parte del diseño</h1>
+          <p>Este sistema de reportes combina, como mínimo, cuatro librerías externas: una para HTTP (o el cliente de una API de IA), Commons CSV/Math, JFreeChart y PDFBox. La sesión pasada vieron cómo <strong>licenciar y empaquetar</strong> lo propio — ahora cierra el círculo: ¿con qué criterio se elige una librería <strong>ajena</strong> antes de agregarla al proyecto?</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Checklist para evaluar una librería de terceros</h1>
+          <ol>
+            <li><strong>Licencia compatible</strong>: ¿su licencia (MIT, Apache 2.0, GPL…) permite el uso que se le va a dar, incluyendo redistribución si aplica? (sesión anterior)</li>
+            <li><strong>Mantenimiento activo</strong>: ¿tiene commits y releases recientes, o lleva años sin actualizarse?</li>
+            <li><strong>Salida accesible</strong>: si la librería genera un gráfico o reporte visual, ¿permite no depender solo del color, exportar texto alternativo, o controlar tamaños de fuente? (retomando el software inclusivo de la Unidad 4)</li>
+            <li><strong>Tamaño de la comunidad</strong>: ¿hay documentación, ejemplos y respuestas a problemas comunes, o es un proyecto casi sin usuarios?</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Checklist de evaluación de librerías" style="display:block;width:130px;height:130px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Librerías inclusivas de análisis y visualización, revisadas con este checklist</h1>
+          <p>Retomando JFreeChart y Apache Commons Math de la Unidad 4 bajo el checklist de la diapositiva anterior: ambas son <strong>Apache 2.0</strong> (permisiva, sin conflicto de licencia con un reporte comercial), tienen mantenimiento activo, y JFreeChart permite configurar colores, patrones de relleno y tamaños de fuente para cumplir los criterios de accesibilidad vistos en la Unidad 4 — no depender solo del color, buen contraste, texto legible.</p>
+          <p class="slide-eyebrow">Elegir una librería nunca es solo "¿hace lo que necesito?" — es también licencia, mantenimiento y qué tan accesible puede quedar lo que produce.</p>
+          <img class="portada-icon" src="img/accessible.svg" alt="Accesibilidad en librerías de datos" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis — cierre de la Unidad 6</p>
+          <h1>Lo que hay que llevarse de la sesión y de la unidad</h1>
+          <ol>
+            <li>Un sistema de reportes con IA sigue el flujo recolectar → calcular → redactar (LLM) → publicar, consumiendo el LLM como una API HTTP con <code>HttpClient</code> y la clave leída de una variable de entorno, nunca hardcodeada.</li>
+            <li>Un prompt bien diseñado da contexto, datos concretos y formato esperado — y el LLM redacta a partir de números ya calculados en Java, nunca los calcula él mismo.</li>
+            <li>Las alucinaciones son el riesgo central (caso CNET): el patrón <em>human-in-the-loop</em> deja el reporte como borrador pendiente de revisión antes de publicarlo.</li>
+            <li>Elegir una librería de terceros combina cuatro criterios: licencia compatible, mantenimiento activo, salida accesible y comunidad — cerrando el vínculo entre licenciamiento (sesión anterior) y software inclusivo (Unidad 4).</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Repasa las dos sesiones de la Unidad 6 (licenciamiento/empaquetado/despliegue y reportes con IA) — son la base directa del <strong>Caso de Estudio 2</strong>.</li>
+            <li>Piensa en un dato o reporte de un proyecto propio del curso que podría beneficiarse de este flujo, e identifica qué librerías necesitaría y bajo qué licencia están.</li>
+          </ul>
+          <p><strong>Con esta sesión cierra la Unidad 6 de Técnicas de Programación.</strong></p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Cierre de la unidad" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

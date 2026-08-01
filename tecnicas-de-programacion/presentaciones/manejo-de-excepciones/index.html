@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manejo de Excepciones en Java — Semana 9</title>
+  <meta name="description" content="try-catch-finally, checked vs unchecked, try-with-resources y excepciones personalizadas — Técnicas de Programación, Unidad 4, Semana 9." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/manejo-de-excepciones/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Manejo de Excepciones en Java — Semana 9" />
+  <meta property="og:description" content="try-catch-finally, checked vs unchecked, try-with-resources y excepciones personalizadas — Técnicas de Programación, Unidad 4, Semana 9." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/manejo-de-excepciones/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Manejo de Excepciones en Java — Semana 9" />
+  <meta name="twitter:description" content="try-catch-finally, checked vs unchecked, try-with-resources y excepciones personalizadas — Técnicas de Programación, Unidad 4, Semana 9." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/manejo-de-excepciones.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 4 — Archivos, Errores y Pruebas: Manejo de Excepciones en Java</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/java.svg" alt="Java" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un programa que no maneja sus errores no falla con elegancia: se detiene en seco, deja datos a medias y no le dice a nadie por qué.</h1>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Advertencia de error" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Empieza la Unidad 4</h1>
+          <p>Cerraste la Unidad 3 documentando y optimizando código correcto. Pero ningún programa real es siempre correcto: un archivo no existe, una división es por cero, un índice se sale del arreglo. La Unidad 4 empieza justo ahí — cómo <strong>anticipar, capturar y responder</strong> a esas fallas sin que el programa completo se venga abajo. Hoy: excepciones. La próxima sesión: archivos de texto y CSV, donde este mecanismo se vuelve indispensable.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es una excepción?</h1>
+          <p>Una <strong>excepción</strong> es un objeto que Java crea automáticamente cuando ocurre un evento que interrumpe el flujo normal de ejecución de un programa (una condición anómala: datos inválidos, un recurso no disponible, una operación imposible). En vez de dejar que el programa continúe con un resultado incorrecto, Java <strong>lanza</strong> ese objeto y detiene la ejecución normal, buscando quién esté preparado para responder a ese tipo de error.</p>
+          <p>Sin manejo de excepciones, el programa se detiene por completo (se "cae") y muestra un <em>stack trace</em> en consola. Con manejo de excepciones, el programador decide qué hacer: reintentar, mostrar un mensaje claro, registrar el error, o cerrar recursos abiertos antes de terminar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La jerarquía: todo excepción es un <code>Throwable</code></h1>
+          <p>En Java, todo lo que se puede lanzar con <code>throw</code> desciende de la clase <code>Throwable</code>, que se divide en dos ramas:</p>
+          <table>
+            <thead><tr><th>Rama</th><th>Significa</th><th>¿Se debería capturar?</th></tr></thead>
+            <tbody>
+              <tr><td><code>Error</code></td><td>Falla grave del entorno (memoria agotada, JVM corrupta)</td><td>No — el programa normalmente no puede recuperarse</td></tr>
+              <tr><td><code>Exception</code></td><td>Condición anómala pero manejable por el programa</td><td>Sí — es la que nos interesa como desarrolladores</td></tr>
+            </tbody>
+          </table>
+          <p>Dentro de <code>Exception</code> hay otra división importante: <code>RuntimeException</code> (y sus subclases) por un lado, y el resto de <code>Exception</code> por otro — la próxima diapositiva explica por qué esa división importa tanto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Checked vs. unchecked: dos formas de exigir manejo</h1>
+          <table>
+            <thead><tr><th></th><th>Checked</th><th>Unchecked (runtime)</th></tr></thead>
+            <tbody>
+              <tr><td>Clase base</td><td><code>Exception</code> (menos <code>RuntimeException</code>)</td><td><code>RuntimeException</code></td></tr>
+              <tr><td>¿El compilador obliga a manejarla?</td><td>Sí — con <code>try/catch</code> o declarando <code>throws</code></td><td>No — el programa compila igual aunque no se maneje</td></tr>
+              <tr><td>¿Cuándo suele ocurrir?</td><td>Fallas externas previsibles (archivo, red, base de datos)</td><td>Errores de lógica del programador</td></tr>
+              <tr><td>Ejemplos</td><td><code>IOException</code>, <code>SQLException</code></td><td><code>NullPointerException</code>, <code>ArithmeticException</code>, <code>ArrayIndexOutOfBoundsException</code></td></tr>
+            </tbody>
+          </table>
+          <p>Las <em>checked</em> representan riesgos que el propio Java sabe que existen (por ejemplo, un archivo puede no existir) y por eso obliga a decidir qué hacer con ellas <strong>antes de compilar</strong>. Las <em>unchecked</em> casi siempre son bugs — el compilador no las exige porque, en teoría, un código bien escrito no debería producirlas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sintaxis básica: <code>try-catch-finally</code></h1>
+          <p>El bloque <code>try</code> contiene el código que puede fallar; <code>catch</code> captura un tipo específico de excepción y decide qué hacer; <code>finally</code> se ejecuta <strong>siempre</strong>, ocurra o no una excepción — típicamente para liberar recursos.</p>
+          <pre><code>try {
+    int[] notas = {90, 85, 78};
+    System.out.println(notas[5]);       // fuera de rango
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Índice inválido: " + e.getMessage());
+} finally {
+    System.out.println("Este bloque siempre se ejecuta.");
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Multi-catch: un bloque, varios tipos de error</h1>
+          <p>Cuando dos o más tipos de excepción deben manejarse de la misma forma, se pueden capturar en un solo bloque <code>catch</code> separándolos con <code>|</code>, en vez de repetir el mismo código dos veces.</p>
+          <pre><code>try {
+    conectarBaseDeDatos();
+    leerArchivoConfiguracion();
+} catch (IOException | SQLException e) {
+    System.out.println("Fallo de recurso externo: " + e.getMessage());
+}</code></pre>
+          <p>Java exige que los tipos combinados con <code>|</code> no tengan relación de herencia directa entre sí (no tendría sentido capturar una clase y su propia superclase en el mismo <code>|</code>).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>try-with-resources</code>: cerrar sin olvidarlo</h1>
+          <p>Cualquier clase que implemente la interfaz <code>AutoCloseable</code> (por ejemplo, las clases para leer y escribir archivos que verás la próxima sesión) puede declararse dentro del paréntesis del <code>try</code>. Java se encarga de llamar automáticamente a su método <code>close()</code> al salir del bloque, <strong>incluso si ocurrió una excepción</strong> — sin necesitar un <code>finally</code> manual.</p>
+          <pre><code>try (Scanner lector = new Scanner(new File("datos.txt"))) {
+    while (lector.hasNextLine()) {
+        System.out.println(lector.nextLine());
+    }
+} catch (FileNotFoundException e) {
+    System.out.println("No se encontró el archivo: " + e.getMessage());
+}
+// "lector" se cierra automáticamente al terminar el try, sin código extra</code></pre>
+          <p class="slide-eyebrow">Este patrón se vuelve central en la próxima sesión, con lectura y escritura de archivos de texto y CSV.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>throw</code> vs. <code>throws</code>: no son lo mismo</h1>
+          <table>
+            <thead><tr><th></th><th><code>throw</code></th><th><code>throws</code></th></tr></thead>
+            <tbody>
+              <tr><td>Qué hace</td><td>Lanza una excepción, en ese punto exacto del código</td><td>Declara, en la firma del método, que ese método <em>puede</em> lanzar una excepción</td></tr>
+              <tr><td>Dónde va</td><td>Dentro del cuerpo de un método</td><td>En la firma del método, después de los parámetros</td></tr>
+              <tr><td>Cantidad</td><td>Va seguido de un solo objeto excepción</td><td>Puede listar varios tipos separados por coma</td></tr>
+            </tbody>
+          </table>
+          <pre><code>public void retirar(double monto) throws SaldoInsuficienteException {
+    if (monto &gt; saldo) {
+        throw new SaldoInsuficienteException("Saldo insuficiente para retirar " + monto);
+    }
+    saldo -= monto;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Excepciones personalizadas</h1>
+          <p>Cuando ninguna excepción estándar de Java describe bien un error propio del negocio (por ejemplo, "saldo insuficiente" o "cupo agotado"), conviene crear una <strong>clase de excepción propia</strong>, extendiendo <code>Exception</code> (checked) o <code>RuntimeException</code> (unchecked) según si se quiere obligar a manejarla.</p>
+          <pre><code>public class SaldoInsuficienteException extends Exception {
+    public SaldoInsuficienteException(String mensaje) {
+        super(mensaje);   // delega el mensaje a la clase padre (Exception)
+    }
+}</code></pre>
+          <p>El constructor llama a <code>super(mensaje)</code> para que ese texto quede disponible después con <code>e.getMessage()</code>, igual que en cualquier excepción de la biblioteca estándar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Cuándo conviene crear una excepción propia?</h1>
+          <ul>
+            <li>Cuando el error representa una <strong>regla de negocio</strong>, no un error técnico genérico (un <code>SaldoInsuficienteException</code> comunica más que un simple <code>RuntimeException</code>).</li>
+            <li>Cuando quien llama al método necesita <strong>distinguir ese error de otros</strong> para reaccionar distinto (reintentar vs. cancelar la operación).</li>
+            <li>Cuando quieres adjuntar información adicional al error (por ejemplo, el monto exacto que faltaba) a través de campos propios de la clase.</li>
+          </ul>
+          <pre><code>Cuenta cuenta = new Cuenta(50000);
+try {
+    cuenta.retirar(200000);
+} catch (SaldoInsuficienteException e) {
+    System.out.println("No se pudo procesar el retiro: " + e.getMessage());
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Excepciones "tragadas": el error que desaparece en silencio</h1>
+          <pre><code>try {
+    procesarPago(monto);
+} catch (Exception e) {
+    // no hacer nada
+}
+System.out.println("Pago procesado.");   // ¡mentira! puede que haya fallado</code></pre>
+          <p>Este patrón tiene dos problemas graves a la vez: capturar <code>Exception</code> de forma genérica (sin saber qué error específico se espera) y dejar el bloque <code>catch</code> vacío, que hace desaparecer el error sin dejar ningún rastro. El programa sigue como si nada hubiera pasado, y el mensaje final ("Pago procesado") queda siendo falso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas al manejar excepciones</h1>
+          <ul>
+            <li><strong>Captura el tipo más específico posible</strong>, no <code>Exception</code> genérica — así sabes exactamente qué falló y no ocultas errores inesperados de otro tipo.</li>
+            <li><strong>Nunca dejes un <code>catch</code> vacío.</strong> Como mínimo, registra el error (<code>e.getMessage()</code> o <code>e.printStackTrace()</code>) aunque decidas continuar la ejecución.</li>
+            <li><strong>Escribe mensajes claros y accionables</strong>: no "Error", sino algo como "No se pudo leer el archivo config.txt: verifica que exista en la ruta indicada".</li>
+            <li><strong>No uses excepciones para controlar flujo normal</strong> (por ejemplo, para salir de un ciclo) — son costosas y confunden la intención del código.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Documentar excepciones con Javadoc: <code>@throws</code></h1>
+          <p>Ya viste en la Unidad 3 que Javadoc documenta parámetros y retorno con <code>@param</code> y <code>@return</code>. Cuando un método puede lanzar una excepción, se documenta con <code>@throws</code>, explicando <strong>bajo qué condición</strong> ocurre — información que quien usa el método necesita sin tener que leer su implementación.</p>
+          <pre><code>/**
+ * Retira un monto de la cuenta.
+ *
+ * @param monto valor a retirar, debe ser mayor a 0
+ * @throws SaldoInsuficienteException si el monto supera el saldo disponible
+ */
+public void retirar(double monto) throws SaldoInsuficienteException { ... }</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Identifiquen el error y arréglenlo</h1>
+          <p><strong>En parejas:</strong> este fragmento compila pero tiene dos problemas de manejo de excepciones. Identifíquenlos y reescríbanlo.</p>
+          <pre><code>public void leerNota(int[] notas, int indice) {
+    try {
+        System.out.println(notas[indice]);
+    } catch (Exception e) {
+    }
+}</code></pre>
+          <p class="slide-eyebrow">6 minutos · pistas: ¿qué tipo específico de excepción aplica aquí? ¿qué falta dentro del catch?</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una excepción interrumpe el flujo normal; sin manejarla, el programa se detiene por completo.</li>
+            <li><code>Throwable</code> se divide en <code>Error</code> (no manejable) y <code>Exception</code>; dentro de <code>Exception</code>, las <em>checked</em> exigen manejo explícito y las <em>unchecked</em> (<code>RuntimeException</code>) no.</li>
+            <li><code>try-catch-finally</code>, multi-catch y <code>try-with-resources</code> son las herramientas para capturar y limpiar recursos; <code>throw</code> lanza, <code>throws</code> declara.</li>
+            <li>Crea excepciones propias cuando representen reglas de negocio; nunca captures <code>Exception</code> genérica con un <code>catch</code> vacío.</li>
+          </ol>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Programas que resisten sus propios errores" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar <code>try-catch-finally</code> y multi-catch con al menos dos tipos distintos de excepción unchecked (<code>ArithmeticException</code>, <code>ArrayIndexOutOfBoundsException</code>).</li>
+            <li>Crear una excepción personalizada propia y usarla en un método con <code>throw</code>/<code>throws</code>.</li>
+          </ul>
+          <p><strong>Próxima sesión: Gestión de Archivos — Texto y CSV</strong>, donde <code>try-with-resources</code> se vuelve la herramienta central para leer y escribir sin fugas de recursos.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generación de PDF con Librerías — Semana 10</title>
+  <meta name="description" content="Creación programática de documentos PDF con Apache PDFBox: texto, coordenadas y try-with-resources — Técnicas de Programación, Unidad 4, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/generacion-de-pdf-con-librerias/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Generación de PDF con Librerías — Semana 10" />
+  <meta property="og:description" content="Creación programática de documentos PDF con Apache PDFBox: texto, coordenadas y try-with-resources — Técnicas de Programación, Unidad 4, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/generacion-de-pdf-con-librerias/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Generación de PDF con Librerías — Semana 10" />
+  <meta name="twitter:description" content="Creación programática de documentos PDF con Apache PDFBox: texto, coordenadas y try-with-resources — Técnicas de Programación, Unidad 4, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/generacion-de-pdf-con-librerias.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 4 — Generación de PDF con Librerías</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/file-pdf.svg" alt="Generación de documentos PDF" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Cada boleta de calificaciones, factura o comprobante que has recibido en PDF salió de un programa — no de alguien escribiéndolo a mano.</h1>
+          <img class="portada-icon" src="img/file-lines.svg" alt="Documentos generados automáticamente" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De datos en memoria a un documento formal</h1>
+          <p>En la sesión anterior aprendiste a estructurar datos con JSON y a persistirlos en disco con Gson. Ese dato estructurado suele ser el <strong>insumo</strong> de algo más: un reporte, una boleta o un comprobante que una persona necesita leer, imprimir o archivar. Hoy cierras ese ciclo generando el documento final en formato <strong>PDF</strong>, directamente desde Java.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Casos de uso reales</h1>
+          <p>Generar PDF programáticamente es una necesidad constante en software de gestión — cualquier sistema que produzca un documento formal a partir de datos, sin intervención manual, lo necesita:</p>
+          <ul>
+            <li><strong>Reportes automáticos</strong>: resúmenes periódicos generados por un proceso batch, sin que nadie los redacte a mano.</li>
+            <li><strong>Comprobantes de pago</strong>: un recibo generado apenas se confirma una transacción.</li>
+            <li><strong>Boletas de calificaciones</strong>: un sistema académico que produce el boletín de cada estudiante desde su base de datos de notas.</li>
+            <li><strong>Facturas electrónicas</strong>: documentos con validez legal generados automáticamente por un sistema de ventas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Apache PDFBox: preparar el proyecto</h1>
+          <p><strong>Apache PDFBox</strong> es una librería de código abierto de la Apache Software Foundation para crear, leer y modificar documentos PDF desde Java. Se agrega como dependencia Maven en el <code>pom.xml</code>:</p>
+          <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.pdfbox&lt;/groupId&gt;
+    &lt;artifactId&gt;pdfbox&lt;/artifactId&gt;
+    &lt;version&gt;3.0.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+          <img class="portada-icon" src="img/apache.svg" alt="Apache Software Foundation" style="display:block;width:110px;height:110px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El flujo básico: documento y página</h1>
+          <p>Todo documento en PDFBox parte de un objeto <code>PDDocument</code>, que representa el archivo PDF completo en memoria, y al menos una <code>PDPage</code>, que representa una hoja dentro de ese documento:</p>
+          <pre><code>import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+
+PDDocument document = new PDDocument();
+PDPage page = new PDPage();
+document.addPage(page);</code></pre>
+          <p>Con esto ya existe un documento válido, aunque todavía sin contenido — una hoja en blanco.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Escribir texto: PDPageContentStream</h1>
+          <p>Para dibujar contenido sobre una página se abre un <code>PDPageContentStream</code>, el "lápiz" con el que se escribe sobre esa hoja. Escribir texto requiere un bloque delimitado por <code>beginText()</code> y <code>endText()</code>:</p>
+          <pre><code>import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
+
+PDPageContentStream content = new PDPageContentStream(document, page);
+content.beginText();
+content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+content.newLineAtOffset(50, 700);
+content.showText("Boletín de calificaciones — Ana Gómez");
+content.endText();</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cada método del bloque de texto, explicado</h1>
+          <table>
+            <thead><tr><th>Método</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td><code>beginText()</code></td><td>Abre un bloque de escritura de texto</td></tr>
+              <tr><td><code>setFont(fuente, tamaño)</code></td><td>Define la tipografía y el tamaño en puntos</td></tr>
+              <tr><td><code>newLineAtOffset(x, y)</code></td><td>Posiciona el cursor en coordenadas (x, y) desde la esquina inferior izquierda</td></tr>
+              <tr><td><code>showText("...")</code></td><td>Dibuja el texto en la posición actual</td></tr>
+              <tr><td><code>endText()</code></td><td>Cierra el bloque de escritura</td></tr>
+            </tbody>
+          </table>
+          <p>El sistema de coordenadas de PDF empieza en la <strong>esquina inferior izquierda</strong> de la página (0, 0) — al contrario de muchos sistemas gráficos que empiezan arriba.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Varias líneas: newLineAtOffset relativo</h1>
+          <p>Cada llamada a <code>newLineAtOffset(x, y)</code> dentro del mismo bloque de texto se mueve <strong>en relación a la posición anterior</strong>, no a coordenadas absolutas — por eso, para escribir varias líneas seguidas, basta con desplazar hacia abajo en el eje Y:</p>
+          <pre><code>content.beginText();
+content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+content.newLineAtOffset(50, 700);
+content.showText("Boletín de calificaciones");
+content.newLineAtOffset(0, -20);
+content.showText("Estudiante: Ana Gómez");
+content.newLineAtOffset(0, -20);
+content.showText("Promedio: 4.35");
+content.endText();</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Contenido tabular: columnas por coordenadas</h1>
+          <p>PDFBox <strong>no tiene un componente de tabla nativo</strong> — a diferencia de HTML, no existe una etiqueta que dibuje filas y columnas automáticamente. Para simular una tabla simple, hay que calcular manualmente en qué posición (x, y) va cada celda, alineando columnas con coordenadas X fijas:</p>
+          <pre><code>float[] columnasX = {50, 200, 350};  // posición X de cada columna
+String[] fila = {"Corte 1", "Corte 2", "Corte 3"};
+
+content.beginText();
+content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 11);
+content.newLineAtOffset(columnasX[0], 650);
+content.showText(fila[0]);
+content.endText();
+// Repetir beginText()/endText() por cada celda,
+// usando newLineAtOffset(columnasX[i], y) para ubicarla</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Calculen las coordenadas</h1>
+          <p><strong>En parejas:</strong> una hoja de PDFBox mide 612 x 792 puntos (tamaño carta). Necesitan escribir un título centrado arriba, y tres filas de una tabla de dos columnas debajo, con espacio parejo entre filas.</p>
+          <ol>
+            <li>Propongan las coordenadas (x, y) del título.</li>
+            <li>Propongan las coordenadas X de las dos columnas.</li>
+            <li>Propongan la coordenada Y inicial y el salto entre filas.</li>
+          </ol>
+          <p class="slide-eyebrow">6 minutos · no hace falta escribir el código, solo los números</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Guardar y cerrar el documento</h1>
+          <p>Un <code>PDDocument</code> reserva recursos (memoria, archivos temporales) mientras está abierto, así que debe <strong>guardarse con <code>save()</code> y cerrarse con <code>close()</code></strong> — igual que un <code>FileWriter</code> o un <code>Scanner</code> deben cerrarse tras usarlos:</p>
+          <pre><code>document.save("boletin.pdf");
+document.close();</code></pre>
+          <p>Olvidar <code>close()</code> deja recursos abiertos innecesariamente, el mismo problema que viste con archivos y por el que existe <code>try-with-resources</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>try-with-resources con PDDocument</h1>
+          <p><code>PDDocument</code> implementa <code>Closeable</code>, igual que <code>FileReader</code> y <code>FileWriter</code> — por eso se puede abrir dentro de un <code>try-with-resources</code> y Java se encarga de cerrarlo automáticamente, incluso si ocurre una excepción a mitad de la generación del PDF:</p>
+          <pre><code>try (PDDocument document = new PDDocument()) {
+    PDPage page = new PDPage();
+    document.addPage(page);
+
+    try (PDPageContentStream content = new PDPageContentStream(document, page)) {
+        content.beginText();
+        content.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+        content.newLineAtOffset(50, 700);
+        content.showText("Boletín de calificaciones");
+        content.endText();
+    }
+
+    document.save("boletin.pdf");
+} catch (IOException e) {
+    System.out.println("Error al generar el PDF: " + e.getMessage());
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué el content stream se cierra antes de guardar</h1>
+          <p>Nota en el ejemplo anterior que el <code>PDPageContentStream</code> está en su <strong>propio</strong> bloque <code>try-with-resources</code>, anidado dentro del de <code>PDDocument</code>. Esto no es casualidad: el contenido escrito no se refleja de forma confiable en la página hasta que el <em>content stream</em> se cierra — si se llama a <code>document.save()</code> antes de cerrarlo, el texto puede no aparecer o el archivo puede quedar corrupto.</p>
+          <p><strong>Regla práctica: cerrar siempre el <code>PDPageContentStream</code> antes de guardar el documento.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Separar datos y escritura: dos responsabilidades</h1>
+          <p>Siguiendo el principio de responsabilidad única (Unidad 3, SOLID), conviene separar dos cosas que a menudo se mezclan en un solo método: <strong>de dónde vienen los datos</strong> (por ejemplo, un <code>List&lt;Estudiante&gt;</code> leído de un JSON) y <strong>cómo se escriben en el PDF</strong>. Un método <code>generarBoletin(List&lt;Estudiante&gt; estudiantes, String rutaSalida)</code> que reciba los datos ya listos es más fácil de probar y reutilizar que uno que también los busca o los calcula.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Uniendo JSON y PDFBox</h1>
+          <p>Con lo visto en las dos últimas sesiones, el flujo completo de un reporte real queda así:</p>
+          <ol>
+            <li>Leer los datos desde un archivo <code>.json</code> con Gson, usando <code>TypeToken</code> si es una lista.</li>
+            <li>Procesar/calcular lo que haga falta (promedios, totales) sobre esos objetos Java.</li>
+            <li>Generar el PDF con PDFBox, escribiendo cada dato en su posición con <code>PDPageContentStream</code>.</li>
+            <li>Guardar y cerrar el <code>PDDocument</code> dentro de un <code>try-with-resources</code>.</li>
+          </ol>
+          <p>El dato nunca deja de ser un objeto Java normal entre el paso 1 y el paso 3 — JSON y PDF son solo los formatos de entrada y salida.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de la sesión</h1>
+          <ol>
+            <li>Apache PDFBox crea PDFs desde Java con <code>PDDocument</code> + <code>PDPage</code> + <code>PDPageContentStream</code>.</li>
+            <li>Escribir texto exige un bloque <code>beginText()</code>/<code>endText()</code>, con coordenadas que parten de la esquina inferior izquierda.</li>
+            <li>No hay tabla nativa: el contenido tabular se ubica a mano con columnas X fijas.</li>
+            <li><code>PDDocument</code> implementa <code>Closeable</code> — usar <code>try-with-resources</code>, cerrando siempre el <code>PDPageContentStream</code> antes de <code>save()</code>.</li>
+          </ol>
+          <img class="portada-icon" src="img/folder-tree.svg" alt="Ideas clave sobre generación de PDF" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar generando un PDF de al menos dos páginas a partir de una lista de objetos propios.</li>
+            <li>Repasar Unidad 4 completa: excepciones, archivos de texto/CSV, JSON con Gson y PDF con PDFBox — son los cuatro frentes que conectan datos, persistencia y documentos generados.</li>
+          </ul>
+          <p><strong>Con esta sesión cierra la Unidad 4 de Técnicas de Programación.</strong></p>
+          <img class="portada-icon" src="img/file-pdf.svg" alt="Cierre de la unidad" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POO: Clases, Objetos y Herencia — Semana 3</title>
+  <meta name="description" content="Clases, objetos, atributos, métodos, constructores y herencia en Java — Técnicas de Programación, Unidad 2, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/poo-clases-objetos-y-herencia/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="POO: Clases, Objetos y Herencia — Semana 3" />
+  <meta property="og:description" content="Clases, objetos, atributos, métodos, constructores y herencia en Java — Técnicas de Programación, Unidad 2, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/poo-clases-objetos-y-herencia/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="POO: Clases, Objetos y Herencia — Semana 3" />
+  <meta name="twitter:description" content="Clases, objetos, atributos, métodos, constructores y herencia en Java — Técnicas de Programación, Unidad 2, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/poo-clases-objetos-y-herencia.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 2 — Paradigma Objetual: Clases, Objetos y Herencia</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Clases y objetos" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Hasta ahora tu código decía "haz esto".<br>Desde hoy, tu código dice "esto <em>es</em> algo".</h1>
+          <img class="portada-icon" src="img/shapes.svg" alt="Cambio de paradigma" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Del paradigma imperativo al objetual</h1>
+          <p>En la Unidad 0 organizaste código como una <strong>secuencia de instrucciones sobre variables sueltas</strong>. El <strong>paradigma orientado a objetos (POO)</strong> propone otra unidad de organización: agrupar los datos y el comportamiento que les pertenece en una sola entidad, llamada <strong>objeto</strong>.</p>
+          <p>Un objeto modela una "cosa" del problema real: un estudiante, una cuenta bancaria, un carro. <strong>Tiene características (qué sabe)</strong> y <strong>comportamientos (qué hace)</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Clase: la plantilla del objeto</h1>
+          <p>Una <strong>clase</strong> es la plantilla (el "molde") que describe qué atributos y qué métodos va a tener cada objeto que se construya a partir de ella. Un <strong>objeto</strong> es una <strong>instancia concreta</strong> de esa clase, con valores propios en sus atributos.</p>
+          <table>
+            <thead>
+              <tr><th>Clase</th><th>Objeto (instancia)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>El plano de una casa</td><td>Una casa construida a partir de ese plano</td></tr>
+              <tr><td><code>Estudiante</code></td><td><code>ana</code>, con nombre "Ana" y código "2508307-1"</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Una sola clase puede producir cualquier cantidad de objetos distintos</strong>, cada uno con sus propios valores.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Atributos y métodos</h1>
+          <p>Los <strong>atributos</strong> (también llamados campos o propiedades) son las variables que guardan el estado de un objeto. Los <strong>métodos</strong> son las funciones que definen su comportamiento — casi siempre operan sobre esos mismos atributos.</p>
+          <pre><code>public class Estudiante {
+    private String nombre;   // atributo
+    private String codigo;   // atributo
+
+    public void saludar() {  // método
+        System.out.println("Hola, soy " + nombre);
+    }
+}</code></pre>
+          <p><code>private</code> significa que el atributo <strong>solo es accesible dentro de la propia clase</strong> — es la base del encapsulamiento, que veremos con más detalle en la próxima unidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El constructor</h1>
+          <p>Un <strong>constructor</strong> es un método especial que se ejecuta automáticamente al crear un objeto con <code>new</code>: se usa para dejar el objeto en un estado inicial válido, típicamente asignando valores a sus atributos.</p>
+          <pre><code>public class Estudiante {
+    private String nombre;
+    private String codigo;
+
+    public Estudiante(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
+}</code></pre>
+          <p><code>this</code> se refiere <strong>al objeto que se está construyendo</strong> — distingue el atributo de la clase (<code>this.nombre</code>) del parámetro recibido (<code>nombre</code>).</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El constructor "gratis" no siempre alcanza</h1>
+          <p>Si una clase no declara ningún constructor, Java genera uno vacío llamado <strong>constructor por defecto</strong>, que no recibe parámetros y deja los atributos en sus valores iniciales (<code>null</code>, <code>0</code>, <code>false</code>).</p>
+          <pre><code>Estudiante e = new Estudiante(); // válido solo si no escribiste
+                                  // NINGÚN constructor propio</code></pre>
+          <p><strong>Error común:</strong> en cuanto defines un constructor con parámetros, el constructor por defecto <strong>desaparece</strong> — si además quieres poder crear objetos sin argumentos, debes escribir ese constructor vacío tú mismo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Instanciar objetos con <code>new</code></h1>
+          <p>Crear un objeto a partir de una clase se llama <strong>instanciar</strong>. La palabra clave <code>new</code> reserva memoria para el objeto y llama al constructor indicado.</p>
+          <pre><code>Estudiante ana = new Estudiante("Ana", "2508307-1");
+Estudiante luis = new Estudiante("Luis", "2508307-2");
+
+ana.saludar();   // Hola, soy Ana
+luis.saludar();  // Hola, soy Luis</code></pre>
+          <p><strong><code>ana</code> y <code>luis</code> son dos objetos distintos</strong>, construidos con la misma clase pero con sus propios valores de atributos — cada uno vive en su propio espacio de memoria.</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Instancias independientes" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Clase u objeto?</h1>
+          <p><strong>Clasifiquen cada elemento como "clase" o "objeto":</strong></p>
+          <ol>
+            <li><code>CuentaBancaria</code></li>
+            <li><code>CuentaBancaria miCuenta = new CuentaBancaria(...)</code></li>
+            <li>El plano de una fábrica de carros</li>
+            <li>Un carro específico que sale de esa fábrica, con placa propia</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat antes de revisar juntos</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y si dos clases comparten casi todo?</h1>
+          <p>Un <code>Estudiante</code> y un <code>Profesor</code> comparten nombre, código y correo — pero cada uno agrega algo propio (semestre matriculado vs. asignaturas a cargo). <strong>Copiar y pegar esos atributos en cada clase</strong> funciona, pero duplica código y duplica errores cuando algo cambia. La POO tiene un mecanismo para esto: la <strong>herencia</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Herencia: reutilizar una clase existente</h1>
+          <p>La <strong>herencia</strong> permite que una clase (<strong>subclase</strong>) reciba automáticamente los atributos y métodos de otra clase ya existente (<strong>superclase</strong>), y además agregue o modifique lo que necesite.</p>
+          <p>Modela una relación <strong>"es un/a"</strong>: un <code>Estudiante</code> "es una" <code>Persona</code>; un <code>Profesor</code> "es una" <code>Persona</code>. Si la relación no se puede leer de forma natural como "es un/a", probablemente <strong>no</strong> es un caso de herencia.</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Jerarquía de clases" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sintaxis: <code>extends</code> y <code>super()</code></h1>
+          <pre><code>public class Persona {
+    protected String nombre;
+    public Persona(String nombre) { this.nombre = nombre; }
+    public void saludar() { System.out.println("Hola, soy " + nombre); }
+}
+
+public class Estudiante extends Persona {
+    private String codigo;
+    public Estudiante(String nombre, String codigo) {
+        super(nombre);      // llama al constructor de Persona
+        this.codigo = codigo;
+    }
+}</code></pre>
+          <p><code>extends</code> declara la relación de herencia; <code>super(...)</code> invoca el constructor de la superclase, <strong>siempre como primera línea</strong> del constructor de la subclase.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>protected</code> vs <code>private</code></h1>
+          <p>Un atributo <code>private</code> en <code>Persona</code> <strong>no sería visible</strong> desde <code>Estudiante</code>, aunque herede de ella. <code>protected</code> es un nivel intermedio: visible dentro de la propia clase, sus subclases, y otras clases del mismo paquete.</p>
+          <table>
+            <thead>
+              <tr><th>Modificador</th><th>¿Visible desde una subclase?</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>private</code></td><td>No</td></tr>
+              <tr><td><code>protected</code></td><td>Sí</td></tr>
+              <tr><td><code>public</code></td><td>Sí (y desde cualquier otra clase)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Cuando la herencia no es la respuesta</h1>
+          <p>Modelar <code>Auto extends Motor</code> es un error común: un auto <strong>no "es un" motor</strong>, sino que <strong>"tiene un" motor</strong>. Esa segunda relación se llama <strong>composición</strong> (un atributo de tipo <code>Motor</code> dentro de <code>Auto</code>), no herencia.</p>
+          <pre><code>// Incorrecto: Auto no "es un" Motor
+public class Auto extends Motor { }
+
+// Correcto: Auto "tiene un" Motor (composición)
+public class Auto {
+    private Motor motor;
+}</code></pre>
+          <p><strong>La prueba rápida:</strong> si no puedes completar la frase "X es un/a Y" de forma natural, no uses <code>extends</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sobrescribir comportamiento: <code>@Override</code></h1>
+          <p>Una subclase puede <strong>redefinir</strong> un método heredado si necesita un comportamiento distinto, usando la misma firma (nombre y parámetros) que el método de la superclase. La anotación <code>@Override</code> no es obligatoria, pero <strong>documenta la intención</strong> y hace que el compilador avise si la firma no coincide exactamente.</p>
+          <pre><code>public class Profesor extends Persona {
+    @Override
+    public void saludar() {
+        System.out.println("Buen día, profesor " + nombre);
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen la jerarquía</h1>
+          <p><strong>En parejas, definan en papel (sin codificar todavía) una jerarquía de clases para un sistema de biblioteca:</strong></p>
+          <ul>
+            <li>Una superclase <code>MaterialBibliografico</code> con los atributos que compartan todos los materiales.</li>
+            <li>Dos subclases, <code>Libro</code> y <code>Revista</code>, cada una con al menos un atributo propio.</li>
+          </ul>
+          <p class="slide-eyebrow">8 minutos · estén listos para justificar por qué cada relación "es un/a"</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una clase es la plantilla; un objeto es una instancia concreta creada con <code>new</code>.</li>
+            <li>Atributos guardan el estado; métodos definen el comportamiento; el constructor deja el objeto en un estado inicial válido.</li>
+            <li>La herencia (<code>extends</code>) reutiliza atributos y métodos de una superclase cuando la relación es genuinamente "es un/a" — de lo contrario, es composición.</li>
+            <li><code>super(...)</code> invoca el constructor de la superclase; <code>@Override</code> documenta que un método redefine el heredado.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Escribir en el IDE la jerarquía <code>Persona</code> / <code>Estudiante</code> / <code>Profesor</code> de esta sesión y probar que <code>saludar()</code> se comporta distinto en cada subclase.</li>
+            <li>Pensar en dos métodos que, en la vida real, "hacen lo mismo" pero reciben datos distintos (ej. sumar dos enteros vs. sumar dos decimales) — es el punto de partida de la próxima clase.</li>
+          </ul>
+          <p><strong>La próxima sesión continúa dentro de la Unidad 2 con la sobrecarga de métodos: mismo nombre de método, distintas listas de parámetros.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Licenciamiento, Empaquetado y Despliegue — Semana 12</title>
+  <meta name="description" content="Licencias de software open source, empaquetado con Maven y despliegue de una librería reutilizable — Técnicas de Programación, Unidad 6, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/licenciamiento-empaquetado-y-despliegue/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Licenciamiento, Empaquetado y Despliegue — Semana 12" />
+  <meta property="og:description" content="Licencias de software open source, empaquetado con Maven y despliegue de una librería reutilizable — Técnicas de Programación, Unidad 6, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/licenciamiento-empaquetado-y-despliegue/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Licenciamiento, Empaquetado y Despliegue — Semana 12" />
+  <meta name="twitter:description" content="Licencias de software open source, empaquetado con Maven y despliegue de una librería reutilizable — Técnicas de Programación, Unidad 6, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/licenciamiento-empaquetado-y-despliegue.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 6 — Licenciamiento, Empaquetado y Despliegue</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/box.svg" alt="Empaquetado de librerías" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>11 líneas de código, retiradas de un repositorio público en unos minutos, rompieron builds de miles de proyectos en todo el mundo el mismo día.</h1>
+          <img class="portada-icon" src="img/npm.svg" alt="Gestión de paquetes" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>El incidente de <code>left-pad</code> (marzo de 2016)</h1>
+          <table>
+            <thead><tr><th>Dato</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Qué era</strong></td><td><code>left-pad</code>: un paquete de npm de 11 líneas que rellenaba un string con espacios/ceros a la izquierda.</td></tr>
+              <tr><td><strong>Qué pasó</strong></td><td>Su autor, Azer Koçulu, retiró (<em>unpublish</em>) todos sus paquetes de npm tras una disputa por el nombre de otro de sus proyectos.</td></tr>
+              <tr><td><strong>Impacto</strong></td><td>Miles de proyectos —incluyendo herramientas tan usadas como Babel— dependían de <code>left-pad</code> de forma directa o indirecta, y sus builds empezaron a fallar en minutos en todo el mundo.</td></tr>
+              <tr><td><strong>Causa raíz</strong></td><td>Ninguno de esos proyectos había fijado ni verificado el contenido de una dependencia tan pequeña; todos confiaban en que seguiría disponible.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>La respuesta del ecosistema</h1>
+          <p>npm restauró manualmente el paquete horas después para frenar el daño, pero el incidente expuso un problema estructural: <strong>cualquiera puede retirar una dependencia de la que dependen miles de proyectos, en cualquier momento.</strong></p>
+          <p>Como consecuencia directa, npm cambió sus políticas de <em>unpublish</em> para restringir la eliminación de paquetes con muchos dependientes. El caso se volvió el ejemplo de referencia de la industria para hablar de <strong>gestión de dependencias, empaquetado y despliegue responsable</strong> — los tres temas de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cerrando el curso: de escribir código a distribuirlo</h1>
+          <p>Todo lo que has construido en el semestre —clases, interfaces, manejo de archivos, librerías de terceros— ha vivido dentro de tu propio proyecto. Hoy das el paso que falta: <strong>convertir tu código en algo que otras personas puedan instalar, usar y confiar</strong>, sin copiar y pegar archivos. Eso exige responder tres preguntas: ¿bajo qué condiciones dejas que lo usen (licencia)?, ¿cómo lo empaquetas?, y ¿cómo lo pones a disposición (despliegue)?</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es una licencia de software?</h1>
+          <p>Una <strong>licencia de software</strong> es un documento legal que define qué puede y qué no puede hacer otra persona con tu código: usarlo, modificarlo, redistribuirlo, o venderlo. Sin una licencia explícita, por defecto rigen las leyes de <strong>derechos de autor</strong>: nadie más tiene permiso legal de usar tu código, aunque esté público en un repositorio.</p>
+          <p class="slide-eyebrow">Un repositorio público en GitHub sin archivo <code>LICENSE</code> no es automáticamente "libre de usar" — es, legalmente, todos los derechos reservados.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Licencias permisivas vs. copyleft</h1>
+          <p>Las licencias de código abierto se agrupan en dos familias según qué exigen a quien redistribuye el código:</p>
+          <ul>
+            <li><strong>Permisivas</strong>: permiten usar, modificar y redistribuir el código —incluso dentro de software privativo— con casi ninguna condición más allá de mantener el aviso de copyright original.</li>
+            <li><strong>Copyleft</strong>: exigen que cualquier trabajo derivado que se redistribuya se publique <strong>bajo la misma licencia</strong>, manteniendo el código (y sus modificaciones) abierto.</li>
+          </ul>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Balance entre libertad y obligación de una licencia" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Las licencias más comunes en Java</h1>
+          <table>
+            <thead><tr><th>Licencia</th><th>Tipo</th><th>Qué exige</th></tr></thead>
+            <tbody>
+              <tr><td><strong>MIT</strong></td><td>Permisiva</td><td>Solo conservar el aviso de copyright y la licencia en las copias.</td></tr>
+              <tr><td><strong>Apache 2.0</strong></td><td>Permisiva</td><td>Igual que MIT, más una concesión explícita de patentes (usada por Commons CSV/Math, PDFBox, JFreeChart).</td></tr>
+              <tr><td><strong>GPL v3</strong></td><td>Copyleft fuerte</td><td>Todo el programa que la incluya debe distribuirse también bajo GPL, con su código fuente disponible.</td></tr>
+              <tr><td><strong>LGPL v3</strong></td><td>Copyleft débil</td><td>Solo exige abrir el código de la propia librería LGPL, no del programa que la usa como dependencia.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>Cisco Systems vs. Free Software Foundation (2003–2009)</h1>
+          <p>Cisco distribuyó los routers Linksys WRT54G con firmware que incluía <strong>BusyBox y el kernel Linux</strong>, ambos bajo licencia <strong>GPL</strong>, sin publicar el código fuente modificado que la GPL exige entregar a quien recibe el binario.</p>
+          <p>La <strong>Free Software Foundation</strong> y luego el <strong>Software Freedom Law Center</strong> reclamaron el incumplimiento durante años; Cisco resistió el cambio de proceso interno hasta que en 2009 llegó a un acuerdo: publicó el código fuente exigido, nombró un responsable interno de cumplimiento de licencias open source y pagó una suma a la FSF.</p>
+          <p class="slide-eyebrow">No es un caso aislado ni antiguo: hoy existen equipos legales y de "compliance" dedicados solo a auditar qué licencias trae cada dependencia de un producto de software.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ya elegiste la licencia — ahora, ¿cómo lo empaquetas?</h1>
+          <p>Una licencia define las reglas de uso, pero no resuelve el problema técnico: ¿cómo entrega alguien su código para que otro proyecto lo agregue como dependencia, igual que agregaste Apache Commons CSV o JFreeChart en la Unidad 4? La respuesta, en el ecosistema Java, es <strong>Maven</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Maven: coordenadas de un artefacto</h1>
+          <p>Cada dependencia que has agregado este semestre en un <code>pom.xml</code> se identifica con tres coordenadas únicas, llamadas <strong>GAV</strong>:</p>
+          <ul>
+            <li><code>groupId</code>: quién lo publica (convención: dominio invertido, ej. <code>org.apache.pdfbox</code>).</li>
+            <li><code>artifactId</code>: el nombre del proyecto o librería.</li>
+            <li><code>version</code>: qué versión exacta se está usando.</li>
+          </ul>
+          <pre><code>&lt;groupId&gt;co.edu.udea&lt;/groupId&gt;
+&lt;artifactId&gt;mi-libreria&lt;/artifactId&gt;
+&lt;version&gt;1.0.0&lt;/version&gt;</code></pre>
+          <img class="portada-icon" src="img/apachemaven.svg" alt="Apache Maven" style="display:block;width:110px;height:110px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Empaquetar: de código fuente a <code>.jar</code></h1>
+          <p>El comando <code>mvn package</code> compila el proyecto y lo empaqueta en un archivo <code>.jar</code> (<em>Java ARchive</em>) dentro de la carpeta <code>target/</code> — el mismo formato en el que llegan las librerías que ya usas (Commons CSV, PDFBox, JFreeChart son, cada una, un <code>.jar</code>).</p>
+          <table>
+            <thead><tr><th>Tipo de JAR</th><th>Qué contiene</th></tr></thead>
+            <tbody>
+              <tr><td><strong>JAR normal</strong></td><td>Solo las clases compiladas del proyecto — asume que quien lo usa ya tiene las dependencias.</td></tr>
+              <tr><td><strong>Fat/Uber JAR</strong></td><td>Las clases del proyecto <strong>más todas sus dependencias</strong> empaquetadas juntas — se ejecuta solo, sin instalar nada más.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Versionado semántico (SemVer)</h1>
+          <p>Cambiar la <code>version</code> de un artefacto sin criterio rompe la confianza de quien depende de él —el problema de fondo del caso <code>left-pad</code>—. <strong>SemVer</strong> resuelve esto con un formato <code>MAYOR.MENOR.PARCHE</code> (ej. <code>2.4.1</code>) donde cada número comunica un significado exacto:</p>
+          <table>
+            <thead><tr><th>Número</th><th>Se incrementa cuando…</th></tr></thead>
+            <tbody>
+              <tr><td><strong>MAYOR</strong></td><td>Hay cambios que rompen compatibilidad con versiones anteriores.</td></tr>
+              <tr><td><strong>MENOR</strong></td><td>Se agrega funcionalidad nueva, compatible con lo anterior.</td></tr>
+              <tr><td><strong>PARCHE</strong></td><td>Se corrige un bug, sin cambiar la API pública.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/code-branch.svg" alt="Versionado del código" style="display:block;width:110px;height:110px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Clasifiquen el cambio de versión</h1>
+          <p><strong>En parejas</strong>, para cada cambio digan si el siguiente número de versión debe subir MAYOR, MENOR o PARCHE (partiendo de la versión actual <code>2.3.5</code>):</p>
+          <ol>
+            <li>Se corrige un error que hacía fallar <code>DescriptiveStatistics.getMean()</code> con listas vacías.</li>
+            <li>Se agrega un nuevo método <code>getModa()</code>, sin tocar los métodos existentes.</li>
+            <li>Se renombra el método <code>leerCSV()</code> a <code>leerArchivoCSV()</code>, eliminando el anterior.</li>
+          </ol>
+          <p class="slide-eyebrow">4 minutos · justifiquen cada respuesta con la tabla de la diapositiva anterior</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del <code>.jar</code> en tu disco a un artefacto que otros pueden instalar</h1>
+          <p>Empaquetar produce un archivo — <strong>desplegarlo</strong> es lo que lo pone al alcance de quien lo necesita, sin que tenga que pedírtelo por correo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dos formas de desplegar un JAR</h1>
+          <table>
+            <thead><tr><th>Forma</th><th>Cuándo se usa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Publicar en un repositorio de artefactos</strong> (Maven Central, GitHub Packages)</td><td>Cuando el JAR es una <strong>librería</strong> que otros proyectos agregarán como dependencia en su propio <code>pom.xml</code>.</td></tr>
+              <tr><td><strong>Distribuir un JAR ejecutable</strong> (<code>java -jar mi-app.jar</code>)</td><td>Cuando el JAR es una <strong>aplicación</strong> que se ejecuta directamente, no una dependencia de otro proyecto.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/cloud-arrow-up.svg" alt="Publicación de artefactos" style="display:block;width:120px;height:120px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Hacer un JAR ejecutable: el manifiesto</h1>
+          <p>Para que <code>java -jar</code> sepa qué clase ejecutar, el JAR necesita un archivo <code>META-INF/MANIFEST.MF</code> que declare la clase principal. En Maven, se configura declarativamente en el <code>pom.xml</code> con el plugin <code>maven-jar-plugin</code>:</p>
+          <pre><code>&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
+      &lt;configuration&gt;
+        &lt;archive&gt;
+          &lt;manifest&gt;
+            &lt;mainClass&gt;co.edu.udea.App&lt;/mainClass&gt;
+          &lt;/manifest&gt;
+        &lt;/archive&gt;
+      &lt;/configuration&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El checklist antes de publicar cualquier librería</h1>
+          <ol>
+            <li>Archivo <code>LICENSE</code> en la raíz del repositorio, con una licencia elegida a propósito (no dejarlo vacío).</li>
+            <li>Coordenadas Maven (<code>groupId</code>/<code>artifactId</code>) consistentes y sin conflicto con librerías existentes.</li>
+            <li>Número de versión que respeta SemVer, coherente con lo que realmente cambió.</li>
+            <li>Un <code>README</code> que explique cómo agregar la dependencia y qué hace la librería.</li>
+            <li>Confirmar que ninguna dependencia interna tiene una licencia <strong>incompatible</strong> con la que se está eligiendo (ej. no envolver código GPL dentro de un proyecto que se publica como MIT sin cumplir la GPL).</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de la sesión</h1>
+          <ol>
+            <li>Sin licencia explícita, el código público sigue siendo "todos los derechos reservados" por defecto — MIT y Apache 2.0 son permisivas, GPL y LGPL son copyleft.</li>
+            <li>Elegir mal (o ignorar) la licencia tiene consecuencias legales reales: el caso Cisco/FSF terminó en una demanda y un acuerdo de cumplimiento.</li>
+            <li>Maven empaqueta el código en un <code>.jar</code> identificado por <code>groupId</code>/<code>artifactId</code>/<code>version</code>; SemVer (<code>MAYOR.MENOR.PARCHE</code>) comunica qué tipo de cambio trae cada versión nueva.</li>
+            <li>Desplegar es publicar ese artefacto (repositorio Maven) o distribuirlo como ejecutable (<code>java -jar</code> con <code>MANIFEST.MF</code>) — y el caso <code>left-pad</code> recuerda por qué la gestión responsable de dependencias importa para todo el ecosistema, no solo para tu proyecto.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Revisa la licencia de al menos dos librerías que hayas usado este semestre (Commons CSV, Commons Math, JFreeChart, PDFBox, Gson) e identifica si son permisivas o copyleft.</li>
+            <li>Piensa en el checklist de publicación de la diapositiva anterior aplicado a un proyecto propio del curso.</li>
+          </ul>
+          <p><strong>Próxima sesión: Sistema de Generación Automática de Reportes con IA</strong> — sigue dentro de la Unidad 6.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia el despliegue" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

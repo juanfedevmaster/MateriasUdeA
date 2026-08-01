@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Principios SOLID — Semana 7</title>
+  <meta name="description" content="Los cinco principios SOLID de diseño orientado a objetos, con ejemplos en Java — Técnicas de Programación, Unidad 3, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/principios-solid/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Principios SOLID — Semana 7" />
+  <meta property="og:description" content="Los cinco principios SOLID de diseño orientado a objetos, con ejemplos en Java — Técnicas de Programación, Unidad 3, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/principios-solid/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Principios SOLID — Semana 7" />
+  <meta name="twitter:description" content="Los cinco principios SOLID de diseño orientado a objetos, con ejemplos en Java — Técnicas de Programación, Unidad 3, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/principios-solid.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 3 — Técnicas de Programación: Principios SOLID</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Bloques de diseño bien organizados" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Cambias una línea en una clase y, sin saber por qué, se rompen diez módulos que nunca deberían haberse enterado de que esa clase existía.</h1>
+          <img class="portada-icon" src="img/bomb.svg" alt="Un cambio pequeño con efectos en cadena" style="display:block;width:240px;height:240px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De construir objetos a diseñarlos bien</h1>
+          <p>En la Unidad 2 aprendiste a construir clases, herencia, interfaces y polimorfismo: las <strong>herramientas</strong> del paradigma objetual. La Unidad 3 se enfoca en algo distinto: <strong>cómo usar bien esas herramientas</strong> para que el código sea fácil de mantener, extender y probar a medida que un proyecto crece. Los <strong>principios SOLID</strong> son cinco reglas de diseño, formuladas por Robert C. Martin a partir de ideas previas de Bertrand Meyer y Barbara Liskov, que ayudan justamente a eso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>SOLID: cinco letras, cinco principios</h1>
+          <p>SOLID es un acrónimo que agrupa cinco principios de diseño orientado a objetos. Ninguno es una regla sintáctica de Java: son criterios para decidir <strong>cómo dividir responsabilidades entre clases e interfaces</strong>.</p>
+          <table>
+            <thead><tr><th>Letra</th><th>Principio</th></tr></thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>Single Responsibility — Responsabilidad única</td></tr>
+              <tr><td><strong>O</strong></td><td>Open/Closed — Abierto/cerrado</td></tr>
+              <tr><td><strong>L</strong></td><td>Liskov Substitution — Sustitución de Liskov</td></tr>
+              <tr><td><strong>I</strong></td><td>Interface Segregation — Segregación de interfaces</td></tr>
+              <tr><td><strong>D</strong></td><td>Dependency Inversion — Inversión de dependencias</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — S</p>
+          <h1>Responsabilidad única: una clase, un motivo de cambio</h1>
+          <p>Una clase debe tener <strong>un solo motivo para cambiar</strong>. Si una clase calcula, guarda en archivo y además imprime un reporte, tiene tres motivos distintos para cambiar (regla de negocio, formato de archivo, formato de impresión) — y cambiar uno arriesga romper los otros dos sin que se note.</p>
+          <pre><code>// Viola SRP: mezcla cálculo, persistencia e impresión
+public class Factura {
+    public double calcularTotal() { /* ... */ }
+    public void guardarEnArchivo() { /* ... */ }
+    public void imprimirReporte() { /* ... */ }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — S</p>
+          <h1>Separando responsabilidades</h1>
+          <p>La solución no es eliminar funcionalidad, es <strong>repartirla</strong> en clases distintas, cada una con un único motivo de cambio.</p>
+          <pre><code>public class Factura {
+    public double calcularTotal() { /* ... */ }
+}
+
+public class RepositorioFacturas {
+    public void guardar(Factura f) { /* ... */ }
+}
+
+public class ReporteFactura {
+    public void imprimir(Factura f) { /* ... */ }
+}</code></pre>
+          <p>Ahora un cambio en el formato de impresión no toca la clase que calcula el total.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — O</p>
+          <h1>Abierto/cerrado: extender sin modificar</h1>
+          <p>Una clase debe estar <strong>abierta a extensión</strong> (se le puede agregar comportamiento nuevo) pero <strong>cerrada a modificación</strong> (no hay que tocar su código ya probado para lograrlo). El mecanismo típico en Java para esto son las <strong>interfaces y la herencia</strong>: en vez de agregar un nuevo <code>if</code> a un método existente, se agrega una clase nueva que implementa el mismo contrato.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — O</p>
+          <h1>De un <code>switch</code> que crece a una interfaz que se extiende</h1>
+          <pre><code>// Cada descuento nuevo obliga a MODIFICAR este método
+public double calcularDescuento(String tipoCliente, double monto) {
+    if (tipoCliente.equals("VIP")) return monto * 0.20;
+    if (tipoCliente.equals("FRECUENTE")) return monto * 0.10;
+    // ...un "else if" más por cada tipo de cliente nuevo
+    return 0;
+}</code></pre>
+          <pre><code>public interface Descuento {
+    double calcular(double monto);
+}
+public class DescuentoVip implements Descuento {
+    public double calcular(double monto) { return monto * 0.20; }
+}
+// Un cliente nuevo = una clase nueva, sin tocar las anteriores</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — L</p>
+          <h1>Sustitución de Liskov: la subclase no puede sorprender</h1>
+          <p>Si una clase <code>B</code> hereda de <code>A</code>, cualquier parte del programa que use un objeto de tipo <code>A</code> debe poder recibir un objeto de tipo <code>B</code> <strong>sin darse cuenta del cambio y sin que el programa se rompa</strong>. La subclase puede especializar comportamiento, pero no puede violar las expectativas que ya generaba la clase padre (por ejemplo, lanzando una excepción donde el padre nunca lo hacía).</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El clásico caso del rectángulo y el cuadrado</h1>
+          <pre><code>public class Rectangulo {
+    protected double ancho, alto;
+    public void setAncho(double a) { this.ancho = a; }
+    public void setAlto(double a) { this.alto = a; }
+}
+
+public class Cuadrado extends Rectangulo {
+    public void setAncho(double a) { ancho = a; alto = a; } // ¡sorpresa!
+    public void setAlto(double a)  { ancho = a; alto = a; }
+}</code></pre>
+          <p>Un código que espera un <code>Rectangulo</code> y hace <code>setAncho(5); setAlto(2)</code> asume que el área queda en 10 — pero si recibe un <code>Cuadrado</code>, el área termina en 4. <code>Cuadrado</code> no puede sustituir a <code>Rectangulo</code> sin romper esa expectativa: viola LSP.</p>
+          <img class="portada-icon" src="img/ban.svg" alt="La subclase rompe el comportamiento esperado" style="display:block;width:110px;height:110px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — I</p>
+          <h1>Segregación de interfaces: contratos pequeños y específicos</h1>
+          <p>Ninguna clase debería verse obligada a implementar métodos que <strong>no necesita</strong>. Una interfaz grande con muchos métodos ("interfaz gorda") fuerza a las clases que la implementan a escribir métodos vacíos o que lanzan excepciones — señal de que el contrato debería dividirse en interfaces más pequeñas y específicas.</p>
+          <pre><code>// Interfaz gorda: obliga a TODOS los empleados a "programar"
+public interface Empleado {
+    void programar();
+    void administrarNomina();
+}
+public class Programador implements Empleado {
+    public void programar() { /* ok */ }
+    public void administrarNomina() { throw new UnsupportedOperationException(); }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — I</p>
+          <h1>Dividiendo el contrato</h1>
+          <pre><code>public interface Programador { void programar(); }
+public interface Administrador { void administrarNomina(); }
+
+public class DesarrolladorSenior implements Programador {
+    public void programar() { /* ... */ }
+}
+public class LiderDeArea implements Programador, Administrador {
+    public void programar() { /* ... */ }
+    public void administrarNomina() { /* ... */ }
+}</code></pre>
+          <p>Cada clase implementa exactamente las interfaces que le corresponden — ninguna carga con métodos que no usa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto — D</p>
+          <h1>Inversión de dependencias: depender de abstracciones</h1>
+          <p>Las clases de alto nivel (reglas de negocio) no deberían depender directamente de clases de bajo nivel (detalles concretos, como una base de datos específica) — ambas deberían depender de una <strong>abstracción</strong> (una interfaz). Así, cambiar el detalle concreto no obliga a tocar la regla de negocio.</p>
+          <pre><code>// Depende directamente del detalle concreto
+public class ServicioNotificaciones {
+    private EmailSender sender = new EmailSender(); // acoplado a Email
+}
+
+public interface Notificador { void enviar(String mensaje); }
+
+public class ServicioNotificaciones {
+    private Notificador notificador; // depende de la abstracción
+    public ServicioNotificaciones(Notificador n) { this.notificador = n; }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso</p>
+          <h1>Por qué esto importa a escala: el "Fail Whale" de Twitter</h1>
+          <p>Entre 2007 y 2010, Twitter era conocido por su famosa "ballena" de error — la plataforma caía constantemente bajo el crecimiento de usuarios. Su arquitectura inicial en Ruby on Rails estaba fuertemente acoplada: cambiar una parte del sistema afectaba muchas otras, dificultando escalar y corregir errores rápido. Twitter migró gradualmente componentes críticos a servicios en la JVM, separados por responsabilidad, lo que le permitió escalar y evolucionar cada parte de forma independiente.</p>
+          <p class="slide-eyebrow">Caso ampliamente documentado en la industria como ejemplo de por qué el desacoplamiento importa a escala.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la teoría a cuándo aplicarla</h1>
+          <p>No hace falta ser Twitter para que SOLID importe: el mismo problema de acoplamiento aparece en un proyecto pequeño de curso cuando una clase crece sin control. Pero eso no significa que haya que aplicar los cinco principios a rajatabla desde la primera línea.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿SOLID siempre, desde el primer momento?</h1>
+          <p>Aplicar los cinco principios de forma extrema desde el inicio de un proyecto pequeño puede producir <strong>sobre-ingeniería</strong>: demasiadas interfaces e indirecciones para un problema simple, más difíciles de seguir que el código "sin principios". SOLID resuelve problemas de <strong>cambio y crecimiento</strong> — si una clase nunca va a cambiar ni a tener una segunda implementación, dividirla preventivamente no siempre compensa la complejidad que agrega. El criterio práctico: aplícalos donde ya ves señales de acoplamiento o donde sabes que el código va a evolucionar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Detecten la violación</h1>
+          <p><strong>En parejas:</strong> revisen esta clase y decidan qué principio(s) de SOLID viola y cómo la dividirían.</p>
+          <pre><code>public class GestorPedidos {
+    public void registrarPedido(String producto, int cantidad) { /* ... */ }
+    public void calcularImpuestos(double monto) { /* ... */ }
+    public void enviarCorreoConfirmacion(String email) { /* ... */ }
+    public void guardarEnBaseDeDatos() { /* ... */ }
+}</code></pre>
+          <p class="slide-eyebrow">6 minutos · compartan su propuesta con otra pareja</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><strong>S</strong> — cada clase debe tener un único motivo para cambiar.</li>
+            <li><strong>O</strong> — extiende comportamiento con clases/interfaces nuevas, sin modificar código que ya funciona.</li>
+            <li><strong>L</strong> — una subclase debe poder sustituir a su clase padre sin sorprender al código que la usa.</li>
+            <li><strong>I</strong> — prefiere varias interfaces pequeñas y específicas a una interfaz grande y genérica.</li>
+            <li><strong>D</strong> — depende de abstracciones (interfaces), no de implementaciones concretas.</li>
+            <li>SOLID es una guía para decidir <strong>cuándo</strong> dividir responsabilidades, no una obligación de aplicar los cinco principios en cada clase.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Revisar un proyecto propio de la Unidad 2 e identificar una clase que viole SRP.</li>
+            <li>Traer en mente ese ejemplo: en la próxima sesión se retoma para trabajar código limpio.</li>
+          </ul>
+          <p><strong>Próxima sesión: Código limpio</strong> — nombres, funciones y comentarios que hacen el código fácil de leer.</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

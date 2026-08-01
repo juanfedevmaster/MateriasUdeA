@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Archivos: Texto y CSV — Semana 9</title>
+  <meta name="description" content="Lectura y escritura de archivos con try-with-resources, y estructura de archivos CSV — Técnicas de Programación, Unidad 4, Semana 9." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/gestion-de-archivos-texto-y-csv/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Gestión de Archivos: Texto y CSV — Semana 9" />
+  <meta property="og:description" content="Lectura y escritura de archivos con try-with-resources, y estructura de archivos CSV — Técnicas de Programación, Unidad 4, Semana 9." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/gestion-de-archivos-texto-y-csv/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gestión de Archivos: Texto y CSV — Semana 9" />
+  <meta name="twitter:description" content="Lectura y escritura de archivos con try-with-resources, y estructura de archivos CSV — Técnicas de Programación, Unidad 4, Semana 9." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gestion-de-archivos-texto-y-csv.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 4 — Archivos, Errores y Pruebas: Gestión de Archivos, Texto y CSV</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/folder-open.svg" alt="Archivos y carpetas" style="display:block;width:230px;height:230px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un archivo que tu programa olvidó cerrar puede quedar con datos a medio escribir — y nadie lo nota hasta que alguien intenta leerlo.</h1>
+          <img class="portada-icon" src="img/file-csv.svg" alt="Archivo de datos" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De manejar errores a manejar archivos</h1>
+          <p>La sesión pasada aprendiste a capturar excepciones y, en particular, a usar <code>try-with-resources</code> para cerrar recursos automáticamente. Hoy ese mecanismo deja de ser teoría: <strong>leer y escribir archivos</strong> es exactamente el escenario donde más falta hace — un archivo abierto que nunca se cierra puede quedar bloqueado, corrupto o con datos incompletos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La clase <code>File</code>: una ruta, no un contenido</h1>
+          <p><code>File</code> (paquete <code>java.io</code>) representa la <strong>ubicación</strong> de un archivo o carpeta en el sistema — no su contenido. Con un objeto <code>File</code> puedes preguntar si existe, si es un directorio, o su ruta absoluta, pero para leer o escribir texto se necesita otra clase encima.</p>
+          <pre><code>File archivo = new File("datos/notas.txt");   // ruta relativa
+System.out.println(archivo.exists());          // ¿existe?
+System.out.println(archivo.getAbsolutePath()); // ruta absoluta completa</code></pre>
+          <p>Una <strong>ruta relativa</strong> se interpreta desde el directorio donde se ejecuta el programa (puede variar entre IDE y consola); una <strong>ruta absoluta</strong> (ej. <code>C:\Users\ana\notas.txt</code> o <code>/home/ana/notas.txt</code>) siempre apunta al mismo lugar, sin importar desde dónde se ejecute.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Leer texto: <code>FileReader</code> + <code>BufferedReader</code></h1>
+          <p><code>FileReader</code> abre el archivo para lectura de texto; envolverlo en un <code>BufferedReader</code> agrega el método <code>readLine()</code>, que lee <strong>una línea completa a la vez</strong> y devuelve <code>null</code> cuando ya no hay más líneas.</p>
+          <pre><code>try (BufferedReader lector = new BufferedReader(new FileReader("notas.txt"))) {
+    String linea;
+    while ((linea = lector.readLine()) != null) {
+        System.out.println(linea);
+    }
+} catch (IOException e) {
+    System.out.println("No se pudo leer el archivo: " + e.getMessage());
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Alternativa de lectura: <code>Scanner</code> sobre un <code>File</code></h1>
+          <p>Ya conoces <code>Scanner</code> para leer del teclado (<code>System.in</code>); la misma clase también puede leer directamente de un <code>File</code>, con la ventaja de reutilizar métodos que ya conoces (<code>nextLine()</code>, <code>hasNextLine()</code>, <code>nextInt()</code>).</p>
+          <pre><code>try (Scanner lector = new Scanner(new File("notas.txt"))) {
+    while (lector.hasNextLine()) {
+        String linea = lector.nextLine();
+        System.out.println(linea);
+    }
+} catch (FileNotFoundException e) {
+    System.out.println("Archivo no encontrado: " + e.getMessage());
+}</code></pre>
+          <p><code>Scanner</code> sobre un archivo lanza <code>FileNotFoundException</code> si la ruta no existe — la misma excepción checked que ya viste la sesión pasada, ahora en un caso real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Escribir texto: <code>FileWriter</code> + <code>BufferedWriter</code></h1>
+          <p><code>FileWriter</code> abre (o crea) un archivo para escritura; <code>BufferedWriter</code> agrupa la escritura en un búfer para hacerla más eficiente, con el método <code>write()</code>. A diferencia de <code>println</code>, <code>write()</code> no agrega salto de línea automáticamente — hay que escribirlo explícitamente.</p>
+          <pre><code>try (BufferedWriter escritor = new BufferedWriter(new FileWriter("salida.txt"))) {
+    escritor.write("Nombre,Nota");
+    escritor.newLine();
+    escritor.write("Ana,4.8");
+    escritor.newLine();
+} catch (IOException e) {
+    System.out.println("No se pudo escribir el archivo: " + e.getMessage());
+}</code></pre>
+          <p class="slide-eyebrow">Por defecto, <code>new FileWriter("salida.txt")</code> sobrescribe el archivo si ya existe; con <code>new FileWriter("salida.txt", true)</code> se agrega al final en vez de sobrescribir.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Escritura formateada: <code>PrintWriter</code></h1>
+          <p><code>PrintWriter</code> agrega a la escritura de archivos los mismos métodos que ya usas con <code>System.out</code>: <code>print()</code>, <code>println()</code> y <code>printf()</code> con especificadores de formato — útil cuando se necesita controlar decimales o alineación al escribir en el archivo, igual que en consola.</p>
+          <pre><code>try (PrintWriter escritor = new PrintWriter(new FileWriter("reporte.txt"))) {
+    escritor.println("Reporte de notas");
+    escritor.printf("Promedio: %.2f%n", 4.35);
+} catch (IOException e) {
+    System.out.println("No se pudo generar el reporte: " + e.getMessage());
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>try-with-resources</code> aplicado a archivos</h1>
+          <p><code>BufferedReader</code>, <code>BufferedWriter</code>, <code>Scanner</code> y <code>PrintWriter</code> implementan <code>AutoCloseable</code> — por eso, en todos los ejemplos anteriores, se declararon dentro del paréntesis del <code>try</code>. Java cierra automáticamente el recurso al salir del bloque, sin importar si terminó normal o por una excepción, evitando la fuga de recursos que abre esta sesión.</p>
+          <pre><code>// Sin try-with-resources: hay que recordar cerrar manualmente,
+// incluso si ocurre una excepción en medio de la lectura.
+BufferedReader lector = new BufferedReader(new FileReader("notas.txt"));
+try {
+    // ...
+} finally {
+    lector.close();   // fácil de olvidar, sobre todo con varios recursos abiertos
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Excepciones típicas al trabajar con archivos</h1>
+          <table>
+            <thead><tr><th>Excepción</th><th>Cuándo ocurre</th></tr></thead>
+            <tbody>
+              <tr><td><code>FileNotFoundException</code></td><td>Se intenta <strong>leer</strong> un archivo cuya ruta no existe (subclase de <code>IOException</code>)</td></tr>
+              <tr><td><code>IOException</code></td><td>Falla general de entrada/salida: disco lleno, permisos insuficientes, archivo bloqueado por otro proceso</td></tr>
+            </tbody>
+          </table>
+          <p>Ambas son excepciones <strong>checked</strong> (vistas la sesión pasada): el compilador obliga a capturarlas o declararlas con <code>throws</code>, precisamente porque el sistema de archivos es un recurso externo que puede fallar por razones fuera del control del programa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un archivo CSV?</h1>
+          <p><strong>CSV</strong> (<em>comma-separated values</em>) es un formato de texto plano para representar datos tabulares: cada <strong>fila</strong> es un registro, y dentro de cada fila los <strong>valores (columnas)</strong> se separan por comas. La primera fila suele ser el <strong>encabezado</strong>, con el nombre de cada columna.</p>
+          <pre><code>nombre,nota,aprobado
+Ana,4.8,true
+Luis,2.9,false
+Carla,3.5,true</code></pre>
+          <p>Al ser texto plano (sin formato binario propietario), un CSV se puede abrir con cualquier editor de texto, hoja de cálculo (Excel, Google Sheets) o programa que lo lea línea por línea — por eso es tan común para intercambiar datos entre sistemas distintos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Casos de uso típicos de CSV</h1>
+          <ul>
+            <li><strong>Exportar reportes</strong> de una aplicación (notas, ventas, inventario) para abrirlos en Excel.</li>
+            <li><strong>Importar datos iniciales</strong> a un programa o base de datos (una lista de estudiantes, un catálogo de productos).</li>
+            <li><strong>Intercambiar información entre sistemas</strong> que no comparten el mismo lenguaje de programación — CSV no depende de Java, Python ni ningún otro lenguaje en particular.</li>
+            <li><strong>Guardar resultados de procesamiento</strong> de datos para análisis posterior en otra herramienta.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Parsing manual de una línea CSV</h1>
+          <p>Para convertir cada línea de texto en sus valores individuales, el método <code>String.split(",")</code> divide la cadena por cada coma y devuelve un arreglo de <code>String</code>.</p>
+          <pre><code>try (BufferedReader lector = new BufferedReader(new FileReader("notas.csv"))) {
+    String encabezado = lector.readLine();     // se descarta o se guarda aparte
+    String linea;
+    while ((linea = lector.readLine()) != null) {
+        String[] valores = linea.split(",");
+        String nombre = valores[0];
+        double nota = Double.parseDouble(valores[1]);
+        System.out.println(nombre + " -> " + nota);
+    }
+} catch (IOException e) {
+    System.out.println("Error al leer el CSV: " + e.getMessage());
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El límite de <code>split(",")</code>: comas dentro de un valor</h1>
+          <pre><code>// Fila real: una dirección que contiene una coma
+Ana,"Calle 10, # 20-30",4.8
+
+// linea.split(",") la parte en CUATRO valores, no en tres:
+// ["Ana", "\"Calle 10", " # 20-30\"", "4.8"]</code></pre>
+          <p>Si un valor incluye una coma (como una dirección) o comillas para agrupar texto, <code>split(",")</code> lo corta en el lugar equivocado, porque no entiende la convención de comillas del formato CSV — solo separa por cada carácter <code>,</code> literal. Este es un problema real y conocido del formato; se resuelve con librerías especializadas de parsing CSV (que respetan comillas y comas internas), algo que queda fuera del alcance de hoy pero vale la pena tener presente antes de asumir que <code>split(",")</code> siempre es suficiente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas al trabajar con archivos</h1>
+          <ul>
+            <li><strong>Cierra siempre los recursos</strong> — usa <code>try-with-resources</code> por defecto, no cierre manual salvo que sea estrictamente necesario.</li>
+            <li><strong>Valida que el archivo exista</strong> antes de leerlo (<code>archivo.exists()</code>) cuando quieras dar un mensaje más claro que esperar a capturar la excepción.</li>
+            <li><strong>No asumas que una escritura fue exitosa</strong> sin manejar su <code>IOException</code> — el disco puede estar lleno o sin permisos, y el programa debe poder informarlo.</li>
+            <li><strong>Descarta o valida la fila de encabezado</strong> al leer un CSV, para no tratarla como un registro de datos por error.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Lean y sumen un CSV</h1>
+          <p><strong>En parejas:</strong> con el archivo <code>notas.csv</code> del ejemplo (columnas <code>nombre,nota,aprobado</code>), escriban un método que lo lea línea por línea con <code>BufferedReader</code>, calcule el promedio de las notas y lo escriba en un archivo <code>promedio.txt</code> usando <code>PrintWriter</code>.</p>
+          <p class="slide-eyebrow">8 minutos · usen try-with-resources en ambos archivos, y no olviden descartar el encabezado</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><code>File</code> representa una ruta, no contenido; las rutas pueden ser absolutas o relativas.</li>
+            <li>Para leer texto: <code>BufferedReader</code> (<code>readLine()</code>) o <code>Scanner</code> sobre un <code>File</code>; para escribir: <code>BufferedWriter</code> o <code>PrintWriter</code> (con formato tipo <code>printf</code>).</li>
+            <li><code>try-with-resources</code> cierra automáticamente estos recursos; <code>IOException</code> y <code>FileNotFoundException</code> son las excepciones checked más comunes al trabajar con archivos.</li>
+            <li>Un CSV es texto tabular (filas = registros, comas = columnas); <code>split(",")</code> parsea líneas simples, pero falla si un valor contiene comas o comillas.</li>
+          </ol>
+          <img class="portada-icon" src="img/table.svg" alt="Datos tabulares" style="display:block;width:150px;height:150px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar la lectura y escritura de un archivo de texto propio con <code>try-with-resources</code>, capturando <code>IOException</code>/<code>FileNotFoundException</code> con mensajes claros.</li>
+            <li>Crear un CSV propio de al menos 5 filas y escribir el código que lo lea y calcule algún resumen (promedio, conteo, máximo).</li>
+          </ul>
+          <p><strong>Con esto se cierra el bloque de archivos y errores de la Unidad 4</strong> — el siguiente frente del curso profundiza en pruebas y verificación de código.</p>
+          <img class="portada-icon" src="img/floppy-disk.svg" alt="Guardar y persistir datos" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

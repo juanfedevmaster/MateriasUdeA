@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundamentos del Lenguaje Java — Semana 1</title>
+  <meta name="description" content="JDK, JRE, JVM, IDE, convenciones de nombres y primer programa — Técnicas de Programación, Unidad 0, Semana 1." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/fundamentos-del-lenguaje-java/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Fundamentos del Lenguaje Java — Semana 1" />
+  <meta property="og:description" content="JDK, JRE, JVM, IDE, convenciones de nombres y primer programa — Técnicas de Programación, Unidad 0, Semana 1." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/fundamentos-del-lenguaje-java/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fundamentos del Lenguaje Java — Semana 1" />
+  <meta name="twitter:description" content="JDK, JRE, JVM, IDE, convenciones de nombres y primer programa — Técnicas de Programación, Unidad 0, Semana 1." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/fundamentos-del-lenguaje-java.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 0 — Fundamentos del Lenguaje Java</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/openjdk.svg" alt="Java" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Se escribe una vez.<br>Se ejecuta en cualquier parte.</h1>
+          <img class="portada-icon" src="img/globe.svg" alt="Portabilidad" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Java y la máquina virtual</h1>
+          <p>Java es un lenguaje de programación de propósito general, orientado a objetos, que <strong>compila el código fuente</strong> (<code>.java</code>) <strong>a bytecode</strong> (<code>.class</code>) en lugar de código máquina nativo.</p>
+          <p><strong>Ese bytecode lo ejecuta la Máquina Virtual de Java (JVM)</strong> — es la capa que permite que el mismo programa corra en Windows, Linux o macOS sin recompilar.</p>
+          <img class="portada-icon" src="img/cube.svg" alt="Bytecode y JVM" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>JDK, JRE y JVM: quién hace qué</h1>
+          <table>
+            <thead>
+              <tr><th>Componente</th><th>Qué incluye</th><th>Para qué sirve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>JVM</td><td>El motor que ejecuta bytecode</td><td>Correr programas Java ya compilados</td></tr>
+              <tr><td>JRE</td><td>JVM + librerías estándar</td><td>Ejecutar programas Java (sin poder compilarlos)</td></tr>
+              <tr><td>JDK</td><td>JRE + compilador (<code>javac</code>) + herramientas</td><td>Escribir y compilar código — lo que usaremos en el curso</td></tr>
+            </tbody>
+          </table>
+          <p><strong>En este curso usaremos JDK 21</strong>, sujeto a la disponibilidad de las salas de cómputo.</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="JDK, JRE y JVM" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El IDE del curso</h1>
+          <p>Un <strong>IDE</strong> (Entorno de Desarrollo Integrado) agrupa editor de código, compilador, depurador y gestor de proyectos en un solo programa.</p>
+          <ul>
+            <li><strong>Apache NetBeans</strong> — el IDE de referencia del curso, disponible en las salas de cómputo.</li>
+            <li>Alternativas válidas para trabajar desde casa: <strong>IntelliJ IDEA</strong> (edición Community) o <strong>Visual Studio Code</strong> con el paquete de extensiones para Java.</li>
+          </ul>
+          <p><strong>Lo importante no es el IDE — es que el proyecto compile y corra igual en cualquiera de ellos.</strong></p>
+          <img class="portada-icon" src="img/toolbox.svg" alt="Entorno de desarrollo" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La estructura mínima de un programa</h1>
+          <p>Todo programa Java ejecutable necesita, como mínimo, <strong>una clase pública y un método <code>main</code></strong> — el punto de entrada que la JVM busca primero.</p>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+
+    }
+}</code></pre>
+          <p><strong>El nombre del archivo</strong> (<code>Main.java</code>) <strong>debe coincidir exactamente</strong> con el nombre de la clase pública que contiene.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ejemplo</p>
+          <h1>Hola Mundo</h1>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hola Mundo");
+    }
+}</code></pre>
+          <p><code>System.out.println(...)</code> imprime el texto en la consola y agrega un salto de línea al final. Es la forma más simple de ver qué está haciendo un programa mientras se aprende.</p>
+          <img class="portada-icon" src="img/terminal.svg" alt="Consola" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tipos de datos primitivos</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Qué guarda</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>int</code></td><td>Números enteros</td><td><code>int edad = 25;</code></td></tr>
+              <tr><td><code>double</code></td><td>Números decimales</td><td><code>double precio = 19.99;</code></td></tr>
+              <tr><td><code>char</code></td><td>Un solo carácter</td><td><code>char inicial = 'J';</code></td></tr>
+              <tr><td><code>boolean</code></td><td>Verdadero o falso</td><td><code>boolean activo = true;</code></td></tr>
+            </tbody>
+          </table>
+          <p>Java es un lenguaje de <strong>tipado estático</strong>: cada variable declara su tipo, y ese tipo no cambia durante la ejecución.</p>
+          <img class="portada-icon" src="img/table-cells.svg" alt="Tipos de datos" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>No todo son primitivos</h1>
+          <p><code>String</code>, los arreglos y cualquier clase (incluidas las que ustedes definan) son <strong>tipos de referencia</strong>: la variable no guarda el valor directamente, guarda una dirección hacia donde está el objeto en memoria.</p>
+          <p><strong>Esa diferencia explica por qué comparar dos <code>String</code> con <code>==</code> no siempre funciona como se espera</strong> — se profundizará en esto más adelante en el curso, al trabajar con objetos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Notación camel en Java</h1>
+          <table>
+            <thead>
+              <tr><th>Elemento</th><th>Convención</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Variable / método</td><td>camelCase, empieza en minúscula</td><td><code>calcularTotal</code>, <code>nombreUsuario</code></td></tr>
+              <tr><td>Clase / Interfaz</td><td>PascalCase, empieza en mayúscula</td><td><code>CuentaBancaria</code>, <code>Comparable</code></td></tr>
+              <tr><td>Constante</td><td>MAYÚSCULAS con guion bajo</td><td><code>TASA_INTERES</code></td></tr>
+              <tr><td>Paquete</td><td>minúsculas, sin guiones</td><td><code>com.udea.tecnicas</code></td></tr>
+            </tbody>
+          </table>
+          <p><strong>No es solo estilo:</strong> el compilador de Java distingue mayúsculas de minúsculas, y el equipo completo debe poder leer el código sin adivinar convenciones.</p>
+          <img class="portada-icon" src="img/font.svg" alt="Convenciones de nombres" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Declarar y mostrar</h1>
+          <p><strong>Escriban un programa que declare tres variables</strong> — su nombre (<code>String</code>), su edad (<code>int</code>) y si están matriculados en el curso (<code>boolean</code>) — <strong>y las imprima en una sola línea</strong> usando <code>System.out.println</code>.</p>
+          <p class="slide-eyebrow">10 minutos · resuelvan individualmente y comparen con la persona de al lado</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El código Java se compila a bytecode y lo ejecuta la JVM — por eso corre igual en cualquier sistema operativo.</li>
+            <li>El JDK es lo que instalamos para escribir y compilar; el JRE (incluido en el JDK) es lo que ejecuta.</li>
+            <li>Todo programa ejecutable necesita una clase pública con un método <code>main</code>.</li>
+            <li>Java distingue tipos primitivos (guardan el valor) de tipos de referencia (guardan una dirección).</li>
+            <li>Las convenciones de nombres (camelCase, PascalCase, MAYÚSCULAS) no son opcionales en este curso.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Tener instalado el JDK 21 y el IDE elegido, y haber compilado el Hola Mundo al menos una vez.</li>
+            <li>Repasar operadores aritméticos en Java (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>) — se usan desde el inicio de la próxima clase.</li>
+          </ul>
+          <p><strong>La próxima sesión arranca con el paradigma imperativo: cómo Java ejecuta instrucciones en secuencia y las decisiones que toma con operadores.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

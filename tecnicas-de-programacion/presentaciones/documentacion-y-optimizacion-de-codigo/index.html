@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación y Optimización de Código — Semana 8</title>
+  <meta name="description" content="Javadoc, README, complejidad Big-O y cuándo optimizar sin caer en la optimización prematura — Técnicas de Programación, Unidad 3, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/documentacion-y-optimizacion-de-codigo/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Documentación y Optimización de Código — Semana 8" />
+  <meta property="og:description" content="Javadoc, README, complejidad Big-O y cuándo optimizar sin caer en la optimización prematura — Técnicas de Programación, Unidad 3, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/documentacion-y-optimizacion-de-codigo/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Documentación y Optimización de Código — Semana 8" />
+  <meta name="twitter:description" content="Javadoc, README, complejidad Big-O y cuándo optimizar sin caer en la optimización prematura — Técnicas de Programación, Unidad 3, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/documentacion-y-optimizacion-de-codigo.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 3 — Técnicas de Programación: Documentación y Optimización de Código</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/book.svg" alt="Documentar y optimizar el código" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un código sin documentar es una pregunta que solo su autor puede responder — y a veces ni siquiera él, seis meses después.</h1>
+          <img class="portada-icon" src="img/circle-question.svg" alt="Preguntas sin respuesta en el código" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cerrando la Unidad 3</h1>
+          <p>Ya viste cómo estructurar código con SOLID, cómo escribirlo de forma limpia, y cómo compartirlo en equipo con GitHub. Cierra la unidad con dos frentes complementarios: <strong>documentar</strong> el código para quien lo lea después, y <strong>optimizarlo</strong> con criterio, sin sacrificar todo lo anterior por rendimiento que a veces ni siquiera hace falta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Niveles de documentación</h1>
+          <p>Documentar no es solo escribir comentarios — hay distintos niveles, cada uno con una audiencia distinta:</p>
+          <table>
+            <thead><tr><th>Nivel</th><th>Para quién</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Inline (comentarios)</td><td>Quien lee ese método específico</td><td><code>// La API exige reintentar 3 veces</code></td></tr>
+              <tr><td>Javadoc</td><td>Quien va a <em>usar</em> una clase/método sin leer su implementación</td><td><code>/** Calcula el total... */</code></td></tr>
+              <tr><td>README</td><td>Quien llega nuevo al proyecto</td><td>Qué hace, cómo instalarlo, cómo ejecutarlo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Javadoc: documentación que se puede generar</h1>
+          <p>Javadoc es la convención estándar de Java para documentar clases y métodos con comentarios especiales (<code>/** ... */</code>) que herramientas como <code>javadoc</code> pueden convertir en páginas HTML de referencia — muchas librerías de Java que ya has usado (por ejemplo, <code>ArrayList</code> o <code>Scanner</code>) están documentadas así.</p>
+          <pre><code>/**
+ * Calcula el total de una factura aplicando el IVA vigente.
+ *
+ * @param subtotal monto antes de impuestos, debe ser mayor a 0
+ * @return el total con IVA incluido
+ */
+public double calcularTotal(double subtotal) {
+    return subtotal * 1.19;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Documentar lo obvio vs. documentar el porqué</h1>
+          <pre><code>/** Este método suma dos números. @param a, b los números @return la suma */
+public int sumar(int a, int b) { return a + b; }</code></pre>
+          <p>Ese Javadoc no aporta nada que el código no diga ya. Un Javadoc útil documenta lo que <strong>no es obvio</strong> con solo leer la firma: reglas de negocio, casos límite, o por qué el método existe así.</p>
+          <pre><code>/** Redondea al peso más cercano según la política contable vigente (NIIF 15, 4.2). */
+public long redondearComision(double comision) { ... }</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>README: la puerta de entrada al proyecto</h1>
+          <p>Un buen README responde, en orden, las primeras preguntas de cualquiera que abre el repositorio:</p>
+          <ul>
+            <li><strong>Qué hace</strong> el proyecto (una o dos frases).</li>
+            <li><strong>Cómo instalarlo</strong> (dependencias, versión de Java requerida).</li>
+            <li><strong>Cómo ejecutarlo</strong> (comando exacto, o cómo correrlo desde el IDE).</li>
+            <li><strong>Cómo contribuir</strong> (si es un proyecto de equipo: convención de ramas, cómo abrir un PR — lo visto la sesión pasada).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De documentar a optimizar</h1>
+          <p>Documentar ayuda a que el código se entienda. La <strong>optimización</strong> es el otro lado de la moneda: hacer que el código use menos tiempo o memoria de la que necesitaba antes — pero, igual que con el código limpio, hay una forma correcta y una forma que sale cara de hacerlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es optimizar? Midiendo con Big-O</h1>
+          <p><strong>Optimizar</strong> es reducir el tiempo o los recursos que un programa necesita para resolver un problema. La notación <strong>Big-O</strong> describe cómo crece el tiempo de ejecución de un algoritmo a medida que crecen los datos de entrada (<code>n</code>) — no mide segundos exactos, mide la <strong>tendencia de crecimiento</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Complejidades comunes</h1>
+          <table>
+            <thead><tr><th>Notación</th><th>Se lee</th><th>Ejemplo en Java</th></tr></thead>
+            <tbody>
+              <tr><td><code>O(1)</code></td><td>Constante</td><td>Acceder a <code>arreglo[i]</code></td></tr>
+              <tr><td><code>O(log n)</code></td><td>Logarítmica</td><td>Búsqueda binaria en un arreglo ordenado</td></tr>
+              <tr><td><code>O(n)</code></td><td>Lineal</td><td>Un <code>for</code> que recorre una lista una vez</td></tr>
+              <tr><td><code>O(n²)</code></td><td>Cuadrática</td><td>Dos <code>for</code> anidados sobre la misma lista</td></tr>
+            </tbody>
+          </table>
+          <p>A medida que <code>n</code> crece, un algoritmo O(n²) se vuelve dramáticamente más lento que uno O(n) — la diferencia se nota poco con 10 elementos, y mucho con 100.000.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>"La optimización prematura es la raíz de todos los males"</h1>
+          <blockquote>"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil." — Donald Knuth, <em>Structured Programming with go to Statements</em> (1974)</blockquote>
+          <p>Knuth no dice que optimizar esté mal — dice que hacerlo <strong>antes de saber dónde está el problema real</strong> desperdicia tiempo y, casi siempre, sacrifica la legibilidad del código (todo lo trabajado en la Unidad 3) a cambio de una mejora que ni siquiera se necesitaba.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuándo optimizar: mide, no adivines</h1>
+          <p>El criterio correcto no es "esto se ve lento", es <strong>medir</strong>: identificar con datos reales (tiempo de ejecución, número de llamadas) qué parte del programa consume más recursos, antes de tocarla. Herramientas de <em>profiling</em> del IDE muestran exactamente eso. Optimizar una función que se ejecuta una vez al iniciar el programa, cuando el problema real está en un método que se llama miles de veces, es esfuerzo desperdiciado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Un caso concreto: buscar en una lista vs. un mapa</h1>
+          <pre><code>// O(n): revisa la lista completa en el peor caso
+ArrayList&lt;Estudiante&gt; lista = new ArrayList&lt;&gt;();
+Estudiante e = lista.stream()
+    .filter(est -&gt; est.getId().equals(id))
+    .findFirst().orElse(null);
+
+// O(1): acceso directo por clave
+HashMap&lt;String, Estudiante&gt; mapa = new HashMap&lt;&gt;();
+Estudiante e = mapa.get(id);</code></pre>
+          <p>Si el programa busca estudiantes por id constantemente, cambiar la estructura de datos (de <code>ArrayList</code> a <code>HashMap</code>) es una optimización real y medible — no una micro-optimización especulativa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso</p>
+          <h1>Un guion faltante y un cohete perdido</h1>
+          <p>En julio de 1962, el cohete <strong>Mariner 1</strong> de la NASA, destinado a sobrevolar Venus, tuvo que ser destruido apenas 293 segundos después del despegue porque se desvió de su trayectoria. La investigación encontró que el software de guiado tenía un error: al transcribir una fórmula matemática de las notas escritas a mano al código, faltaba una <strong>barra superior</strong> sobre una variable (que indicaba un valor promediado) — un detalle mínimo, mal documentado en las especificaciones originales, que el código terminó implementando de forma incorrecta.</p>
+          <p>El incidente, ampliamente documentado en la historia de la ingeniería de software, se cita a menudo como recordatorio de que la <strong>precisión en los detalles y su documentación</strong> —no solo la velocidad de ejecución— es parte de escribir código correcto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Identifiquen la complejidad y optimicen</h1>
+          <p><strong>En parejas:</strong> identifiquen la complejidad Big-O de este fragmento y propongan cómo reducirla.</p>
+          <pre><code>public boolean tieneDuplicados(ArrayList&lt;Integer&gt; numeros) {
+    for (int i = 0; i &lt; numeros.size(); i++) {
+        for (int j = 0; j &lt; numeros.size(); j++) {
+            if (i != j &amp;&amp; numeros.get(i).equals(numeros.get(j))) {
+                return true;
+            }
+        }
+    }
+    return false;
+}</code></pre>
+          <p class="slide-eyebrow">7 minutos · pista: piensen en un <code>HashSet</code></p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis — cierre de la Unidad 3</p>
+          <h1>Lo que hay que llevarse de la unidad</h1>
+          <ol>
+            <li>Javadoc y README documentan para audiencias distintas — quien usa el código, y quien llega nuevo al proyecto.</li>
+            <li>Documenta el porqué, no lo obvio; Big-O mide cómo crece el tiempo de ejecución con el tamaño de los datos.</li>
+            <li>Mide antes de optimizar — la optimización prematura sacrifica legibilidad por una ganancia que a veces no existe.</li>
+            <li><strong>Resumen de toda la Unidad 3:</strong> SOLID (cómo dividir responsabilidades), código limpio (cómo escribir cada método), GitHub (cómo colaborar sin perder el control) y documentación/optimización (cómo dejar el código listo para otros y para que crezca).</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima unidad</h1>
+          <ul>
+            <li>Repasar las cuatro sesiones de la Unidad 3 — el <strong>Parcial Final de Técnicas de Programación</strong> evalúa estos temas (SOLID, código limpio, GitHub, documentación y optimización), y se aplica en la semana del 30 de noviembre al 5 de diciembre.</li>
+            <li>Aplicar al menos una práctica de documentación u optimización a un proyecto propio antes de la siguiente unidad.</li>
+          </ul>
+          <p><strong>Próxima unidad: Archivos, Errores/Excepciones y Pruebas.</strong></p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente unidad" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

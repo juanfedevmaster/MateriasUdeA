@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clases Abstractas y Static — Semana 4</title>
+  <meta name="description" content="Clases y métodos abstractos, y el modificador static (atributos, métodos y constantes de clase) en Java — Técnicas de Programación, Unidad 2, Semana 4." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/clases-abstractas-y-static/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Clases Abstractas y Static — Semana 4" />
+  <meta property="og:description" content="Clases y métodos abstractos, y el modificador static (atributos, métodos y constantes de clase) en Java — Técnicas de Programación, Unidad 2, Semana 4." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/clases-abstractas-y-static/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clases Abstractas y Static — Semana 4" />
+  <meta name="twitter:description" content="Clases y métodos abstractos, y el modificador static (atributos, métodos y constantes de clase) en Java — Técnicas de Programación, Unidad 2, Semana 4." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/clases-abstractas-y-static.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 2 — Paradigma Objetual: Clases Abstractas y Static</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Plantilla incompleta a propósito" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Hay clases que existen a propósito<br>para que nunca crees un objeto a partir de ellas.</h1>
+          <img class="portada-icon" src="img/draw-polygon.svg" alt="Figura sin forma definida" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la herencia a la herencia incompleta a propósito</h1>
+          <p>En la sesión de herencia construiste jerarquías donde la superclase (<code>Persona</code>) sí tenía sentido por sí sola. Pero, ¿qué significaría crear "una figura geométrica" sin decir si es un círculo o un cuadrado? No tiene sentido — y Java tiene una forma de <strong>prohibirlo explícitamente</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Clase abstracta</h1>
+          <p>Una <strong>clase abstracta</strong> se declara con la palabra clave <code>abstract</code> y representa un concepto <strong>incompleto a propósito</strong>: sirve como base común para sus subclases, pero <strong>no se puede instanciar directamente</strong> con <code>new</code>.</p>
+          <pre><code>public abstract class Figura {
+    // algunos métodos pueden tener cuerpo (concretos)
+    // otros pueden no tenerlo (abstractos) — ver siguiente
+}</code></pre>
+          <p>Se usa cuando varias clases comparten estructura y parte de comportamiento, pero cada una debe completar el resto <strong>a su manera</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Métodos abstractos</h1>
+          <p>Un <strong>método abstracto</strong> se declara solo con su firma, terminada en punto y coma, <strong>sin cuerpo</strong> (sin llaves <code>{}</code>): declara <em>qué</em> debe poder hacer cada subclase, sin decir <em>cómo</em>. Solo puede existir dentro de una clase también declarada <code>abstract</code>.</p>
+          <pre><code>public abstract class Figura {
+    public abstract double area();  // sin cuerpo: cada subclase decide cómo calcularla
+
+    public String etiqueta() {      // método concreto: sí tiene cuerpo
+        return "Esta figura tiene un área calculable.";
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Lo que Java rechaza: instanciar directamente</h1>
+          <pre><code>Figura f = new Figura();  // Error de compilación:
+                           // Figura is abstract; cannot be instantiated</code></pre>
+          <p>El compilador impide crear un objeto de una clase abstracta <strong>porque le faltaría implementación</strong> (el método <code>area()</code> no tiene cuerpo) — no habría forma de ejecutar ese método si alguien lo llamara.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La subclase concreta completa el contrato</h1>
+          <p>Una subclase que <strong>no</strong> se declara <code>abstract</code> (una clase <strong>concreta</strong>) está obligada a implementar <strong>todos</strong> los métodos abstractos heredados — de lo contrario, no compila.</p>
+          <pre><code>public class Circulo extends Figura {
+    private double radio;
+    public Circulo(double radio) { this.radio = radio; }
+
+    @Override
+    public double area() {
+        return Math.PI * radio * radio;
+    }
+}
+
+public class Cuadrado extends Figura {
+    private double lado;
+    public Cuadrado(double lado) { this.lado = lado; }
+
+    @Override
+    public double area() { return lado * lado; }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen el contrato</h1>
+          <p><strong>En parejas: dada una clase abstracta <code>Empleado</code> con el método abstracto <code>calcularSalario()</code>, definan en papel:</strong></p>
+          <ul>
+            <li>Dos subclases concretas (ej. <code>EmpleadoDeNomina</code> y <code>EmpleadoPorContrato</code>) con una fórmula distinta cada una.</li>
+            <li>Un método concreto que podría vivir en <code>Empleado</code> porque no cambia entre subclases (ej. <code>mostrarNombre()</code>).</li>
+          </ul>
+          <p class="slide-eyebrow">6 minutos · justifiquen por qué cada método va abstracto o concreto</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Datos que no pertenecen a ningún objeto en particular</h1>
+          <p>Hasta ahora, cada atributo vive dentro de un objeto específico (<code>ana.nombre</code> es distinto de <code>luis.nombre</code>). Pero hay información que tiene sentido <strong>compartir entre todos los objetos de una clase</strong> — o que ni siquiera necesita un objeto para existir. Para eso está el modificador <code>static</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El modificador <code>static</code></h1>
+          <p>Un miembro (atributo o método) marcado <code>static</code> <strong>pertenece a la clase, no a ningún objeto en particular</strong>. Existe una sola copia de un atributo <code>static</code>, compartida por todos los objetos de esa clase, sin importar cuántos se creen.</p>
+          <img class="portada-icon" src="img/hashtag.svg" alt="Un solo valor para toda la clase" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Atributo <code>static</code>: un contador compartido</h1>
+          <pre><code>public class Estudiante {
+    private String nombre;
+    private static int totalCreados = 0;   // una sola copia, de la clase
+
+    public Estudiante(String nombre) {
+        this.nombre = nombre;
+        totalCreados++;                    // se incrementa cada vez que se crea uno
+    }
+}</code></pre>
+          <pre><code>new Estudiante("Ana");
+new Estudiante("Luis");
+System.out.println(Estudiante.totalCreados); // 2 — se accede con el nombre de la clase</code></pre>
+          <p><strong>Se accede con el nombre de la clase</strong> (<code>Estudiante.totalCreados</code>), no con un objeto — aunque Java también lo permita, no es la forma correcta de leerlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Método <code>static</code>: no necesita un objeto</h1>
+          <p>Un método <code>static</code> se invoca directamente con el nombre de la clase, sin crear ningún objeto primero. Ya los usas: <code>Math.sqrt(16)</code> o <code>Integer.parseInt("42")</code> son métodos estáticos de clases de la librería estándar de Java.</p>
+          <pre><code>public class Calculadora {
+    public static int sumar(int a, int b) {
+        return a + b;
+    }
+}
+
+int resultado = Calculadora.sumar(2, 3);  // sin "new Calculadora()"</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Lo que un método <code>static</code> no puede hacer</h1>
+          <pre><code>public class Estudiante {
+    private String nombre;   // atributo de instancia
+
+    public static void mostrarNombre() {
+        System.out.println(nombre);  // Error de compilación:
+                                      // non-static field cannot be referenced
+                                      // from a static context
+    }
+}</code></pre>
+          <p>Un método <code>static</code> se ejecuta <strong>sin ningún objeto asociado</strong>, así que no tiene forma de saber a cuál <code>nombre</code> se refiere — por eso no puede acceder a atributos de instancia (ni usar <code>this</code>) directamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Constantes de clase: <code>static final</code></h1>
+          <p>Combinar <code>static</code> (una sola copia, de la clase) con <code>final</code> (no se puede reasignar después de inicializarse) define una <strong>constante de clase</strong>. Por convención, su nombre va en mayúsculas separadas por guion bajo.</p>
+          <pre><code>public class Impuestos {
+    public static final double IVA = 0.19;
+}
+
+double total = precio + (precio * Impuestos.IVA);</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Static o de instancia?</h1>
+          <p><strong>Para cada elemento, indiquen si debería ser <code>static</code> o de instancia, y por qué:</strong></p>
+          <ol>
+            <li>El nombre de un <code>Estudiante</code>.</li>
+            <li>El número máximo de créditos permitidos por semestre (igual para todos los estudiantes).</li>
+            <li>Un método <code>convertirPulgadasACm(double pulgadas)</code> que no depende de ningún objeto.</li>
+            <li>El promedio acumulado de un <code>Estudiante</code> específico.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una clase abstracta (<code>abstract</code>) no se puede instanciar; existe para ser extendida.</li>
+            <li>Un método abstracto no tiene cuerpo — toda subclase concreta está obligada a implementarlo.</li>
+            <li><code>static</code> marca un miembro como perteneciente a la clase, no a un objeto: existe una sola copia compartida.</li>
+            <li>Un método <code>static</code> no puede acceder a atributos de instancia ni usar <code>this</code>, porque no está asociado a ningún objeto.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Escribir en el IDE la clase abstracta <code>Figura</code> con <code>Circulo</code> y <code>Cuadrado</code>, y comprobar que <code>new Figura()</code> efectivamente no compila.</li>
+            <li>Pensar qué pasaría si dos clases sin relación de herencia (ej. <code>Ave</code> y <code>Avion</code>) necesitaran compartir el comportamiento "volar" — no pueden heredar de una misma superclase si no tienen nada más en común.</li>
+          </ul>
+          <p><strong>La próxima sesión resuelve justo ese caso con interfaces, y arranca el tema de polimorfismo.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

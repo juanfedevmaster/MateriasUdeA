@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interfaces y Polimorfismo (Parte 2) — Semana 5</title>
+  <meta name="description" content="Downcasting seguro con instanceof, polimorfismo con ArrayList y la interfaz Comparable de Java — Técnicas de Programación, Unidad 2, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/interfaces-y-polimorfismo-2/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Interfaces y Polimorfismo (Parte 2) — Semana 5" />
+  <meta property="og:description" content="Downcasting seguro con instanceof, polimorfismo con ArrayList y la interfaz Comparable de Java — Técnicas de Programación, Unidad 2, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/interfaces-y-polimorfismo-2/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Interfaces y Polimorfismo (Parte 2) — Semana 5" />
+  <meta name="twitter:description" content="Downcasting seguro con instanceof, polimorfismo con ArrayList y la interfaz Comparable de Java — Técnicas de Programación, Unidad 2, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/interfaces-y-polimorfismo-2.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 2 — Paradigma Objetual: Interfaces y Polimorfismo (Parte 2)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Varias capas de contratos e implementaciones" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>El downcasting que viste la sesión pasada puede reventar tu programa en pleno tiempo de ejecución.</h1>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Riesgo de ClassCastException" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De "casi siempre funciona" a "siempre funciona"</h1>
+          <p>La sesión pasada viste que <code>(Avion) v</code> lanza <code>ClassCastException</code> si el objeto real no es un <code>Avion</code>. El problema es que, al recorrer una colección mixta, no siempre sabes con certeza qué tipo concreto trae cada elemento antes de convertirlo. Hoy resolvemos eso, y llevamos el polimorfismo a herramientas que usarás todo el semestre: <code>ArrayList</code> y la interfaz <code>Comparable</code> de Java.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El operador <code>instanceof</code>: preguntar antes de convertir</h1>
+          <p>El operador <code>instanceof</code> pregunta en tiempo de ejecución si un objeto es (o hereda de, o implementa) un tipo determinado, devolviendo <code>true</code>/<code>false</code>. Con esto, el downcasting deja de ser una apuesta.</p>
+          <pre><code>Volador v = new Avion();
+
+if (v instanceof Avion) {
+    Avion a = (Avion) v;
+    a.aterrizarEnPista();   // ahora es seguro: ya confirmamos el tipo
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><em>Pattern matching</em>: la forma corta de <code>instanceof</code></h1>
+          <p>Desde versiones recientes de Java, <code>instanceof</code> puede declarar la variable convertida en la misma línea de la comprobación, evitando el <code>(Avion) v</code> repetido.</p>
+          <pre><code>if (v instanceof Avion a) {
+    a.aterrizarEnPista();   // "a" ya viene convertido a Avion, listo para usar
+}</code></pre>
+          <p class="slide-eyebrow">Ambas formas son válidas — usa la que tu IDE/versión de Java soporte mejor.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Lo que <code>instanceof</code> no reemplaza</h1>
+          <p>Encadenar muchos <code>if (x instanceof Tipo)</code> para decidir qué hacer con cada elemento es una señal de que el diseño está apoyándose en la jerarquía de tipos en vez de en el contrato. Si te encuentras haciendo esto en cada método, probablemente falta un método en la interfaz que resuelva ese comportamiento de forma polimórfica, sin preguntar el tipo.</p>
+          <pre><code>// Evitar esto cuando se pueda:
+if (v instanceof Ave)   { /* ... */ }
+else if (v instanceof Avion) { /* ... */ }
+// Mejor: que volar() ya resuelva el comportamiento distinto por sí mismo</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Polimorfismo con <code>ArrayList</code>, no solo con arreglos</h1>
+          <p>Todo lo que aprendiste con arreglos de interfaces aplica igual — y mejor — con <code>ArrayList</code>, que es la colección que más vas a usar de aquí en adelante. Declarar la lista con el tipo de la interfaz permite guardar objetos de cualquier clase que la implemente.</p>
+          <pre><code>ArrayList&lt;Volador&gt; voladores = new ArrayList&lt;&gt;();
+voladores.add(new Ave());
+voladores.add(new Avion());
+
+for (Volador v : voladores) {
+    v.volar();   // cada uno resuelve su propia versión, igual que con arreglos
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso</p>
+          <h1>Un ejemplo real del JDK: <code>Comparable&lt;T&gt;</code></h1>
+          <p>Java trae, desde su librería estándar, una interfaz llamada <code>Comparable&lt;T&gt;</code> con un único método: <code>compareTo(T otro)</code>. Cualquier clase que la implemente le dice a Java <strong>cómo ordenar</strong> sus objetos — y por eso métodos como <code>Collections.sort()</code> funcionan con cualquier tipo, sin que Java necesite conocerlo de antemano.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Implementando <code>Comparable&lt;T&gt;</code></h1>
+          <p><code>compareTo(otro)</code> debe devolver un número <strong>negativo</strong> si el objeto actual va antes, <strong>positivo</strong> si va después, y <strong>cero</strong> si son equivalentes en el orden.</p>
+          <pre><code>public class Estudiante implements Comparable&lt;Estudiante&gt; {
+    private double promedio;
+
+    @Override
+    public int compareTo(Estudiante otro) {
+        return Double.compare(this.promedio, otro.promedio);
+    }
+}</code></pre>
+          <p>Con esto ya implementado, <code>Collections.sort(listaDeEstudiantes)</code> ordena la lista completa de menor a mayor promedio automáticamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Muchas interfaces pequeñas, o una sola grande?</h1>
+          <p>Una interfaz con muchos métodos obliga a cada clase que la implemente a definirlos <strong>todos</strong>, aunque algunos no le apliquen — eso rompe el propósito del contrato. Es preferible dividir el comportamiento en interfaces pequeñas y específicas (como <code>Volador</code>, <code>Nadador</code>, <code>Comparable</code>) e implementar solo las que la clase realmente necesita, en vez de una interfaz enorme tipo "hace de todo".</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ordenen su propia lista polimórfica</h1>
+          <p><strong>En parejas: retomen la interfaz <code>Pagable</code> con <code>Factura</code> y <code>Nomina</code> de la sesión pasada.</strong> Agréguenle <code>Comparable&lt;Pagable&gt;</code> a ambas clases, comparando por <code>calcularMonto()</code>, y describan qué imprimiría <code>Collections.sort()</code> sobre un <code>ArrayList&lt;Pagable&gt;</code> con ambos tipos mezclados.</p>
+          <p class="slide-eyebrow">6 minutos · estén listos para explicar qué devuelve compareTo() en cada comparación</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><code>instanceof</code> permite verificar el tipo real de un objeto antes de convertirlo, evitando <code>ClassCastException</code>.</li>
+            <li>Encadenar muchos <code>instanceof</code> es una señal de que falta resolver el comportamiento de forma polimórfica dentro de la interfaz.</li>
+            <li>El polimorfismo con <code>ArrayList&lt;Interfaz&gt;</code> funciona igual que con arreglos, y es la forma que más usarás en el curso.</li>
+            <li><code>Comparable&lt;T&gt;</code> es un ejemplo real de interfaz del JDK: implementarla le dice a Java cómo ordenar tus objetos con <code>Collections.sort()</code>.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Implementar <code>Comparable&lt;Estudiante&gt;</code> (o un ejemplo propio) y probar <code>Collections.sort()</code> sobre una lista con varios objetos.</li>
+            <li>Reescribir un <code>if (x instanceof Tipo)</code> encadenado propio como método polimórfico dentro de una interfaz.</li>
+          </ul>
+          <p><strong>La próxima sesión cerramos el bloque de interacción con el usuario: entrada y salida de información en Java.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

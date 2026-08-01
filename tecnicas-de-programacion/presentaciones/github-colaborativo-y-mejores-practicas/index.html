@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Colaborativo y Mejores Prácticas — Semana 8</title>
+  <meta name="description" content="Git y GitHub como repositorio remoto para trabajo colaborativo: ramas, commits, Pull Requests y code review — Técnicas de Programación, Unidad 3, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/github-colaborativo-y-mejores-practicas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="GitHub Colaborativo y Mejores Prácticas — Semana 8" />
+  <meta property="og:description" content="Git y GitHub como repositorio remoto para trabajo colaborativo: ramas, commits, Pull Requests y code review — Técnicas de Programación, Unidad 3, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/github-colaborativo-y-mejores-practicas/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GitHub Colaborativo y Mejores Prácticas — Semana 8" />
+  <meta name="twitter:description" content="Git y GitHub como repositorio remoto para trabajo colaborativo: ramas, commits, Pull Requests y code review — Técnicas de Programación, Unidad 3, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/github-colaborativo-y-mejores-practicas.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 3 — Técnicas de Programación: GitHub Colaborativo y Mejores Prácticas</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/github.svg" alt="GitHub como repositorio remoto colaborativo" style="display:block;width:240px;height:240px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Dos personas editan el mismo archivo al mismo tiempo, se lo pasan por USB, y una hora después nadie sabe cuál versión es la buena.</h1>
+          <img class="portada-icon" src="img/code-branch.svg" alt="Trabajo en paralelo sin perder el control" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De escribir código limpio a compartirlo sin perderlo</h1>
+          <p>Ya sabes escribir clases bien diseñadas (SOLID) y legibles (código limpio). Falta la parte que hace posible trabajar <strong>en equipo</strong> sobre ese mismo código: un sistema de control de versiones. <strong>Git</strong> es la herramienta que registra el historial de cambios; <strong>GitHub</strong> es la plataforma donde ese historial se guarda en un repositorio remoto y se coordina con otras personas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Git no es GitHub</h1>
+          <p>Son dos cosas distintas que se usan juntas:</p>
+          <table>
+            <thead><tr><th></th><th>Qué es</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Git</strong></td><td>Sistema de control de versiones que corre en tu computador. Registra el historial de cambios de un proyecto (quién cambió qué, cuándo y por qué).</td></tr>
+              <tr><td><strong>GitHub</strong></td><td>Plataforma en la nube que aloja repositorios Git de forma remota, y agrega herramientas de colaboración: Pull Requests, revisión de código, issues.</td></tr>
+            </tbody>
+          </table>
+          <p>Existen alternativas a GitHub (GitLab, Bitbucket) — todas funcionan sobre el mismo Git por debajo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El ciclo básico: clone, add, commit, push, pull</h1>
+          <p>Un repositorio remoto en GitHub se sincroniza con tu copia local mediante estos comandos:</p>
+          <pre><code>git clone https://github.com/usuario/proyecto.git   # copiar el repo remoto
+git add archivo.java                                # marcar cambios para guardar
+git commit -m "Agrega validación de entrada"         # guardar los cambios localmente
+git push                                             # subir los commits al remoto
+git pull                                             # traer los cambios de otros</code></pre>
+          <p><code>commit</code> guarda en tu historial local; <code>push</code>/<code>pull</code> sincronizan ese historial con GitHub — sin <code>push</code>, tus commits nunca salen de tu computador.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ramas: trabajar en paralelo sin pisarse</h1>
+          <p>Una <strong>rama</strong> (<em>branch</em>) es una línea de desarrollo independiente. La rama principal (normalmente <code>main</code>) representa la versión estable del proyecto. Cada persona crea su propia rama para trabajar una funcionalidad, sin afectar el trabajo de los demás hasta que esté lista para integrarse.</p>
+          <pre><code>git checkout -b feature/validacion-formulario  # crear y cambiar a una rama nueva
+git branch                                     # ver en qué rama estás</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Todo el equipo commiteando directo a <code>main</code></h1>
+          <p>Sin ramas, cualquier cambio a medio terminar de una persona queda visible de inmediato para todo el equipo — incluyendo código que no compila o que rompe una funcionalidad que otros ya están usando. Un conflicto de dos personas editando la misma línea se vuelve mucho más difícil de resolver cuando ya está mezclado en <code>main</code> que cuando estaba aislado en una rama propia.</p>
+          <img class="portada-icon" src="img/ban.svg" alt="Riesgo de trabajar todos sobre la misma rama" style="display:block;width:100px;height:100px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Flujo con ramas: crear, trabajar, integrar</h1>
+          <ol>
+            <li>Crear una rama a partir de <code>main</code> para la funcionalidad que vas a trabajar.</li>
+            <li>Hacer commits en esa rama a medida que avanzas.</li>
+            <li>Subir la rama a GitHub con <code>git push origin nombre-rama</code>.</li>
+            <li>Abrir un <strong>Pull Request</strong> pidiendo integrar esa rama a <code>main</code>.</li>
+            <li>Un compañero revisa el código (<em>code review</em>) y lo aprueba o pide cambios.</li>
+            <li>Una vez aprobado, se hace <em>merge</em> a <code>main</code>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Mensajes de commit que sí sirven</h1>
+          <p>El historial de commits es documentación: cada mensaje debe explicar <strong>qué cambió y por qué</strong>, en modo imperativo y en una línea corta (idealmente menos de 50 caracteres), con detalle adicional en el cuerpo si hace falta.</p>
+          <table>
+            <thead><tr><th>Mal</th><th>Bien</th></tr></thead>
+            <tbody>
+              <tr><td><code>"cambios"</code></td><td><code>"Corrige cálculo de IVA en Factura"</code></td></tr>
+              <tr><td><code>"fix"</code></td><td><code>"Valida que el correo no esté vacío"</code></td></tr>
+              <tr><td><code>"asdf"</code></td><td><code>"Agrega pruebas para GestorPedidos"</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pull Request y code review</h1>
+          <p>Un <strong>Pull Request</strong> (PR) es una solicitud formal de integrar una rama a otra (normalmente a <code>main</code>), con un espacio para que otras personas <strong>revisen el código antes de integrarlo</strong>. En el code review se comenta: claridad del código, posibles bugs, si sigue las convenciones del equipo (nombres, SOLID, formato) — no es una crítica personal, es una revisión técnica constructiva sobre el código, nunca sobre quien lo escribió.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Conflictos de merge</h1>
+          <p>Un <strong>conflicto</strong> ocurre cuando dos ramas modificaron las mismas líneas de un archivo de formas distintas, y Git no puede decidir automáticamente cuál versión conservar. Git marca el conflicto directamente en el archivo:</p>
+          <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+double iva = precio * 0.19;
+=======
+double iva = precio * IVA_COLOMBIA;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/constante-iva</code></pre>
+          <p>Resolver el conflicto significa editar el archivo a mano, decidir qué versión (o combinación) queda, borrar las marcas <code>&lt;&lt;&lt;</code>/<code>===</code>/<code>&gt;&gt;&gt;</code>, y hacer un nuevo commit.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Higiene del repositorio: <code>.gitignore</code> y README</h1>
+          <p>Dos archivos que todo repositorio colaborativo debería tener:</p>
+          <ul>
+            <li><strong><code>.gitignore</code></strong>: lista de archivos que Git debe ignorar (archivos compilados <code>.class</code>, configuración local del IDE, credenciales) — evita que basura o información sensible termine en el historial compartido.</li>
+            <li><strong>README.md</strong>: la puerta de entrada al proyecto — qué hace, cómo instalarlo/ejecutarlo, y cómo contribuir. Es lo primero que ve cualquier persona nueva que abre el repositorio.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso</p>
+          <h1>GitLab.com, 2017: cuando falla hasta el respaldo</h1>
+          <p>En enero de 2017, un ingeniero de GitLab.com intentó eliminar un directorio en un servidor secundario para resolver un problema de replicación, pero ejecutó el comando de borrado en el <strong>servidor de producción</strong> por error, eliminando cerca de 300 GB de datos de usuarios en vivo. Al intentar restaurar desde respaldo, el equipo descubrió que <strong>los 5 mecanismos de backup configurados habían fallado silenciosamente</strong> — ninguno estaba funcionando correctamente.</p>
+          <p>GitLab publicó el incidente en vivo (streaming) y un post-mortem público detallado — un ejemplo, dentro del propio ecosistema de control de versiones, de por qué los procesos y controles alrededor del repositorio importan tanto como el código mismo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la teoría al flujo real</h1>
+          <p>Ninguno de estos comandos vale mucho si no se practican en equipo. Ahora es el turno de simular, en parejas, el flujo completo: rama, commit y Pull Request.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Simulen el flujo de colaboración</h1>
+          <p><strong>En parejas, con un repositorio de prueba en GitHub:</strong></p>
+          <ul>
+            <li>Persona A crea una rama <code>feature/saludo</code>, agrega un método simple, hace commit con un mensaje claro y la sube (<code>push</code>).</li>
+            <li>Persona A abre un Pull Request hacia <code>main</code>.</li>
+            <li>Persona B revisa el PR en GitHub, deja al menos un comentario, y lo aprueba.</li>
+          </ul>
+          <p class="slide-eyebrow">10 minutos · en sala de Zoom asignada</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Git registra el historial de cambios; GitHub aloja ese historial en un repositorio remoto y agrega herramientas de colaboración.</li>
+            <li>Trabajar en ramas separadas evita pisarse el trabajo entre compañeros — nunca commitear directo a <code>main</code> en equipo.</li>
+            <li>El Pull Request y el code review son el punto donde el equipo revisa el código antes de integrarlo.</li>
+            <li>Un conflicto de merge se resuelve editando el archivo a mano y haciendo un nuevo commit.</li>
+            <li><code>.gitignore</code> y README no son opcionales: son higiene básica de cualquier repositorio colaborativo.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar el flujo completo (rama → commit → push → PR) en un repositorio propio.</li>
+            <li>Revisar el README de algún proyecto público en GitHub y evaluar si cumple lo visto hoy.</li>
+          </ul>
+          <p><strong>Próxima sesión: Documentación y optimización de código</strong> — cierre de la Unidad 3.</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

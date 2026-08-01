@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Código Limpio — Semana 7</title>
+  <meta name="description" content="Nombres significativos, funciones pequeñas, comentarios que valen la pena y formato consistente en Java — Técnicas de Programación, Unidad 3, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/codigo-limpio/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Código Limpio — Semana 7" />
+  <meta property="og:description" content="Nombres significativos, funciones pequeñas, comentarios que valen la pena y formato consistente en Java — Técnicas de Programación, Unidad 3, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/codigo-limpio/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Código Limpio — Semana 7" />
+  <meta name="twitter:description" content="Nombres significativos, funciones pequeñas, comentarios que valen la pena y formato consistente en Java — Técnicas de Programación, Unidad 3, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/codigo-limpio.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 3 — Técnicas de Programación: Código Limpio</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/broom.svg" alt="Barrer el desorden del código" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Escribes código una sola vez. Alguien —tú mismo en seis meses, o un compañero de equipo— lo va a leer muchas más veces de las que tú lo escribiste.</h1>
+          <blockquote>"Indeed, the ratio of time spent reading versus writing is well over 10 to 1." — Robert C. Martin, <em>Clean Code</em> (2008)</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la estructura al detalle</h1>
+          <p>SOLID te ayuda a decidir <strong>cómo dividir</strong> responsabilidades entre clases. El <strong>código limpio</strong> opera un nivel más abajo: dentro de cada clase y cada método, ¿el código se entiende con solo leerlo, o hace falta adivinar? Hoy trabajas las prácticas que hacen esa diferencia: nombres, funciones pequeñas, comentarios que valen la pena y formato consistente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es código limpio?</h1>
+          <p>Código limpio es aquel que <strong>se puede leer y modificar sin necesitar preguntarle al autor</strong>. No es una cuestión estética: código difícil de entender es más lento de mantener y más propenso a errores cuando alguien lo cambia sin captar todas sus implicaciones. Cuatro frentes concretos donde se nota: <strong>nombres</strong>, <strong>funciones</strong>, <strong>comentarios</strong> y <strong>formato</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Nombres que dicen lo que hacen</h1>
+          <p>Un nombre bien elegido responde por sí solo tres preguntas: <strong>qué contiene</strong> (variables), <strong>qué hace</strong> (métodos) y <strong>qué representa</strong> (clases). Si necesitas un comentario al lado para explicar un nombre, el nombre está mal elegido.</p>
+          <ul>
+            <li>Variables: sustantivos claros — <code>listaEstudiantes</code>, no <code>l</code> o <code>datos</code>.</li>
+            <li>Métodos: verbos que describen la acción — <code>calcularPromedio()</code>, no <code>procesar()</code>.</li>
+            <li>Evita abreviaturas ambiguas (<code>calc</code>, <code>tmp</code>, <code>d</code>) salvo convenciones muy conocidas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Nombres que obligan a adivinar</h1>
+          <pre><code>public double calc(double d, int t) {
+    if (t == 1) return d * 0.05;
+    if (t == 2) return d * 0.10;
+    return 0;
+}</code></pre>
+          <p>Nadie puede saber qué calcula <code>calc</code>, qué representa <code>d</code>, ni qué significan los valores <code>1</code> y <code>2</code> de <code>t</code> sin leer el cuerpo del método (o preguntarle al autor).</p>
+          <pre><code>public double calcularDescuento(double montoCompra, TipoCliente tipoCliente) {
+    if (tipoCliente == TipoCliente.VIP) return montoCompra * 0.05;
+    if (tipoCliente == TipoCliente.FRECUENTE) return montoCompra * 0.10;
+    return 0;
+}</code></pre>
+          <img class="portada-icon" src="img/ban.svg" alt="Nombres que no comunican" style="display:block;width:100px;height:100px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Funciones pequeñas, que hagan una sola cosa</h1>
+          <p>Una función limpia es corta (idealmente cabe en pantalla sin hacer scroll) y hace <strong>una sola cosa</strong> — la misma idea de responsabilidad única, aplicada a métodos en vez de a clases. Señales de que un método hace demasiado: tiene varios niveles de indentación anidados, mezcla validación con lógica de negocio, o su nombre necesita la palabra "y" para describirlo (<em>"valida y guarda y notifica"</em>).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Parámetros: menos es más claro</h1>
+          <p>Un método con más de tres parámetros es difícil de leer en el punto donde se llama, y fácil de invocar con el orden equivocado. Un caso especialmente confuso son los <strong>parámetros booleanos como bandera</strong> (<em>flag</em>): obligan a leer la firma del método para saber qué hace <code>true</code>.</p>
+          <pre><code>// Poco claro en el punto de uso
+generarReporte(estudiante, true, false, true);
+
+// Mejor: métodos con nombres específicos, o un objeto de configuración
+generarReporteDetallado(estudiante);</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Comentarios: la última línea de defensa, no la primera</h1>
+          <p>El mejor comentario es el que <strong>no hace falta</strong> porque el código ya se explica solo. Un comentario vale la pena cuando explica el <strong>porqué</strong> de una decisión que el código no puede expresar por sí mismo (una regla de negocio rara, una limitación externa, un workaround temporal) — nunca cuando repite lo que la siguiente línea ya dice.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El comentario que no aporta nada</h1>
+          <pre><code>// Suma i más 1
+i = i + 1;
+
+// Recorre la lista de estudiantes
+for (Estudiante e : estudiantes) { ... }</code></pre>
+          <p>Estos comentarios solo repiten lo que el código ya dice con claridad — son ruido, y además hay que mantenerlos sincronizados con el código a mano (y con frecuencia se olvida).</p>
+          <pre><code>// La API del banco exige reintentar hasta 3 veces
+// antes de reportar fallo (ver ticket SOP-114)
+int intentos = 0;
+while (intentos < 3 && !transaccionExitosa) { ... }</code></pre>
+          <img class="portada-icon" src="img/comment-slash.svg" alt="Comentarios que sobran" style="display:block;width:110px;height:110px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Formato consistente</h1>
+          <p>Un formato consistente reduce la carga mental de leer código ajeno. Java tiene convenciones ampliamente adoptadas (las mismas que ya usas desde la Unidad 0):</p>
+          <table>
+            <thead><tr><th>Elemento</th><th>Convención</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Clases</td><td>PascalCase</td><td><code>GestorPedidos</code></td></tr>
+              <tr><td>Métodos y variables</td><td>camelCase</td><td><code>calcularTotal()</code></td></tr>
+              <tr><td>Constantes</td><td>MAYUSCULAS_CON_GUION_BAJO</td><td><code>IVA_COLOMBIA</code></td></tr>
+              <tr><td>Indentación</td><td>Consistente (2 o 4 espacios), nunca mezclada con tabs</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Errores limpios: evita los códigos mágicos</h1>
+          <p>Devolver <code>-1</code>, <code>null</code> o un código numérico para señalar un error obliga a quien llama el método a recordar y comparar ese valor mágico — y es fácil de olvidar. Java ofrece <strong>excepciones</strong> justamente para esto (se profundiza en la Unidad 4): separan el flujo normal del flujo de error, en vez de mezclarlos con <code>if</code> de validación.</p>
+          <pre><code>// Código mágico: fácil de ignorar por accidente
+public int buscarEstudiante(String id) {
+    if (!existe(id)) return -1;
+    // ...
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>DRY: no te repitas</h1>
+          <p><strong>DRY</strong> (<em>Don't Repeat Yourself</em>) es el principio de no duplicar la misma lógica en varios lugares del código. La duplicación no es solo más código: es más lugares donde corregir el mismo bug, y es fácil olvidar uno.</p>
+          <pre><code>// Duplicado en tres métodos distintos
+double totalConIva1 = precio1 * 1.19;
+double totalConIva2 = precio2 * 1.19;
+double totalConIva3 = precio3 * 1.19;
+
+// Un solo lugar de verdad
+public double aplicarIva(double precio) {
+    return precio * 1.19;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso</p>
+          <h1>440 millones de dólares en 45 minutos</h1>
+          <p>En agosto de 2012, la firma financiera <strong>Knight Capital Group</strong> desplegó una actualización de su software de trading a sus servidores de producción. Por un error operativo, un servidor quedó ejecutando código viejo que reutilizaba una bandera (<em>flag</em>) que antes activaba una función de prueba llamada "Power Peg" — código que se creía retirado, pero nunca se había eliminado del todo. Esa bandera reactivó lógica obsoleta que empezó a ejecutar órdenes de compra y venta erráticas en el mercado real.</p>
+          <p>En <strong>45 minutos</strong>, Knight Capital perdió <strong>440 millones de dólares</strong> y la empresa estuvo al borde de la quiebra. La causa raíz, documentada públicamente por la SEC, fue código muerto que nunca se eliminó y una bandera reutilizada sin que nadie recordara para qué servía.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Higiene de código, no solo estilo</h1>
+          <p>El caso de Knight Capital no fue un problema de sintaxis: fue código sin documentar, sin eliminar, y sin que nadie recordara su propósito. Nombres claros, funciones pequeñas y comentarios que expliquen el porqué no son un capricho estético — son la diferencia entre un equipo que entiende su propio sistema y uno que ya no puede confiar en él.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Legibilidad o rendimiento?</h1>
+          <p>A veces una versión más "limpia" del código (más métodos pequeños, más abstracciones) tiene un costo mínimo de rendimiento frente a una versión más directa pero menos legible. En la inmensa mayoría de proyectos de curso o de negocio, ese costo es despreciable frente a la ganancia en mantenibilidad — pero vale la pena tenerlo presente: en la próxima sesión se habla de cuándo optimizar sí importa, y cuándo es prematuro preocuparse por eso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Refactoricen esta función</h1>
+          <p><strong>En parejas:</strong> reescriban esta función aplicando nombres claros y separando responsabilidades.</p>
+          <pre><code>public void p(String s, int t, boolean b) {
+    if (t == 1 && b) {
+        System.out.println("Enviando: " + s);
+    } else if (t == 2) {
+        System.out.println("Guardando: " + s);
+    }
+}</code></pre>
+          <p class="slide-eyebrow">6 minutos · compartan su versión con otra pareja</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un nombre bien elegido no necesita un comentario al lado para explicarse.</li>
+            <li>Las funciones deben ser pequeñas, hacer una sola cosa, y tener pocos parámetros.</li>
+            <li>Comenta el <strong>porqué</strong>, no el <strong>qué</strong> — el código ya dice el qué.</li>
+            <li>El formato consistente (PascalCase, camelCase, indentación) reduce la carga de leer código ajeno.</li>
+            <li>Evita código muerto y duplicado: ambos fueron protagonistas de la pérdida de Knight Capital.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Aplicar al menos una regla de esta sesión (nombres, funciones o comentarios) a un proyecto propio de la Unidad 2.</li>
+            <li>Crear una cuenta de GitHub si aún no la tienes — se usa a partir de la próxima sesión.</li>
+          </ul>
+          <p><strong>Próxima sesión: GitHub colaborativo y mejores prácticas</strong> — control de versiones, ramas, Pull Requests y code review.</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

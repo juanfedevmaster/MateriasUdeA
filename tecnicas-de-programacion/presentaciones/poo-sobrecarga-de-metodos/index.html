@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POO: Sobrecarga de Métodos — Semana 3</title>
+  <meta name="description" content="Sobrecarga de métodos y constructores (overloading) en Java, y su diferencia con la sobrescritura — Técnicas de Programación, Unidad 2, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/poo-sobrecarga-de-metodos/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="POO: Sobrecarga de Métodos — Semana 3" />
+  <meta property="og:description" content="Sobrecarga de métodos y constructores (overloading) en Java, y su diferencia con la sobrescritura — Técnicas de Programación, Unidad 2, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/poo-sobrecarga-de-metodos/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="POO: Sobrecarga de Métodos — Semana 3" />
+  <meta name="twitter:description" content="Sobrecarga de métodos y constructores (overloading) en Java, y su diferencia con la sobrescritura — Técnicas de Programación, Unidad 2, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/poo-sobrecarga-de-metodos.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 2 — Paradigma Objetual: Sobrecarga de Métodos</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/clone.svg" alt="Mismo método, distintas formas" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Mismo nombre. Distinta lista de parámetros.<br>Java decide cuál ejecutar antes de correr una sola línea.</h1>
+          <img class="portada-icon" src="img/code-branch.svg" alt="Varias versiones de un método" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Recordando la sesión anterior</h1>
+          <p>Ya viste que una clase puede tener <strong>varios constructores implícitos según lo que necesites</strong> — pero solo mencionamos uno por clase. ¿Qué pasa si quieres construir un <code>Estudiante</code> a veces con código, y a veces sin él todavía asignado? ¿O un método <code>sumar</code> que sirva tanto para enteros como para decimales, sin escribir dos nombres distintos?</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sobrecarga de métodos (<em>overloading</em>)</h1>
+          <p>La <strong>sobrecarga de métodos</strong> permite que una clase tenga <strong>varios métodos con el mismo nombre</strong>, siempre que se distingan por su <strong>firma</strong>: la cantidad, el tipo o el orden de sus parámetros.</p>
+          <pre><code>public int sumar(int a, int b) {
+    return a + b;
+}
+
+public double sumar(double a, double b) {
+    return a + b;
+}</code></pre>
+          <p>Java decide automáticamente cuál de las dos versiones ejecutar <strong>según los argumentos con los que se llame al método</strong>: <code>sumar(2, 3)</code> usa la primera; <code>sumar(2.5, 3.1)</code> usa la segunda.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué cuenta como firma distinta?</h1>
+          <p>La <strong>firma</strong> de un método es su nombre más la lista de tipos de sus parámetros (no incluye el tipo de retorno ni los nombres de los parámetros). Dos métodos están sobrecargados si tienen el mismo nombre pero firmas distintas.</p>
+          <table>
+            <thead>
+              <tr><th>Cambio</th><th>¿Es sobrecarga válida?</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Distinta cantidad de parámetros</td><td>Sí</td></tr>
+              <tr><td>Mismo número, distinto tipo de parámetros</td><td>Sí</td></tr>
+              <tr><td>Mismos parámetros, distinto tipo de retorno únicamente</td><td>No — error de compilación</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El error más común: cambiar solo el retorno</h1>
+          <pre><code>public int sumar(int a, int b) { return a + b; }
+
+// Error de compilación: misma firma que la de arriba,
+// el tipo de retorno no cuenta para distinguir la sobrecarga
+public double sumar(int a, int b) { return a + b; }</code></pre>
+          <p><strong>El compilador rechaza esto</strong> porque, al llamar <code>sumar(2, 3)</code>, no hay forma de saber cuál de los dos métodos se quiso invocar — el tipo de retorno no participa en la decisión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Constructores sobrecargados</h1>
+          <p>Los constructores también se sobrecargan: una clase puede ofrecer varias formas de construir un objeto, según qué datos estén disponibles al momento de crearlo.</p>
+          <pre><code>public class Estudiante {
+    private String nombre;
+    private String codigo;
+
+    public Estudiante(String nombre) {
+        this(nombre, "SIN-ASIGNAR");   // delega en el otro constructor
+    }
+
+    public Estudiante(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
+}</code></pre>
+          <p><code>this(...)</code> (distinto de <code>this.</code>) llama a <strong>otro constructor de la misma clase</strong> — evita repetir la misma lógica de inicialización dos veces.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Un caso real: <code>System.out.println</code></h1>
+          <p>La sobrecarga no es un tecnicismo aislado: la usas desde la primera semana del curso sin saberlo. La clase <code>PrintStream</code> de Java define <strong>más de diez versiones sobrecargadas</strong> de <code>println</code>, una por cada tipo de dato.</p>
+          <pre><code>System.out.println(42);        // println(int)
+System.out.println(3.14);      // println(double)
+System.out.println("Hola");    // println(String)
+System.out.println(true);      // println(boolean)</code></pre>
+          <p><strong>Cada llamada resuelve a un método distinto</strong>, elegido por el tipo del argumento que le pasaste.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Sobrecarga (<em>overloading</em>) vs. sobrescritura (<em>overriding</em>)</h1>
+          <p>Son dos mecanismos distintos que suenan parecido en español y se confunden con frecuencia — no son intercambiables.</p>
+          <table>
+            <thead>
+              <tr><th></th><th>Sobrecarga (overloading)</th><th>Sobrescritura (overriding)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>¿Dónde ocurre?</td><td>Varios métodos en <strong>la misma clase</strong></td><td>Un método en una <strong>subclase</strong> que redefine el de su superclase</td></tr>
+              <tr><td>¿Qué cambia?</td><td>La firma (parámetros)</td><td>La implementación, misma firma</td></tr>
+              <tr><td>¿Cuándo se decide?</td><td>En tiempo de compilación</td><td>En tiempo de ejecución</td></tr>
+            </tbody>
+          </table>
+          <p><strong>La sobrescritura (<code>@Override</code>) ya la viste en la sesión pasada</strong> con <code>Persona.saludar()</code>; la sobrecarga de hoy es un mecanismo distinto, aunque comparta la idea de "un mismo nombre, más de un comportamiento".</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuándo Java no puede decidir: ambigüedad</h1>
+          <p>Si dos versiones sobrecargadas son igual de "cercanas" a los argumentos de la llamada (por ejemplo, mezclando tipos que Java puede convertir automáticamente entre sí), el compilador no logra elegir una y marca un <strong>error de ambigüedad</strong>, no un error de ejecución.</p>
+          <pre><code>public void mostrar(int a, double b) { }
+public void mostrar(double a, int b) { }
+
+mostrar(1, 2);  // Error: ambiguo — ¿1 se convierte a double,
+                // o 2 se convierte a double? Java no elige por ti.</code></pre>
+          <p><strong>Diseñar sobrecargas con firmas claramente distintas evita este problema desde el inicio.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cuál versión se ejecuta?</h1>
+          <p><strong>Dada esta clase, indiquen qué método se ejecuta en cada llamada (o si hay error):</strong></p>
+          <pre><code>void mostrar(int a) { }
+void mostrar(int a, int b) { }
+void mostrar(String a) { }</code></pre>
+          <ol>
+            <li><code>mostrar(5)</code></li>
+            <li><code>mostrar(5, 10)</code></li>
+            <li><code>mostrar("hola")</code></li>
+            <li><code>mostrar(5.0)</code></li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · discutan en parejas el caso 4 con cuidado</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>La sobrecarga permite varios métodos (o constructores) con el mismo nombre, distinguidos por su firma: cantidad, tipo u orden de parámetros.</li>
+            <li>El tipo de retorno <strong>no</strong> distingue una sobrecarga — usarlo como único diferenciador es error de compilación.</li>
+            <li><code>this(...)</code> delega en otro constructor de la misma clase para no repetir lógica de inicialización.</li>
+            <li>Sobrecarga (overloading) y sobrescritura (overriding) son mecanismos distintos: la primera se resuelve en compilación según la firma; la segunda, en ejecución según la subclase del objeto.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Escribir en el IDE al menos tres versiones sobrecargadas de un mismo método propio y comprobar en cada llamada cuál se ejecuta.</li>
+            <li>Repasar la diferencia entre <code>private</code>, <code>protected</code> y <code>public</code> vista la sesión pasada — se retoma al hablar de clases abstractas.</li>
+          </ul>
+          <p><strong>La próxima sesión sigue dentro de la Unidad 2 con clases abstractas y el modificador <code>static</code>.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

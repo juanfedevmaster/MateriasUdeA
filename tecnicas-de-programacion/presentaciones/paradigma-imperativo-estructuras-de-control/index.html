@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradigma Imperativo: Estructuras de Control — Semana 2</title>
+  <meta name="description" content="Condicionales y ciclos for, while, do-while y for-each en Java — Técnicas de Programación, Unidad 0, Semana 2." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/paradigma-imperativo-estructuras-de-control/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Paradigma Imperativo: Estructuras de Control — Semana 2" />
+  <meta property="og:description" content="Condicionales y ciclos for, while, do-while y for-each en Java — Técnicas de Programación, Unidad 0, Semana 2." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/paradigma-imperativo-estructuras-de-control/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Paradigma Imperativo: Estructuras de Control — Semana 2" />
+  <meta name="twitter:description" content="Condicionales y ciclos for, while, do-while y for-each en Java — Técnicas de Programación, Unidad 0, Semana 2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/paradigma-imperativo-estructuras-de-control.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 0 — Paradigma Imperativo: Estructuras de Control</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/code-branch.svg" alt="Estructuras de control" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>El mismo bloque de código.<br>Ejecutado una vez... o un millón.</h1>
+          <img class="portada-icon" src="img/repeat.svg" alt="Repetición" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Decidir con if / else</h1>
+          <pre><code>if (nota >= 3.0) {
+    System.out.println("Aprobado");
+} else {
+    System.out.println("Reprobado");
+}</code></pre>
+          <p>El bloque <code>if</code> se ejecuta solo si la condición (una expresión <code>boolean</code>, como las de la sesión anterior) es <code>true</code>; el bloque <code>else</code>, solo si es <code>false</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Más de dos caminos: else if y switch</h1>
+          <pre><code>if (nota >= 4.5) categoria = "Excelente";
+else if (nota >= 3.5) categoria = "Bueno";
+else if (nota >= 3.0) categoria = "Aprobado";
+else categoria = "Reprobado";</code></pre>
+          <p>Cuando hay varias condiciones mutuamente excluyentes sobre una misma variable, <code>switch</code> suele ser más legible que una cadena larga de <code>else if</code>:</p>
+          <pre><code>switch (dia) {
+    case 1 -> System.out.println("Lunes");
+    case 2 -> System.out.println("Martes");
+    default -> System.out.println("Otro día");
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El ciclo for</h1>
+          <p>Se usa cuando <strong>se conoce (o se puede calcular) el número de repeticiones</strong> antes de entrar al ciclo. Tiene tres partes separadas por punto y coma:</p>
+          <pre><code>for (int i = 0; i < 5; i++) {
+    System.out.println("Vuelta número " + i);
+}</code></pre>
+          <table>
+            <thead><tr><th>Parte</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td><code>int i = 0</code></td><td>Inicialización — se ejecuta una sola vez, al entrar</td></tr>
+              <tr><td><code>i &lt; 5</code></td><td>Condición — se revisa antes de cada vuelta</td></tr>
+              <tr><td><code>i++</code></td><td>Incremento — se ejecuta al final de cada vuelta</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/rotate.svg" alt="Ciclo for" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El ciclo while</h1>
+          <p>Se usa cuando <strong>no se sabe de antemano cuántas veces se va a repetir</strong> — solo se sabe la condición de parada.</p>
+          <pre><code>int intentos = 0;
+while (intentos < 3) {
+    System.out.println("Intento " + intentos);
+    intentos++;
+}</code></pre>
+          <p>La condición se evalúa <strong>antes</strong> de cada vuelta — si es <code>false</code> desde el principio, el bloque no se ejecuta ni una sola vez.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La diferencia con do-while</h1>
+          <pre><code>int clave;
+do {
+    clave = leerClave();
+} while (clave != claveCorrecta);</code></pre>
+          <p>En <code>do-while</code> el bloque se ejecuta <strong>primero</strong> y la condición se evalúa <strong>después</strong> — por eso el bloque siempre corre al menos una vez, incluso si la condición ya era falsa. Es el ciclo natural para "pedir algo hasta que sea válido".</p>
+          <img class="portada-icon" src="img/hourglass-half.svg" alt="do-while" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Recorrido simplificado: for-each</h1>
+          <pre><code>double[] notas = {3.5, 4.0, 2.8, 4.5};
+for (double nota : notas) {
+    System.out.println(nota);
+}</code></pre>
+          <p><code>for-each</code> recorre cada elemento de una colección sin necesitar un índice ni controlar manualmente la condición de parada — a cambio, no permite conocer la posición del elemento ni modificar la colección mientras se recorre.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="for-each" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Acumuladores y contadores</h1>
+          <p>Dos patrones que aparecen en casi todo ciclo:</p>
+          <ul>
+            <li><strong>Contador</strong> — una variable que suma o resta una cantidad fija en cada vuelta (<code>i++</code>, <code>i--</code>), típicamente para controlar cuántas veces se repite.</li>
+            <li><strong>Acumulador</strong> — una variable que va guardando un resultado que crece con cada vuelta (<code>suma += nota;</code>), típicamente para totalizar algo al final del ciclo.</li>
+          </ul>
+          <pre><code>double suma = 0;
+for (int i = 0; i < notas.length; i++) {
+    suma += notas[i];
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Convertir entre tipos: casting</h1>
+          <table>
+            <thead><tr><th>Tipo de conversión</th><th>Cuándo ocurre</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Widening (ampliación)</td><td>Automática, de un tipo pequeño a uno más grande</td><td><code>int a = 10; double b = a;</code></td></tr>
+              <tr><td>Narrowing (reducción)</td><td>Manual, con el tipo entre paréntesis; puede perder información</td><td><code>double c = 9.7; int d = (int) c;</code> // <code>d</code> vale 9</td></tr>
+            </tbody>
+          </table>
+          <p><strong>El narrowing trunca, no redondea</strong> — <code>(int) 9.7</code> da <code>9</code>, no <code>10</code>.</p>
+          <img class="portada-icon" src="img/right-left.svg" alt="Casting" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Sumar con un ciclo</h1>
+          <p><strong>Escriban un programa que declare un arreglo con 5 números y use un ciclo <code>for</code> para calcular e imprimir la suma total y el promedio.</strong></p>
+          <p class="slide-eyebrow">10 minutos · resuelvan individualmente, luego comparen el resultado</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><code>if</code>/<code>else</code> y <code>switch</code> controlan qué bloque de código se ejecuta según una condición.</li>
+            <li><code>for</code> se usa cuando se conoce el número de repeticiones; <code>while</code> y <code>do-while</code>, cuando depende de una condición que puede cambiar.</li>
+            <li><code>do-while</code> garantiza al menos una ejecución porque evalúa la condición al final.</li>
+            <li><code>for-each</code> simplifica el recorrido de colecciones a cambio de no exponer el índice.</li>
+            <li>El casting narrowing trunca decimales al reducir de <code>double</code> a <code>int</code>.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar un ciclo <code>for</code> que recorra un arreglo de al menos 5 posiciones.</li>
+            <li>Traer resuelto (en borrador) el ejercicio de acumulador de hoy — se retoma en la próxima clase.</li>
+          </ul>
+          <p><strong>La próxima sesión cierra la Unidad 0 con vectores: arreglos, matrices y ArrayList — y el taller grupal de cierre.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

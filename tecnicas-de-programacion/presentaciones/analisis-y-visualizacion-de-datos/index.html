@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Librerías para Análisis y Visualización de Datos — Semana 11</title>
+  <meta name="description" content="Apache Commons CSV/Math, gráficos con JFreeChart y principios de software inclusivo — Técnicas de Programación, Unidad 4, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/analisis-y-visualizacion-de-datos/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Librerías para Análisis y Visualización de Datos — Semana 11" />
+  <meta property="og:description" content="Apache Commons CSV/Math, gráficos con JFreeChart y principios de software inclusivo — Técnicas de Programación, Unidad 4, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/analisis-y-visualizacion-de-datos/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Librerías para Análisis y Visualización de Datos — Semana 11" />
+  <meta name="twitter:description" content="Apache Commons CSV/Math, gráficos con JFreeChart y principios de software inclusivo — Técnicas de Programación, Unidad 4, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/analisis-y-visualizacion-de-datos.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 4 — Librerías para Análisis y Visualización de Datos</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/chart-line.svg" alt="Análisis y visualización de datos" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Cerca de 1 de cada 12 hombres tiene algún grado de daltonismo — un gráfico que solo se entiende "por el color" ya excluyó a una parte real de quien lo lee.</h1>
+          <img class="portada-icon" src="img/accessible.svg" alt="Accesibilidad en la presentación de datos" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cerrando la Unidad 4</h1>
+          <p>Ya sabes leer y escribir <strong>archivos de texto, CSV y JSON</strong>, manejar <strong>excepciones</strong> cuando algo sale mal, generar <strong>reportes en PDF</strong> y verificar tu código con <strong>JUnit</strong>. Hoy das el siguiente paso: usar librerías especializadas para <strong>analizar</strong> datos (en vez de parsear CSV a mano) y <strong>visualizarlos</strong> en gráficos — y cerrar con un tema transversal a todo lo anterior: diseñar pensando en que <strong>cualquier persona</strong> pueda usar lo que construyes.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Apache Commons CSV: por qué no usar <code>split(",")</code></h1>
+          <p>En la sesión de archivos viste cómo leer un CSV partiendo cada línea con <code>split(",")</code>. Funciona en casos simples, pero se rompe fácil:</p>
+          <ul>
+            <li>Un valor con una <strong>coma dentro</strong> (ej. <code>"Bogotá, Colombia"</code>) se parte donde no debía.</li>
+            <li>Valores entre <strong>comillas</strong> no se interpretan como un solo campo.</li>
+            <li>No hay soporte incorporado para leer la primera fila como <strong>encabezados</strong> y acceder por nombre de columna.</li>
+          </ul>
+          <p><strong>Apache Commons CSV</strong> es una librería que resuelve exactamente esos tres problemas — maneja comillas, comas dentro de valores y encabezados de forma correcta y probada, en vez de reinventar ese parseo a mano.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Leer un CSV con <code>CSVParser</code></h1>
+          <p>Un <code>CSVParser</code> lee el archivo y lo entrega como una secuencia de <code>CSVRecord</code> — cada uno representa una fila, y permite acceder a sus columnas por nombre con <code>record.get("columna")</code> cuando el archivo tiene encabezados.</p>
+          <pre><code>Reader lector = new FileReader("estudiantes.csv");
+CSVFormat formato = CSVFormat.DEFAULT.builder()
+        .setHeader().setSkipHeaderRecord(true).build();
+
+try (CSVParser parser = new CSVParser(lector, formato)) {
+    for (CSVRecord record : parser) {
+        String nombre = record.get("nombre");
+        double nota = Double.parseDouble(record.get("nota"));
+        System.out.println(nombre + ": " + nota);
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Apache Commons Math: estadística sin reinventarla</h1>
+          <p><strong>Apache Commons Math</strong> es una librería de utilidades matemáticas y estadísticas para Java. En vez de calcular a mano el promedio, sumando y dividiendo, o programar tu propia fórmula de desviación estándar, la clase <code>DescriptiveStatistics</code> lo hace por ti a partir de una colección de valores.</p>
+          <ul>
+            <li><code>addValue(double)</code>: agrega un dato a la colección.</li>
+            <li><code>getMean()</code>: retorna el promedio.</li>
+            <li><code>getStandardDeviation()</code>: retorna la desviación estándar.</li>
+            <li><code>getPercentile(50)</code>: retorna la mediana (percentil 50).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>DescriptiveStatistics</code> en código</h1>
+          <pre><code>DescriptiveStatistics stats = new DescriptiveStatistics();
+
+for (CSVRecord record : parser) {
+    stats.addValue(Double.parseDouble(record.get("nota")));
+}
+
+double promedio = stats.getMean();
+double desviacion = stats.getStandardDeviation();
+double mediana = stats.getPercentile(50);
+
+System.out.printf("Promedio: %.2f, Mediana: %.2f, Desv.Std: %.2f%n",
+        promedio, mediana, desviacion);</code></pre>
+          <p class="slide-eyebrow">Nota cómo se combina con lo de la diapositiva anterior: los valores llegan del <code>CSVParser</code>, y <code>DescriptiveStatistics</code> los resume.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De los números al gráfico</h1>
+          <p>Tener el promedio o la mediana en la consola es útil, pero un gráfico comunica una tendencia mucho más rápido que una tabla de números. Para eso existe <strong>JFreeChart</strong>, una librería Java para crear gráficos de barras, líneas, torta y más, y exportarlos como imagen.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>JFreeChart: agregar la dependencia y el dataset</h1>
+          <p>Como con JUnit y Commons CSV/Math, JFreeChart se agrega como dependencia de Maven:</p>
+          <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.jfree&lt;/groupId&gt;
+    &lt;artifactId&gt;jfreechart&lt;/artifactId&gt;
+    &lt;version&gt;1.5.4&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+          <p>Antes de crear el gráfico, los datos se organizan en un <code>DefaultCategoryDataset</code> — una estructura que agrupa valores por <strong>serie</strong> (qué se está midiendo) y <strong>categoría</strong> (el eje X):</p>
+          <pre><code>DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+dataset.addValue(promedio, "Notas", "Grupo A");
+dataset.addValue(3.8, "Notas", "Grupo B");</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Crear y exportar el gráfico</h1>
+          <p><code>ChartFactory</code> construye el gráfico a partir del dataset, y <code>ChartUtils</code> lo exporta como imagen PNG a un archivo:</p>
+          <pre><code>JFreeChart grafico = ChartFactory.createBarChart(
+        "Promedio de notas por grupo", // título
+        "Grupo",                       // eje X
+        "Nota",                        // eje Y
+        dataset
+);
+
+ChartUtils.saveChartAsPNG(
+        new File("promedios.png"), grafico, 800, 600
+);</code></pre>
+          <p><code>ChartFactory.createLineChart(...)</code> tiene la misma firma y sirve para mostrar una tendencia en vez de comparar categorías — se elige el tipo de gráfico según qué pregunta se quiere responder.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El flujo completo, de punta a punta</h1>
+          <p>Las tres librerías de hoy se encadenan en un solo flujo típico de análisis de datos:</p>
+          <ol>
+            <li><strong>Leer</strong> el CSV con <code>CSVParser</code> / <code>CSVRecord</code> (Apache Commons CSV).</li>
+            <li><strong>Calcular</strong> estadísticas descriptivas con <code>DescriptiveStatistics</code> (Apache Commons Math).</li>
+            <li><strong>Graficar</strong> el resultado con <code>DefaultCategoryDataset</code> + <code>ChartFactory</code> (JFreeChart).</li>
+            <li><strong>Exportar</strong> el gráfico a PNG con <code>ChartUtils.saveChartAsPNG</code> para incluirlo en un reporte o PDF.</li>
+          </ol>
+          <p>Es el mismo patrón que ya usaste al generar PDFs: cada librería resuelve un paso específico, bien probado, en vez de que tu código reimplemente el parseo, la estadística o el dibujo del gráfico desde cero.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Elijan el gráfico correcto</h1>
+          <p><strong>En parejas, respondan:</strong> tienen las notas de un grupo registradas cada semana durante el semestre, y quieren mostrar cómo cambia el promedio del grupo a lo largo del tiempo. ¿Usarían <code>createBarChart</code> o <code>createLineChart</code>? Justifiquen con una frase.</p>
+          <p class="slide-eyebrow">5 minutos · piensen en qué pregunta responde cada tipo de gráfico</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y quién puede leer ese gráfico?</h1>
+          <p>Ya sabes construir un gráfico técnicamente correcto. Falta una pregunta igual de importante: ¿ese gráfico lo puede leer <strong>cualquier persona</strong> que lo reciba, incluyendo alguien con discapacidad visual, motora o cognitiva? Esa pregunta es el corazón del <strong>software inclusivo</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Diseño universal / software inclusivo</h1>
+          <p>El <strong>diseño universal</strong> (también llamado <strong>software inclusivo</strong>) es el enfoque de diseñar productos de software para que la <strong>mayor cantidad posible de personas</strong> puedan usarlos, sin necesitar una versión adaptada aparte — incluyendo personas con discapacidad visual, motora o cognitiva, y también a cualquiera en una situación temporal (una pantalla con mucho brillo de sol, un brazo lesionado).</p>
+          <p>No es un tema exclusivo de aplicaciones web o móviles: aplica igual a una app de escritorio, a un reporte en PDF, o a los gráficos que generaste hace un momento con JFreeChart.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Principios aplicados a gráficos y reportes</h1>
+          <table>
+            <thead><tr><th>Principio</th><th>Por qué importa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>No depender solo del color</strong></td><td>Usa también patrones, formas o etiquetas de texto directamente sobre las barras/líneas — así la información no se pierde para quien no distingue esos colores.</td></tr>
+              <tr><td><strong>Paletas de buen contraste</strong></td><td>Colores muy cercanos en tono (o muy claros sobre fondo claro) son difíciles de distinguir para baja visión, y se ven peor al imprimir en blanco y negro.</td></tr>
+              <tr><td><strong>Texto alternativo / descripciones</strong></td><td>Un gráfico debe venir acompañado de una descripción corta de lo que muestra, útil para lectores de pantalla y como resumen rápido para cualquiera.</td></tr>
+              <tr><td><strong>Tamaños de fuente legibles</strong></td><td>Etiquetas de ejes y leyendas muy pequeñas excluyen a quien tiene baja visión, sin necesitar zoom.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>WCAG como referencia estándar</h1>
+          <p>Las <strong>WCAG</strong> (<em>Web Content Accessibility Guidelines</em>, Pautas de Accesibilidad para el Contenido Web) son el estándar más reconocido de la industria para diseño accesible, publicado por el W3C. Aunque su nombre menciona "web", sus criterios sobre contraste de color, tamaños de texto y no depender solo del color son un buen punto de referencia incluso para aplicaciones de escritorio o reportes impresos, como los que construyes con JFreeChart.</p>
+          <p class="slide-eyebrow">Usarlas como referencia no significa que una app de escritorio deba "cumplir WCAG" formalmente — significa aprovechar criterios ya probados en vez de inventar los propios.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis — cierre de la Unidad 4</p>
+          <h1>Lo que hay que llevarse de la sesión y de la unidad</h1>
+          <ol>
+            <li>Apache Commons CSV parsea archivos CSV correctamente (comillas, comas internas, encabezados) donde <code>split(",")</code> falla.</li>
+            <li>Apache Commons Math (<code>DescriptiveStatistics</code>) calcula promedio, desviación estándar y mediana sin programar las fórmulas a mano.</li>
+            <li>JFreeChart construye gráficos de barras/líneas a partir de un <code>DefaultCategoryDataset</code> y los exporta a PNG con <code>ChartUtils</code>.</li>
+            <li>El software inclusivo diseña para que la mayor cantidad de personas posible pueda usar lo que construyes — color + patrón, buen contraste, texto alternativo, fuentes legibles, con WCAG como referencia.</li>
+            <li><strong>Resumen de toda la Unidad 4:</strong> excepciones (manejar errores), archivos de texto/CSV/JSON y PDF (persistir y reportar datos), JUnit (verificar que el código funciona) y las librerías de hoy (analizar, graficar y presentar esos datos de forma inclusiva).</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes del Laboratorio 2</h1>
+          <ul>
+            <li>Repasa las seis sesiones de la Unidad 4 (excepciones, archivos/CSV/JSON, PDF, JUnit, análisis y visualización de datos, software inclusivo) — son la base directa del <strong>Laboratorio 2</strong>.</li>
+            <li>Ten instalado y probado Maven con las dependencias vistas hoy (Commons CSV, Commons Math, JFreeChart) antes de la sesión del laboratorio.</li>
+          </ul>
+          <p><strong>Próxima sesión: Laboratorio 2</strong> — aplicación integradora de la Unidad 4.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia el Laboratorio 2" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
