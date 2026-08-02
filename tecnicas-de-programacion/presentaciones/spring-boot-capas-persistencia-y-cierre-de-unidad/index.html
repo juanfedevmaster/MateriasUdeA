@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spring Boot: Capas, Persistencia y Cierre de Unidad — Semana 16</title>
+  <meta name="description" content="Arquitectura en capas, Spring Data JPA y síntesis del desarrollo web full-stack — Técnicas de Programación, Unidad 7, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/spring-boot-capas-persistencia-y-cierre-de-unidad/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Spring Boot: Capas, Persistencia y Cierre de Unidad — Semana 16" />
+  <meta property="og:description" content="Arquitectura en capas, Spring Data JPA y síntesis del desarrollo web full-stack — Técnicas de Programación, Unidad 7, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/spring-boot-capas-persistencia-y-cierre-de-unidad/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Spring Boot: Capas, Persistencia y Cierre de Unidad — Semana 16" />
+  <meta name="twitter:description" content="Arquitectura en capas, Spring Data JPA y síntesis del desarrollo web full-stack — Técnicas de Programación, Unidad 7, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/spring-boot-capas-persistencia-y-cierre-de-unidad.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: Spring Boot, Capas, Persistencia y Cierre de Unidad</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/springboot.svg" alt="Spring Boot" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un endpoint suelto a una aplicación organizada</h1>
+          <p>En la sesión anterior aprendiste a exponer datos con Spring Boot: creaste un <code>@RestController</code>, mapeaste rutas con <code>@GetMapping</code>/<code>@PostMapping</code>, y recibiste datos con <code>@RequestBody</code> y <code>@PathVariable</code>. Pero si toda la lógica —validaciones, cálculos, acceso a datos— vive dentro del controlador, el código no escala: cada método crece sin control y mezcla responsabilidades que no deberían estar juntas.</p>
+          <p>Esto no es un problema nuevo: es el mismo que resolviste en la <strong>Unidad 3</strong> con el <strong>Principio de Responsabilidad Única</strong> (SOLID) — cada clase debe tener una sola razón para cambiar. Hoy aplicamos ese principio a una aplicación Spring Boot completa, organizándola en <strong>capas</strong>, y cerramos la unidad conectando esa API con una base de datos real.</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Organización en capas" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Arquitectura en capas: separar responsabilidades</h1>
+          <p>Una aplicación Spring Boot bien organizada divide el trabajo en tres capas, cada una con una única responsabilidad — exactamente el espíritu del Principio de Responsabilidad Única aplicado a la arquitectura completa:</p>
+          <table>
+            <thead><tr><th>Capa</th><th>Responsabilidad</th><th>Anotación típica</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Controller</strong></td><td>Recibe las peticiones HTTP, valida la forma de la entrada y delega el trabajo real</td><td><code>@RestController</code></td></tr>
+              <tr><td><strong>Service</strong></td><td>Contiene la lógica de negocio: reglas, cálculos, decisiones de la aplicación</td><td><code>@Service</code></td></tr>
+              <tr><td><strong>Repository</strong></td><td>Accede a los datos: lee y escribe en la base de datos</td><td><code>@Repository</code></td></tr>
+            </tbody>
+          </table>
+          <p>La petición siempre fluye en un solo sentido: <strong>Controller → Service → Repository</strong>. Un controlador nunca debería hablar directamente con la base de datos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Inyección de dependencias entre capas</h1>
+          <p>Para que un <code>Controller</code> use un <code>Service</code> (o un <code>Service</code> use un <code>Repository</code>), no se crea el objeto manualmente con <code>new</code>. Spring lo <strong>inyecta</strong> automáticamente: gestiona el ciclo de vida de esos objetos (llamados <em>beans</em>) y los entrega listos para usar donde se necesiten.</p>
+          <p>Existen dos formas: anotar un atributo con <code>@Autowired</code>, o —la forma <strong>preferida</strong>— recibir la dependencia como parámetro del constructor, lo que además facilita las pruebas unitarias.</p>
+          <pre><code>@RestController
+@RequestMapping("/api/tareas")
+public class TareaController {
+
+    private final TareaService tareaService;
+
+    // Inyección por constructor (preferida)
+    public TareaController(TareaService tareaService) {
+        this.tareaService = tareaService;
+    }
+
+    @GetMapping
+    public List&lt;Tarea&gt; listar() {
+        return tareaService.listarTodas();
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>@Service</code> y <code>@Repository</code>: marcar cada capa</h1>
+          <p>Para que Spring pueda inyectar un objeto, primero necesita saber que ese objeto existe y debe gestionarlo como <em>bean</em>. Por eso cada clase de capa lleva una anotación que la registra:</p>
+          <ul>
+            <li><code>@Service</code> marca una clase como parte de la capa de lógica de negocio. Spring la detecta automáticamente y la pone disponible para inyectarla en cualquier <code>Controller</code>.</li>
+            <li><code>@Repository</code> marca una clase (o interfaz) como parte de la capa de acceso a datos. Además, Spring traduce automáticamente ciertas excepciones de base de datos a excepciones propias más claras.</li>
+          </ul>
+          <pre><code>@Service
+public class TareaService {
+
+    private final TareaRepository tareaRepository;
+
+    public TareaService(TareaRepository tareaRepository) {
+        this.tareaRepository = tareaRepository;
+    }
+
+    public List&lt;Tarea&gt; listarTodas() {
+        return tareaRepository.findAll();
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Entidades: una clase Java se vuelve una tabla</h1>
+          <p>Para que la capa <code>Repository</code> tenga algo que guardar, primero se necesita una <strong>entidad</strong>: una clase Java simple que, con tres anotaciones, Spring la mapea directamente a una tabla de base de datos, sin escribir SQL para crearla.</p>
+          <ul>
+            <li><code>@Entity</code> — marca la clase como una tabla.</li>
+            <li><code>@Id</code> — marca el atributo que es la clave primaria.</li>
+            <li><code>@GeneratedValue</code> — indica que el valor del id se genera automáticamente (por ejemplo, autoincremental).</li>
+          </ul>
+          <pre><code>@Entity
+public class Tarea {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nombre;
+    private boolean completada;
+
+    // getters y setters
+}</code></pre>
+          <p class="slide-eyebrow">Cada atributo de la clase se convierte en una columna de la tabla; cada objeto <code>Tarea</code> guardado, en una fila.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Spring Data JPA: persistencia sin escribir SQL</h1>
+          <p><strong>Spring Data JPA</strong> es una capa de abstracción sobre JDBC/Hibernate: en vez de escribir manualmente las consultas SQL para guardar, buscar o borrar datos, se define una interfaz que <strong>extiende</strong> <code>JpaRepository&lt;Entidad, TipoId&gt;</code>.</p>
+          <pre><code>public interface TareaRepository extends JpaRepository&lt;Tarea, Long&gt; {
+    // sin implementar nada más, ya existen:
+    // findAll(), save(tarea), findById(id), deleteById(id)...
+}</code></pre>
+          <p>Con solo esa línea, Spring genera en tiempo de ejecución una implementación completa con métodos como <code>findAll()</code>, <code>save(Tarea t)</code> y <code>findById(Long id)</code> — sin que el programador escriba ni una sola consulta SQL.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Métodos derivados: consultas a partir del nombre</h1>
+          <p>Spring Data JPA va más allá de los métodos básicos: si se declara un método siguiendo una convención de nombres, Spring <strong>genera la consulta automáticamente</strong> a partir de ese nombre, sin necesidad de implementarlo ni escribir SQL.</p>
+          <pre><code>public interface TareaRepository extends JpaRepository&lt;Tarea, Long&gt; {
+
+    // Spring interpreta el nombre y genera:
+    // SELECT * FROM tarea WHERE nombre = ?
+    List&lt;Tarea&gt; findByNombre(String nombre);
+
+    // SELECT * FROM tarea WHERE completada = ?
+    List&lt;Tarea&gt; findByCompletada(boolean completada);
+}</code></pre>
+          <p class="slide-eyebrow">El prefijo <code>findBy</code> seguido del nombre exacto del atributo (con la primera letra en mayúscula) es suficiente — Spring hace el resto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>application.properties</code>: dónde vive la base de datos</h1>
+          <p>Para que Spring Data JPA sepa a qué base de datos conectarse, la aplicación necesita un archivo de configuración mínimo: <code>src/main/resources/application.properties</code>. Ahí se declaran la URL de conexión, el usuario y la contraseña de la base de datos.</p>
+          <pre><code>spring.datasource.url=jdbc:mysql://localhost:3306/tareasdb
+spring.datasource.username=root
+spring.datasource.password=admin
+spring.jpa.hibernate.ddl-auto=update</code></pre>
+          <p class="slide-eyebrow">No profundizamos aquí en detalles de infraestructura de bases de datos — solo que este es el archivo donde se centraliza esa configuración, separada del código de las capas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Las tres capas juntas: un ejemplo completo</h1>
+          <pre><code>@Entity
+public class Tarea {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private boolean completada;
+    // getters y setters
+}
+public interface TareaRepository extends JpaRepository&lt;Tarea, Long&gt; { }
+
+@Service
+public class TareaService {
+    private final TareaRepository repo;
+    public TareaService(TareaRepository repo) { this.repo = repo; }
+    public List&lt;Tarea&gt; listarTodas() { return repo.findAll(); }
+    public Tarea crear(Tarea t) { return repo.save(t); }
+}
+@RestController
+@RequestMapping("/api/tareas")
+public class TareaController {
+    private final TareaService service;
+    public TareaController(TareaService service) { this.service = service; }
+    @GetMapping
+    public List&lt;Tarea&gt; listar() { return service.listarTodas(); }
+    @PostMapping
+    public Tarea crear(@RequestBody Tarea t) { return service.crear(t); }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cerrando el círculo: del <code>fetch()</code> a la base de datos</h1>
+          <p>En la <strong>sesión 6</strong> de esta unidad usaste <code>fetch()</code> en JavaScript para pedirle datos a una API. Ahora ya sabes qué hay del otro lado de esa petición: una aplicación Spring Boot completa, organizada en capas.</p>
+          <pre><code>fetch("/api/tareas")
+  .then(respuesta => respuesta.json())
+  .then(tareas => console.log(tareas));</code></pre>
+          <p>El recorrido completo de esa única línea de <code>fetch()</code> es: el navegador envía la petición HTTP → el <strong>Controller</strong> la recibe y la delega → el <strong>Service</strong> aplica la lógica de negocio → el <strong>Repository</strong> consulta la base de datos → los datos regresan como JSON hasta el <code>fetch()</code> que los pidió. Frontend y backend, unidos por HTTP.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis de la Unidad 7</p>
+          <h1>El viaje completo: de una etiqueta HTML a una API con base de datos</h1>
+          <ol>
+            <li><strong>HTML</strong> — estructura y semántica: etiquetas, formularios, accesibilidad, la base sobre la que se construye cualquier página.</li>
+            <li><strong>CSS3</strong> — estilo y layout: box model, Flexbox, Grid y diseño responsivo para que esa estructura se vea bien en cualquier pantalla.</li>
+            <li><strong>JavaScript</strong> — interactividad: manipulación del DOM, eventos, funciones de orden superior y <code>fetch()</code> para que la página deje de ser estática y hable con un servidor.</li>
+            <li><strong>Spring Boot</strong> — la API del otro lado: <code>@RestController</code> para exponer endpoints, y arquitectura en capas (<code>Controller → Service → Repository</code>) con Spring Data JPA para persistir datos reales.</li>
+          </ol>
+          <p>Ocho sesiones después, ya puedes construir una aplicación web completa: una interfaz que el usuario ve y con la que interactúa, conectada por HTTP a un backend que organiza su lógica y guarda su información en una base de datos.</p>
+          <img class="portada-icon" src="img/check-double.svg" alt="Síntesis de la Unidad 7" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre de Unidad 7</p>
+          <h1>Antes del Laboratorio Final</h1>
+          <p>La Unidad 7 se evalúa con un <strong>Laboratorio Final (20%)</strong> que integra lo visto en las 8 sesiones: HTML, CSS3, JavaScript y Spring Boot con persistencia. El enunciado y los entregables se presentan aparte, en la sesión de laboratorio.</p>
+          <p><strong>Repasa antes de esa evaluación:</strong></p>
+          <ul>
+            <li>Estructura semántica en HTML y estilos responsivos con CSS3 (Flexbox/Grid).</li>
+            <li>Manipulación del DOM, eventos y <code>fetch()</code> en JavaScript.</li>
+            <li>Arquitectura en capas de Spring Boot y cómo cada anotación (<code>@RestController</code>, <code>@Service</code>, <code>@Repository</code>, <code>@Entity</code>) conecta esas capas entre sí.</li>
+            <li>Spring Data JPA: qué obtienes gratis al extender <code>JpaRepository</code> y cómo declarar un método derivado.</li>
+          </ul>
+          <img class="portada-icon" src="img/hibernate.svg" alt="Persistencia con Spring Data JPA" style="display:block;width:150px;height:150px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

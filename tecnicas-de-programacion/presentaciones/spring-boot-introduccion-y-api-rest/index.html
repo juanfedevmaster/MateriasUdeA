@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framework Spring Boot: Introducción y API REST — Semana 16</title>
+  <meta name="description" content="Arquitectura de Spring Boot, anotaciones clave y creación de un controlador REST — Técnicas de Programación, Unidad 7, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/spring-boot-introduccion-y-api-rest/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Framework Spring Boot: Introducción y API REST — Semana 16" />
+  <meta property="og:description" content="Arquitectura de Spring Boot, anotaciones clave y creación de un controlador REST — Técnicas de Programación, Unidad 7, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/spring-boot-introduccion-y-api-rest/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Framework Spring Boot: Introducción y API REST — Semana 16" />
+  <meta name="twitter:description" content="Arquitectura de Spring Boot, anotaciones clave y creación de un controlador REST — Técnicas de Programación, Unidad 7, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/spring-boot-introduccion-y-api-rest.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: Framework Spring Boot: Introducción y API REST</h2>
+          <p>Arquitectura de Spring Boot, anotaciones clave y creación de un controlador REST</p>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/springboot.svg" alt="Spring Boot" style="display:block;width:220px;height:220px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De consumir una API a construirla</h1>
+          <p>En las últimas seis sesiones aprendiste a maquetar con HTML y CSS3, y a darle comportamiento a una página con JavaScript — incluyendo <code>fetch()</code> para <strong>consumir</strong> una API REST y mostrar sus datos en pantalla. Siempre asumiste que, del otro lado de esa URL, <strong>algo</strong> respondía: recibía la petición HTTP, buscaba o guardaba información, y devolvía JSON.</p>
+          <p>Hoy construimos ese "algo": el servidor. Y lo hacemos en <strong>Java</strong>, el lenguaje que ya conoces a fondo del resto del curso, usando el framework más usado del mundo Java empresarial: <strong>Spring Boot</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un framework</h1>
+          <p>Un <strong>framework</strong> es un conjunto de herramientas, librerías y convenciones que ya resuelven los problemas <strong>comunes a cualquier aplicación de su tipo</strong> — un servidor HTTP que reciba conexiones, un mecanismo de enrutamiento que decida qué código atiende cada URL, la serialización automática de objetos a JSON, manejo de errores, etc.</p>
+          <p>La idea central: en vez de reinventar esa infraestructura en cada proyecto, el framework ya la trae resuelta y probada — así el desarrollador puede enfocarse en la <strong>lógica de negocio</strong>, que es lo que realmente distingue a su aplicación.</p>
+          <img class="portada-icon" src="img/gears.svg" alt="Piezas de infraestructura ya resueltas" style="display:block;width:150px;height:150px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Spring y Spring Boot</h1>
+          <p><strong>Spring</strong> es el ecosistema de frameworks para Java más usado en el desarrollo de aplicaciones empresariales: manejo de dependencias, acceso a datos, seguridad, servicios web, entre muchos otros módulos. Es potente, pero configurarlo manualmente (archivos XML, servidores externos, dependencias sueltas) es lento y propenso a errores.</p>
+          <p><strong>Spring Boot</strong> es la forma moderna de usar Spring: simplifica radicalmente esa configuración con tres ideas clave.</p>
+          <table>
+            <thead><tr><th>Idea</th><th>Qué resuelve</th></tr></thead>
+            <tbody>
+              <tr><td>Arranque rápido</td><td>Un proyecto ejecutable en minutos, sin configurar servidores externos</td></tr>
+              <tr><td>Servidor embebido</td><td>Trae su propio servidor HTTP (Tomcat) empaquetado, no hay que instalar uno aparte</td></tr>
+              <tr><td>Convención sobre configuración</td><td>Valores por defecto sensatos; solo configuras lo que quieres cambiar</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/spring.svg" alt="Ecosistema Spring" style="display:block;width:120px;height:120px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Inversión de control: Spring crea los objetos por ti</h1>
+          <p>Normalmente, cuando un objeto necesita a otro en Java, lo instancias tú mismo con <code>new</code>. Spring Boot invierte ese control: es el <strong>framework</strong> quien crea, configura y entrega los objetos que tu aplicación necesita — a eso se le llama <strong>inyección de dependencias</strong>, y a esos objetos gestionados por Spring se les llama <strong>beans</strong>.</p>
+          <p>No es un concepto nuevo: es la aplicación práctica del principio de <strong>Inversión de Dependencias</strong> (la "D" de SOLID, Unidad 3) — las clases dependen de abstracciones, y algo externo a ellas decide qué implementación concreta entregarles. Ese "algo externo" es Spring.</p>
+          <img class="portada-icon" src="img/plug.svg" alt="Spring conecta las piezas por ti" style="display:block;width:130px;height:130px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Spring Initializr: el punto de partida</h1>
+          <p><a href="https://start.spring.io" target="_blank" rel="noopener">Spring Initializr</a> es un generador web (o integrado en el IDE) que arma la estructura base de un proyecto Spring Boot: eliges lenguaje, versión de Java, gestor de dependencias (Maven/Gradle) y las <strong>dependencias</strong> que necesitas — para una API REST, basta con <strong>Spring Web</strong>.</p>
+          <p>El proyecto generado trae esta estructura:</p>
+          <ul>
+            <li><code>src/main/java/...</code> — todo el código fuente de la aplicación</li>
+            <li><code>src/main/resources/application.properties</code> — configuración (puerto, nombre, conexión a datos)</li>
+            <li>Una <strong>clase principal</strong>, anotada con <code>@SpringBootApplication</code>, lista para ejecutar</li>
+          </ul>
+          <img class="portada-icon" src="img/rocket.svg" alt="Proyecto base listo para arrancar" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La clase principal</h1>
+          <p><code>@SpringBootApplication</code> marca la clase de arranque: le dice a Spring "desde aquí construye y configura toda la aplicación" (escanea componentes, habilita auto-configuración, etc.). El método <code>main</code> llama a <code>SpringApplication.run(...)</code>, que levanta el servidor embebido y deja la aplicación escuchando peticiones.</p>
+          <pre><code>@SpringBootApplication
+public class TareasApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TareasApplication.class, args);
+    }
+}</code></pre>
+          <p class="slide-eyebrow">Ejecutar esta clase levanta el servidor — normalmente en <code>http://localhost:8080</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cliente-servidor, ahora del lado del servidor</h1>
+          <p>Al ejecutar la clase principal, Spring Boot levanta un <strong>servidor HTTP embebido</strong> (por defecto, <strong>Tomcat</strong>) que queda escuchando conexiones en un puerto. Es exactamente la misma arquitectura cliente-servidor y los mismos verbos HTTP (<code>GET</code>, <code>POST</code>, etc.) vistos en la primera sesión de esta unidad — solo que ahora tú escribes el código que <strong>responde</strong> del lado del servidor, no el que hace la petición desde el navegador.</p>
+          <p>Cuando llega una petición HTTP, Spring debe decidir <strong>qué código Java la atiende</strong>: eso es responsabilidad de los <strong>controladores</strong>.</p>
+          <img class="portada-icon" src="img/server.svg" alt="Servidor HTTP embebido" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>@RestController</code>: la clase que responde peticiones</h1>
+          <p>Una clase anotada con <code>@RestController</code> le indica a Spring que es un <strong>controlador REST</strong>: sus métodos atienden peticiones HTTP y lo que devuelven se serializa <strong>automáticamente</strong> (normalmente a JSON) en el cuerpo de la respuesta, sin que tengas que convertir nada a mano.</p>
+          <p>Dentro de esa clase, cada método se conecta a una ruta y un verbo HTTP específicos usando otra anotación: <code>@GetMapping</code>, <code>@PostMapping</code>, etc.</p>
+          <img class="portada-icon" src="img/link.svg" alt="La clase que conecta HTTP con Java" style="display:block;width:120px;height:120px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>@GetMapping</code>: exponer datos con <code>GET</code></h1>
+          <p><code>@GetMapping("/ruta")</code> mapea una petición <code>GET</code> a esa ruta con el método que sigue. El objeto o la lista que el método retorna se convierte automáticamente en la respuesta JSON.</p>
+          <pre><code>@RestController
+public class TareaController {
+
+    private List&lt;Tarea&gt; tareas = new ArrayList&lt;&gt;(List.of(
+        new Tarea(1L, "Estudiar Spring Boot", false),
+        new Tarea(2L, "Entregar taller", false)
+    ));
+
+    @GetMapping("/tareas")
+    public List&lt;Tarea&gt; listarTareas() {
+        return tareas;
+    }
+}</code></pre>
+          <p class="slide-eyebrow">Una petición <code>GET /tareas</code> responde el arreglo JSON con las dos tareas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>@PathVariable</code> y <code>@RequestParam</code>: recibir datos desde la URL</h1>
+          <p>Ambas anotaciones toman datos de la URL de la petición, pero de lugares distintos:</p>
+          <table>
+            <thead><tr><th>Anotación</th><th>Dónde va el dato</th><th>Ejemplo de URL</th></tr></thead>
+            <tbody>
+              <tr><td><code>@PathVariable</code></td><td>Parte del <strong>path</strong>, identifica un recurso</td><td><code>/tareas/{id}</code></td></tr>
+              <tr><td><code>@RequestParam</code></td><td><strong>Query string</strong>, filtra o parametriza</td><td><code>/tareas/buscar?completada=true</code></td></tr>
+            </tbody>
+          </table>
+          <pre><code>@GetMapping("/tareas/{id}")
+public Tarea buscarPorId(@PathVariable Long id) { /* ... */ }
+
+@GetMapping("/tareas/buscar")
+public List&lt;Tarea&gt; buscarPorEstado(@RequestParam boolean completada) { /* ... */ }</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>@PostMapping</code> y <code>@RequestBody</code>: recibir un objeto JSON</h1>
+          <p><code>@PostMapping</code> mapea peticiones <code>POST</code> (crear un recurso). <code>@RequestBody</code> le dice a Spring que tome el <strong>cuerpo JSON</strong> de la petición y lo convierta automáticamente en un objeto Java.</p>
+          <pre><code>@PostMapping("/tareas")
+public Tarea crearTarea(@RequestBody Tarea nuevaTarea) {
+    tareas.add(nuevaTarea);
+    return nuevaTarea;
+}</code></pre>
+          <p>En la Unidad 4 serializabas objetos a JSON <strong>a mano</strong> con Gson. Aquí Spring hace ese trabajo por ti, en ambas direcciones, usando internamente una librería llamada <strong>Jackson</strong> — el mismo concepto de serialización, ahora automatizado por el framework.</p>
+          <img class="portada-icon" src="img/paper-plane.svg" alt="El cuerpo JSON llega y se convierte en objeto Java" style="display:block;width:110px;height:110px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ejemplo completo: un controlador con <code>GET</code> y <code>POST</code></h1>
+          <pre><code>@RestController
+@RequestMapping("/productos")
+public class ProductoController {
+
+    private List&lt;Producto&gt; productos = new ArrayList&lt;&gt;(List.of(
+        new Producto(1L, "Teclado", 120000),
+        new Producto(2L, "Mouse", 45000)
+    ));
+
+    @GetMapping
+    public List&lt;Producto&gt; listar() {
+        return productos;
+    }
+
+    @PostMapping
+    public Producto crear(@RequestBody Producto nuevo) {
+        productos.add(nuevo);
+        return nuevo;
+    }
+}</code></pre>
+          <p class="slide-eyebrow"><code>@RequestMapping("/productos")</code> en la clase fija el prefijo común de ruta para todos sus métodos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen la mini-API de "estudiantes"</h1>
+          <p><strong>En parejas:</strong> en papel o pseudocódigo, diseñen las rutas y verbos HTTP de un mini-API REST para el recurso <strong>"estudiantes"</strong>. Para cada endpoint definan: la <strong>ruta</strong>, el <strong>verbo HTTP</strong> y qué <strong>devuelve o recibe</strong>.</p>
+          <ul>
+            <li>Listar todos los estudiantes</li>
+            <li>Consultar un estudiante por su ID</li>
+            <li>Buscar estudiantes por programa académico</li>
+            <li>Registrar un estudiante nuevo</li>
+          </ul>
+          <p class="slide-eyebrow">8 minutos · al final, una pareja comparte su diseño con el resto del curso</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un <strong>framework</strong> resuelve la infraestructura común para que te enfoques en la lógica de negocio.</li>
+            <li><strong>Spring Boot</strong> simplifica Spring: arranque rápido, servidor embebido, convención sobre configuración.</li>
+            <li>Spring gestiona tus objetos (<strong>beans</strong>) por ti — inyección de dependencias, la práctica de la "D" de SOLID.</li>
+            <li><code>@SpringBootApplication</code> + <code>SpringApplication.run(...)</code> levantan la aplicación.</li>
+            <li><code>@RestController</code> marca una clase que responde peticiones HTTP y serializa a JSON automáticamente.</li>
+            <li><code>@GetMapping</code>/<code>@PostMapping</code> mapean rutas; <code>@PathVariable</code>, <code>@RequestParam</code> y <code>@RequestBody</code> reciben datos de la URL o del cuerpo de la petición.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Genera un proyecto en <a href="https://start.spring.io" target="_blank" rel="noopener">Spring Initializr</a> con la dependencia <strong>Spring Web</strong> y ejecútalo localmente.</li>
+            <li>Trae listo el diseño de la mini-API de "estudiantes" del ejercicio de hoy — se retoma para implementarlo.</li>
+          </ul>
+          <p><strong>Próxima sesión: arquitectura en capas, persistencia con Spring Data JPA</strong> — y cierre de la Unidad 7.</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 16</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript: Funciones de Orden Superior y Fetch — Semana 15</title>
+  <meta name="description" content="map, filter y reduce como puente al paradigma funcional, y consumo de APIs con fetch — Técnicas de Programación, Unidad 7, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/javascript-funciones-de-orden-superior-y-fetch/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="JavaScript: Funciones de Orden Superior y Fetch — Semana 15" />
+  <meta property="og:description" content="map, filter y reduce como puente al paradigma funcional, y consumo de APIs con fetch — Técnicas de Programación, Unidad 7, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/javascript-funciones-de-orden-superior-y-fetch/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JavaScript: Funciones de Orden Superior y Fetch — Semana 15" />
+  <meta name="twitter:description" content="map, filter y reduce como puente al paradigma funcional, y consumo de APIs con fetch — Técnicas de Programación, Unidad 7, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/javascript-funciones-de-orden-superior-y-fetch.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: Funciones de Orden Superior y Fetch</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/javascript.svg" alt="JavaScript" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De manipular el DOM a transformar datos</h1>
+          <p>En la sesión anterior aprendiste los fundamentos de JavaScript — variables, tipos, funciones — y a usarlos para <strong>manipular el DOM</strong>: seleccionar elementos, escuchar eventos, actualizar la página en respuesta a lo que hace el usuario. Ese JavaScript vivía todo dentro del navegador, trabajando con datos que ya estaban ahí.</p>
+          <p>Hoy das dos pasos más: primero, una forma más expresiva de <strong>transformar colecciones de datos</strong> con funciones de orden superior (<code>map</code>, <code>filter</code>, <code>reduce</code>); segundo, cómo pedirle esos datos a un servidor remoto con <code>fetch</code>, cuando no están en la página todavía.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Arrays en JavaScript: un repaso rápido</h1>
+          <p>Ya conoces los arreglos desde Java (Unidad 0): una colección ordenada de valores accesibles por índice. En JavaScript funcionan igual en lo esencial, pero con sintaxis más flexible — no se declara el tipo ni el tamaño de antemano.</p>
+          <pre><code>const precios = [12000, 8500, 21000];
+
+console.log(precios[0]);   // 12000 — acceso por índice
+precios.push(15000);       // agrega un elemento al final
+console.log(precios.length); // 4 — tamaño actual del array</code></pre>
+          <p>Con esa base ya puedes leer y modificar un array elemento por elemento con un <code>for</code>, tal como en Java. Lo que viene ahora es una forma distinta de recorrerlo: en vez de un ciclo explícito, pasarle una función al propio array.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es una función de orden superior?</h1>
+          <p>Una <strong>función de orden superior</strong> (<em>higher-order function</em>) es una función que recibe otra función como argumento, la retorna, o ambas cosas. En vez de escribir un ciclo que describe <strong>cómo</strong> recorrer un array paso a paso, le entregas al array una función que describe <strong>qué</strong> hacer con cada elemento — y es el array quien se encarga del recorrido.</p>
+          <p>Los arrays de JavaScript traen tres funciones de orden superior centrales para transformar datos: <code>map()</code>, <code>filter()</code> y <code>reduce()</code>. Las tres reciben una función como argumento y ninguna modifica el array original.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>map()</code>: transforma cada elemento</h1>
+          <p><code>map()</code> recorre el array y aplica la función recibida a <strong>cada elemento</strong>, devolviendo un <strong>array nuevo</strong> del mismo tamaño, con los valores transformados. El array original queda intacto.</p>
+          <pre><code>const precios = [12000, 8500, 21000];
+
+const precioConIVA = precios.map(function (p) {
+  return p * 1.19;
+});
+
+console.log(precioConIVA); // [14280, 10115, 24990]
+console.log(precios);      // [12000, 8500, 21000] — sin cambios</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>filter()</code>: selecciona los que cumplen una condición</h1>
+          <p><code>filter()</code> recorre el array y aplica una función que retorna <code>true</code> o <code>false</code> para cada elemento. El resultado es un array nuevo, que solo conserva los elementos donde la función devolvió <code>true</code> — puede ser más corto que el original, nunca más largo.</p>
+          <pre><code>const precios = [12000, 8500, 21000, 5000];
+
+const caros = precios.filter(function (p) {
+  return p > 10000;
+});
+
+console.log(caros); // [12000, 21000]</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>reduce()</code>: acumula en un solo valor</h1>
+          <p><code>reduce()</code> recorre el array y va combinando sus elementos en <strong>un único valor</strong> de salida (una suma, un conteo, un objeto armado a partir de la lista). Recibe una función con dos parámetros — el <strong>acumulador</strong> y el elemento actual — y un <strong>valor inicial</strong> del acumulador.</p>
+          <pre><code>const carrito = [12000, 8500, 21000];
+
+const total = carrito.reduce(function (acumulado, precio) {
+  return acumulado + precio;
+}, 0); // 0 es el valor inicial del acumulador
+
+console.log(total); // 41500</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Comparación</p>
+          <h1>La misma idea, dos lenguajes: Streams de Java</h1>
+          <p>Esto no es nuevo del todo. En la Unidad 2 (semana 6, "Profundización: Lambdas y Streams en Java") ya viste <code>.stream().filter().map()</code> sobre una <code>List</code> en Java. Es exactamente el mismo concepto de <strong>programación funcional</strong> — transformar datos encadenando funciones, sin ciclos explícitos ni mutar la colección original — expresado con otra sintaxis.</p>
+          <table>
+            <thead><tr><th>JavaScript (array)</th><th>Java (Stream)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><pre><code>const total = carrito
+  .filter(p => p > 10000)
+  .map(p => p * 1.19)
+  .reduce((a, p) => a + p, 0);</code></pre></td>
+                <td><pre><code>double total = carrito.stream()
+  .filter(p -&gt; p &gt; 10000)
+  .map(p -&gt; p * 1.19)
+  .reduce(0.0, Double::sum);</code></pre></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Mismo paradigma funcional, dos sintaxis: filtrar, transformar y acumular sin ciclos ni variables mutables intermedias.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Callbacks, arrow functions y encadenamiento</h1>
+          <p>La función que le pasas a <code>map</code>/<code>filter</code>/<code>reduce</code> se llama <strong>callback</strong>: una función que otra función va a invocar por ti, no tú directamente. Casi nunca se escribe con <code>function</code> como en los ejemplos anteriores — en la práctica se usa la sintaxis compacta de <strong>arrow function</strong>.</p>
+          <pre><code>// Forma larga (como en los ejemplos anteriores)
+precios.map(function (p) { return p * 1.19; });
+
+// Arrow function equivalente — más común en código real
+precios.map(p => p * 1.19);
+
+// Encadenamiento: cada método retorna un array nuevo,
+// así que se puede seguir llamando el siguiente método sobre él
+const totalCaros = precios
+  .filter(p => p > 10000)
+  .map(p => p * 1.19)
+  .reduce((acc, p) => acc + p, 0);</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y si los datos no están en el array todavía?</h1>
+          <p>Hasta ahora <code>precios</code> ya existía en memoria. Pero lo normal en una aplicación web es que esos datos vivan en un <strong>servidor remoto</strong>, y haya que pedirlos por la red — como cuando el navegador carga una página. El problema: una petición de red puede tardar milisegundos o varios segundos, y JavaScript corre en <strong>un solo hilo</strong>. Si esperara "congelado" la respuesta, toda la página dejaría de responder mientras tanto: no se podría hacer clic en nada, ni siquiera hacer scroll.</p>
+          <p>Por eso JavaScript maneja este tipo de operaciones de forma <strong>asíncrona</strong>: lanza la petición, sigue ejecutando el resto del programa, y retoma el resultado cuando la red responde.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Promesas: un valor que todavía no existe</h1>
+          <p>Una <code>Promise</code> es un objeto que representa el resultado <strong>eventual</strong> de una operación asíncrona (como una petición de red). Tiene tres estados posibles:</p>
+          <table>
+            <thead><tr><th>Estado</th><th>Significa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>pendiente</strong> (<em>pending</em>)</td><td>La operación todavía no terminó</td></tr>
+              <tr><td><strong>resuelta</strong> (<em>fulfilled</em>)</td><td>Terminó con éxito, ya hay un valor disponible</td></tr>
+              <tr><td><strong>rechazada</strong> (<em>rejected</em>)</td><td>Terminó con error</td></tr>
+            </tbody>
+          </table>
+          <pre><code>promesa
+  .then(resultado => console.log(resultado))   // se ejecuta si se resuelve
+  .catch(error => console.log(error));          // se ejecuta si se rechaza</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>async</code>/<code>await</code>: la misma promesa, más legible</h1>
+          <p><code>async</code>/<code>await</code> no es un mecanismo distinto a las promesas — es <strong>azúcar sintáctico</strong> sobre ellas: código que se lee de arriba a abajo como si fuera síncrono, aunque por debajo sigue siendo asíncrono. Una función marcada <code>async</code> puede usar <code>await</code> para "pausar" hasta que una promesa se resuelva, sin bloquear el resto de la página.</p>
+          <pre><code>// Con .then()
+obtenerDatos().then(datos => {
+  console.log(datos);
+});
+
+// Equivalente con async/await
+async function mostrarDatos() {
+  const datos = await obtenerDatos();
+  console.log(datos);
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>fetch()</code>: pedir datos a una API</h1>
+          <p><code>fetch(url)</code> hace una petición <strong>GET</strong> a la URL indicada y retorna una <code>Promise</code> — retoma el método HTTP que ya viste en la primera sesión de esta unidad. Esa promesa se resuelve con un objeto <code>Response</code>; para obtener el cuerpo como datos usables hay que llamar a <code>.json()</code>, que también retorna otra promesa.</p>
+          <pre><code>fetch("https://api.ejemplo.com/productos")
+  .then(response => response.json())
+  .then(data => {
+    console.log(data); // el array de productos ya como objetos JS
+  });
+
+// Equivalente con async/await
+async function obtenerProductos() {
+  const response = await fetch("https://api.ejemplo.com/productos");
+  const data = await response.json();
+  console.log(data);
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>JSON, el mismo formato en JavaScript y en Java</h1>
+          <p>En la Unidad 4 (sesión "Gestión de Archivos: JSON") ya viste la sintaxis JSON y cómo Gson convierte texto JSON en objetos Java (deserializar) y objetos Java en texto JSON (serializar). En JavaScript el formato es idéntico — de hecho JSON nació de la notación de objetos de JavaScript — y las conversiones equivalentes son <code>JSON.parse()</code> y <code>JSON.stringify()</code>.</p>
+          <table>
+            <thead><tr><th>Operación</th><th>Java (Gson)</th><th>JavaScript</th></tr></thead>
+            <tbody>
+              <tr><td>Texto JSON → objeto</td><td><code>gson.fromJson(texto, Producto.class)</code></td><td><code>JSON.parse(texto)</code></td></tr>
+              <tr><td>Objeto → texto JSON</td><td><code>gson.toJson(producto)</code></td><td><code>JSON.stringify(producto)</code></td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><code>fetch(...).then(res =&gt; res.json())</code> ya hace este <code>JSON.parse()</code> por dentro — por eso el resultado llega como objeto JS listo para usar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1><code>fetch</code> sin manejo de errores: la falla en silencio</h1>
+          <pre><code>fetch("https://api.ejemplo.com/productos")
+  .then(response => response.json())
+  .then(data => mostrarProductos(data));
+// si el servidor responde 404 o 500, ¡esto no lo detecta!</code></pre>
+          <p>Este es el mismo problema que viste con las excepciones "tragadas" en Java, pero con un matiz importante: <code>fetch</code> <strong>solo rechaza su promesa por fallas de red</strong> (sin conexión, DNS caído). Si el servidor responde con un error HTTP (404, 500), <code>fetch</code> lo considera una respuesta válida — <code>response.json()</code> se ejecuta igual, sobre un cuerpo de error, y la página sigue como si nada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Manejo correcto de errores en <code>fetch</code></h1>
+          <p>Dos piezas cubren los dos tipos de falla: <code>.catch()</code> captura errores de red, y verificar <code>response.ok</code> (verdadero solo si el código de estado HTTP está entre 200 y 299) detecta errores del servidor.</p>
+          <pre><code>fetch("https://api.ejemplo.com/productos")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Error del servidor: " + response.status);
+    }
+    return response.json();
+  })
+  .then(data => mostrarProductos(data))
+  .catch(error => console.log("Fallo la petición: " + error.message));</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Consuman una API pública</h1>
+          <p><strong>En parejas:</strong> escriban un <code>fetch</code> hacia un endpoint público de ejemplo (ej. <code>https://jsonplaceholder.typicode.com/users</code>), encadenen <code>.then()</code> para convertir la respuesta a JSON, y usen <code>map()</code> para transformar cada elemento (por ejemplo, quedarse solo con el nombre y el correo de cada usuario) antes de mostrarlo con <code>console.log()</code>.</p>
+          <p class="slide-eyebrow">8 minutos · incluyan manejo de errores con <code>.catch()</code> y verificando <code>response.ok</code></p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una función de orden superior recibe otra función como argumento; <code>map</code>, <code>filter</code> y <code>reduce</code> transforman, seleccionan y acumulan arrays sin ciclos explícitos ni mutar el original.</li>
+            <li>Es el mismo paradigma funcional que <code>.stream().map().filter().reduce()</code> en Java (Unidad 2) — dos sintaxis para la misma idea.</li>
+            <li>JavaScript es asíncrono para no bloquear la página mientras espera la red; las <code>Promise</code> y <code>async</code>/<code>await</code> son las herramientas para trabajar con eso.</li>
+            <li><code>fetch()</code> pide datos a una API; <code>response.ok</code> y <code>.catch()</code> son obligatorios para no dejar errores del servidor pasar en silencio.</li>
+          </ol>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Datos transformados y encadenados" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar el encadenamiento <code>filter().map().reduce()</code> sobre un array propio, comparando mentalmente con el equivalente en Streams de Java.</li>
+            <li>Probar un <code>fetch</code> a <code>https://jsonplaceholder.typicode.com</code> con manejo de errores completo (<code>response.ok</code> + <code>.catch()</code>).</li>
+          </ul>
+          <p><strong>Próxima sesión: Spring Boot</strong> — el backend que expone la API que acabamos de aprender a consumir con <code>fetch</code>.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

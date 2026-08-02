@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolución de la Arquitectura de Software — Semana 2</title>
+  <meta name="description" content="Cómo evolucionaron las tecnologías y los frameworks, con el caso real del nacimiento de Ruby on Rails en 2004 — Arquitectura de Software, Semana 2." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/evolucion-arquitectura-software/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Evolución de la Arquitectura de Software — Semana 2" />
+  <meta property="og:description" content="Cómo evolucionaron las tecnologías y los frameworks, con el caso real del nacimiento de Ruby on Rails en 2004 — Arquitectura de Software, Semana 2." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/evolucion-arquitectura-software/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Evolución de la Arquitectura de Software — Semana 2" />
+  <meta name="twitter:description" content="Cómo evolucionaron las tecnologías y los frameworks, con el caso real del nacimiento de Ruby on Rails en 2004 — Arquitectura de Software, Semana 2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/evolucion-arquitectura-software.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 2 — Evolución de la Arquitectura de Software (Tecnologías y Frameworks)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/timeline.svg" alt="Evolución de tecnologías" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>De una sola aplicación<br>a un framework para todos</h1>
+          <img class="portada-icon" src="img/stopwatch.svg" alt="Velocidad de desarrollo" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Ruby on Rails, 2004</h1>
+          <table>
+            <tbody>
+              <tr><th>Autor</th><td>David Heinemeier Hansson (DHH), en 37signals (hoy Basecamp)</td></tr>
+              <tr><th>Origen</th><td>Extraído del código real de la aplicación <strong>Basecamp</strong>, no diseñado desde cero en abstracto</td></tr>
+              <tr><th>Lanzamiento público</th><td>Julio de 2004</td></tr>
+              <tr><th>Principios centrales</th><td><strong>Convención sobre configuración</strong> y <strong>DRY</strong> (Don't Repeat Yourself)</td></tr>
+              <tr><th>Impacto</th><td>Popularizó el patrón MVC en la web e influyó directamente en frameworks posteriores como Django (Python) y Laravel (PHP)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema</p>
+          <h1>Antes de los frameworks: repetir todo, siempre</h1>
+          <p>A finales de los 90, construir un sitio web dinámico significaba escribir manualmente, una y otra vez para cada proyecto: la conexión a la base de datos, el mapeo de filas a objetos, las rutas de cada página, la validación de formularios.</p>
+          <ul>
+            <li><strong>CGI (1993)</strong>: scripts sueltos, uno por cada acción, sin estructura común.</li>
+            <li><strong>Servlets y JSP (1997, Java)</strong>: más ordenado, pero con mucho código repetitivo (boilerplate) por cada nueva funcionalidad.</li>
+            <li>Cada equipo reinventaba su propia forma de organizar el proyecto — sin convenciones compartidas entre empresas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Lo que Rails cambió</p>
+          <h1>"Convención sobre configuración"</h1>
+          <p>En vez de que cada desarrollador decidiera —y configurara a mano— cómo se llama cada archivo, dónde va cada cosa y cómo se conecta la base de datos, Rails impuso <strong>convenciones por defecto</strong>: si el desarrollador las sigue, casi no hay que configurar nada.</p>
+          <ul>
+            <li>Un modelo llamado <code>Usuario</code> se mapea automáticamente a una tabla <code>usuarios</code>, sin escribirlo explícitamente.</li>
+            <li>El <em>scaffolding</em> genera automáticamente el código base de una funcionalidad CRUD completa.</li>
+            <li>Una demo pública de DHH en 2004 mostró crear un blog funcional en <strong>15 minutos</strong> — el video se volvió una referencia citada en la comunidad de desarrollo web.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El impacto</p>
+          <h1>Una idea que se replicó en otros lenguajes</h1>
+          <p>Rails no solo tuvo éxito propio: <strong>cambió las expectativas de toda la industria</strong> sobre cómo debía sentirse un framework web productivo.</p>
+          <ul>
+            <li><strong>Django</strong> (Python, 2005) adoptó ideas muy similares de convención y ORM automático.</li>
+            <li><strong>Laravel</strong> (PHP, 2011) se inspiró explícitamente en la elegancia de Rails.</li>
+            <li>El propio ecosistema Java, más adelante, adoptó ideas de "convención sobre configuración" en frameworks como Spring Boot.</li>
+          </ul>
+          <p class="slide-eyebrow">Rails demuestra que un cambio de arquitectura de framework —no una nueva funcionalidad de negocio— puede transformar la productividad de toda una industria.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Rails es un punto en una línea más larga</h1>
+          <p>Rails resolvió un problema de su momento —demasiado código repetitivo en el backend web—, igual que otros frameworks, antes y después, resolvieron el problema de <strong>su</strong> momento.</p>
+          <p><strong>Para entender por qué existen tantos frameworks hoy, hay que ver la evolución completa: qué fuerza empujó cada salto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un framework?</h1>
+          <p>Un <strong>framework</strong> es un conjunto de código reutilizable que define la <strong>estructura general</strong> de una aplicación y le dice al desarrollador dónde poner su propio código — a diferencia de una simple colección de funciones sueltas.</p>
+          <p><strong>La diferencia clave con una librería es quién tiene el control del flujo del programa</strong> — se conoce como <em>inversión de control</em>: el framework llama al código del desarrollador, no al revés.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "framework" y "librería" son lo mismo</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Librería</th><th>Framework</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Quién llama a quién</th><td>Tu código llama a la librería</td><td>El framework llama a tu código</td></tr>
+              <tr><th>Control del flujo</th><td>Lo tiene el desarrollador</td><td>Lo tiene el framework</td></tr>
+              <tr><th>Ejemplo</th><td>Una función que formatea fechas</td><td>Rails, Spring, Angular</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Usar una librería es una decisión de detalle. Adoptar un framework casi siempre es una decisión arquitectónica</strong> — condiciona toda la estructura del proyecto (concepto visto la semana pasada).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Línea de tiempo de tecnologías backend</h1>
+          <table>
+            <thead>
+              <tr><th>Año</th><th>Tecnología</th><th>Qué resolvió</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1993</td><td>CGI</td><td>Primera forma estándar de generar contenido dinámico en la web</td></tr>
+              <tr><td>1997</td><td>Servlets / JSP (Java)</td><td>Programas que viven en el servidor sin reiniciar por cada solicitud</td></tr>
+              <tr><td>2000</td><td>Struts (Java)</td><td>Primer MVC ampliamente adoptado para separar lógica y presentación</td></tr>
+              <tr><td>2003</td><td>Spring (Java)</td><td>Inyección de dependencias, menos acoplamiento entre componentes</td></tr>
+              <tr><td>2004</td><td>Ruby on Rails</td><td>Convención sobre configuración, productividad radical</td></tr>
+              <tr><td>2009</td><td>Node.js</td><td>JavaScript también en el backend, modelo asíncrono</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Línea de tiempo de tecnologías frontend</h1>
+          <table>
+            <thead>
+              <tr><th>Año</th><th>Tecnología</th><th>Qué resolvió</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1991–1995</td><td>HTML + CSS</td><td>Documentos estáticos con formato, sin interactividad real</td></tr>
+              <tr><td>1995</td><td>JavaScript</td><td>Interactividad en el navegador sin recargar la página</td></tr>
+              <tr><td>2006</td><td>jQuery</td><td>Manipular la página sin lidiar con diferencias entre navegadores</td></tr>
+              <tr><td>2010</td><td>AngularJS</td><td>Aplicaciones de una sola página (SPA): el navegador ya no recarga entre pantallas</td></tr>
+              <tr><td>2013</td><td>React</td><td>Interfaz como función del estado; reutilización de piezas (componentes)</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/window-maximize.svg" alt="Evolución del frontend" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El patrón detrás de cada salto</h1>
+          <p>Cada nueva tecnología no apareció por moda: resolvió una <strong>fuerza concreta</strong> que la anterior no podía sostener.</p>
+          <ul>
+            <li><strong>Escalabilidad:</strong> más usuarios de los que la arquitectura anterior podía atender (el caso de Twitter, visto la semana pasada).</li>
+            <li><strong>Productividad del desarrollador:</strong> mismo resultado, con menos código repetitivo (el caso de Rails, visto hoy).</li>
+            <li><strong>Cambios de hardware o red:</strong> computadoras más rápidas, conexiones más veloces, dispositivos móviles.</li>
+            <li><strong>Nuevos requisitos de experiencia de usuario:</strong> interfaces que responden sin recargar la página completa.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Siempre hay que usar lo más nuevo?</h1>
+          <p><strong>Rails, en 2026, ya no es "lo más nuevo" — pero Basecamp, la aplicación que lo originó, sigue corriendo sobre Rails hoy.</strong></p>
+          <ul>
+            <li>Adoptar la tecnología más reciente tiene un costo: menos documentación madura, menos desarrolladores con experiencia, más riesgo de que cambie o desaparezca.</li>
+            <li>Quedarse con una tecnología antigua también tiene costo: menos soporte, dificultad para contratar, deuda técnica acumulada.</li>
+          </ul>
+          <p><strong>¿Qué debería pesar más al elegir la tecnología de un proyecto nuevo: qué tan nueva es, o qué tan bien resuelve el problema concreto?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión tecnológica" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué fuerza resolvió?</h1>
+          <p><strong>Para cada tecnología, identifiquen qué fuerza de la diapositiva "El patrón detrás de cada salto" resolvió principalmente:</strong></p>
+          <ol>
+            <li>React (componentes reutilizables, interfaz como función del estado)</li>
+            <li>Node.js (JavaScript en el backend, modelo asíncrono)</li>
+            <li>Spring (inyección de dependencias)</li>
+            <li>AngularJS (aplicaciones de una sola página)</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Lo que viene</p>
+          <h1>De frameworks sueltos a stacks completos</h1>
+          <p>Con el tiempo, ciertas combinaciones de tecnologías —un lenguaje de backend, una base de datos, un framework frontend— se volvieron tan comunes que recibieron nombre propio: <strong>LAMP, MEAN, MERN</strong>, entre otros.</p>
+          <p class="slide-eyebrow">Estos stacks completos, con el detalle de cada capa, se estudian a fondo en la Semana 5 de esta unidad ("Stack tecnológico").</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>framework</strong> invierte el control del flujo del programa; una librería no — esa diferencia lo vuelve una decisión arquitectónica.</li>
+            <li><strong>Ruby on Rails (2004)</strong> demostró que un cambio de framework puede transformar la productividad de toda una industria.</li>
+            <li>Backend y frontend evolucionaron en paralelo, cada uno resolviendo las limitaciones técnicas de su momento.</li>
+            <li>Cada salto tecnológico responde a una fuerza concreta: <strong>escalabilidad, productividad, hardware/red o experiencia de usuario</strong>.</li>
+            <li>"Más nuevo" no es sinónimo de "mejor para este proyecto" — la elección tecnológica exige criterio, no moda.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>El docente muestra en vivo, sobre el mismo backend Spring Boot usado en sesiones anteriores, <strong>cómo la inyección de dependencias</strong> —el aporte central de Spring a la línea de tiempo de hoy— evita repetir la creación manual de objetos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Ejemplo comentado</p>
+          <h1>Inyección de dependencias, en vivo</h1>
+          <pre><code>// Sin inyección de dependencias: el controlador
+// crea y administra sus propias dependencias
+public class SaludoController {
+    private SaludoService servicio = new SaludoService(new SaludoRepository());
+    // el controlador queda acoplado a implementaciones concretas
+}
+
+// Con inyección de dependencias (Spring):
+// el framework crea y entrega las dependencias
+@RestController
+public class SaludoController {
+    @Autowired
+    private SaludoService servicio; // Spring la inyecta automáticamente
+}</code></pre>
+          <p><strong>El framework, no el desarrollador, decide cuándo y cómo se crean los objetos.</strong> Esta es la "inversión de control" mencionada en la diapositiva del mito framework vs. librería.</p>
+          <p class="slide-eyebrow">No hay entregable de estudiantes: el objetivo es reconocer la inversión de control cuando aparezca en cualquier framework.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Identificar qué framework(s) usa el proyecto de Fábrica Escuela del propio equipo y a qué "salto" de la línea de tiempo corresponde.</li>
+            <li>Repasar la diferencia entre librería y framework — se retoma en la Semana 3.</li>
+          </ul>
+          <p><strong>La Semana 3 aborda Diseño vs. Arquitectura y la integración de UML para generar vistas arquitectónicas — el primer puente entre la teoría de estas dos semanas y la práctica de modelar un sistema.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

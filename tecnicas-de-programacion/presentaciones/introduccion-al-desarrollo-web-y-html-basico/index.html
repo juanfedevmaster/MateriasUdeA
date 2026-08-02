@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción al Desarrollo Web y HTML Básico — Semana 13</title>
+  <meta name="description" content="Cómo funciona la web, arquitectura cliente-servidor y estructura de un documento HTML — Técnicas de Programación, Unidad 7, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/introduccion-al-desarrollo-web-y-html-basico/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Introducción al Desarrollo Web y HTML Básico — Semana 13" />
+  <meta property="og:description" content="Cómo funciona la web, arquitectura cliente-servidor y estructura de un documento HTML — Técnicas de Programación, Unidad 7, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/introduccion-al-desarrollo-web-y-html-basico/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Introducción al Desarrollo Web y HTML Básico — Semana 13" />
+  <meta name="twitter:description" content="Cómo funciona la web, arquitectura cliente-servidor y estructura de un documento HTML — Técnicas de Programación, Unidad 7, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/introduccion-al-desarrollo-web-y-html-basico.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Unidad 7 — Desarrollo Web</h1>
+          <h2>Introducción al Desarrollo Web y HTML Básico</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/html5.svg" alt="Logotipo de HTML5" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>El mapa de la Unidad 7</h1>
+          <p>Esta es la primera de <strong>8 sesiones</strong> dedicadas al desarrollo web, la última unidad del curso. El recorrido va del <strong>frontend al backend</strong>: primero construimos la interfaz que ve el usuario, y al final conectamos esa interfaz con un servidor real.</p>
+          <table>
+            <thead><tr><th>Bloque</th><th>Qué se aprende</th></tr></thead>
+            <tbody>
+              <tr><td><strong>HTML</strong></td><td>Estructura del contenido de una página (hoy y la próxima sesión)</td></tr>
+              <tr><td><strong>CSS3</strong></td><td>Estilos, layout y diseño responsivo</td></tr>
+              <tr><td><strong>JavaScript</strong></td><td>Interactividad y manipulación de la página en el navegador</td></tr>
+              <tr><td><strong>Spring Boot</strong></td><td>Framework de backend en Java para servir datos reales</td></tr>
+            </tbody>
+          </table>
+          <p>La unidad cierra con un <strong>Laboratorio Final integrador</strong>, que vale el <strong>20% de la nota</strong> del curso — hoy solo lo mencionamos como el destino del recorrido, sus detalles se explican más adelante.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Ruta con varias etapas" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Cada página que abres hoy —el correo, las redes sociales, la banca en línea— es, en el fondo, HTML, CSS y JavaScript que tu navegador descarga, interpreta y dibuja en milisegundos.</h1>
+          <img class="portada-icon" src="img/globe.svg" alt="Un globo terráqueo representando la web" style="display:block;width:210px;height:210px;margin:35px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Qué significa realmente "desarrollar para la web"?</h1>
+          <p>Detrás de esa página que se dibuja en milisegundos hay dos mundos de trabajo distintos, que a menudo se confunden cuando alguien empieza en desarrollo web: el <strong>frontend</strong> y el <strong>backend</strong>. Entender esa división es el primer paso antes de escribir una sola etiqueta HTML.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Frontend vs. backend</h1>
+          <p>El <strong>desarrollo web</strong> se divide en dos capas de trabajo que colaboran, pero se ejecutan en lugares distintos:</p>
+          <table>
+            <thead><tr><th></th><th>Frontend</th><th>Backend</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Dónde corre</strong></td><td>En el navegador del usuario</td><td>En un servidor</td></tr>
+              <tr><td><strong>Con qué se construye</strong></td><td>HTML, CSS, JavaScript</td><td>Un lenguaje de servidor (en esta unidad, Java con Spring Boot)</td></tr>
+              <tr><td><strong>De qué se encarga</strong></td><td>Lo que el usuario ve e interactúa</td><td>Lógica de negocio, datos, seguridad</td></tr>
+            </tbody>
+          </table>
+          <p>Las próximas dos sesiones son 100% <strong>frontend</strong>: HTML, el lenguaje que le da estructura al contenido de cualquier página.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Arquitectura cliente-servidor</h1>
+          <p>Cuando escribes una URL y presionas Enter, tu navegador actúa como <strong>cliente</strong>: envía una petición a una computadora remota, el <strong>servidor</strong>, que responde con el contenido de la página. Es el mismo patrón que pedir comida por teléfono: tú (cliente) haces el pedido, el restaurante (servidor) lo prepara y te lo envía de vuelta.</p>
+          <ul>
+            <li><strong>Cliente:</strong> el navegador (Chrome, Firefox, Safari, Edge) que corre en tu computador o celular.</li>
+            <li><strong>Servidor:</strong> una computadora, casi siempre remota, que guarda los archivos de la página y responde peticiones.</li>
+            <li>Un mismo servidor puede responder a miles de clientes al mismo tiempo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El protocolo HTTP/HTTPS</h1>
+          <p>Cliente y servidor se hablan siguiendo un protocolo llamado <strong>HTTP</strong> (HyperText Transfer Protocol) — o su versión cifrada, <strong>HTTPS</strong>. Es un protocolo de <strong>petición-respuesta</strong>: el cliente pide algo específico y el servidor contesta.</p>
+          <table>
+            <thead><tr><th>Verbo HTTP</th><th>Para qué se usa</th></tr></thead>
+            <tbody>
+              <tr><td><code>GET</code></td><td>Pedir datos o una página (ej. cargar el inicio de un sitio)</td></tr>
+              <tr><td><code>POST</code></td><td>Enviar datos al servidor (ej. enviar un formulario de registro)</td></tr>
+            </tbody>
+          </table>
+          <p>El servidor siempre responde con un <strong>código de estado</strong>: <code>200</code> significa "todo salió bien", <code>404</code> significa "no encontré lo que pediste". Volverás a ver estos códigos en la sesión de JavaScript, cuando el navegador haga estas peticiones por ti.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué hace el navegador con lo que recibe?</h1>
+          <p>El servidor responde con texto plano: código HTML, CSS y JavaScript. El navegador trae un <strong>motor de renderizado</strong> (Blink en Chrome, Gecko en Firefox, WebKit en Safari) que:</p>
+          <ol>
+            <li><strong>Lee</strong> (parsea) el HTML de arriba hacia abajo.</li>
+            <li><strong>Interpreta</strong> cada etiqueta y decide qué representa: un título, un párrafo, una imagen.</li>
+            <li><strong>Dibuja</strong> el resultado en pantalla, aplicando después los estilos CSS.</li>
+          </ol>
+          <p class="slide-eyebrow">Cómo el navegador organiza internamente esa página (el "DOM") es tema de la sesión de JavaScript, más adelante en esta unidad — hoy nos quedamos con la idea general.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la arquitectura general al lenguaje que hoy vamos a escribir</h1>
+          <p>Ya sabes qué es un cliente, qué es un servidor y qué hace el navegador con lo que recibe. Ahora toca escribir el primer ingrediente de esa respuesta: <strong>HTML</strong>, el lenguaje que estructura el contenido de toda página web.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es HTML?</h1>
+          <p><strong>HTML</strong> (HyperText Markup Language) es un <strong>lenguaje de marcado</strong>, no un lenguaje de programación: no tiene variables, condicionales ni ciclos. Su trabajo es <strong>describir la estructura</strong> del contenido usando <strong>etiquetas</strong> (<code>&lt;tag&gt;</code>) que pueden llevar <strong>atributos</strong> (pares nombre-valor dentro de la etiqueta).</p>
+          <p>HTML existe desde 1991, y su versión actual, <strong>HTML5</strong>, es el estándar vigente desde 2014, mantenido por el W3C y el WHATWG. Es compatible con todos los navegadores modernos.</p>
+          <img class="portada-icon" src="img/code.svg" alt="Símbolo de código" style="display:block;width:130px;height:130px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Estructura mínima de un documento HTML</h1>
+          <p>Todo archivo HTML válido sigue el mismo esqueleto: una declaración de tipo de documento, una etiqueta raíz <code>&lt;html&gt;</code>, una sección <code>&lt;head&gt;</code> con metadatos que no se ven en pantalla, y una sección <code>&lt;body&gt;</code> con el contenido visible.</p>
+          <pre><code>&lt;!doctype html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Mi primera página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola, mundo&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <p><code>&lt;!doctype html&gt;</code> le dice al navegador que use el estándar HTML5. <code>&lt;title&gt;</code> define lo que aparece en la pestaña del navegador.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Etiquetas de texto básicas</h1>
+          <table>
+            <thead><tr><th>Etiqueta</th><th>Para qué sirve</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;h1&gt;</code> … <code>&lt;h6&gt;</code></td><td>Títulos y subtítulos, de mayor (h1) a menor (h6) jerarquía</td></tr>
+              <tr><td><code>&lt;p&gt;</code></td><td>Un párrafo de texto</td></tr>
+              <tr><td><code>&lt;strong&gt;</code></td><td>Texto con importancia (se ve en negrita)</td></tr>
+              <tr><td><code>&lt;em&gt;</code></td><td>Texto con énfasis (se ve en cursiva)</td></tr>
+              <tr><td><code>&lt;br&gt;</code></td><td>Salto de línea dentro de un mismo bloque</td></tr>
+            </tbody>
+          </table>
+          <p>Los <strong>comentarios</strong> se escriben con <code>&lt;!-- así --&gt;</code>: el navegador los ignora al renderizar, pero son útiles para dejar notas en el código.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Listas: ordenadas y no ordenadas</h1>
+          <p>HTML tiene dos tipos de lista, ambas construidas con elementos <code>&lt;li&gt;</code> (list item) dentro de un contenedor:</p>
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;Sin orden específico&lt;/li&gt;
+  &lt;li&gt;Se muestra con viñetas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Primer paso&lt;/li&gt;
+  &lt;li&gt;Segundo paso&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          <p><code>&lt;ul&gt;</code> (unordered list) se usa cuando el orden no importa; <code>&lt;ol&gt;</code> (ordered list) cuando sí, porque el navegador la numera automáticamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Enlaces e imágenes</h1>
+          <p>Dos de las etiquetas más usadas de HTML conectan una página con el resto de la web:</p>
+          <pre><code>&lt;a href="https://ejemplo.com" target="_blank"&gt;
+  Visitar sitio
+&lt;/a&gt;
+
+&lt;img src="foto.jpg" alt="Descripción de la imagen"&gt;</code></pre>
+          <ul>
+            <li><code>&lt;a href="..."&gt;</code> crea un enlace; el atributo <code>target="_blank"</code> lo abre en una pestaña nueva.</li>
+            <li><code>&lt;img src="..."&gt;</code> inserta una imagen; <strong>no tiene etiqueta de cierre</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El atributo <code>alt</code> no es opcional</h1>
+          <pre><code>&lt;!-- Mal: sin alt, inaccesible --&gt;
+&lt;img src="grafico-ventas.png"&gt;
+
+&lt;!-- Bien: alt describe el contenido --&gt;
+&lt;img src="grafico-ventas.png"
+     alt="Gráfico de barras: ventas trimestrales 2025"&gt;</code></pre>
+          <p>Sin <code>alt</code>, una persona que usa un <strong>lector de pantalla</strong> no tiene forma de saber qué muestra la imagen, y si la imagen no carga, el navegador no tiene qué texto mostrar en su lugar. Por eso <code>alt</code> es <strong>obligatorio por accesibilidad</strong>, no un extra — es un concepto al que volvemos con más detalle en la próxima sesión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Atributos globales y buenas prácticas</h1>
+          <p>Además de <code>href</code>, <code>src</code> o <code>alt</code> (específicos de cada etiqueta), existen <strong>atributos globales</strong> que cualquier etiqueta puede llevar, como <code>id</code>, <code>class</code> o <code>lang</code> — los verás en detalle en la sesión de CSS, cuando sirvan para aplicar estilos.</p>
+          <ul>
+            <li><strong>Anida correctamente:</strong> una etiqueta que abre dentro de otra debe cerrar antes que ella.</li>
+            <li><strong>Cierra siempre las etiquetas</strong> que lo requieren (<code>&lt;p&gt;...&lt;/p&gt;</code>), aunque el navegador sea tolerante con errores.</li>
+            <li><strong>Indenta el código</strong>: cada nivel de anidamiento, dos espacios más — hace el archivo legible.</li>
+            <li><strong>Nombres de archivo en minúsculas</strong>, sin espacios ni tildes (ej. <code>index.html</code>, no <code>Índice.html</code>).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Escriban su primera página</h1>
+          <p><strong>En parejas, en papel o en un editor de texto:</strong> escriban a mano la estructura completa de una página HTML simple que tenga:</p>
+          <ul>
+            <li>Un título principal con <code>&lt;h1&gt;</code>.</li>
+            <li>Un párrafo con <code>&lt;p&gt;</code> que se presente.</li>
+            <li>Una lista (<code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>) con al menos 3 elementos.</li>
+            <li>Una imagen con <code>&lt;img&gt;</code>, incluyendo su atributo <code>alt</code>.</li>
+          </ul>
+          <p class="slide-eyebrow">8 minutos · no olviden la estructura mínima completa (doctype, html, head, body)</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El desarrollo web se divide en <strong>frontend</strong> (navegador) y <strong>backend</strong> (servidor).</li>
+            <li>La arquitectura <strong>cliente-servidor</strong> funciona por petición-respuesta, usando el protocolo <strong>HTTP/HTTPS</strong>.</li>
+            <li>El navegador <strong>parsea</strong> el HTML recibido y lo dibuja en pantalla.</li>
+            <li><strong>HTML</strong> es un lenguaje de marcado: etiquetas y atributos, no lógica de programación.</li>
+            <li>Todo documento HTML sigue la misma estructura mínima: <code>doctype</code>, <code>html</code>, <code>head</code>, <code>body</code>.</li>
+            <li>El atributo <code>alt</code> en <code>&lt;img&gt;</code> es obligatorio por accesibilidad.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Lista de verificación" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar la estructura mínima de HTML escribiendo una página propia con las etiquetas vistas hoy.</li>
+            <li>Guardarla con un nombre de archivo en minúsculas, sin tildes ni espacios.</li>
+          </ul>
+          <p><strong>Próxima sesión: HTML — Formularios, Tablas y Semántica</strong> — profundizamos en cómo capturar datos del usuario, organizar información tabular y usar etiquetas semánticas para accesibilidad.</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para la próxima sesión" style="display:block;width:180px;height:180px;margin:25px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

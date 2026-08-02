@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS3: Fundamentos, Selectores y Modelo de Caja — Semana 14</title>
+  <meta name="description" content="Cómo aplicar estilos, selectores CSS y el box model — Técnicas de Programación, Unidad 7, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/css3-fundamentos-selectores-y-modelo-de-caja/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="CSS3: Fundamentos, Selectores y Modelo de Caja — Semana 14" />
+  <meta property="og:description" content="Cómo aplicar estilos, selectores CSS y el box model — Técnicas de Programación, Unidad 7, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/css3-fundamentos-selectores-y-modelo-de-caja/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CSS3: Fundamentos, Selectores y Modelo de Caja — Semana 14" />
+  <meta name="twitter:description" content="Cómo aplicar estilos, selectores CSS y el box model — Técnicas de Programación, Unidad 7, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/css3-fundamentos-selectores-y-modelo-de-caja.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: CSS3: Fundamentos, Selectores y Modelo de Caja</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/css3.svg" alt="CSS3" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ya sabemos estructurar; hoy aprendemos a estilizar</h1>
+          <p>En las dos sesiones anteriores construimos el <strong>esqueleto</strong> de una página web: estructura básica, texto, listas, enlaces e imágenes, formularios, tablas y etiquetas semánticas (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>). El resultado es correcto, accesible y navegable — pero visualmente es texto plano en blanco y negro, sin colores, tipografía cuidada ni espaciado.</p>
+          <p>Hoy resolvemos eso: <strong>CSS3</strong>, el lenguaje que le da apariencia visual a esa estructura. Aprenderemos a seleccionar elementos, aplicarles estilo y entender el <strong>modelo de caja</strong> que rige el tamaño y espaciado de cada elemento en la página.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es CSS3</h1>
+          <p><strong>CSS</strong> (Cascading Style Sheets, "hojas de estilo en cascada") es el lenguaje que describe <strong>cómo se ve</strong> un documento HTML: colores, tipografía, tamaños, espaciado y posición de cada elemento. <strong>CSS3</strong> es la revisión más reciente y ampliamente adoptada del lenguaje, dividida en módulos independientes (selectores, colores, cajas, flexbox, grid, animaciones...) que evolucionan por separado.</p>
+          <p>La idea central es la <strong>separación de responsabilidades</strong>: el HTML define <em>qué es</em> cada cosa (un título, una lista, un párrafo — su contenido y estructura), y el CSS define <em>cómo se ve</em> (color, tamaño, posición). Esta separación permite cambiar por completo la apariencia de un sitio sin tocar una sola línea de HTML, y reutilizar el mismo CSS en muchas páginas.</p>
+          <p><strong>Cascada:</strong> cuando varias reglas CSS podrían aplicar al mismo elemento, el navegador decide cuál "gana" siguiendo un orden de prioridad — volveremos a esto al hablar de especificidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tres formas de vincular CSS a un HTML</h1>
+          <table>
+            <thead><tr><th>Forma</th><th>Cómo se escribe</th><th>Alcance</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Inline</strong></td><td>Atributo <code>style=""</code> directo en la etiqueta</td><td>Solo ese elemento</td></tr>
+              <tr><td><strong>Interno</strong></td><td>Etiqueta <code>&lt;style&gt;</code> dentro del <code>&lt;head&gt;</code></td><td>Toda esa página</td></tr>
+              <tr><td><strong>Externo</strong></td><td><code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code> en el <code>&lt;head&gt;</code></td><td>Todas las páginas que lo enlacen</td></tr>
+            </tbody>
+          </table>
+          <p><strong>En la práctica se usa casi siempre CSS externo</strong>, por dos razones concretas:</p>
+          <ul>
+            <li><strong>Mantenibilidad:</strong> un solo archivo <code>.css</code> puede estilizar decenas de páginas — cambiar un color ahí lo cambia en todo el sitio, sin tocar cada HTML.</li>
+            <li><strong>Cacheo del navegador:</strong> el navegador descarga el archivo CSS una vez y lo reutiliza en cada página que lo enlaza, en vez de volver a descargarlo — el sitio carga más rápido.</li>
+          </ul>
+          <p>El CSS inline solo se justifica para casos muy puntuales (un estilo generado dinámicamente por JavaScript, por ejemplo) — no como práctica general.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Sintaxis de una regla CSS</h1>
+          <p>Una hoja de estilos es una lista de <strong>reglas</strong>. Cada regla tiene un <strong>selector</strong> (qué elemento(s) del HTML se van a estilizar) y un bloque de <strong>declaraciones</strong> entre llaves, cada una con una propiedad y un valor separados por dos puntos y terminada en punto y coma.</p>
+          <pre><code>selector {
+  propiedad: valor;
+  propiedad: valor;
+}
+
+/* ejemplo real */
+p {
+  color: #16453f;
+  font-size: 18px;
+}</code></pre>
+          <p>Aquí <code>p</code> es el selector (todos los párrafos de la página), y <code>color</code>/<code>font-size</code> son propiedades con sus valores. El siguiente bloque de la sesión es justamente conocer los distintos tipos de <strong>selectores</strong> disponibles.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Selectores: elemento, clase e id</h1>
+          <table>
+            <thead><tr><th>Tipo</th><th>Sintaxis</th><th>Selecciona</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Elemento</strong></td><td><code>p { }</code></td><td>Todos los <code>&lt;p&gt;</code> de la página</td></tr>
+              <tr><td><strong>Clase</strong></td><td><code>.aviso { }</code></td><td>Todo elemento con <code>class="aviso"</code> (se puede repetir en varios elementos)</td></tr>
+              <tr><td><strong>Id</strong></td><td><code>#menu-principal { }</code></td><td>El único elemento con <code>id="menu-principal"</code> (el id no se repite en la página)</td></tr>
+            </tbody>
+          </table>
+          <pre><code>&lt;p class="aviso"&gt;Cuidado&lt;/p&gt;
+&lt;nav id="menu-principal"&gt;...&lt;/nav&gt;
+
+.aviso { color: #541734; font-weight: bold; }
+#menu-principal { background: #16453f; }</code></pre>
+          <p>Las clases son el selector <strong>más usado en la práctica</strong>: un mismo estilo se reutiliza en muchos elementos distintos de la página.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Selector descendiente y pseudo-clases</h1>
+          <p>Un <strong>selector descendiente</strong> combina dos selectores separados por un espacio: selecciona un elemento solo cuando está <strong>dentro de</strong> otro, sin importar cuántos niveles de anidamiento haya.</p>
+          <pre><code>div p { color: gray; }
+/* solo los &lt;p&gt; que están dentro de un &lt;div&gt;,
+   no todos los &lt;p&gt; de la página */</code></pre>
+          <p>Las <strong>pseudo-clases</strong> seleccionan un elemento según un <strong>estado</strong> o <strong>posición</strong>, no según su etiqueta o atributo:</p>
+          <ul>
+            <li><code>:hover</code> — mientras el mouse está sobre el elemento.</li>
+            <li><code>:first-child</code> — cuando el elemento es el primer hijo de su contenedor.</li>
+          </ul>
+          <pre><code>a:hover { color: #59a87d; }
+li:first-child { font-weight: bold; }</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Especificidad: cuando dos reglas compiten</h1>
+          <p>Si dos reglas CSS distintas aplican al <strong>mismo elemento</strong> con la misma propiedad, el navegador necesita decidir cuál gana. La regla práctica, de menor a mayor prioridad:</p>
+          <p style="text-align:center"><strong>elemento &lt; clase &lt; id</strong></p>
+          <p>Un selector de <strong>id</strong> siempre le gana a uno de <strong>clase</strong>, y un selector de <strong>clase</strong> siempre le gana a uno de <strong>elemento</strong> — sin importar el orden en que aparezcan escritas las reglas en el archivo.</p>
+          <pre><code>p        { color: black; }   /* elemento: pierde */
+.aviso   { color: green; }   /* clase: pierde frente al id */
+#titulo  { color: red;   }   /* id: gana */
+
+&lt;p id="titulo" class="aviso"&gt;¿De qué color queda?&lt;/p&gt;
+&lt;!-- Rojo: el id tiene mayor especificidad --&gt;</code></pre>
+          <p class="slide-eyebrow">No es necesario memorizar la fórmula numérica completa de especificidad para empezar — con esta jerarquía básica (id &gt; clase &gt; elemento) es suficiente por ahora.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Colores en CSS</h1>
+          <table>
+            <thead><tr><th>Forma</th><th>Ejemplo</th><th>Notas</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Nombre</strong></td><td><code>color: tomato;</code></td><td>Legible, pero solo ~150 nombres predefinidos</td></tr>
+              <tr><td><strong>Hexadecimal</strong></td><td><code>color: #59a87d;</code></td><td>El más usado; 6 dígitos hex (rojo-verde-azul)</td></tr>
+              <tr><td><strong><code>rgb()</code></strong></td><td><code>color: rgb(89, 168, 125);</code></td><td>Mismos tres canales, en base decimal 0–255</td></tr>
+            </tbody>
+          </table>
+          <p><code>color</code> pinta el <strong>texto</strong>; <code>background-color</code> pinta el <strong>fondo</strong> del elemento. Los tres formatos anteriores representan exactamente el mismo color de tres maneras distintas — se elige el que sea más conveniente según el contexto (un diseñador suele entregar valores hex).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Unidades: absolutas vs. relativas</h1>
+          <table>
+            <thead><tr><th>Unidad</th><th>Tipo</th><th>Significa</th></tr></thead>
+            <tbody>
+              <tr><td><code>px</code></td><td>Absoluta</td><td>Píxeles fijos — no cambia según el contexto</td></tr>
+              <tr><td><code>%</code></td><td>Relativa</td><td>Porcentaje del tamaño del elemento contenedor</td></tr>
+              <tr><td><code>em</code></td><td>Relativa</td><td>Múltiplo del tamaño de fuente <strong>del elemento actual</strong> (o su padre)</td></tr>
+              <tr><td><code>rem</code></td><td>Relativa</td><td>Múltiplo del tamaño de fuente <strong>raíz</strong> (<code>&lt;html&gt;</code>), sin importar el anidamiento</td></tr>
+            </tbody>
+          </table>
+          <p>Las unidades <strong>relativas</strong> se recalculan según su referencia, lo que las hace más flexibles para diseño adaptable: si el usuario aumenta el tamaño de fuente del navegador, un texto en <code>rem</code> crece con él; uno en <code>px</code> se queda fijo.</p>
+          <pre><code>html { font-size: 16px; }      /* referencia raíz */
+h1   { font-size: 2rem;   }    /* 32px, siempre relativo a la raíz */
+.card p { font-size: 1.2em; }  /* 1.2× el tamaño de fuente del .card */</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tipografía básica</h1>
+          <table>
+            <thead><tr><th>Propiedad</th><th>Controla</th></tr></thead>
+            <tbody>
+              <tr><td><code>font-family</code></td><td>La fuente tipográfica (lista de opciones, con una genérica al final)</td></tr>
+              <tr><td><code>font-size</code></td><td>El tamaño del texto</td></tr>
+              <tr><td><code>font-weight</code></td><td>El grosor: <code>normal</code>, <code>bold</code>, o un número (100–900)</td></tr>
+              <tr><td><code>line-height</code></td><td>La altura de línea — espacio vertical entre renglones</td></tr>
+              <tr><td><code>text-align</code></td><td>Alineación horizontal: <code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code></td></tr>
+            </tbody>
+          </table>
+          <pre><code>p {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  text-align: left;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El modelo de caja (box model)</h1>
+          <p>Todo elemento HTML es, para CSS, una <strong>caja rectangular</strong> formada por cuatro capas concéntricas. De adentro hacia afuera:</p>
+          <ol>
+            <li><strong>Content</strong> — el contenido real (texto, imagen), con ancho/alto definidos por <code>width</code>/<code>height</code>.</li>
+            <li><strong>Padding</strong> — espacio interno entre el contenido y el borde; "acolchado" de la caja.</li>
+            <li><strong>Border</strong> — el borde visible de la caja (grosor, estilo, color).</li>
+            <li><strong>Margin</strong> — espacio externo entre esta caja y las cajas vecinas; no tiene color ni fondo.</li>
+          </ol>
+          <pre><code>.caja {
+  width: 200px;
+  padding: 20px;
+  border: 2px solid #16453f;
+  margin: 10px;
+}</code></pre>
+          <p>Entender esta capa por capa es clave para el siguiente punto: <strong>cuánto espacio ocupa realmente</strong> un elemento con <code>width: 200px</code> en pantalla.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La sorpresa del ancho: 200px que no miden 200px</h1>
+          <p>Por defecto, el navegador calcula <code>width</code> aplicándolo <strong>solo al content</strong> — el padding y el border se <strong>suman aparte</strong>. Este comportamiento por defecto sorprende a quien empieza con CSS:</p>
+          <pre><code>.caja {
+  width: 200px;
+  padding: 20px;   /* 20px a cada lado */
+  border: 1px solid black; /* 1px a cada lado */
+}
+/* Ancho real en pantalla:
+   200 (content) + 20+20 (padding) + 1+1 (border) = 242px */</code></pre>
+          <p>El elemento termina midiendo <strong>242px</strong>, no los 200px que el desarrollador escribió — y si varias cajas de "200px" se ponen una junto a otra esperando que sumen exactamente el ancho del contenedor, el layout se desborda.</p>
+          <img class="portada-icon" src="img/ruler-combined.svg" alt="El ancho real no coincide con el esperado" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>box-sizing: border-box</code> resuelve la sorpresa</h1>
+          <p>La propiedad <code>box-sizing</code> cambia <strong>qué incluye</strong> el <code>width</code> declarado. Con <code>border-box</code>, el ancho que escribes ya incluye padding y border — el navegador ajusta el content hacia adentro para que el total <strong>sí</strong> mida lo declarado.</p>
+          <pre><code>.caja {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 20px;
+  border: 1px solid black;
+}
+/* Ancho real en pantalla: exactamente 200px.
+   El content se reduce a 200 - 40 - 2 = 158px */</code></pre>
+          <p>Por esto es muy común ver, al inicio de casi cualquier hoja de estilos moderna, una regla como esta que aplica <code>border-box</code> a todo el documento de una sola vez:</p>
+          <pre><code>* { box-sizing: border-box; }</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>display</code>: cómo fluye cada elemento</h1>
+          <p>La propiedad <code>display</code> define cómo se acomoda un elemento respecto a los demás. Cada etiqueta HTML trae un <code>display</code> por defecto: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code> son <code>block</code>; <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> son <code>inline</code>.</p>
+          <p><strong><code>display: block</code></strong>:</p>
+          <ul>
+            <li>Ocupa <strong>todo el ancho disponible</strong> del contenedor, aunque el contenido sea corto.</li>
+            <li>Siempre empieza en una <strong>línea nueva</strong> — el elemento siguiente se acomoda debajo, no al lado.</li>
+            <li><strong>Sí respeta</strong> <code>width</code>, <code>height</code>, y todo el padding/margin del box model.</li>
+          </ul>
+          <pre><code>div { display: block; background: #16453f; }
+&lt;div&gt;Uno&lt;/div&gt;&lt;div&gt;Dos&lt;/div&gt;
+&lt;!-- "Uno" y "Dos" quedan en líneas separadas --&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>inline</code> e <code>inline-block</code>: las otras dos opciones</h1>
+          <table>
+            <thead><tr><th>Valor</th><th>¿Nueva línea?</th><th>¿Respeta width/height?</th><th>¿Respeta margin/padding vertical?</th></tr></thead>
+            <tbody>
+              <tr><td><code>inline</code></td><td>No — fluye junto al contenido vecino</td><td>No, se ignoran</td><td>No, se ignoran</td></tr>
+              <tr><td><code>inline-block</code></td><td>No — fluye junto al contenido vecino</td><td><strong>Sí</strong></td><td><strong>Sí</strong></td></tr>
+              <tr><td><code>block</code></td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+            </tbody>
+          </table>
+          <p><code>inline-block</code> es el punto intermedio: se comporta como <code>inline</code> para no forzar un salto de línea (útil para varios botones seguidos), pero como <code>block</code> para permitir controlar su tamaño exacto con <code>width</code>/<code>height</code> y su espaciado con padding/margin.</p>
+          <pre><code>a.boton { display: inline-block; width: 120px; padding: 10px; }
+&lt;a class="boton"&gt;Uno&lt;/a&gt;&lt;a class="boton"&gt;Dos&lt;/a&gt;
+&lt;!-- Quedan lado a lado, cada uno con su tamaño respetado --&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Denle estilo a este HTML semántico</h1>
+          <p><strong>En parejas, 8 minutos:</strong> este fragmento ya está bien estructurado con etiquetas semánticas (de la sesión pasada). Escriban un CSS <strong>mínimo</strong> que use <strong>selectores de clase</strong> para darle: tipografía (<code>font-family</code>/<code>font-size</code>), un color de texto o fondo, y espaciado (padding y/o margin).</p>
+          <pre><code>&lt;article class="tarjeta"&gt;
+  &lt;h2 class="tarjeta-titulo"&gt;Anuncio&lt;/h2&gt;
+  &lt;p class="tarjeta-texto"&gt;Clase suspendida el viernes.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+          <p class="slide-eyebrow">8 minutos · pista: empiecen por <code>.tarjeta { }</code>, luego afinen <code>.tarjeta-titulo</code> y <code>.tarjeta-texto</code> por separado</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>CSS separa <strong>contenido</strong> (HTML) de <strong>presentación</strong>; en la práctica se vincula casi siempre como archivo <strong>externo</strong>, por mantenibilidad y cacheo del navegador.</li>
+            <li>Una regla CSS es <code>selector { propiedad: valor; }</code>; los selectores más comunes son de elemento, clase (<code>.clase</code>) e id (<code>#id</code>), y hay pseudo-clases como <code>:hover</code>.</li>
+            <li>Cuando dos reglas compiten por el mismo elemento, gana el más específico: <strong>id &gt; clase &gt; elemento</strong>.</li>
+            <li>Colores en nombre, hex o <code>rgb()</code>; unidades absolutas (<code>px</code>) vs. relativas (<code>%</code>, <code>em</code>, <code>rem</code>).</li>
+            <li>El <strong>modelo de caja</strong> es content → padding → border → margin; por defecto el <code>width</code> solo cubre el content, y <code>box-sizing: border-box</code> hace que incluya también padding y border.</li>
+            <li><code>display: block</code>, <code>inline</code> e <code>inline-block</code> determinan si un elemento salta de línea y si respeta tamaño y espaciado.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Crear un archivo <code>.css</code> externo y vincularlo a una página HTML propia con <code>&lt;link rel="stylesheet"&gt;</code>.</li>
+            <li>Practicar el modelo de caja: cambiar <code>width</code>, <code>padding</code>, <code>border</code> y <code>margin</code> de un elemento y observar el efecto con y sin <code>box-sizing: border-box</code>.</li>
+          </ul>
+          <p><strong>Próxima sesión: Flexbox, Grid y diseño responsivo</strong> — cómo organizar varias cajas para construir layouts reales de páginas completas, y cómo adaptarlos a distintos dispositivos.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción a Backend, Frontend y Fullstack — Semana 1</title>
+  <meta name="description" content="Qué es backend, frontend y fullstack, con el caso real de Healthcare.gov (2013) — Arquitectura de Software, Semana 1." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/introduccion-backend-frontend-fullstack/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Introducción a Backend, Frontend y Fullstack — Semana 1" />
+  <meta property="og:description" content="Qué es backend, frontend y fullstack, con el caso real de Healthcare.gov (2013) — Arquitectura de Software, Semana 1." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/introduccion-backend-frontend-fullstack/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Introducción a Backend, Frontend y Fullstack — Semana 1" />
+  <meta name="twitter:description" content="Qué es backend, frontend y fullstack, con el caso real de Healthcare.gov (2013) — Arquitectura de Software, Semana 1." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/introduccion-backend-frontend-fullstack.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 1 — Introducción a los ambientes Backend, Frontend y Fullstack</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Capas de una aplicación" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>6 personas<br>250.000 visitantes</h1>
+          <img class="portada-icon" src="img/hospital.svg" alt="Falla de un sistema de salud" style="display:block;width:280px;height:280px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>HealthCare.gov, en cifras</h1>
+          <table>
+            <tbody>
+              <tr><th>Sistema</th><td>HealthCare.gov — portal federal de compra de seguros de salud (EE. UU.)</td></tr>
+              <tr><th>Lanzamiento</th><td>1 de octubre de 2013</td></tr>
+              <tr><th>Visitantes día 1</th><td>~250.000 personas intentando registrarse</td></tr>
+              <tr><th>Inscripciones exitosas día 1</th><td>Solo 6</td></tr>
+              <tr><th>Sistemas externos a integrar</th><td>Más de 50 (IRS, Seguridad Social, aseguradoras, verificación migratoria)</td></tr>
+              <tr><th>Costo acumulado del proyecto</th><td>Más de 2.100 millones de dólares (contratistas, desde 2011)</td></tr>
+              <tr><th>Desenlace</th><td>Equipo de rescate tecnológico reconstruye la plataforma en ~2 meses</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Cifras reportadas por la Oficina de Rendición de Cuentas de EE. UU. (GAO) y cobertura de prensa contemporánea.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Lo que se veía</p>
+          <h1>El frontend parecía estar bien</h1>
+          <p>La página de inicio y el formulario de registro se veían pulidos: campos claros, diseño moderno, sin errores visibles de diagramación. <strong>Cualquiera que abriera el sitio pensaría que el sistema funcionaba.</strong></p>
+          <p>El problema no era lo que el usuario veía en la pantalla — era <strong>lo que pasaba después de dar clic en "enviar"</strong>, en servidores que el usuario nunca ve directamente.</p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Apariencia engañosa" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Lo que fallaba</p>
+          <h1>Detrás de la pantalla: el backend</h1>
+          <p>Cada solicitud de registro debía pasar por un componente central (el <strong>"data hub"</strong>) que consultaba en tiempo real más de <strong>50 sistemas externos</strong> — Hacienda, Seguridad Social, aseguradoras privadas — para verificar identidad, ingresos y elegibilidad.</p>
+          <ul>
+            <li>El data hub no había sido probado bajo la carga real de lanzamiento.</li>
+            <li>Los servidores no escalaban: cada usuario adicional multiplicaba el tiempo de espera de todos.</li>
+            <li>Errores de un sistema externo dejaban la sesión del usuario colgada, sin mensaje claro.</li>
+          </ul>
+          <p class="slide-eyebrow">El código visible (frontend) apenas era el 5 % del problema real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Dos sistemas, no uno</h1>
+          <p>HealthCare.gov no era "un sitio web que falló". Era <strong>dos sistemas conectados</strong> — uno que el usuario ve y toca, y otro que procesa, calcula y guarda — y solo el segundo colapsó.</p>
+          <p><strong>Para hablar con precisión de qué falló, primero hay que nombrar bien cada parte.</strong> Eso es lo que hace esta sesión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Frontend: la parte que se ve y se toca</h1>
+          <p><strong>Frontend</strong> <em>(front-end, "extremo delantero")</em> es la porción de un sistema que se ejecuta en el dispositivo del usuario y con la que este interactúa directamente: navegador web, app móvil, aplicación de escritorio.</p>
+          <ul>
+            <li>Renderiza la interfaz: botones, formularios, texto, imágenes.</li>
+            <li>Captura las acciones del usuario (clics, teclas, gestos).</li>
+            <li>Envía y recibe datos del backend, normalmente por HTTP.</li>
+          </ul>
+          <p class="slide-eyebrow">Tecnologías típicas: HTML, CSS, JavaScript y frameworks como React, Angular o Vue.</p>
+          <img class="portada-icon" src="img/desktop.svg" alt="Frontend" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Backend: la parte que procesa y decide</h1>
+          <p><strong>Backend</strong> <em>(back-end, "extremo trasero")</em> es la porción de un sistema que se ejecuta en un servidor, fuera del alcance directo del usuario: recibe solicitudes, aplica reglas de negocio, consulta o guarda datos, y responde.</p>
+          <ul>
+            <li>No tiene interfaz visual propia — expone datos y funciones a través de una API.</li>
+            <li>Aplica validaciones, cálculos y reglas de negocio que no deben vivir en el navegador.</li>
+            <li>Se conecta a bases de datos y a otros sistemas (como los 50+ de HealthCare.gov).</li>
+          </ul>
+          <p class="slide-eyebrow">Tecnologías típicas: Java/Spring, Node.js, Python/Django, .NET, junto con una base de datos.</p>
+          <img class="portada-icon" src="img/server.svg" alt="Backend" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "el frontend es solo diseño"</h1>
+          <p>Es común pensar que el frontend es "la parte bonita" y el backend "la parte que piensa". <strong>Es una simplificación engañosa.</strong></p>
+          <ul>
+            <li>El frontend también valida datos, gestiona estado de la aplicación y toma decisiones (qué mostrar, cuándo deshabilitar un botón).</li>
+            <li>El backend también decide "qué se ve": qué datos exponer, en qué orden, con qué permisos.</li>
+          </ul>
+          <p><strong>La diferencia real no es "diseño vs. lógica" — es dónde se ejecuta el código: en el dispositivo del usuario, o en un servidor.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se conectan: el protocolo HTTP</h1>
+          <p>Frontend y backend son programas independientes que se comunican por red, casi siempre usando <strong>HTTP</strong> <em>(HyperText Transfer Protocol)</em>: el frontend envía una <strong>solicitud</strong> (request) y el backend responde con una <strong>respuesta</strong> (response), típicamente en formato <strong>JSON</strong>.</p>
+          <table>
+            <thead>
+              <tr><th>Elemento</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Método</td><td><code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code></td></tr>
+              <tr><td>Ruta</td><td><code>/api/solicitudes/{id}</code></td></tr>
+              <tr><td>Cuerpo (body)</td><td><code>{"nombre": "Ana", "ingreso": 32000}</code></td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">En HealthCare.gov, cada solicitud del navegador desencadenaba, del otro lado, docenas de llamadas HTTP internas a sistemas externos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Fullstack: dominar ambos extremos</h1>
+          <p>Un desarrollador o desarrolladora <strong>fullstack</strong> es quien puede trabajar tanto en el frontend como en el backend de una aplicación: construir la interfaz, y también la API y la lógica de servidor que la alimenta.</p>
+          <ul>
+            <li>No implica ser experto al mismo nivel en ambos lados — implica poder moverse entre ellos con criterio.</li>
+            <li>Es especialmente valioso en equipos pequeños o en fases tempranas de un proyecto (como el Sprint 1 de este curso).</li>
+          </ul>
+          <p class="slide-eyebrow">"Fullstack" describe una persona o un rol; no es una tercera capa técnica del sistema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "fullstack = experto en todo"</h1>
+          <p>Nadie domina a fondo simultáneamente diseño de interfaces, frameworks de frontend, arquitectura de backend, bases de datos, infraestructura y seguridad. <strong>Ese nivel de dominio total no es lo que describe el término.</strong></p>
+          <p><strong>Fullstack describe amplitud de competencia suficiente para construir un flujo completo</strong> — de la pantalla a la base de datos y de vuelta — no profundidad experta en cada capa por separado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los tres, comparados</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Frontend</th><th>Backend</th><th>Fullstack</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Dónde corre</th><td>Dispositivo del usuario</td><td>Servidor</td><td>Ambos</td></tr>
+              <tr><th>Qué produce</th><td>Interfaz, interacción</td><td>Datos, reglas, cálculos</td><td>El flujo completo</td></tr>
+              <tr><th>Lenguajes típicos</th><td>HTML, CSS, JavaScript</td><td>Java, Python, Node.js, .NET</td><td>Combinación de ambos</td></tr>
+              <tr><th>El usuario lo ve</th><td>Directamente</td><td>Nunca directamente</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Ningún desarrollo real es "solo frontend" o "solo backend" en aislamiento: siempre hay una conexión entre los dos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado al caso</p>
+          <h1>Ubicando HealthCare.gov en el mapa</h1>
+          <table>
+            <tbody>
+              <tr><th>Frontend</th><td>Formulario de registro, validaciones visuales, mensajes de error en pantalla — funcionaba razonablemente bien</td></tr>
+              <tr><th>Backend</th><td>Data hub, verificación de identidad e ingresos, cálculo de subsidios contra 50+ sistemas externos — aquí ocurrió el colapso</td></tr>
+              <tr><th>Fullstack</th><td>El equipo de rescate de 2013 necesitó personas capaces de rediseñar la comunicación entre ambos extremos, no solo arreglar la pantalla</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Un frontend correcto no compensa un backend que no escala.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Un buen frontend garantiza un buen sistema?</h1>
+          <p><strong>Para el usuario que abre HealthCare.gov el 1 de octubre de 2013, el sistema "se veía bien".</strong></p>
+          <ul>
+            <li>Desde la experiencia visual: parecía un sitio profesional y confiable.</li>
+            <li>Desde la arquitectura: era un sistema que no podía sostener su propia carga.</li>
+          </ul>
+          <p><strong>¿Cuál de las dos miradas debería pesar más al decidir si un sistema está "listo para producción"?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Clasifiquen los componentes</h1>
+          <p><strong>Piensen en una app que usen a diario (banco, red social, plataforma de streaming). Clasifiquen cada elemento como Frontend, Backend o ambigüo:</strong></p>
+          <ol>
+            <li>El botón de "me gusta" que cambia de color al presionarlo.</li>
+            <li>El cálculo de cuántas personas dieron "me gusta" a una publicación.</li>
+            <li>El mensaje "sin conexión a internet" que aparece sin señal.</li>
+            <li>La validación de que una contraseña tenga mínimo 8 caracteres.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Puente a la próxima sesión</p>
+          <h1>Lo que todavía no hemos nombrado</h1>
+          <p>Ya sabemos distinguir dónde corre el código y qué hace cada extremo. Pero HealthCare.gov no falló por "tener backend" — falló por <strong>cómo estaban organizadas y conectadas las piezas de ese backend</strong>: qué tan acoplado estaba el data hub, si había forma de aislar un fallo, si el diseño se probó bajo carga real antes de lanzar.</p>
+          <p><strong>A ese conjunto de decisiones estructurales —no al código línea por línea— lo llamamos <em>arquitectura de software</em>, y es el tema de la próxima sesión.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Frontend</strong> corre en el dispositivo del usuario; <strong>backend</strong> corre en un servidor y nunca se ve directamente.</li>
+            <li>Frontend y backend se comunican por red, típicamente con <strong>HTTP</strong> y datos en <strong>JSON</strong>.</li>
+            <li><strong>Fullstack</strong> describe a una persona capaz de moverse entre ambos extremos, no una tercera capa técnica.</li>
+            <li>Un frontend que "se ve bien" no garantiza que el sistema funcione: HealthCare.gov lo demostró con 250.000 visitantes y solo 6 inscripciones el primer día.</li>
+            <li>Lo que faltó en ese backend no fue código — fue <strong>arquitectura</strong>: la estructura de sus piezas y sus conexiones.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>No es un ejercicio para entregar: el docente construye en vivo un flujo mínimo <strong>frontend + backend</strong> y explica, paso a paso, dónde vive cada pieza y por qué.</p>
+          <ul>
+            <li><strong>Backend:</strong> un endpoint REST en <strong>Java Spring Boot</strong> que expone datos en JSON.</li>
+            <li><strong>Frontend:</strong> una página en <strong>HTML + JavaScript simple</strong> que consume ese endpoint con <code>fetch()</code> y pinta el resultado en pantalla.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Backend</p>
+          <h1>El endpoint en Spring Boot</h1>
+          <pre><code>@RestController
+@RequestMapping("/api/saludo")
+public class SaludoController {
+
+    @GetMapping
+    public Map&lt;String, String&gt; obtenerSaludo() {
+        Map&lt;String, String&gt; respuesta = new HashMap&lt;&gt;();
+        respuesta.put("mensaje", "Hola desde el backend");
+        respuesta.put("origen", "Spring Boot");
+        return respuesta; // Spring lo serializa a JSON
+    }
+}</code></pre>
+          <p class="slide-eyebrow">Este método corre en el servidor. El navegador nunca ve este código — solo el JSON que produce.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Frontend</p>
+          <h1>El consumo desde HTML + JavaScript</h1>
+          <pre><code>&lt;p id="salida"&gt;Cargando...&lt;/p&gt;
+&lt;script&gt;
+  fetch("http://localhost:8080/api/saludo")
+    .then(resp =&gt; resp.json())
+    .then(datos =&gt; {
+      document.getElementById("salida").textContent =
+        datos.mensaje + " (" + datos.origen + ")";
+    });
+&lt;/script&gt;</code></pre>
+          <p><strong>Este código corre en el navegador del usuario</strong> — hace la solicitud HTTP, recibe el JSON y actualiza la pantalla. Ninguna de las dos partes puede mostrar el resultado completo sin la otra.</p>
+          <p class="slide-eyebrow">Entregable: ninguno para esta sesión — el objetivo es observar la demo y poder explicar qué línea corre dónde.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Repasar la diferencia entre frontend, backend y fullstack con sus propias palabras — se retoma al inicio del jueves.</li>
+            <li>Pensar en una decisión de diseño que hayan tomado en un proyecto propio y que fuera <strong>difícil de cambiar después</strong> — se usará como ejemplo en clase.</li>
+          </ul>
+          <p><strong>El jueves entramos a la pregunta central del curso: ¿qué es —y qué no es— arquitectura de software?</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

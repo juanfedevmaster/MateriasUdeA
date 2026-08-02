@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stack Tecnológico — Semana 5</title>
+  <meta name="description" content="LAMP, MEAN, MERN, WAMP y XAMP, con el caso real del stack de Instagram al momento de su adquisición por Facebook — Arquitectura de Software, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/stack-tecnologico/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Stack Tecnológico — Semana 5" />
+  <meta property="og:description" content="LAMP, MEAN, MERN, WAMP y XAMP, con el caso real del stack de Instagram al momento de su adquisición por Facebook — Arquitectura de Software, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/stack-tecnologico/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Stack Tecnológico — Semana 5" />
+  <meta name="twitter:description" content="LAMP, MEAN, MERN, WAMP y XAMP, con el caso real del stack de Instagram al momento de su adquisición por Facebook — Arquitectura de Software, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/stack-tecnologico.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 5 — Stack Tecnológico</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Stack tecnológico" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>13 empleados<br>30 millones de usuarios</h1>
+          <img class="portada-icon" src="img/instagram.svg" alt="Crecimiento con equipo pequeño" style="display:block;width:220px;height:220px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Instagram, abril de 2012</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Instagram — red social de fotografía móvil</td></tr>
+              <tr><th>Adquisición por Facebook</th><td>Abril de 2012, por mil millones de dólares</td></tr>
+              <tr><th>Tamaño del equipo</th><td>13 empleados en el momento de la adquisición</td></tr>
+              <tr><th>Usuarios</th><td>Más de 30 millones de usuarios registrados</td></tr>
+              <tr><th>Backend</th><td>Python con el framework <strong>Django</strong></td></tr>
+              <tr><th>Base de datos</th><td>PostgreSQL, con particionamiento (sharding) horizontal entre servidores</td></tr>
+              <tr><th>Infraestructura</th><td>Amazon Web Services (EC2), sin servidores propios</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Caso documentado en el blog público de ingeniería de Instagram y en cobertura de prensa tecnológica de la adquisición.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La decisión de stack</p>
+          <h1>Un conjunto de tecnologías, no piezas sueltas</h1>
+          <p>Instagram no eligió cada tecnología de forma aislada: eligió un <strong>conjunto coherente</strong> —lenguaje, framework, base de datos e infraestructura— pensado para trabajar bien en conjunto. Ese conjunto integrado es lo que llamamos <strong>stack tecnológico</strong>.</p>
+          <ul>
+            <li><strong>Django</strong> (framework Python, visto su equivalente Rails en la Semana 2) les dio productividad: pocas personas, mucho alcance.</li>
+            <li><strong>PostgreSQL</strong> les dio garantías fuertes de consistencia de datos, clave para una red social con relaciones entre usuarios.</li>
+            <li><strong>AWS</strong> les permitió escalar infraestructura sin comprar ni administrar servidores propios.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué funcionó con un equipo tan pequeño</p>
+          <h1>El stack como multiplicador de productividad</h1>
+          <p>Con solo 13 personas atendiendo 30 millones de usuarios, cada decisión de stack tenía que <strong>ahorrar trabajo</strong>, no generarlo. Django ofrecía convenciones ya resueltas (como Rails); PostgreSQL ya incluía particionamiento y replicación maduros; AWS eliminaba la necesidad de administrar centros de datos propios.</p>
+          <p><strong>El stack correcto no es el más popular — es el que necesita menos esfuerzo del equipo disponible para sostener el crecimiento real del producto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Instagram eligió Python/Django + PostgreSQL. Otros equipos, otras combinaciones.</h1>
+          <p>Con el tiempo, ciertas combinaciones de tecnologías se repitieron tanto entre proyectos que recibieron <strong>nombres propios</strong>, fáciles de comunicar en una entrevista de trabajo o en una propuesta técnica.</p>
+          <p><strong>Hoy conocemos los stacks con nombre propio más comunes, y los criterios reales para elegir uno — cerrando así la Unidad 1 del curso.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un stack tecnológico?</h1>
+          <p>Un <strong>stack tecnológico</strong> es el conjunto de tecnologías —sistema operativo o infraestructura, servidor web, base de datos, lenguaje y framework de backend, y a veces framework de frontend— que, juntas, permiten construir y ejecutar una aplicación completa.</p>
+          <p class="slide-eyebrow">Es una decisión arquitectónica (Semana 3): afecta a todo el sistema y es costosa de cambiar una vez el proyecto avanza.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>LAMP: el stack pionero de la web</h1>
+          <p><strong>LAMP</strong> (Linux, Apache, MySQL, PHP/Perl/Python) es de los stacks con nombre propio más antiguos, popular desde finales de los 90. Sistemas masivos como los primeros años de <strong>Facebook</strong> y <strong>Wikipedia</strong> se construyeron sobre variantes de LAMP.</p>
+          <ul>
+            <li><strong>L</strong>inux — sistema operativo del servidor</li>
+            <li><strong>A</strong>pache — servidor web</li>
+            <li><strong>M</strong>ySQL — base de datos relacional</li>
+            <li><strong>P</strong>HP (o Perl, o Python) — lenguaje de backend</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Variantes: WAMP y XAMPP</h1>
+          <table>
+            <thead>
+              <tr><th>Stack</th><th>Diferencia con LAMP</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>WAMP</strong></td><td>Igual, pero sobre <strong>Windows</strong> en vez de Linux — común en entornos de desarrollo local</td></tr>
+              <tr><td><strong>XAMPP</strong></td><td>Multiplataforma (Windows, macOS, Linux); agrega herramientas de instalación simplificada y soporte para Perl junto a PHP</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Ambas variantes se usan sobre todo para desarrollo y pruebas locales, no necesariamente en producción.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>MEAN y MERN: el stack todo-JavaScript</h1>
+          <p>Con la llegada de Node.js (Semana 2), surgió la posibilidad de usar <strong>un solo lenguaje —JavaScript— en todo el stack</strong>, del navegador al servidor.</p>
+          <table>
+            <thead>
+              <tr><th>Stack</th><th>Componentes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>MEAN</strong></td><td><strong>M</strong>ongoDB (base de datos NoSQL) + <strong>E</strong>xpress (framework backend) + <strong>A</strong>ngular (frontend) + <strong>N</strong>ode.js (runtime backend)</td></tr>
+              <tr><td><strong>MERN</strong></td><td>Igual, pero con <strong>R</strong>eact en vez de Angular para el frontend</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">La ventaja declarada de estos stacks es reducir el cambio de contexto: el mismo lenguaje en frontend y backend.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Comparados por capa</h1>
+          <table>
+            <thead>
+              <tr><th>Capa</th><th>LAMP</th><th>MEAN / MERN</th><th>Instagram (2012)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Lenguaje backend</th><td>PHP</td><td>JavaScript (Node.js)</td><td>Python</td></tr>
+              <tr><th>Framework backend</th><td>Variable (Laravel, Symfony)</td><td>Express</td><td>Django</td></tr>
+              <tr><th>Base de datos</th><td>MySQL (relacional)</td><td>MongoDB (NoSQL)</td><td>PostgreSQL (relacional)</td></tr>
+              <tr><th>Frontend</th><td>HTML/JS tradicional</td><td>Angular / React</td><td>Nativo móvil + web tradicional</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "el mejor stack es el más popular"</h1>
+          <p>Es tentador elegir el stack de moda —hoy, con frecuencia, algún sabor de MERN— asumiendo que si lo usan las empresas grandes, es la opción correcta para cualquier proyecto.</p>
+          <p><strong>Instagram no usó MEAN ni el stack más hablado de su momento.</strong> Eligió Python/Django + PostgreSQL porque encajaba con las habilidades de su equipo pequeño y con las garantías de consistencia que necesitaba una red social. <strong>El stack correcto depende del contexto, no de la popularidad.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Criterios reales para elegir un stack</h1>
+          <ul>
+            <li><strong>Habilidades del equipo:</strong> el stack más "correcto" en teoría no sirve si nadie en el equipo lo domina, ni hay tiempo para aprenderlo.</li>
+            <li><strong>Naturaleza de los datos:</strong> relaciones estrictas entre entidades favorecen bases de datos relacionales (como PostgreSQL en Instagram); datos muy variables favorecen NoSQL.</li>
+            <li><strong>Requisitos no funcionales</strong> (Semana 4): escalabilidad esperada, latencia tolerable, presupuesto de infraestructura.</li>
+            <li><strong>Madurez y ecosistema:</strong> documentación, comunidad, disponibilidad de librerías para el dominio del proyecto.</li>
+          </ul>
+          <img class="portada-icon" src="img/list-check.svg" alt="Criterios de selección" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado al caso</p>
+          <h1>Por qué Instagram no usó un stack de nombre propio</h1>
+          <table>
+            <tbody>
+              <tr><th>Habilidades del equipo</th><td>Los fundadores ya dominaban Python de proyectos previos</td></tr>
+              <tr><th>Naturaleza de los datos</th><td>Relaciones entre usuarios, fotos y "me gusta" — encajaban mejor con un modelo relacional</td></tr>
+              <tr><th>NFR</th><td>Necesitaban escalar muy rápido con muy poco personal — Django y AWS reducían la carga operativa</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Ninguno de los stacks con nombre propio (LAMP, MEAN) encajaba exactamente — así que combinaron piezas maduras según sus criterios reales.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Stack estándar completo, o combinación "a la carta"?</h1>
+          <p><strong>Postura 1:</strong> seguir un stack con nombre propio completo (ej. MERN) da coherencia, documentación abundante y facilidad para contratar personas que ya lo conocen.</p>
+          <p><strong>Postura 2:</strong> como Instagram, combinar piezas de distintos "stacks con nombre" según el criterio de cada capa puede ajustarse mejor al problema real, a costa de menos referencias listas para copiar.</p>
+          <p><strong>¿Qué deberían priorizar en el Sprint 1 de este curso: un stack estándar reconocible, o piezas elegidas una por una según necesidad?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Elijan un stack, con criterio</h1>
+          <p><strong>Para cada escenario, propongan un stack (con nombre propio o combinado) y justifiquen con al menos dos de los criterios de la diapositiva anterior:</strong></p>
+          <ol>
+            <li>Un equipo de 2 personas construyendo el MVP de una app de reservas en 6 semanas.</li>
+            <li>Un sistema bancario interno con reglas de consistencia muy estrictas entre cuentas.</li>
+            <li>Una red social nueva con datos muy variables entre usuarios (perfiles con campos distintos entre sí).</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy — y cierre de la Unidad 1</h1>
+          <ol>
+            <li>Un <strong>stack tecnológico</strong> es un conjunto coherente de tecnologías por capa — sistema operativo/infraestructura, servidor, base de datos, backend y frontend.</li>
+            <li><strong>LAMP, WAMP, XAMPP, MEAN y MERN</strong> son combinaciones con nombre propio, cada una con supuestos distintos sobre el tipo de proyecto.</li>
+            <li>Instagram (2012) demuestra que el stack correcto depende de las habilidades del equipo, la naturaleza de los datos y los requisitos no funcionales — no de la popularidad.</li>
+            <li>Elegir un stack es una <strong>decisión arquitectónica</strong> (Semana 3): afecta a todo el sistema y es costosa de revertir.</li>
+            <li>Con esto cerramos la <strong>Unidad 1</strong>: de "dónde vive el código" (Semana 1) a "con qué tecnologías concretas se construye" (hoy).</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>El docente ubica, en vivo, el stack usado en los ejemplos de código de todas las sesiones anteriores (Spring Boot + HTML/JS) dentro de la tabla comparativa de la diapositiva 11, y muestra qué pieza faltaría agregar para completar un stack con nombre propio equivalente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Ejemplo comentado</p>
+          <h1>El stack de este curso, capa por capa</h1>
+          <table>
+            <thead>
+              <tr><th>Capa</th><th>Lo usado en clase</th><th>Rol en el stack</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Backend</td><td>Java + Spring Boot</td><td>Equivalente al "P" de LAMP o al Express de MEAN, en otro lenguaje</td></tr>
+              <tr><td>Frontend</td><td>HTML + JavaScript simple</td><td>Equivalente a la capa que en MEAN/MERN ocupan Angular o React</td></tr>
+              <tr><td>Base de datos</td><td>(a definir por cada equipo en el Sprint 1)</td><td>Relacional o NoSQL, según los criterios vistos hoy</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">No hay entregable de estudiantes: el objetivo es reconocer que ya han trabajado, sin nombrarlo, con piezas de un stack completo — y saber justificar la pieza que falta para el proyecto propio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre de Unidad 1</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Definir, en equipo, el stack tecnológico completo que usará el proyecto de Fábrica Escuela para el Sprint 1, justificando cada capa con los criterios de hoy.</li>
+            <li>Repasar todo lo visto en la Unidad 1: frontend/backend/fullstack, definiciones de arquitectura, historia y evolución, diseño vs. arquitectura, UML, el rol del arquitecto, requisitos no funcionales y conectores.</li>
+          </ul>
+          <p><strong>La Unidad 2, que empieza en la Semana 6, recorre el catálogo completo de patrones arquitectónicos POSA — la unidad más extensa del curso.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

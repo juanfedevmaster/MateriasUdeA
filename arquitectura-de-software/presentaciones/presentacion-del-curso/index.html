@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentación del curso — Arquitectura de Software</title>
+  <meta name="description" content="Dinámica semanal, evaluación, unidades y calendario del curso Arquitectura de Software 2026-2." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/presentacion-del-curso/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Presentación del curso — Arquitectura de Software" />
+  <meta property="og:description" content="Dinámica semanal, evaluación, unidades y calendario del curso Arquitectura de Software 2026-2." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/presentacion-del-curso/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Presentación del curso — Arquitectura de Software" />
+  <meta name="twitter:description" content="Dinámica semanal, evaluación, unidades y calendario del curso Arquitectura de Software 2026-2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/presentacion-del-curso.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Presentación del curso</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/drafting-compass.svg" alt="Arquitectura de Software" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Datos generales</p>
+          <h1>Ficha del curso</h1>
+          <table>
+            <tbody>
+              <tr><th>Período</th><td>03 de agosto al 27 de noviembre de 2026</td></tr>
+              <tr><th>Sesiones de clase</th><td>Martes y jueves, 12:00 m a 2:00 p.m.</td></tr>
+              <tr><th>Fábrica Escuela (CodeF@ctory)</th><td>Miércoles — entregas y coworkings, sin conflicto con las clases</td></tr>
+              <tr><th>Unidades</th><td>5, de Fundamentos a Seguridad en Arquitecturas de Software</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Ficha del curso" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Arquitectura de Software y Fábrica Escuela</h1>
+          <p>El curso funciona en paralelo con <strong>Fábrica Escuela (CodeF@ctory)</strong>, el espacio donde los equipos desarrollan un proyecto de software real por sprints. Las sesiones de martes y jueves (12–2 p.m.) son la <strong>cátedra teórica</strong> de Arquitectura de Software; los coworkings de miércoles pertenecen a Fábrica Escuela.</p>
+          <ul>
+            <li>Los <strong>entregables de los sprints</strong> se presentan en las fechas de coworking de Fábrica Escuela.</li>
+            <li>Pero son <strong>calificados por esta asignatura</strong>, no por Fábrica Escuela — la nota de Arquitectura de Software depende de lo que se entregue en esos sprints.</li>
+            <li>Por eso el calendario de esta materia y el de Fábrica Escuela están entrelazados: entender uno ayuda a entender el otro.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Evaluación</p>
+          <h1>Cómo se califica (100 %)</h1>
+          <table>
+            <thead>
+              <tr><th>Entregable</th><th>Cuándo</th><th>Peso</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sprint 1 — vistas arquitectónicas iniciales, estilo preliminar y proyecto base en Spring Boot</td><td>Semana 8</td><td>10 %</td></tr>
+              <tr><td>Entrega 1 — vistas arquitectónicas + PoC funcional del módulo</td><td>Semana 11</td><td>20 %</td></tr>
+              <tr><td>Sprint 2 — diagrama de despliegue, APIs y microservicios documentados</td><td>Semana 12</td><td>10 %</td></tr>
+              <tr><td>Entrega 2 — integración de componentes y framework</td><td>Semana 15</td><td>20 %</td></tr>
+              <tr><td>Seguridad Arquitectónica y Hardening</td><td>Semana 16</td><td>20 %</td></tr>
+              <tr><td>Sprint 3 — contenedores, orquestador y observabilidad</td><td>Semana 17</td><td>10 %</td></tr>
+              <tr><td><strong>Sustentación Final Arquitectónica</strong></td><td>Semana 17</td><td>10 %</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Suma total: 100 %. Los Sprints y la Sustentación se presentan en los coworkings de Fábrica Escuela, pero los califica Arquitectura de Software.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Evaluación" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Calendario</p>
+          <h1>Mapa del semestre</h1>
+          <table>
+            <thead>
+              <tr><th>Unidad</th><th>Tema</th><th>Semanas</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Unidad 1</td><td>Fundamentos en Arquitecturas de Software</td><td>1 – 5</td></tr>
+              <tr><td>Unidad 2</td><td>Patrones Arquitectónicos</td><td>6 – 11</td></tr>
+              <tr><td>Unidad 3</td><td>Desarrollo de Software basado en Arquitectura</td><td>12 – 13</td></tr>
+              <tr><td>Unidad 4</td><td>Los servicios Web en la Arquitectura</td><td>14 – 15</td></tr>
+              <tr><td>Unidad 5</td><td>Aspectos de Seguridad en Arquitecturas de Software</td><td>16</td></tr>
+              <tr><td>Cierre</td><td>Parcial teórico-práctico y presentación final del proyecto</td><td>17</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Unidad 1 · Semanas 1 – 5</p>
+          <h1>Fundamentos en Arquitecturas de Software</h1>
+          <ul>
+            <li>Ambientes Backend, Frontend y Fullstack; definiciones de Arquitectura de Software.</li>
+            <li>Historia y evolución de la Arquitectura de Software (tecnologías y frameworks).</li>
+            <li>Diseño vs. Arquitectura; integración de UML para generar vistas arquitectónicas.</li>
+            <li>El rol del Arquitecto de Software: tipos de arquitectos y cualidades esperadas.</li>
+            <li>Requisitos No Funcionales — norma <strong>ISO 25010</strong>.</li>
+            <li>Conectores y protocolos de <strong>Garlan y Shaw</strong>; stack tecnológico (MEAN, MERN, LAMP, WAMP, XAMP, etc.).</li>
+          </ul>
+          <p class="slide-eyebrow">Cierre de Unidad 1 al final de la semana 5.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Unidad 2 · Semanas 6 – 11</p>
+          <h1>Patrones Arquitectónicos</h1>
+          <p>La unidad más extensa: recorre el <strong>catálogo POSA</strong> (Pattern-Oriented Software Architecture) completo y los estilos arquitectónicos modernos.</p>
+          <ul>
+            <li>Tuberías y Filtros, Blackboard, Brokers, MVC, Procesamiento por lotes, Cliente/Servidor (2, 3 y N capas).</li>
+            <li>Layers, Microkernel, SOA, Arquitectura Hexagonal, Microservicios, WebHooks, BFF, Circuit Breaker, SOFEA.</li>
+            <li>Estilos arquitectónicos y principios de diseño: <strong>SOLID, DRY, KISS, DIE, YAGNY</strong>.</li>
+            <li>Arquitecturas para aplicaciones modernas: JAMStack, WebAssembly, WebSockets, gRPC-ProtoBuffer, Microfrontends, WebRTC, persistencia políglota, ciclo DevOps.</li>
+            <li>Anti-patrones de Arquitectura de Software.</li>
+          </ul>
+          <p class="slide-eyebrow">Semana 8: Entrega Sprint 1 (10 %). Semana 11: Entrega 1 — vistas arquitectónicas + PoC (20 %).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Unidad 3 · Semanas 12 – 13</p>
+          <h1>Desarrollo de Software basado en Arquitectura</h1>
+          <ul>
+            <li>Desarrollo basado en Componentes; proceso de desarrollo orientado a la arquitectura.</li>
+            <li>Middleware y frameworks (introducción).</li>
+            <li>Implementación de capas: Persistencia, Presentación, Controlador, Lógica de Negocio, Modelo de Dominio, Servicios.</li>
+            <li>Mapeo Objeto-Relacional (<strong>ORM</strong>).</li>
+          </ul>
+          <p class="slide-eyebrow">Semana 12: Entrega Sprint 2 (10 %) — diagrama de despliegue y APIs básicas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Unidad 4 · Semanas 14 – 15</p>
+          <h1>Los servicios Web en la Arquitectura</h1>
+          <ul>
+            <li>Esquemas para el uso de servicios web y Arquitecturas Orientadas a Servicios (<strong>SOA</strong>).</li>
+            <li>Estándares y protocolos: SOAP, WSDL, UDDI, RESTful, HATEOAS, HAL, GraphQL.</li>
+            <li>Web APIs e implementación de servicios web.</li>
+            <li>Arquitecturas Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless (FaaS).</li>
+          </ul>
+          <p class="slide-eyebrow">Semana 15: Entrega 2 — integración de componentes y framework (20 %).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Unidad 5 · Semana 16</p>
+          <h1>Seguridad en Arquitecturas de Software</h1>
+          <ul>
+            <li>Principios de Arquitectura de Software Segura.</li>
+            <li>Importancia de la seguridad en las APIs.</li>
+            <li><strong>Threat modeling</strong> aplicado al proyecto de Fábrica Escuela.</li>
+            <li>Aseguramiento de API por medio de tokens y hardening general del sistema.</li>
+          </ul>
+          <p class="slide-eyebrow">Semana 16: entrega de Seguridad Arquitectónica y Hardening (20 %) — el rubro de mayor peso individual.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave del curso</h1>
+          <ol>
+            <li>Arquitectura de Software y Fábrica Escuela avanzan juntas: la teoría de cada semana se aplica directamente al proyecto de los sprints.</li>
+            <li>El curso recorre 5 unidades, desde fundamentos y el rol del arquitecto hasta seguridad y hardening de APIs.</li>
+            <li>El catálogo POSA (Unidad 2) es el bloque más extenso — vale la pena reservarle tiempo de estudio adicional.</li>
+            <li>La evaluación (100 %) está atada a hitos concretos del proyecto: 3 sprints, 2 entregas de integración, seguridad/hardening y sustentación final.</li>
+            <li>La semana 17 cierra con parcial teórico-práctico y presentación final del proyecto de Fábrica Escuela.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Para empezar</p>
+          <h1>Antes de la semana 1</h1>
+          <ul>
+            <li>Revisar el esquema de evaluación y confirmar dudas sobre los pesos y las fechas de Fábrica Escuela.</li>
+            <li>Formar o confirmar equipo de Fábrica Escuela — el proyecto de los sprints se hace en equipo.</li>
+            <li>Recordar la dinámica semanal: martes y jueves de 12 a 2 p.m. de cátedra; miércoles de Fábrica Escuela.</li>
+          </ul>
+          <p><strong>La sesión del martes de la semana 1 arranca con la Unidad 1: introducción a los ambientes Backend, Frontend y Fullstack.</strong></p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Para empezar" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 12</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

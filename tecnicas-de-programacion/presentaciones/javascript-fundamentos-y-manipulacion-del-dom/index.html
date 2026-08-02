@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript: Fundamentos y Manipulación del DOM — Semana 15</title>
+  <meta name="description" content="Variables, tipos de datos, funciones y cómo interactuar con el DOM — Técnicas de Programación, Unidad 7, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/javascript-fundamentos-y-manipulacion-del-dom/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="JavaScript: Fundamentos y Manipulación del DOM — Semana 15" />
+  <meta property="og:description" content="Variables, tipos de datos, funciones y cómo interactuar con el DOM — Técnicas de Programación, Unidad 7, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/javascript-fundamentos-y-manipulacion-del-dom/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JavaScript: Fundamentos y Manipulación del DOM — Semana 15" />
+  <meta name="twitter:description" content="Variables, tipos de datos, funciones y cómo interactuar con el DOM — Técnicas de Programación, Unidad 7, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/javascript-fundamentos-y-manipulacion-del-dom.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: JavaScript, Fundamentos y Manipulación del DOM</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/javascript.svg" alt="Logo de JavaScript" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ya sabemos estructurar y dar estilo. Hoy: comportamiento</h1>
+          <p>En las cuatro sesiones anteriores de esta unidad construimos la <strong>estructura</strong> de una página con HTML (semántica, formularios, tablas) y le dimos <strong>estilo</strong> con CSS3 (selectores, box model, Flexbox, Grid, diseño responsive). Hoy agregamos la tercera pieza: <strong>comportamiento e interactividad</strong>, con JavaScript.</p>
+          <p>No partimos de cero: ya conocen variables, tipos de datos, condicionales, ciclos y funciones de Java (Unidad 0 y 2), e incluso programación funcional con lambdas y Streams (semana 6). JavaScript reutiliza casi todas esas ideas — la diferencia está en la sintaxis y en el entorno donde vive: <strong>el navegador</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es JavaScript: el lenguaje nativo del navegador</h1>
+          <p>JavaScript es un lenguaje de programación que corre <strong>directamente dentro del navegador</strong>, interpretado y ejecutado por su motor de JavaScript (ej. V8 en Chrome). No requiere un paso de compilación explícito ni una máquina virtual instalada aparte, a diferencia de Java: un programa Java se compila con <code>javac</code> a bytecode y se ejecuta sobre la JVM; un script de JavaScript lo recibe el navegador y lo ejecuta tal cual.</p>
+          <p>JavaScript también puede correr <strong>fuera del navegador</strong> gracias a <strong>Node.js</strong>, un entorno de ejecución que permite usarlo para servidores o scripts — solo lo mencionamos hoy, no lo usaremos en esta sesión.</p>
+          <img class="portada-icon" src="img/bolt.svg" alt="Ejecución nativa e inmediata" style="display:block;width:140px;height:140px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se vincula JavaScript a una página HTML</h1>
+          <p>Un archivo de JavaScript se conecta a un documento HTML con la etiqueta <code>&lt;script&gt;</code>, igual que un archivo CSS se vincula con <code>&lt;link&gt;</code>:</p>
+          <pre><code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code></pre>
+          <p><strong>Dónde y cómo se carga importa:</strong> si el navegador encuentra un <code>&lt;script&gt;</code> en el <code>&lt;head&gt;</code> sin ningún atributo especial, <strong>detiene el parseo del HTML</strong> hasta descargar y ejecutar ese script — la página se queda "bloqueada" mientras tanto.</p>
+          <p>El atributo <code>defer</code> le dice al navegador: descarga el script en paralelo, pero <strong>ejecútalo solo cuando termine de construir el HTML</strong>. Por eso <code>defer</code> (o colocar el <code>&lt;script&gt;</code> justo antes de <code>&lt;/body&gt;</code>) es la práctica recomendada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Variables: <code>let</code> y <code>const</code></h1>
+          <p>En Java declaras una variable indicando su tipo: <code>int edad = 20;</code>. En JavaScript se usa <code>let</code> (variable reasignable) o <code>const</code> (no se puede reasignar) — sin declarar el tipo:</p>
+          <pre><code>let edad = 20;
+edad = 21;          // válido: let permite reasignar
+
+const nombre = "Ana";
+nombre = "Luis";     // Error: no se puede reasignar una const</code></pre>
+          <p>Tanto <code>let</code> como <code>const</code> tienen <strong>scope de bloque</strong>: solo existen dentro del <code>{ }</code> donde se declararon — el mismo comportamiento que ya conocen de Java con variables locales dentro de un <code>if</code> o un <code>for</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Por qué <code>var</code> ya no se recomienda</h1>
+          <p>Antes de <code>let</code>/<code>const</code> (ES6, 2015), la única forma de declarar variables era <code>var</code>. Su problema: <code>var</code> tiene <strong>scope de función</strong>, no de bloque — "se escapa" del <code>{ }</code> donde se escribió.</p>
+          <pre><code>for (var i = 0; i &lt; 3; i++) {
+  setTimeout(() =&gt; console.log(i), 0);
+}
+// Imprime 3, 3, 3 — var "i" es una sola variable
+// compartida fuera del ciclo, no una por iteración
+
+for (let j = 0; j &lt; 3; j++) {
+  setTimeout(() =&gt; console.log(j), 0);
+}
+// Imprime 0, 1, 2 — let crea una "j" nueva por iteración</code></pre>
+          <p>Por eso la convención moderna es: usar <code>const</code> por defecto, y <code>let</code> solo cuando la variable necesita reasignarse. Evitar <code>var</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tipos de datos: dinámicos, no declarados</h1>
+          <p>JavaScript es de <strong>tipado dinámico</strong>: una variable no tiene un tipo fijo declarado, el tipo lo determina el valor que contiene en cada momento — y puede cambiar.</p>
+          <table>
+            <thead><tr><th>Tipo</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><code>number</code></td><td><code>let n = 42;</code> (enteros y decimales son el mismo tipo)</td></tr>
+              <tr><td><code>string</code></td><td><code>let s = "hola";</code></td></tr>
+              <tr><td><code>boolean</code></td><td><code>let b = true;</code></td></tr>
+              <tr><td><code>undefined</code></td><td>variable declarada, sin valor asignado</td></tr>
+              <tr><td><code>null</code></td><td>ausencia de valor, asignada intencionalmente</td></tr>
+              <tr><td><code>object</code></td><td><code>let p = { nombre: "Ana" };</code></td></tr>
+              <tr><td><code>array</code></td><td><code>let lista = [1, 2, 3];</code> (es un <code>object</code> especial)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La flexibilidad del tipado dinámico tiene un precio</h1>
+          <p>En Java, sumar un <code>int</code> con un <code>String</code> sin conversión explícita es un <strong>error de compilación</strong> — el compilador lo detecta antes de ejecutar el programa. En JavaScript, la misma operación se ejecuta sin quejarse, con un resultado que puede no ser el esperado:</p>
+          <pre><code>let total = "5" + 3;   // "53"  (concatena, no suma)
+let resta = "5" - 3;   // 2    (aquí sí convierte a número)
+let x;
+console.log(x + 1);    // NaN  (undefined + número)</code></pre>
+          <p>Ese es el precio de no declarar tipos: <strong>flexibilidad</strong> para escribir rápido, a cambio de errores que solo aparecen <strong>en tiempo de ejecución</strong> — y que en Java el compilador habría detenido antes de siquiera correr el programa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Operadores y estructuras de control: sintaxis casi idéntica</h1>
+          <p>Aquí no hay mucho que explicar de cero: <code>if</code>/<code>else</code>, <code>for</code> y <code>while</code> en JavaScript se escriben prácticamente igual que en Java.</p>
+          <pre><code>let nota = 4.2;
+if (nota &gt;= 3.0) {
+  console.log("Aprobado");
+} else {
+  console.log("Reprobado");
+}
+
+for (let i = 0; i &lt; 5; i++) {
+  console.log(i);
+}
+
+let intentos = 0;
+while (intentos &lt; 3) {
+  intentos++;
+}</code></pre>
+          <p>Los operadores de comparación (<code>==</code>, <code>&gt;</code>, <code>&amp;&amp;</code>, <code>||</code>) y aritméticos son los mismos. Un detalle: usa siempre <code>===</code> (igualdad estricta, sin conversión de tipo) en vez de <code>==</code> — evita sorpresas de coerción como las de la diapositiva anterior.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Funciones: declaración clásica y <em>arrow functions</em></h1>
+          <p>JavaScript tiene dos formas principales de escribir funciones:</p>
+          <pre><code>// Declaración clásica
+function sumar(a, b) {
+  return a + b;
+}
+
+// Arrow function (función flecha)
+const sumar = (a, b) =&gt; a + b;</code></pre>
+          <p>La forma clásica se prefiere para funciones con nombre que se reutilizan en varias partes del archivo. Las <em>arrow functions</em> se prefieren para funciones cortas y anónimas, sobre todo como argumento de otra función — el mismo rol que cumplen las <strong>lambdas de Java</strong> que ya usaron con Streams en la semana 6.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del lenguaje a la página: JavaScript y el DOM</h1>
+          <p>En la primera sesión de esta unidad mencionamos, sin entrar en detalle, que el navegador tiene un <strong>motor de renderizado</strong> que convierte el HTML en lo que se ve en pantalla. Ahora vamos a detallar exactamente esa pieza — el <strong>DOM</strong> — y cómo JavaScript la usa para modificar la página después de que ya se cargó.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El DOM: la página convertida en un árbol de objetos</h1>
+          <p>El <strong>DOM</strong> (<em>Document Object Model</em>) es la representación en memoria de la página que el motor de renderizado construye a partir del HTML: cada etiqueta se convierte en un <strong>nodo</strong> de un árbol de objetos, con relaciones de padre/hijo/hermano.</p>
+          <p>Esa estructura en memoria es exactamente lo que JavaScript puede <strong>leer y modificar en tiempo real</strong>, sin recargar la página: agregar un elemento, cambiar un texto, quitar una clase CSS. Cada cambio en el DOM hace que el navegador vuelva a pintar la parte afectada de la pantalla.</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="El HTML representado como un árbol de nodos" style="display:block;width:150px;height:150px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Seleccionar elementos: <code>querySelector</code></h1>
+          <p>Para modificar un nodo del DOM primero hay que encontrarlo. Los métodos más usados aceptan cualquier selector CSS (los mismos que ya conocen de la unidad de CSS):</p>
+          <pre><code>// Devuelve el PRIMER elemento que coincide
+const boton = document.querySelector(".btn-enviar");
+
+// Devuelve TODOS los elementos que coinciden (NodeList)
+const items = document.querySelectorAll("li.tarea");
+
+items.forEach(item =&gt; console.log(item.textContent));</code></pre>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Buscar un elemento en el DOM" style="display:block;width:130px;height:130px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Modificar el contenido: <code>textContent</code> e <code>innerHTML</code></h1>
+          <pre><code>const parrafo = document.querySelector("#mensaje");
+
+parrafo.textContent = "Guardado con éxito";       // solo texto plano
+parrafo.innerHTML = "&lt;strong&gt;Guardado&lt;/strong&gt;"; // interpreta HTML</code></pre>
+          <p><code>textContent</code> reemplaza el texto sin interpretarlo como HTML — es la opción segura por defecto. <code>innerHTML</code> sí interpreta etiquetas, lo que es útil para insertar contenido con formato, pero es <strong>riesgoso si el contenido viene de un usuario no confiable</strong>: alguien podría inyectar HTML o scripts no deseados. Regla práctica: usa <code>textContent</code> salvo que realmente necesites insertar HTML, y nunca con datos externos sin validar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cambiar apariencia: <code>classList</code></h1>
+          <p>Para cambiar el estilo de un elemento no se edita CSS "a mano" desde JS — se le agrega o quita una <strong>clase</strong> que ya tiene sus reglas definidas en la hoja de estilos, con <code>classList</code>:</p>
+          <pre><code>const tarjeta = document.querySelector(".card");
+
+tarjeta.classList.add("activa");     // agrega la clase
+tarjeta.classList.remove("activa");  // la quita
+tarjeta.classList.toggle("activa");  // la agrega si no está, la quita si está</code></pre>
+          <p>Este patrón — clase agregada/quitada por JS, estilo definido en CSS — mantiene separadas las responsabilidades: JS decide <strong>cuándo</strong> cambia el estado, CSS decide <strong>cómo se ve</strong> ese estado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Eventos: reaccionar a la interacción del usuario</h1>
+          <p><code>addEventListener</code> registra una función que se ejecuta cuando ocurre un evento sobre un elemento — un clic, una tecla, un envío de formulario:</p>
+          <pre><code>const boton = document.querySelector("#btn-saludar");
+
+boton.addEventListener("click", () =&gt; {
+  const parrafo = document.querySelector("#saludo");
+  parrafo.textContent = "¡Hola!";
+  parrafo.classList.add("resaltado");
+});</code></pre>
+          <p>El primer argumento es el nombre del evento (<code>"click"</code>, <code>"submit"</code>, <code>"keydown"</code>...), el segundo es la función que responde a ese evento — típicamente una arrow function.</p>
+          <img class="portada-icon" src="img/hand-pointer.svg" alt="Interacción del usuario con un elemento" style="display:block;width:120px;height:120px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El evento <code>submit</code> y <code>preventDefault()</code></h1>
+          <p>En la sesión de HTML de esta unidad construimos formularios con <code>&lt;form&gt;</code>. Por defecto, al enviarlo el navegador <strong>recarga la página</strong> — algo que casi nunca queremos cuando validamos o procesamos el formulario con JavaScript:</p>
+          <pre><code>const formulario = document.querySelector("#form-login");
+
+formulario.addEventListener("submit", (event) =&gt; {
+  event.preventDefault(); // evita la recarga por defecto
+  const usuario = document.querySelector("#usuario").value;
+  console.log("Enviando:", usuario);
+});</code></pre>
+          <p><code>event.preventDefault()</code> cancela esa acción por defecto del navegador, dejando que sea el propio JavaScript quien decida qué hacer con los datos del formulario.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Manos al teclado: click, texto y clase</h1>
+          <p><strong>En parejas:</strong> partiendo de este HTML, escriban el JavaScript que, al hacer clic en el botón, cambie el texto del párrafo y le agregue una clase CSS.</p>
+          <pre><code>&lt;button id="btn-confirmar"&gt;Confirmar&lt;/button&gt;
+&lt;p id="estado"&gt;Pendiente...&lt;/p&gt;</code></pre>
+          <p>Pistas: <code>document.querySelector</code>, <code>addEventListener("click", ...)</code>, <code>textContent</code> y <code>classList.add</code>.</p>
+          <p class="slide-eyebrow">8 minutos · compartan su solución con otra pareja</p>
+          <img class="portada-icon" src="img/user-group.svg" alt="Trabajo en parejas" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>JavaScript corre <strong>nativamente en el navegador</strong>, sin compilación previa ni JVM; <code>defer</code> evita que bloquee el renderizado.</li>
+            <li>Usa <code>const</code> por defecto y <code>let</code> si necesitas reasignar; evita <code>var</code> por su scope de función.</li>
+            <li>El tipado es <strong>dinámico</strong>: flexible, pero sin la red de seguridad del compilador de Java.</li>
+            <li>Operadores, <code>if</code>, <code>for</code> y <code>while</code> son casi idénticos a Java; las funciones tienen forma clásica y <em>arrow</em>.</li>
+            <li>El <strong>DOM</strong> es la página en memoria; JS la lee y modifica en tiempo real con <code>querySelector</code>, <code>textContent</code>/<code>innerHTML</code> y <code>classList</code>.</li>
+            <li><code>addEventListener</code> conecta el código con la interacción del usuario; <code>preventDefault()</code> controla el comportamiento por defecto del navegador.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave de la sesión" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar con el ejercicio de la interacción de hoy: agregar un segundo botón que quite la clase en vez de agregarla.</li>
+            <li>Repasar <code>map</code>, <code>filter</code> y <code>reduce</code> de los Streams de Java (semana 6) — la próxima sesión tienen su equivalente directo en JavaScript.</li>
+          </ul>
+          <p><strong>Próxima sesión: Funciones de orden superior (map, filter, reduce) y consumo de una API REST con fetch.</strong></p>
+          <img class="portada-icon" src="img/arrow-right.svg" alt="Hacia la próxima sesión" style="display:block;width:130px;height:130px;margin:25px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

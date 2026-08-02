@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historia de la Arquitectura de Software — Semana 2</title>
+  <meta name="description" content="De dónde viene el término 'arquitectura de software': el caso real del IBM System/360 y el recorrido por las eras de la computación — Arquitectura de Software, Semana 2." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/historia-arquitectura-software/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Historia de la Arquitectura de Software — Semana 2" />
+  <meta property="og:description" content="De dónde viene el término 'arquitectura de software': el caso real del IBM System/360 y el recorrido por las eras de la computación — Arquitectura de Software, Semana 2." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/historia-arquitectura-software/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Historia de la Arquitectura de Software — Semana 2" />
+  <meta name="twitter:description" content="De dónde viene el término 'arquitectura de software': el caso real del IBM System/360 y el recorrido por las eras de la computación — Arquitectura de Software, Semana 2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/historia-arquitectura-software.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 2 — Historia de la Arquitectura de Software</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/landmark.svg" alt="Historia de la arquitectura de software" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>5.000 millones de dólares<br>por una palabra nueva</h1>
+          <img class="portada-icon" src="img/money-bill-wave.svg" alt="Inversión histórica" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>IBM System/360, 1964</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>IBM (International Business Machines)</td></tr>
+              <tr><th>Producto</th><td>System/360 — familia de computadoras mainframe</td></tr>
+              <tr><th>Anuncio</th><td>7 de abril de 1964</td></tr>
+              <tr><th>Inversión</th><td>Cerca de 5.000 millones de dólares de la época — la revista <em>Fortune</em> la llamó "la apuesta de 5.000 millones de IBM"</td></tr>
+              <tr><th>Modelos lanzados</th><td>6 modelos distintos, de capacidad muy diferente, anunciados el mismo día</td></tr>
+              <tr><th>Autores del concepto</th><td>Gene Amdahl, Gerrit Blaauw y Fred Brooks</td></tr>
+              <tr><th>Legado</th><td>Primer uso documentado y explícito del término "arquitectura" aplicado a un sistema de cómputo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema</p>
+          <h1>Antes del 360: familias incompatibles</h1>
+          <p>Hasta comienzos de los años 60, cada modelo de computadora de IBM tenía su <strong>propio diseño interno y su propio software</strong> — un programa escrito para un modelo no corría en otro, ni siquiera dentro de la misma empresa.</p>
+          <ul>
+            <li>Un cliente que necesitaba más capacidad debía <strong>reescribir todo su software</strong> al cambiar de modelo.</li>
+            <li>IBM mantenía en paralelo varias líneas de producto que no compartían nada entre sí.</li>
+            <li>El costo de crecer —para el cliente y para IBM— era enorme.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La solución</p>
+          <h1>Un mismo diseño lógico, muchas implementaciones</h1>
+          <p>El equipo del System/360 propuso algo distinto: definir un <strong>conjunto de instrucciones y comportamientos comunes</strong> (lo que el programador ve) que fuera <strong>independiente</strong> de cómo cada modelo lo implementara por dentro (los circuitos, la velocidad, el costo).</p>
+          <p><strong>Un mismo programa podía correr en los 6 modelos</strong>, desde el más pequeño hasta el más potente, sin reescribirse.</p>
+          <p class="slide-eyebrow">Para nombrar esa separación —lo que el programador ve, distinto de cómo se construye por dentro— el equipo necesitó una palabra nueva.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La palabra nueva</p>
+          <h1>Blaauw y Brooks acuñan "arquitectura"</h1>
+          <blockquote>Arquitectura es la estructura de un sistema tal como la ve el programador, es decir, la conceptualización fundamental de su comportamiento, en contraste con la organización del flujo de datos y de control, el diseño lógico y la implementación física.</blockquote>
+          <p>Gerrit Blaauw y Fred Brooks tomaron prestado el término del mundo de la construcción —donde "arquitectura" distingue el diseño de un edificio de los materiales concretos con que se levanta— para describir exactamente la misma distinción en computadoras.</p>
+          <p class="slide-eyebrow">Fred Brooks es también el autor de "The Mythical Man-Month" (1975), lectura clásica de ingeniería de software.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un mainframe a todo el software</h1>
+          <p>El System/360 acuñó la palabra pensando en <strong>hardware</strong> — separar "qué hace la máquina" de "cómo está construida por dentro". Con los años, esa misma idea se trasladó al software: separar <strong>qué hace un sistema y cómo están organizadas sus partes</strong>, de los detalles de cada línea de código.</p>
+          <p><strong>Para entender por qué la arquitectura de software se piensa hoy como se piensa, hay que recorrer las eras que siguieron a 1964.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Línea de tiempo: cinco eras</h1>
+          <table>
+            <thead>
+              <tr><th>Era</th><th>Década aproximada</th><th>Rasgo arquitectónico dominante</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Mainframe</td><td>1960s–1970s</td><td>Un único sistema centralizado, procesamiento por lotes</td></tr>
+              <tr><td>Minicomputadoras y Unix</td><td>1970s–1980s</td><td>Sistemas más pequeños, terminales conectadas, tiempo compartido</td></tr>
+              <tr><td>Cliente/servidor</td><td>1980s–1990s</td><td>Trabajo dividido entre PC (cliente) y servidor central</td></tr>
+              <tr><td>Web</td><td>1990s–2000s</td><td>El navegador como cliente universal, servidores n-capas</td></tr>
+              <tr><td>Cloud y microservicios</td><td>2010s–hoy</td><td>Servicios distribuidos, elásticos, desplegados en la nube</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/globe.svg" alt="Línea de tiempo" style="display:block;width:150px;height:150px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Era mainframe</p>
+          <h1>Todo en una sola máquina central</h1>
+          <p>El System/360 y sus sucesores definieron esta era: <strong>una computadora central</strong> —cara, grande, compartida por toda una organización— a la que los usuarios acceden mediante <strong>terminales "tontas"</strong> que solo envían pantallas de texto, sin capacidad propia de procesamiento.</p>
+          <ul>
+            <li>El procesamiento se hacía por <strong>lotes (batch)</strong>: se programaba de noche, se revisaba de día.</li>
+            <li>Toda la lógica, los datos y la interfaz vivían en el mismo lugar físico.</li>
+          </ul>
+          <img class="portada-icon" src="img/server.svg" alt="Era mainframe" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "el mainframe era una mala arquitectura"</h1>
+          <p>Es tentador ver la era del mainframe como "primitiva" comparada con hoy. <strong>No lo era para su contexto.</strong></p>
+          <ul>
+            <li>El hardware era extremadamente caro: centralizar todo en una sola máquina compartida era la opción económicamente racional.</li>
+            <li>El procesamiento por lotes era eficiente para el tipo de carga de trabajo de la época (nómina, contabilidad, inventarios).</li>
+            <li>Muchos sistemas mainframe de esa arquitectura <strong>siguen en producción hoy</strong> en bancos y aseguradoras, por su estabilidad probada.</li>
+          </ul>
+          <p><strong>Una arquitectura no es "buena" o "mala" en abstracto — es apropiada o no para su contexto y sus restricciones.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Era cliente/servidor</p>
+          <h1>El trabajo se reparte</h1>
+          <p>Con la llegada de la PC (años 80) y las redes locales, apareció una nueva división del trabajo: el <strong>cliente</strong> (una PC con interfaz gráfica propia) y el <strong>servidor</strong> (una máquina que centraliza los datos y algunas reglas).</p>
+          <table>
+            <thead>
+              <tr><th>Modelo</th><th>Cómo se divide el trabajo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2 capas</td><td>Cliente con interfaz + lógica; servidor solo con la base de datos</td></tr>
+              <tr><td>3 capas</td><td>Cliente (interfaz), servidor de aplicación (lógica), servidor de datos (base de datos)</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Cliente/servidor" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Era web</p>
+          <h1>El navegador como cliente universal</h1>
+          <p>Con la Web (años 90–2000) el cliente dejó de ser una aplicación instalada por cada usuario y pasó a ser <strong>el navegador</strong>: un mismo cliente genérico capaz de mostrar cualquier aplicación, sin instalación previa.</p>
+          <ul>
+            <li>El servidor pasó a organizarse en <strong>n capas</strong>: presentación, lógica de negocio, acceso a datos.</li>
+            <li>El protocolo <strong>HTTP</strong> se volvió el conector universal entre cliente y servidor (visto la semana pasada).</li>
+            <li>Nacieron los primeros frameworks web con el fin de estandarizar esa organización.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Era cloud y microservicios</p>
+          <h1>Sistemas que se despliegan, no que se instalan</h1>
+          <p>Desde la década de 2010, la infraestructura misma se volvió parte de la arquitectura: en vez de comprar y mantener servidores propios, los sistemas se despliegan sobre <strong>infraestructura en la nube</strong>, dividida en <strong>servicios pequeños e independientes</strong> (microservicios) que escalan por separado según la demanda.</p>
+          <p class="slide-eyebrow">Este patrón —y sus alternativas (SOA, monolito modular, serverless)— se estudia en detalle en la Unidad 2 del curso.</p>
+          <img class="portada-icon" src="img/cloud.svg" alt="Cloud y microservicios" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Cada era "reemplaza" a la anterior?</h1>
+          <p>Es tentador narrar la historia como una escalera donde cada era supera a la anterior. <strong>La realidad es más desordenada:</strong></p>
+          <ul>
+            <li>Bancos y aerolíneas siguen operando mainframes de los años 70, ahora conectados a APIs web modernas.</li>
+            <li>La arquitectura cliente/servidor de 2 capas sigue siendo la elección correcta para muchas aplicaciones internas pequeñas.</li>
+            <li>Microservicios no es "más moderno y por tanto mejor": introduce complejidad que no todo proyecto necesita.</li>
+          </ul>
+          <p><strong>¿Tiene sentido, entonces, hablar de "progreso" en arquitectura de software?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión histórica" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ubiquen la era</h1>
+          <p><strong>Para cada sistema, identifiquen a qué era pertenece su arquitectura dominante y por qué:</strong></p>
+          <ol>
+            <li>El sistema de un banco que procesa la nómina de una empresa una vez al mes, de noche.</li>
+            <li>Una aplicación de escritorio instalada en cada PC de una oficina, que se conecta a un servidor de base de datos central.</li>
+            <li>Una plataforma de streaming que despliega decenas de servicios independientes en la nube, cada uno escalando según la demanda.</li>
+            <li>Un portal universitario al que se accede desde cualquier navegador, sin instalar nada.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué conocer esta historia importa</h1>
+          <p>Los patrones no desaparecen: <strong>se reinterpretan</strong>. La arquitectura cliente/servidor de los 80 reaparece hoy como "frontend + backend" (visto la semana pasada). El procesamiento por lotes del mainframe reaparece en los <em>batch jobs</em> nocturnos de sistemas modernos.</p>
+          <p><strong>Entender de dónde viene cada patrón ayuda a reconocer cuándo conviene aplicarlo de nuevo</strong> — no como nostalgia, sino como herramienta de diseño.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>El término <strong>"arquitectura"</strong> aplicado a computación nace en 1964, con el IBM System/360, para separar "qué hace el sistema" de "cómo está construido por dentro".</li>
+            <li>La historia recorre cinco eras: <strong>mainframe, minicomputadoras/Unix, cliente/servidor, web, cloud/microservicios</strong>.</li>
+            <li>Ninguna era "reemplaza" completamente a la anterior — muchos patrones antiguos siguen vigentes en contextos apropiados.</li>
+            <li>Una arquitectura es apropiada o no <strong>según su contexto</strong>, no "buena" o "mala" en abstracto.</li>
+            <li>Los patrones se reinterpretan: el cliente/servidor de los 80 es, en esencia, el frontend/backend de hoy.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>El docente muestra en vivo <strong>dos versiones del mismo ejemplo</strong> (el backend en Spring Boot de la semana pasada) para hacer tangible el salto de era cliente/servidor a arquitectura web moderna:</p>
+          <ul>
+            <li><strong>Versión "2 capas":</strong> el backend accede directamente a una lista en memoria, sin separación de capas.</li>
+            <li><strong>Versión "n capas":</strong> el mismo backend, ahora separado en controlador, servicio y repositorio.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Ejemplo comentado</p>
+          <h1>De 2 capas a n capas, en el mismo código</h1>
+          <pre><code>// Versión "2 capas": todo junto en el controlador
+@RestController
+public class SaludoController {
+    private List&lt;String&gt; mensajes = new ArrayList&lt;&gt;();
+
+    @GetMapping("/api/saludo")
+    public String obtener() {
+        return "Hola desde el backend"; // lógica y datos mezclados
+    }
+}
+
+// Versión "n capas": responsabilidades separadas
+@RestController
+class SaludoController {
+    @Autowired SaludoService servicio;
+    @GetMapping("/api/saludo")
+    public String obtener() { return servicio.generar(); }
+}
+class SaludoService {
+    @Autowired SaludoRepository repo;
+    public String generar() { return repo.buscarMensaje(); }
+}</code></pre>
+          <p class="slide-eyebrow">No hay entregable de estudiantes: el objetivo es reconocer visualmente la diferencia entre una arquitectura de 2 capas y una de n capas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Pensar en un framework o tecnología que usen hoy y preguntarse: ¿qué problema de una era anterior vino a resolver?</li>
+            <li>Traer identificado, de su propio proyecto de Fábrica Escuela, en qué "era" arquitectónica se ubica su stack actual.</li>
+          </ul>
+          <p><strong>El jueves continuamos con la evolución de la arquitectura de software: cómo cambiaron las tecnologías y los frameworks a lo largo de estas mismas eras.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

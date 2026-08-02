@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diseño vs Arquitectura — Semana 3</title>
+  <meta name="description" content="La diferencia entre decisiones de diseño y de arquitectura, con el caso real del sistema de equipaje del Aeropuerto de Denver — Arquitectura de Software, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/diseno-vs-arquitectura/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Diseño vs Arquitectura — Semana 3" />
+  <meta property="og:description" content="La diferencia entre decisiones de diseño y de arquitectura, con el caso real del sistema de equipaje del Aeropuerto de Denver — Arquitectura de Software, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/diseno-vs-arquitectura/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Diseño vs Arquitectura — Semana 3" />
+  <meta name="twitter:description" content="La diferencia entre decisiones de diseño y de arquitectura, con el caso real del sistema de equipaje del Aeropuerto de Denver — Arquitectura de Software, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/diseno-vs-arquitectura.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 3 — Diseño vs Arquitectura</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/drafting-compass.svg" alt="Diseño vs arquitectura" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>16 meses de retraso<br>560 millones de dólares</h1>
+          <img class="portada-icon" src="img/plane-departure.svg" alt="Retraso de un aeropuerto" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Aeropuerto de Denver, 1994</h1>
+          <table>
+            <tbody>
+              <tr><th>Proyecto</th><td>Sistema automatizado de manejo de equipaje, Aeropuerto Internacional de Denver (DIA)</td></tr>
+              <tr><th>Apertura planeada</th><td>Octubre de 1993</td></tr>
+              <tr><th>Apertura real</th><td>Febrero de 1995 — 16 meses de retraso</td></tr>
+              <tr><th>Alcance original</th><td>Manejo 100 % automatizado de equipaje para <strong>los tres concourses</strong> del aeropuerto completo</td></tr>
+              <tr><th>Infraestructura</th><td>~34 km de rieles y cerca de 4.000 carritos ("telecars") controlados por computadora</td></tr>
+              <tr><th>Sobrecosto estimado</th><td>Del orden de 560 millones de dólares en costos adicionales por el retraso</td></tr>
+              <tr><th>Desenlace</th><td>El sistema nunca operó de forma completa; años después se abandonó en gran parte a favor de manejo manual/tradicional</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Caso ampliamente documentado en literatura de ingeniería de software (ej. Robert Glass, "Software Runaways"; reportajes de IEEE Spectrum).</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La decisión estructural</p>
+          <h1>Una decisión tomada muy temprano</h1>
+          <p>Antes de definir un solo algoritmo o pantalla, alguien decidió <strong>cómo iba a estar organizado el sistema completo</strong>: en vez de un manejo de equipaje tradicional (cintas y personal, apoyado parcialmente por tecnología), se optó por <strong>automatización total, centralizada, para las 3 terminales a la vez</strong>.</p>
+          <p><strong>Esa decisión —el alcance y el grado de automatización— es estructural: define qué componentes deben existir y cómo deben coordinarse entre sí, mucho antes de programar cualquier cosa.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Lo que se subestimó</p>
+          <h1>La complejidad de coordinar miles de piezas</h1>
+          <p>Cada carrito debía recibir instrucciones en tiempo real, evitar colisiones con miles de otros carritos, y entregar la maleta correcta en el lugar correcto, sincronizado con los horarios de decenas de vuelos simultáneos.</p>
+          <ul>
+            <li>El sistema debía coordinar sensores, motores y software de control distribuidos en decenas de kilómetros.</li>
+            <li>Pequeñas fallas de sincronización se propagaban: carritos que chocaban, maletas que se caían o se enviaban al lugar equivocado.</li>
+            <li>Nunca se había construido nada de esta escala y alcance antes — no había un precedente comparable para validar el diseño.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Los parches que no alcanzaron</p>
+          <h1>Ajustar el detalle no arregla la estructura</h1>
+          <p>Durante más de un año, los equipos ajustaron algoritmos de ruteo, calibraron sensores, reescribieron rutinas de control de colisiones — <strong>decisiones de diseño de detalle, una por una</strong>.</p>
+          <p><strong>Ninguna de esas correcciones podía compensar la decisión original</strong>: automatizar por completo la totalidad del manejo de equipaje de un aeropuerto entero, de una sola vez, sin un camino de reversión ni un plan B de menor alcance.</p>
+          <p class="slide-eyebrow">United Airlines terminó desplegando su propio sistema de respaldo en paralelo, más simple, en una de las terminales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Dos tipos de decisión, dos consecuencias distintas</h1>
+          <p>El caso de Denver deja una pregunta central para esta sesión: <strong>¿por qué unas decisiones —como el alcance del sistema— resultan tan costosas de cambiar, mientras otras —como un algoritmo de ruteo puntual— se pueden ajustar una y otra vez sin rehacer el proyecto?</strong></p>
+          <p><strong>Esa es exactamente la distinción entre arquitectura y diseño.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Repaso</p>
+          <h1>Arquitectura: la estructura del sistema</h1>
+          <p>Como se vio en la Semana 1, la <strong>arquitectura</strong> es el conjunto de elementos del sistema, sus relaciones, y los principios que guían su diseño y evolución — las decisiones que afectan al sistema como un todo y que son costosas de revertir.</p>
+          <p class="slide-eyebrow">En Denver: la decisión de automatizar el 100 % del manejo de equipaje para las 3 terminales simultáneamente.</p>
+          <img class="portada-icon" src="img/gauge-high.svg" alt="Decisión estructural" style="display:block;width:160px;height:160px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Diseño: cómo se construye cada pieza</h1>
+          <p>El <strong>diseño</strong> (de detalle) es el conjunto de decisiones sobre <strong>cómo se implementa</strong> un componente ya definido por la arquitectura: qué algoritmo usar, cómo se organiza una clase, qué estructura de datos conviene.</p>
+          <ul>
+            <li>Vive dentro de los límites que la arquitectura ya trazó.</li>
+            <li>Es local: afecta a un componente o a un puñado de ellos, no al sistema completo.</li>
+            <li>Es más barato de cambiar — normalmente se puede rehacer sin tocar el resto del sistema.</li>
+          </ul>
+          <p class="slide-eyebrow">En Denver: el algoritmo exacto de ruteo de un carrito individual, o cómo se calibra un sensor de un tramo de riel.</p>
+          <img class="portada-icon" src="img/boxes-stacked.svg" alt="Diseño de detalle" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Comparados, lado a lado</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Arquitectura</th><th>Diseño</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Alcance</th><td>El sistema completo</td><td>Un componente o módulo</td></tr>
+              <tr><th>Costo de cambiar</th><td>Alto — a veces rehacer el proyecto</td><td>Bajo a moderado — se ajusta sin rehacer todo</td></tr>
+              <tr><th>Cuándo se decide</th><td>Muy temprano, con menos información</td><td>A lo largo de todo el desarrollo</td></tr>
+              <tr><th>Quién suele decidir</th><td>Arquitecto(a) / equipo técnico líder</td><td>El desarrollador responsable del componente</td></tr>
+              <tr><th>Ejemplo (Denver)</th><td>Automatización total, 3 terminales, un solo sistema</td><td>Algoritmo de ruteo de un carrito</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "arquitectura es solo diseño a gran escala"</h1>
+          <p>Es tentador pensar que arquitectura y diseño son la misma actividad, solo que la arquitectura se hace "en grande". <strong>No es una diferencia de tamaño, es una diferencia de tipo de riesgo.</strong></p>
+          <p>Un componente enorme puede diseñarse mal y aun así ser fácil de rehacer (si está bien aislado). Una decisión pequeña en apariencia —como elegir sincronizar todo un sistema desde un único punto central— puede ser profundamente arquitectónica si compromete la coordinación de todo lo demás.</p>
+          <p><strong>Lo que separa arquitectura de diseño no es cuánto código involucra, sino qué tan costoso es dar marcha atrás.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué se decide temprano, con poca información</h1>
+          <p>Las decisiones arquitectónicas —como el alcance del sistema de Denver— suelen tomarse <strong>antes</strong> de que exista evidencia real de que funcionarán a esa escala, porque son precisamente las que definen el proyecto desde el inicio.</p>
+          <p><strong>Ese es el riesgo estructural de toda arquitectura: se decide con menos certeza de la que se tendría más adelante, pero revertirla más adelante es mucho más caro que revertir una decisión de diseño.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Puede el diseño "salvar" una mala arquitectura?</h1>
+          <p>El equipo de Denver tenía diseñadores e ingenieros de detalle altamente competentes, que ajustaron algoritmos durante más de un año.</p>
+          <p><strong>¿Puede la calidad del diseño de detalle compensar una decisión arquitectónica equivocada, si se invierte suficiente tiempo y talento? ¿O hay un límite que ningún ajuste de diseño puede cruzar?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Clasifiquen la decisión</h1>
+          <p><strong>Para cada decisión, indiquen si es de arquitectura o de diseño, y justifiquen con el criterio de "costo de revertir":</strong></p>
+          <ol>
+            <li>Elegir si el sistema del proyecto de Fábrica Escuela va a ser un monolito o estar dividido en varios servicios.</li>
+            <li>Elegir qué estructura de datos usar para ordenar una lista dentro de un solo método.</li>
+            <li>Decidir que la aplicación va a exponer sus funciones como una API REST, en vez de embeber la lógica en el frontend.</li>
+            <li>Cambiar el algoritmo de validación de un formulario de registro.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Toda decisión arquitectónica exige un prototipo antes?</h1>
+          <p><strong>Postura conservadora:</strong> antes de comprometerse con una decisión estructural cara de revertir, hay que validarla con un prototipo o una prueba piloto a menor escala — Denver, en retrospectiva, habría necesitado justamente eso.</p>
+          <p><strong>Postura opuesta:</strong> exigir un prototipo para cada decisión arquitectónica puede ser inviable en tiempo y presupuesto, y algunos riesgos solo se manifiestan a la escala real del sistema completo — ningún prototipo pequeño de Denver habría revelado el problema de coordinar 4.000 carritos reales.</p>
+          <p><strong>No hay una respuesta única</strong>: depende de qué tan reversible es la decisión y qué tan grande es el riesgo si falla a escala completa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>La <strong>arquitectura</strong> define la estructura del sistema completo; el <strong>diseño</strong> define cómo se construye cada pieza dentro de esa estructura.</li>
+            <li>La diferencia real no es de tamaño, sino de <strong>costo de revertir</strong> la decisión.</li>
+            <li>Denver (1994) muestra que ningún ajuste de diseño de detalle puede compensar una decisión arquitectónica de alcance equivocada.</li>
+            <li>Las decisiones arquitectónicas suelen tomarse temprano, con menos certeza, y por eso son las de mayor riesgo del proyecto.</li>
+            <li>No hay consenso único sobre cuánto validar con prototipos antes de comprometerse arquitectónicamente — depende del riesgo y de la reversibilidad.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>Sobre el mismo backend Spring Boot de sesiones anteriores, el docente muestra en vivo <strong>un cambio de diseño</strong> (barato) y <strong>un cambio de arquitectura</strong> (costoso), para que la diferencia quede visible en código real, no solo en teoría.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Ejemplo comentado</p>
+          <h1>Un cambio barato vs. un cambio caro</h1>
+          <pre><code>// CAMBIO DE DISEÑO (barato): cambiar el algoritmo
+// de ordenamiento interno de una lista de resultados.
+// Afecta solo este método, nada más se entera.
+public List&lt;Item&gt; ordenar(List&lt;Item&gt; items) {
+    return items.stream()
+        .sorted(Comparator.comparing(Item::getNombre))
+        .toList();
+}
+
+// CAMBIO DE ARQUITECTURA (caro): pasar de un backend
+// monolítico a separar "SaludoService" en un servicio
+// independiente, con su propia base de datos y API.
+// Obliga a redefinir cómo se comunican TODOS los
+// componentes que hoy lo llaman directamente en memoria.</code></pre>
+          <p class="slide-eyebrow">No hay entregable de estudiantes: el objetivo es reconocer, en código real, cuándo un cambio es local y barato y cuándo compromete a todo el sistema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Repasar, aunque sea de forma general, qué es un diagrama UML — se usa activamente desde el jueves.</li>
+            <li>Identificar, en el proyecto propio de Fábrica Escuela, una decisión que ya sea imposible de revertir sin rehacer buena parte del sistema.</li>
+          </ul>
+          <p><strong>El jueves aprendemos a documentar esas decisiones arquitectónicas con UML, generando las vistas que se entregarán en el Sprint 1: diagrama de paquetes y de componentes.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

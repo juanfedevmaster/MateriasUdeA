@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS3: Flexbox, Grid y Diseño Responsivo — Semana 14</title>
+  <meta name="description" content="Layouts modernos con Flexbox y Grid, y adaptación a distintos dispositivos con media queries — Técnicas de Programación, Unidad 7, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/css3-flexbox-grid-y-diseno-responsivo/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="CSS3: Flexbox, Grid y Diseño Responsivo — Semana 14" />
+  <meta property="og:description" content="Layouts modernos con Flexbox y Grid, y adaptación a distintos dispositivos con media queries — Técnicas de Programación, Unidad 7, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/css3-flexbox-grid-y-diseno-responsivo/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CSS3: Flexbox, Grid y Diseño Responsivo — Semana 14" />
+  <meta name="twitter:description" content="Layouts modernos con Flexbox y Grid, y adaptación a distintos dispositivos con media queries — Técnicas de Programación, Unidad 7, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/css3-flexbox-grid-y-diseno-responsivo.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: CSS3, Flexbox, Grid y Diseño Responsivo</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/css3.svg" alt="CSS3" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De estilizar elementos a organizar la página completa</h1>
+          <p>En la sesión anterior vimos <strong>selectores</strong>, el <strong>modelo de caja</strong> (margin, border, padding, content) y los valores básicos de <code>display</code> (<code>block</code>, <code>inline</code>, <code>inline-block</code>) que usa cada etiqueta HTML por defecto. Con eso ya sabemos <strong>estilizar elementos individuales</strong>: colores, tamaños, tipografía, espaciado.</p>
+          <p>Pero saber decorar una caja no resuelve un problema distinto: <strong>¿cómo se organizan varias cajas juntas para formar el layout completo de una página?</strong> Un encabezado arriba, un menú a un lado, contenido al centro, un pie abajo — y que todo eso se acomode bien tanto en un monitor grande como en un celular. Hoy resolvemos exactamente eso: <strong>Flexbox</strong>, <strong>Grid</strong> y <strong>diseño responsivo</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Antes de Flexbox y Grid: el layout con <code>float</code></h1>
+          <p>Durante años, la única forma de acomodar cajas una junto a otra (por ejemplo, un menú lateral junto al contenido) era la propiedad <code>float</code>, pensada originalmente para que el texto <strong>rodeara una imagen</strong>, no para construir layouts completos.</p>
+          <pre><code>.sidebar { float: left;  width: 25%; }
+.contenido { float: left; width: 75%; }
+/* el contenedor padre no "sabe" que sus hijos flotan:
+   suele necesitar un hack adicional para no colapsar su altura */</code></pre>
+          <p>Usar <code>float</code> para layouts trae problemas conocidos: el contenedor padre <strong>colapsa su altura</strong> (no "ve" a sus hijos flotantes), centrar contenido es incómodo, y distribuir el espacio sobrante entre cajas requiere cálculos manuales de porcentajes. No vamos a profundizar en <code>float</code> — solo entender que es la razón por la que Flexbox y Grid <strong>fueron creados específicamente para resolver layouts</strong>, algo para lo que <code>float</code> nunca estuvo diseñado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Flexbox: contenedor flex y sus items</h1>
+          <p><strong>Flexbox</strong> (<em>Flexible Box Layout</em>) es un modelo de CSS pensado para acomodar elementos <strong>en una sola dimensión</strong>: una fila o una columna. Se activa poniendo <code>display: flex</code> en un elemento contenedor; todos sus hijos directos se convierten automáticamente en <strong>flex items</strong>.</p>
+          <pre><code>.contenedor {
+  display: flex;
+  flex-direction: row;   /* row (por defecto) | column */
+}</code></pre>
+          <p>Flexbox trabaja con dos ejes: el <strong>eje principal</strong> (<em>main axis</em>), en la dirección que definas con <code>flex-direction</code>, y el <strong>eje cruzado</strong> (<em>cross axis</em>), perpendicular al principal. Con <code>flex-direction: row</code>, el eje principal es horizontal; con <code>column</code>, es vertical. Esta distinción importa porque casi todas las propiedades de Flexbox se definen <strong>en relación a uno de estos dos ejes</strong>, no en términos absolutos de "horizontal" o "vertical".</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Propiedades del contenedor flex</h1>
+          <table>
+            <thead><tr><th>Propiedad</th><th>Controla</th><th>Para qué sirve</th></tr></thead>
+            <tbody>
+              <tr><td><code>justify-content</code></td><td>Distribución en el <strong>eje principal</strong></td><td>Centrar, separar o distribuir espacio entre items</td></tr>
+              <tr><td><code>align-items</code></td><td>Alineación en el <strong>eje cruzado</strong></td><td>Alinear items verticalmente (en <code>row</code>) sin usar <code>margin</code></td></tr>
+              <tr><td><code>flex-wrap</code></td><td>Si los items pueden pasar a otra línea</td><td>Evitar que se compriman cuando no caben en una sola fila</td></tr>
+            </tbody>
+          </table>
+          <pre><code>.contenedor {
+  display: flex;
+  justify-content: center;    /* flex-start | center | space-between | space-around */
+  align-items: center;        /* flex-start | center | flex-end | stretch */
+  flex-wrap: wrap;            /* nowrap (por defecto) | wrap */
+}</code></pre>
+          <p>Con estas tres propiedades ya se resuelve, por ejemplo, <strong>centrar un elemento perfectamente</strong> (horizontal y vertical a la vez) — algo notoriamente incómodo de lograr solo con el modelo de caja clásico.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Propiedades de los items flex</h1>
+          <p>Además de las propiedades del contenedor, cada <strong>item</strong> individual puede controlar cómo crece o se encoge respecto a sus hermanos, con tres propiedades que casi siempre se usan juntas a través de su shorthand:</p>
+          <ul>
+            <li><code>flex-grow</code>: qué tanto crece el item si sobra espacio (0 = no crece).</li>
+            <li><code>flex-shrink</code>: qué tanto se encoge el item si falta espacio (0 = no se encoge).</li>
+            <li><code>flex-basis</code>: el tamaño "de partida" del item, antes de repartir espacio sobrante.</li>
+          </ul>
+          <pre><code>.item-principal { flex: 1; }        /* shorthand: flex-grow: 1; flex-shrink: 1; flex-basis: 0 */
+.item-fijo      { flex: 0 0 200px; } /* no crece, no se encoge, siempre 200px */</code></pre>
+          <p><code>flex: 1</code> es el patrón más común: hace que el item <strong>ocupe todo el espacio disponible</strong>, repartiéndolo en partes iguales con cualquier otro item que también tenga <code>flex: 1</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ejemplo completo: una barra de navegación con Flexbox</h1>
+          <p>Retomando el <code>&lt;nav&gt;</code> semántico de la sesión de HTML, Flexbox es la herramienta natural para acomodar su logo y sus enlaces en una fila, con espacio distribuido entre ellos:</p>
+          <pre><code>&lt;nav class="navbar"&gt;
+  &lt;div class="logo"&gt;MiSitio&lt;/div&gt;
+  &lt;ul class="nav-links"&gt;
+    &lt;li&gt;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#nosotros"&gt;Nosotros&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;  /* logo a la izquierda, links a la derecha */
+  align-items: center;             /* todo alineado verticalmente al centro */
+  padding: 1rem 2rem;
+}
+.nav-links {
+  display: flex;       /* Flexbox también dentro del &lt;ul&gt; */
+  gap: 1.5rem;          /* espacio uniforme entre los &lt;li&gt; */
+  list-style: none;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>CSS Grid: layouts en dos dimensiones</h1>
+          <p><strong>CSS Grid</strong> es un modelo de layout que, a diferencia de Flexbox, trabaja con <strong>filas y columnas a la vez</strong>. Se activa con <code>display: grid</code>, y el tamaño de las columnas/filas se define con <code>grid-template-columns</code> y <code>grid-template-rows</code>.</p>
+          <pre><code>.contenedor {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;  /* una columna fija + dos flexibles */
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;                              /* espacio entre celdas, filas y columnas */
+}</code></pre>
+          <p>La unidad <code>fr</code> ("fracción") reparte el espacio disponible entre columnas o filas de forma proporcional — <code>1fr 1fr</code> crea dos columnas de igual ancho. <code>gap</code> reemplaza la necesidad de simular espaciado con <code>margin</code> en cada celda individual.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>grid-template-areas</code>: layouts con nombre de zona</h1>
+          <p>Grid permite nombrar visualmente las zonas del layout y luego asignar cada elemento a su zona por nombre, conectando directamente con las etiquetas semánticas (<code>&lt;header&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) ya vistas en HTML.</p>
+          <pre><code>.pagina {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+}
+header { grid-area: header; }
+aside  { grid-area: sidebar; }
+main   { grid-area: main; }
+footer { grid-area: footer; }</code></pre>
+          <p>El "mapa" visual en <code>grid-template-areas</code> hace que el layout se pueda <strong>leer directamente en el CSS</strong>, sin tener que imaginar mentalmente dónde cae cada fila y columna.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión</p>
+          <h1>¿Flexbox o Grid? No es una elección excluyente</h1>
+          <table>
+            <thead><tr><th></th><th>Flexbox</th><th>Grid</th></tr></thead>
+            <tbody>
+              <tr><td>Dimensión</td><td>Una (fila <em>o</em> columna)</td><td>Dos (filas <em>y</em> columnas a la vez)</td></tr>
+              <tr><td>Ideal para</td><td>Barra de navegación, lista de botones, tarjetas en fila</td><td>Estructura general de la página, galerías con zonas fijas</td></tr>
+              <tr><td>Piensa en...</td><td>El contenido, que define su propio tamaño</td><td>La cuadrícula, que define dónde va cada contenido</td></tr>
+            </tbody>
+          </table>
+          <p>En la práctica, <strong>se combinan</strong>: es muy común usar Grid para el esqueleto general de la página (header/sidebar/main/footer) y Flexbox <em>dentro</em> de cada una de esas zonas (por ejemplo, dentro del <code>&lt;nav&gt;</code> del header, como en el ejemplo de la barra de navegación).</p>
+          <img class="portada-icon" src="img/table-cells.svg" alt="Cuadrícula de layout" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Diseño responsivo y el meta tag <code>viewport</code></h1>
+          <p>Un <strong>diseño responsivo</strong> es aquel que se adapta a distintos tamaños de pantalla (celular, tablet, monitor) sin necesitar una versión distinta del sitio para cada dispositivo. El primer requisito, obligatorio en toda página HTML, es este meta tag en el <code>&lt;head&gt;</code>:</p>
+          <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+          <p>Sin esta línea, los navegadores móviles <strong>simulan una pantalla de escritorio</strong> (típicamente 980px de ancho) y luego reducen todo el sitio para que quepa — el resultado es texto diminuto e ilegible. Con <code>width=device-width</code>, el navegador usa el ancho real del dispositivo, y <code>initial-scale=1.0</code> evita el zoom inicial no deseado.</p>
+          <img class="portada-icon" src="img/mobile-screen-button.svg" alt="Adaptación a dispositivos móviles" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Media queries: CSS que cambia según el tamaño de pantalla</h1>
+          <p>Una <strong>media query</strong> aplica un bloque de CSS solo cuando se cumple una condición sobre el dispositivo, típicamente su ancho:</p>
+          <pre><code>/* mobile-first: estilos base pensados para pantallas pequeñas */
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr;   /* una sola columna por defecto */
+}
+
+@media (min-width: 768px) {
+  .contenedor {
+    grid-template-columns: 1fr 1fr 1fr;  /* tres columnas en pantallas más grandes */
+  }
+}</code></pre>
+          <p><strong>Mobile-first</strong> significa escribir primero el CSS para pantallas pequeñas y usar <code>min-width</code> para agregar complejidad en pantallas grandes; <strong>desktop-first</strong> hace lo contrario, partiendo de la versión de escritorio y usando <code>max-width</code> para simplificar en pantallas pequeñas. Mobile-first suele preferirse hoy porque la mayoría del tráfico web es móvil.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>De <code>float</code> a Flexbox o Grid</h1>
+          <p><strong>En parejas:</strong> este layout de tres bloques (menú, contenido, barra lateral) está hecho con <code>float</code>, la técnica antigua que vimos al inicio. Conviértanlo usando Flexbox <em>o</em> Grid — el que les parezca más natural para este caso.</p>
+          <pre><code>&lt;div class="layout"&gt;
+  &lt;div class="menu"&gt;Menú&lt;/div&gt;
+  &lt;div class="contenido"&gt;Contenido&lt;/div&gt;
+  &lt;div class="lateral"&gt;Lateral&lt;/div&gt;
+&lt;/div&gt;
+
+.menu      { float: left;  width: 20%; }
+.contenido { float: left;  width: 60%; }
+.lateral   { float: left;  width: 20%; }</code></pre>
+          <p class="slide-eyebrow">8 minutos · pistas: con Flexbox, piensen en <code>flex</code> para los anchos; con Grid, en <code>grid-template-columns</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li><code>float</code> fue la técnica antigua para acomodar cajas, pero no fue diseñada para layouts — de ahí nacen Flexbox y Grid.</li>
+            <li><strong>Flexbox</strong> (<code>display: flex</code>) organiza en <strong>una dimensión</strong>: eje principal y cruzado, <code>justify-content</code>/<code>align-items</code>/<code>flex-wrap</code> en el contenedor, <code>flex</code> en los items.</li>
+            <li><strong>Grid</strong> (<code>display: grid</code>) organiza en <strong>dos dimensiones</strong> a la vez, con <code>grid-template-columns</code>/<code>rows</code> y nombres de zona con <code>grid-template-areas</code>.</li>
+            <li>No son excluyentes: Grid para el esqueleto de la página, Flexbox dentro de cada zona.</li>
+            <li>El meta tag <code>viewport</code> es obligatorio, y las <strong>media queries</strong> (idealmente mobile-first) adaptan el layout a cada tamaño de pantalla.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Resumen de conceptos clave" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar armando un layout de página completa (header/sidebar/main/footer) combinando Grid para la estructura y Flexbox dentro del <code>&lt;nav&gt;</code>.</li>
+            <li>Agregar al menos una media query que cambie el layout de una a varias columnas según el ancho de pantalla.</li>
+          </ul>
+          <p><strong>Próxima sesión: JavaScript</strong> — dar vida e interactividad a lo que hemos construido en HTML y CSS.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 15</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

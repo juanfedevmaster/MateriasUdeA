@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML: Formularios, Tablas y Semántica — Semana 13</title>
+  <meta name="description" content="Formularios interactivos, tablas de datos y etiquetas semánticas para accesibilidad — Técnicas de Programación, Unidad 7, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/html-formularios-tablas-y-semantica/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="HTML: Formularios, Tablas y Semántica — Semana 13" />
+  <meta property="og:description" content="Formularios interactivos, tablas de datos y etiquetas semánticas para accesibilidad — Técnicas de Programación, Unidad 7, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/tecnicas-de-programacion/presentaciones/html-formularios-tablas-y-semantica/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HTML: Formularios, Tablas y Semántica — Semana 13" />
+  <meta name="twitter:description" content="Formularios interactivos, tablas de datos y etiquetas semánticas para accesibilidad — Técnicas de Programación, Unidad 7, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/html-formularios-tablas-y-semantica.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2508307">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Técnicas de Programación</h1>
+          <h2>Unidad 7 — Desarrollo Web: HTML: Formularios, Tablas y Semántica</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2508307</p>
+          <img class="portada-icon" src="img/clipboard-list.svg" alt="Formularios" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Retomando la sesión anterior</h1>
+          <p>La sesión pasada vimos qué es el desarrollo web, cómo conversan cliente y servidor con HTTP, y armamos la estructura mínima de un documento HTML: <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>. Con eso ya sabes escribir texto, listas, enlaces e imágenes — y ya interiorizaste que el atributo <code>alt</code> en las imágenes <strong>no es opcional</strong>, es accesibilidad básica.</p>
+          <p>Todo eso construye páginas que <strong>se leen</strong>. Hoy damos el siguiente paso: páginas con las que el usuario <strong>interactúa</strong> (formularios), datos organizados en filas y columnas (tablas), y una forma de escribir HTML que no solo se ve bien, sino que <strong>comunica su propia estructura</strong> — a un lector de pantalla, a un buscador y a la próxima persona que lea tu código.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El elemento <code>&lt;form&gt;</code></h1>
+          <p>Un <strong>formulario</strong> es el mecanismo con el que una página HTML recolecta datos del usuario y se los envía a un servidor para que los procese (guardarlos en una base de datos, iniciar sesión, buscar algo). Todo formulario empieza envolviendo sus campos en una etiqueta <code>&lt;form&gt;</code>.</p>
+          <table>
+            <thead><tr><th>Atributo</th><th>Qué define</th></tr></thead>
+            <tbody>
+              <tr><td><code>action</code></td><td>La URL del servidor que va a recibir los datos cuando se envía el formulario</td></tr>
+              <tr><td><code>method</code></td><td>Cómo se envían esos datos: <code>GET</code> o <code>POST</code></td></tr>
+            </tbody>
+          </table>
+          <p>A alto nivel: <code>GET</code> envía los datos visibles en la URL (útil para búsquedas, nada sensible) y <code>POST</code> los envía "por dentro" de la petición, sin exponerlos en la URL (el método normal para registros, login o cualquier dato sensible). El detalle completo de cómo el servidor recibe y procesa esto queda para cursos posteriores de backend — aquí nos enfocamos en cómo se construye el formulario del lado del cliente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Campos de un formulario: <code>&lt;input&gt;</code></h1>
+          <p>Dentro de <code>&lt;form&gt;</code>, el elemento más usado es <code>&lt;input&gt;</code>. Su atributo <code>type</code> cambia por completo cómo se comporta y qué controles muestra el navegador:</p>
+          <table>
+            <thead><tr><th><code>type</code></th><th>Para qué sirve</th></tr></thead>
+            <tbody>
+              <tr><td><code>text</code></td><td>Texto libre de una sola línea (nombre, dirección)</td></tr>
+              <tr><td><code>email</code></td><td>Correo electrónico — el navegador valida el formato básico</td></tr>
+              <tr><td><code>password</code></td><td>Texto oculto con puntos o asteriscos, para contraseñas</td></tr>
+              <tr><td><code>number</code></td><td>Solo valores numéricos, con flechas para incrementar/decrementar</td></tr>
+              <tr><td><code>checkbox</code></td><td>Casilla de sí/no, se pueden marcar varias a la vez</td></tr>
+              <tr><td><code>radio</code></td><td>Botón de opción única entre varias (mismo <code>name</code> agrupa las opciones)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1><code>&lt;label&gt;</code>: la etiqueta que no es decorativa</h1>
+          <p>Cada campo necesita una <strong>etiqueta</strong> que diga qué se debe escribir ahí. La forma correcta es <code>&lt;label for="id-del-campo"&gt;</code>, asociada al <code>id</code> del <code>&lt;input&gt;</code> correspondiente — no basta con poner el texto al lado sin conectarlo.</p>
+          <pre><code>&lt;label for="correo"&gt;Correo electrónico&lt;/label&gt;
+&lt;input type="email" id="correo" name="correo"&gt;</code></pre>
+          <p>Esta asociación importa por dos razones concretas: hace <strong>clic en el texto</strong> y activa el campo (útil para checkboxes y radios, más fáciles de "acertar" con el mouse), y un <strong>lector de pantalla</strong> anuncia el texto de la etiqueta cuando el usuario llega al campo con el teclado — sin eso, la persona escucha "campo de texto" sin saber para qué es.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Más allá de <code>&lt;input&gt;</code>: selección y texto largo</h1>
+          <table>
+            <thead><tr><th>Elemento</th><th>Para qué sirve</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;select&gt;</code> / <code>&lt;option&gt;</code></td><td>Lista desplegable de opciones; cada <code>&lt;option&gt;</code> es una alternativa seleccionable</td></tr>
+              <tr><td><code>&lt;textarea&gt;</code></td><td>Caja de texto de varias líneas (comentarios, mensajes largos)</td></tr>
+              <tr><td><code>&lt;button&gt;</code></td><td>Botón de acción; <code>type="submit"</code> envía el formulario</td></tr>
+            </tbody>
+          </table>
+          <pre><code>&lt;label for="pais"&gt;País&lt;/label&gt;
+&lt;select id="pais" name="pais"&gt;
+  &lt;option value="co"&gt;Colombia&lt;/option&gt;
+  &lt;option value="mx"&gt;México&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;label for="comentario"&gt;Comentario&lt;/label&gt;
+&lt;textarea id="comentario" name="comentario" rows="4"&gt;&lt;/textarea&gt;
+
+&lt;button type="submit"&gt;Enviar&lt;/button&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ejemplo completo: formulario de contacto</h1>
+          <pre><code>&lt;form action="/enviar-mensaje" method="POST"&gt;
+  &lt;label for="nombre"&gt;Nombre&lt;/label&gt;
+  &lt;input type="text" id="nombre" name="nombre" required&gt;
+
+  &lt;label for="correo"&gt;Correo&lt;/label&gt;
+  &lt;input type="email" id="correo" name="correo" required&gt;
+
+  &lt;label for="edad"&gt;Edad&lt;/label&gt;
+  &lt;input type="number" id="edad" name="edad" min="1" max="120"&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" name="suscribir"&gt; Suscribirme al boletín
+  &lt;/label&gt;
+
+  &lt;label for="mensaje"&gt;Mensaje&lt;/label&gt;
+  &lt;textarea id="mensaje" name="mensaje" rows="4" required&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Validación básica sin JavaScript</h1>
+          <p>El ejemplo anterior ya usa <strong>validación nativa de HTML</strong>: el propio navegador revisa ciertas condiciones antes de dejar enviar el formulario, sin necesitar una sola línea de código adicional.</p>
+          <table>
+            <thead><tr><th>Atributo</th><th>Qué valida</th></tr></thead>
+            <tbody>
+              <tr><td><code>required</code></td><td>El campo no puede quedar vacío</td></tr>
+              <tr><td><code>type="email"</code></td><td>El texto debe tener forma de correo (algo@algo.algo)</td></tr>
+              <tr><td><code>min</code> / <code>max</code></td><td>Límites numéricos aceptados en <code>type="number"</code></td></tr>
+            </tbody>
+          </table>
+          <p>Esta validación es un primer filtro útil, pero <strong>no es suficiente por sí sola</strong>: siempre debe reforzarse del lado del servidor, porque un usuario puede desactivar JavaScript o enviar la petición sin pasar por el formulario. Cómo agregar validaciones más complejas con JavaScript es tema de sesiones posteriores de esta misma unidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tablas: <code>&lt;table&gt;</code> para datos tabulares</h1>
+          <p>Una <strong>tabla</strong> organiza información en filas y columnas — el elemento correcto cuando los datos realmente tienen esa forma (una lista de estudiantes con sus notas, un horario de clases, un catálogo de productos).</p>
+          <table>
+            <thead><tr><th>Etiqueta</th><th>Qué representa</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;table&gt;</code></td><td>Contenedor de toda la tabla</td></tr>
+              <tr><td><code>&lt;thead&gt;</code></td><td>Sección del encabezado (nombres de columnas)</td></tr>
+              <tr><td><code>&lt;tbody&gt;</code></td><td>Sección con los datos propiamente dichos</td></tr>
+              <tr><td><code>&lt;tr&gt;</code></td><td>Una fila (<em>table row</em>)</td></tr>
+              <tr><td><code>&lt;th&gt;</code></td><td>Celda de encabezado (<em>table header</em>), va dentro de <code>&lt;thead&gt;</code></td></tr>
+              <tr><td><code>&lt;td&gt;</code></td><td>Celda de datos (<em>table data</em>), va dentro de <code>&lt;tbody&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ejemplo: tabla de calificaciones</h1>
+          <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Estudiante&lt;/th&gt;
+      &lt;th&gt;Nota&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ana Torres&lt;/td&gt;
+      &lt;td&gt;4.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Luis Pérez&lt;/td&gt;
+      &lt;td&gt;3.8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          <p>Este bloque mismo se está mostrando en una tabla generada con esta sintaxis — así se ve el resultado en pantalla: filas y columnas claras, con el encabezado visualmente diferenciado de los datos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Usar <code>&lt;table&gt;</code> para maquetar toda la página</h1>
+          <p>Antes de que existiera CSS moderno, era común usar tablas <strong>para organizar el layout completo</strong> de una página (menú a la izquierda en una celda, contenido en otra, pie de página en una fila final) — no porque los datos fueran tabulares, sino como truco visual.</p>
+          <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Menú&lt;/td&gt;
+    &lt;td&gt;Contenido principal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan="2"&gt;Pie de página&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          <p>Esta práctica rompe la <strong>accesibilidad</strong> (un lector de pantalla anuncia "tabla de datos" sobre algo que no tiene datos, confundiendo al usuario) y el <strong>diseño responsivo</strong> (las tablas no se reorganizan bien en pantallas pequeñas, algo que verás en la sesión de CSS más adelante). Hoy el layout de una página se maqueta con etiquetas semánticas y CSS — nunca con tablas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Etiquetas semánticas: HTML que se explica solo</h1>
+          <p>Las etiquetas <strong>semánticas</strong> describen el <em>significado</em> de una sección de la página, no solo su apariencia — a diferencia de <code>&lt;div&gt;</code>, que es un contenedor genérico sin ningún significado propio.</p>
+          <table>
+            <thead><tr><th>Etiqueta</th><th>Qué representa</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;header&gt;</code></td><td>Cabecera de la página o de una sección (logo, título, navegación)</td></tr>
+              <tr><td><code>&lt;nav&gt;</code></td><td>Bloque de enlaces de navegación principal</td></tr>
+              <tr><td><code>&lt;main&gt;</code></td><td>Contenido principal de la página (uno solo por página)</td></tr>
+              <tr><td><code>&lt;section&gt;</code></td><td>Agrupación temática de contenido, normalmente con su propio título</td></tr>
+              <tr><td><code>&lt;article&gt;</code></td><td>Contenido independiente y autocontenido (un post, una noticia)</td></tr>
+              <tr><td><code>&lt;aside&gt;</code></td><td>Contenido relacionado pero secundario (barra lateral, nota al margen)</td></tr>
+              <tr><td><code>&lt;footer&gt;</code></td><td>Pie de página o de una sección (créditos, enlaces legales)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué importa: accesibilidad, SEO y mantenibilidad</h1>
+          <p>Un <strong>lector de pantalla</strong> es un software que convierte el contenido de una página en voz o braille, usado por personas con discapacidad visual para navegar la web. Cuando el HTML usa etiquetas semánticas, el lector de pantalla puede anunciar "navegación principal" o "contenido principal" y permitir saltar directo entre secciones — algo imposible si todo es <code>&lt;div&gt;</code> sin distinción.</p>
+          <ul>
+            <li><strong>Accesibilidad:</strong> lectores de pantalla entienden la estructura y permiten navegación rápida entre secciones.</li>
+            <li><strong>SEO:</strong> los buscadores usan estas etiquetas para entender qué es el contenido principal frente al menú o el pie de página, y lo priorizan mejor en resultados.</li>
+            <li><strong>Mantenibilidad:</strong> un archivo con <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code> se lee y navega mucho más rápido que un archivo con veinte <code>&lt;div&gt;</code> genéricos sin nombre.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Accesibilidad básica más allá de <code>alt</code></h1>
+          <p>Ya conoces <code>alt</code> en imágenes. Otras tres prácticas básicas completan una página accesible desde el HTML:</p>
+          <ul>
+            <li><strong><code>aria-label</code>:</strong> un atributo que describe un elemento para lectores de pantalla cuando no hay texto visible que lo explique (por ejemplo, un botón que solo tiene un ícono).</li>
+            <li><strong>Contraste:</strong> el texto debe distinguirse claramente de su fondo — un color de texto muy parecido al fondo es ilegible para personas con baja visión (esto se ajusta con CSS, próxima sesión).</li>
+            <li><strong>Jerarquía de encabezados:</strong> usar <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>... en orden, sin saltar niveles (nunca pasar de <code>&lt;h1&gt;</code> directo a <code>&lt;h4&gt;</code>) — un lector de pantalla usa esa jerarquía para armar un índice navegable de la página.</li>
+          </ul>
+          <pre><code>&lt;button aria-label="Cerrar ventana"&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Reestructuren este HTML con etiquetas semánticas</h1>
+          <p><strong>En parejas:</strong> este fragmento funciona, pero usa <code>&lt;div&gt;</code> para todo. Reescríbanlo usando las etiquetas semánticas correctas de esta sesión.</p>
+          <pre><code>&lt;div class="cabecera"&gt;
+  &lt;div class="logo"&gt;Mi Blog&lt;/div&gt;
+  &lt;div class="menu"&gt;
+    &lt;a href="/"&gt;Inicio&lt;/a&gt;
+    &lt;a href="/blog"&gt;Blog&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="contenido"&gt;
+  &lt;div class="post"&gt;
+    &lt;h2&gt;Mi primer artículo&lt;/h2&gt;
+    &lt;p&gt;Texto del artículo...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="pie"&gt;© 2026 Mi Blog&lt;/div&gt;</code></pre>
+          <p class="slide-eyebrow">8 minutos · pista: ¿cuál <code>&lt;div&gt;</code> es en realidad un <code>&lt;nav&gt;</code>? ¿cuál es <code>&lt;article&gt;</code> y cuál <code>&lt;main&gt;</code>?</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un formulario (<code>&lt;form&gt;</code>) recolecta datos con <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code> y <code>&lt;button&gt;</code>; cada campo necesita un <code>&lt;label for&gt;</code> correctamente asociado.</li>
+            <li><code>required</code>, <code>type="email"</code> y <code>min</code>/<code>max</code> dan validación básica sin escribir JavaScript.</li>
+            <li>Las tablas (<code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>) son para datos tabulares — nunca para maquetar el layout completo de una página.</li>
+            <li>Las etiquetas semánticas (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>) reemplazan al <code>&lt;div&gt;</code> genérico y mejoran accesibilidad, SEO y mantenibilidad.</li>
+            <li>Accesibilidad va más allá de <code>alt</code>: <code>aria-label</code>, buen contraste y una jerarquía de encabezados sin saltos.</li>
+          </ol>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Estructura semántica de una página" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <ul>
+            <li>Practicar un formulario propio con al menos tres tipos de <code>&lt;input&gt;</code> distintos y validación nativa (<code>required</code>, <code>type="email"</code>).</li>
+            <li>Reestructurar una página propia (o el ejercicio de hoy) reemplazando todos los <code>&lt;div&gt;</code> genéricos por etiquetas semánticas.</li>
+          </ul>
+          <p><strong>Próxima sesión: CSS3</strong> — cómo se ve la página que acabamos de estructurar. Selectores y el modelo de caja para darle estilo real a formularios, tablas y secciones semánticas.</p>
+          <img class="portada-icon" src="img/rocket.svg" alt="Hacia la siguiente sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

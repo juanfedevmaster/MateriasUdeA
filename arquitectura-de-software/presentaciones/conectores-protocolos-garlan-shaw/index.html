@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conectores y Protocolos de Garlan y Shaw — Semana 5</title>
+  <meta name="description" content="La taxonomía de conectores de Garlan y Shaw, con el caso real del vuelo 501 de Ariane 5 — Arquitectura de Software, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/conectores-protocolos-garlan-shaw/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Conectores y Protocolos de Garlan y Shaw — Semana 5" />
+  <meta property="og:description" content="La taxonomía de conectores de Garlan y Shaw, con el caso real del vuelo 501 de Ariane 5 — Arquitectura de Software, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/conectores-protocolos-garlan-shaw/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Conectores y Protocolos de Garlan y Shaw — Semana 5" />
+  <meta name="twitter:description" content="La taxonomía de conectores de Garlan y Shaw, con el caso real del vuelo 501 de Ariane 5 — Arquitectura de Software, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/conectores-protocolos-garlan-shaw.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 5 — Conectores y Protocolos de Garlan y Shaw</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/plug.svg" alt="Conectores de software" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>37 segundos<br>370 millones de dólares</h1>
+          <img class="portada-icon" src="img/rocket.svg" alt="Falla de un cohete" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Ariane 5, vuelo 501 — 1996</h1>
+          <table>
+            <tbody>
+              <tr><th>Proyecto</th><td>Cohete Ariane 5, Agencia Espacial Europea (ESA) / Arianespace</td></tr>
+              <tr><th>Fecha</th><td>4 de junio de 1996, primer vuelo del Ariane 5</td></tr>
+              <tr><th>Falla</th><td>Autodestrucción activada 37 segundos después del despegue</td></tr>
+              <tr><th>Pérdida</th><td>El cohete y su carga (4 satélites Cluster), estimada en unos 370 millones de dólares</td></tr>
+              <tr><th>Causa raíz</th><td>Un módulo de software <strong>reutilizado sin cambios</strong> del Ariane 4</td></tr>
+              <tr><th>Fuente</th><td>Informe oficial de la junta de investigación de ESA/CNES (1996)</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Uno de los casos más citados en ingeniería de software para ilustrar fallas de integración entre componentes.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El componente reutilizado</p>
+          <h1>Un componente probado, en un contexto nuevo</h1>
+          <p>El <strong>Sistema de Referencia Inercial (SRI)</strong> calcula la orientación y velocidad del cohete. Había funcionado sin problemas en decenas de vuelos del Ariane 4 — un cohete <strong>más lento</strong> en su fase inicial de ascenso.</p>
+          <p>El equipo reutilizó ese mismo módulo en el Ariane 5 <strong>sin volver a analizar sus supuestos internos</strong>, confiando en que un componente ya probado seguiría siendo válido en un cohete distinto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El desajuste técnico</p>
+          <h1>Un número que no cupo en su casilla</h1>
+          <p>El SRI convertía un valor de <strong>velocidad horizontal</strong>, representado internamente en 64 bits, a un formato de <strong>16 bits</strong> para pasarlo a otro componente. El Ariane 5 acelera mucho más rápido que el Ariane 4 en sus primeros segundos — y ese valor superó lo que el formato de 16 bits podía representar.</p>
+          <ul>
+            <li>La conversión produjo un <strong>desbordamiento (overflow)</strong> no controlado.</li>
+            <li>El software no tenía manejo de excepción para ese caso — se apagó.</li>
+            <li>Un segundo SRI de respaldo, idéntico, falló exactamente por la misma razón, al mismo tiempo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La cadena hasta el desastre</p>
+          <h1>De un dato mal formado a la autodestrucción</h1>
+          <ol>
+            <li>El SRI principal se apaga por el desbordamiento no manejado.</li>
+            <li>El SRI de respaldo, con el mismo software, falla por la misma causa, milisegundos después.</li>
+            <li>El sistema de control de vuelo recibe datos de diagnóstico sin sentido, interpretándolos como datos de vuelo válidos.</li>
+            <li>El cohete ejecuta una maniobra correctiva extrema basada en esos datos falsos.</li>
+            <li>Las fuerzas aerodinámicas resultantes activan la autodestrucción automática.</li>
+          </ol>
+          <p class="slide-eyebrow">El código del SRI no tenía ningún defecto de lógica — el problema fue cómo se conectaba con el resto del sistema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El problema no era el componente</h1>
+          <p>El SRI, como componente aislado, hacía exactamente lo que siempre había hecho. <strong>Lo que falló fue la relación entre componentes</strong>: qué formato de datos se transmitía, qué suposiciones tenía cada lado sobre el rango de valores posibles, y qué pasaba si esas suposiciones no se cumplían.</p>
+          <p><strong>A ese "cómo se relacionan los componentes" es a lo que Garlan y Shaw llaman conector — el tema de hoy.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Repaso</p>
+          <h1>Componentes, otra vez</h1>
+          <p>Como se vio en la Semana 1 con la definición de Garlan &amp; Shaw, un sistema está hecho de <strong>componentes</strong> (unidades de cómputo con una función, como el SRI) y de algo que los conecta. Hoy nos enfocamos en esa segunda pieza.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un conector?</h1>
+          <p>Un <strong>conector</strong> (Garlan &amp; Shaw, 1994) es el elemento arquitectónico que representa <strong>la interacción entre componentes</strong>: transmite datos y control entre ellos, sin ser en sí mismo un componente que resuelve una función de negocio.</p>
+          <p><strong>Incluye tanto el mecanismo de comunicación como el conjunto de reglas —el protocolo— que rige esa comunicación.</strong></p>
+          <p class="slide-eyebrow">En Ariane 5: el conector entre el SRI y el sistema de control de vuelo, incluyendo el formato de datos acordado (o mal acordado) entre ambos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Taxonomía de conectores</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo de conector</th><th>Cómo se comunican los componentes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Llamada a procedimiento</strong></td><td>Un componente invoca directamente una función de otro y espera su resultado</td></tr>
+              <tr><td><strong>Invocación implícita (eventos)</strong></td><td>Un componente anuncia un evento; otros reaccionan sin que el primero los llame directamente</td></tr>
+              <tr><td><strong>Flujos de datos (pipes)</strong></td><td>La salida de un componente se convierte en la entrada de otro, en secuencia</td></tr>
+              <tr><td><strong>Acceso a datos compartidos</strong></td><td>Varios componentes leen y escriben sobre un mismo repositorio de datos</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Estos tipos de conector son la base de los patrones arquitectónicos que se estudian en la Unidad 2 (Tuberías y Filtros, Blackboard, Brokers).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El protocolo: las reglas del conector</h1>
+          <p>Todo conector implica un <strong>protocolo</strong>: el conjunto de reglas que especifica cómo debe darse la interacción — orden de los mensajes, formato de los datos, qué hacer ante un error, qué garantías se ofrecen.</p>
+          <ul>
+            <li>¿En qué formato viaja el dato? (el punto exacto donde falló Ariane 5)</li>
+            <li>¿Qué pasa si el receptor no responde a tiempo?</li>
+            <li>¿Es una comunicación síncrona (se espera respuesta) o asíncrona?</li>
+          </ul>
+          <p class="slide-eyebrow">HTTP, visto en la Semana 1, es un protocolo concreto para un conector de tipo llamada a procedimiento remota.</p>
+          <img class="portada-icon" src="img/file-contract.svg" alt="Protocolo" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "un conector es solo una función que llama a otra"</h1>
+          <p>La llamada a procedimiento es el conector más intuitivo, pero <strong>reducir "conector" a eso deja fuera la mayoría de los sistemas reales</strong>: colas de mensajes, buses de eventos, bases de datos compartidas, streams de datos entre microservicios.</p>
+          <p><strong>El caso Ariane 5 muestra, además, que el conector no es solo "cómo se llaman" los componentes — es también qué formato de datos se transmite y qué suposiciones tiene cada lado sobre ese formato.</strong> Ignorar el protocolo es tan grave como ignorar el mecanismo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado al caso</p>
+          <h1>Ariane 5, leído como conector roto</h1>
+          <table>
+            <tbody>
+              <tr><th>Componentes</th><td>Sistema de Referencia Inercial (SRI) y sistema de control de vuelo</td></tr>
+              <tr><th>Tipo de conector</th><td>Llamada a procedimiento con paso de datos (valor de velocidad horizontal)</td></tr>
+              <tr><th>Protocolo esperado</th><td>Un valor representable en un entero de 16 bits</td></tr>
+              <tr><th>Lo que realmente ocurrió</th><td>Un valor de 64 bits que superó ese rango, sin manejo de excepción definido en el protocolo</td></tr>
+            </tbody>
+          </table>
+          <p><strong>El componente no cambió entre el Ariane 4 y el Ariane 5. El contexto que alimentaba el conector, sí — y nadie revisó si el protocolo seguía siendo válido.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Reutilizar un componente probado es más seguro?</h1>
+          <p><strong>Postura habitual:</strong> reutilizar código ya probado en producción reduce el riesgo, comparado con escribir algo nuevo desde cero.</p>
+          <p><strong>Lo que muestra Ariane 5:</strong> un componente "probado" solo está probado <strong>en el contexto y el protocolo para el que fue validado</strong>. Reutilizarlo en un contexto distinto, sin revisar esas suposiciones, puede ser más riesgoso que escribir algo nuevo con los supuestos correctos desde el inicio.</p>
+          <p><strong>¿Cómo se decide, entonces, cuándo un componente reutilizado necesita revalidación completa?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Identifiquen el tipo de conector</h1>
+          <p><strong>Para cada interacción, identifiquen el tipo de conector de la taxonomía de hoy:</strong></p>
+          <ol>
+            <li>Un frontend que llama a un endpoint REST y espera la respuesta antes de continuar.</li>
+            <li>Un sistema de notificaciones que se activa automáticamente cuando otro componente publica un nuevo pedido, sin que el primero lo invoque directamente.</li>
+            <li>Varios servicios que leen y escriben sobre la misma base de datos central.</li>
+            <li>Un proceso que transforma un archivo y pasa el resultado, en secuencia, a otro proceso que lo comprime.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>conector</strong> (Garlan &amp; Shaw) representa la interacción entre componentes: mecanismo más protocolo.</li>
+            <li>Existen cuatro tipos principales: <strong>llamada a procedimiento, invocación implícita, flujos de datos y acceso a datos compartidos</strong>.</li>
+            <li>El <strong>protocolo</strong> define las reglas exactas de esa interacción — formato de datos, orden, manejo de errores.</li>
+            <li>Ariane 5 (1996) demuestra que un componente correcto puede causar un desastre si el conector que lo une al resto del sistema no revalida sus supuestos en un nuevo contexto.</li>
+            <li>Reutilizar código "probado" no elimina el riesgo si cambia el protocolo o el contexto de uso.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>El docente muestra en vivo, sobre el backend Spring Boot de sesiones anteriores, <strong>un conector con protocolo mal definido</strong> —igual en espíritu al fallo de Ariane 5, a escala de código— y cómo un protocolo explícito lo previene.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Ejemplo comentado</p>
+          <h1>Un protocolo sin validar, y uno que sí valida</h1>
+          <pre><code>// SIN protocolo explícito: asume que el dato
+// siempre cabe en el tipo esperado (como el SRI).
+public class ConversorService {
+    public short convertir(long valorOriginal) {
+        return (short) valorOriginal; // desbordamiento silencioso
+    }
+}
+
+// CON protocolo explícito: el conector define
+// qué hacer si el dato no cumple el contrato esperado.
+public class ConversorService {
+    public short convertir(long valorOriginal) {
+        if (valorOriginal &gt; Short.MAX_VALUE || valorOriginal &lt; Short.MIN_VALUE) {
+            throw new IllegalArgumentException(
+                "Valor fuera de rango para este conector: " + valorOriginal);
+        }
+        return (short) valorOriginal;
+    }
+}</code></pre>
+          <p class="slide-eyebrow">No hay entregable de estudiantes: el objetivo es reconocer, en código real, la diferencia entre un conector con protocolo implícito y uno con protocolo explícito y validado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Identificar, en el proyecto propio de Fábrica Escuela, al menos un conector entre dos componentes y su protocolo.</li>
+            <li>Repasar los lenguajes y frameworks vistos en la Semana 2 — se retoman el jueves desde la perspectiva de "stack completo".</li>
+          </ul>
+          <p><strong>El jueves cerramos la Unidad 1 con el stack tecnológico: cómo se combinan lenguaje, framework, base de datos e infraestructura en conjuntos con nombre propio (LAMP, MEAN, MERN, WAMP, XAMP).</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

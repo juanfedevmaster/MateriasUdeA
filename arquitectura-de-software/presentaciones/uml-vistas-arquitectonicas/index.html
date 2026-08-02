@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integración de UML para Vistas Arquitectónicas — Semana 3</title>
+  <meta name="description" content="Cómo usar UML para generar vistas arquitectónicas, con el caso real del modelo 4+1 de Philippe Kruchten — Arquitectura de Software, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/uml-vistas-arquitectonicas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Integración de UML para Vistas Arquitectónicas — Semana 3" />
+  <meta property="og:description" content="Cómo usar UML para generar vistas arquitectónicas, con el caso real del modelo 4+1 de Philippe Kruchten — Arquitectura de Software, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/uml-vistas-arquitectonicas/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Integración de UML para Vistas Arquitectónicas — Semana 3" />
+  <meta name="twitter:description" content="Cómo usar UML para generar vistas arquitectónicas, con el caso real del modelo 4+1 de Philippe Kruchten — Arquitectura de Software, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/uml-vistas-arquitectonicas.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 3 — Integración de UML para Vistas Arquitectónicas</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Vistas arquitectónicas con UML" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>4 vistas<br>1 solo sistema</h1>
+          <img class="portada-icon" src="img/shapes.svg" alt="Múltiples vistas de un sistema" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>El modelo 4+1 de Kruchten, 1995</h1>
+          <table>
+            <tbody>
+              <tr><th>Autor</th><td>Philippe Kruchten, en Rational Software (hoy parte de IBM)</td></tr>
+              <tr><th>Publicación</th><td>"Architectural Blueprints — The '4+1' View Model of Software Architecture", revista <em>IEEE Software</em>, 1995</td></tr>
+              <tr><th>Contexto</th><td>Kruchten trabajaba en el Rational Unified Process (RUP), un proceso de desarrollo usado en proyectos grandes, incluyendo defensa y aeroespacial</td></tr>
+              <tr><th>Problema que resolvía</th><td>Ningún diagrama único lograba describir un sistema completo sin volverse ilegible</td></tr>
+              <tr><th>Legado</th><td>Influyó directamente en la organización de <strong>UML</strong> y sigue siendo referencia estándar para documentar arquitectura hoy</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema</p>
+          <h1>Un solo diagrama no alcanza</h1>
+          <p>Antes de Kruchten, era común intentar capturar toda la arquitectura de un sistema en <strong>un único diagrama gigante</strong>: clases, servidores, procesos y flujos de usuario, todo mezclado.</p>
+          <ul>
+            <li>El resultado era ilegible para cualquier audiencia específica.</li>
+            <li>Un gerente de proyecto no necesita ver las clases; un administrador de infraestructura no necesita ver la lógica interna de cada clase.</li>
+            <li><strong>Distintas personas necesitan distintas preguntas respondidas</strong> sobre el mismo sistema.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La solución</p>
+          <h1>Cuatro vistas, más los escenarios que las unen</h1>
+          <p>Kruchten propuso describir la arquitectura con <strong>4 vistas independientes</strong>, cada una respondiendo una pregunta distinta, más un quinto elemento —los <strong>escenarios (+1)</strong>— que muestra cómo las cuatro vistas trabajan juntas ante un caso de uso concreto.</p>
+          <p class="slide-eyebrow">De ahí el nombre: "4+1" — cuatro vistas estructurales, más una vista de escenarios que las conecta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la idea de Kruchten a las herramientas de hoy</h1>
+          <p>El modelo 4+1 no es un formato de dibujo específico — es una <strong>forma de organizar qué documentar</strong>. La notación que se volvió estándar para dibujar esas vistas es <strong>UML</strong> (Unified Modeling Language).</p>
+          <p><strong>Hoy aprendemos UML no como fin en sí mismo, sino como la herramienta para producir las vistas arquitectónicas que se entregan en el Sprint 1 de este curso.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es UML?</h1>
+          <p><strong>UML</strong> (Unified Modeling Language — Lenguaje Unificado de Modelado) es una notación gráfica estándar, mantenida por el <em>Object Management Group</em> (OMG), para representar la estructura y el comportamiento de un sistema de software mediante diagramas.</p>
+          <p><strong>No es un lenguaje de programación</strong>: no se ejecuta. Es un lenguaje para <strong>comunicar decisiones de diseño y arquitectura</strong> entre personas, antes, durante y después de escribir código.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Vista 1</p>
+          <h1>Vista lógica</h1>
+          <p>Responde: <strong>¿qué funcionalidad ofrece el sistema y cómo se organiza conceptualmente?</strong></p>
+          <ul>
+            <li>Se documenta con <strong>diagramas de clases</strong> y <strong>diagramas de paquetes</strong>.</li>
+            <li>Muestra las entidades del dominio y cómo se agrupan en módulos lógicos.</li>
+            <li>Es la vista que más le importa a quien diseña la lógica de negocio.</li>
+          </ul>
+          <p class="slide-eyebrow">El diagrama de paquetes del Sprint 1 de este curso corresponde a esta vista.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Vista 2</p>
+          <h1>Vista de desarrollo</h1>
+          <p>Responde: <strong>¿cómo se organiza el código en componentes, módulos y sus interfaces?</strong></p>
+          <ul>
+            <li>Se documenta con <strong>diagramas de componentes</strong>, mostrando cada pieza y sus interfaces expuestas.</li>
+            <li>Le importa directamente al equipo de desarrollo: qué construye cada quién, y qué contrato debe cumplir cada componente frente a los demás.</li>
+          </ul>
+          <p class="slide-eyebrow">El diagrama de componentes con interfaces del Sprint 1 corresponde a esta vista.</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Vista de desarrollo" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Vista 3</p>
+          <h1>Vista de procesos</h1>
+          <p>Responde: <strong>¿qué pasa en tiempo de ejecución? ¿qué procesos se comunican, en qué orden, con qué concurrencia?</strong></p>
+          <ul>
+            <li>Se documenta con <strong>diagramas de secuencia</strong> y <strong>diagramas de actividad</strong>.</li>
+            <li>Es clave cuando hay concurrencia, procesos paralelos o sincronización entre componentes — como los 4.000 carritos del caso de Denver, visto el martes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Vista 4</p>
+          <h1>Vista física (de despliegue)</h1>
+          <p>Responde: <strong>¿en qué hardware o infraestructura corre cada parte del sistema?</strong></p>
+          <ul>
+            <li>Se documenta con <strong>diagramas de despliegue</strong>: servidores, nodos, dispositivos y cómo se conectan.</li>
+            <li>Le importa a quien administra infraestructura, redes y operaciones.</li>
+          </ul>
+          <p class="slide-eyebrow">El diagrama de despliegue completo es un entregable del Sprint 2 de este curso, más adelante en el semestre.</p>
+          <img class="portada-icon" src="img/server.svg" alt="Vista física" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · +1</p>
+          <h1>Escenarios: la vista que conecta a las demás</h1>
+          <p>El <strong>"+1"</strong> son los <strong>casos de uso o escenarios</strong> más significativos del sistema: describen una situación real (ej. "un usuario se registra") y muestran cómo participan simultáneamente las cuatro vistas anteriores para resolverla.</p>
+          <p><strong>Sirve como validación:</strong> si un escenario importante no se puede explicar recorriendo las cuatro vistas, algo falta en la arquitectura documentada.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Escenarios" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "UML es solo el diagrama de clases"</h1>
+          <p>Es común reducir UML a un único diagrama —normalmente el de clases— porque es el más enseñado. <strong>UML incluye más de una decena de tipos de diagrama</strong>, cada uno útil para una vista distinta del modelo 4+1: clases y paquetes (lógica), componentes (desarrollo), secuencia y actividad (procesos), despliegue (física), y casos de uso (escenarios).</p>
+          <p><strong>Usar solo el diagrama de clases para "documentar la arquitectura" es como describir un edificio solo con el plano eléctrico.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Hay que modelar todo en UML antes de programar?</h1>
+          <p>Algunos equipos insisten en documentar exhaustivamente las cuatro vistas antes de escribir una sola línea de código de negocio. Otros consideran que eso retrasa la entrega sin garantizar que el modelo sea correcto — y prefieren programar primero y diagramar solo lo esencial, después.</p>
+          <p><strong>¿Cuánto UML es "suficiente" antes de empezar a programar el Sprint 1 de este curso?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué vista responde esta pregunta?</h1>
+          <p><strong>Para cada pregunta, identifiquen a cuál de las cuatro vistas (o al "+1") corresponde:</strong></p>
+          <ol>
+            <li>¿Cuántos servidores necesita el sistema y cómo están conectados en red?</li>
+            <li>¿Qué módulos existen y cómo se agrupan las clases del dominio?</li>
+            <li>¿Qué pasa, paso a paso, cuando dos procesos intentan escribir el mismo dato al mismo tiempo?</li>
+            <li>¿Qué componente expone la función de "generar factura" y con qué interfaz?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>El modelo <strong>4+1 de Kruchten (1995)</strong> nació porque un solo diagrama no puede describir un sistema completo sin volverse ilegible.</li>
+            <li>Las cuatro vistas son: <strong>lógica, de desarrollo, de procesos y física</strong>; el "+1" son los escenarios que las conectan.</li>
+            <li><strong>UML</strong> es la notación estándar para dibujar esas vistas — no un lenguaje de programación, sino de comunicación.</li>
+            <li>El Sprint 1 de este curso exige exactamente dos de esas vistas: <strong>diagrama de paquetes</strong> (vista lógica) y <strong>diagrama de componentes con interfaces</strong> (vista de desarrollo).</li>
+            <li>No hay consenso sobre cuánto modelar antes de programar — depende del riesgo y la complejidad del sistema.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Taller de hoy — Implementación de ejemplo</h1>
+          <p><strong>Demostración guiada por el docente — 30 a 40 minutos</strong></p>
+          <p>El docente modela en vivo, sobre el mismo backend Spring Boot usado en sesiones anteriores, el <strong>diagrama de paquetes</strong> y el <strong>diagrama de componentes con interfaces</strong> correspondientes a ese código — exactamente los dos entregables de vista arquitectónica del Sprint 1.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones · Del código al diagrama</p>
+          <h1>Leyendo la vista de desarrollo en el ejemplo</h1>
+          <table>
+            <thead>
+              <tr><th>Elemento del código</th><th>Elemento del diagrama de componentes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>SaludoController</code></td><td>Componente "Controlador", expone la interfaz REST <code>/api/saludo</code></td></tr>
+              <tr><td><code>SaludoService</code></td><td>Componente "Servicio", expone la interfaz que consume el Controlador</td></tr>
+              <tr><td><code>SaludoRepository</code></td><td>Componente "Repositorio", expone la interfaz que consume el Servicio</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Cada flecha entre componentes en el diagrama corresponde exactamente a una dependencia real en el código</strong> (§<code>@Autowired</code>) — el diagrama no es una idealización, es un reflejo fiel de la estructura.</p>
+          <p class="slide-eyebrow">No hay entregable de estudiantes en esta sesión: el objetivo es poder replicar este mismo ejercicio sobre el código propio del Sprint 1.</p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Practicar dibujando el diagrama de paquetes y de componentes de un proyecto propio pequeño, aunque sea informalmente.</li>
+            <li>Traer identificados los módulos principales que tendrá el proyecto de Fábrica Escuela.</li>
+          </ul>
+          <p><strong>La Semana 4 aborda el rol del arquitecto de software y los Requisitos No Funcionales bajo la norma ISO 25010 — el siguiente paso después de saber documentar una arquitectura.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
