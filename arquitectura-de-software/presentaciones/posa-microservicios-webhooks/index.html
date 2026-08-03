@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: Microservicios, WebHooks — Semana 8</title>
+  <meta name="description" content="Servicios pequeños e independientes, y cómo se avisan entre sí sin preguntar, con los casos reales de la migración de Netflix a microservicios y el origen del webhook — Arquitectura de Software, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-microservicios-webhooks/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: Microservicios, WebHooks — Semana 8" />
+  <meta property="og:description" content="Servicios pequeños e independientes, y cómo se avisan entre sí sin preguntar, con los casos reales de la migración de Netflix a microservicios y el origen del webhook — Arquitectura de Software, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-microservicios-webhooks/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: Microservicios, WebHooks — Semana 8" />
+  <meta name="twitter:description" content="Servicios pequeños e independientes, y cómo se avisan entre sí sin preguntar, con los casos reales de la migración de Netflix a microservicios y el origen del webhook — Arquitectura de Software, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-microservicios-webhooks.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 8 — Catálogo POSA: Microservicios, WebHooks</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Servicios pequeños e interconectados" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>3 días caídos.<br>Así empezó la migración de Netflix.</h1>
+          <img class="portada-icon" src="img/netflix.svg" alt="Netflix" style="display:block;width:220px;height:220px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>La migración de Netflix a microservicios</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Netflix</td></tr>
+              <tr><th>Motivador</th><td>Interrupción severa de base de datos en 2008</td></tr>
+              <tr><th>Duración de la caída</th><td>3 días sin poder enviar DVDs a los clientes</td></tr>
+              <tr><th>Decisión</th><td>Migrar el monolito a la nube (AWS) y descomponerlo en servicios independientes</td></tr>
+              <tr><th>Periodo de migración</th><td>2009 – 2012, de forma gradual, servicio por servicio</td></tr>
+              <tr><th>Resultado</th><td>Cientos de microservicios independientes en producción</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Es uno de los casos de migración a microservicios más citados de la industria — Netflix documentó el proceso públicamente en su blog de ingeniería.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El incidente de 2008</p>
+          <h1>Un único punto de falla tumbó todo el servicio</h1>
+          <p>En agosto de 2008, una <strong>corrupción en la base de datos central</strong> de Netflix dejó a la empresa <strong>3 días sin poder procesar ni enviar DVDs</strong> a sus clientes — en ese momento, el corazón del negocio.</p>
+          <ul>
+            <li>El sistema completo dependía de una única base de datos monolítica.</li>
+            <li>Un solo componente fallando bastó para detener toda la operación.</li>
+            <li>No había forma de aislar el daño: si algo se rompía en el centro, todo dejaba de funcionar.</li>
+          </ul>
+          <p><strong>Ese incidente —no una moda tecnológica— fue el motivador directo detrás de la decisión de rediseñar la arquitectura.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La decisión</p>
+          <h1>De un monolito a cientos de servicios en la nube</h1>
+          <p>Tras el incidente, Netflix decidió dos cosas al tiempo: mover su infraestructura a <strong>AWS</strong> (Amazon Web Services, un proveedor de nube pública) y <strong>romper el monolito</strong> en servicios pequeños e independientes.</p>
+          <ul>
+            <li>La migración fue <strong>gradual</strong>, entre 2009 y 2012, servicio por servicio, no un "big bang".</li>
+            <li>Cada servicio nuevo se desplegaba, escalaba y fallaba <strong>por su cuenta</strong>, sin depender de que el resto del sistema estuviera "sano" al mismo tiempo.</li>
+            <li>El objetivo explícito ya no era solo "funcionar", sino que <strong>un fallo en un servicio no arrastrara a los demás</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La lección central</p>
+          <h1>Aislar el fallo, no evitarlo por completo</h1>
+          <p>La lección que Netflix repite en sus propios relatos técnicos no es "cómo evitar que algo falle" —eso es imposible a esa escala— sino <strong>cómo evitar que la falla de una pieza tumbe el sistema completo</strong>.</p>
+          <p><strong>Aislamiento de fallos:</strong> diseñar el sistema para que el error de un componente quede contenido en ese componente, en vez de propagarse y derribar servicios que no tenían nada que ver con la causa original.</p>
+          <p>Con cientos de servicios independientes, si uno cae —o se satura— el resto de Netflix sigue funcionando: la recomendación de películas puede fallar sin que el video deje de reproducirse.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la historia al patrón</h1>
+          <p>Lo que Netflix construyó a partir de 2009 —sin usar todavía ese nombre— es hoy uno de los estilos arquitectónicos más usados de la industria: <strong>Microservicios</strong>. Formalicemos qué es exactamente y qué principios lo definen.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Microservicios: servicios pequeños, despliegue independiente</h1>
+          <p><strong>Microservicios</strong> es un estilo arquitectónico que descompone una aplicación en un conjunto de <strong>servicios pequeños e independientemente desplegables</strong>, cada uno responsable de una porción acotada del negocio.</p>
+          <ul>
+            <li>Cada servicio se puede <strong>desplegar, actualizar y escalar por separado</strong>, sin coordinar un release del sistema completo.</li>
+            <li>Los servicios se comunican <strong>por red</strong> — HTTP/REST, mensajería asíncrona — nunca compartiendo memoria ni código en el mismo proceso.</li>
+            <li>Cada servicio tiene, idealmente, <strong>su propia base de datos</strong>: nadie más accede a ella directamente.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Organizados por capacidad de negocio, no por capa técnica</h1>
+          <p>La decisión de diseño más importante en microservicios es <strong>cómo se traza el límite de cada servicio</strong>: no se agrupan por capa técnica (todo el frontend junto, todo el acceso a datos junto), sino por <strong>capacidad de negocio</strong> (pagos, catálogo, recomendaciones, facturación).</p>
+          <p>Microservicios es, en buena medida, una <strong>evolución de SOA</strong> (Service-Oriented Architecture, arquitectura orientada a servicios): comparte la idea de dividir el sistema en servicios, pero pone mucho más énfasis en dos cosas que SOA no siempre exigía: <strong>despliegue independiente real</strong> y <strong>autonomía total del equipo dueño del servicio</strong> — ese equipo decide su stack, su base de datos y su ritmo de release.</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Descomposición en servicios independientes" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que Microservicios gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Escalabilidad independiente:</strong> escalar solo el servicio que recibe más carga, sin escalar todo el sistema</td><td><strong>Complejidad operativa masiva:</strong> decenas o cientos de servicios que desplegar, versionar y monitorear</td></tr>
+              <tr><td><strong>Resiliencia:</strong> el fallo de un servicio no derriba al resto (aislamiento de fallos, como en el caso de Netflix)</td><td><strong>Observabilidad</strong> difícil: entender qué pasó en un sistema distribuido exige logs, métricas y trazas centralizadas de todos los servicios</td></tr>
+              <tr><td>Equipos autónomos que despliegan a su propio ritmo, sin bloquear a otros equipos</td><td><strong>Consistencia de datos distribuida:</strong> sin una única base de datos, mantener la información coherente entre servicios es un problema real</td></tr>
+              <tr><td>Cada servicio puede usar la tecnología más adecuada para su problema</td><td><strong>Testing de integración</strong> más costoso: hay que probar cómo se comportan varios servicios funcionando juntos, no solo cada uno por separado</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>Observabilidad:</strong> capacidad de entender el estado interno de un sistema a partir de lo que expone hacia afuera (logs, métricas, trazas). Estos temas de complejidad operativa se retoman con detalle en las Unidades 3 y 4 del curso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Servicios independientes que, aun así, deben avisarse</h1>
+          <p>Si cada microservicio es autónomo y tiene su propia base de datos, ¿cómo se entera un servicio de que algo relevante ocurrió en otro? La respuesta obvia —<strong>preguntar constantemente</strong> ("¿ya cambió? ¿ya cambió?")— es ineficiente a escala.</p>
+          <p><strong>Un patrón de comunicación distinto resuelve justo ese problema: el WebHook.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Origen del término</p>
+          <h1>Jeff Lindsay acuña "webhook", 2007</h1>
+          <table>
+            <tbody>
+              <tr><th>Término</th><td>"WebHook"</td></tr>
+              <tr><th>Autor</th><td>Jeff Lindsay</td></tr>
+              <tr><th>Año</th><td>2007</td></tr>
+              <tr><th>Dónde</th><td>Publicado en su blog personal</td></tr>
+              <tr><th>Idea original</th><td>Extender el concepto de "hook" de programación (un punto donde se puede "enganchar" código para que se ejecute cuando algo pasa) a la web</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>Hook (gancho):</strong> en programación, un punto de extensión donde se puede registrar código propio para que se ejecute automáticamente cuando ocurre cierto evento. Lindsay tomó esa idea y la llevó a peticiones HTTP entre sistemas web.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Adopción masiva</p>
+          <h1>De un post de blog a un estándar de facto</h1>
+          <p>Lo que empezó como una idea en un blog personal se convirtió, con los años, en uno de los mecanismos de integración más usados entre sistemas web:</p>
+          <ul>
+            <li><strong>GitHub</strong> usa webhooks para notificar a sistemas externos —como servidores de integración continua (CI/CD)— cada vez que hay un <em>push</em>, un <em>pull request</em> o un nuevo <em>issue</em>.</li>
+            <li><strong>Stripe</strong> usa webhooks para avisar a la aplicación del comerciante cuando ocurre un evento de pago: un cobro exitoso, un reembolso, una suscripción cancelada.</li>
+          </ul>
+          <p><strong>Ninguna de las dos plataformas inventó el patrón — lo adoptaron porque resolvía un problema real de comunicación entre sistemas independientes.</strong></p>
+          <img class="portada-icon" src="img/github.svg" alt="GitHub, uno de los adoptantes del patrón WebHook" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>WebHook: notificación HTTP invertida</h1>
+          <p>Un <strong>WebHook</strong> es un mecanismo donde, en vez de que el cliente pregunte repetidamente al servidor si algo cambió (<strong><em>polling</em></strong>), es el <strong>servidor quien avisa al cliente</strong> apenas ocurre el evento, mediante una petición HTTP POST a una URL que el cliente registró de antemano.</p>
+          <ul>
+            <li><strong>Polling:</strong> el consumidor pregunta cada X segundos "¿ya hay algo nuevo?" — desperdicia peticiones cuando no hay nada que reportar.</li>
+            <li><strong>WebHook:</strong> el consumidor registra una URL ("callback") una sola vez; el servidor la llama únicamente cuando el evento realmente ocurre.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo funciona, paso a paso</h1>
+          <ol>
+            <li>El consumidor registra una URL propia (<strong>endpoint</strong>) ante el servicio que emitirá el evento.</li>
+            <li>Ocurre el evento en el servicio origen (un pago, un <em>push</em> a un repositorio, un cambio de estado).</li>
+            <li>El servicio origen hace una petición <strong>HTTP POST</strong> a la URL registrada, con los datos del evento (<strong><em>payload</em></strong>) en el cuerpo de la petición.</li>
+            <li>El consumidor recibe la petición y reacciona de inmediato — sin haber tenido que preguntar nunca.</li>
+          </ol>
+          <img class="portada-icon" src="img/bell.svg" alt="Notificación disparada por un evento" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que WebHooks gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Evita el desperdicio de peticiones constantes del <em>polling</em></td><td>El receptor necesita un <strong>endpoint público accesible</strong> desde internet, siempre disponible</td></tr>
+              <tr><td>Notificación casi en <strong>tiempo real</strong>, apenas ocurre el evento</td><td>El receptor debe manejar <strong>reintentos</strong> si su endpoint estuvo caído cuando llegó el evento</td></tr>
+              <tr><td>Reduce carga tanto en el emisor como en el consumidor comparado con preguntar todo el tiempo</td><td>Debe <strong>verificar la autenticidad</strong> de cada petición recibida — cualquiera podría intentar enviar un POST falso a esa URL</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Microservicios y WebHooks se combinan con frecuencia: un servicio autónomo notifica a otros mediante webhooks (o patrones de eventos similares) en vez de que estos lo consulten por polling — comunicación asíncrona entre unidades independientes.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual · Contraejemplo</p>
+          <h1>Un webhook sin validar es una puerta abierta</h1>
+          <p>Un endpoint de webhook es, técnicamente, una URL pública que <strong>acepta peticiones POST de cualquiera</strong>. Si el receptor confía ciegamente en cualquier petición que le llega a esa URL, cualquiera puede simular eventos falsos: un "pago exitoso" que nunca ocurrió, un "push" que nadie hizo.</p>
+          <p>La mitigación estándar de la industria es la <strong>firma HMAC</strong>: el emisor firma cada petición con una clave secreta compartida; el receptor recalcula esa firma y solo procesa la petición si coincide.</p>
+          <p><strong>HMAC (Hash-based Message Authentication Code):</strong> mecanismo criptográfico que permite verificar que un mensaje viene realmente de quien dice enviarlo y que no fue alterado en el camino.</p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Validación de origen de un webhook" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diagnostiquen el diseño</h1>
+          <p><strong>Para cada situación, identifiquen qué principio de hoy —microservicios o webhooks— está en riesgo y por qué:</strong></p>
+          <ol>
+            <li>Dos microservicios distintos leen y escriben directamente sobre la misma base de datos compartida.</li>
+            <li>Un sistema de facturación consulta cada 5 segundos si hubo un nuevo pago, en vez de esperar una notificación.</li>
+            <li>Un endpoint de webhook procesa cualquier petición POST que le llega, sin revisar de dónde viene ni si trae una firma válida.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Microservicios</strong> descompone el sistema en servicios pequeños, independientemente desplegables, con base de datos propia, organizados por capacidad de negocio — no por capa técnica.</li>
+            <li>El caso de <strong>Netflix (2008-2012)</strong> muestra el motivador real detrás de este estilo: un incidente de 3 días llevó a rediseñar el sistema para que el fallo de una pieza no tumbe el todo (aislamiento de fallos).</li>
+            <li>Microservicios gana escalabilidad y resiliencia independientes, a costa de complejidad operativa: observabilidad, consistencia distribuida y testing de integración.</li>
+            <li><strong>WebHooks</strong> invierte la lógica de notificación: en vez de preguntar (<em>polling</em>), el servidor avisa al consumidor con un POST apenas ocurre el evento — término acuñado por Jeff Lindsay en 2007, adoptado hoy por GitHub, Stripe y muchas otras plataformas.</li>
+            <li>Un webhook sin validar (sin firma HMAC) es un riesgo de seguridad real: cualquiera puede simular eventos falsos hacia un endpoint público desprotegido.</li>
+          </ol>
+          <p><strong>Con Microservicios y WebHooks suman diez patrones del catálogo POSA vistos en la Unidad 2: Pipes &amp; Filters, Blackboard, Broker, MVC, Batch, Cliente/Servidor N-capas, Layers, Microkernel, Microservicios y WebHooks.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Identificar, en el proyecto de Fábrica Escuela, si hoy existe algo parecido a un servicio independiente o a una notificación por evento, en vez de por consulta constante.</li>
+            <li>Repasar la diferencia entre <em>polling</em> y notificación por webhook con un ejemplo propio, distinto a los vistos en clase.</li>
+          </ul>
+          <p><strong>La próxima sesión cierra el catálogo POSA de la Unidad 2 con tres patrones más: Backend for Frontend (BFF), Circuit Breaker y SOFEA.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

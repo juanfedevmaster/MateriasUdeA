@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: Layers, Microkernel — Semana 7</title>
+  <meta name="description" content="Organizar el sistema en capas y diseñarlo para que evolucione mediante plugins, con los casos reales del modelo OSI y la arquitectura de plugins de Eclipse — Arquitectura de Software, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-layers-microkernel/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: Layers, Microkernel — Semana 7" />
+  <meta property="og:description" content="Organizar el sistema en capas y diseñarlo para que evolucione mediante plugins, con los casos reales del modelo OSI y la arquitectura de plugins de Eclipse — Arquitectura de Software, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-layers-microkernel/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: Layers, Microkernel — Semana 7" />
+  <meta name="twitter:description" content="Organizar el sistema en capas y diseñarlo para que evolucione mediante plugins, con los casos reales del modelo OSI y la arquitectura de plugins de Eclipse — Arquitectura de Software, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-layers-microkernel.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 7 — Catálogo POSA: Layers, Microkernel</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Capas y núcleo extensible" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>7 capas.<br>Más de 40 años sin romperse.</h1>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Modelo de capas que perdura" style="display:block;width:210px;height:210px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>El modelo OSI, ISO 1984</h1>
+          <table>
+            <tbody>
+              <tr><th>Nombre</th><td>Open Systems Interconnection (OSI)</td></tr>
+              <tr><th>Organismo</th><td>International Organization for Standardization (ISO)</td></tr>
+              <tr><th>Año de estandarización</th><td>1984</td></tr>
+              <tr><th>Objetivo</th><td>Estandarizar cómo se comunican sistemas de cómputo distintos, dividiendo el problema en niveles independientes</td></tr>
+              <tr><th>Estructura</th><td>7 capas apiladas, cada una con una responsabilidad propia</td></tr>
+              <tr><th>Vigencia</th><td>Sigue siendo la referencia conceptual estándar para enseñar y diseñar redes, más de cuarenta años después</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Estándar documentado por ISO/IEC 7498; es, probablemente, el ejemplo más citado de arquitectura en capas de toda la industria de sistemas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Las 7 capas</p>
+          <h1>De los bits al programa que usa la red</h1>
+          <table>
+            <thead>
+              <tr><th>#</th><th>Capa</th><th>Responsabilidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Física</td><td>Transmitir bits sobre un medio físico (cobre, fibra, radio)</td></tr>
+              <tr><td>2</td><td>Enlace de datos</td><td>Entregar tramas de datos sin errores entre nodos directamente conectados</td></tr>
+              <tr><td>3</td><td>Red</td><td>Enrutar paquetes entre redes distintas (ej. IP)</td></tr>
+              <tr><td>4</td><td>Transporte</td><td>Garantizar entrega confiable extremo a extremo (ej. TCP)</td></tr>
+              <tr><td>5</td><td>Sesión</td><td>Abrir, mantener y cerrar sesiones de comunicación</td></tr>
+              <tr><td>6</td><td>Presentación</td><td>Traducir formatos de datos (cifrado, compresión, codificación)</td></tr>
+              <tr><td>7</td><td>Aplicación</td><td>Protocolos que usan directamente los programas (HTTP, SMTP, DNS)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué funcionó el diseño en capas</p>
+          <h1>Cada capa evoluciona sin tocar a las demás</h1>
+          <p>La razón por la que el modelo OSI se sostiene décadas después no es que las siete capas sean "las correctas" — es que <strong>cada capa solo depende de la capa inmediatamente adyacente</strong>, nunca de los detalles internos de las demás.</p>
+          <ul>
+            <li>La capa física pasó de cable de cobre a fibra óptica y a redes inalámbricas <strong>sin que las capas superiores tuvieran que cambiar</strong>.</li>
+            <li>La capa de aplicación ganó protocolos nuevos (HTTP/2, HTTP/3) sin rediseñar el transporte o la red debajo.</li>
+            <li>Fabricantes distintos pueden construir hardware y software para una sola capa, confiando en que las interfaces con las capas vecinas se mantienen estables.</li>
+          </ul>
+          <p><strong>Aislar el cambio en cada nivel es lo que permitió que protocolos y tecnologías completamente distintos evolucionaran en paralelo, durante décadas, sin romper el sistema completo.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El mismo principio, aplicado al software empresarial</h1>
+          <p>OSI organiza <em>redes</em> en capas. Pero el mismo principio de aislamiento por niveles —cada capa solo conoce a su vecina inmediata— se aplica también a la <strong>arquitectura interna de una aplicación</strong>: capas de presentación, lógica de negocio y persistencia, como ya vieron con MVC y con arquitecturas cliente/servidor N-capas en semanas anteriores.</p>
+          <p><strong>Hoy formalizamos ese principio general con nombre propio: el patrón <strong>Layers</strong> del catálogo POSA.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Layers: organizar el sistema en niveles</h1>
+          <p>El patrón <strong>Layers</strong> (Buschmann et al., <em>Pattern-Oriented Software Architecture</em>) organiza el sistema en <strong>niveles jerárquicos</strong>. Cada capa:</p>
+          <ul>
+            <li>Ofrece un conjunto de <strong>servicios</strong> a la capa inmediatamente superior.</li>
+            <li>Consume los servicios que le ofrece la capa inmediatamente inferior.</li>
+            <li>No conoce ni depende de capas que no sean sus vecinas directas.</li>
+          </ul>
+          <p class="slide-eyebrow">Es exactamente lo que ilustra OSI: la capa de transporte usa servicios de red, y ofrece servicios a la capa de sesión — nunca "salta" capas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El principio de aislamiento de cambios</h1>
+          <p>La razón de ser del patrón es el <strong>principio de aislamiento de cambios</strong>: si una capa cambia su implementación interna sin cambiar la interfaz que expone, ninguna otra capa debería enterarse.</p>
+          <p>En una aplicación empresarial típica esto se traduce en tres capas:</p>
+          <ul>
+            <li><strong>Presentación</strong> — interfaz de usuario o API expuesta al exterior.</li>
+            <li><strong>Lógica de negocio</strong> — reglas y procesos propios del dominio.</li>
+            <li><strong>Persistencia</strong> — acceso a la base de datos u otro almacenamiento.</li>
+          </ul>
+          <p><strong>Cambiar el motor de base de datos no debería obligar a tocar la capa de presentación</strong> — el mismo principio que permitió pasar de cobre a fibra en OSI, aplicado dentro de una sola aplicación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que Layers gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bajo acoplamiento entre capas: cada una se puede reemplazar o probar de forma aislada</td><td>Cada capa añade una llamada adicional: puede introducir <strong>overhead de rendimiento</strong> frente a acceder directamente al nivel inferior</td></tr>
+              <tr><td>Facilita el mantenimiento: un cambio queda contenido en su capa</td><td>Las capas a veces se <strong>"filtran"</strong> (<em>leaky abstractions</em>): un detalle de la capa inferior termina siendo visible o necesario en la superior, rompiendo el aislamiento prometido</td></tr>
+              <tr><td>Facilita las pruebas: se puede simular (mockear) la capa vecina</td><td>Diseñar demasiadas capas "por si acaso" agrega complejidad sin beneficio real</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><em>Leaky abstraction</em> ("abstracción con fugas"): cuando una capa que debía ocultar sus detalles internos obliga, en la práctica, a que la capa superior conozca esos detalles para funcionar bien.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y si el sistema no se puede predecir por completo desde el diseño?</h1>
+          <p>Layers funciona bien cuando las responsabilidades del sistema se conocen de antemano y se pueden ordenar en niveles. Pero hay sistemas que necesitan crecer con funcionalidad <strong>que nadie previó al diseñarlos</strong> — nuevos lenguajes, nuevas herramientas, nuevos formatos — sin reescribir el sistema cada vez.</p>
+          <p><strong>Para ese problema, el catálogo POSA propone un patrón distinto: Microkernel.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Eclipse IDE</h1>
+          <table>
+            <tbody>
+              <tr><th>Producto</th><td>Eclipse — entorno de desarrollo integrado (IDE)</td></tr>
+              <tr><th>Origen</th><td>Iniciado por IBM, lanzado como código abierto en 2001</td></tr>
+              <tr><th>Gobernanza actual</th><td>Eclipse Foundation, organización sin ánimo de lucro creada en 2004 para gobernar el proyecto</td></tr>
+              <tr><th>Sistema de módulos</th><td>Construido sobre <strong>OSGi</strong>, un estándar de módulos dinámicos para Java</td></tr>
+              <tr><th>Núcleo</th><td>Mínimo: apenas lo necesario para cargar y coordinar plugins</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>OSGi:</strong> especificación que permite empaquetar código Java en módulos ("bundles") que se pueden instalar, iniciar, detener y actualizar en caliente, sin reiniciar la aplicación completa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Casi todo es un plugin</p>
+          <h1>El núcleo hace poco, a propósito</h1>
+          <p>El núcleo de Eclipse resuelve un problema muy acotado: cargar módulos y dejar que se comuniquen entre sí a través de <strong>puntos de extensión</strong> bien definidos. Todo lo demás —lo que un usuario reconoce como "Eclipse"— es un <strong>plugin</strong>:</p>
+          <ul>
+            <li>Soporte para cada lenguaje de programación (Java, C++, PHP, …)</li>
+            <li>Herramientas de depuración (<em>debugging</em>)</li>
+            <li>Integración con control de versiones (Git, SVN)</li>
+            <li>Temas visuales y personalización de la interfaz</li>
+          </ul>
+          <p class="slide-eyebrow"><strong>Plugin (extensión):</strong> módulo independiente que agrega funcionalidad a un sistema, comunicándose con el núcleo a través de una interfaz definida por el propio núcleo, sin modificar su código.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué funcionó este diseño</p>
+          <h1>Dos décadas sin reescribir el núcleo</h1>
+          <p>Como el núcleo de Eclipse nunca necesitó conocer de antemano qué lenguajes o herramientas soportaría, el proyecto pudo <strong>sumar capacidades completamente nuevas</strong> —lenguajes que no existían en 2001, nuevas prácticas de control de versiones— sin tocar la base del sistema.</p>
+          <p><strong>El mismo patrón explica por qué otros sistemas longevos y muy extensibles se diseñan igual:</strong> Visual Studio Code con su sistema de extensiones, o los navegadores web con sus extensiones instalables, aplican la misma idea de núcleo mínimo más plugins.</p>
+          <p><strong>Un núcleo pequeño, bien definido, es más fácil de mantener estable durante veinte años que uno que intenta prever todo desde el diseño.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Microkernel: mecanismo, no política</h1>
+          <p>El patrón <strong>Microkernel</strong> separa el sistema en dos partes:</p>
+          <ul>
+            <li>Un <strong>núcleo mínimo</strong> con solo la funcionalidad esencial — el "mecanismo" que hace posible que el sistema funcione.</li>
+            <li>Toda la funcionalidad adicional, implementada como <strong>plugins</strong> que se conectan al núcleo mediante una interfaz bien definida.</li>
+          </ul>
+          <p><strong>"Mechanism, not policy":</strong> el núcleo provee el mecanismo genérico para cargar y coordinar extensiones, pero no decide <em>qué</em> hace cada extensión — esa decisión ("la política") vive en los plugins, fuera del núcleo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se comunican núcleo y plugins</h1>
+          <p>El núcleo expone <strong>puntos de extensión</strong> (interfaces conocidas de antemano); cada plugin implementa esos puntos para agregar su funcionalidad. El núcleo no necesita saber, al diseñarse, cuáles plugins existirán en el futuro — solo necesita mantener estable la interfaz.</p>
+          <ul>
+            <li>Se puede <strong>agregar o quitar un plugin sin modificar el núcleo</strong> ni los demás plugins.</li>
+            <li>Un plugin que falla puede aislarse, sin necesariamente derribar el núcleo ni el resto del sistema.</li>
+          </ul>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Plugins que se conectan al núcleo" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que Microkernel gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Extensibilidad</strong> sin modificar el núcleo: se agregan capacidades nuevas como plugins</td><td>Coordinar el comportamiento entre varios plugins independientes puede volverse complejo</td></tr>
+              <tr><td><strong>Aislamiento de fallos:</strong> un plugin defectuoso no necesariamente compromete el núcleo</td><td>La comunicación núcleo–plugin, si es muy genérica, puede afectar el rendimiento</td></tr>
+              <tr><td>Permite que terceros extiendan el sistema sin acceso a su código fuente</td><td>El diseño del núcleo y sus puntos de extensión debe anticiparse bien — cambiar esa interfaz después es costoso</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Orden vertical estricto vs. relación núcleo-radial</h1>
+          <p><strong>Layers</strong> impone un orden de dependencia estrictamente vertical: cada capa solo puede hablar con la capa inmediatamente adyacente, arriba o abajo. Saltarse ese orden rompe el patrón.</p>
+          <p><strong>Microkernel</strong> no tiene niveles ordenados entre sí: es una relación <strong>núcleo-radial</strong> — todos los plugins hablan con el núcleo, pero no necesariamente entre ellos ni en un orden predefinido.</p>
+          <p><strong>Ambos persiguen lo mismo —bajo acoplamiento y capacidad de evolucionar sin romper el sistema— pero con formas de dependencia opuestas: una jerárquica y lineal, la otra centrada en un núcleo común.</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Layers o Microkernel?</h1>
+          <p><strong>Para cada sistema, decidan si se organiza mejor como Layers, como Microkernel, o con ambos combinados, y justifiquen:</strong></p>
+          <ol>
+            <li>Un sistema bancario con capas claras de presentación, reglas de negocio y persistencia, sin necesidad de extensiones de terceros.</li>
+            <li>Un navegador web que debe permitir instalar extensiones creadas por cualquier desarrollador externo.</li>
+            <li>Un sistema operativo que separa un núcleo mínimo de gestión de recursos de todo lo demás (drivers, servicios).</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Layers</strong> organiza el sistema en niveles jerárquicos donde cada capa solo conoce a su vecina inmediata — el modelo OSI (ISO, 1984) es el caso canónico de la industria.</li>
+            <li>El aislamiento por capas permite que tecnologías distintas evolucionen en paralelo sin romper el sistema completo, aunque introduce overhead y riesgo de <em>leaky abstractions</em>.</li>
+            <li><strong>Microkernel</strong> separa un núcleo mínimo ("mecanismo, no política") de funcionalidad adicional implementada como plugins — Eclipse IDE, sobre OSGi, es el caso de referencia.</li>
+            <li>Microkernel da extensibilidad y aislamiento de fallos, a cambio de mayor complejidad de coordinación entre plugins.</li>
+            <li>Layers depende de un orden vertical estricto; Microkernel es núcleo-radial — dos caminos distintos hacia el mismo objetivo: bajo acoplamiento y capacidad de evolucionar.</li>
+          </ol>
+          <p><strong>Con Layers y Microkernel completamos ocho patrones del catálogo POSA vistos en la Unidad 2: Pipes &amp; Filters, Blackboard, Broker, MVC, Batch, Cliente/Servidor N-capas, Layers y Microkernel.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar los ocho patrones POSA vistos hasta ahora en la Unidad 2 y en cuáles proyectos reales (propios o conocidos) reconocen cada uno.</li>
+            <li>Identificar, en el proyecto de Fábrica Escuela, si hoy existe algo parecido a capas o a un núcleo extensible con plugins.</li>
+          </ul>
+          <p><strong>La Semana 8 continúa el catálogo POSA con dos patrones más: Arquitectura Orientada a Servicios (SOA) y Arquitectura Hexagonal.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Implementación de Capas y ORM — Semana 13</title>
+  <meta name="description" content="De las capas en el papel al código que las implementa — el caso Stack Overflow/Dapper — cierre de la Unidad 3 — Arquitectura de Software, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/implementacion-capas-orm/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Implementación de Capas y ORM — Semana 13" />
+  <meta property="og:description" content="De las capas en el papel al código que las implementa — el caso Stack Overflow/Dapper — cierre de la Unidad 3 — Arquitectura de Software, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/implementacion-capas-orm/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Implementación de Capas y ORM — Semana 13" />
+  <meta name="twitter:description" content="De las capas en el papel al código que las implementa — el caso Stack Overflow/Dapper — cierre de la Unidad 3 — Arquitectura de Software, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/implementacion-capas-orm.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 13 — Implementación de Capas y Mapeo Objeto-Relacional (ORM)</h2>
+          <p class="slide-eyebrow">De las capas en el papel al código que las implementa — cierre de la Unidad 3 · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Capas de una aplicación implementadas en código" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>9 servidores web.<br>1.300 millones de páginas vistas al mes.</h1>
+          <p class="slide-eyebrow">Stack Overflow, 2016 — y ni un solo ORM completo en su capa de persistencia.</p>
+          <img class="portada-icon" src="img/stackoverflow.svg" alt="Stack Overflow" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Esa cifra no cuadra con la intuición</h1>
+          <p>La reacción esperada frente a "1.300 millones de páginas vistas al mes" es pensar en cientos de servidores en la nube, balanceadores de carga elaborados y una factura de infraestructura enorme. Stack Overflow, en cambio, documentó públicamente que servía ese tráfico con un puñado de máquinas.</p>
+          <p><strong>Parte de esa eficiencia no vino de tener más hardware, sino de una decisión arquitectónica muy concreta sobre cómo se implementa la capa de persistencia — la capa que hoy es el centro de la sesión.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Stack Overflow / Dapper, 2016</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Stack Exchange Inc. — red de sitios que incluye Stack Overflow</td></tr>
+              <tr><th>Documentación</th><td>Serie de artículos <em>"What it takes to run Stack Overflow"</em>, del ingeniero <strong>Nick Craver</strong>, blog de ingeniería de la compañía, 2016</td></tr>
+              <tr><th>Tráfico reportado</th><td>Del orden de <strong>1.300 millones de páginas vistas al mes</strong> en toda la red de sitios</td></tr>
+              <tr><th>Infraestructura</th><td>Del orden de <strong>9 servidores web</strong> para toda la red — mucho menor de lo que la intuición esperaría</td></tr>
+              <tr><th>Capa de presentación</th><td>ASP.NET MVC</td></tr>
+              <tr><th>Capa de persistencia</th><td><strong>Dapper</strong>, micro-ORM propio, en vez de un ORM completo como Entity Framework</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Uno de los pocos casos de arquitectura de producción documentado públicamente con este nivel de detalle técnico por el propio equipo que la construyó.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Las capas, en código real</p>
+          <h1>Presentación, negocio y persistencia — separadas de verdad</h1>
+          <p>La arquitectura que documentó Craver mantiene una separación de capas clásica, la misma que ya conocen desde el patrón <strong>Layers</strong> (Semana 7), pero llevada a decisiones concretas de implementación:</p>
+          <ul>
+            <li><strong>Capa de presentación:</strong> ASP.NET MVC — vistas, controladores de UI, serialización de las respuestas HTTP.</li>
+            <li><strong>Capa delgada de lógica de negocio/servicios:</strong> reglas propias del dominio (reputación, votos, badges, moderación), independiente de cómo se guardan los datos.</li>
+            <li><strong>Capa de acceso a datos vía Dapper:</strong> mapea directamente los resultados de SQL a las clases del modelo de dominio, sin capas intermedias de abstracción pesadas.</li>
+          </ul>
+          <p class="slide-eyebrow">La separación no es solo prolija en el diagrama: cada capa vive en su propio conjunto de clases/proyectos dentro del código.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La decisión detrás de Dapper</p>
+          <h1>Escribir más SQL a cambio de más control</h1>
+          <p>En vez de adoptar un ORM completo como <strong>Entity Framework</strong> o <strong>Hibernate</strong>, el equipo de Stack Overflow — Sam Saffron y Marc Gravell — construyó <strong>Dapper</strong>, un "micro-ORM" open source que solo hace una cosa: mapear el resultado de una consulta SQL a objetos <strong>POCO</strong> (Plain Old CLR Objects) del modelo de dominio.</p>
+          <p><strong>Fue explícitamente una decisión arquitectónica de rendimiento y control, no un accidente ni una limitación técnica:</strong> aceptar escribir el SQL a mano (menos "productividad" de alto nivel) para evitar los problemas de rendimiento típicos de los ORM completos.</p>
+          <p class="slide-eyebrow">La elección de "cuánto ORM" usar en la capa de persistencia es, en sí misma, una decisión de arquitectura — no un simple detalle de implementación que se resuelve solo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la anécdota a la disciplina completa</h1>
+          <p>Para entender por qué esa decisión sobre Dapper importa, hay que aterrizar dos cosas que hasta ahora han visto sobre todo en teoría: qué es exactamente cada capa de una aplicación implementada, y qué hace un ORM técnicamente cuando media entre esas capas y la base de datos.</p>
+          <p><strong>Esta es la última sesión de la Unidad 3 — Desarrollo de Software basado en Arquitectura. Cerramos viendo cómo el patrón Layers, que ya conocen desde la Semana 7, se convierte en carpetas, proyectos y clases reales.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Repaso</p>
+          <h1>Layers (Semana 7): de patrón a implementación</h1>
+          <p>En la Semana 7 vieron <strong>Layers</strong> como patrón POSA: organizar el sistema en niveles horizontales, donde cada capa solo puede depender de la capa inmediatamente inferior, y cada una tiene una responsabilidad exclusiva.</p>
+          <p><strong>Hoy bajamos ese patrón al terreno concreto: ¿cómo se ve "una capa" cuando dejas el diagrama y abres el proyecto en el editor de código?</strong> Normalmente como una carpeta o un proyecto separado (ej. <code>Presentation/</code>, <code>Services/</code>, <code>Data/</code>), con clases que solo llaman a las de la capa inferior — nunca al revés, y nunca saltándose una capa intermedia.</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Capas de una aplicación" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Las cinco capas de una aplicación empresarial típica</h1>
+          <table>
+            <thead>
+              <tr><th>Capa</th><th>Responsabilidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Presentación</strong></td><td>Interfaz con el usuario: vistas, formularios, serialización de las respuestas (HTML, JSON).</td></tr>
+              <tr><td><strong>Controlador</strong></td><td>Recibe las solicitudes y orquesta la interacción entre presentación y lógica de negocio.</td></tr>
+              <tr><td><strong>Lógica de negocio</strong></td><td>Reglas y procesos propios del dominio del problema, independientes de cómo se muestran o se guardan los datos.</td></tr>
+              <tr><td><strong>Modelo de dominio</strong></td><td>Las entidades y objetos que representan los conceptos del negocio.</td></tr>
+              <tr><td><strong>Persistencia</strong></td><td>Guarda y recupera datos de un almacenamiento durable (una base de datos relacional, en esta sesión).</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">En el caso de Stack Overflow (s05), estas cinco capas se agrupan en tres bloques de código: presentación+controlador (ASP.NET MVC), negocio (servicios delgados) y persistencia (Dapper + modelo de dominio).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Precisión necesaria</p>
+          <h1>Controlador: el intermediario, no el que decide</h1>
+          <p>La <strong>capa de Controlador</strong> merece una aclaración porque ya la vieron en otro contexto: en el patrón <strong>MVC</strong> (Semana 6), el Controlador es exactamente el intermediario entre el Modelo y la Vista — recibe la solicitud del usuario, decide a qué componente de negocio delegar, y prepara la respuesta para la Vista.</p>
+          <p><strong>Un error común de implementación es que el Controlador termine haciendo el trabajo de la capa de negocio</strong> (validaciones complejas, cálculos del dominio) en vez de solo orquestar — eso rompe la separación de responsabilidades y convierte al controlador en un "God Object" (Semana 11) de facto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Precisión necesaria</p>
+          <h1>Modelo de dominio ≠ tablas de la base de datos</h1>
+          <p>Es tentador asumir que el <strong>modelo de dominio</strong> (las clases que representan Usuario, Pregunta, Respuesta, Voto) es simplemente "un espejo" de las tablas de la base de datos. No siempre es así:</p>
+          <ul>
+            <li>Una clase del dominio puede combinar datos de varias tablas relacionadas.</li>
+            <li>Una tabla puede dividirse en varias clases del dominio, o viceversa.</li>
+            <li>El modelo de dominio se diseña para expresar el negocio con claridad; el esquema relacional se diseña para almacenar datos de forma eficiente y consistente — son preocupaciones distintas que no siempre coinciden en forma.</li>
+          </ul>
+          <p><strong>Esa diferencia de forma entre el mundo de objetos y el mundo relacional es precisamente el problema que resuelve (o intenta resolver) un ORM.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es el Mapeo Objeto-Relacional (ORM)?</h1>
+          <p><strong>El Mapeo Objeto-Relacional (Object-Relational Mapping, ORM) es la técnica y la herramienta que traducen entre el modelo de objetos de la aplicación (clases, atributos, relaciones) y el modelo relacional de la base de datos (tablas, filas, claves foráneas).</strong></p>
+          <p>El problema que resuelve tiene nombre propio: el <strong>"impedance mismatch" objeto-relacional</strong> — el desajuste estructural entre cómo un lenguaje orientado a objetos representa la información (objetos con identidad, herencia, referencias) y cómo un motor relacional la representa (filas planas, claves primarias/foráneas, sin herencia nativa).</p>
+          <img class="portada-icon" src="img/database.svg" alt="Base de datos relacional" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué automatiza un ORM, en concreto</h1>
+          <p>Cuando se habla de "usar un ORM" en la capa de persistencia, normalmente se refiere a que la herramienta se encarga de tres tareas que, sin ella, el desarrollador tendría que escribir a mano:</p>
+          <ul>
+            <li><strong>Generación de SQL:</strong> traduce operaciones sobre objetos (crear, leer, actualizar, borrar) en las sentencias SQL correspondientes.</li>
+            <li><strong>Tracking de cambios (change tracking):</strong> detecta qué propiedades de un objeto cambiaron desde que se cargó, para generar solo el UPDATE necesario.</li>
+            <li><strong>Lazy loading:</strong> carga automáticamente datos relacionados (ej. las respuestas de una pregunta) solo cuando el código realmente los usa, no de entrada.</li>
+          </ul>
+          <p class="slide-eyebrow">Estas tres tareas son las que un ORM completo automatiza — y las que un micro-ORM, como verán a continuación, decide no automatizar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo · De vuelta al caso</p>
+          <h1>ORM completo vs. micro-ORM: Entity Framework vs. Dapper</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>ORM completo (Entity Framework, Hibernate)</th><th>Micro-ORM (Dapper)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Genera SQL automáticamente</td><td>Sí</td><td>No — el desarrollador escribe el SQL</td></tr>
+              <tr><td>Tracking de cambios</td><td>Sí, automático</td><td>No existe</td></tr>
+              <tr><td>Lazy loading</td><td>Sí, automático</td><td>No existe</td></tr>
+              <tr><td>Qué automatiza</td><td>Todo el ciclo objeto ↔ SQL</td><td>Solo el mapeo de resultados a objetos POCO</td></tr>
+              <tr><td>Control sobre el SQL ejecutado</td><td>Indirecto, generado por la herramienta</td><td>Total — el desarrollador escribe cada consulta</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Stack Overflow eligió deliberadamente la columna derecha: menos automatización, más control sobre lo que realmente se ejecuta contra la base de datos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · El trade-off explícito</p>
+          <h1>Productividad vs. rendimiento: no hay opción gratis</h1>
+          <p>La elección entre ORM completo y micro-ORM no tiene una respuesta universalmente correcta — es un trade-off arquitectónico real:</p>
+          <ul>
+            <li><strong>A favor del ORM completo:</strong> mayor productividad inicial, menos código repetitivo, curva de aprendizaje más simple para el equipo.</li>
+            <li><strong>A favor del micro-ORM:</strong> control total sobre el SQL ejecutado, sin overhead de generar SQL dinámicamente ni de rastrear el estado de cada objeto en memoria — mejor rendimiento en sistemas de tráfico muy alto.</li>
+          </ul>
+          <p><strong>Stack Overflow, con 1.300 millones de páginas vistas al mes sobre solo 9 servidores web, es evidencia de que esa apuesta por el control y el rendimiento, sostenida en el tiempo, puede ser la decisión correcta a esa escala.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El problema N+1: cuando el ORM se vuelve el problema</h1>
+          <p><strong>El problema de consultas N+1</strong> es el ejemplo más común y más citado de cómo un ORM completo, mal usado, puede degradar el rendimiento de forma severa — precisamente en la capa de persistencia.</p>
+          <p>Ocurre cuando el código pide una lista de N elementos (ej. "todas las preguntas de un usuario") y, por cada uno de esos N elementos, el ORM dispara automáticamente <strong>una consulta SQL adicional</strong> para cargar un dato relacionado (ej. las respuestas de cada pregunta) mediante lazy loading — en vez de traer todo en una sola consulta bien construida.</p>
+          <p class="slide-eyebrow">El resultado: una operación que debería costar una sola consulta SQL termina costando N+1 consultas — cientos o miles, si N es grande.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Por qué importa aquí</p>
+          <h1>N+1 explica, en parte, la decisión de Dapper</h1>
+          <p>El lazy loading automático de un ORM completo es cómodo de escribir, pero es exactamente el mecanismo que abre la puerta al problema N+1: el desarrollador escribe una línea de código simple (iterar sobre una colección relacionada) sin ver, en ese momento, cuántas consultas SQL reales se están disparando por detrás.</p>
+          <p><strong>Con un micro-ORM como Dapper, ese riesgo desaparece por construcción: como no hay lazy loading automático, el desarrollador escribe explícitamente el JOIN o la consulta que necesita, y ve exactamente cuántas idas a la base de datos está generando su código.</strong></p>
+          <p class="slide-eyebrow">No es que Dapper "resuelva" el problema N+1 con magia — es que el diseño de un micro-ORM hace visible el costo real de cada acceso a datos, en vez de ocultarlo detrás de una API cómoda.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cómo están implementando ustedes sus capas?</h1>
+          <p><strong>En equipos, revisen su proyecto de CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Pueden señalar, en su código, dónde termina la capa de presentación/controlador y dónde empieza la lógica de negocio? ¿Está realmente separado, o mezclado en los mismos archivos?</li>
+            <li>¿Cómo acceden a su base de datos hoy: con un ORM completo (Entity Framework, Hibernate, u otro), un micro-ORM, o SQL directo sin ninguna herramienta?</li>
+            <li>Con lo visto hoy, ¿identifican algún riesgo de problema N+1 en alguna parte de su acceso a datos actual?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>El patrón <strong>Layers</strong> (Semana 7) se implementa en código como carpetas/proyectos separados: Presentación, Controlador, Lógica de Negocio, Modelo de Dominio y Persistencia, cada uno con responsabilidad exclusiva.</li>
+            <li>El <strong>modelo de dominio no es igual a las tablas</strong> de la base de datos — esa diferencia de forma es el "impedance mismatch" objeto-relacional que un <strong>ORM</strong> busca resolver.</li>
+            <li>Un ORM completo (Entity Framework, Hibernate) automatiza generación de SQL, tracking de cambios y lazy loading; un <strong>micro-ORM</strong> como <strong>Dapper</strong> solo mapea resultados a objetos POCO, dejando el SQL explícito.</li>
+            <li>Stack Overflow (2016, ~1.300 millones de páginas vistas al mes con ~9 servidores web) eligió Dapper deliberadamente: más control y rendimiento, a cambio de menos automatización.</li>
+            <li>El <strong>problema N+1</strong> es el riesgo típico del lazy loading automático de un ORM completo: una operación que debería ser una consulta se convierte en N+1 consultas SQL.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la Unidad 3</p>
+          <h1>Cuatro sesiones, una sola unidad: Desarrollo de SW basado en Arquitectura</h1>
+          <p>Con esta sesión cerramos la Unidad 3 completa, cuatro sesiones desde la Semana 12 hasta hoy:</p>
+          <ul>
+            <li><strong>Desarrollo basado en Componentes</strong> (Semana 12) — construir sistemas ensamblando piezas de software reutilizables e independientes, en vez de escribir todo desde cero.</li>
+            <li><strong>Proceso de Desarrollo orientado a la Arquitectura</strong> (Semana 12) — cómo la arquitectura guía y se integra al ciclo de vida del desarrollo, no como un documento aparte sino como una actividad continua del proceso.</li>
+            <li><strong>Middleware y Frameworks</strong> (Semana 13) — el software intermedio que conecta componentes y sistemas distintos, y los frameworks que dan estructura y andamiaje al código de la aplicación.</li>
+            <li><strong>Implementación de Capas y ORM</strong> (hoy) — cómo el patrón Layers se aterriza en código real, y cómo la elección de "cuánto ORM" usar en la persistencia es en sí misma una decisión arquitectónica, con el caso de Stack Overflow y Dapper.</li>
+          </ul>
+          <p><strong>Toda la Unidad 3 respondió una sola pregunta: una vez que ya se decidió la arquitectura (Unidades 1 y 2), ¿cómo se construye realmente el software que la implementa? Componentes, proceso, middleware, frameworks y capas son las piezas concretas de esa respuesta.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar las cinco capas vistas hoy (presentación, controlador, lógica de negocio, modelo de dominio, persistencia) y ubicarlas explícitamente en el código de su proyecto de CodeF@ctory.</li>
+            <li>Revisar con su equipo qué herramienta de acceso a datos están usando hoy, y si conviene ajustarla a la luz del trade-off ORM completo vs. micro-ORM visto en esta sesión.</li>
+          </ul>
+          <p><strong>La Semana 14 abre la Unidad 4 — Los Servicios Web en la Arquitectura — con Esquemas para el uso de servicios web y Arquitecturas Orientadas a Servicios (SOA).</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

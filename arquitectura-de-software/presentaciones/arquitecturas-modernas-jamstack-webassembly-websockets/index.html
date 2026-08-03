@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquitecturas para Aplicaciones Modernas — Semana 10</title>
+  <meta name="description" content="Sitios estáticos que parecen dinámicos, código nativo en el navegador, y comunicación en tiempo real: JAMStack, WebAssembly y WebSockets — Arquitectura de Software, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/arquitecturas-modernas-jamstack-webassembly-websockets/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Arquitecturas para Aplicaciones Modernas — Semana 10" />
+  <meta property="og:description" content="Sitios estáticos que parecen dinámicos, código nativo en el navegador, y comunicación en tiempo real: JAMStack, WebAssembly y WebSockets — Arquitectura de Software, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/arquitecturas-modernas-jamstack-webassembly-websockets/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arquitecturas para Aplicaciones Modernas — Semana 10" />
+  <meta name="twitter:description" content="Sitios estáticos que parecen dinámicos, código nativo en el navegador, y comunicación en tiempo real: JAMStack, WebAssembly y WebSockets — Arquitectura de Software, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/arquitecturas-modernas-jamstack-webassembly-websockets.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 10 — Arquitecturas para Aplicaciones Modernas (JAMStack, WebAssembly, WebSockets)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Capas de arquitecturas modernas para la web" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un sitio sin servidor de aplicación.<br>Código nativo dentro del navegador.<br>Una conexión que nunca se cierra.</h1>
+          <img class="portada-icon" src="img/bolt.svg" alt="Tres formas de romper las reglas de la web tradicional" style="display:block;width:170px;height:170px;margin:35px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Tres formas de romper supuestos que ya dábamos por sentados</h1>
+          <p>Desde el patrón Cliente/Servidor (Semana 7) hasta SOFEA (Semana 9), han visto arquitecturas donde un servidor recibe una petición HTTP, procesa algo y responde — el modelo de "pregunta y respuesta" que domina la web desde los años 90.</p>
+          <p><strong>Hoy conocen tres tecnologías que, cada una a su manera, rompen un supuesto distinto de ese modelo: JAMStack elimina el servidor de aplicación para páginas que no lo necesitan; WebAssembly rompe la exclusividad de JavaScript como único código que corre en el navegador; y WebSockets rompe la idea de que cada mensaje necesita su propia petición HTTP.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Netlify acuña "JAMStack", 2015–2016</h1>
+          <table>
+            <tbody>
+              <tr><th>Término</th><td>"JAMStack" (JavaScript + APIs + Markup)</td></tr>
+              <tr><th>Empresa</th><td>Netlify</td></tr>
+              <tr><th>Promotor</th><td>Mathias Biilmann, cofundador y CEO de Netlify</td></tr>
+              <tr><th>Año aproximado</th><td>2015–2016</td></tr>
+              <tr><th>Qué hicieron</th><td>Le pusieron nombre y promovieron activamente un patrón que ya venía emergiendo con los generadores de sitios estáticos, sin inventar la técnica desde cero</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Netlify es, hasta hoy, una de las plataformas de hosting más asociadas al despliegue de sitios JAMStack.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué emergió</p>
+          <h1>Rendimiento y seguridad, sin servidor de aplicación</h1>
+          <p>Antes de JAMStack, generar una página normalmente significaba que un servidor de aplicación construía el HTML en cada petición (como en Cliente/Servidor N-capas). JAMStack invierte esa idea: el sitio se <strong>pre-construye</strong> como archivos estáticos (HTML, CSS, JS) y se sirve directamente desde una <strong>CDN</strong> —una red de servidores distribuidos geográficamente que entrega esos archivos desde el punto más cercano al usuario—, sin que ningún servidor tenga que generar nada en el momento.</p>
+          <ul>
+            <li><strong>Rendimiento:</strong> no hay que esperar a que un servidor arme la página; el archivo ya existe y viaja desde el punto más cercano.</li>
+            <li><strong>Seguridad:</strong> menor superficie de ataque — no hay base de datos ni servidor de aplicación expuestos directamente al público.</li>
+            <li><strong>Escalabilidad:</strong> servir archivos estáticos desde una CDN soporta picos de tráfico mucho mayores que regenerar HTML por petición.</li>
+          </ul>
+          <img class="portada-icon" src="img/netlify.svg" alt="Netlify, la empresa que promovió el patrón JAMStack" style="display:block;width:110px;height:110px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>JAMStack: JavaScript + APIs + Markup</h1>
+          <table>
+            <thead>
+              <tr><th>Letra</th><th>Significa</th><th>Rol en el sitio</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>J</td><td>JavaScript</td><td>Maneja toda la lógica dinámica en el navegador del cliente, sin depender de un servidor que la ejecute</td></tr>
+              <tr><td>A</td><td>APIs</td><td>La funcionalidad de backend (pagos, comentarios, búsqueda) se consume desde servicios externos, reutilizables y desacoplados</td></tr>
+              <tr><td>M</td><td>Markup</td><td>El HTML ya viene pre-construido antes de la petición, no generado en el momento por un servidor de aplicación</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Ejemplo cercano:</strong> el propio sitio donde viven estas diapositivas (<code>profejuanfe.dev</code>) es HTML/CSS/JS plano, sin build ni servidor de aplicación — cada página ya existe como archivo antes de que la pidan, y lo poco dinámico (compartir, navegación) corre en JavaScript del lado del cliente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>JAMStack no es la respuesta para todo</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rendimiento alto: archivos servidos desde CDN, sin espera de generación</td><td>No sirve bien para contenido que cambia por cada usuario en tiempo real (ej. un feed personalizado que se recalcula constantemente)</td></tr>
+              <tr><td>Menor superficie de ataque al no exponer un servidor de aplicación tradicional</td><td>Cada cambio de contenido requiere reconstruir y redesplegar los archivos estáticos</td></tr>
+              <tr><td>Escala con facilidad ante picos de tráfico</td><td>La lógica de negocio compleja termina viviendo en APIs externas, lo que agrega piezas y proveedores que coordinar</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Encaja mejor en blogs, documentación, portafolios, landing pages y sitios de marketing que en aplicaciones altamente transaccionales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De dónde vive el HTML a qué código corre en el navegador</h1>
+          <p>JAMStack cambió dónde se genera el HTML, pero no cambió qué lenguaje ejecuta la lógica del navegador: seguía siendo JavaScript, como lo ha sido desde el nacimiento de la web.</p>
+          <p><strong>La siguiente tecnología rompe justo ese supuesto: ¿qué pasa si el navegador pudiera ejecutar código compilado desde otros lenguajes, a velocidad cercana a la nativa?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Mozilla, Google, Microsoft y Apple, 2015</h1>
+          <table>
+            <tbody>
+              <tr><th>Tecnología</th><td>WebAssembly (Wasm)</td></tr>
+              <tr><th>Año de anuncio</th><td>2015</td></tr>
+              <tr><th>Organizaciones</th><td>Mozilla, Google, Microsoft y Apple — anuncio conjunto</td></tr>
+              <tr><th>Por qué es notable</th><td>Los cuatro grandes fabricantes de navegadores, normalmente competidores entre sí, colaboraron para crear un estándar común en vez de que cada uno impulsara su propia alternativa</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Ese tipo de colaboración entre competidores directos es poco común en la industria — y es parte de por qué WebAssembly se adoptó tan rápido en los cuatro navegadores principales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Estandarización</p>
+          <h1>Recomendación oficial del W3C, 2019</h1>
+          <p>El <strong>W3C</strong> (World Wide Web Consortium) es el organismo internacional que define los estándares abiertos de la web —el mismo tipo de organismo detrás de HTML y CSS—. Que WebAssembly se convirtiera en una de sus recomendaciones oficiales confirmó que dejó de ser un experimento de los fabricantes de navegadores para pasar a ser parte formal de la plataforma web.</p>
+          <ul>
+            <li><strong>2015:</strong> anuncio conjunto de Mozilla, Google, Microsoft y Apple.</li>
+            <li><strong>2017–2018:</strong> soporte implementado en los cuatro navegadores principales.</li>
+            <li><strong>2019:</strong> WebAssembly se convierte en recomendación oficial del W3C.</li>
+          </ul>
+          <p class="slide-eyebrow">De anuncio conjunto entre competidores a estándar formal de la web en menos de cuatro años.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Código compilado, a velocidad casi nativa, en el navegador</h1>
+          <p><strong>WebAssembly (Wasm)</strong> es un formato binario portable que permite ejecutar en el navegador código compilado desde lenguajes como C, C++ o Rust, a una velocidad cercana a la nativa —muy superior a la de JavaScript interpretado para cargas de cómputo intensivo—.</p>
+          <ul>
+            <li>No reemplaza a JavaScript: lo complementa. JavaScript sigue orquestando la página y sigue siendo el único que manipula el DOM (la estructura de la página que ve el usuario) directamente.</li>
+            <li>Abre la puerta a llevar a la web aplicaciones antes impensables en un navegador: edición de video, herramientas de CAD, motores de videojuegos, simulación científica.</li>
+          </ul>
+          <img class="portada-icon" src="img/webassembly.svg" alt="WebAssembly, formato binario portable para el navegador" style="display:block;width:110px;height:110px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Rendimiento a cambio de un toolchain más complejo</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rendimiento cercano al nativo para cómputo intensivo</td><td>No manipula el DOM directamente: para eso sigue haciendo falta JavaScript</td></tr>
+              <tr><td>Permite reutilizar código existente escrito en C, C++, Rust, entre otros, en vez de reescribirlo en JavaScript</td><td>Curva de aprendizaje y toolchain de compilación más compleja que escribir JavaScript directo</td></tr>
+              <tr><td>Portable: el mismo binario corre en cualquier navegador compatible</td><td>No conviene para lógica simple de interfaz, donde JavaScript sigue siendo más práctico</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">WebAssembly se usa donde el rendimiento importa más que la simplicidad de desarrollo, no como reemplazo general de JavaScript.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De qué código corre a cómo se comunican cliente y servidor</h1>
+          <p>JAMStack cambió dónde vive el HTML y WebAssembly cambió qué código puede correr en el navegador, pero ambos siguen usando el mismo mecanismo de comunicación de siempre: peticiones HTTP independientes, una por cada intercambio.</p>
+          <p><strong>La última tecnología de hoy rompe justamente eso: una conexión que se abre una vez y se queda abierta, hablando en ambas direcciones.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>IETF, RFC 6455, 2011</h1>
+          <table>
+            <tbody>
+              <tr><th>Protocolo</th><td>WebSocket</td></tr>
+              <tr><th>Estandarizado por</th><td>IETF (Internet Engineering Task Force), el organismo que define los estándares técnicos de internet mediante documentos llamados RFC (Request for Comments)</td></tr>
+              <tr><th>Documento</th><td>RFC 6455</td></tr>
+              <tr><th>Año</th><td>2011</td></tr>
+              <tr><th>Contexto</th><td>Parte del esfuerzo más amplio de HTML5 por permitir aplicaciones web más interactivas</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Casos típicos habilitados por WebSockets: chats en vivo, juegos multijugador, dashboards en tiempo real, notificaciones instantáneas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Una conexión persistente, en vez de una petición por mensaje</h1>
+          <p><strong>WebSockets</strong> establece una conexión bidireccional persistente entre cliente y servidor sobre una única conexión <strong>TCP</strong> (el protocolo de transporte confiable que ya vieron en Layers/Microkernel, Semana 7). Una vez abierta, esa conexión se mantiene activa y ambos lados pueden enviar mensajes en cualquier momento, sin volver a abrir la conexión cada vez.</p>
+          <ul>
+            <li><strong>HTTP tradicional:</strong> cada mensaje requiere una petición nueva; el servidor solo responde, nunca inicia el contacto.</li>
+            <li><strong>WebSockets:</strong> una sola conexión se queda abierta; cliente y servidor se envían mensajes en ambas direcciones sin el overhead de abrir una petición nueva cada vez.</li>
+          </ul>
+          <img class="portada-icon" src="img/tower-broadcast.svg" alt="Comunicación bidireccional en tiempo real" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>WebSockets no es lo mismo que WebHooks</h1>
+          <p>En la Semana 8 vieron WebHooks: el servidor le avisa al cliente una sola vez, con un POST, cuando ocurre un evento puntual —el cliente registra una URL y espera, sin conexión activa entre avisos—.</p>
+          <p><strong>WebSockets es otra cosa: cliente y servidor quedan conectados de forma continua y se hablan en ambas direcciones todo el tiempo, no solo cuando hay un evento puntual que notificar.</strong></p>
+          <table>
+            <thead>
+              <tr><th></th><th>WebHooks</th><th>WebSockets</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Naturaleza de la conexión</td><td>Puntual: una petición POST por evento</td><td>Persistente: una sola conexión abierta y activa</td></tr>
+              <tr><td>Quién inicia</td><td>El servidor, solo cuando ocurre el evento</td><td>Ambos lados, en cualquier momento, una vez abierta la conexión</td></tr>
+              <tr><td>Caso típico</td><td>Stripe avisa un pago exitoso; GitHub avisa un push</td><td>Chat en vivo; dashboard que se actualiza solo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cuál de las tres usarían en su proyecto de CodeF@ctory?</h1>
+          <p><strong>En equipos, respondan:</strong></p>
+          <ol>
+            <li>¿Alguna parte de su proyecto podría servirse como sitio estático puro (JAMStack), sin servidor de aplicación? ¿Cuál?</li>
+            <li>¿Hay alguna operación de su proyecto tan pesada en cómputo que WebAssembly tendría sentido? ¿O ninguna lo justifica?</li>
+            <li>¿Qué funcionalidad de su proyecto se beneficiaría de una conexión WebSocket en vez de peticiones HTTP repetidas?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>JAMStack</strong> (JavaScript + APIs + Markup, Netlify/Mathias Biilmann, 2015–2016) pre-construye el sitio como archivos estáticos servidos desde CDN, en vez de generarlo en cada petición: mejor rendimiento, seguridad y escalabilidad, a costa de no encajar bien en contenido altamente transaccional.</li>
+            <li><strong>WebAssembly</strong> (anunciado por Mozilla, Google, Microsoft y Apple en 2015; recomendación W3C en 2019) permite ejecutar código compilado a velocidad casi nativa en el navegador, complementando —no reemplazando— a JavaScript, que sigue siendo el único que manipula el DOM.</li>
+            <li><strong>WebSockets</strong> (IETF, RFC 6455, 2011) abre una conexión TCP persistente y bidireccional entre cliente y servidor, evitando el overhead de una petición HTTP nueva por cada mensaje.</li>
+            <li>WebSockets no es lo mismo que WebHooks: WebHooks avisa un evento puntual una sola vez; WebSockets mantiene una conversación continua en ambas direcciones.</li>
+            <li>Las tres tecnologías rompen, cada una, un supuesto distinto del modelo tradicional de petición-respuesta que domina la web desde los 90.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar qué problema resuelve cada una de las tres tecnologías de hoy y en qué se diferencia WebSockets de WebHooks (Semana 8).</li>
+            <li>Pensar si alguna parte de su proyecto de CodeF@ctory podría beneficiarse de JAMStack, WebAssembly o WebSockets.</li>
+          </ul>
+          <p><strong>La próxima sesión sigue con arquitecturas para aplicaciones modernas: gRPC, Microfrontends, WebRTC, Persistencia Políglota y DevOps.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

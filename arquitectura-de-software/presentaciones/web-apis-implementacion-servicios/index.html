@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web APIs e Implementación de Servicios Web — Semana 15</title>
+  <meta name="description" content="Versionado, paginación, autenticación, rate limiting e idempotencia — el caso de Stripe frente a la ruptura de la API de Twitter en 2012 — Arquitectura de Software, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/web-apis-implementacion-servicios/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Web APIs e Implementación de Servicios Web — Semana 15" />
+  <meta property="og:description" content="Versionado, paginación, autenticación, rate limiting e idempotencia — el caso de Stripe frente a la ruptura de la API de Twitter en 2012 — Arquitectura de Software, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/web-apis-implementacion-servicios/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Web APIs e Implementación de Servicios Web — Semana 15" />
+  <meta name="twitter:description" content="Versionado, paginación, autenticación, rate limiting e idempotencia — el caso de Stripe frente a la ruptura de la API de Twitter en 2012 — Arquitectura de Software, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/web-apis-implementacion-servicios.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 15 — Web APIs e Implementación de Servicios Web</h2>
+          <p class="slide-eyebrow">Diseñar una API que dure años, con el caso de Stripe y la ruptura de la API de Twitter (2012) · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/key.svg" alt="Llave de acceso a una API" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <h1>Una API que no ha roto la compatibilidad con nadie desde 2011.</h1>
+          <p class="slide-eyebrow">Stripe — cada cambio incompatible se resuelve versionando por fecha, nunca rompiendo lo que ya funciona.</p>
+          <img class="portada-icon" src="img/stripe.svg" alt="Stripe" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del esquema en el papel a la API que corre en producción</h1>
+          <p>En las dos sesiones anteriores vimos los principios de SOA y los estándares para describir un servicio (SOAP/WSDL, REST, GraphQL). Hoy damos el siguiente paso: <strong>¿qué decisiones concretas de implementación separan una Web API que se usa con confianza durante quince años de una que rompe a sus clientes cada pocos meses?</strong></p>
+          <p>El caso de Stripe, un procesador de pagos donde la confiabilidad de la API no es opcional, es el hilo conductor de la primera mitad de la sesión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>La API de Stripe</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Stripe, Inc. — procesador de pagos en línea, fundada en 2010</td></tr>
+              <tr><th>Producto</th><td>API REST para procesar pagos, suscripciones y transferencias, usada por millones de negocios</td></tr>
+              <tr><th>Primera versión pública</th><td>2011</td></tr>
+              <tr><th>Reconocimiento</th><td>Citada de forma recurrente en la industria como referencia de buen diseño de API — documentación interactiva, consistencia y estabilidad</td></tr>
+              <tr><th>Política de cambios</th><td>Ningún cambio incompatible se aplica a una cuenta existente sin que esa cuenta decida adoptarlo explícitamente</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Documentado públicamente en la documentación oficial de la API de Stripe (stripe.com/docs/api) y en su blog de ingeniería.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Versionado por fecha</p>
+          <h1>Cada cuenta, anclada a una versión concreta</h1>
+          <p>Stripe versiona su API con un identificador de fecha (ej. <code>2024-06-20</code>), no con un número de versión mayor como <code>v1</code>, <code>v2</code>. <strong>Cada cuenta de Stripe queda anclada a la versión vigente el día en que se creó</strong>, y sigue recibiendo exactamente ese comportamiento aunque Stripe publique decenas de nuevas versiones después.</p>
+          <ul>
+            <li>Si un desarrollador quiere adoptar cambios nuevos, actualiza la versión de su cuenta de forma explícita y controlada.</li>
+            <li>Si no hace nada, su integración sigue funcionando exactamente igual, sin sorpresas, durante años.</li>
+          </ul>
+          <p class="slide-eyebrow">El costo lo asume Stripe, manteniendo múltiples versiones vivas a la vez — la alternativa a que el costo de una ruptura lo paguen todos sus clientes de golpe.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Otras prácticas documentadas</p>
+          <h1>Idempotencia, webhooks y documentación ejecutable</h1>
+          <ul>
+            <li><strong>Claves de idempotencia:</strong> cada solicitud que crea un cobro puede llevar una clave única; si la red falla y el cliente reintenta con la misma clave, Stripe garantiza que el cobro no se duplica.</li>
+            <li><strong>Webhooks:</strong> en vez de que el cliente pregunte constantemente "¿ya se procesó el pago?" (polling), Stripe notifica proactivamente al servidor del cliente cuando algo relevante ocurre.</li>
+            <li><strong>Documentación interactiva:</strong> cada endpoint documentado permite ejecutar solicitudes de prueba reales desde el propio navegador, con ejemplos de código en múltiples lenguajes generados automáticamente.</li>
+          </ul>
+          <p class="slide-eyebrow">Estos tres conceptos — idempotencia, notificación por eventos y documentación ejecutable — reaparecen formalizados en el resto de la sesión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De las prácticas de un caso a la disciplina completa</h1>
+          <p>Lo que Stripe hace bien no es un secreto ni algo exclusivo de los pagos: es la aplicación consistente de un conjunto de prácticas de diseño de Web APIs bien documentadas en la industria. <strong>Formalicemos esas prácticas una por una.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Diseño de recursos y URIs</h1>
+          <p>Una Web API REST bien diseñada organiza sus URIs alrededor de <strong>recursos</strong> (sustantivos), no de acciones (verbos) — la acción ya la expresa el verbo HTTP (s14 de la sesión anterior).</p>
+          <table>
+            <thead><tr><th>Bien diseñado</th><th>Mal diseñado</th></tr></thead>
+            <tbody>
+              <tr><td><code>GET /pedidos/4521</code></td><td><code>GET /obtenerPedido?id=4521</code></td></tr>
+              <tr><td><code>POST /pedidos</code></td><td><code>POST /crearPedido</code></td></tr>
+              <tr><td><code>GET /clientes/88/pedidos</code></td><td><code>GET /pedidosDeUnCliente?cliente=88</code></td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Sustantivos en plural, anidación clara para relaciones (cliente → sus pedidos), y el verbo HTTP como única fuente de la acción.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · De vuelta al caso</p>
+          <h1>Estrategias de versionado</h1>
+          <table>
+            <thead><tr><th>Estrategia</th><th>Ejemplo</th><th>Trade-off</th></tr></thead>
+            <tbody>
+              <tr><td><strong>En la URI</strong></td><td><code>/v1/pedidos</code></td><td>Simple y visible, pero mezcla la versión con la identidad del recurso.</td></tr>
+              <tr><td><strong>En un header</strong></td><td><code>Accept: application/vnd.api+json;version=2</code></td><td>URIs limpias, pero menos visible/debuggeable a simple vista.</td></tr>
+              <tr><td><strong>Por fecha, por cuenta</strong></td><td><code>Stripe-Version: 2024-06-20</code></td><td>Máxima estabilidad para el cliente (s05), mayor complejidad operativa para el proveedor.</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">No existe una estrategia universalmente "correcta" — es, otra vez, un trade-off arquitectónico entre simplicidad para el proveedor y estabilidad para el consumidor.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Paginación: offset vs. cursor</h1>
+          <p>Cuando un recurso puede devolver miles de elementos (ej. todas las transacciones de una cuenta), la API debe paginar la respuesta en vez de devolverlos todos de una vez.</p>
+          <ul>
+            <li><strong>Paginación por offset:</strong> <code>?page=3&amp;limit=20</code> — simple de implementar, pero puede saltarse o repetir elementos si la tabla cambia entre una página y otra.</li>
+            <li><strong>Paginación por cursor:</strong> <code>?cursor=eyJpZCI6NDUyMX0&amp;limit=20</code> — el cursor apunta a una posición estable en los datos (ej. el último ID visto); más robusta ante datos que cambian en tiempo real, usada por Stripe y por la mayoría de las APIs de alto tráfico.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Autenticación y autorización</h1>
+          <table>
+            <thead><tr><th>Mecanismo</th><th>Cómo funciona</th><th>Uso típico</th></tr></thead>
+            <tbody>
+              <tr><td><strong>API key</strong></td><td>Un token fijo enviado en cada solicitud (header o query)</td><td>Integraciones servidor-a-servidor simples</td></tr>
+              <tr><td><strong>OAuth 2.0</strong></td><td>Protocolo de autorización delegada — el usuario aprueba que una app acceda a sus datos, sin compartir su contraseña</td><td>Apps de terceros que actúan en nombre de un usuario</td></tr>
+              <tr><td><strong>JWT (JSON Web Token)</strong></td><td>Token firmado que contiene la identidad y permisos del usuario, verificable sin consultar una base de datos central</td><td>Autenticación stateless entre microservicios</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>Autenticación</strong> responde "¿quién eres?"; <strong>autorización</strong> responde "¿qué puedes hacer?" — son conceptos distintos que a menudo se confunden.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Rate limiting: proteger el servicio de sus propios clientes</h1>
+          <p><strong>El rate limiting (limitación de tasa) restringe cuántas solicitudes puede hacer un cliente en una ventana de tiempo</strong>, para proteger la disponibilidad del servicio ante uso excesivo, accidental o malicioso.</p>
+          <ul>
+            <li>Se comunica normalmente con headers de respuesta: <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code>, <code>X-RateLimit-Reset</code>.</li>
+            <li>Al excederse, el servidor responde <code>429 Too Many Requests</code>.</li>
+          </ul>
+          <p class="slide-eyebrow">El rate limiting reaparece en la segunda mitad de esta sesión: fue una de las herramientas que Twitter usó — de forma mucho más agresiva — en el caso que viene a continuación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · De vuelta al caso</p>
+          <h1>Idempotencia, formalizada</h1>
+          <p><strong>Una operación es idempotente cuando ejecutarla varias veces produce exactamente el mismo resultado que ejecutarla una sola vez.</strong> GET, PUT y DELETE son idempotentes por definición del estándar HTTP; POST no lo es — cada solicitud POST puede crear un nuevo recurso.</p>
+          <p>Por eso Stripe (s06) agrega <strong>claves de idempotencia</strong> explícitas para operaciones POST sensibles como crear un cobro: si la conexión falla justo después de que el cobro se procesó y el cliente reintenta automáticamente, la clave le dice al servidor "esta ya la ejecuté, no la repitas".</p>
+          <p class="slide-eyebrow">Sin idempotencia, un simple reintento de red ante una falla temporal puede convertirse en un cobro duplicado a un cliente real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Documentar la API: OpenAPI y la documentación ejecutable</h1>
+          <p><strong>OpenAPI (antes Swagger) es un estándar para describir formalmente una API REST</strong> — sus recursos, operaciones, parámetros y respuestas — en un documento YAML o JSON legible tanto por humanos como por herramientas.</p>
+          <ul>
+            <li>Genera documentación interactiva navegable automáticamente.</li>
+            <li>Permite generar clientes (SDKs) en distintos lenguajes de forma automática.</li>
+            <li>Es, para REST, un equivalente funcional al WSDL de SOAP (s10 de la sesión anterior) — mismo propósito, formato distinto.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo · Ficha técnica</p>
+          <h1>La API de Twitter, versión 1.1 — 2012</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Twitter, Inc.</td></tr>
+              <tr><th>Anuncio</th><td>Agosto de 2012, publicado por <strong>Michael Sippey</strong>, entonces director de plataforma de Twitter, en el blog oficial de desarrolladores</td></tr>
+              <tr><th>Cambio</th><td>Deprecación de la API v1.0 y migración forzada a la v1.1</td></tr>
+              <tr><th>Restricciones nuevas</th><td>Límites de tasa mucho más estrictos, autenticación OAuth obligatoria en todas las llamadas, y "Lineamientos de Visualización" que restringían cómo las apps de terceros podían mostrar tuits</td></tr>
+              <tr><th>Impacto reportado</th><td>Varias aplicaciones de terceros conocidas de esa época (clientes alternativos de Twitter) quedaron inviables comercialmente bajo las nuevas reglas</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Ampliamente cubierto en su momento por medios especializados como TechCrunch y The Verge, y documentado en el propio blog de desarrolladores de Twitter.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo · Lo que salió mal</p>
+          <h1>Una migración técnicamente anunciada, estratégicamente abrupta</h1>
+          <p>Twitter sí publicó documentación y un plazo de migración de la v1.0 a la v1.1 — no fue un corte sin aviso. El problema no fue solo técnico: fue que <strong>las nuevas reglas de negocio (límites de tasa mucho más bajos para apps de terceros, restricciones de cuántos usuarios podía tener un cliente alternativo) hacían inviable seguir operando</strong> muchas de esas aplicaciones, sin importar cuán bien migraran su código.</p>
+          <p class="slide-eyebrow">La lección arquitectónica no es solo "avisa con tiempo" — es que un cambio de API también comunica, implícita o explícitamente, quién puede seguir construyendo sobre tu plataforma y quién no.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión</p>
+          <h1>Stripe vs. Twitter: mismo problema, decisiones opuestas</h1>
+          <table>
+            <thead><tr><th></th><th>Stripe</th><th>Twitter (2012)</th></tr></thead>
+            <tbody>
+              <tr><td>Ante un cambio incompatible</td><td>Se crea una nueva versión; las cuentas existentes no se mueven a menos que lo pidan</td><td>Se deprecó la versión anterior con fecha límite obligatoria para todos</td></tr>
+              <tr><td>Quién asume el costo del cambio</td><td>Stripe, manteniendo varias versiones vivas</td><td>Los desarrolladores externos, migrando bajo nuevas restricciones de negocio</td></tr>
+              <tr><td>Efecto en el ecosistema de terceros</td><td>Confianza sostenida durante más de una década</td><td>Contracción documentada del ecosistema de apps de terceros</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">No es solo una diferencia técnica de versionado: es una diferencia de a quién prioriza la arquitectura de la API cuando hay que elegir.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo deprecar una API sin repetir el caso de Twitter</h1>
+          <ul>
+            <li><strong>Anunciar con mucha anticipación</strong> — meses, no semanas — y en canales que los desarrolladores realmente monitorean.</li>
+            <li><strong>Header <code>Sunset</code> o <code>Deprecation</code>:</strong> la propia respuesta HTTP de la versión antigua indica la fecha exacta en que dejará de funcionar.</li>
+            <li><strong>Mantener ambas versiones vivas</strong> durante el período de transición, en vez de forzar un corte.</li>
+            <li><strong>Documentar la guía de migración</strong> campo por campo, endpoint por endpoint — no solo "lean la v2".</li>
+          </ul>
+          <p class="slide-eyebrow">Estas prácticas no eliminan el costo de deprecar una API, pero lo distribuyen de forma predecible en vez de imponerlo de golpe.</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿De quién es la API: del proveedor o del ecosistema que la usa?</h1>
+          <p>Es tentador pensar que una API le pertenece por completo a quien la construye, y que puede cambiarla como quiera. El caso de Twitter (s15-s17) muestra que esa visión tiene un costo real: <strong>un ecosistema de terceros que invirtió tiempo y dinero construyendo sobre esa API también tiene, en la práctica, un interés legítimo en su estabilidad</strong> — aunque no tenga poder formal de decisión sobre ella.</p>
+          <p class="slide-eyebrow">No hay una respuesta única correcta: Stripe optó por absorber el costo de la estabilidad; Twitter optó por priorizar el control de su plataforma. Ambas son decisiones arquitectónicas y de negocio válidas, con consecuencias distintas para quienes dependen de la API.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen el versionado de su propia API</h1>
+          <p><strong>En equipos, para la API de su proyecto CodeF@ctory:</strong></p>
+          <ol>
+            <li>¿Qué estrategia de versionado (s09) usarían: en la URI, en un header, o por fecha como Stripe? Justifiquen con el trade-off correspondiente.</li>
+            <li>Identifiquen una operación de su API que debería ser idempotente (s13, ej. crear un pago o una matrícula) y qué pasaría si no lo fuera.</li>
+            <li>Si tuvieran que deprecar un endpoint hoy, ¿qué pasos de s18 aplicarían primero?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Diseñar recursos y URIs alrededor de sustantivos, no de acciones — el verbo HTTP ya expresa la acción.</li>
+            <li>Versionar (URI, header o por fecha como Stripe), paginar con cursor en sistemas de alto tráfico, y limitar la tasa de solicitudes (rate limiting) son decisiones de diseño explícitas, no detalles de implementación.</li>
+            <li>Autenticación (quién eres) y autorización (qué puedes hacer) son conceptos distintos; API keys, OAuth 2.0 y JWT resuelven necesidades diferentes.</li>
+            <li>La <strong>idempotencia</strong> protege contra reintentos de red duplicando operaciones sensibles; <strong>OpenAPI</strong> documenta la API de forma ejecutable, como el WSDL lo hacía para SOAP.</li>
+            <li>El caso de Twitter (2012) frente al de Stripe muestra que deprecar una API no es solo un problema técnico: es una decisión sobre a quién protege la arquitectura cuando algo tiene que romperse.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar las estrategias de versionado (s09) y las prácticas de deprecación responsable (s18) — se retoman al diseñar el versionado de servicios en microservicios.</li>
+            <li>Revisar si su API de CodeF@ctory ya implementa autenticación (s11) y manejo de errores con los códigos HTTP correctos.</li>
+          </ul>
+          <p><strong>La próxima sesión cierra la Unidad 4 con Arquitecturas Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless (FaaS) — cómo estas mismas Web APIs se organizan a la escala de un sistema completo.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

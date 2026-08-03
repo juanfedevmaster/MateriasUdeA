@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antipatrones de Arquitectura de Software — Semana 11</title>
+  <meta name="description" content="Cuando las decisiones arquitectónicas se convierten en el problema — cierre de la Unidad 2, con el caso real de Knight Capital Group — Arquitectura de Software, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/antipatrones-arquitectura-software/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Antipatrones de Arquitectura de Software — Semana 11" />
+  <meta property="og:description" content="Cuando las decisiones arquitectónicas se convierten en el problema — cierre de la Unidad 2, con el caso real de Knight Capital Group — Arquitectura de Software, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/antipatrones-arquitectura-software/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Antipatrones de Arquitectura de Software — Semana 11" />
+  <meta name="twitter:description" content="Cuando las decisiones arquitectónicas se convierten en el problema — cierre de la Unidad 2, con el caso real de Knight Capital Group — Arquitectura de Software, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/antipatrones-arquitectura-software.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 11 — Antipatrones de Arquitectura de Software</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Advertencia — antipatrón arquitectónico" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>45 minutos.<br>440 millones de dólares.</h1>
+          <p class="slide-eyebrow">Knight Capital Group, 1 de agosto de 2012 — lo que costó dejar código muerto sin borrar en un servidor de producción.</p>
+          <img class="portada-icon" src="img/arrow-trend-down.svg" alt="Pérdida financiera acelerada" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Una cifra así no sale de la nada</h1>
+          <p>Detrás de esos 45 minutos hay una historia concreta: una firma de trading de alta frecuencia, un despliegue de software que salió mal, y una decisión arquitectónica tomada años antes que nadie se atrevió a revertir.</p>
+          <p><strong>Antes de nombrar el problema con teoría, vean cómo se ve en la práctica — con todo el detalle técnico del incidente.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Knight Capital Group, 2012</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Knight Capital Group — firma de trading de alta frecuencia en Wall Street</td></tr>
+              <tr><th>Fecha</th><td>1 de agosto de 2012, apertura del mercado</td></tr>
+              <tr><th>Duración del incidente</th><td>Aproximadamente 45 minutos</td></tr>
+              <tr><th>Pérdida</th><td>Cerca de 440 millones de dólares</td></tr>
+              <tr><th>Consecuencia</th><td>Casi quiebra de la empresa; fue adquirida poco después del incidente</td></tr>
+              <tr><th>Fuente</th><td>Informe de la SEC (U.S. Securities and Exchange Commission), 2013, sobre el incidente</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Uno de los incidentes de software más citados en la industria financiera como ejemplo de deuda arquitectónica materializada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Qué pasó técnicamente</p>
+          <h1>Un despliegue que no llegó igual a los ocho servidores</h1>
+          <p>Knight Capital operaba su motor de trading automatizado en <strong>ocho servidores de producción</strong>. Para el día del incidente, el equipo desplegó una actualización de software destinada a reemplazar una funcionalidad antigua y ya en desuso.</p>
+          <ul>
+            <li>El despliegue de la nueva versión <strong>no se aplicó de forma uniforme</strong>: siete servidores recibieron el código actualizado correctamente, pero uno de los ocho conservó código antiguo que debía haber sido retirado años atrás.</li>
+            <li>Ese código legado reutilizaba una bandera (flag) que en el sistema nuevo tenía un <strong>significado distinto</strong> al que tuvo originalmente.</li>
+            <li>Al activarse esa bandera en producción, el servidor con el código viejo interpretó las órdenes de forma errática.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La causa raíz</p>
+          <h1>Código muerto que nadie se atrevió a borrar</h1>
+          <p>El servidor con el código antiguo comenzó a ejecutar, de forma automática y sin supervisión, <strong>millones de órdenes de compra y venta erráticas</strong> en decenas de acciones distintas, moviendo el precio de mercado de esos títulos de forma anómala.</p>
+          <p>El equipo de Knight Capital tardó en identificar que el problema venía de un solo servidor con una versión distinta del software — y, crucialmente, <strong>no existía un mecanismo para detener el sistema de forma inmediata</strong> una vez detectado el comportamiento anómalo.</p>
+          <p class="slide-eyebrow">El código nunca debió seguir ahí: era funcionalidad obsoleta que se dejó "por si acaso", y ese "por si acaso" costó cientos de millones de dólares.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Consecuencia</p>
+          <h1>De la casi quiebra a la adquisición</h1>
+          <p>En 45 minutos, Knight Capital acumuló una posición de mercado tan grande y desfavorable que la pérdida resultante puso en riesgo la supervivencia misma de la firma. La empresa necesitó una inyección de capital de emergencia para seguir operando, y meses después fue <strong>adquirida</strong> por otra firma.</p>
+          <p><strong>La SEC investigó el caso formalmente y publicó un informe en 2013</strong>, que hoy es la referencia pública más citada sobre este incidente — y uno de los ejemplos favoritos de la industria para hablar de riesgo operacional causado por software.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la anécdota a la disciplina que la explica</h1>
+          <p>Lo que le pasó a Knight Capital no fue mala suerte: fue la consecuencia visible de decisiones arquitectónicas que, en su momento, parecieron razonables — dejar código antiguo "por si se necesita después", desplegar sin garantizar consistencia entre servidores, no invertir en un mecanismo de parada de emergencia.</p>
+          <p><strong>Ese tipo de decisión, que parece razonable pero termina siendo contraproducente, tiene nombre en la disciplina: antipatrón. Hoy cerramos la Unidad 2 estudiando la cara opuesta de todo lo que han visto: los errores arquitectónicos que se repiten con la frecuencia suficiente como para documentarlos y reconocerlos.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un antipatrón?</h1>
+          <p><strong>Un antipatrón es una solución que parece razonable frente a un problema recurrente, pero que en la práctica resulta contraproducente y genera más problemas de los que resuelve.</strong></p>
+          <table>
+            <thead>
+              <tr><th></th><th>Patrón</th><th>Antipatrón</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Naturaleza</td><td>Buena práctica probada, que sí funciona en la práctica</td><td>Error común, que parece funcionar pero termina fallando</td></tr>
+              <tr><td>Propósito de documentarlo</td><td>Reutilizar una solución que ya demostró funcionar</td><td>Reconocer un error antes de repetirlo, o corregirlo a tiempo</td></tr>
+              <tr><td>Ejemplo de hoy</td><td>Circuit Breaker (Semana 9)</td><td>Código muerto reactivado en Knight Capital</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">No es lo mismo que un simple "error de programación": un antipatrón es una decisión de diseño o arquitectura que se repite lo suficiente entre proyectos distintos como para merecer nombre y catálogo propio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Origen del término</p>
+          <h1>De dónde viene la palabra "antipatrón"</h1>
+          <table>
+            <thead>
+              <tr><th>Hito</th><th>Detalle</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Primer uso registrado</th><td><strong>Andrew Koenig</strong>, en un artículo de 1995, usó por primera vez el término "anti-pattern" en la literatura de software.</td></tr>
+              <tr><th>Obra que lo popularizó</th><td><em>"AntiPatterns: Refactoring Software, Architectures, and Projects in Crisis"</em> (1998), de <strong>William J. Brown, Raphael C. Malveau, Hays W. "Skip" McCormick III y Thomas J. Mowbray</strong>.</td></tr>
+              <tr><th>Qué propuso el libro</th><td>Un catálogo formal de antipatrones de software, arquitectura y gestión de proyectos, con la misma estructura de documentación que ya usaban los catálogos de patrones (contexto, problema, solución errónea, refactorización recomendada).</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">El término nace como espejo del movimiento de patrones de diseño (Gang of Four, 1994): si un patrón documenta una buena práctica, un antipatrón documenta un error frecuente para poder evitarlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El antipatrón arquitectónico más citado</h1>
+          <p>De todo el catálogo que abrieron Koenig y luego Brown, Malveau, McCormick y Mowbray, hay uno que se convirtió en el ejemplo por excelencia cuando se habla de arquitectura de software: describe exactamente lo que le puede pasar a cualquier sistema que crece sin que nadie vigile su estructura.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>"Big Ball of Mud" (Bola de Lodo)</h1>
+          <p><strong>Un sistema sin una arquitectura discernible: código pegado con parches sucesivos, sin capas claras ni separación de responsabilidades — funciona, pero nadie entiende bien por qué, y nadie puede modificarlo con confianza.</strong></p>
+          <ul>
+            <li>No es un sistema roto: normalmente funciona en producción y cumple su propósito.</li>
+            <li>El problema es estructural: cualquier cambio, por pequeño que sea, puede tener efectos impredecibles en otra parte del sistema.</li>
+            <li>Suele originarse por presión de tiempo constante, rotación de equipo y ausencia de revisión arquitectónica — cada decisión individual parecía razonable en su momento.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ficha técnica</p>
+          <h1>Foote y Yoder, 1997</h1>
+          <table>
+            <tbody>
+              <tr><th>Autores</th><td>Brian Foote y Joseph Yoder</td></tr>
+              <tr><th>Año</th><td>1997</td></tr>
+              <tr><th>Documento</th><td>Paper <em>"Big Ball of Mud"</em></td></tr>
+              <tr><th>Presentado en</th><td>PLoP (Pattern Languages of Programs) — la conferencia de referencia de la comunidad de patrones de software</td></tr>
+              <tr><th>Aporte</th><td>Formalizar y nombrar un fenómeno que ya era ampliamente reconocido informalmente en la industria, dándole la misma estructura de documentación que un patrón "bueno"</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Que el "Big Ball of Mud" se haya presentado en PLoP, el foro académico de los patrones de diseño, subraya la idea central de la sesión: antipatrones y patrones se documentan con el mismo rigor, solo que uno enseña qué hacer y el otro qué evitar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo · De vuelta al caso</p>
+          <h1>Los antipatrones detrás de Knight Capital</h1>
+          <p>El incidente de Knight Capital no fue un solo error: fue la combinación de varios antipatrones reconocibles.</p>
+          <ul>
+            <li><strong>Lava Flow</strong> (código muerto no eliminado): código legado que "ya no se usa" pero que nadie se atreve a borrar por miedo a romper algo — hasta que se reactiva por accidente, como ocurrió con la bandera reutilizada.</li>
+            <li><strong>Despliegue no atómico/consistente:</strong> actualizar siete de ocho servidores y dejar uno con una versión distinta rompe una garantía básica de cualquier sistema distribuido: todos los nodos deben quedar en el mismo estado tras un despliegue.</li>
+            <li><strong>Ausencia de "kill switch":</strong> no existía un mecanismo para detener el sistema de forma inmediata una vez detectado el comportamiento anómalo, lo que permitió que el error se acumulara durante 45 minutos completos.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Conexión con lo ya visto</p>
+          <h1>Lo que sí pudo haber ayudado: Circuit Breaker</h1>
+          <p>En la Semana 9 vieron <strong>Circuit Breaker</strong>, el patrón del catálogo POSA que detecta comportamiento anómalo en un componente y corta la comunicación con él antes de que el fallo se propague en cascada al resto del sistema.</p>
+          <p><strong>Ese es exactamente el tipo de mecanismo que le faltó a Knight Capital: un punto de control capaz de detectar que el volumen y patrón de órdenes eran anómalos y detener automáticamente el envío de nuevas órdenes, en vez de dejar que el sistema siguiera operando sin freno durante 45 minutos.</strong></p>
+          <p class="slide-eyebrow">Un patrón bien aplicado no es solo "buena práctica" en abstracto: en este caso concreto, hubiera evitado la mayor parte de la pérdida.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Catálogo compacto</p>
+          <h1>Otros antipatrones comunes</h1>
+          <table>
+            <thead>
+              <tr><th>Antipatrón</th><th>Qué es</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Golden Hammer</strong></td><td>Usar la misma solución o tecnología para todo problema, sin evaluar si es la adecuada — "si solo tienes un martillo, todo parece un clavo".</td></tr>
+              <tr><td><strong>Vendor Lock-in</strong></td><td>Dependencia tan profunda de un proveedor específico (nube, base de datos propietaria) que migrar a otro se vuelve prohibitivamente costoso.</td></tr>
+              <tr><td><strong>God Object / God Class</strong></td><td>Una clase o componente que concentra demasiadas responsabilidades, conociendo y controlando casi todo el sistema.</td></tr>
+              <tr><td><strong>Spaghetti Code</strong></td><td>Código con flujo de control enredado, sin estructura clara, difícil de seguir o modificar.</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">God Object viola directamente el Principio de Responsabilidad Única (SRP) de SOLID, visto en la Semana 10: una clase debería tener una sola razón para cambiar, no todas las razones del sistema a la vez.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Lo que hoy es antipatrón, ayer fue una decisión razonable</h1>
+          <p>Es tentador leer un antipatrón como "alguien hizo algo obviamente mal". Casi nunca es así: la bandera reutilizada de Knight Capital tuvo sentido cuando se escribió; el código que hoy es un Big Ball of Mud empezó como un sistema pequeño y comprensible.</p>
+          <p><strong>La deuda técnica no siempre es un error — muchas veces es una decisión consciente y razonable dada la información y el contexto del momento (una fecha límite, un alcance más pequeño, una tecnología que luego cambió) que se volvió insostenible con el tiempo.</strong></p>
+          <p>Lo que distingue a un equipo maduro no es no generar nunca deuda técnica, sino <strong>reconocerla, hacerla visible y pagarla antes de que se convierta en un antipatrón activo.</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión entre decisión razonable y consecuencia contraproducente" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Encuentren un antipatrón en su propio proyecto</h1>
+          <p><strong>En equipos, revisen su proyecto de CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Identifican algún antipatrón de los vistos hoy (Big Ball of Mud, Lava Flow, Golden Hammer, Vendor Lock-in, God Object, Spaghetti Code) presente, aunque sea parcialmente, en su proyecto?</li>
+            <li>¿Fue una decisión consciente en su momento, o simplemente creció sin que nadie lo decidiera?</li>
+            <li>¿Qué patrón arquitectónico ya visto en el curso podría mitigarlo?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>antipatrón</strong> es una solución que parece razonable a un problema recurrente pero resulta contraproducente; documentarlo permite reconocerlo y evitarlo, igual que un patrón documenta una buena práctica.</li>
+            <li>El término lo usó por primera vez <strong>Andrew Koenig (1995)</strong> y lo popularizó el libro <em>AntiPatterns</em> de Brown, Malveau, McCormick y Mowbray (1998).</li>
+            <li><strong>Big Ball of Mud</strong> (Foote y Yoder, PLoP, 1997) es el antipatrón arquitectónico más citado: un sistema sin arquitectura discernible.</li>
+            <li>Knight Capital (2012, pérdida de ~440 millones de dólares en 45 minutos) mostró en la práctica tres antipatrones combinados: código muerto no eliminado (Lava Flow), despliegue no atómico, y ausencia de un mecanismo de parada de emergencia — algo que un Circuit Breaker (Semana 9) pudo haber mitigado.</li>
+            <li>Lo que hoy es antipatrón muchas veces fue una decisión razonable ayer: la deuda técnica no siempre es un error, es un riesgo que hay que gestionar activamente.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la Unidad 2</p>
+          <h1>Doce sesiones, una sola unidad: Patrones Arquitectónicos</h1>
+          <p>Con esta sesión cerramos la Unidad 2 completa, doce sesiones desde la Semana 6 hasta hoy:</p>
+          <ul>
+            <li><strong>Catálogo POSA</strong> (Semanas 6 a 9) — quince patrones puntuales: Pipes &amp; Filters, Blackboard, Broker, MVC, Batch, Cliente/Servidor N-capas, Layers, Microkernel, SOA, Hexagonal, Microservicios, WebHooks, BFF, Circuit Breaker y SOFEA.</li>
+            <li><strong>Estilos Arquitectónicos</strong> (Semana 9) — la taxonomía de Shaw y Garlan que organiza esos quince patrones en cinco grandes familias.</li>
+            <li><strong>Principios de Diseño</strong> (Semana 10) — SOLID, DRY, KISS y YAGNI, las reglas que deberían gobernar cada decisión dentro de un estilo.</li>
+            <li><strong>Arquitecturas Modernas</strong> (Semana 10) — JAMStack, WebAssembly, WebSockets, gRPC, micro-frontends y las tendencias que redefinen cómo se implementan esos estilos hoy.</li>
+            <li><strong>Antipatrones</strong> (hoy) — la cara opuesta de todo lo anterior: lo que pasa cuando esas decisiones se toman mal, o se dejan de revisar.</li>
+          </ul>
+          <p><strong>Todo lo que han visto en esta unidad — patrones, estilos, principios, arquitecturas modernas — existe, en el fondo, para evitar terminar como Knight Capital.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar los antipatrones vistos hoy y confirmar que pueden explicar, con sus propias palabras, por qué cada uno "parece razonable" antes de volverse un problema.</li>
+            <li>Tener identificado, con su equipo de CodeF@ctory, al menos un antipatrón presente en su proyecto y cómo lo abordarían.</li>
+          </ul>
+          <p><strong>La Semana 12 abre la Unidad 3 — Desarrollo de Software basado en Arquitectura — con Desarrollo basado en Componentes.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

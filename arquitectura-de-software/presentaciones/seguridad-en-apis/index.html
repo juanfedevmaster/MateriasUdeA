@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Importancia de la Seguridad en las APIs — Semana 16</title>
+  <meta name="description" content="La puerta que la mayoría de los ataques modernos usa para entrar — el caso real de Optus (2022) — cierre de la Unidad 5 — Arquitectura de Software, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/seguridad-en-apis/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="La Importancia de la Seguridad en las APIs — Semana 16" />
+  <meta property="og:description" content="La puerta que la mayoría de los ataques modernos usa para entrar — el caso real de Optus (2022) — cierre de la Unidad 5 — Arquitectura de Software, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/seguridad-en-apis/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="La Importancia de la Seguridad en las APIs — Semana 16" />
+  <meta name="twitter:description" content="La puerta que la mayoría de los ataques modernos usa para entrar — el caso real de Optus (2022) — cierre de la Unidad 5 — Arquitectura de Software, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/seguridad-en-apis.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 16 — La Importancia de la Seguridad en las APIs</h2>
+          <p class="slide-eyebrow">La puerta que la mayoría de los ataques modernos usa para entrar — cierre de la Unidad 5 — con el caso real de Optus (2022) · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/route.svg" alt="Rutas de una API" style="display:block;width:190px;height:190px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <h1>Casi 10 millones de clientes. Ninguna clave, ningún token — solo una API abierta a internet.</h1>
+          <p class="slide-eyebrow">Optus, 2022 — el segundo operador de telecomunicaciones más grande de Australia, y la brecha que puso a la industria a hablar de autenticación de APIs.</p>
+          <img class="portada-icon" src="img/door-closed.svg" alt="Puerta sin asegurar" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un operador de telecomunicaciones a los datos de identidad de 4 de cada 10 australianos</h1>
+          <p>Optus es el segundo mayor operador de telecomunicaciones de Australia, con millones de clientes actuales y anteriores. En septiembre de 2022, la compañía reveló una brecha que expuso los datos personales de cerca de 9.8 millones de personas — casi el 40% de la población del país.</p>
+          <p><strong>A diferencia de Equifax (la sesión anterior), donde la falla estuvo en el parcheo y la segmentación de red, la causa raíz de Optus estuvo concentrada en un solo componente: una API expuesta a internet sin control de autenticación.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>La brecha de datos de Optus</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Optus (Singtel Optus Pty Limited)</td></tr>
+              <tr><th>Personas afectadas</th><td>Aproximadamente 9.8 millones — casi el 40% de la población de Australia, incluyendo exclientes</td></tr>
+              <tr><th>Datos expuestos</th><td>Nombres, fechas de nacimiento, teléfonos, correos y, para un subconjunto, direcciones y números de documento de identidad (licencia de conducir, pasaporte)</td></tr>
+              <tr><th>Causa raíz</th><td>Endpoint de API de verificación de identidad, expuesto a internet sin autenticación requerida</td></tr>
+              <tr><th>Divulgación pública</th><td>22 de septiembre de 2022</td></tr>
+              <tr><th>Consecuencias</th><td>Investigación parlamentaria en Australia, reforma regulatoria de protección de datos, reemisión de documentos de identidad a cientos de miles de clientes</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Cómo se explotó</p>
+          <h1>Sin token, sin límite de solicitudes: bastaba con adivinar el siguiente identificador</h1>
+          <p>La API en cuestión existía para verificar la identidad de clientes, y quedó accesible desde internet tras un cambio de configuración de red — <strong>sin exigir un token de autenticación</strong> para responder. Además, el endpoint no aplicaba ningún límite de tasa (rate limiting): cualquiera podía enviar solicitudes automatizadas, incrementando un identificador numérico, y la API respondía con los datos del siguiente cliente sin restricción.</p>
+          <p><strong>Dos fallas se combinaron: no verificar quién preguntaba (autenticación) y no limitar cuántas veces se podía preguntar (control de consumo de recursos) — ninguna de las dos requiere un atacante sofisticado, solo un script simple.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Dos fallas con nombre propio en el estándar de seguridad de APIs</h1>
+          <p>Lo que le ocurrió a Optus no es un caso aislado — es tan común que la <strong>OWASP</strong> (Open Web Application Security Project) mantiene, desde 2019, un catálogo específico solo para riesgos de seguridad en APIs, separado del OWASP Top 10 general de aplicaciones web. La versión más reciente es de 2023.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Por qué las APIs son el blanco preferido?</h1>
+          <p>En la Semana 15 vieron cómo un API Gateway centraliza el acceso a los microservicios internos de un sistema, y en toda la Unidad 4 cómo las APIs se volvieron el mecanismo estándar para exponer funcionalidad al mundo exterior.</p>
+          <ul>
+            <li>Exponen datos y lógica de negocio directamente, sin la capa visual que normalmente filtra qué se muestra.</li>
+            <li>A menudo procesan más datos de los que la interfaz visual llega a mostrar ("excessive data exposure").</li>
+            <li>Suelen documentarse públicamente — lo que ayuda tanto a desarrolladores como a atacantes.</li>
+            <li>Crecen rápido: muchas organizaciones no llevan un inventario completo de cuáles APIs tienen activas.</li>
+          </ul>
+          <p class="slide-eyebrow">Cada API nueva es, literalmente, una puerta nueva hacia el sistema — y cada puerta necesita su propia cerradura.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>OWASP API Security Top 10 (2023)</h1>
+          <table>
+            <thead><tr><th>Categoría</th><th>Riesgo</th></tr></thead>
+            <tbody>
+              <tr><td>API1</td><td>Broken Object Level Authorization</td></tr>
+              <tr><td>API2</td><td>Broken Authentication</td></tr>
+              <tr><td>API3</td><td>Broken Object Property Level Authorization</td></tr>
+              <tr><td>API4</td><td>Unrestricted Resource Consumption</td></tr>
+              <tr><td>API5</td><td>Broken Function Level Authorization</td></tr>
+              <tr><td>API6</td><td>Unrestricted Access to Sensitive Business Flows</td></tr>
+              <tr><td>API7</td><td>Server Side Request Forgery</td></tr>
+              <tr><td>API8</td><td>Security Misconfiguration</td></tr>
+              <tr><td>API9</td><td>Improper Inventory Management</td></tr>
+              <tr><td>API10</td><td>Unsafe Consumption of APIs</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Optus (s05) es un caso de manual de dos de estas diez categorías — las vemos en detalle a continuación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Broken Authentication (API2): la falla que hundió a Optus</h1>
+          <p>La categoría <strong>API2:2023</strong> cubre endpoints que no verifican correctamente la identidad de quien hace la solicitud — tokens ausentes, mal validados, o mecanismos de autenticación implementados de forma inconsistente entre endpoints.</p>
+          <p><strong>El endpoint explotado en Optus (s05) es un ejemplo directo de esta categoría: respondía con datos sensibles a cualquier solicitante, sin exigir ningún token ni credencial.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se autentica una API: tres mecanismos comunes</h1>
+          <table>
+            <thead><tr><th>Mecanismo</th><th>Cómo funciona</th></tr></thead>
+            <tbody>
+              <tr><td><strong>API Keys</strong></td><td>Identificador simple asociado a una aplicación o cliente; fácil de implementar, pero no identifica a un usuario individual.</td></tr>
+              <tr><td><strong>OAuth 2.0</strong></td><td>Estándar abierto para delegar acceso sin compartir contraseñas; emite tokens de acceso con permisos y tiempo de vida limitados.</td></tr>
+              <tr><td><strong>JWT</strong> (JSON Web Token)</td><td>Token firmado digitalmente con la identidad y los permisos del solicitante; el servidor lo verifica sin consultar una base de datos en cada solicitud.</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Ningún mecanismo por sí solo basta si, como en Optus, el endpoint simplemente no exige ninguno.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Unrestricted Resource Consumption (API4): la otra falla de Optus</h1>
+          <p>Esta categoría cubre APIs que no limitan cuántas solicitudes, cuántos datos o cuántos recursos de cómputo puede consumir un solo cliente — lo que permite tanto ataques de scraping masivo (como Optus) como ataques de denegación de servicio.</p>
+          <p>El control estándar para esta categoría es el <strong>rate limiting</strong> (limitación de tasa): definir un número máximo de solicitudes por cliente en una ventana de tiempo, y rechazar o retrasar el exceso.</p>
+          <p class="slide-eyebrow">El API Gateway (Semana 15) es, en la práctica, el lugar arquitectónico correcto para aplicar rate limiting de forma centralizada, sin que cada microservicio lo implemente por separado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión</p>
+          <h1>Autenticación estricta vs. facilidad de uso para quien consume la API</h1>
+          <table>
+            <thead><tr><th></th><th>API abierta o poco restrictiva</th><th>API con autenticación y rate limiting estrictos</th></tr></thead>
+            <tbody>
+              <tr><td>Facilidad de integración</td><td>Alta — cualquiera empieza a usarla de inmediato</td><td>Requiere registro, tokens, manejo de expiración</td></tr>
+              <tr><td>Riesgo de abuso</td><td>Alto — sin control de quién ni cuánto consume</td><td>Bajo — cada solicitud se verifica y se limita</td></tr>
+              <tr><td>Consecuencia si algo falla</td><td>Como Optus: exposición masiva de datos</td><td>Un atacante sin credenciales válidas no pasa del primer control</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">La tensión es real, pero el caso de Optus muestra el costo de resolverla siempre a favor de la facilidad de uso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cifrar el tránsito y poder ver lo que pasa</h1>
+          <ul>
+            <li><strong>TLS/HTTPS en cada llamada:</strong> sin esto, cualquier dato viaja en texto plano y puede ser interceptado en la red.</li>
+            <li><strong>Logging y monitoreo de la API:</strong> registrar quién llamó, cuándo y con qué patrón, para poder detectar un scraping masivo (como el de Optus) mientras ocurre, no meses después.</li>
+          </ul>
+          <p class="slide-eyebrow">Equifax (la sesión anterior) fue ciego durante 76 días por un certificado vencido en su monitoreo de red — la misma lección se repite a nivel de API: sin visibilidad, un abuso puede durar indefinidamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Zero Trust también aplica a las APIs</h1>
+          <p>El principio de <strong>Zero Trust</strong> visto en la sesión anterior (nunca confiar, siempre verificar) se traduce, a nivel de API, en verificar la identidad y los permisos en cada solicitud — sin asumir que una llamada es legítima solo porque viene de otro servicio interno o de una IP conocida.</p>
+          <p class="slide-eyebrow">Si Optus hubiera aplicado este principio a su endpoint de verificación de identidad, cada solicitud habría requerido un token válido, sin importar de dónde viniera.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Auditen las APIs de su proyecto contra el Top 3</h1>
+          <p><strong>En equipos, revisen los endpoints de API que ya tienen implementados o planeados en su proyecto de CodeF@ctory:</strong></p>
+          <ol>
+            <li>¿Cada endpoint exige autenticación (s09), o hay alguno que responde sin verificar identidad?</li>
+            <li>¿Existe algún límite de solicitudes (rate limiting, s11) o un cliente podría hacer miles de solicitudes seguidas sin restricción?</li>
+            <li>¿Alguna respuesta de su API devuelve más datos de los que la pantalla realmente muestra al usuario (excessive data exposure)?</li>
+          </ol>
+          <p class="slide-eyebrow">10 minutos · identifiquen al menos un hallazgo concreto por equipo</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>"Nuestra API es interna, no la ve nadie de afuera"</h1>
+          <p>Es una de las justificaciones más comunes para no asegurar un endpoint — y es exactamente el supuesto que Zero Trust (s14) rechaza. El endpoint de Optus tampoco fue diseñado para ser público: quedó expuesto por un cambio de configuración de red, sin que nadie lo revisara contra un inventario de APIs activas (la categoría <strong>API9 — Improper Inventory Management</strong>, del catálogo visto en s08).</p>
+          <p><strong>"Interna hoy" no es una garantía de seguridad — es un estado que puede cambiar con un solo cambio de configuración, como ocurrió en este caso real.</strong></p>
+          <p class="slide-eyebrow">Por eso Zero Trust trata cada solicitud igual, sin importar si el origen "debería" ser confiable.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>La brecha de Optus (2022, ~9.8 millones de personas) mostró que basta con dos fallas de API — sin autenticación y sin límite de solicitudes — para exponer masivamente datos sensibles.</li>
+            <li>OWASP mantiene un catálogo específico, el API Security Top 10 (2023), separado del Top 10 general de aplicaciones web.</li>
+            <li>Broken Authentication (API2) y Unrestricted Resource Consumption (API4) son las dos categorías que explican el caso de Optus.</li>
+            <li>API Keys, OAuth 2.0 y JWT son los mecanismos de autenticación más comunes — ninguno protege si, como en Optus, el endpoint simplemente no los exige.</li>
+            <li>Zero Trust aplica igual a las APIs: verificar cada solicitud, sin asumir que el origen es confiable por defecto.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la Unidad 5</p>
+          <h1>Dos sesiones, una sola unidad: Aspectos de Seguridad en Arquitecturas de Software</h1>
+          <p>Con esta sesión cerramos la Unidad 5 completa, dos sesiones en la Semana 16:</p>
+          <ul>
+            <li><strong>Principios de Arquitectura de Software Segura</strong> — CIA, Security by Design, mínimo privilegio, defensa en profundidad, Zero Trust y threat modeling con STRIDE, con el caso real de Equifax (2017).</li>
+            <li><strong>La Importancia de la Seguridad en las APIs</strong> (hoy) — autenticación, rate limiting y el OWASP API Security Top 10, con el caso real de Optus (2022).</li>
+          </ul>
+          <p><strong>Toda la Unidad 5 respondió una sola pregunta: una vez que un sistema se construye y se expone al mundo (Unidades 1-4), ¿qué principios y controles arquitectónicos concretos evitan que se convierta en la próxima brecha documentada?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar ambas sesiones de la Unidad 5 antes de la evaluación del hito "Seguridad Arquitectónica y Hardening" (20%), programado esta misma semana — cubre exactamente seguridad en APIs y threat modeling.</li>
+            <li>Revisar las APIs de su proyecto de CodeF@ctory contra los hallazgos del ejercicio de hoy (s15).</li>
+          </ul>
+          <p><strong>La Semana 17 cierra el curso con la sustentación final arquitectónica y la presentación del proyecto completo.</strong></p>
+          <img class="portada-icon" src="img/calendar-days.svg" alt="Próxima semana" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

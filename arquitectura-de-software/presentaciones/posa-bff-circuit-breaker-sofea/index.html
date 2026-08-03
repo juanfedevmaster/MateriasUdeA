@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: BFF, Circuit Breaker, SOFEA — Semana 9</title>
+  <meta name="description" content="Un backend por cliente, protección ante fallos en cascada, y el cliente como orquestador — cierre del catálogo POSA, Arquitectura de Software, Semana 9." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-bff-circuit-breaker-sofea/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: BFF, Circuit Breaker, SOFEA — Semana 9" />
+  <meta property="og:description" content="Un backend por cliente, protección ante fallos en cascada, y el cliente como orquestador — cierre del catálogo POSA, Arquitectura de Software, Semana 9." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-bff-circuit-breaker-sofea/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: BFF, Circuit Breaker, SOFEA — Semana 9" />
+  <meta name="twitter:description" content="Un backend por cliente, protección ante fallos en cascada, y el cliente como orquestador — cierre del catálogo POSA, Arquitectura de Software, Semana 9." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-bff-circuit-breaker-sofea.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 9 — Catálogo POSA: BFF, Circuit Breaker, SOFEA</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Cierre del catálogo de patrones" style="display:block;width:230px;height:230px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un servicio caído.<br>Miles de peticiones esperando en fila.</h1>
+          <img class="portada-icon" src="img/bolt-lightning.svg" alt="Fallo que se propaga" style="display:block;width:200px;height:200px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>SoundCloud y el patrón BFF, 2015</h1>
+          <table>
+            <tbody>
+              <tr><th>Patrón</th><td>Backends For Frontends (BFF)</td></tr>
+              <tr><th>Documentado por</th><td>Phil Calçado, ingeniero de SoundCloud</td></tr>
+              <tr><th>Publicación</th><td>Post de blog "Pattern: Backends For Frontends" (2015)</td></tr>
+              <tr><th>Origen</th><td>Experiencia real del equipo de SoundCloud construyendo su app móvil y su reproductor web</td></tr>
+              <tr><th>Problema</th><td>Un único API genérico no lograba evolucionar con la velocidad que cada frontend necesitaba</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/soundcloud.svg" alt="SoundCloud" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema de coordinación</p>
+          <h1>Un API para todos, un cuello de botella para todos</h1>
+          <p>SoundCloud tenía un <strong>API genérico</strong> que servía tanto a la app móvil como al reproductor web. En la práctica, eso significaba:</p>
+          <ul>
+            <li>Cada cambio al API debía negociarse entre <strong>todos</strong> los equipos de frontend, aunque solo uno de ellos lo necesitara.</li>
+            <li>El móvil recibía <strong>payloads pensados para desktop</strong>: más datos de los que necesitaba, en una red más lenta y un dispositivo más limitado.</li>
+            <li>Ningún equipo podía evolucionar su experiencia <strong>sin bloquear o esperar a los demás</strong>.</li>
+          </ul>
+          <p><strong>El equipo de SoundCloud resolvió esto dándole a cada frontend su propio backend, adaptado exactamente a lo que ese cliente necesita.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un API compartido a un backend por cliente</h1>
+          <p>Lo que Phil Calçado documentó a partir de esa experiencia se convirtió en un patrón con nombre propio, hoy ampliamente usado en la industria cuando un mismo sistema debe servir a clientes muy distintos entre sí: web, app móvil, smart TV, asistentes de voz.</p>
+          <p><strong>Ese patrón es <strong>Backend For Frontend (BFF)</strong>.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>BFF: un backend dedicado por tipo de cliente</h1>
+          <p>En vez de exponer un único API genérico que intenta servir a todos los frontends por igual, el patrón <strong>Backend For Frontend</strong> propone crear un <strong>backend propio y optimizado para cada tipo de cliente</strong>: uno para la app móvil, otro para la web, otro para la smart TV.</p>
+          <ul>
+            <li>Cada BFF conoce las necesidades exactas de su cliente y devuelve <strong>solo lo que ese cliente necesita</strong>, en el formato que le conviene.</li>
+            <li>Los BFF suelen ser una capa delgada que orquesta llamadas a servicios/microservicios de backend más genéricos, sin duplicar la lógica de negocio de fondo.</li>
+            <li>El equipo dueño de cada frontend puede ser también dueño de su BFF, sin depender de un API monolítico compartido.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que BFF gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cada equipo de frontend controla su propio backend, sin negociar cambios con los demás equipos</td><td>Riesgo de <strong>duplicar lógica</strong> entre distintos BFFs si no se gestiona bien qué vive en cada uno</td></tr>
+              <tr><td>Cada cliente recibe exactamente los datos que necesita, evitando payloads sobredimensionados</td><td>Más servicios que mantener, desplegar y monitorear que con un único API compartido</td></tr>
+              <tr><td>Los equipos evolucionan su experiencia de cliente a su propio ritmo</td><td>Requiere disciplina para decidir qué lógica es realmente específica del cliente y qué debería vivir en un servicio compartido</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Qué pasa cuando el servicio del otro lado falla?</h1>
+          <p>BFF resuelve <em>a quién</em> le habla cada cliente. Pero cada BFF, y cada microservicio de la sesión pasada, depende de llamar a otros servicios remotos — y esos servicios remotos <strong>a veces fallan o se vuelven lentos</strong>.</p>
+          <p><strong>Sin protección, un solo servicio caído puede tumbar en cascada a todos los que dependen de él. El patrón que evita eso es Circuit Breaker.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica (1/2)</p>
+          <h1>"Release It!", Michael Nygard, 2007</h1>
+          <table>
+            <tbody>
+              <tr><th>Libro</th><td><em>Release It! Design and Deploy Production-Ready Software</em></td></tr>
+              <tr><th>Autor</th><td>Michael Nygard</td></tr>
+              <tr><th>Año</th><td>2007</td></tr>
+              <tr><th>Aporte</th><td>Formaliza el patrón de software <strong>Circuit Breaker</strong> como estabilidad de producción</td></tr>
+              <tr><th>Inspiración del nombre</th><td>Los disyuntores eléctricos reales, que "abren" el circuito para proteger la instalación cuando detectan una falla</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica (2/2)</p>
+          <h1>Hystrix, Netflix, 2012</h1>
+          <table>
+            <tbody>
+              <tr><th>Librería</th><td>Hystrix</td></tr>
+              <tr><th>Empresa</th><td>Netflix</td></tr>
+              <tr><th>Liberada como open source</th><td>2012</td></tr>
+              <tr><th>Contexto</th><td>Parte de la migración de Netflix a microservicios (la misma que vimos la sesión pasada), para evitar que cientos de servicios interdependientes cayeran en cascada</td></tr>
+              <tr><th>Impacto</th><td>La implementación más famosa y ampliamente adoptada del patrón Circuit Breaker en la industria</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/netflix.svg" alt="Netflix" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Circuit Breaker: dejar de intentar lo que ya falla</h1>
+          <p>El patrón <strong>Circuit Breaker</strong> envuelve una llamada a un servicio remoto. Cuando detecta <strong>fallos repetidos</strong> en ese servicio, "abre el circuito": deja de intentar la llamada y devuelve de inmediato un error o un valor de respaldo (<em>fallback</em>), en vez de intentarlo de nuevo.</p>
+          <ul>
+            <li>Evita que las peticiones se queden esperando <strong>timeouts repetidos</strong> contra un servicio que ya sabemos que está caído.</li>
+            <li>Libera recursos (hilos, conexiones) que de otro modo quedarían bloqueados esperando una respuesta que no va a llegar.</li>
+            <li>Contiene el fallo: un servicio caído no arrastra consigo a todos los servicios que dependen de él.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cómo funciona</p>
+          <h1>Tres estados, igual que un disyuntor eléctrico</h1>
+          <table>
+            <thead>
+              <tr><th>Estado</th><th>Comportamiento</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Cerrado</strong></td><td>Las llamadas pasan normalmente; el circuito cuenta fallos y éxitos</td></tr>
+              <tr><td><strong>Abierto</strong></td><td>Tras superar el umbral de fallos, deja de llamar al servicio y responde de inmediato con error o fallback</td></tr>
+              <tr><td><strong>Semi-abierto</strong></td><td>Después de un tiempo de espera, deja pasar algunas llamadas de prueba; si funcionan, vuelve a cerrado — si no, vuelve a abrirse</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/traffic-light.svg" alt="Estados del circuit breaker" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que Circuit Breaker gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Evita fallos en cascada entre servicios interdependientes</td><td>Requiere definir bien el <strong>umbral</strong>: cuántos fallos antes de abrir el circuito</td></tr>
+              <tr><td>Protege recursos (hilos, conexiones) al no esperar timeouts repetidos</td><td>Necesita una <strong>estrategia de fallback</strong> sensata — un fallback mal diseñado puede ocultar el problema en vez de mitigarlo</td></tr>
+              <tr><td>Da tiempo al servicio caído para recuperarse sin recibir más carga</td><td>Mal configurado (umbral muy bajo), puede abrir el circuito innecesariamente ante fallos pasajeros</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y quién arma la experiencia que ve el usuario?</h1>
+          <p>BFF define <em>quién</em> atiende a cada cliente. Circuit Breaker protege esas llamadas cuando algo falla. Falta una pregunta: en 3-capas tradicional (semana 7), el servidor de aplicación arma el HTML que ve el usuario. <strong>¿Qué pasa si esa responsabilidad se mueve por completo al cliente?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>SOFEA: el cliente arma la experiencia</h1>
+          <p><strong>Service-Oriented Front-End Architecture (SOFEA)</strong> es un término que ganó tracción a fines de los 2000s para nombrar una tendencia: mover toda la lógica de <strong>presentación y orquestación de la interfaz al cliente</strong> (navegador o app), y dejar que el servidor exponga solo <strong>servicios de datos/negocio puros</strong> — sin un servidor de aplicación intermedio que genere HTML.</p>
+          <p class="slide-eyebrow">A diferencia de BFF (Calçado, 2015) o Circuit Breaker (Nygard, 2007), SOFEA no tiene una única fuente canónica ni una atribución de autor tan documentada — se presenta aquí como el nombre que la industria le dio a una tendencia observable, no como un patrón con ficha técnica tan precisa como los dos anteriores.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · De SOFEA a lo que usamos hoy</p>
+          <h1>El antecesor conceptual de las SPA</h1>
+          <p>SOFEA es, en esencia, el nombre temprano de una idea que hoy conocemos mejor por sus herederos directos:</p>
+          <ul>
+            <li>Los frameworks de <strong>Single Page Applications (SPA)</strong> — Angular, React, Vue — llevan al extremo la idea de SOFEA: el cliente descarga una aplicación completa y consume servicios (APIs) para todos sus datos.</li>
+            <li><strong>JAMStack</strong> (que verán en la semana 10) continúa esa misma tendencia de separar por completo el front-end de los servicios de backend.</li>
+          </ul>
+          <p><strong>Contraste con 3-capas tradicional (semana 7):</strong> ahí el servidor de aplicación genera la vista y se la entrega lista al cliente. En SOFEA, el servidor solo entrega datos crudos vía servicios — es el cliente quien construye la interfaz.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Los tres patrones, funcionando juntos</h1>
+          <p>En un sistema real estos tres patrones no compiten entre sí — <strong>se combinan</strong>:</p>
+          <ul>
+            <li>La app móvil llama a su propio <strong>BFF</strong>, que le devuelve exactamente los datos que necesita.</li>
+            <li>Ese BFF usa <strong>Circuit Breaker</strong> para llamar a los microservicios de backend, protegiéndose de fallos en cascada si alguno está caído.</li>
+            <li>Mientras tanto, el frontend web es una aplicación <strong>SOFEA/SPA</strong> que arma su propia interfaz consumiendo esos mismos servicios directamente, sin servidor de aplicación intermedio.</li>
+          </ul>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Patrones combinados" style="display:block;width:160px;height:160px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué patrón resuelve cada problema?</h1>
+          <p><strong>Para cada situación, identifiquen qué patrón de los tres aplica y por qué:</strong></p>
+          <ol>
+            <li>Un microservicio de inventario empieza a responder muy lento y los servicios que dependen de él se quedan sin hilos disponibles.</li>
+            <li>Una app de smart TV recibe el mismo payload gigante que la versión web, pensado para pantallas y conexiones de escritorio.</li>
+            <li>Un frontend web moderno descarga una aplicación completa una sola vez y desde ahí consume servicios directamente, sin recargar HTML del servidor.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy — y cierre del catálogo POSA</h1>
+          <ol>
+            <li><strong>BFF</strong> (Calçado, SoundCloud, 2015) da a cada tipo de cliente un backend propio, evitando payloads genéricos y desbloqueando a los equipos de frontend.</li>
+            <li><strong>Circuit Breaker</strong> (Nygard, 2007; Hystrix/Netflix, 2012) protege a un sistema de fallos en cascada, cortando llamadas a un servicio que ya sabemos que falla.</li>
+            <li><strong>SOFEA</strong> mueve la lógica de presentación por completo al cliente — antecesor conceptual de las SPA y de JAMStack.</li>
+          </ol>
+          <p><strong>Con estos tres patrones cerramos el catálogo POSA completo de la Unidad 2, visto en seis sesiones: Pipes &amp; Filters, Blackboard, Broker, MVC, Batch, Cliente/Servidor N-capas, Layers, Microkernel, SOA, Hexagonal, Microservicios, WebHooks, BFF, Circuit Breaker y SOFEA — quince patrones en total.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar los quince patrones del catálogo POSA y, para cada uno, identificar un sistema real (propio o conocido) donde lo reconozcan.</li>
+            <li>Pensar en el proyecto de Fábrica Escuela: ¿hay algo parecido a un BFF, a un circuit breaker, o a una arquitectura SOFEA en su solución actual?</li>
+          </ul>
+          <p><strong>La próxima sesión da un paso atrás del catálogo de patrones puntuales para ver el panorama completo: Estilos Arquitectónicos.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

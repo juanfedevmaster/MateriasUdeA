@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estilos Arquitectónicos — Semana 9</title>
+  <meta name="description" content="De los patrones puntuales del catálogo POSA a la vista panorámica de los estilos de sistema, con la taxonomía de Shaw y Garlan — Arquitectura de Software, Semana 9." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/estilos-arquitectonicos/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Estilos Arquitectónicos — Semana 9" />
+  <meta property="og:description" content="De los patrones puntuales del catálogo POSA a la vista panorámica de los estilos de sistema, con la taxonomía de Shaw y Garlan — Arquitectura de Software, Semana 9." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/estilos-arquitectonicos/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estilos Arquitectónicos — Semana 9" />
+  <meta name="twitter:description" content="De los patrones puntuales del catálogo POSA a la vista panorámica de los estilos de sistema, con la taxonomía de Shaw y Garlan — Arquitectura de Software, Semana 9." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/estilos-arquitectonicos.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 9 — Estilos Arquitectónicos</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Taxonomía de estilos arquitectónicos" style="display:block;width:230px;height:230px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Ya viste 15 patrones.<br>¿Cuántos estilos hay detrás?</h1>
+          <img class="portada-icon" src="img/shapes.svg" alt="De muchos patrones a pocos estilos" style="display:block;width:190px;height:190px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Antes de seguir, hace falta un mapa</h1>
+          <p>En las últimas seis sesiones vieron catorce patrones puntuales del catálogo POSA (Buschmann et al.): Pipes &amp; Filters, Blackboard, Broker, MVC, Batch, Cliente/Servidor N-capas, Layers, Microkernel, SOA, Hexagonal, Microservicios, WebHooks, BFF y Circuit Breaker — más SOFEA como variante adicional, quince en total. Cada uno resolvía un problema concreto, en su propia sesión, sin conectarlo todavía con los demás.</p>
+          <p><strong>Hoy no vemos un patrón nuevo — vemos el mapa completo: los estilos arquitectónicos, las categorías mayores dentro de las cuales viven todos esos patrones.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Shaw y Garlan, 1994–1996</h1>
+          <table>
+            <tbody>
+              <tr><th>Autoras</th><td>Mary Shaw y David Garlan</td></tr>
+              <tr><th>Universidad</th><td>Carnegie Mellon University (CMU)</td></tr>
+              <tr><th>Trabajo fundacional</th><td><em>"An Introduction to Software Architecture"</em>, reporte técnico de CMU, 1994</td></tr>
+              <tr><th>Consolidación</th><td><em>"Software Architecture: Perspectives on an Emerging Discipline"</em>, Prentice Hall, 1996</td></tr>
+              <tr><th>Objetivo</th><td>Proponer una taxonomía de estilos arquitectónicos para clasificar sistemas de software según patrones estructurales recurrentes a nivel de sistema completo</td></tr>
+              <tr><th>Conexión</th><td>Los mismos autores de los "Conectores y Protocolos" vistos en la Semana 5</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Sí, es el mismo Garlan de la Semana 5 — no repetimos ese contenido, solo lo referenciamos como parte del mismo trabajo conjunto con Shaw.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué crear una taxonomía</p>
+          <h1>Ordenar el vocabulario de la disciplina</h1>
+          <p>A comienzos de los años 90 la arquitectura de software crecía sin vocabulario común: cada equipo describía su sistema con sus propios términos, y era difícil comparar dos arquitecturas o reconocer que dos sistemas, aunque contaran historias distintas, compartían la misma forma estructural.</p>
+          <p><strong>Shaw y Garlan propusieron clasificar los sistemas según su estilo arquitectónico: una categoría que restringe qué tipos de elementos de diseño existen (componentes, conectores) y qué formas de interacción entre ellos son válidas, a nivel de todo el sistema.</strong></p>
+          <ul>
+            <li>Permite comparar sistemas distintos usando el mismo lenguaje.</li>
+            <li>Facilita razonar sobre los atributos de calidad típicos de cada estilo.</li>
+            <li>Sirve de punto de partida para diseñar sistemas nuevos, en vez de empezar desde cero.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Las categorías propuestas</p>
+          <h1>Cinco grandes familias de estilos</h1>
+          <table>
+            <thead>
+              <tr><th>Categoría</th><th>Ejemplos según Shaw y Garlan</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sistemas de flujo de datos</td><td>Pipe-filter, procesamiento por lotes (batch)</td></tr>
+              <tr><td>Sistemas de datos compartidos</td><td>Repositorio, pizarra (blackboard)</td></tr>
+              <tr><td>Sistemas de llamada y retorno</td><td>Capas (layers), orientado a objetos, cliente/servidor</td></tr>
+              <tr><td>Sistemas independientes</td><td>Procesos comunicantes, orientado a eventos</td></tr>
+              <tr><td>Sistemas orientados a datos virtuales</td><td>Intérprete</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Esta es la clasificación original de 1994–1996; el resto de la sesión la usa para ubicar todo lo que ya vieron.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la taxonomía general a la distinción precisa</h1>
+          <p>Con el mapa de Shaw y Garlan a la vista surge la pregunta que da nombre a esta sesión: si ya conocen quince patrones concretos del catálogo POSA, ¿en qué se diferencian exactamente de un "estilo"?</p>
+          <p><strong>La respuesta es de nivel de abstracción, no de contenido — y es clave para no confundir ambos términos de aquí en adelante.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Estilo arquitectónico vs. patrón</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Estilo arquitectónico</th><th>Patrón (catálogo POSA)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Nivel de abstracción</td><td>Categoría amplia, a nivel de sistema completo</td><td>Solución concreta a un problema recurrente</td></tr>
+              <tr><td>Qué restringe</td><td>El vocabulario general de elementos de diseño y sus formas válidas de interacción</td><td>Una estructura específica de componentes y conectores</td></tr>
+              <tr><td>Ejemplo</td><td>"Sistemas de llamada y retorno"</td><td>Layers, Broker, MVC</td></tr>
+              <tr><td>Relación entre ambos</td><td colspan="2">Un estilo agrupa muchos patrones posibles; un patrón es una instancia concreta de un estilo</td></tr>
+            </tbody>
+          </table>
+          <p><strong>En corto: el estilo dice bajo qué reglas generales se relacionan los componentes del sistema; el patrón dice exactamente cómo resolverlo en un caso concreto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ejemplo</p>
+          <h1>Un patrón, ubicado dentro de su estilo</h1>
+          <p>Tomen Pipes &amp; Filters, visto en la Semana 6: cada filtro procesa datos y los pasa al siguiente a través de una tubería, sin conocer el resto del pipeline.</p>
+          <p>Ese patrón no inventa una forma nueva de relacionarse — es una <strong>instancia concreta</strong> del estilo de flujo de datos que ya proponía la taxonomía de Shaw y Garlan: componentes que transforman datos y conectores que los transportan entre ellos, sin más contacto que ese flujo.</p>
+          <p><strong>Lo mismo aplica a los otros catorce patrones que ya vieron: cada uno vive dentro de una de las cinco familias de estilos — y organizar ese mapa completo es el objetivo del resto de la sesión.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Categorías de Shaw y Garlan</p>
+          <h1>Flujo de datos y datos compartidos</h1>
+          <table>
+            <thead>
+              <tr><th>Estilo</th><th>Idea central</th><th>Patrones POSA que ya vieron</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Flujo de datos</td><td>Los componentes transforman datos y los pasan al siguiente mediante conectores de transporte; no hay estado compartido entre ellos</td><td>Pipes &amp; Filters, procesamiento Batch</td></tr>
+              <tr><td>Datos compartidos</td><td>Los componentes interactúan indirectamente, leyendo y escribiendo en un almacén central compartido</td><td>Blackboard (pizarra)</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">En flujo de datos los componentes se conectan entre sí; en datos compartidos se conectan a través de un almacén común, nunca directamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Categorías de Shaw y Garlan</p>
+          <h1>Llamada y retorno — la familia más grande</h1>
+          <p><strong>Es, con diferencia, la categoría con más patrones del catálogo POSA que ya vieron: un componente invoca explícitamente a otro y espera su respuesta, en una relación de control jerárquica y sincrónica.</strong></p>
+          <ul>
+            <li>Incluye desde un simple objeto que llama a un método de otro, hasta sistemas distribuidos donde un cliente invoca a un servidor a través de la red.</li>
+            <li>Layers, MVC, Cliente/Servidor N-capas, Broker, Microkernel, Hexagonal, SOA, Microservicios y BFF — nueve de los quince patrones que ya vieron — pertenecen a esta familia.</li>
+          </ul>
+          <p class="slide-eyebrow">El detalle patrón por patrón viene en la tabla de mapeo completo, dos diapositivas más adelante.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Categorías de Shaw y Garlan</p>
+          <h1>Sistemas independientes y datos virtuales</h1>
+          <table>
+            <thead>
+              <tr><th>Estilo</th><th>Idea central</th><th>Patrones POSA que ya vieron</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sistemas independientes</td><td>Componentes autónomos que no comparten control directo; se coordinan mediante eventos o mensajes, sin llamada síncrona</td><td>WebHooks, Circuit Breaker (como mecanismo de control entre componentes independientes)</td></tr>
+              <tr><td>Orientado a datos virtuales</td><td>Un componente (el intérprete) interpreta y ejecuta una representación de otro programa, en vez de ejecutarlo directamente</td><td>No visto en el catálogo POSA de este curso — ejemplo típico: una máquina virtual o un motor de reglas</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>Orientado a eventos:</strong> los componentes se notifican mediante mensajes o eventos, sin que quien emite el evento conozca ni controle a quien lo recibe.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · El mapa completo</p>
+          <h1>Los 15 patrones POSA, por estilo (1/2)</h1>
+          <table>
+            <thead>
+              <tr><th>Patrón (catálogo POSA)</th><th>Estilo arquitectónico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pipes &amp; Filters</td><td>Flujo de datos</td></tr>
+              <tr><td>Batch (procesamiento por lotes)</td><td>Flujo de datos</td></tr>
+              <tr><td>Blackboard</td><td>Datos compartidos</td></tr>
+              <tr><td>Broker</td><td>Llamada y retorno</td></tr>
+              <tr><td>MVC</td><td>Llamada y retorno</td></tr>
+              <tr><td>Cliente/Servidor N-capas</td><td>Llamada y retorno</td></tr>
+              <tr><td>Layers</td><td>Llamada y retorno</td></tr>
+              <tr><td>Microkernel</td><td>Llamada y retorno</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Patrones vistos en las semanas 6 y 7.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · El mapa completo</p>
+          <h1>Los 15 patrones POSA, por estilo (2/2)</h1>
+          <table>
+            <thead>
+              <tr><th>Patrón (catálogo POSA)</th><th>Estilo arquitectónico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>SOA</td><td>Llamada y retorno</td></tr>
+              <tr><td>Hexagonal</td><td>Llamada y retorno</td></tr>
+              <tr><td>Microservicios</td><td>Llamada y retorno</td></tr>
+              <tr><td>WebHooks</td><td>Independiente / orientado a eventos</td></tr>
+              <tr><td>BFF</td><td>Llamada y retorno (variante orientada al cliente)</td></tr>
+              <tr><td>Circuit Breaker</td><td>Independiente (mecanismo de control entre componentes)</td></tr>
+              <tr><td>SOFEA</td><td>Llamada y retorno (variante con orquestación en el cliente)</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Patrones vistos en las semanas 8 y 9. SOFEA no inventa una relación nueva entre componentes: sigue siendo llamada y retorno, pero mueve la orquestación de esas llamadas al cliente en vez de dejarla en el servidor.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Ningún sistema real usa un solo estilo puro</h1>
+          <p>La taxonomía separa estilos con fronteras nítidas, pero los sistemas reales casi nunca calzan en una sola categoría — combinan varios estilos en distintas partes.</p>
+          <p><strong>Ejemplo:</strong> un sistema de microservicios (llamada y retorno entre servicio y servicio vía REST o gRPC) casi siempre incorpora también mensajería asíncrona orientada a eventos (independiente) para desacoplar procesos que no necesitan respuesta inmediata, y a menudo persiste datos en un almacén compartido (datos compartidos) para reportes o auditoría.</p>
+          <p><strong>Reconocer el estilo dominante de un sistema no significa que sea el único presente — significa identificar qué estilo gobierna las decisiones estructurales más importantes.</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión entre pureza taxonómica y sistemas reales" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Elegir un estilo es una decisión de negocio, no solo técnica</h1>
+          <p>Como se vio en "Diseño vs Arquitectura" (Semana 3) con el caso del Aeropuerto de Denver, las decisiones arquitectónicas son las más costosas de revertir — y elegir un estilo arquitectónico es la decisión más temprana y más cara de todas: define cómo se van a relacionar los componentes del sistema completo, mucho antes de escribir la primera línea de un módulo concreto.</p>
+          <p>Ese estilo no debería elegirse por preferencia personal del equipo ni por la tecnología de moda, sino por los <strong>atributos de calidad prioritarios del sistema</strong> — los mismos que se formalizaron con ISO 25010 en la Semana 4: si el sistema prioriza escalabilidad y despliegue independiente, un estilo de llamada y retorno distribuido (microservicios) tiene sentido; si prioriza consistencia fuerte y simplicidad operativa, un estilo de datos compartidos centralizado puede ser mejor opción.</p>
+          <p><strong>El estilo correcto no es el más nuevo ni el más popular: es el que mejor sirve a los requisitos no funcionales que el negocio realmente necesita.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué estilo predomina en su proyecto de CodeF@ctory?</h1>
+          <p><strong>En equipos, identifiquen:</strong></p>
+          <ol>
+            <li>¿Qué estilo arquitectónico gobierna la mayoría de las decisiones estructurales de su proyecto? (flujo de datos, datos compartidos, llamada y retorno, independiente, datos virtuales)</li>
+            <li>¿Qué patrón(es) del catálogo POSA ya vistos reconocen dentro de ese estilo?</li>
+            <li>¿Hay alguna parte del sistema que use un estilo distinto al dominante? ¿Cuál y por qué?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>estilo arquitectónico</strong> (Shaw y Garlan, Carnegie Mellon University, 1994–1996) es una categoría amplia que restringe el vocabulario de elementos de diseño y sus interacciones a nivel de sistema completo; un <strong>patrón</strong> es una solución concreta que vive dentro de un estilo.</li>
+            <li>Shaw y Garlan propusieron cinco familias: flujo de datos, datos compartidos, llamada y retorno, independientes y orientados a datos virtuales.</li>
+            <li>Los quince patrones POSA vistos en la Unidad 2 se agrupan mayoritariamente en llamada y retorno (nueve de quince), con flujo de datos, datos compartidos e independientes cubriendo el resto.</li>
+            <li>Ningún sistema real usa un solo estilo puro — la mayoría son híbridos; identificar el estilo dominante ayuda a razonar sobre el sistema sin negar esa mezcla.</li>
+            <li>Elegir un estilo arquitectónico es una decisión de negocio temprana y costosa de revertir, que debe basarse en los atributos de calidad prioritarios (ISO 25010), no en preferencia o moda.</li>
+          </ol>
+          <p><strong>Con esta sesión cerramos la Unidad 2 completa: catálogo de patrones + mapa de estilos que los organiza.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar el mapa completo de estilos y confirmar en qué familia ubicarían cada patrón visto, sin mirar la tabla.</li>
+            <li>Tener listo el proyecto de CodeF@ctory con su estilo arquitectónico dominante identificado y justificado.</li>
+          </ul>
+          <p><strong>La Semana 10 continúa la Unidad 2 con los Principios de Diseño de Software: SOLID, DRY, KISS y YAGNI.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

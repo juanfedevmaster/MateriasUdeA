@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: Batch y Cliente/Servidor — Semana 7</title>
+  <meta name="description" content="Del procesamiento nocturno por lotes al cliente/servidor en 2, 3 y N capas, con el caso real del ciclo batch bancario en mainframe — Arquitectura de Software, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-batch-cliente-servidor/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: Batch y Cliente/Servidor — Semana 7" />
+  <meta property="og:description" content="Del procesamiento nocturno por lotes al cliente/servidor en 2, 3 y N capas, con el caso real del ciclo batch bancario en mainframe — Arquitectura de Software, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-batch-cliente-servidor/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: Batch y Cliente/Servidor — Semana 7" />
+  <meta name="twitter:description" content="Del procesamiento nocturno por lotes al cliente/servidor en 2, 3 y N capas, con el caso real del ciclo batch bancario en mainframe — Arquitectura de Software, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-batch-cliente-servidor.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 7 — Catálogo POSA: Procesamiento por Lotes y Cliente/Servidor</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Capas y procesamiento por lotes" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Muchos bancos grandes del mundo todavía cierran el día... a las 3 a.m.</h1>
+          <img class="portada-icon" src="img/building-columns.svg" alt="Banca y procesamiento nocturno" style="display:block;width:210px;height:210px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>El ciclo batch nocturno del núcleo bancario (core bancario)</h1>
+          <table>
+            <tbody>
+              <tr><th>Patrón</th><td><strong>Procesamiento por lotes (Batch Processing)</strong></td></tr>
+              <tr><th>Dónde se usa</th><td>Sistemas núcleo (<em>core banking</em>) de bancos grandes, muchos todavía sobre <strong>mainframe</strong></td></tr>
+              <tr><th>Tecnología típica</th><td>Programas <strong>COBOL</strong> orquestados por scripts <strong>JCL</strong> (Job Control Language) sobre sistemas operativos de mainframe (ej. z/OS de IBM)</td></tr>
+              <tr><th>Cuándo corre</th><td>De madrugada, en una <strong>ventana batch</strong> de baja actividad de usuarios (típicamente entre la medianoche y las primeras horas de la mañana)</td></tr>
+              <tr><th>Qué procesa</th><td>Todas las transacciones acumuladas durante el día: pagos, transferencias, consignaciones, retiros</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Modelo ampliamente documentado en la industria financiera: sigue vigente en muchas instituciones grandes junto a sus canales digitales en tiempo real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Qué pasa esa noche</p>
+          <h1>Un pipeline de jobs, uno detrás de otro</h1>
+          <p>Durante el día, el banco registra las transacciones en un sistema transaccional en tiempo real, pero <strong>no las cierra ni las concilia de inmediato</strong>. Esa tarea se deja para el ciclo batch de la noche, que ejecuta una secuencia de <strong>jobs</strong> (programas por lotes) donde la salida de uno alimenta al siguiente:</p>
+          <ol>
+            <li><strong>Consolidación:</strong> reunir todas las transacciones del día en un solo lote.</li>
+            <li><strong>Conciliación de cuentas:</strong> verificar que débitos y créditos cuadren entre sistemas.</li>
+            <li><strong>Cálculo de intereses:</strong> aplicar tasas sobre saldos de cuentas de ahorro, préstamos y tarjetas.</li>
+            <li><strong>Actualización de saldos:</strong> dejar el saldo "oficial" de cada cuenta listo para el día siguiente.</li>
+            <li><strong>Generación de extractos:</strong> producir los reportes y estados de cuenta del período.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema que resuelve</p>
+          <h1>Por qué procesar así, y no transacción por transacción</h1>
+          <p>El <strong>volumen</strong> de transacciones diarias de un banco grande es masivo, y varias operaciones —como el cálculo de intereses o la conciliación— solo tienen sentido sobre el <strong>conjunto completo</strong> del día, no sobre cada movimiento aislado. Procesar por lotes, en una ventana de baja actividad, permite:</p>
+          <ul>
+            <li>Usar toda la capacidad del mainframe sin competir con las transacciones en vivo de los usuarios.</li>
+            <li>Garantizar <strong>consistencia</strong>: todo el banco cierra el día con los mismos números.</li>
+            <li>Recuperarse de errores relanzando un job puntual, sin rehacer todo el día transacción por transacción.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La limitación que arrastra</p>
+          <h1>El precio: nada está "cerrado" hasta la madrugada</h1>
+          <p>Mientras el ciclo batch no corre, los saldos "oficiales" de intereses, comisiones y conciliaciones <strong>no reflejan el día en curso</strong> — por eso a veces una transferencia aparece "pendiente" varias horas. Esta latencia es aceptable para procesos contables, pero cada vez más difícil de sostener cuando:</p>
+          <ul>
+            <li>La operación es <strong>global 24/7</strong> y ya no hay una franja horaria de "baja actividad" clara.</li>
+            <li>Los usuarios esperan confirmaciones y saldos <strong>en tiempo real</strong>, no al día siguiente.</li>
+          </ul>
+          <p><strong>Esta tensión —lotes vs. tiempo real— es exactamente lo que empuja a la industria hacia arquitecturas de streaming/event-driven, que veremos más adelante en el curso.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El banco no inventó el batch: aplicó un patrón general</h1>
+          <p>El ciclo nocturno bancario es un ejemplo concreto de un patrón de procesamiento mucho más general, presente también en facturación masiva, nómina, reportes de fin de mes y cargas de datos entre sistemas.</p>
+          <p><strong>Formalicemos qué es el procesamiento por lotes como patrón, y cuándo conviene usarlo.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Procesamiento por lotes (Batch Processing)</h1>
+          <p>Es el patrón que consiste en <strong>agrupar grandes volúmenes de datos en bloques ("lotes")</strong> y procesarlos completos, <strong>sin interacción del usuario en tiempo real</strong>, normalmente en una ventana de tiempo programada.</p>
+          <ul>
+            <li><strong>Job:</strong> unidad de trabajo por lotes (ej. "calcular intereses del día").</li>
+            <li><strong>Ventana batch:</strong> franja horaria reservada para ejecutar el ciclo completo de jobs.</li>
+            <li><strong>Pipeline secuencial:</strong> los jobs se encadenan — la salida de uno es la entrada del siguiente, como se vio en el caso bancario.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ventajas y limitaciones del batch</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Eficiente para volúmenes muy grandes de datos</td><td>No es tiempo real: introduce <strong>latencia</strong> hasta el próximo ciclo</td></tr>
+              <tr><td>Fácil de razonar: secuencia clara de pasos, uno tras otro</td><td>La ventana batch es cada vez más difícil de sostener con operación 24/7 global</td></tr>
+              <tr><td>Aprovecha capacidad de cómputo en horas de baja demanda</td><td>Un fallo a mitad del ciclo puede retrasar todo el resto de jobs encadenados</td></tr>
+              <tr><td>Simplifica auditoría: se procesa y se cierra un conjunto completo y trazable</td><td>Escala peor frente a la presión moderna de datos "siempre frescos"</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/server.svg" alt="Procesamiento por lotes" style="display:block;width:140px;height:140px;margin:12px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del "cuándo" procesar al "dónde" se ejecuta cada parte</h1>
+          <p>El batch resuelve un problema de <strong>tiempo</strong> (cuándo procesar). El segundo patrón de hoy resuelve un problema distinto: <strong>dónde</strong>, físicamente, se ejecuta cada responsabilidad de una aplicación — en la máquina del usuario, en un servidor, o repartida entre varios servidores.</p>
+          <p><strong>Ese es el patrón arquitectónico Cliente/Servidor, y su evolución histórica en 2, 3 y N capas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cliente/Servidor: el patrón base</h1>
+          <p>Divide una aplicación en dos roles que se comunican por red: un <strong>cliente</strong>, que solicita servicios, y un <strong>servidor</strong>, que los provee (datos, cómputo, lógica de negocio). El diseño concreto de este patrón cambió mucho a lo largo de la historia según <strong>cuántas capas</strong> —niveles físicamente separables— se usaran para repartir presentación, lógica de negocio y datos.</p>
+          <p class="slide-eyebrow">A esta evolución en capas se le conoce como arquitectura de <strong>2, 3 y N capas</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Evolución 1</p>
+          <h1>2 capas: el "cliente gordo" (fat client)</h1>
+          <p>El cliente concentra <strong>presentación y lógica de negocio</strong> juntas, y se conecta directamente al servidor de base de datos — sin nada intermedio.</p>
+          <ul>
+            <li><strong>Capa 1:</strong> aplicación de escritorio (interfaz + reglas de negocio).</li>
+            <li><strong>Capa 2:</strong> servidor de base de datos.</li>
+          </ul>
+          <p><strong>Caso real:</strong> aplicaciones empresariales de escritorio de los años 90, construidas con herramientas como <strong>PowerBuilder</strong> o <strong>Visual Basic</strong>, conectadas directo a un servidor <strong>Sybase</strong> u <strong>Oracle</strong> — muy comunes en banca y ERPs de esa época.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Evolución 1 (límite)</p>
+          <h1>El problema del cliente gordo</h1>
+          <ul>
+            <li><strong>Actualizar la lógica de negocio</strong> exige reinstalar el ejecutable en cada máquina cliente — costoso a gran escala.</li>
+            <li>Cada cliente abre su propia conexión a la base de datos: <strong>difícil de escalar</strong> a miles de usuarios simultáneos.</li>
+            <li>La lógica de negocio queda esparcida en cada instalación, no en un solo lugar controlado.</li>
+          </ul>
+          <p><strong>Estas limitaciones motivaron separar la lógica de negocio del cliente hacia un nivel intermedio propio: nace el modelo de 3 capas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Evolución 2</p>
+          <h1>3 capas: presentación, negocio y datos separados</h1>
+          <p>Se separan explícitamente tres niveles, cada uno con su responsabilidad y, típicamente, en su propia máquina física:</p>
+          <ul>
+            <li><strong>Capa de presentación:</strong> cliente ligero (navegador), sin lógica de negocio.</li>
+            <li><strong>Capa de lógica de negocio:</strong> un <strong>servidor de aplicaciones</strong> centralizado que procesa las reglas del sistema.</li>
+            <li><strong>Capa de datos:</strong> servidor de base de datos.</li>
+          </ul>
+          <p><strong>Caso real:</strong> el modelo que popularizó la primera ola de aplicaciones web empresariales de fines de los 90 — navegador → servidor de aplicaciones (Java EE o ASP) → base de datos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Evolución 3</p>
+          <h1>N capas: generalizando el modelo</h1>
+          <p>N capas extiende el modelo de 3 capas agregando <strong>más niveles intermedios</strong> según lo necesite el sistema, en vez de un único servidor de aplicaciones monolítico:</p>
+          <ul>
+            <li>Una capa de <strong>servicios</strong> separada de la capa de presentación.</li>
+            <li>Una capa de <strong>integración</strong> con sistemas externos.</li>
+            <li>Una capa de <strong>caché distribuido</strong> entre la aplicación y la base de datos.</li>
+          </ul>
+          <p><strong>Llevado al extremo, este mismo impulso de separar responsabilidades en más niveles independientes es lo que conecta con los microservicios (Semana 8) y con los estilos arquitectónicos que veremos en la Semana 9.</strong></p>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Arquitectura N capas" style="display:block;width:150px;height:150px;margin:12px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>2, 3 y N capas, comparadas</h1>
+          <table>
+            <thead>
+              <tr><th>Modelo</th><th>Dónde vive la lógica de negocio</th><th>Ejemplo real</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>2 capas</strong></td><td>En el cliente ("cliente gordo")</td><td>Apps de escritorio en PowerBuilder/VB + Sybase u Oracle (años 90)</td></tr>
+              <tr><td><strong>3 capas</strong></td><td>En un servidor de aplicaciones central</td><td>Navegador + Java EE/ASP + base de datos (primeras apps web empresariales)</td></tr>
+              <tr><td><strong>N capas</strong></td><td>Repartida en varios servicios especializados</td><td>Capas de servicios, integración y caché; llevado al extremo, microservicios</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Cliente/Servidor en capas no es lo mismo que MVC</h1>
+          <p>Es fácil confundirlos porque ambos hablan de "separar responsabilidades", pero responden preguntas distintas:</p>
+          <ul>
+            <li><strong>Cliente/Servidor en capas</strong> es sobre <strong>dónde</strong> físicamente se ejecuta cada responsabilidad — distribución física y de red entre máquinas (cliente, servidor de aplicaciones, servidor de datos).</li>
+            <li><strong>MVC</strong> (visto la sesión anterior) es sobre <strong>cómo</strong> se organiza el código <em>dentro</em> de una sola capa — separar Modelo, Vista y Controlador dentro del mismo proceso o servicio.</li>
+          </ul>
+          <p><strong>Son ortogonales, no lo mismo: un servidor de aplicaciones de 3 capas perfectamente puede internamente estar organizado con MVC — las dos decisiones se toman por separado.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ubiquen el patrón</h1>
+          <p><strong>Para cada escenario, digan si es más cercano a 2, 3 o N capas, y por qué:</strong></p>
+          <ol>
+            <li>Una hoja de cálculo empresarial de los años 90 que se conecta directo a un servidor Oracle desde cada PC.</li>
+            <li>Una app web moderna con frontend en React, un backend con capa de servicios, una capa de caché con Redis y una base de datos separada.</li>
+            <li>Un sistema con navegador, un único servidor de aplicaciones Java EE, y una base de datos — sin nada más entre medio.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>El <strong>procesamiento por lotes</strong> agrupa grandes volúmenes de datos y los procesa sin interacción en tiempo real, en una ventana programada — el ciclo batch nocturno bancario en mainframe (COBOL/JCL) es el caso real más extendido.</li>
+            <li>Su ventaja es la eficiencia sobre grandes volúmenes; su límite es la <strong>latencia</strong> frente a la presión moderna de operar 24/7 en tiempo real.</li>
+            <li><strong>Cliente/Servidor</strong> resuelve un problema distinto: dónde físicamente se ejecuta cada responsabilidad de la aplicación.</li>
+            <li>Su evolución histórica va de <strong>2 capas</strong> (cliente gordo) a <strong>3 capas</strong> (servidor de aplicaciones central) a <strong>N capas</strong> (servicios especializados, antesala de microservicios).</li>
+            <li>Cliente/Servidor en capas (distribución física) y <strong>MVC</strong> (organización del código dentro de una capa) son <strong>ortogonales</strong> — no son el mismo tipo de decisión.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Repasar la diferencia entre distribución física (cliente/servidor en capas) y organización interna del código (MVC), porque la próxima sesión sigue explorando cómo se organiza un sistema por dentro.</li>
+            <li>La próxima sesión del catálogo POSA cubre dos patrones más: <strong>Layers (Capas)</strong> y <strong>Microkernel</strong>.</li>
+          </ul>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

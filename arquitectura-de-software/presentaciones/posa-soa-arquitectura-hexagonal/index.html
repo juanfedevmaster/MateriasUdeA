@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: SOA, Arquitectura Hexagonal — Semana 8</title>
+  <meta name="description" content="Servicios reutilizables y el corazón de la aplicación protegido de sus dependencias, con los casos reales del API Mandate de Amazon y los Ports and Adapters de Alistair Cockburn — Arquitectura de Software, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-soa-arquitectura-hexagonal/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: SOA, Arquitectura Hexagonal — Semana 8" />
+  <meta property="og:description" content="Servicios reutilizables y el corazón de la aplicación protegido de sus dependencias, con los casos reales del API Mandate de Amazon y los Ports and Adapters de Alistair Cockburn — Arquitectura de Software, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-soa-arquitectura-hexagonal/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: SOA, Arquitectura Hexagonal — Semana 8" />
+  <meta name="twitter:description" content="Servicios reutilizables y el corazón de la aplicación protegido de sus dependencias, con los casos reales del API Mandate de Amazon y los Ports and Adapters de Alistair Cockburn — Arquitectura de Software, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-soa-arquitectura-hexagonal.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 8 — Catálogo POSA: SOA, Arquitectura Hexagonal</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Servicios interconectados" style="display:block;width:230px;height:230px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un memo interno de dos páginas.<br>El origen de AWS.</h1>
+          <img class="portada-icon" src="img/amazonaws.svg" alt="El memo que cambió Amazon" style="display:block;width:210px;height:210px;margin:35px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>El "API Mandate" de Amazon, 2002</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Amazon</td></tr>
+              <tr><th>Año</th><td>2002</td></tr>
+              <tr><th>Quién lo ordenó</th><td>Jeff Bezos, fundador y entonces CEO de Amazon</td></tr>
+              <tr><th>Forma</th><td>Memo interno dirigido a todos los equipos de ingeniería (nunca publicado oficialmente por Amazon)</td></tr>
+              <tr><th>Cómo se conoce hoy</th><td>Por el relato de <strong>Steve Yegge</strong>, ex-ingeniero de Amazon y Google, en su "Platform Rant" de 2011</td></tr>
+              <tr><th>Efecto posterior</th><td>Catalizador directo del nacimiento de AWS (Amazon Web Services) en 2006</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">El texto exacto del memo nunca se hizo público; lo que conocemos es el relato —ampliamente citado en la industria— de alguien que trabajó dentro de Amazon cuando ocurrió.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Contexto</p>
+          <h1>Un monolito que ya no podía crecer así</h1>
+          <p>A comienzos de los 2000, Amazon había pasado de ser una tienda de libros a un comercio electrónico con decenas de equipos trabajando sobre <strong>el mismo sistema gigante y fuertemente interconectado</strong>.</p>
+          <ul>
+            <li>Equipos distintos accedían <strong>directamente a las bases de datos de otros equipos</strong>, sin pasar por ninguna interfaz formal.</li>
+            <li>Un cambio en el esquema de una tabla podía romper, sin aviso, código de un equipo completamente distinto.</li>
+            <li>No existía una forma estándar de saber qué funcionalidad ofrecía cada parte del sistema ni cómo consumirla de forma segura.</li>
+          </ul>
+          <p><strong>El acoplamiento entre partes del sistema —cada una dependiendo de los detalles internos de las demás— se había vuelto el principal freno para escalar la ingeniería de la empresa.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La orden</p>
+          <h1>Reglas sin excepción, para todos los equipos</h1>
+          <p>Según el relato de Yegge, el memo de Bezos establecía —en esencia— un conjunto de reglas obligatorias para <strong>todos</strong> los equipos de Amazon:</p>
+          <ul>
+            <li>Toda funcionalidad debe exponerse <strong>únicamente a través de interfaces de servicio</strong> bien definidas.</li>
+            <li><strong>Prohibido</strong> el acceso directo a bases de datos de otros equipos, la comunicación por memoria compartida o cualquier otro "atajo" interno.</li>
+            <li>Los equipos solo pueden comunicarse entre sí <strong>a través de la red</strong>, llamando a esas interfaces de servicio.</li>
+            <li>Cada interfaz debe diseñarse pensando en que, algún día, podría exponerse a desarrolladores externos —sin importar si eso estaba planeado o no.</li>
+          </ul>
+          <p class="slide-eyebrow">El memo terminaba, según el mismo relato, con una advertencia directa: quien no cumpliera sería despedido. No hay una transcripción oficial de esa frase exacta, pero es la parte más citada de la historia.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Consecuencia</p>
+          <h1>Los mismos servicios internos, abiertos al mundo</h1>
+          <p>La disciplina forzada por el mandato tuvo un efecto que probablemente nadie planeó desde el inicio: para 2006, Amazon ya tenía <strong>decenas de servicios internos con interfaces bien definidas, probadas y estables</strong> —cómputo, almacenamiento, bases de datos.</p>
+          <p>Ese mismo año, Amazon lanzó <strong>Amazon Web Services (AWS)</strong>, ofreciendo a desarrolladores externos acceso a esos mismos servicios (S3 para almacenamiento, EC2 para cómputo) que ya existían puertas adentro.</p>
+          <p><strong>AWS no se construyó desde cero como producto: nació de exponer, a clientes externos, la misma disciplina de servicios que el mandato de 2002 había obligado a construir puertas adentro.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De una orden interna a un patrón con nombre propio</h1>
+          <p>Lo que el mandato de Bezos impuso por decreto —servicios de negocio con interfaces bien definidas, sin atajos ni acoplamiento directo entre equipos— es exactamente lo que el catálogo POSA describe como un estilo arquitectónico formal.</p>
+          <p><strong>Ese estilo se llama Arquitectura Orientada a Servicios, o SOA.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>SOA: el sistema como servicios de negocio</h1>
+          <p><strong>SOA (Service-Oriented Architecture)</strong> organiza el sistema como un conjunto de <strong>servicios de negocio</strong> —unidades de funcionalidad con sentido propio para el negocio (facturación, inventario, envíos, pagos)— que se pueden <strong>componer</strong> entre sí para construir procesos más grandes.</p>
+          <ul>
+            <li>Cada <strong>servicio</strong> es una pieza de software autocontenida que resuelve una capacidad de negocio concreta y la expone a través de una interfaz.</li>
+            <li>Los servicios se comunican entre sí <strong>sin conocer los detalles internos</strong> de cómo están implementados los demás.</li>
+            <li>Un proceso de negocio grande (ej. "procesar un pedido") se arma <strong>orquestando</strong> varios servicios más pequeños.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Principios</p>
+          <h1>Los cuatro principios de un buen servicio SOA</h1>
+          <table>
+            <thead>
+              <tr><th>Principio</th><th>Qué significa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Reutilización</strong></td><td>El mismo servicio (ej. autenticación) lo pueden consumir muchos procesos de negocio distintos, sin duplicar su lógica</td></tr>
+              <tr><td><strong>Bajo acoplamiento</strong></td><td>Un servicio puede cambiar su implementación interna sin obligar a cambiar a quienes lo consumen</td></tr>
+              <tr><td><strong>Contrato explícito</strong></td><td>La forma de usar el servicio —qué operaciones ofrece, qué datos espera y devuelve— queda documentada en una <strong>interfaz</strong> formal (el "contrato"), no se infiere del código interno</td></tr>
+              <tr><td><strong>Autonomía</strong></td><td>Cada servicio controla y despliega su propia lógica de forma independiente de los demás</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>Contrato:</strong> la definición formal —independiente de la tecnología usada por dentro— de qué operaciones ofrece un servicio y con qué datos, exactamente lo que el mandato de Amazon obligó a formalizar en cada equipo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que SOA gana — y lo que cuesta a escala</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Reutilización real</strong> entre equipos: un servicio bien diseñado evita reconstruir la misma capacidad varias veces</td><td>La <strong>gobernanza de contratos</strong> —quién puede cambiar una interfaz y cómo se avisa a quienes la consumen— se vuelve un problema serio cuando hay decenas de servicios</td></tr>
+              <tr><td>Los equipos pueden evolucionar su servicio internamente sin coordinar cada cambio con el resto de la empresa</td><td>El <strong>versionado</strong> de contratos (qué pasa cuando un servicio necesita cambiar su interfaz sin romper a sus consumidores) exige disciplina y procesos formales</td></tr>
+              <tr><td>Permite componer procesos de negocio nuevos combinando servicios ya existentes</td><td>La comunicación por red entre servicios agrega latencia frente a llamadas directas dentro de un mismo proceso</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cambiemos de escala: del sistema completo, a un solo servicio</h1>
+          <p>SOA resuelve cómo se organizan y comunican servicios <strong>a nivel de sistema o de empresa completa</strong>. Pero hay otra pregunta, igual de importante, que SOA no responde: <strong>¿cómo se organiza el código dentro de uno solo de esos servicios</strong> para que no termine, con el tiempo, atado a su base de datos o a su framework?</p>
+          <p><strong>Esa pregunta la responde otro patrón del catálogo POSA: la Arquitectura Hexagonal.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Alistair Cockburn y "Ports and Adapters", 2005</h1>
+          <table>
+            <tbody>
+              <tr><th>Autor</th><td>Alistair Cockburn, consultor e ingeniero de software, coautor del Manifiesto Ágil (2001)</td></tr>
+              <tr><th>Año</th><td>2005</td></tr>
+              <tr><th>Nombre original</th><td>"Ports and Adapters" (Puertos y Adaptadores)</td></tr>
+              <tr><th>Nombre popular</th><td>Rebautizado después como <strong>"Hexagonal Architecture"</strong>, por el diagrama de hexágono con el que Cockburn lo ilustraba</td></tr>
+              <tr><th>Publicación</th><td>Blog personal de Cockburn, no en un libro formal del catálogo POSA</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Motivación</p>
+          <h1>La lógica de negocio, atrapada entre capas</h1>
+          <p>Cockburn describió su frustración con las arquitecturas en capas tradicionales: en la práctica, la <strong>lógica de negocio</strong> terminaba mezclada con código de interfaz de usuario o con detalles de acceso a la base de datos.</p>
+          <ul>
+            <li>Para probar automáticamente una regla de negocio, era necesario levantar la base de datos o simular la interfaz gráfica completa.</li>
+            <li>Cambiar de motor de base de datos, o de framework de interfaz, obligaba a tocar código que en teoría era "solo negocio".</li>
+            <li>El diseño en capas por sí solo <strong>no impedía</strong> que el negocio dependiera de la infraestructura, aunque en teoría debía evitarlo.</li>
+          </ul>
+          <p><strong>Cockburn buscaba una forma de diseñar el núcleo del sistema para que fuera imposible que dependiera de sus detalles técnicos externos —y, de paso, fácil de probar sin mocks complicados.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Influencia posterior</p>
+          <h1>La idea que siguió apareciendo después</h1>
+          <p>La propuesta de Cockburn no se quedó aislada: influyó directamente en enfoques posteriores muy conocidos en la industria.</p>
+          <ul>
+            <li><strong>Clean Architecture</strong>, de Robert C. Martin ("Uncle Bob"), publicada en 2012, retoma la misma idea central —el negocio en el centro, protegido de la infraestructura— con círculos concéntricos en vez de un hexágono.</li>
+            <li>La forma de estructurar aplicaciones con <strong>DDD (Domain-Driven Design, "Diseño Guiado por el Dominio")</strong> —donde el modelo de negocio ocupa el centro del diseño y todo lo demás se organiza alrededor de él— comparte la misma inspiración.</li>
+          </ul>
+          <p class="slide-eyebrow">No se desarrollan aquí como casos completos: basta con reconocer que "proteger el negocio de la infraestructura" es una idea que atraviesa varias propuestas influyentes de arquitectura, no solo la de Cockburn.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Puertos y adaptadores</h1>
+          <p>La <strong>Arquitectura Hexagonal</strong> aísla la lógica de negocio (el <strong>núcleo</strong> o <strong>dominio</strong>) de los detalles de infraestructura —bases de datos, interfaces de usuario, APIs externas— usando dos conceptos:</p>
+          <ul>
+            <li><strong>Puerto:</strong> una interfaz que el propio núcleo define, describiendo qué necesita del mundo exterior (ej. "guardar un pedido") o qué ofrece hacia afuera, sin decir cómo se hace.</li>
+            <li><strong>Adaptador:</strong> una implementación concreta que conecta un puerto con una tecnología real (ej. un adaptador que implementa "guardar un pedido" usando PostgreSQL, otro que lo hace con MongoDB).</li>
+          </ul>
+          <img class="portada-icon" src="img/plug.svg" alt="Puertos y adaptadores" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El núcleo no depende de nada externo</h1>
+          <p>La regla central del patrón es una <strong>inversión de dependencias</strong>: el núcleo define los puertos que necesita, y son los adaptadores —afuera— quienes dependen del núcleo, nunca al revés.</p>
+          <ul>
+            <li><strong>Dentro del hexágono:</strong> el dominio y su lógica de negocio, sin ninguna referencia a bases de datos, frameworks web ni librerías externas.</li>
+            <li><strong>En el borde del hexágono:</strong> los puertos —las interfaces que el dominio expone o necesita.</li>
+            <li><strong>Fuera del hexágono:</strong> los adaptadores —UI web, API REST, base de datos, cola de mensajes— cada uno implementando un puerto.</li>
+          </ul>
+          <p><strong>Se puede reemplazar cualquier adaptador —cambiar de base de datos, de framework de UI— sin tocar una sola línea del núcleo.</strong></p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Núcleo protegido de la infraestructura" style="display:block;width:130px;height:130px;margin:12px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>Lo que Hexagonal gana — y lo que cuesta</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>El dominio se prueba <strong>de forma aislada</strong>, sin levantar base de datos ni interfaz gráfica, ni construir mocks complicados de infraestructura</td><td>Añade una capa de <strong>indirección</strong>: interfaces y adaptadores adicionales que, en un proyecto pequeño, pueden sentirse como sobre-ingeniería</td></tr>
+              <tr><td>Cambiar de tecnología de infraestructura (motor de base de datos, framework web) no obliga a tocar el negocio</td><td>Requiere disciplina del equipo para no "filtrar" detalles de infraestructura de vuelta hacia el núcleo</td></tr>
+              <tr><td>El mismo núcleo puede exponerse a través de varios adaptadores distintos a la vez (API REST, cola de eventos, CLI)</td><td>Para dominios muy simples, el beneficio de aislar el núcleo puede no compensar el código adicional</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Dos escalas distintas, no dos alternativas</h1>
+          <p><strong>SOA</strong> responde una pregunta a <strong>nivel de sistema o de empresa</strong>: cómo se organizan y se comunican entre sí muchos servicios independientes.</p>
+          <p><strong>Hexagonal</strong> responde una pregunta a <strong>nivel de código, dentro de un solo servicio o aplicación</strong>: cómo proteger su lógica de negocio de los detalles técnicos que la rodean.</p>
+          <p><strong>No compiten entre sí — son complementarios.</strong> Un servicio expuesto bajo SOA puede, perfectamente, estar construido por dentro con Arquitectura Hexagonal: su contrato hacia afuera es el "puerto" principal del hexágono, y la base de datos que usa por dentro es apenas uno de sus adaptadores.</p>
+          <img class="portada-icon" src="img/code-branch.svg" alt="Dos escalas complementarias" style="display:block;width:140px;height:140px;margin:12px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿SOA, Hexagonal, o ambos a la vez?</h1>
+          <p><strong>Para cada situación, decidan si aplica SOA, Arquitectura Hexagonal, o las dos combinadas, y justifiquen:</strong></p>
+          <ol>
+            <li>Una empresa necesita que su servicio de pagos lo puedan consumir tanto la app web como la app móvil como un socio externo, cada uno sin conocer los detalles internos del servicio de pagos.</li>
+            <li>Dentro de ese mismo servicio de pagos, el equipo quiere poder probar las reglas de negocio (validar un cobro, calcular comisiones) sin depender de la base de datos real.</li>
+            <li>El mismo equipo, un año después, decide migrar de una base de datos relacional a una NoSQL, y quiere que ese cambio no afecte la lógica de negocio del servicio.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>SOA</strong> organiza el sistema como servicios de negocio reutilizables, con contrato explícito, bajo acoplamiento y autonomía — el "API Mandate" de Amazon (2002) forzó esta disciplina y, sin buscarlo, sentó las bases de AWS.</li>
+            <li>SOA da reutilización real entre equipos, pero exige gobernanza seria de contratos y versionado a medida que crecen los servicios.</li>
+            <li><strong>Arquitectura Hexagonal (Ports and Adapters)</strong>, de Alistair Cockburn (2005), aísla el núcleo de negocio de la infraestructura mediante puertos (interfaces del dominio) y adaptadores (implementaciones concretas), con inversión de dependencias hacia el núcleo.</li>
+            <li>Hexagonal facilita probar el dominio de forma aislada y cambiar de infraestructura sin tocar el negocio, a cambio de una capa extra de indirección que puede no valer la pena en proyectos pequeños.</li>
+            <li><strong>SOA y Hexagonal operan en escalas distintas y son complementarios:</strong> SOA organiza servicios a nivel de sistema; Hexagonal organiza el código dentro de cada servicio.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar los diez patrones del catálogo POSA vistos hasta ahora en la Unidad 2 y ubicar, en cada uno, un ejemplo real o del proyecto de Fábrica Escuela.</li>
+            <li>Identificar si algún servicio del proyecto de Fábrica Escuela podría beneficiarse de separar su núcleo de negocio de su infraestructura, al estilo de puertos y adaptadores.</li>
+          </ul>
+          <p><strong>La Semana 9 cierra la Unidad 2 con Microservicios y WebHooks: cómo SOA evolucionó hacia servicios más pequeños e independientes, y cómo se comunican mediante eventos.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

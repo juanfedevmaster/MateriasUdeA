@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: Brokers, MVC — Semana 6</title>
+  <meta name="description" content="Broker con el caso real de CORBA, y MVC con el caso real de Smalltalk-80: cómo se comunican los componentes distribuidos y cómo se organiza la interfaz de usuario — Arquitectura de Software, Semana 6." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-brokers-mvc/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: Brokers, MVC — Semana 6" />
+  <meta property="og:description" content="Broker con el caso real de CORBA, y MVC con el caso real de Smalltalk-80: cómo se comunican los componentes distribuidos y cómo se organiza la interfaz de usuario — Arquitectura de Software, Semana 6." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-brokers-mvc/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: Brokers, MVC — Semana 6" />
+  <meta name="twitter:description" content="Broker con el caso real de CORBA, y MVC con el caso real de Smalltalk-80: cómo se comunican los componentes distribuidos y cómo se organiza la interfaz de usuario — Arquitectura de Software, Semana 6." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-brokers-mvc.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 6 — Catálogo POSA: Brokers, MVC</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Catálogo de patrones arquitectónicos" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un objeto en C++<br>habla con otro en COBOL<br>sin saber dónde vive</h1>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Comunicación entre componentes distribuidos" style="display:block;width:210px;height:210px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>CORBA, 1991</h1>
+          <table>
+            <tbody>
+              <tr><th>Estándar</th><td>CORBA — Common Object Request Broker Architecture</td></tr>
+              <tr><th>Organización</th><td>OMG (Object Management Group), un consorcio de empresas tecnológicas fundado en 1989 (entre ellas 3Com, Hewlett-Packard, Sun Microsystems y Unisys)</td></tr>
+              <tr><th>Publicación</th><td>especificación CORBA 1.0, en 1991</td></tr>
+              <tr><th>Componente central</th><td><strong>ORB</strong> — Object Request Broker</td></tr>
+              <tr><th>Adopción</th><td>sistemas distribuidos empresariales de los años 90 y 2000, sobre todo en telecomunicaciones, banca y sistemas militares/aeroespaciales</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">CORBA es la implementación histórica más citada del patrón Broker del catálogo POSA (Buschmann et al.).</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué se creó</p>
+          <h1>El problema: sistemas heterogéneos que no se entendían</h1>
+          <p>En los años 80 y 90, las organizaciones grandes operaban sistemas escritos en distintos lenguajes (C, C++, COBOL, Smalltalk) sobre distintas plataformas (mainframes, Unix, Windows). Hacer que esos sistemas colaboraran significaba escribir integraciones a la medida, frágiles y costosas de mantener.</p>
+          <ul>
+            <li>CORBA definió un estándar independiente de lenguaje y de plataforma para invocar objetos remotos <strong>como si fueran locales</strong>.</li>
+            <li>El ORB se encargaba de localizar el objeto remoto, empaquetar la petición y devolver la respuesta — el cliente no necesitaba conocer su ubicación ni su implementación.</li>
+          </ul>
+          <p><strong>Esa idea —ocultar dónde y cómo vive un componente— es la esencia del patrón Broker.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué perdió terreno</p>
+          <h1>Un estándar poderoso, pero pesado</h1>
+          <p>Pese a resolver un problema real, CORBA nunca se convirtió en la forma dominante de construir sistemas distribuidos.</p>
+          <ul>
+            <li>La especificación era extensa y compleja: definir interfaces requería un lenguaje propio, <strong>IDL</strong> (Interface Definition Language), y herramientas de generación de código específicas por lenguaje.</li>
+            <li>Los primeros ORBs de distintos fabricantes no siempre eran interoperables entre sí, algo que contradecía la promesa original de CORBA.</li>
+            <li>A comienzos de los 2000 surgieron alternativas más simples de adoptar: servicios web con SOAP y, más tarde, APIs REST y sistemas de mensajería — con curvas de aprendizaje mucho menores.</li>
+          </ul>
+          <p><strong>El patrón Broker no desapareció: sigue vivo hoy en los message brokers (RabbitMQ, Kafka) y en los API gateways, temas que veremos más adelante en el curso.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>CORBA fue una implementación concreta de una idea más general</h1>
+          <p>Detrás de CORBA hay un patrón arquitectónico documentado en el catálogo <strong>POSA</strong> (Pattern-Oriented Software Architecture, del libro de Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad y Michael Stal): el patrón <strong>Broker</strong>.</p>
+          <p><strong>Hoy lo definimos de forma independiente de CORBA, para reconocerlo en cualquier sistema distribuido que lo use — con o sin ese nombre.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El patrón Broker</h1>
+          <p>El <strong>Broker</strong> es un patrón arquitectónico para sistemas distribuidos: introduce un componente intermediario (el bróker) que coordina la comunicación entre clientes y servidores ubicados en procesos o máquinas distintas, ocultando su ubicación e implementación concreta.</p>
+          <ul>
+            <li><strong>Transparencia de ubicación:</strong> el cliente invoca un servicio sin saber en qué máquina ni en qué proceso se ejecuta realmente.</li>
+            <li>El bróker se encarga del <strong>marshalling</strong> y <strong>unmarshalling</strong> de las peticiones: convertir los datos a un formato transmisible por red, y de vuelta a su formato original al llegar a destino.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Participantes</p>
+          <h1>Quién habla con quién</h1>
+          <ul>
+            <li><strong>Cliente</strong> — invoca un servicio como si fuera una llamada local.</li>
+            <li><strong>Proxy del cliente (stub)</strong> — empaqueta la petición y la envía al bróker.</li>
+            <li><strong>Bróker</strong> — localiza el servidor adecuado y enruta la petición.</li>
+            <li><strong>Proxy del servidor (skeleton)</strong> — desempaqueta la petición para el servidor.</li>
+            <li><strong>Servidor</strong> — ejecuta la operación real y devuelve el resultado por el mismo camino.</li>
+          </ul>
+          <img class="portada-icon" src="img/arrows-left-right.svg" alt="Intermediario entre cliente y servidor" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ventajas y limitaciones</p>
+          <h1>El precio de la transparencia</h1>
+          <table>
+            <thead>
+              <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Desacopla cliente y servidor: cada uno puede cambiar de implementación sin afectar al otro</td><td>Añade una capa de infraestructura adicional que hay que operar y mantener</td></tr>
+              <tr><td>Permite ubicación transparente: los componentes pueden moverse de máquina sin romper a los clientes</td><td>Introduce latencia extra: cada llamada pasa por el bróker y por el proceso de marshalling/unmarshalling</td></tr>
+              <tr><td>Facilita la interoperabilidad entre lenguajes y plataformas heterogéneas</td><td>El bróker es un punto adicional que puede fallar o convertirse en cuello de botella si no se diseña bien</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Vigencia hoy</p>
+          <h1>El Broker no murió con CORBA</h1>
+          <p>La idea central del patrón —un intermediario que desacopla a quien pide de quien resuelve— sigue viva en herramientas mucho más simples de adoptar que CORBA:</p>
+          <ul>
+            <li><strong>Message brokers</strong> como RabbitMQ o Kafka: intermedian mensajes entre servicios sin que unos conozcan la ubicación de los otros.</li>
+            <li><strong>API gateways</strong>: intermedian peticiones HTTP entre clientes y microservicios, ocultando la topología interna del sistema.</li>
+          </ul>
+          <p class="slide-eyebrow">Ambos temas se profundizan más adelante en el curso (BFF en la Semana 9, API Gateway en la Semana 15) — hoy solo los ubicamos como herederos conceptuales del patrón Broker.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Broker resuelve cómo hablan los componentes. Ahora: cómo se organiza uno solo por dentro.</h1>
+          <p>El patrón Broker resuelve un problema de <strong>comunicación entre componentes distribuidos</strong>, en máquinas o procesos distintos. El siguiente patrón del catálogo POSA resuelve un problema muy distinto: cómo organizar, <strong>dentro de una sola aplicación</strong>, la interfaz que ve el usuario.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Smalltalk-80, 1979</h1>
+          <table>
+            <tbody>
+              <tr><th>Origen del patrón</th><td>Modelo-Vista-Controlador (MVC)</td></tr>
+              <tr><th>Año</th><td>1979</td></tr>
+              <tr><th>Autor</th><td>Trygve Reenskaug</td></tr>
+              <tr><th>Institución</th><td>Xerox PARC (Palo Alto Research Center)</td></tr>
+              <tr><th>Entorno</th><td>Smalltalk, uno de los primeros lenguajes orientados a objetos con entorno gráfico propio</td></tr>
+              <tr><th>Propósito original</th><td>Organizar interfaces gráficas de escritorio (GUI) construidas en Smalltalk</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">MVC es, junto con Broker, uno de los patrones más antiguos y citados del catálogo POSA.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Contexto</p>
+          <h1>Xerox PARC y el problema de la interfaz gráfica</h1>
+          <p>A finales de los 70, Xerox PARC investigaba interfaces gráficas de usuario (GUI) —ventanas, menús, íconos— años antes de que fueran comunes. Trygve Reenskaug trabajaba con el equipo de Smalltalk cuando identificó un problema recurrente en esas aplicaciones gráficas.</p>
+          <ul>
+            <li>Si los datos, la presentación en pantalla y el manejo de la entrada del usuario vivían mezclados en el mismo código, cualquier cambio visual arriesgaba romper la lógica de negocio.</li>
+            <li>Reenskaug propuso separar esas tres responsabilidades en piezas independientes que colaboran entre sí — el origen del patrón MVC.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · De GUIs de escritorio a la web</p>
+          <h1>Un patrón de 1979 que sigue vivo en la web</h1>
+          <p>MVC nació para aplicaciones de escritorio, pero su idea de separar responsabilidades resultó igual de útil para aplicaciones web décadas después. Numerosos frameworks web adoptaron una versión adaptada del patrón:</p>
+          <ul>
+            <li><strong>Ruby on Rails</strong> (ya visto como caso real en la Semana 2) popularizó "MVC" como término familiar para desarrolladores web.</li>
+            <li><strong>Django</strong> (Python), <strong>Spring MVC</strong> (Java) y <strong>ASP.NET MVC</strong> (.NET) adoptaron variantes del mismo patrón para organizar aplicaciones web.</li>
+          </ul>
+          <p><strong>Cuatro décadas después de Smalltalk-80, "MVC" sigue siendo el vocabulario común para hablar de cómo se organiza la interfaz de una aplicación.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De Smalltalk-80 al patrón general: qué es exactamente MVC</h1>
+          <p>Igual que hicimos con Broker y CORBA, ahora separamos el patrón <strong>MVC</strong> de su origen histórico en Smalltalk-80, para poder reconocerlo en cualquier aplicación —de escritorio, web o móvil— que separe sus responsabilidades de la misma forma.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El patrón MVC: tres responsabilidades</h1>
+          <p><strong>MVC (Modelo-Vista-Controlador)</strong> organiza una aplicación separando tres responsabilidades independientes, para desacoplar la lógica de negocio de la interfaz que la muestra:</p>
+          <ul>
+            <li><strong>Modelo:</strong> los datos y la lógica de negocio — no sabe nada de cómo se presenta en pantalla.</li>
+            <li><strong>Vista:</strong> la presentación visual de los datos del modelo — no contiene lógica de negocio.</li>
+            <li><strong>Controlador:</strong> recibe la entrada del usuario (clics, formularios), decide qué hacer y coordina al Modelo y a la Vista.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Interacciones</p>
+          <h1>Cómo colaboran las tres piezas</h1>
+          <ul>
+            <li>El usuario actúa sobre la interfaz → la acción llega al <strong>Controlador</strong>.</li>
+            <li>El Controlador interpreta la acción y actualiza el <strong>Modelo</strong> (por ejemplo, guarda un dato nuevo).</li>
+            <li>El Modelo cambia de estado y lo notifica → la <strong>Vista</strong> se actualiza para reflejar el nuevo estado.</li>
+            <li>La Vista nunca modifica el Modelo directamente, ni el Modelo conoce los detalles de cómo luce la Vista.</li>
+          </ul>
+          <img class="portada-icon" src="img/object-group.svg" alt="Tres responsabilidades que colaboran entre sí" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición · Broker vs. MVC</p>
+          <h1>Dos patrones, dos problemas distintos</h1>
+          <p><strong>Broker</strong> resuelve cómo se comunican componentes que viven en <strong>máquinas o procesos distintos</strong> — es un patrón para sistemas distribuidos.</p>
+          <p><strong>MVC</strong> resuelve cómo se organiza el código <strong>dentro de una sola aplicación</strong> — es un patrón para separar responsabilidades internas, no para distribuir componentes en la red.</p>
+          <p><strong>Confundir ambos niveles de problema es un error común — lo revisamos a continuación con una confusión todavía más frecuente.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>MVC no es lo mismo que "arquitectura de 3 capas"</h1>
+          <p>Es muy común escuchar "mi aplicación usa MVC" queriendo decir "mi aplicación tiene una capa de presentación, una de lógica y una de datos". <strong>No son lo mismo:</strong></p>
+          <ul>
+            <li>MVC describe cómo se organiza la <strong>interfaz de usuario</strong> en tres roles que colaboran (Modelo, Vista, Controlador) dentro de la capa de presentación.</li>
+            <li>La arquitectura de <strong>N capas</strong> describe cómo se organiza el sistema completo en niveles horizontales (presentación, negocio, datos), sin importar cómo esté construida cada capa por dentro.</li>
+          </ul>
+          <p><strong>Un sistema de 3 capas puede usar MVC solo dentro de su capa de presentación — son decisiones en niveles distintos.</strong> Este contraste se profundiza en la sesión de Cliente/Servidor y arquitectura N capas.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Broker, MVC, o ambos?</h1>
+          <p><strong>Para cada escenario, identifiquen si el patrón que resuelve el problema es Broker, MVC, o si aplican los dos a la vez:</strong></p>
+          <ol>
+            <li>Un formulario web donde el navegador solo muestra datos y un controlador decide qué guardar.</li>
+            <li>Un servicio bancario que invoca, sin conocer su ubicación física, un servicio de validación de crédito alojado en otro país.</li>
+            <li>Una app de escritorio que consulta datos en un servidor remoto <strong>y</strong> organiza su propia pantalla con Modelo, Vista y Controlador.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>El patrón <strong>Broker</strong> introduce un intermediario que oculta la ubicación e implementación de servidores remotos, dando transparencia de ubicación a cambio de latencia y complejidad de infraestructura.</li>
+            <li><strong>CORBA</strong> (OMG, 1991) fue la implementación histórica más influyente de Broker; perdió terreno frente a alternativas más simples, pero su idea sigue viva en message brokers y API gateways.</li>
+            <li>El patrón <strong>MVC</strong> separa Modelo, Vista y Controlador para desacoplar la lógica de negocio de la interfaz de usuario.</li>
+            <li><strong>Smalltalk-80</strong> (Trygve Reenskaug, Xerox PARC, 1979) es el origen documentado de MVC; el patrón migró de las GUIs de escritorio a frameworks web como Rails, Django, Spring MVC y ASP.NET MVC.</li>
+            <li>Broker resuelve <strong>comunicación entre componentes distribuidos</strong>; MVC resuelve <strong>organización interna de una aplicación</strong> — no son intercambiables, y MVC tampoco equivale a una arquitectura de N capas.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p>Seguimos recorriendo el catálogo POSA. La próxima sesión cubre dos patrones más:</p>
+          <ul>
+            <li><strong>Batch:</strong> procesamiento de grandes volúmenes de datos sin intervención del usuario, por lotes.</li>
+            <li><strong>Cliente/Servidor:</strong> el patrón base de casi toda la Unidad 2 — y donde retomamos la distinción entre MVC y la arquitectura de N capas que dejamos abierta hoy.</li>
+          </ul>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:180px;height:180px;margin:25px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

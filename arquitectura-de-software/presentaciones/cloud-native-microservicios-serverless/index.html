@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless — Semana 15</title>
+  <meta name="description" content="De un datacenter propio a cientos de microservicios en la nube — el caso real de la migración de Netflix — cierre de la Unidad 4 — Arquitectura de Software, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/cloud-native-microservicios-serverless/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless — Semana 15" />
+  <meta property="og:description" content="De un datacenter propio a cientos de microservicios en la nube — el caso real de la migración de Netflix — cierre de la Unidad 4 — Arquitectura de Software, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/cloud-native-microservicios-serverless/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless — Semana 15" />
+  <meta name="twitter:description" content="De un datacenter propio a cientos de microservicios en la nube — el caso real de la migración de Netflix — cierre de la Unidad 4 — Arquitectura de Software, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/cloud-native-microservicios-serverless.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 15 — Arquitecturas Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless (FaaS)</h2>
+          <p class="slide-eyebrow">De un datacenter propio a cientos de microservicios en la nube — cierre de la Unidad 4 — con el caso real de Netflix · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Servicios distribuidos en la nube" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <h1>Agosto de 2008: tres días sin poder enviar un solo DVD.</h1>
+          <p class="slide-eyebrow">Netflix — el incidente que inició la migración más citada de la industria hacia la nube.</p>
+          <img class="portada-icon" src="img/netflix.svg" alt="Netflix" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un negocio de DVD por correo a la plataforma de streaming más grande del mundo</h1>
+          <p>En 2008, Netflix todavía enviaba DVDs por correo y operaba sobre una base de datos relacional monolítica, alojada en su propio datacenter. Un incidente de corrupción de esa base de datos detuvo por completo los envíos durante tres días — y encendió una alarma sobre qué tan frágil era depender de una sola pieza de infraestructura centralizada.</p>
+          <p><strong>Ese incidente, no una moda tecnológica, es el origen documentado de la migración de Netflix hacia una arquitectura distribuida en la nube — el caso que abre el cierre de la Unidad 4.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>La migración de Netflix a la nube</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Netflix, Inc.</td></tr>
+              <tr><th>Incidente disparador</th><td>Corrupción de base de datos, agosto de 2008 — tres días sin poder enviar DVDs a los suscriptores</td></tr>
+              <tr><th>Decisión</th><td>Migrar de un datacenter propio, con una base de datos relacional centralizada, a una arquitectura de microservicios distribuidos sobre Amazon Web Services</td></tr>
+              <tr><th>Duración de la migración</th><td>Aproximadamente siete años, de 2009 a 2016</td></tr>
+              <tr><th>Hito de cierre</th><td>En febrero de 2016, Netflix anunció públicamente el cierre de su último datacenter propio</td></tr>
+              <tr><th>Documentación</th><td>Extensamente documentado en el Netflix Technology Blog y en charlas públicas de su entonces arquitecto en la nube, Adrian Cockcroft</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La transformación</p>
+          <h1>De un monolito a cientos de microservicios independientes</h1>
+          <p>La migración no fue solo "mover servidores a AWS" — fue una reescritura arquitectónica completa. Netflix descompuso su aplicación monolítica en <strong>cientos de microservicios independientes</strong>, cada uno responsable de una función de negocio concreta (recomendaciones, reproducción, facturación, catálogo), desplegados y escalados de forma autónoma.</p>
+          <p><strong>Esta migración es, en la práctica, el caso de estudio más citado de la industria para ilustrar el paso de una arquitectura tradicional a una arquitectura cloud native</strong> — el término formal que veremos a continuación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La cultura de resiliencia</p>
+          <h1>Chaos Monkey: romper el sistema a propósito</h1>
+          <p>Como parte de esta transformación, en 2011 el equipo de Netflix creó <strong>Chaos Monkey</strong>, una herramienta que apaga aleatoriamente instancias de servidores en producción durante horario laboral, <strong>a propósito</strong>. La idea: si un servicio no puede sobrevivir a que Chaos Monkey lo apague sin avisar, tampoco sobrevivirá a una falla real de infraestructura.</p>
+          <p class="slide-eyebrow">Chaos Monkey se liberó como código abierto en 2012, como parte de un conjunto de herramientas conocido como el "Simian Army" — y es hoy la referencia histórica de lo que la industria llama "ingeniería del caos" (chaos engineering).</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la anécdota de Netflix al vocabulario formal</h1>
+          <p>Lo que Netflix construyó tiene nombre propio en la literatura de arquitectura: <strong>Cloud Native</strong>. Cerramos la Unidad 4 formalizando ese término, los patrones de diseño que hacen posible dividir un sistema en microservicios de forma coherente (DDD, CQRS, Event Sourcing), la pieza que los expone al mundo exterior (API Gateway) y el paso final de esta evolución: Serverless.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es Cloud Native?</h1>
+          <p>Según la definición oficial de la <strong>Cloud Native Computing Foundation (CNCF)</strong>, las tecnologías cloud native permiten construir y ejecutar aplicaciones escalables en entornos modernos y dinámicos como la nube pública, privada o híbrida.</p>
+          <ul>
+            <li><strong>Contenedores:</strong> empaquetan cada servicio con sus dependencias, de forma portable entre entornos.</li>
+            <li><strong>Orquestación dinámica:</strong> un sistema (típicamente Kubernetes) decide dónde y cuándo ejecutar cada contenedor, y lo reinicia automáticamente si falla.</li>
+            <li><strong>Microservicios:</strong> la aplicación se organiza como servicios pequeños e independientes, como los que descompuso Netflix (s05).</li>
+          </ul>
+          <p class="slide-eyebrow">Cloud native no significa simplemente "correr en la nube" — significa diseñar el sistema para aprovechar la elasticidad y la naturaleza distribuida de la nube desde el principio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>The Twelve-Factor App</h1>
+          <p>En 2011, el equipo de la plataforma en la nube Heroku publicó <strong>"The Twelve-Factor App"</strong>, una metodología de doce principios para construir aplicaciones aptas para la nube — hoy una referencia estándar para diseñar servicios cloud native.</p>
+          <table>
+            <thead><tr><th>Algunos de los doce factores</th><th>Qué exige</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Config</strong></td><td>La configuración se guarda en variables de entorno, nunca en el código.</td></tr>
+              <tr><td><strong>Procesos sin estado</strong></td><td>El servicio no guarda estado local entre solicitudes — cualquier instancia puede atender cualquier solicitud.</td></tr>
+              <tr><td><strong>Disponibilidad/desechabilidad</strong></td><td>Cada instancia puede arrancar o detenerse en segundos, sin efectos secundarios.</td></tr>
+              <tr><td><strong>Paridad dev/prod</strong></td><td>El entorno de desarrollo debe parecerse lo más posible al de producción.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Repaso</p>
+          <h1>Microservicios (Semana 8): la base sobre la que se construye todo lo demás</h1>
+          <p>En la Semana 8 vieron el patrón POSA <strong>Microservicios</strong>: servicios pequeños, independientes, cada uno con su propia base de datos, comunicados por red. Cloud native (s08) es, en gran medida, <strong>el entorno de infraestructura que hace viable operar cientos de microservicios a la vez</strong> — como los de Netflix — sin que el costo operativo sea inmanejable.</p>
+          <p><strong>Pero dividir un sistema en microservicios plantea una pregunta que el patrón POSA no resuelve por sí solo: ¿dónde exactamente se traza el límite entre un servicio y otro?</strong> Esa pregunta es el punto de partida de Domain-Driven Design.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Domain-Driven Design (DDD): dónde trazar el límite de un servicio</h1>
+          <p><strong>Domain-Driven Design (DDD), formalizado por Eric Evans en su libro de 2003, es un enfoque de diseño que estructura el software alrededor del dominio del negocio, no de la tecnología.</strong> Dos de sus conceptos son la herramienta más usada hoy para decidir la frontera de un microservicio:</p>
+          <ul>
+            <li><strong>Bounded Context (contexto delimitado):</strong> una frontera explícita dentro de la cual un modelo de negocio y su terminología son válidos y consistentes — ej. "Pedido" significa algo distinto en el contexto de Ventas que en el de Logística.</li>
+            <li><strong>Ubiquitous language (lenguaje ubicuo):</strong> el mismo vocabulario que usan los expertos de negocio debe usarse literalmente en el código, dentro de cada contexto delimitado.</li>
+          </ul>
+          <p class="slide-eyebrow">La práctica común hoy: cada microservicio debería alinearse con un Bounded Context — no con una tabla de base de datos ni con una capacidad técnica arbitraria.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>CQRS: separar el camino de escritura del de lectura</h1>
+          <p><strong>CQRS (Command Query Responsibility Segregation), un término acuñado por Greg Young a partir del principio de Bertrand Meyer de separación comando-consulta, propone usar modelos distintos para escribir datos (comandos) y para leerlos (consultas)</strong>, en vez de un único modelo que sirva para ambas cosas.</p>
+          <ul>
+            <li><strong>Lado de comandos:</strong> optimizado para validar reglas de negocio y aplicar cambios de forma consistente.</li>
+            <li><strong>Lado de consultas:</strong> optimizado para leer rápido, a menudo con una estructura de datos desnormalizada y distinta a la de escritura.</li>
+          </ul>
+          <p class="slide-eyebrow">En un sistema simple, un solo modelo CRUD basta. CQRS se justifica cuando los patrones de lectura y escritura son tan distintos entre sí que un modelo único se vuelve un compromiso pobre para ambos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Event Sourcing: guardar el historial completo, no solo el estado final</h1>
+          <p><strong>Event Sourcing es un patrón en el que el sistema no guarda el estado actual de un dato, sino la secuencia completa de eventos que lo llevaron a ese estado</strong> — el estado actual se reconstruye, en cualquier momento, reproduciendo esos eventos en orden.</p>
+          <p>Ejemplo: en vez de guardar <code>saldo: 850</code>, el sistema guarda la secuencia <code>DepósitoRealizado(1000)</code>, <code>RetiroRealizado(200)</code>, <code>RetiroRealizado(50)</code> — el saldo actual (850) se calcula sumando esos eventos, y el historial completo queda disponible para auditoría.</p>
+          <p class="slide-eyebrow">Este patrón se documenta ampliamente, entre otros, en los trabajos de Martin Fowler y del propio Greg Young.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>CRUD tradicional vs. Event Sourcing</h1>
+          <table>
+            <thead><tr><th></th><th>CRUD tradicional</th><th>Event Sourcing</th></tr></thead>
+            <tbody>
+              <tr><td>Qué se guarda</td><td>Solo el estado actual, se sobreescribe con cada cambio</td><td>La secuencia completa de eventos, nunca se sobreescribe</td></tr>
+              <tr><td>Historial de cambios</td><td>Se pierde, a menos que se implemente auditoría aparte</td><td>Existe por diseño — es literalmente lo que se guarda</td></tr>
+              <tr><td>Reconstruir un estado pasado</td><td>No es posible sin un mecanismo adicional</td><td>Se reproducen los eventos hasta ese punto</td></tr>
+              <tr><td>Complejidad de implementación</td><td>Baja, bien conocida</td><td>Alta — requiere infraestructura propia (event store)</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Event Sourcing suele combinarse con CQRS (s12): los eventos alimentan el lado de escritura, y proyecciones derivadas de esos eventos alimentan el lado de lectura.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>API Gateway: la puerta única hacia cientos de microservicios</h1>
+          <p><strong>Un API Gateway es un componente que se sitúa entre los clientes externos y el conjunto de microservicios internos, exponiendo un único punto de entrada</strong> — resolviendo, a escala de todo el sistema, varias de las prácticas vistas en la sesión anterior:</p>
+          <ul>
+            <li><strong>Enrutamiento:</strong> dirige cada solicitud entrante al microservicio correcto.</li>
+            <li><strong>Autenticación centralizada:</strong> valida credenciales una sola vez, en vez de que cada microservicio lo haga por separado.</li>
+            <li><strong>Rate limiting:</strong> aplica límites de tasa (Semana 15, sesión anterior) de forma centralizada.</li>
+            <li><strong>Agregación:</strong> puede combinar respuestas de varios microservicios en una sola respuesta al cliente.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · De vuelta a Netflix</p>
+          <h1>Zuul: el API Gateway que Netflix construyó y abrió al público</h1>
+          <p>Con cientos de microservicios y millones de dispositivos cliente distintos (TVs, consolas, navegadores, apps móviles) conectándose a su plataforma, Netflix necesitaba exactamente el componente descrito en s15. En 2013 anunció públicamente <strong>Zuul</strong>, su propio API Gateway, liberado como proyecto de código abierto.</p>
+          <p class="slide-eyebrow">Zuul se encarga en Netflix del enrutamiento dinámico, la autenticación y la resiliencia ante fallos de los microservicios internos — la misma arquitectura descompuesta que vimos nacer en s05, ahora con una puerta de entrada única y documentada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Serverless y Function as a Service (FaaS)</h1>
+          <p><strong>Serverless es un modelo de ejecución en la nube donde el proveedor gestiona por completo la infraestructura del servidor, y el desarrollador solo escribe y despliega funciones individuales.</strong> Su implementación más común es <strong>FaaS (Function as a Service)</strong>: cada función se ejecuta bajo demanda, en respuesta a un evento (una solicitud HTTP, un archivo subido, un mensaje en una cola).</p>
+          <table>
+            <thead><tr><th>Característica</th><th>Qué significa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Escalado automático</strong></td><td>De cero a miles de ejecuciones simultáneas, sin configuración manual.</td></tr>
+              <tr><td><strong>Pago por uso real</strong></td><td>Se cobra por tiempo de ejecución, no por servidor reservado.</td></tr>
+              <tr><td><strong>Cold start</strong></td><td>La primera invocación tras un período inactivo puede tardar más, mientras se inicializa el entorno.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión</p>
+          <h1>Microservicios en contenedores vs. Serverless</h1>
+          <p>Con FaaS ya definido, la pregunta natural es cuándo preferirlo sobre microservicios tradicionales desplegados en contenedores (como los de Netflix, s05).</p>
+          <table>
+            <thead><tr><th></th><th>Microservicios en contenedores</th><th>Serverless / FaaS</th></tr></thead>
+            <tbody>
+              <tr><td>Control de infraestructura</td><td>Alto — el equipo decide runtime, recursos, orquestación</td><td>Bajo — el proveedor decide casi todo</td></tr>
+              <tr><td>Carga sostenida y predecible</td><td>Más eficiente en costo</td><td>Puede salir más caro a alto volumen constante</td></tr>
+              <tr><td>Carga esporádica o impredecible</td><td>Recursos ociosos cuando no hay tráfico</td><td>Ideal — se paga solo por lo que se ejecuta</td></tr>
+              <tr><td>Latencia crítica</td><td>Sin cold starts</td><td>El cold start puede ser un problema</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>"Serverless" no significa que no haya servidores</h1>
+          <p>El nombre "serverless" genera una confusión frecuente: <strong>los servidores siguen existiendo</strong> — el proveedor cloud los sigue operando físicamente. Lo que desaparece no es el servidor, es la responsabilidad del equipo de desarrollo de aprovisionarlo, parchearlo y escalarlo manualmente.</p>
+          <p class="slide-eyebrow">Es una crítica terminológica real y frecuente en la industria — no invalida el modelo, pero sí es importante para no venderlo (ni entenderlo) mal: sigue siendo infraestructura real, solo que gestionada por otro equipo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diseñen la frontera de sus microservicios</h1>
+          <p><strong>En equipos, sobre su proyecto CodeF@ctory:</strong></p>
+          <ol>
+            <li>Identifiquen al menos dos posibles Bounded Contexts (s11) en su dominio de negocio. ¿Qué término usa cada uno que podría significar algo distinto en el otro?</li>
+            <li>¿Alguna funcionalidad de su proyecto se beneficiaría de CQRS (s12) porque sus patrones de lectura y escritura son muy distintos?</li>
+            <li>¿Qué parte de su sistema desplegarían como función serverless en vez de como servicio siempre activo, y por qué (s18)?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>El incidente de 2008 y la migración de siete años de Netflix (2009-2016) son el caso real más citado de transición de un monolito a una arquitectura <strong>cloud native</strong> (contenedores, orquestación dinámica, microservicios).</li>
+            <li><strong>DDD</strong> (Bounded Context, lenguaje ubicuo) es la herramienta principal para decidir dónde trazar el límite entre un microservicio y otro.</li>
+            <li><strong>CQRS</strong> separa el modelo de escritura del de lectura; <strong>Event Sourcing</strong> guarda la secuencia de eventos en vez del estado final — ambos suelen combinarse.</li>
+            <li>El <strong>API Gateway</strong> (como Zuul, de Netflix) centraliza enrutamiento, autenticación y rate limiting frente a un conjunto grande de microservicios.</li>
+            <li><strong>Serverless/FaaS</strong> traslada la gestión de infraestructura al proveedor; sigue habiendo servidores, solo que ya no son responsabilidad del equipo de desarrollo.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la Unidad 4</p>
+          <h1>Cuatro sesiones, una sola unidad: Los Servicios Web en la Arquitectura</h1>
+          <p>Con esta sesión cerramos la Unidad 4 completa, cuatro sesiones a lo largo de las semanas 14 y 15:</p>
+          <ul>
+            <li><strong>Esquemas para el Uso de Servicios Web y Arquitecturas SOA</strong> (Semana 14) — los principios de servicios independientes y débilmente acoplados, con el mandato de Jeff Bezos en Amazon (2002).</li>
+            <li><strong>Estándares y Protocolos</strong> (Semana 14) — de SOAP y WSDL a REST, HATEOAS, HAL y GraphQL, con el caso de Facebook (2012).</li>
+            <li><strong>Web APIs e Implementación de Servicios Web</strong> (Semana 15) — versionado, paginación, autenticación e idempotencia, con Stripe frente a la ruptura de la API de Twitter (2012).</li>
+            <li><strong>Cloud Native, Microservicios y Serverless</strong> (hoy) — cómo esos mismos servicios se organizan y despliegan a la escala de un sistema completo, con la migración de Netflix.</li>
+          </ul>
+          <p><strong>Toda la Unidad 4 respondió una sola pregunta: una vez que un sistema decide comunicarse mediante servicios (Unidades 1-3), ¿con qué estándares, prácticas y arquitecturas concretas se construyen, exponen y escalan esos servicios en el mundo real?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar los cuatro patrones de esta sesión (Cloud Native, DDD, CQRS/Event Sourcing, API Gateway, Serverless) y ubicar cuáles ya usa, o podría usar, su proyecto de CodeF@ctory.</li>
+            <li>Preparar la Entrega 2 (integración de componentes y framework), que se apoya directamente en las Web APIs y la arquitectura de servicios vistas en toda la Unidad 4.</li>
+          </ul>
+          <p><strong>La Semana 16 abre la Unidad 5 — Aspectos de Seguridad en Arquitecturas de Software — con los principios de arquitectura de software segura y la importancia de la seguridad en las APIs.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

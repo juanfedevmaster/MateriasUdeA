@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estándares y Protocolos de Servicios Web — Semana 14</title>
+  <meta name="description" content="De SOAP y WSDL a REST, HATEOAS, HAL y GraphQL — el caso real de Facebook y el rediseño del News Feed móvil (2012) — Arquitectura de Software, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/estandares-protocolos-web-services/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Estándares y Protocolos de Servicios Web — Semana 14" />
+  <meta property="og:description" content="De SOAP y WSDL a REST, HATEOAS, HAL y GraphQL — el caso real de Facebook y el rediseño del News Feed móvil (2012) — Arquitectura de Software, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/estandares-protocolos-web-services/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estándares y Protocolos de Servicios Web — Semana 14" />
+  <meta name="twitter:description" content="De SOAP y WSDL a REST, HATEOAS, HAL y GraphQL — el caso real de Facebook y el rediseño del News Feed móvil (2012) — Arquitectura de Software, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/estandares-protocolos-web-services.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 14 — Estándares y Protocolos de Servicios Web (SOAP, WSDL, UDDI, RESTful, HATEOAS, HAL, GraphQL)</h2>
+          <p class="slide-eyebrow">De contratos XML rígidos al grafo flexible de datos — con el caso real de Facebook, 2012 · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/code-compare.svg" alt="Comparación de protocolos" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <h1>Una app tan lenta que Facebook casi la retira del App Store.</h1>
+          <p class="slide-eyebrow">iOS, 2012 — el problema no era el celular: era cómo la app pedía los datos por REST.</p>
+          <img class="portada-icon" src="img/facebook.svg" alt="Facebook" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El mismo endpoint, para pantallas completamente distintas</h1>
+          <p>En 2012 Facebook rediseñó su app de iOS: pasó de una capa HTML5 empaquetada a una app nativa de verdad. El News Feed necesitaba datos muy distintos según la pantalla — la lista principal, el detalle de una publicación, el perfil de un amigo — pero el equipo solo tenía APIs REST tradicionales para servírselos.</p>
+          <p><strong>Ese desajuste entre "lo que la pantalla necesita" y "lo que el endpoint devuelve" es el hilo conductor de toda esta sesión: cómo distintos estándares de servicios web resuelven (o no resuelven) ese problema.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Facebook, el News Feed nativo, 2012</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Facebook (hoy Meta)</td></tr>
+              <tr><th>Contexto</th><td>Reconstrucción de la app de iOS como aplicación nativa, tras abandonar el enfoque basado en HTML5</td></tr>
+              <tr><th>Equipo</th><td>Equipo del News Feed, con el ingeniero <strong>Lee Byron</strong> como uno de los creadores principales de la solución</td></tr>
+              <tr><th>Problema</th><td>Las APIs REST existentes obligaban a hacer muchas llamadas, o a traer campos de más, para armar cada pantalla</td></tr>
+              <tr><th>Solución interna</th><td>Un nuevo lenguaje de consulta de datos, usado internamente desde 2012</td></tr>
+              <tr><th>Nombre público</th><td><strong>GraphQL</strong>, liberado como estándar abierto en 2015</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Documentado por Facebook/Meta Engineering y en charlas públicas de Lee Byron sobre el origen de GraphQL.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema técnico</p>
+          <h1>Over-fetching y under-fetching</h1>
+          <p>Con APIs REST tradicionales, cada endpoint devuelve una forma fija de datos. Eso genera dos problemas opuestos, y la app de Facebook sufría ambos a la vez:</p>
+          <ul>
+            <li><strong>Over-fetching (traer de más):</strong> un endpoint como <code>/usuario/123</code> devuelve 40 campos del usuario cuando la pantalla del News Feed solo necesita 3 — nombre, foto y último estado. Ese exceso de datos viajando por una red móvil de 2012 costaba tiempo real de carga.</li>
+            <li><strong>Under-fetching (traer de menos):</strong> para armar una sola pantalla (ej. una publicación con sus comentarios y los perfiles de quienes comentaron) había que encadenar varias llamadas REST distintas, una tras otra.</li>
+          </ul>
+          <p class="slide-eyebrow">Ambos problemas — traer de más y traer de menos — son consecuencia directa de que REST tradicional fija la forma de la respuesta en el servidor, no en el cliente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La solución</p>
+          <h1>Un lenguaje para pedir exactamente lo que la pantalla necesita</h1>
+          <p>El equipo de Facebook construyó un lenguaje de consulta donde <strong>el cliente describe la forma exacta de los datos que necesita, y el servidor responde con esa forma exacta</strong> — ni un campo de más, ni una llamada de menos. Ese lenguaje se usó internamente en la app de iOS desde 2012.</p>
+          <p><strong>En 2015, Facebook abrió esa tecnología al público bajo el nombre GraphQL</strong>, y hoy la usan empresas como GitHub, Shopify y la propia Meta en producción, a gran escala.</p>
+          <p class="slide-eyebrow">El resto de la sesión recorre el camino completo de estándares que existían antes de GraphQL y el que vino después — de SOAP a GraphQL, en orden histórico.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Del caso puntual al mapa completo de estándares</h1>
+          <p>GraphQL no apareció en el vacío: es la respuesta más reciente a un problema que la industria lleva más de veinte años intentando resolver de distintas formas. Para entender por qué GraphQL se diseñó como se diseñó, hay que conocer primero los estándares que lo precedieron.</p>
+          <p><strong>Recorremos el mapa completo, del más antiguo y rígido al más reciente y flexible: SOAP, WSDL y UDDI primero; REST, HATEOAS y HAL después; GraphQL al cierre.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>SOAP: el protocolo formal basado en XML</h1>
+          <p><strong>SOAP (Simple Object Access Protocol) es un protocolo de mensajería basado en XML, con reglas estrictas, para invocar operaciones remotas entre sistemas heterogéneos.</strong> Nació en 1998 (Microsoft) y se estandarizó en el W3C — es el protocolo que dominó la primera generación de servicios web empresariales, especialmente en banca, salud y gobierno.</p>
+          <ul>
+            <li>Cada mensaje SOAP es un documento XML válido, con una estructura obligatoria.</li>
+            <li>Puede transportarse sobre HTTP, pero también sobre SMTP u otros protocolos.</li>
+            <li>Incluye soporte nativo para seguridad (WS-Security) y transacciones — clave para la banca y el gobierno.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Anatomía de un mensaje SOAP</h1>
+          <table>
+            <thead>
+              <tr><th>Elemento</th><th>Función</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Envelope</strong></td><td>El elemento raíz del documento XML — envuelve todo el mensaje.</td></tr>
+              <tr><td><strong>Header</strong></td><td>Opcional. Metadatos del mensaje: autenticación, transacciones, enrutamiento.</td></tr>
+              <tr><td><strong>Body</strong></td><td>Obligatorio. Contiene la operación invocada y sus parámetros, o la respuesta.</td></tr>
+              <tr><td><strong>Fault</strong></td><td>Dentro del Body, cuando algo falla — el equivalente SOAP a un código de error HTTP.</td></tr>
+            </tbody>
+          </table>
+          <pre><code>&lt;soap:Envelope&gt;
+  &lt;soap:Header&gt;...&lt;/soap:Header&gt;
+  &lt;soap:Body&gt;
+    &lt;ConsultarSaldoRequest&gt;
+      &lt;cuenta&gt;123456&lt;/cuenta&gt;
+    &lt;/ConsultarSaldoRequest&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Conexión con la sesión anterior</p>
+          <h1>WSDL: el esquema de SOAP, hecho contrato formal</h1>
+          <p>En la sesión pasada hablamos del <strong>esquema/contrato</strong> de un servicio (s13 de la sesión anterior) sin entrar en su formato concreto. Para SOAP, ese formato es <strong>WSDL (Web Services Description Language)</strong>: un documento XML que describe formalmente qué operaciones expone el servicio, qué parámetros recibe cada una y qué tipos de datos usa.</p>
+          <p><strong>Un cliente puede leer el WSDL y generar automáticamente el código necesario para invocar el servicio</strong> — es diseño "contract-first" llevado al extremo: el contrato es tan preciso que se vuelve código ejecutable por herramientas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>UDDI: el directorio que casi nadie usa hoy</h1>
+          <p><strong>UDDI (Universal Description, Discovery and Integration) es un estándar para publicar y descubrir servicios web</strong> — el rol de "registro" del que hablamos en la sesión anterior (proveedor, consumidor, registro), formalizado como protocolo.</p>
+          <p>Un proveedor publicaba su servicio y su WSDL en un directorio UDDI; un consumidor lo buscaba ahí antes de integrarlo. En la práctica, la adopción fue baja: la mayoría de las organizaciones terminó compartiendo los WSDL directamente (por documentación o acuerdos comerciales) en vez de usar un directorio público automatizado.</p>
+          <p class="slide-eyebrow">UDDI es hoy, en gran medida, un estándar histórico — se sigue mencionando en el catálogo de servicios web porque explica por qué la idea de "descubrimiento automático" no despegó como se esperaba.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>SOAP vs. REST</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>SOAP</th><th>REST</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Formato del mensaje</td><td>Solo XML, estructura estricta</td><td>Cualquiera — normalmente JSON</td></tr>
+              <tr><td>Transporte</td><td>HTTP, SMTP, otros</td><td>HTTP exclusivamente</td></tr>
+              <tr><td>Contrato</td><td>WSDL, obligatorio y formal</td><td>Opcional (ej. OpenAPI), no forma parte del estándar</td></tr>
+              <tr><td>Estilo</td><td>Orientado a operaciones (llamar una función remota)</td><td>Orientado a recursos (manipular un recurso con verbos HTTP)</td></tr>
+              <tr><td>Peso del mensaje</td><td>Alto — XML es verboso</td><td>Bajo — JSON es compacto</td></tr>
+              <tr><td>Uso típico hoy</td><td>Banca, salud, integraciones legadas de gobierno</td><td>APIs web y móviles modernas</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>REST: arquitectura, no protocolo</h1>
+          <p><strong>REST (Representational State Transfer) no es un protocolo ni un estándar formal: es un estilo arquitectónico</strong>, definido por Roy Fielding en su tesis doctoral de 2000, con un conjunto de restricciones (constraints) que un sistema debe cumplir para llamarse "RESTful".</p>
+          <table>
+            <thead><tr><th>Restricción</th><th>Qué exige</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Cliente-servidor</strong></td><td>Separación clara de responsabilidades entre quien pide y quien sirve los datos.</td></tr>
+              <tr><td><strong>Stateless</strong></td><td>Cada solicitud contiene toda la información necesaria; el servidor no guarda estado de sesión entre solicitudes.</td></tr>
+              <tr><td><strong>Cacheable</strong></td><td>Las respuestas deben poder marcarse como cacheables o no.</td></tr>
+              <tr><td><strong>Interfaz uniforme</strong></td><td>Todos los recursos se manipulan con el mismo conjunto de operaciones (verbos HTTP).</td></tr>
+              <tr><td><strong>Sistema en capas</strong></td><td>El cliente no necesita saber si habla directamente con el servidor o con un intermediario.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Verbos HTTP y códigos de estado, la "interfaz uniforme" de REST</h1>
+          <table>
+            <thead><tr><th>Verbo HTTP</th><th>Operación sobre el recurso</th><th>Código de éxito típico</th></tr></thead>
+            <tbody>
+              <tr><td><strong>GET</strong></td><td>Leer un recurso, sin efectos secundarios</td><td>200 OK</td></tr>
+              <tr><td><strong>POST</strong></td><td>Crear un nuevo recurso</td><td>201 Created</td></tr>
+              <tr><td><strong>PUT</strong></td><td>Reemplazar un recurso existente completo</td><td>200 OK</td></tr>
+              <tr><td><strong>PATCH</strong></td><td>Modificar parcialmente un recurso</td><td>200 OK</td></tr>
+              <tr><td><strong>DELETE</strong></td><td>Eliminar un recurso</td><td>204 No Content</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Errores comunes: 400 (solicitud mal formada), 401/403 (autenticación/autorización), 404 (recurso no existe), 500 (error del servidor). Usar estos códigos correctamente es parte de ser "RESTful" de verdad, no solo usar JSON sobre HTTP.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>HATEOAS: el nivel de REST que casi nadie implementa completo</h1>
+          <p><strong>HATEOAS (Hypermedia as the Engine of Application State) es la restricción más exigente y menos implementada del REST original de Fielding: cada respuesta debe incluir los enlaces ("hipermedios") a las acciones posibles siguientes</strong>, de modo que el cliente descubra qué puede hacer a continuación sin tener esa lógica programada de antemano.</p>
+          <p>Ejemplo: al consultar un pedido, la respuesta no solo trae sus datos, sino enlaces como "cancelar este pedido" o "ver la factura" — pero solo si esas acciones son válidas en el estado actual del pedido.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>HAL: un formato concreto para escribir HATEOAS</h1>
+          <p><strong>HAL (Hypertext Application Language) es una convención ligera para estructurar esos enlaces dentro de una respuesta JSON</strong> — una forma estandarizada de implementar HATEOAS en la práctica, en vez de que cada equipo invente su propio formato de enlaces.</p>
+          <pre><code>{
+  "id": 4521,
+  "estado": "pendiente",
+  "_links": {
+    "self": { "href": "/pedidos/4521" },
+    "cancelar": { "href": "/pedidos/4521/cancelar" },
+    "factura": { "href": "/pedidos/4521/factura" }
+  }
+}</code></pre>
+          <p class="slide-eyebrow">La clave <code>_links</code> es la convención central de HAL: agrupa todos los enlaces de navegación disponibles desde ese recurso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión</p>
+          <h1>REST "de verdad" vs. REST como se usa en la práctica</h1>
+          <p>Fielding definió REST con las cinco restricciones de s13, incluyendo HATEOAS. En la práctica, la inmensa mayoría de las "APIs REST" que se usan hoy en la industria —incluyendo APIs muy conocidas— <strong>no implementan HATEOAS</strong>: devuelven JSON plano, sin enlaces de navegación, y el cliente ya sabe de antemano qué endpoints puede llamar.</p>
+          <p><strong>Esto generó un debate real en la comunidad: ¿esas APIs son "REST" o solo "HTTP con JSON"?</strong> Roy Fielding mismo escribió en 2008 que una API sin hipermedios no debería llamarse RESTful. Aun así, el término se usa hoy de forma laxa para casi cualquier API JSON sobre HTTP con verbos.</p>
+          <p class="slide-eyebrow">La distinción importa para el diseño: adoptar HATEOAS/HAL de verdad reduce el acoplamiento cliente-servidor, pero tiene un costo real de implementación que muchos equipos deciden no pagar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · De vuelta al caso</p>
+          <h1>GraphQL: un lenguaje de consultas, un solo endpoint</h1>
+          <p><strong>GraphQL es un lenguaje de consulta para APIs, y un runtime para ejecutar esas consultas contra los datos existentes, en el que el cliente especifica exactamente qué campos necesita y el servidor responde con esa forma exacta.</strong> A diferencia de REST, que expone muchos endpoints (uno por recurso), GraphQL típicamente expone <strong>un único endpoint</strong> que acepta distintas consultas.</p>
+          <ul>
+            <li>Resuelve el <strong>over-fetching</strong> del caso de Facebook (s05): el cliente pide solo los campos que necesita.</li>
+            <li>Resuelve el <strong>under-fetching</strong>: una sola consulta puede traer datos anidados de varios "recursos" relacionados a la vez.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Una consulta GraphQL, comparada con REST</h1>
+          <p>Para armar una pantalla con el nombre de un usuario, su foto y los títulos de sus 3 últimas publicaciones, REST tradicional necesitaría al menos dos llamadas encadenadas. En GraphQL es una sola consulta:</p>
+          <pre><code>{
+  usuario(id: 123) {
+    nombre
+    foto
+    publicaciones(limite: 3) {
+      titulo
+    }
+  }
+}</code></pre>
+          <p class="slide-eyebrow">La respuesta tiene exactamente esa misma forma — ni un campo de más, ni una llamada de menos: la solución exacta al problema documentado en el caso de Facebook (s05).</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿GraphQL reemplaza a REST?</h1>
+          <p>Es común presentar a GraphQL como "el sucesor de REST", pero la evidencia de la industria no respalda un reemplazo total. GraphQL resuelve muy bien el problema de over/under-fetching en clientes con pantallas muy variadas (apps móviles, dashboards complejos), pero introduce sus propios costos: cacheo HTTP estándar deja de funcionar igual de simple (un solo endpoint, muchas formas de consulta), y el control de acceso por campo es más complejo de implementar que por endpoint.</p>
+          <p><strong>En la práctica, muchas organizaciones —incluida la propia Meta— mantienen APIs REST para casos simples y GraphQL para clientes con necesidades de datos más variables: conviven, no se reemplazan.</strong></p>
+          <p class="slide-eyebrow">Elegir entre REST y GraphQL es, otra vez, una decisión arquitectónica con trade-offs — no una cuestión de moda tecnológica.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Diagnostiquen su propia API</h1>
+          <p><strong>En equipos, revisen la API que están construyendo (o planean construir) en CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Sus endpoints usan los verbos y códigos de estado HTTP correctamente (s14), o todo pasa por POST con código 200?</li>
+            <li>¿Tienen algún caso de over-fetching o under-fetching (s05) en su diseño actual? ¿Cómo lo resolverían con REST puro vs. con GraphQL?</li>
+            <li>¿Vale la pena para su proyecto implementar HATEOAS/HAL (s15-s16), o el costo no se justifica a su escala?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>SOAP</strong> es un protocolo formal basado en XML (Envelope/Header/Body); <strong>WSDL</strong> es su contrato formal; <strong>UDDI</strong> fue su directorio de descubrimiento, hoy prácticamente en desuso.</li>
+            <li><strong>REST</strong> es un estilo arquitectónico (Fielding, 2000), no un protocolo: cliente-servidor, stateless, cacheable, interfaz uniforme y sistema en capas.</li>
+            <li><strong>HATEOAS</strong> es la restricción de REST menos implementada en la práctica; <strong>HAL</strong> es una convención concreta para estructurar esos enlaces en JSON.</li>
+            <li>La mayoría de las "APIs REST" reales no implementan HATEOAS — un debate abierto sobre qué merece llamarse verdaderamente RESTful.</li>
+            <li><strong>GraphQL</strong>, nacido en Facebook (2012) para resolver over-fetching y under-fetching en su app móvil, no reemplaza a REST: coexiste con él según el caso de uso.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar la anatomía de un mensaje SOAP (s09) y las restricciones de REST (s13): son la base para diseñar una Web API real en la próxima sesión.</li>
+            <li>Revisar si la API de su proyecto CodeF@ctory usa correctamente los verbos y códigos de estado HTTP (s14) — lo retomaremos como ejercicio.</li>
+          </ul>
+          <p><strong>La Semana 15 abre con Web APIs e Implementación de Servicios Web: cómo pasar de estos estándares en el papel a una API real, versionada y documentada.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

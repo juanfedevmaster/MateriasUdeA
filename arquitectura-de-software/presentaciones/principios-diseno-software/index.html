@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Principios de Diseño de Software — Semana 10</title>
+  <meta name="description" content="SOLID, DRY, KISS, DIE y YAGNI: cinco reglas prácticas de diseño a nivel de código, aplicables dentro de cualquier estilo o patrón arquitectónico — Arquitectura de Software, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/principios-diseno-software/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Principios de Diseño de Software — Semana 10" />
+  <meta property="og:description" content="SOLID, DRY, KISS, DIE y YAGNI: cinco reglas prácticas de diseño a nivel de código, aplicables dentro de cualquier estilo o patrón arquitectónico — Arquitectura de Software, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/principios-diseno-software/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Principios de Diseño de Software — Semana 10" />
+  <meta name="twitter:description" content="SOLID, DRY, KISS, DIE y YAGNI: cinco reglas prácticas de diseño a nivel de código, aplicables dentro de cualquier estilo o patrón arquitectónico — Arquitectura de Software, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/principios-diseno-software.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 10 — Principios de Diseño de Software</h2>
+          <p class="slide-eyebrow">SOLID, DRY, KISS, DIE y YAGNI · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Piezas de diseño que encajan entre sí" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un sistema puede tener el estilo perfecto<br>y el código por dentro, un desastre</h1>
+          <img class="portada-icon" src="img/code.svg" alt="El código dentro de cualquier estilo arquitectónico" style="display:block;width:180px;height:180px;margin:35px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Bajamos un nivel: de sistema a componente</h1>
+          <p>En las últimas nueve sesiones vieron patrones y estilos que responden a la pregunta <strong>"¿cómo se organiza el sistema completo?"</strong> — Layers, Hexagonal, Microservicios, y la taxonomía de Shaw y Garlan que los agrupa. Esa es la escala más alta: componentes, conectores, el sistema como un todo.</p>
+          <p>Hoy cambiamos de escala. No vemos un patrón ni un estilo nuevo — vemos <strong>reglas de diseño a nivel de código y componente</strong>: cómo debería verse una clase, un módulo, una función, sin importar si viven dentro de un monolito en capas o de un microservicio.</p>
+          <p><strong>Un sistema con la arquitectura hexagonal perfecta puede seguir teniendo clases de 2000 líneas que hacen de todo. Los principios de hoy son la caja de herramientas para que eso no pase, dentro de cualquier estilo ya visto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ficha técnica</p>
+          <h1>SOLID — origen del acrónimo</h1>
+          <table>
+            <tbody>
+              <tr><th>Autor de los principios</th><td>Robert C. Martin ("Uncle Bob")</td></tr>
+              <tr><th>Publicación original</th><td>Artículos individuales durante los años 90 y el paper <em>"Design Principles and Design Patterns"</em> (2000), donde los reunió y formalizó</td></tr>
+              <tr><th>Acrónimo "SOLID"</th><td>Acuñado poco después por <strong>Michael Feathers</strong>, quien tomó los cinco principios ya propuestos por Martin y los agrupó bajo un nombre memorable de cinco letras</td></tr>
+              <tr><th>Año aproximado</th><td>~2000 (principios) — el acrónimo se popularizó en los años siguientes</td></tr>
+              <tr><th>Nivel de aplicación</th><td>Diseño orientado a objetos: clases, interfaces, módulos — no el sistema completo</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Un detalle que se pierde con frecuencia: Robert Martin propuso los cinco principios, pero no inventó el acrónimo — esa síntesis es mérito de Michael Feathers.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los cinco principios de SOLID</h1>
+          <table>
+            <thead>
+              <tr><th>Letra</th><th>Principio</th><th>Idea central</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>Single Responsibility</td><td>Una clase debe tener una única razón para cambiar — una sola responsabilidad</td></tr>
+              <tr><td><strong>O</strong></td><td>Open/Closed</td><td>Abierta a extensión, cerrada a modificación: se agrega comportamiento sin editar código que ya funciona</td></tr>
+              <tr><td><strong>L</strong></td><td>Liskov Substitution</td><td>Una subclase debe poder sustituir a su clase base sin romper el comportamiento correcto del programa</td></tr>
+              <tr><td><strong>I</strong></td><td>Interface Segregation</td><td>Preferir varias interfaces pequeñas y específicas antes que una interfaz gigante que obliga a implementar de más</td></tr>
+              <tr><td><strong>D</strong></td><td>Dependency Inversion</td><td>Depender de abstracciones, no de implementaciones concretas</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow"><strong>Liskov</strong> hace referencia a Barbara Liskov, quien formuló el principio de sustitución de tipos en 1987 — Martin lo incorporó como la "L" de SOLID.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ejemplo</p>
+          <h1>Dependency Inversion, el que ya conocen</h1>
+          <p>De los cinco, este es el que ya vieron aplicado a escala de sistema completo: <strong>Arquitectura Hexagonal</strong> (Semana 8) es, en esencia, Dependency Inversion llevado al nivel de todo el sistema — el dominio (el "hexágono") no depende de la base de datos ni del framework web concretos, depende de puertos (abstracciones); son los adaptadores concretos los que dependen del dominio, y no al revés.</p>
+          <ul>
+            <li><strong>Sin DIP:</strong> una clase <code>ServicioPedidos</code> instancia directamente <code>MySQLRepositorio</code> — cambiar de base de datos obliga a modificar <code>ServicioPedidos</code>.</li>
+            <li><strong>Con DIP:</strong> <code>ServicioPedidos</code> depende de una interfaz <code>RepositorioPedidos</code>; <code>MySQLRepositorio</code> la implementa. Cambiar de base de datos no toca <code>ServicioPedidos</code>.</li>
+          </ul>
+          <p><strong>Este es el puente exacto entre lo que vieron a nivel de sistema (Hexagonal) y lo que ven hoy a nivel de clase: el mismo principio, aplicado en dos escalas distintas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Cuando se viola SRP sin darse cuenta</h1>
+          <p>Una clase <code>Empleado</code> que calcula el salario, genera el reporte en PDF y además guarda los datos en la base de datos tiene <strong>tres razones distintas para cambiar</strong>: una regla de nómina nueva, un cambio de formato del reporte, o una migración de base de datos. Eso viola Single Responsibility, aunque el código "funcione" y esté en un solo archivo prolijo.</p>
+          <p><strong>La corrección no es dividir por dividir:</strong> es reconocer que ahí conviven tres responsabilidades — cálculo de negocio, presentación y persistencia — y separarlas en tres clases colaboradoras, cada una con una única razón para cambiar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De cinco reglas a una idea más simple</h1>
+          <p>SOLID exige cinco reglas relacionadas entre clases e interfaces. Los cuatro principios que siguen son más pequeños de enunciar, pero igual de determinantes: DRY, KISS, DIE y YAGNI caben cada uno en una frase, y comparten un mismo espíritu — <strong>reducir lo innecesario</strong>, ya sea código duplicado, complejidad, o funcionalidad que nadie pidió todavía.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ficha técnica</p>
+          <h1>DRY — Don't Repeat Yourself</h1>
+          <table>
+            <tbody>
+              <tr><th>Autores</th><td>Andy Hunt y Dave Thomas</td></tr>
+              <tr><th>Publicación</th><td><em>"The Pragmatic Programmer"</em> (1999)</td></tr>
+              <tr><th>Definición formal</th><td>"Cada pieza de conocimiento debe tener una representación única, inequívoca y autoritativa dentro de un sistema"</td></tr>
+            </tbody>
+          </table>
+          <p><strong>El matiz que casi siempre se pierde:</strong> DRY no es solo "no copies y pegues código" — es sobre no duplicar <strong>conocimiento</strong>. Dos funciones con el mismo código por coincidencia, que resuelven problemas distintos y evolucionan por razones distintas, no violan DRY. Pero una regla de negocio (ej. "el descuento máximo es 20%") escrita en tres archivos distintos sí la viola: cuando cambie la regla, alguien va a olvidar actualizar una de las tres.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Continuación DRY</p>
+          <h1>Duplicación de código vs. duplicación de conocimiento</h1>
+          <ul>
+            <li><strong>Duplicación de código:</strong> el mismo bloque de instrucciones aparece en varios lugares. Se corrige extrayendo una función, un método común o una clase base.</li>
+            <li><strong>Duplicación de conocimiento:</strong> la misma decisión de negocio (una fórmula, una validación, un límite) está codificada en más de un sitio, aunque el código se vea distinto. Es la forma más peligrosa porque no siempre salta a la vista revisando el código.</li>
+          </ul>
+          <p><strong>Consecuencia directa cuando se viola DRY:</strong> corregir un bug o cambiar una regla exige encontrar y actualizar todas las copias — y casi siempre alguna queda desactualizada, generando comportamientos inconsistentes entre partes del sistema que deberían coincidir.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ficha técnica</p>
+          <h1>KISS — Keep It Simple, Stupid</h1>
+          <table>
+            <tbody>
+              <tr><th>Atribuido a</th><td>Kelly Johnson, ingeniero jefe de <strong>Skunk Works</strong>, la división de proyectos avanzados de Lockheed</td></tr>
+              <tr><th>Década</th><td>Años 60</td></tr>
+              <tr><th>Proyectos del equipo</th><td>El avión espía U-2 y el SR-71 Blackbird, entre los diseños aeronáuticos más avanzados de su época</td></tr>
+              <tr><th>El principio original</th><td>Un sistema debía poder ser reparado en el campo por un mecánico promedio, con herramientas básicas, bajo condiciones de guerra — sin depender de un especialista ni de equipo sofisticado</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">No es una anécdota menor: Skunk Works diseñaba aviones en la frontera de lo técnicamente posible, y aun así Johnson insistía en que la simplicidad de mantenimiento era un requisito de diseño, no un lujo — la complejidad innecesaria mata en combate, cuando no hay tiempo ni especialista disponible.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado a software</p>
+          <h1>KISS en el código: simple no es "poco"</h1>
+          <p>Trasladado a software, KISS dice: <strong>prefiere la solución más simple que resuelva el problema real, evita la complejidad que no aporta valor.</strong> No significa escribir código pobre o incompleto — significa no anticipar problemas que no existen ni construir mecanismos genéricos "por si acaso" donde una solución directa basta.</p>
+          <ul>
+            <li>Una función con tres <code>if</code> claros es preferible a un motor de reglas configurable, si el sistema solo necesita esos tres casos.</li>
+            <li>El mismo espíritu de Kelly Johnson aplicado a código: si otro desarrollador (el "mecánico promedio") no puede entender y arreglar el módulo rápido, bajo presión, algo se sobre-diseñó.</li>
+          </ul>
+          <p class="slide-eyebrow">KISS conecta directamente con SRP (una clase simple, con una sola razón para cambiar, es más fácil de mantener que una clase compleja con múltiples responsabilidades).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>DIE — Duplication Is Evil</h1>
+          <p>DIE es una forma alternativa de recordar la misma idea de DRY, pero enunciada en negativo: en vez de "no te repitas", dice directamente <strong>"la duplicación es el enemigo"</strong>.</p>
+          <p>A diferencia de SOLID, DRY, KISS o YAGNI, DIE no tiene un origen histórico tan bien documentado — no hay un libro o autor específico con la certeza de Hunt &amp; Thomas o Kent Beck. Se trata más de una mnemotecnia popular dentro de la comunidad de desarrollo que una atribución precisa, así que aquí se presenta con esa honestidad: <strong>es el mismo principio de DRY, visto desde el ángulo opuesto, sin una fuente única confiable que reclamar como su origen.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El último principio: no construyas de más</h1>
+          <p>SOLID, DRY, KISS y DIE hablan de cómo está escrito lo que ya existe. El último principio de hoy habla de <strong>qué construir en primer lugar</strong> — y es, con frecuencia, el más difícil de seguir porque va contra el instinto de "dejarlo listo para el futuro".</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ficha técnica</p>
+          <h1>YAGNI — You Aren't Gonna Need It</h1>
+          <table>
+            <tbody>
+              <tr><th>Origen</th><td>Comunidad de <strong>Extreme Programming (XP)</strong>, años 90</td></tr>
+              <tr><th>Asociado a</th><td>Kent Beck y Ron Jeffries</td></tr>
+              <tr><th>Principio</th><td>No implementes una funcionalidad "por si acaso se necesita después" — constrúyela solo cuando exista una necesidad real y presente</td></tr>
+              <tr><th>Por qué importa</th><td>Construir de más cuesta tiempo y complejidad de mantenimiento que casi nunca se recupera, porque la mayoría de esas anticipaciones nunca se llegan a usar, o se usan distinto a como se imaginaron</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Extreme Programming (XP) es una metodología ágil de desarrollo de software de los años 90 que enfatiza iteraciones cortas, pruebas constantes y simplicidad de diseño — YAGNI es una de sus prácticas centrales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ejemplo</p>
+          <h1>YAGNI en la práctica</h1>
+          <p>Un equipo diseña un sistema de facturación y agrega, desde el día uno, soporte para cinco monedas distintas y tres pasarelas de pago "porque seguro se va a necesitar cuando crezcamos" — aunque el producto actual solo opera en pesos colombianos con una única pasarela.</p>
+          <p><strong>YAGNI dice:</strong> construyan la versión que resuelve el problema de hoy (una moneda, una pasarela); agreguen soporte multi-moneda cuando exista un cliente real que lo necesite. Ese código extra, mientras tanto, solo agrega superficie de bugs, más pruebas que mantener y una decisión de diseño tomada con menos información de la que existirá después.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>YAGNI contra Open/Closed: un dilema real</h1>
+          <p>Open/Closed pide diseñar clases que se puedan <strong>extender sin modificar</strong> — lo que en la práctica suele significar anticipar puntos de extensión (interfaces, abstracciones) antes de que exista un segundo caso concreto que las use. YAGNI pide exactamente lo contrario: no construyas ese punto de extensión hasta que haya una necesidad real.</p>
+          <p><strong>No hay una respuesta única correcta —</strong> es una tensión de ingeniería que se resuelve caso por caso: si el segundo caso de uso es prácticamente seguro y cercano (ej. "todos los métodos de pago van a necesitar validación de fraude"), diseñar con Open/Closed en mente desde ya puede ahorrar una refactorización costosa. Si es solo una posibilidad especulativa, YAGNI gana: es más barato refactorizar después que mantener abstracciones que nunca se usan.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión entre anticipar extensión y no construir de más" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Encuentren la violación en su propio proyecto</h1>
+          <p><strong>En equipos, revisen el código de CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Hay alguna clase o módulo que viole SRP (más de una razón para cambiar)?</li>
+            <li>¿Hay una regla de negocio (validación, cálculo, límite) escrita en más de un lugar, violando DRY?</li>
+            <li>¿Hay algo que se construyó "por si acaso" y todavía nadie ha usado — un caso de YAGNI incumplido?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>SOLID</strong> (Robert C. Martin, ~2000; acrónimo de Michael Feathers) son cinco principios de diseño orientado a objetos: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation y Dependency Inversion — este último, la misma idea detrás de la Arquitectura Hexagonal, aplicada a nivel de clase.</li>
+            <li><strong>DRY</strong> (Hunt &amp; Thomas, 1999) es sobre no duplicar conocimiento, no solo código — y <strong>DIE</strong> es la misma idea, enunciada en negativo, con un origen menos documentado.</li>
+            <li><strong>KISS</strong> (Kelly Johnson, Skunk Works, años 60) pide preferir la solución más simple que resuelva el problema real, sin sobre-diseñar.</li>
+            <li><strong>YAGNI</strong> (comunidad XP, Beck y Jeffries, años 90) pide no construir funcionalidad hasta que exista una necesidad real y presente.</li>
+            <li>Estos cinco principios no son patrones ni estilos arquitectónicos — son reglas de diseño a nivel de código que se aplican <strong>dentro</strong> de cualquier estilo ya visto: un sistema en Layers, Hexagonal o Microservicios puede seguir violando SOLID o DRY a nivel de clase.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar los cinco principios y ubicar, en su proyecto de CodeF@ctory, al menos un ejemplo real (o una violación) de cada uno.</li>
+            <li>Traer identificado un punto del proyecto donde haya tensión entre YAGNI y Open/Closed, para discutir en clase.</li>
+          </ul>
+          <p><strong>La Semana 11 abre las Arquitecturas para Aplicaciones Modernas: JAMStack, WebAssembly y WebSockets.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

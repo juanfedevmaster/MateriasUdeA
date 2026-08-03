@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Middleware y Frameworks — Semana 13</title>
+  <meta name="description" content="El software que conecta al software: middleware, frameworks e inversión de control, con el caso real del fallo del sistema CAD del London Ambulance Service (1992) — Arquitectura de Software, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/middleware-y-frameworks/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Middleware y Frameworks — Semana 13" />
+  <meta property="og:description" content="El software que conecta al software: middleware, frameworks e inversión de control, con el caso real del fallo del sistema CAD del London Ambulance Service (1992) — Arquitectura de Software, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/middleware-y-frameworks/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Middleware y Frameworks — Semana 13" />
+  <meta name="twitter:description" content="El software que conecta al software: middleware, frameworks e inversión de control, con el caso real del fallo del sistema CAD del London Ambulance Service (1992) — Arquitectura de Software, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/middleware-y-frameworks.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 13 — Middleware y Frameworks: el software que conecta al software</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Componentes distribuidos conectados por middleware" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>El sistema nunca dejó de "funcionar".<br>Cada pieza, por separado, hacía su trabajo.</h1>
+          <p class="slide-eyebrow">Londres, 4 de noviembre de 1992 — el día que el despacho de ambulancias de toda una ciudad colapsó, no porque un componente fallara, sino porque nadie diseñó la capa que los conectaba.</p>
+          <img class="portada-icon" src="img/truck-medical.svg" alt="Despacho de ambulancias" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Un colapso que no fue culpa de ningún componente en particular</h1>
+          <p>El London Ambulance Service (LAS), el servicio de ambulancias de Londres, había construido un sistema nuevo con partes bien pensadas por separado: toma de llamadas, localización de vehículos, terminales de datos en cada ambulancia. Cada una funcionaba. El sistema completo, no.</p>
+          <p><strong>Antes de nombrar el concepto con teoría, vean la cronología completa del incidente — porque explica exactamente por qué el middleware no es un detalle técnico secundario.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>London Ambulance Service, 1992</h1>
+          <table>
+            <tbody>
+              <tr><th>Organización</th><td>London Ambulance Service (LAS) — servicio público de ambulancias de Londres</td></tr>
+              <tr><th>Sistema</th><td>CAD (Computer Aided Dispatch) — despacho de emergencias asistido por computadora</td></tr>
+              <tr><th>Puesta en producción</th><td>26 de octubre de 1992, reemplazando el despacho manual</td></tr>
+              <tr><th>Colapso total</th><td>4 de noviembre de 1992, tras días de fallas crecientes</td></tr>
+              <tr><th>Consecuencia inmediata</th><td>Regreso forzado a un despacho manual o semi-manual durante varias horas</td></tr>
+              <tr><th>Fuente</th><td>Informe de investigación de la South West Thames Regional Health Authority (1993)</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Uno de los casos más citados en ingeniería de software sobre fallos de integración en sistemas distribuidos de misión crítica.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La arquitectura del sistema</p>
+          <h1>Varios componentes, una sola capa que los conectaba</h1>
+          <p>El nuevo CAD estaba pensado para coordinar <strong>miles de llamadas de emergencia al día</strong> entre múltiples componentes de software:</p>
+          <ul>
+            <li><strong>Toma de llamadas:</strong> registro de la emergencia reportada por el ciudadano.</li>
+            <li><strong>Localización de vehículos:</strong> saber dónde está cada ambulancia disponible en tiempo real.</li>
+            <li><strong>Terminales de datos móviles:</strong> pantallas dentro de cada ambulancia que recibían la orden de despacho.</li>
+          </ul>
+          <p><strong>Todos estos componentes se comunicaban entre sí mediante una capa de mensajería — el middleware del sistema.</strong> Ninguno de ellos, por separado, era el problema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Las fallas progresivas</p>
+          <h1>Días después de arrancar, empezaron las grietas</h1>
+          <p>Poco después de la puesta en producción del 26 de octubre, el sistema comenzó a mostrar síntomas cada vez más graves:</p>
+          <ul>
+            <li><strong>Despachos duplicados o perdidos:</strong> la misma ambulancia recibía dos órdenes, o ninguna orden llegaba a la unidad correcta.</li>
+            <li><strong>Ambulancias no despachadas correctamente</strong> a pesar de que la llamada sí había sido registrada.</li>
+            <li><strong>Acumulación creciente de mensajes de excepción sin procesar</strong> en la capa de mensajería — errores que el sistema generaba, pero que nadie ni nada estaba resolviendo.</li>
+          </ul>
+          <p class="slide-eyebrow">Cada síntoma por separado parecía un problema menor. Juntos, eran la evidencia de que la capa que conectaba los componentes se estaba ahogando.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El colapso</p>
+          <h1>4 de noviembre de 1992: el sistema se detiene</h1>
+          <p>El sistema colapsó por completo durante varias horas, forzando el regreso a un despacho manual o semi-manual mientras se resolvía la falla.</p>
+          <p>El informe de investigación posterior (South West Thames Regional Health Authority, 1993) atribuyó el fallo a un cronograma poco realista, pruebas inadecuadas y falta de una gestión de proyecto clara — pero el punto central para esta sesión es otro:</p>
+          <p><strong>la capa de middleware de mensajería entre los componentes distribuidos no fue diseñada ni probada para el volumen real y la variabilidad de los datos del mundo real</strong> (ubicaciones imprecisas, colas de mensajes que crecían sin control), lo que hizo que los mensajes se acumularan y el sistema se volviera cada vez más lento hasta colapsar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Consecuencia</p>
+          <h1>Lo que se ha señalado sobre el impacto humano</h1>
+          <p>Se ha señalado en el informe de la South West Thames Regional Health Authority y en análisis posteriores que los retrasos causados por el fallo <strong>pudieron haber contribuido</strong> a demoras en la atención de algunas emergencias.</p>
+          <p><strong>No existe una atribución causal judicial definitiva sobre casos individuales</strong> — este curso no afirma una cifra de fallecidos ni un vínculo causal probado; lo que sí es un hecho documentado es que un servicio de emergencias de una ciudad completa quedó, durante horas, sin su principal herramienta de coordinación.</p>
+          <p class="slide-eyebrow">Esa es la escala real de lo que significa que "la capa de conexión" falle en un sistema de misión crítica.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la anécdota a la pieza que le faltó robustecer</h1>
+          <p>Toma de llamadas, localización de vehículos, terminales móviles: cada componente del LAS pudo haberse construido y probado perfectamente bien de forma aislada. Lo que colapsó fue la pieza invisible que los mantenía hablando entre sí.</p>
+          <p><strong>Esa pieza tiene nombre en arquitectura de software: middleware. Hoy es el tema central de la sesión, junto con los frameworks — la otra estructura de software que, igual que el middleware, no resuelve el problema de negocio directamente, sino que organiza cómo se construye y se conecta todo lo demás.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es middleware?</h1>
+          <p><strong>Middleware es software intermedio que conecta y coordina componentes distribuidos o heterogéneos, ocultando la complejidad de la comunicación entre ellos.</strong></p>
+          <ul>
+            <li>A diferencia de un componente de aplicación, el middleware <strong>no resuelve un problema de negocio</strong> (facturar, agendar, autenticar) — resuelve un <strong>problema de comunicación e infraestructura</strong>.</li>
+            <li>Vive "en el medio": entre la aplicación cliente y el servidor, entre dos servicios, entre la aplicación y la base de datos, entre componentes escritos en tecnologías distintas.</li>
+            <li>Cuando funciona bien, es invisible — nadie lo nota. Cuando falla, como en el LAS, falla todo el sistema aunque cada componente individual esté bien construido.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Categorías de middleware (1/2)</p>
+          <h1>Middleware de mensajería (message queues)</h1>
+          <p><strong>Es el tipo de middleware que le faltó robustecer al LAS:</strong> un sistema que recibe mensajes de un componente, los pone en una cola y los entrega a otro componente, sin que ambos tengan que estar disponibles al mismo tiempo.</p>
+          <ul>
+            <li>Desacopla a quien envía el mensaje de quien lo procesa: el emisor no espera una respuesta inmediata.</li>
+            <li>Debe diseñarse para el <strong>volumen real</strong> de mensajes y para <strong>datos variables o imprecisos</strong> del mundo real — exactamente lo que el CAD del LAS no soportó, acumulando mensajes de excepción sin procesar hasta colapsar.</li>
+            <li>Ejemplos actuales de la industria: RabbitMQ, Apache Kafka, Azure Service Bus.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Categorías de middleware (2/2)</p>
+          <h1>Otras tres categorías del catálogo</h1>
+          <table>
+            <thead>
+              <tr><th>Categoría</th><th>Qué conecta</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Middleware de bases de datos</strong> (ODBC/JDBC)</td><td>Estandariza cómo una aplicación se conecta a distintos motores de base de datos, sin que el código de la aplicación necesite conocer los detalles propios de cada motor.</td></tr>
+              <tr><td><strong>Middleware transaccional</strong></td><td>Coordina que un conjunto de operaciones distribuidas se completen todas o ninguna (atomicidad), incluso cuando abarcan varios sistemas distintos.</td></tr>
+              <tr><td><strong>Middleware orientado a objetos distribuidos</strong></td><td>Permite que objetos ubicados en máquinas distintas se invoquen entre sí como si estuvieran en el mismo proceso.</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">La última categoría ya la vieron en la Semana 6: <strong>Broker</strong> (catálogo POSA) y su implementación clásica, <strong>CORBA</strong>, son exactamente ese tipo de middleware de objetos distribuidos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un framework?</h1>
+          <p><strong>Un framework es una estructura de software reutilizable que define el esqueleto de una aplicación y le dice al desarrollador dónde y cómo insertar su propio código.</strong></p>
+          <ul>
+            <li>A diferencia del middleware (que conecta componentes ya construidos), un framework <strong>da forma a cómo se construye</strong> la aplicación desde el inicio: define carpetas, capas, convenciones de nombres, ciclo de vida de los objetos.</li>
+            <li>Ejemplos: ASP.NET Core, Spring, Django, Angular, React (con matices) — cada uno impone una manera de organizar el código de quien lo usa.</li>
+            <li>El desarrollador no empieza de cero: rellena los "espacios en blanco" que el framework ya dejó definidos.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Idea central</p>
+          <h1>Inversión de Control: el framework llama a tu código</h1>
+          <p><strong>Inversión de Control (IoC)</strong> es el principio que distingue a un framework de una simple librería: en vez de que tu código llame a las funciones de la herramienta cuando lo necesita, es la herramienta la que llama a tu código en el momento que ella decide.</p>
+          <ul>
+            <li>Con una <strong>librería</strong>, el control lo tiene tu programa: tú decides cuándo invocar cada función (ej. una librería de fechas, de logging).</li>
+            <li>Con un <strong>framework</strong>, el control lo tiene el framework: él define el flujo general de la aplicación (ej. cuándo arranca, cuándo procesa una petición HTTP) y solo te "delega" el pedazo de lógica de negocio que le corresponde a tu código.</li>
+          </ul>
+          <p class="slide-eyebrow">Por eso se dice "no llames al framework, el framework te llama a ti" — es la frase que mejor resume la inversión de control.</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Estructura en capas de un framework" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tabla comparativa</p>
+          <h1>Librería, framework y middleware: tres cosas distintas</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Librería</th><th>Framework</th><th>Middleware</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>¿Quién llama a quién?</th><td>Tu código llama a la librería</td><td>El framework llama a tu código (IoC)</td><td>Conecta a otros, no es llamado por tu lógica de negocio</td></tr>
+              <tr><th>¿Qué problema resuelve?</th><td>Una función puntual (fechas, strings, HTTP)</td><td>La estructura completa de la aplicación</td><td>La comunicación entre componentes distribuidos</td></tr>
+              <tr><th>¿Resuelve un problema de negocio?</th><td>Puede o no</td><td>No — organiza cómo resolverlo</td><td>No — es infraestructura de conexión</td></tr>
+              <tr><th>Ejemplo</th><td>Una librería de logging</td><td>ASP.NET Core, Spring</td><td>RabbitMQ, CORBA, ODBC/JDBC</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Conexión con lo que viene</p>
+          <h1>El framework como acelerador de una arquitectura ya decidida</h1>
+          <p>Un framework no reemplaza la decisión arquitectónica — <strong>la estandariza y acelera su implementación</strong>. Si el equipo ya decidió, por ejemplo, organizar el sistema en capas (Layers, visto en la Semana 7), un framework como Spring o ASP.NET Core impone esa separación en carpetas y convenciones concretas, en vez de que cada desarrollador la reinvente a su manera.</p>
+          <p><strong>Esa es exactamente la conexión con la próxima sesión:</strong> cómo se implementa en código real una arquitectura en capas, y cómo el mapeo objeto-relacional (ORM) resuelve, con ayuda de un framework, la conexión entre esas capas y la base de datos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo · De vuelta al caso</p>
+          <h1>El middleware invisible que se vuelve punto único de fallo</h1>
+          <p>El error más común con el middleware no es elegir la herramienta equivocada — es <strong>tratarlo como un detalle de infraestructura menor</strong> que no merece el mismo rigor de diseño y pruebas que la lógica de negocio.</p>
+          <ul>
+            <li>En el LAS, la capa de mensajería nunca se probó con el <strong>volumen real</strong> de llamadas de una ciudad completa, ni con la <strong>variabilidad real</strong> de los datos de ubicación.</li>
+            <li>Cada componente (toma de llamadas, localización, terminales móviles) pudo pasar sus pruebas individuales sin problema — el middleware que los unía nunca se validó bajo condiciones reales.</li>
+            <li><strong>Cuando el middleware falla, no falla "una parte" del sistema: falla el sistema completo</strong>, porque todos los componentes dependen de él para hablar entre sí.</li>
+          </ul>
+          <img class="portada-icon" src="img/unlink.svg" alt="Conexión rota entre componentes" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>El middleware y los frameworks en su propio proyecto</h1>
+          <p><strong>En equipos, revisen su proyecto de CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Qué framework están usando (backend, frontend, o ambos) y qué parte de la estructura de la aplicación les define ese framework?</li>
+            <li>¿Su proyecto usa algún tipo de middleware (colas de mensajes, ODBC/JDBC, un broker) o toda la comunicación es directa entre componentes?</li>
+            <li>Si tuvieran que soportar diez veces más volumen de datos del que manejan hoy, ¿qué parte de su arquitectura de conexión (no de su lógica de negocio) sería la primera en quebrarse?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Middleware</strong> es software intermedio que conecta componentes distribuidos o heterogéneos, resolviendo un problema de comunicación, no de negocio; sus categorías principales son mensajería/colas, bases de datos (ODBC/JDBC), transaccional y orientado a objetos distribuidos (Broker/CORBA).</li>
+            <li>El colapso del sistema CAD del <strong>London Ambulance Service (1992)</strong> mostró que cuando la capa de middleware no se diseña ni prueba para el volumen y la variabilidad reales, el sistema completo falla aunque cada componente funcione bien por separado.</li>
+            <li>Un <strong>framework</strong> define el esqueleto de una aplicación mediante <strong>Inversión de Control</strong>: es el framework el que llama a tu código, no al revés — a diferencia de una librería, que tu código llama directamente.</li>
+            <li>Librería, framework y middleware resuelven problemas distintos: función puntual, estructura completa de la aplicación, y comunicación entre componentes, respectivamente.</li>
+            <li>Un framework no reemplaza una decisión arquitectónica: la <strong>estandariza y acelera</strong>, algo clave para lo que viene la próxima semana.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar la diferencia entre librería, framework y middleware, y poder explicar con sus propias palabras qué es la Inversión de Control.</li>
+            <li>Tener identificado, con su equipo de CodeF@ctory, qué framework(s) y qué middleware (si aplica) está usando su proyecto y qué rol cumple cada uno.</li>
+          </ul>
+          <p><strong>La segunda sesión de la Semana 13 (jueves) cierra la Unidad 3 — Desarrollo de Software basado en Arquitectura — con Implementación de Capas y Mapeo Objeto-Relacional (ORM).</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

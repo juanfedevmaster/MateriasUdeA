@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proceso de Desarrollo orientado a la Arquitectura — Semana 12</title>
+  <meta name="description" content="Diseñar la estructura antes de que el código la decida por ustedes — con el caso real del Virtual Case File del FBI — Arquitectura de Software, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/proceso-desarrollo-orientado-arquitectura/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Proceso de Desarrollo orientado a la Arquitectura — Semana 12" />
+  <meta property="og:description" content="Diseñar la estructura antes de que el código la decida por ustedes — con el caso real del Virtual Case File del FBI — Arquitectura de Software, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/proceso-desarrollo-orientado-arquitectura/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Proceso de Desarrollo orientado a la Arquitectura — Semana 12" />
+  <meta name="twitter:description" content="Diseñar la estructura antes de que el código la decida por ustedes — con el caso real del Virtual Case File del FBI — Arquitectura de Software, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/proceso-desarrollo-orientado-arquitectura.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 12 — Proceso de Desarrollo orientado a la Arquitectura</h2>
+          <p class="slide-eyebrow">Diseñar la estructura antes de que el código la decida por ustedes</p>
+          <img class="portada-icon" src="img/compass-drafting.svg" alt="Proceso de desarrollo guiado por la arquitectura" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>170 millones de dólares.<br>Cero software en producción.</h1>
+          <p class="slide-eyebrow">Virtual Case File, FBI, 2000–2005 — cinco años y un contrato multimillonario que terminaron en un sistema que nunca se desplegó.</p>
+          <img class="portada-icon" src="img/building-columns.svg" alt="Proyecto institucional fallido" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El martes vieron cómo se ensamblan los componentes. Hoy, qué proceso evita que el ensamblaje se desmorone</h1>
+          <p>En la sesión pasada de esta misma semana vieron <strong>Desarrollo basado en Componentes</strong>: cómo construir un sistema combinando piezas reutilizables con contratos bien definidos. Eso resuelve un problema — pero no resuelve otro: ¿en qué momento del proyecto se decide, se valida y se congela la estructura general que esos componentes van a habitar?</p>
+          <p><strong>El FBI tuvo la respuesta equivocada a esa pregunta durante cinco años seguidos. Vean primero el caso completo.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Virtual Case File (VCF), FBI</h1>
+          <table>
+            <tbody>
+              <tr><th>Organización</th><td>Federal Bureau of Investigation (FBI), Estados Unidos</td></tr>
+              <tr><th>Programa marco</th><td>"Trilogy" — iniciado en el año 2000 para modernizar la infraestructura de TI del FBI</td></tr>
+              <tr><th>Componente central</th><td>Virtual Case File (VCF) — sistema de gestión de casos e investigaciones</td></tr>
+              <tr><th>Contratista</th><td>SAIC (Science Applications International Corporation), contratada en 2001</td></tr>
+              <tr><th>Monto del contrato</th><td>Del orden de 170 millones de dólares</td></tr>
+              <tr><th>Desenlace</th><td>Proyecto cancelado en 2005, sin ponerse nunca en producción</td></tr>
+              <tr><th>Fuente</th><td>Informe de la Oficina del Inspector General del Departamento de Justicia de EE.UU. (2005)</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Uno de los fracasos de software más documentados del sector público estadounidense — y un caso de referencia obligado cuando se habla de procesos de desarrollo sin gobierno arquitectónico.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Qué intentaba resolver</p>
+          <h1>Reemplazar sistemas legados basados en texto plano</h1>
+          <p>Antes de Trilogy, los agentes del FBI registraban y consultaban información de casos en sistemas construidos sobre <strong>texto plano</strong>, sin capacidad de búsqueda estructurada, sin relacionar evidencia entre investigaciones distintas y con una interfaz que había cambiado poco en décadas.</p>
+          <ul>
+            <li>Trilogy nació en el año <strong>2000</strong> como el programa que modernizaría toda esa infraestructura: redes, hardware de escritorio y, como pieza central, un nuevo sistema de gestión de casos.</li>
+            <li>Ese sistema de gestión de casos recibió el nombre de <strong>Virtual Case File (VCF)</strong>: debía permitir buscar, vincular y compartir información de investigaciones entre agentes y oficinas de forma electrónica.</li>
+            <li>En 2001 el FBI contrató a <strong>SAIC</strong> para construir VCF, con un contrato del orden de <strong>170 millones de dólares</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Cómo se construyó</p>
+          <h1>Requisitos que nunca dejaron de cambiar</h1>
+          <p>SAIC empezó a construir VCF sobre un conjunto de requisitos que el FBI seguía redefiniendo <strong>durante todo el desarrollo</strong>, sin que existiera una estructura arquitectónica estable que sirviera de referencia para evaluar esos cambios.</p>
+          <p>Cada nuevo requisito, o cada cambio a uno existente, se incorporaba directamente al desarrollo en curso — no había una línea base contra la cual contrastar si el cambio era compatible con lo ya construido o si obligaba a rediseñar partes enteras del sistema.</p>
+          <p class="slide-eyebrow">El resultado: SAIC construía software contra un blanco que se movía constantemente, sin ningún punto de referencia arquitectónico fijo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Causa raíz según el Inspector General</p>
+          <h1>Tres fallas, un mismo origen</h1>
+          <p>El informe de la Oficina del Inspector General del Departamento de Justicia (2005) identificó tres factores centrales del fracaso:</p>
+          <table>
+            <thead>
+              <tr><th>Factor</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Requisitos mal definidos y cambiantes</strong></td><td>Sin especificación estable, en cambio constante durante todo el desarrollo</td></tr>
+              <tr><td><strong>Ausencia de ingeniería de sistemas / arquitectura empresarial</strong></td><td>No existía un proceso efectivo de gobierno arquitectónico que estabilizara la estructura del sistema</td></tr>
+              <tr><td><strong>Gestión de proyecto inadecuada</strong></td><td>Sin control ni seguimiento suficiente sobre alcance, cronograma y decisiones técnicas</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Los tres factores están conectados: sin arquitectura estable, cada cambio de requisito se vuelve un rediseño; sin gestión de proyecto, nadie frena esos rediseños a tiempo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Consecuencia</p>
+          <h1>Cancelado en 2005 — y lo que vino después</h1>
+          <p>En 2005, tras años de desarrollo y sin una versión operativa entregada, el FBI <strong>canceló VCF</strong>. El software nunca se desplegó en producción pese al tiempo y el dinero invertidos.</p>
+          <p>El FBI reinició el esfuerzo con un nuevo programa llamado <strong>"Sentinel"</strong>, que adoptó un proceso de desarrollo más <strong>incremental</strong> y con <strong>mejor gestión de la arquitectura</strong> desde el inicio. Sentinel finalmente se entregó en <strong>2012</strong>.</p>
+          <p class="slide-eyebrow">El mismo problema (gestión de casos del FBI), atacado con procesos distintos, produjo resultados opuestos: uno fracasó por completo, el otro se entregó siete años después con un enfoque más disciplinado sobre la arquitectura.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>170 millones de dólares no compraron software. Compraron la ausencia de un proceso</h1>
+          <p>VCF tuvo presupuesto, tuvo tiempo, tuvo un contratista experimentado. Lo que no tuvo fue un proceso de desarrollo que definiera y protegiera una estructura arquitectónica estable mientras los requisitos cambiaban a su alrededor.</p>
+          <p><strong>Ese proceso tiene nombre en la disciplina: Proceso de Desarrollo orientado a la Arquitectura (ACDP, Architecture-Centric Development Process). Es el tema de hoy.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un proceso orientado a la arquitectura?</h1>
+          <p><strong>Un Proceso de Desarrollo orientado a la Arquitectura (ACDP) es aquel en el que la arquitectura se define, valida y estabiliza tempranamente — como una "línea base arquitectónica" — y guía todas las decisiones posteriores de diseño e implementación, en vez de dejar que la arquitectura emerja implícitamente del código a medida que se escribe.</strong></p>
+          <p><strong>Línea base arquitectónica (architectural baseline):</strong> la versión de la arquitectura que el equipo acuerda formalmente como punto de referencia estable — el conjunto de decisiones estructurales (componentes, conectores, vistas) contra el cual se evalúa cualquier cambio futuro, en vez de redecidir la estructura cada vez que aparece un requisito nuevo.</p>
+          <p class="slide-eyebrow">Esto es exactamente lo que le faltó a VCF: nunca hubo una línea base contra la cual contrastar los cambios de requisitos que llegaban sin parar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Conexión con la Semana 3</p>
+          <h1>Las vistas 4+1 como artefacto de gobierno, no solo documentación</h1>
+          <p>En la Semana 3 vieron <strong>UML e Integración de Vistas Arquitectónicas</strong> — el modelo <strong>4+1 de Kruchten</strong> (vista lógica, de procesos, de desarrollo, física, y el escenario "+1" que las integra).</p>
+          <p><strong>Un proceso orientado a la arquitectura es precisamente el que convierte esas vistas en un artefacto de gobierno del proyecto:</strong> no se dibujan una vez y se archivan, sino que se mantienen vivas, se revisan formalmente y sirven como referencia oficial cada vez que se evalúa un cambio o una decisión de diseño nueva.</p>
+          <ul>
+            <li>Si las 4+1 vistas solo existieran como documentación decorativa, cualquier cambio de requisito podría alterar la estructura sin que nadie lo notara — el escenario exacto de VCF.</li>
+            <li>Si las 4+1 vistas son la línea base viva del proyecto, todo cambio se contrasta primero contra ellas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>RUP y la fase de Elaboración</h1>
+          <p>El <strong>Rational Unified Process (RUP)</strong> organiza el desarrollo en cuatro fases, cada una con un objetivo distinto:</p>
+          <table>
+            <thead>
+              <tr><th>Fase</th><th>Objetivo principal</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Inicio</strong></td><td>Definir alcance, viabilidad y visión general del proyecto</td></tr>
+              <tr><td><strong>Elaboración</strong></td><td>Estabilizar la arquitectura antes de la construcción masiva</td></tr>
+              <tr><td><strong>Construcción</strong></td><td>Implementar la mayoría de las funcionalidades sobre la arquitectura ya estable</td></tr>
+              <tr><td><strong>Transición</strong></td><td>Entregar el sistema al usuario final y estabilizar su operación</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">La fase de Elaboración es, en RUP, el momento explícito donde el proceso obliga a fijar la línea base arquitectónica antes de que el equipo se lance a construir todo el sistema sobre una estructura todavía sin validar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Definición</p>
+          <h1>Arquitectura ejecutable: validar antes de comprometerse</h1>
+          <p><strong>Una arquitectura ejecutable es una implementación parcial pero funcional del sistema, construida específicamente para demostrar que las decisiones arquitectónicas clave (componentes, conectores, mecanismos centrales) funcionan en la práctica antes de construir el resto del sistema sobre ellas.</strong></p>
+          <p>Durante la fase de Elaboración de RUP, el equipo no solo diagrama la arquitectura: la <strong>construye parcialmente</strong> para someterla a prueba. Si algo estructural falla, se descubre ahí — con una fracción del sistema construida — y no después, con el sistema casi completo, como le pasó a VCF.</p>
+          <p class="slide-eyebrow">Diagramar una arquitectura no es lo mismo que validarla: solo ejecutarla, aunque sea parcialmente, revela si de verdad sostiene los requisitos no funcionales críticos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Prototipos arquitectónicos: el spike o proof of concept</h1>
+          <p>La arquitectura ejecutable se construye normalmente mediante <strong>prototipos arquitectónicos</strong> — también llamados <strong>spikes</strong> o <strong>proof of concept (PoC)</strong> — implementaciones acotadas que responden una pregunta técnica concreta antes de comprometer al equipo completo a construir sobre esa base.</p>
+          <ul>
+            <li>Un spike no busca funcionalidad completa: busca responder <strong>"¿esta decisión estructural funciona?"</strong> con la menor inversión posible.</li>
+            <li>Ejemplos típicos: probar si el mecanismo de comunicación entre dos componentes cumple el requisito de latencia, o si un patrón de integración soporta el volumen de datos esperado.</li>
+            <li>Si el prototipo falla, el costo de corregir la arquitectura es bajo — todavía no se ha construido el sistema completo encima.</li>
+          </ul>
+          <p class="slide-eyebrow">Si VCF hubiera validado con un prototipo funcional cada revisión mayor de requisitos antes de seguir construyendo, los rediseños se habrían detectado años antes de la cancelación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Gestión de cambios contra la línea base</h1>
+          <p>En un proceso orientado a la arquitectura, un cambio de requisito <strong>no se incorpora automáticamente</strong> al desarrollo en curso. Primero se evalúa formalmente:</p>
+          <ol>
+            <li>¿El cambio es compatible con la línea base arquitectónica vigente?</li>
+            <li>Si no lo es, ¿qué partes de la arquitectura hay que rediseñar, y con qué costo e impacto en el cronograma?</li>
+            <li>¿El cambio justifica ese costo, o se puede diferir a una versión posterior del sistema?</li>
+          </ol>
+          <p class="slide-eyebrow">Esta evaluación formal es exactamente lo que faltó en VCF: los cambios de requisitos entraban directo al desarrollo sin pasar por ningún filtro arquitectónico.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Rol de los stakeholders</p>
+          <h1>Quién decide si un cambio rompe la línea base</h1>
+          <p>Esa evaluación no la hace un solo desarrollador de forma informal: la gobierna un grupo de <strong>stakeholders</strong> con autoridad sobre la arquitectura — típicamente el arquitecto de software, representantes del cliente o negocio, y liderazgo técnico del proyecto.</p>
+          <ul>
+            <li>Su función es actuar como <strong>filtro formal</strong>: todo cambio propuesto pasa por su revisión antes de tocar la línea base.</li>
+            <li>Su criterio de decisión es explícito: impacto en las vistas 4+1, en los requisitos no funcionales ya validados, y en el cronograma acordado.</li>
+            <li>Sin este mecanismo, cualquier persona con autoridad suficiente puede introducir cambios que nadie contrasta contra la arquitectura — el patrón exacto detrás del fracaso de VCF.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Arquitectura que se gobierna vs. arquitectura que "emerge"</h1>
+          <p>Un proceso orientado solo a requisitos o solo a código no tiene nada explícitamente malo en su origen: simplemente prioriza avanzar rápido, entregar funcionalidad, responder a cada nuevo requisito según llega.</p>
+          <p><strong>El costo de esa comodidad es que la arquitectura deja de ser una decisión y se convierte en un accidente: emerge implícitamente de miles de decisiones locales de código, sin que nadie la gobierne como un todo.</strong></p>
+          <p>Eso es exactamente lo que vivió VCF durante cinco años: un proceso orientado a incorporar cada requisito nuevo tal como llegaba, sin una línea base que lo contuviera — hasta que la estructura resultante ya no podía sostener el sistema completo, y el proyecto se canceló.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión entre avanzar rápido y gobernar la arquitectura" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Su arquitectura está definida, o está "emergiendo"?</h1>
+          <p><strong>En equipos, revisen su proyecto de CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Tienen una línea base arquitectónica explícita (diagramas, vistas, decisiones documentadas) que el equipo consulta antes de cambiar algo estructural?</li>
+            <li>¿O la estructura actual de su proyecto es, en realidad, el resultado acumulado de decisiones locales de código que nadie planeó como un todo?</li>
+            <li>La próxima vez que cambie un requisito de su proyecto, ¿lo contrastarían contra esa línea base antes de programar, o lo incorporarían directo, como pasó con VCF?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>Proceso de Desarrollo orientado a la Arquitectura (ACDP)</strong> define y estabiliza una <strong>línea base arquitectónica</strong> temprano, y la usa para gobernar todas las decisiones posteriores — en vez de dejar que la arquitectura emerja implícitamente del código.</li>
+            <li>Las vistas <strong>4+1 de Kruchten</strong> (Semana 3) son el artefacto natural de esa línea base cuando se mantienen vivas y se usan como referencia de gobierno, no solo como documentación.</li>
+            <li><strong>RUP</strong> formaliza esto en su fase de <strong>Elaboración</strong>, donde se construye una <strong>arquitectura ejecutable</strong> mediante prototipos (spikes / PoC) antes de comprometerse a construir todo el sistema.</li>
+            <li>Los cambios de requisitos se <strong>evalúan contra la línea base</strong> por stakeholders con autoridad arquitectónica, no se incorporan libremente.</li>
+            <li><strong>Virtual Case File</strong> (FBI, 2000–2005, ~170 millones de dólares, cancelado sin llegar a producción) fracasó precisamente por la ausencia de este proceso: requisitos cambiantes, sin arquitectura empresarial gobernada, sin gestión de proyecto adecuada. Su sucesor, <strong>Sentinel</strong>, aplicó un proceso incremental con mejor gestión arquitectónica y sí se entregó, en 2012.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar la diferencia entre línea base arquitectónica y arquitectura "emergente", y poder explicar con sus propias palabras por qué VCF fracasó con presupuesto y tiempo suficientes.</li>
+            <li>Con su equipo de CodeF@ctory, identificar si tienen (aunque sea de forma incipiente) una línea base arquitectónica documentada, o si su estructura ha emergido sin gobierno explícito.</li>
+          </ul>
+          <p><strong>La Semana 13 continúa la Unidad 3 con Middleware y Frameworks.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

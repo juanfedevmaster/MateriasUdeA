@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desarrollo basado en Componentes — Semana 12</title>
+  <meta name="description" content="Reutilizar software sin pagar el precio en secreto — abre la Unidad 3 con el caso real de Heartbleed en OpenSSL — Arquitectura de Software, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/desarrollo-basado-en-componentes/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Desarrollo basado en Componentes — Semana 12" />
+  <meta property="og:description" content="Reutilizar software sin pagar el precio en secreto — abre la Unidad 3 con el caso real de Heartbleed en OpenSSL — Arquitectura de Software, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/desarrollo-basado-en-componentes/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Desarrollo basado en Componentes — Semana 12" />
+  <meta name="twitter:description" content="Reutilizar software sin pagar el precio en secreto — abre la Unidad 3 con el caso real de Heartbleed en OpenSSL — Arquitectura de Software, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/desarrollo-basado-en-componentes.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 12 — Desarrollo basado en Componentes</h2>
+          <p class="slide-eyebrow">Reutilizar software sin pagar el precio en secreto · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Componentes de software ensamblados" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Dos tercios de internet.<br>Una línea de código.</h1>
+          <p class="slide-eyebrow">Heartbleed, CVE-2014-0160 — el defecto en OpenSSL que estuvo dos años sin descubrirse en el componente de cifrado más usado del planeta.</p>
+          <img class="portada-icon" src="img/heart-crack.svg" alt="Heartbleed — vulnerabilidad crítica en un componente compartido" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>La Unidad 3 empieza por lo que no se ve</h1>
+          <p>La Unidad 2 les enseñó a decidir la estructura de un sistema: patrones, estilos, principios. La Unidad 3 — <strong>Desarrollo de Software basado en Arquitectura</strong> — arranca hoy con una pregunta distinta: ¿de qué está hecho realmente ese sistema por dentro?</p>
+          <p><strong>La respuesta casi siempre incluye piezas que su equipo no escribió: componentes de terceros, librerías, servicios reutilizados. Heartbleed muestra qué pasa cuando una de esas piezas falla.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Heartbleed, OpenSSL, 2014</h1>
+          <table>
+            <tbody>
+              <tr><th>Identificador</th><td>CVE-2014-0160</td></tr>
+              <tr><th>Componente afectado</th><td>OpenSSL — implementación de la extensión "heartbeat" del protocolo TLS</td></tr>
+              <tr><th>Bug introducido</th><td>14 de marzo de 2012, en OpenSSL 1.0.1, por un contribuidor voluntario (Robin Seggelmann)</td></tr>
+              <tr><th>Tiempo sin detectar</th><td>Aproximadamente 2 años</td></tr>
+              <tr><th>Hecho público</th><td>7 de abril de 2014</td></tr>
+              <tr><th>Descubridores</th><td>Neel Mehta (investigador de seguridad de Google) y la firma finlandesa Codenomicon, de forma independiente</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Uno de los casos más citados en la industria para hablar del riesgo de depender de componentes compartidos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Qué pasaba técnicamente</p>
+          <h1>Un "heartbeat" que respondía de más</h1>
+          <p>La extensión heartbeat de TLS permite que un cliente envíe un mensaje corto y el servidor lo devuelva igual, para confirmar que la conexión sigue viva. El bug estaba en cómo OpenSSL manejaba la longitud declarada de ese mensaje.</p>
+          <ul>
+            <li>El cliente podía declarar una longitud de respuesta <strong>mayor a la del mensaje real que envió</strong>, sin que el servidor la validara correctamente.</li>
+            <li>OpenSSL respondía copiando esa cantidad de memoria del servidor, aunque el mensaje original fuera mucho más corto.</li>
+            <li>Resultado: un atacante podía leer <strong>hasta 64 KB de memoria del servidor por cada solicitud</strong> — repetible cuantas veces quisiera.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Qué se filtraba</p>
+          <h1>Sin dejar rastro en ningún log</h1>
+          <p>Esos fragmentos de memoria del servidor podían contener <strong>claves privadas, contraseñas y tokens de sesión</strong> — exactamente lo que un servidor TLS necesita mantener en memoria para operar. Y como el heartbeat es tráfico normal del protocolo, <strong>el ataque no dejaba rastro en los registros del servidor.</strong></p>
+          <p class="slide-eyebrow">No era necesario romper el cifrado: bastaba con leer lo que el propio servidor tenía en memoria en ese instante.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La escala del problema</p>
+          <h1>Un componente en dos tercios de internet</h1>
+          <p>OpenSSL era, en ese momento, el software TLS más desplegado en servidores web — estimaciones de Netcraft lo situaban en <strong>aproximadamente dos tercios de los sitios web activos de la época</strong>. Se estimó que varios cientos de miles de servidores eran vulnerables.</p>
+          <p><strong>Y sin embargo, el proyecto OpenSSL —embebido en gran parte de la infraestructura crítica de internet— era mantenido mayormente por voluntarios, con un financiamiento del orden de unos pocos miles de dólares al año.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Consecuencia institucional</p>
+          <h1>Cuando el problema es de financiamiento, no solo de código</h1>
+          <p>Heartbleed dejó una lección incómoda: la infraestructura de seguridad de gran parte de internet dependía de un componente que casi nadie auditaba ni financiaba de forma sostenida.</p>
+          <p><strong>Esto impulsó la creación de la Core Infrastructure Initiative de la Linux Foundation</strong>, un fondo específico para financiar el mantenimiento de proyectos de código abierto que resultan críticos para la infraestructura de internet, precisamente para que un componente tan usado como OpenSSL no vuelva a depender de la buena voluntad de unos pocos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El problema no es reutilizar</h1>
+          <p>OpenSSL fue reutilizado por millones de sistemas precisamente porque reutilizar es más eficiente que reescribir criptografía TLS desde cero en cada proyecto. Ese es el argumento central del <strong>desarrollo basado en componentes</strong>.</p>
+          <p><strong>El problema de Heartbleed no fue reutilizar un componente — fue integrarlo ampliamente sin gestionar activamente la confianza, la versión y el mantenimiento de esa pieza compartida. Para entender por qué, hay que empezar por definir qué es exactamente un componente.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es un componente de software?</h1>
+          <p><strong>Un componente es una unidad de software desplegable de forma independiente, que encapsula su implementación interna y expone su funcionalidad únicamente a través de interfaces bien definidas.</strong></p>
+          <ul>
+            <li><strong>Interfaz provista:</strong> lo que el componente ofrece a quien lo usa (los métodos, servicios u operaciones que expone).</li>
+            <li><strong>Interfaz requerida:</strong> lo que el componente necesita de otros componentes para funcionar (sus dependencias declaradas).</li>
+            <li><strong>Reemplazable:</strong> mientras un componente nuevo cumpla la misma interfaz, puede sustituir al anterior sin romper el resto del sistema.</li>
+          </ul>
+          <p class="slide-eyebrow">OpenSSL es exactamente esto: un componente con una interfaz de funciones criptográficas, integrado en miles de sistemas distintos sin que cada uno conociera su implementación interna.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Diferencia clave</p>
+          <h1>Componente no es lo mismo que objeto o clase</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Objeto / Clase</th><th>Componente</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Granularidad</td><td>Una unidad de código, dentro de un mismo programa compilado</td><td>Puede contener muchas clases; se empaqueta como una sola unidad</td></tr>
+              <tr><td>Despliegue</td><td>Se compila junto con el resto del sistema</td><td>Se despliega como <strong>unidad binaria independiente</strong> (librería, paquete, servicio)</td></tr>
+              <tr><td>Conocimiento necesario</td><td>Requiere entender la clase para extenderla (herencia)</td><td>Solo requiere conocer su <strong>interfaz</strong>, nunca su implementación interna</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Ningún equipo que usó OpenSSL necesitaba leer su código fuente para integrarlo — solo necesitaba llamar a su interfaz. Esa comodidad es, a la vez, la base de la eficiencia de CBSE y el origen de su riesgo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>CBSE: Desarrollo basado en Componentes</h1>
+          <p><strong>Component-Based Software Engineering (CBSE)</strong> es el enfoque de construir sistemas ensamblando componentes ya existentes en lugar de escribir toda la funcionalidad desde cero.</p>
+          <ul>
+            <li><strong>Reutilización:</strong> una misma pieza de software (criptografía, autenticación, logging) se usa en muchos sistemas distintos.</li>
+            <li><strong>Reducción del tiempo de desarrollo:</strong> integrar un componente probado es más rápido que reescribir su funcionalidad.</li>
+            <li><strong>Especialización de equipos:</strong> cada equipo se concentra en su dominio, en vez de dominar criptografía, bases de datos y UI a la vez.</li>
+            <li><strong>Reemplazo independiente:</strong> un componente se puede actualizar o sustituir sin recompilar todo el sistema, si respeta la misma interfaz.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · El riesgo que Heartbleed hizo visible</p>
+          <h1>El "component trust problem"</h1>
+          <p><strong>El problema de confianza en componentes: usar un componente exige confiar en su corrección y seguridad sin haber auditado —ni tener siempre la posibilidad práctica de auditar— su código fuente completo.</strong></p>
+          <p>Cuantos más sistemas integran el mismo componente, más se amplifica cualquier defecto que contenga. Con OpenSSL, miles de organizaciones confiaron en un componente que casi nadie —ni siquiera sus propios usuarios más grandes— había revisado línea por línea.</p>
+          <p class="slide-eyebrow">Reutilizar reduce el trabajo de escribir código, pero no elimina la responsabilidad de gestionar qué se está confiando y en qué versión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Otro riesgo de CBSE</p>
+          <h1>El "component mismatch problem"</h1>
+          <p><strong>El problema de desajuste de componentes: un componente probado y correcto en el contexto para el que fue diseñado puede fallar al integrarse en un contexto distinto</strong>, con supuestos diferentes sobre unidades, formatos de datos o condiciones de operación.</p>
+          <p><strong>Conexión con lo ya visto (Semana 5):</strong> Ariane 5 no fue un caso de componente defectuoso en sí — fue software del Ariane 4, correcto en su contexto original, reutilizado sin ajustar en un cohete con parámetros de vuelo distintos.</p>
+          <p class="slide-eyebrow">Trust problem pregunta "¿puedo confiar en lo que hay dentro?"; mismatch problem pregunta "¿este componente asume el mismo contexto que mi sistema?" — son dos riesgos distintos de CBSE.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>COTS: componentes listos para usar</h1>
+          <p><strong>COTS (Commercial Off-The-Shelf)</strong> son componentes comerciales, ya construidos y probados por un tercero, que se adquieren o licencian listos para integrar — en contraste con desarrollar el componente propio o adoptar una alternativa de código abierto.</p>
+          <table>
+            <thead>
+              <tr><th></th><th>COTS comercial</th><th>Open source</th><th>Desarrollo propio</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Costo inicial</td><td>Licencia</td><td>Gratuito (en general)</td><td>Alto (tiempo de equipo)</td></tr>
+              <tr><td>Soporte</td><td>Contractual, con proveedor</td><td>Comunidad, variable</td><td>Interno</td></tr>
+              <tr><td>Auditoría del código</td><td>Casi nunca posible</td><td>Posible, rara vez ejercida</td><td>Total</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">OpenSSL es open source: el código era técnicamente auditable por cualquiera — el fallo no fue de acceso al código, sino de que casi nadie invertía tiempo ni dinero en auditarlo o mantenerlo activamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cómo se empaquetan hoy</p>
+          <h1>Modelos de componentes</h1>
+          <p>Un <strong>modelo de componentes</strong> define las reglas técnicas concretas —formato de empaquetado, forma de declarar interfaces, mecanismo de versionado— con las que un ecosistema de desarrollo distribuye e integra componentes.</p>
+          <table>
+            <thead>
+              <tr><th>Modelo</th><th>Ecosistema</th><th>Unidad de empaquetado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>EJB</strong> (Enterprise JavaBeans)</td><td>Java empresarial</td><td>Componentes desplegados en un servidor de aplicaciones</td></tr>
+              <tr><td><strong>Assemblies / NuGet</strong></td><td>.NET</td><td>Paquetes versionados con dependencias declaradas</td></tr>
+              <tr><td><strong>Paquetes npm</strong></td><td>JavaScript / Node.js</td><td>Módulos publicados en un registro público, con versión semántica</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">OpenSSL no se distribuye por ninguno de estos registros gestionados: se compila desde el código fuente o se empaqueta por cada sistema operativo — otra razón por la que actualizar la versión vulnerable, tras el 7 de abril de 2014, tomó tiempo en propagarse.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Reutilizar no es gratis</h1>
+          <p>La promesa de CBSE es real: nadie debería reescribir TLS, un ORM o un framework de UI desde cero para cada proyecto. Pero cada componente externo que se integra es también <strong>una dependencia que alguien más mantiene, versiona y —a veces— deja de mantener.</strong></p>
+          <p><strong>El trade-off central: cada componente reutilizado ahorra tiempo de desarrollo hoy, a cambio de heredar el riesgo de seguridad, la calidad y el ciclo de vida de mantenimiento de un tercero mañana.</strong> Ese costo no aparece en el cronograma del proyecto — aparece años después, como en Heartbleed.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión entre ahorro de tiempo y riesgo heredado" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Auditen las dependencias de su propio proyecto</h1>
+          <p><strong>En equipos, revisen su proyecto de CodeF@ctory y respondan:</strong></p>
+          <ol>
+            <li>¿Qué componentes o librerías externas (paquetes npm, NuGet, o equivalentes) usa su sistema, que su equipo no escribió?</li>
+            <li>De esos, ¿cuáles son COTS/comerciales y cuáles open source? ¿Alguien del equipo ha revisado su código o solo confían en que funciona?</li>
+            <li>Si uno de esos componentes tuviera una vulnerabilidad crítica mañana, ¿cómo se enterarían y qué tan rápido podrían reemplazarlo?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>componente de software</strong> es una unidad desplegable de forma independiente, con interfaces provistas y requeridas bien definidas, reemplazable sin conocer su implementación interna.</li>
+            <li><strong>CBSE</strong> reutiliza componentes para ganar velocidad de desarrollo y permitir especialización de equipos, a cambio de asumir riesgos que hay que gestionar activamente.</li>
+            <li>El <strong>component trust problem</strong> (confiar sin auditar) y el <strong>component mismatch problem</strong> (fallar por contexto distinto, como en Ariane 5) son los dos riesgos centrales de CBSE.</li>
+            <li><strong>COTS</strong> son componentes comerciales listos para usar; se distinguen de componentes open source o de desarrollo propio por su nivel de auditoría posible y su modelo de soporte.</li>
+            <li><strong>Heartbleed</strong> (OpenSSL, CVE-2014-0160, 2014) mostró el costo real del trust problem: un bug de 2012, sin descubrir por 2 años, en un componente presente en dos tercios de internet, mantenido con recursos mínimos hasta que se creó la Core Infrastructure Initiative.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Hacer el inventario de dependencias externas de su proyecto de CodeF@ctory que empezaron a construir en la actividad de hoy.</li>
+            <li>Repasar la diferencia entre component trust problem y component mismatch problem — sabrán identificar cuál aplica a cada riesgo concreto de un componente.</li>
+          </ul>
+          <p><strong>El jueves de la Semana 12 seguimos dentro de la Unidad 3 con Proceso de Desarrollo orientado a la Arquitectura: cómo la arquitectura deja de ser solo una decisión de diseño y empieza a guiar el proceso de desarrollo completo.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

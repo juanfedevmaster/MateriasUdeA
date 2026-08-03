@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Principios de Arquitectura de Software Segura — Semana 16</title>
+  <meta name="description" content="Cuando la seguridad no es una capa que se agrega al final — el caso real de Equifax (2017) — apertura de la Unidad 5 — Arquitectura de Software, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/principios-arquitectura-software-segura/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Principios de Arquitectura de Software Segura — Semana 16" />
+  <meta property="og:description" content="Cuando la seguridad no es una capa que se agrega al final — el caso real de Equifax (2017) — apertura de la Unidad 5 — Arquitectura de Software, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/principios-arquitectura-software-segura/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Principios de Arquitectura de Software Segura — Semana 16" />
+  <meta name="twitter:description" content="Cuando la seguridad no es una capa que se agrega al final — el caso real de Equifax (2017) — apertura de la Unidad 5 — Arquitectura de Software, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/principios-arquitectura-software-segura.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 16 — Principios de Arquitectura de Software Segura</h2>
+          <p class="slide-eyebrow">Cuando la seguridad no es una capa que se agrega al final — apertura de la Unidad 5 — con el caso real de Equifax (2017) · Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/shield-halved.svg" alt="Escudo de seguridad" style="display:block;width:190px;height:190px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <h1>147 millones de personas. Un parche que existía desde marzo y nunca se aplicó.</h1>
+          <p class="slide-eyebrow">Equifax, 2017 — la brecha de datos más citada de la industria como ejemplo de que la seguridad es una decisión arquitectónica, no un parche de último momento.</p>
+          <img class="portada-icon" src="img/building-columns.svg" alt="Institución financiera" style="display:block;width:170px;height:170px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De una de las tres mayores agencias de crédito de Estados Unidos a la brecha más investigada de la década</h1>
+          <p>Equifax es una de las tres principales agencias de reporte crediticio de Estados Unidos, custodia de datos financieros altamente sensibles — números de seguro social, fechas de nacimiento, direcciones y números de tarjeta de crédito — de cientos de millones de personas.</p>
+          <p><strong>En septiembre de 2017, Equifax reveló que había sido víctima de una de las brechas de datos más grandes de la historia — y la investigación posterior del Congreso de EE. UU. y de la Oficina de Rendición de Cuentas del Gobierno (GAO) documentó, paso a paso, cómo fallaron los controles arquitectónicos de seguridad, no solo un error humano aislado.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>La brecha de datos de Equifax</h1>
+          <table>
+            <tbody>
+              <tr><th>Empresa</th><td>Equifax Inc.</td></tr>
+              <tr><th>Personas afectadas</th><td>Aproximadamente 147 millones, principalmente en EE. UU., además de residentes de Reino Unido y Canadá</td></tr>
+              <tr><th>Datos expuestos</th><td>Nombres, números de seguro social, fechas de nacimiento, direcciones y, en algunos casos, números de licencia de conducir y de tarjeta de crédito</td></tr>
+              <tr><th>Vulnerabilidad explotada</th><td>Falla conocida en el framework Apache Struts (CVE-2017-5638)</td></tr>
+              <tr><th>Acceso inicial</th><td>13 de mayo de 2017, a través del portal de disputas en línea</td></tr>
+              <tr><th>Descubrimiento / divulgación</th><td>Descubierta internamente el 29 de julio de 2017, divulgada públicamente el 7 de septiembre de 2017</td></tr>
+              <tr><th>Investigación</th><td>Comité de Supervisión de la Cámara de Representantes de EE. UU. y Oficina de Rendición de Cuentas del Gobierno (GAO), 2018</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La cadena de fallas</p>
+          <h1>Un parche disponible desde marzo, aplicado nunca</h1>
+          <p>El fabricante del framework Apache Struts publicó un parche para la vulnerabilidad CVE-2017-5638 el <strong>7 de marzo de 2017</strong>. Equifax tenía un proceso interno para identificar y aplicar parches críticos — y ese proceso falló en detectar que el portal de disputas en línea usaba la versión vulnerable.</p>
+          <p><strong>Dos meses después, el 13 de mayo de 2017, atacantes explotaron exactamente esa vulnerabilidad sin parchear para obtener acceso inicial al sistema.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué nadie lo notó durante 76 días</p>
+          <h1>Un certificado de seguridad vencido dejó ciego al monitoreo</h1>
+          <p>Una vez dentro, los atacantes se movieron lateralmente hacia bases de datos con información sensible — algo que la investigación de la GAO atribuyó a una <strong>red plana, sin segmentación adecuada</strong> entre el sistema expuesto a internet y los sistemas internos con datos críticos.</p>
+          <p>Equifax sí tenía un dispositivo para inspeccionar tráfico cifrado en busca de actividad sospechosa — pero el certificado digital de ese dispositivo llevaba <strong>cerca de 19 meses vencido</strong>, por lo que no podía descifrar ni inspeccionar el tráfico. Los atacantes exfiltraron datos sin ser detectados durante <strong>76 días</strong>, hasta que el certificado se renovó el 29 de julio de 2017 y el tráfico sospechoso finalmente se hizo visible.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cuatro fallas, cuatro principios de arquitectura segura que las habrían evitado</h1>
+          <p>La investigación oficial resumió la brecha en cuatro causas raíz: <strong>identificación</strong> (no se identificó la necesidad de parchear), <strong>detección</strong> (el certificado vencido cegó el monitoreo), <strong>segmentación</strong> (una red plana permitió el movimiento lateral) y <strong>gobernanza de datos</strong> (se retuvieron más datos sensibles de los necesarios). Cada una de esas fallas tiene un principio arquitectónico formal que la aborda — los que vemos a continuación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La tríada CIA: el modelo base de la seguridad de la información</h1>
+          <p>Todo principio de seguridad que veremos hoy protege, en el fondo, una de estas tres propiedades — el modelo clásico documentado por el NIST (Instituto Nacional de Estándares y Tecnología de EE. UU.):</p>
+          <ul>
+            <li><strong>Confidencialidad:</strong> solo quienes están autorizados pueden acceder a la información (en Equifax, los datos de 147 millones de personas quedaron expuestos a atacantes no autorizados).</li>
+            <li><strong>Integridad:</strong> la información no puede ser alterada sin autorización ni detección.</li>
+            <li><strong>Disponibilidad:</strong> los sistemas y datos están accesibles cuando quienes están autorizados los necesitan.</li>
+          </ul>
+          <p class="slide-eyebrow">La brecha de Equifax fue, sobre todo, una falla masiva de confidencialidad — pero las tres propiedades son responsabilidad de la arquitectura, no solo de un equipo de seguridad separado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Security by Design: la seguridad se decide en la arquitectura, no se agrega después</h1>
+          <p>En 1975, Jerome Saltzer y Michael Schroeder publicaron <strong>"The Protection of Information in Computer Systems"</strong>, un artículo que formalizó ocho principios de diseño para construir sistemas seguros desde su arquitectura — sigue siendo, medio siglo después, la referencia académica más citada del campo.</p>
+          <table>
+            <thead><tr><th>Principio</th><th>Qué exige</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Fail-safe defaults</strong></td><td>Si algo falla, el sistema debe negar el acceso por defecto, no concederlo.</td></tr>
+              <tr><td><strong>Complete mediation</strong></td><td>Cada solicitud de acceso debe verificarse, sin excepciones ni atajos.</td></tr>
+              <tr><td><strong>Economy of mechanism</strong></td><td>Mientras más simple el diseño de seguridad, menos superficie de error.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Mínimo privilegio: cada componente opera con lo justo, nunca con más</h1>
+          <p>El <strong>principio de mínimo privilegio</strong> (least privilege), también formalizado por Saltzer y Schroeder (s09), exige que cada usuario, proceso o servicio tenga acceso únicamente a los recursos estrictamente necesarios para cumplir su función — nada más.</p>
+          <p>Ejemplo aplicado: la cuenta de servicio que usa la aplicación web para consultar el catálogo de productos no debería tener permisos para modificar la tabla de usuarios ni para leer datos de facturación — aunque técnicamente comparta la misma base de datos.</p>
+          <p class="slide-eyebrow">Un atacante que compromete un componente con privilegios mínimos solo hereda esos privilegios mínimos — el daño queda contenido.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Defensa en profundidad: varias capas, ninguna es la única línea de defensa</h1>
+          <p>La <strong>defensa en profundidad</strong> es un principio arquitectónico, de origen militar, adaptado a la seguridad de la información: en vez de confiar en un solo control (ej. un firewall perimetral), se despliegan varias capas independientes, de modo que si una falla, las siguientes aún protegen el sistema.</p>
+          <ul>
+            <li>Capas típicas: perímetro de red, segmentación interna, control de acceso a nivel de aplicación, cifrado de datos, monitoreo y respuesta a incidentes.</li>
+          </ul>
+          <p class="slide-eyebrow">Cada capa debe ser independiente: si comprometer una automáticamente compromete a las demás, no es defensa en profundidad real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Equifax frente a la defensa en profundidad</h1>
+          <table>
+            <thead><tr><th>Capa</th><th>Qué debía existir</th><th>Qué falló en Equifax</th></tr></thead>
+            <tbody>
+              <tr><td>Parcheo</td><td>Aplicar el parche de Struts disponible desde marzo de 2017</td><td>El proceso de identificación de vulnerabilidades no marcó el sistema como afectado</td></tr>
+              <tr><td>Segmentación</td><td>Aislar los sistemas con datos sensibles del portal expuesto a internet</td><td>Una red plana permitió el movimiento lateral sin restricciones</td></tr>
+              <tr><td>Monitoreo</td><td>Inspeccionar tráfico cifrado en busca de exfiltración</td><td>Certificado vencido durante ~19 meses dejó el tráfico sin inspeccionar</td></tr>
+              <tr><td>Gobernanza de datos</td><td>Retener y proteger solo los datos estrictamente necesarios</td><td>Se conservaron más datos sensibles de los necesarios</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Cuatro capas de defensa en profundidad — las cuatro fallaron de forma independiente, justo lo que este principio busca evitar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Zero Trust: nunca confiar, siempre verificar</h1>
+          <p>En 2010, el analista <strong>John Kindervag</strong>, de Forrester Research, acuñó el término <strong>Zero Trust</strong> para describir un modelo que abandona la idea de un "perímetro confiable": ninguna solicitud, venga de dentro o fuera de la red corporativa, se confía por defecto. En 2020, el NIST formalizó el modelo en el estándar <strong>SP 800-207</strong> (Zero Trust Architecture).</p>
+          <ul>
+            <li>Verificar explícitamente cada solicitud.</li>
+            <li>Aplicar mínimo privilegio (s10) de forma consistente.</li>
+            <li>Asumir que la brecha ya ocurrió ("assume breach") y diseñar el sistema para limitar el daño.</li>
+          </ul>
+          <p class="slide-eyebrow">La red plana de Equifax (s06) es el opuesto exacto de Zero Trust: una vez dentro del perímetro, un atacante se movía sin restricciones adicionales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión</p>
+          <h1>Seguridad perimetral tradicional vs. Zero Trust</h1>
+          <table>
+            <thead><tr><th></th><th>Seguridad perimetral</th><th>Zero Trust</th></tr></thead>
+            <tbody>
+              <tr><td>Supuesto base</td><td>"Dentro de la red = confiable"</td><td>Ninguna solicitud es confiable por defecto</td></tr>
+              <tr><td>Punto de verificación</td><td>Solo en el borde de la red (firewall)</td><td>En cada solicitud, sin importar el origen</td></tr>
+              <tr><td>Movimiento lateral de un atacante</td><td>Prácticamente libre una vez dentro</td><td>Restringido — cada salto requiere verificación</td></tr>
+              <tr><td>Adecuado para</td><td>Redes cerradas, sin nube ni trabajo remoto</td><td>Arquitecturas modernas: nube, microservicios, APIs</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">La mayoría de las arquitecturas modernas (los estilos vistos en la Unidad 2) ya no tienen un perímetro claro que defender — de ahí la adopción creciente de Zero Trust.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Threat modeling: anticipar las amenazas antes de escribir código</h1>
+          <p>El <strong>threat modeling</strong> es el proceso de identificar, de forma sistemática, las amenazas posibles a un sistema durante su diseño — antes de que exista una sola línea de código en producción. La metodología más usada en la industria es <strong>STRIDE</strong>, desarrollada por Loren Kohnfelder y Praerit Garg en Microsoft en 1999.</p>
+          <table>
+            <thead><tr><th>Categoría STRIDE</th><th>Qué representa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Spoofing</strong> (suplantación)</td><td>Alguien se hace pasar por otro usuario o sistema</td></tr>
+              <tr><td><strong>Tampering</strong> (alteración)</td><td>Modificar datos o código sin autorización</td></tr>
+              <tr><td><strong>Repudiation</strong> (repudio)</td><td>Negar haber realizado una acción, sin poder probarlo</td></tr>
+              <tr><td><strong>Information disclosure</strong></td><td>Exponer información a quien no debería verla</td></tr>
+              <tr><td><strong>Denial of service</strong></td><td>Impedir que el sistema esté disponible para usuarios legítimos</td></tr>
+              <tr><td><strong>Elevation of privilege</strong></td><td>Obtener permisos mayores a los concedidos</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Apliquen STRIDE a su proyecto de CodeF@ctory</h1>
+          <p><strong>En equipos:</strong></p>
+          <ol>
+            <li>Elijan un componente crítico de su sistema (ej. login, pagos, carga de archivos).</li>
+            <li>Para cada categoría de STRIDE (s15), identifiquen si existe una amenaza plausible concreta contra ese componente.</li>
+            <li>Para la amenaza más crítica que encuentren, propongan un control (mínimo privilegio, defensa en profundidad, Zero Trust) que la mitigue.</li>
+          </ol>
+          <p class="slide-eyebrow">10 minutos · respondan en equipo, prepárense para compartir un hallazgo</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>"Ya casi terminamos, la seguridad la agregamos después"</h1>
+          <p>Es una frase común en proyectos con presión de tiempo — y es exactamente lo que este principio contradice. Agregar seguridad al final casi siempre significa parchear síntomas (validar una entrada aquí, agregar un chequeo allá) sobre una arquitectura que nunca fue diseñada para resistir ataques, en vez de tener controles integrados desde las decisiones estructurales.</p>
+          <p><strong>El caso de Equifax no fue causado por la ausencia de un equipo de seguridad — Equifax tenía uno. Fue causado por decisiones y procesos arquitectónicos (parcheo, segmentación, monitoreo, gobernanza de datos) que no sostuvieron esas capas cuando fallaron.</strong></p>
+          <p class="slide-eyebrow">Esta es una tensión real y documentada en la industria, no una simplificación — la retrospectiva es la prueba constante de qué tan cara sale "agregarla después".</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>La brecha de Equifax (2017, 147 millones de personas) es el caso más citado de que la seguridad es una decisión arquitectónica: fallaron el parcheo, la segmentación, el monitoreo y la gobernanza de datos, no un solo control aislado.</li>
+            <li>La tríada CIA (confidencialidad, integridad, disponibilidad) es el modelo base que todo principio de seguridad protege.</li>
+            <li>Los principios de Saltzer y Schroeder (1975) — fail-safe defaults, mínimo privilegio, mediación completa, entre otros — siguen siendo la base académica de Security by Design.</li>
+            <li>La defensa en profundidad exige varias capas independientes; Zero Trust (Kindervag, 2010; NIST SP 800-207) reemplaza la confianza implícita del perímetro por verificación explícita en cada solicitud.</li>
+            <li>El threat modeling con STRIDE (Microsoft, 1999) permite anticipar amenazas desde el diseño, antes de escribir código.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Repasar los principios de hoy (CIA, Security by Design, mínimo privilegio, defensa en profundidad, Zero Trust, STRIDE) y ubicar cuáles aplica o podría aplicar su proyecto de CodeF@ctory.</li>
+            <li>Tener presente que la seguridad de este semestre se evalúa en el hito "Seguridad Arquitectónica y Hardening" (20%), programado en esta misma semana.</li>
+          </ul>
+          <p><strong>La próxima sesión cerramos la Unidad 5 bajando estos principios a un terreno muy concreto: la seguridad en las APIs — la puerta de entrada que la mayoría de los sistemas modernos exponen al mundo.</strong></p>
+          <img class="portada-icon" src="img/calendar-days.svg" alt="Próxima sesión" style="display:block;width:180px;height:180px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

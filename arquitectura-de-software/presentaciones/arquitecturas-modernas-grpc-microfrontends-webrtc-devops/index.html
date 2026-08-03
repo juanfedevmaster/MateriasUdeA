@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquitecturas Modernas y Ciclo DevOps — Semana 11</title>
+  <meta name="description" content="Comunicación eficiente entre servicios, frontend fragmentado, video en tiempo real, bases de datos especializadas, y el ciclo que las despliega todas — Arquitectura de Software, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/arquitecturas-modernas-grpc-microfrontends-webrtc-devops/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Arquitecturas Modernas y Ciclo DevOps — Semana 11" />
+  <meta property="og:description" content="Comunicación eficiente entre servicios, frontend fragmentado, video en tiempo real, bases de datos especializadas, y el ciclo que las despliega todas — Arquitectura de Software, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/arquitecturas-modernas-grpc-microfrontends-webrtc-devops/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arquitecturas Modernas y Ciclo DevOps — Semana 11" />
+  <meta name="twitter:description" content="Comunicación eficiente entre servicios, frontend fragmentado, video en tiempo real, bases de datos especializadas, y el ciclo que las despliega todas — Arquitectura de Software, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/arquitecturas-modernas-grpc-microfrontends-webrtc-devops.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 11 — Arquitecturas Modernas y Ciclo DevOps</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/network-wired.svg" alt="Piezas modernas de arquitectura conectadas entre sí" style="display:block;width:220px;height:220px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Una llamada de video, un catálogo que carga en partes, un mensaje entre microservicios.<br>Todo eso también es arquitectura.</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Hoy: cuatro piezas modernas, un solo ciclo que las despliega</h1>
+          <p>En las últimas semanas vieron el catálogo de patrones y los estilos que los organizan. Esta sesión toma cuatro tecnologías concretas que resuelven problemas actuales muy distintos entre sí — comunicación entre servicios, fragmentación del frontend, video en tiempo real, y persistencia de datos — y cierra con el ciclo que hace posible llevar cualquiera de ellas a producción de forma confiable.</p>
+          <p><strong>Es una sesión ancha, no profunda: el objetivo es que reconozcan qué es y para qué sirve cada una, con su origen real, no que dominen cada tecnología a fondo.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 1</p>
+          <h1>gRPC: llamadas remotas eficientes entre servicios</h1>
+          <p><strong>gRPC</strong> es un framework de comunicación entre servicios creado por Google, basado en <strong>RPC (Remote Procedure Call — llamado a procedimiento remoto)</strong>: un servicio invoca una función de otro servicio como si fuera local, y el framework se encarga de empaquetar la llamada, enviarla por la red y traer la respuesta de vuelta.</p>
+          <ul>
+            <li><strong>Transporte:</strong> usa <strong>HTTP/2</strong> en vez de HTTP/1.1 — permite multiplexar varias solicitudes sobre una sola conexión, en lugar de abrir una conexión por cada una.</li>
+            <li><strong>Serialización:</strong> usa <strong>Protocol Buffers (protobuf)</strong>, un formato binario compacto, en vez de texto plano como JSON o XML — mensajes más pequeños y más rápidos de procesar.</li>
+          </ul>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Servicios conectados mediante llamadas remotas serializadas" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 1 · Origen</p>
+          <h1>De CORBA a gRPC: el mismo problema, resuelto más liviano</h1>
+          <table>
+            <tbody>
+              <tr><th>Protocol Buffers</th><td>Formato interno de Google desde cerca de <strong>2001</strong>; liberado como open source en <strong>2008</strong></td></tr>
+              <tr><th>gRPC</th><td>Liberado como open source por Google en <strong>2015</strong>, construido sobre HTTP/2</td></tr>
+            </tbody>
+          </table>
+          <p>En la Semana 6 vieron <strong>Broker</strong> (catálogo POSA) resolviendo comunicación entre componentes distribuidos con estándares como <strong>CORBA</strong>, populares en los años 90. gRPC resuelve exactamente el mismo problema — invocar código en otro proceso o máquina como si fuera local — pero con un transporte moderno (HTTP/2) y una serialización mucho más liviana que las de esa época.</p>
+          <p class="slide-eyebrow">Mismo problema de siempre, solución más eficiente: no es un concepto nuevo, es una implementación moderna de Broker.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 2</p>
+          <h1>Microfrontends: microservicios, pero en el frontend</h1>
+          <p>En la Semana 8 vieron <strong>Microservicios</strong>: dividir el backend en servicios pequeños e independientes, desplegados por separado. Los <strong>microfrontends</strong> extienden esa misma filosofía a la interfaz de usuario: una aplicación web grande se divide en fragmentos independientes — cada uno desarrollado, probado y desplegado por un equipo distinto — que se ensamblan en tiempo de carga en una sola interfaz coherente para el usuario final.</p>
+          <ul>
+            <li>Cada equipo dueño de un fragmento puede usar su propio stack tecnológico y su propio ciclo de despliegue.</li>
+            <li>El riesgo principal es la consistencia visual y de experiencia entre fragmentos hechos por equipos distintos.</li>
+          </ul>
+          <p class="slide-eyebrow">El término fue popularizado por <strong>ThoughtWorks</strong> en su publicación <strong>Technology Radar de 2016</strong>, donde lo listaron como tendencia emergente a adoptar.</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Fragmentos independientes de frontend ensamblados en una sola interfaz" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 3</p>
+          <h1>WebRTC: tiempo real, directo entre navegadores</h1>
+          <p><strong>WebRTC</strong> (Web Real-Time Communication) es una tecnología que permite comunicación de audio, video y datos en tiempo real directamente entre navegadores, sin plugins ni software adicional instalado.</p>
+          <ul>
+            <li>Usa comunicación <strong>peer-to-peer (P2P)</strong>: los navegadores se conectan directamente entre sí para intercambiar el flujo de audio/video, en vez de que todo pase obligatoriamente por un servidor intermedio.</li>
+            <li>El servidor solo se necesita al inicio, para que ambos navegadores se encuentren y negocien la conexión — no para transportar el video después.</li>
+          </ul>
+          <img class="portada-icon" src="img/webrtc.svg" alt="Logo de WebRTC" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 3 · Origen</p>
+          <h1>De una adquisición a un estándar de la web</h1>
+          <table>
+            <tbody>
+              <tr><th>2010</th><td>Google adquiere <strong>Global IP Solutions (GIPS)</strong>, empresa especializada en tecnología de audio/video en tiempo real</td></tr>
+              <tr><th>2011</th><td>Google anuncia <strong>WebRTC</strong> como proyecto open source</td></tr>
+              <tr><th>Estandarización</th><td>Conjunta entre el <strong>W3C</strong> y el <strong>IETF</strong></td></tr>
+            </tbody>
+          </table>
+          <p><strong>Habilitó productos que probablemente ya usaron:</strong> Google Hangouts primero, y más adelante Google Meet, entre muchas otras aplicaciones de videollamada en el navegador que no requieren instalar nada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 4</p>
+          <h1>Persistencia políglota: una base de datos por necesidad</h1>
+          <p><strong>Persistencia políglota (polyglot persistence)</strong> es usar distintos tipos de base de datos dentro del mismo sistema, cada una elegida según el tipo de dato y el patrón de acceso — en vez de forzar todo dentro de un único motor.</p>
+          <table>
+            <thead>
+              <tr><th>Tipo de dato / necesidad</th><th>Tipo de base de datos</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Transacciones con consistencia fuerte</td><td>Relacional (SQL)</td></tr>
+              <tr><td>Relaciones complejas entre entidades</td><td>De grafos</td></tr>
+              <tr><td>Catálogos con estructura flexible</td><td>Documental (<strong>NoSQL</strong> — bases que no usan el modelo relacional de tablas)</td></tr>
+              <tr><td>Métricas y eventos en el tiempo</td><td>De series de tiempo</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/database.svg" alt="Distintos motores de base de datos conviviendo en un mismo sistema" style="display:block;width:120px;height:120px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 4 · Origen</p>
+          <h1>De la teoría al caso de escala real</h1>
+          <p>El término fue popularizado por <strong>Martin Fowler y Pramod Sadalage</strong> alrededor de <strong>2011</strong>, en el contexto del auge de las bases de datos NoSQL como alternativa (no reemplazo total) a las relacionales.</p>
+          <p><strong>Caso de adopción real:</strong> empresas de streaming y de gran escala como <strong>Netflix</strong> combinan múltiples motores de base de datos según la necesidad de cada parte del sistema — por ejemplo, motores distribuidos de gran volumen para unos datos y motores transaccionales para otros. No es una excepción: es la norma en sistemas grandes y distribuidos.</p>
+          <p class="slide-eyebrow">La arquitectura correcta no es "una base de datos para todo", sino la combinación correcta para cada necesidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Cómo se lleva todo esto a producción?</h1>
+          <p>Ya vieron cuatro piezas tecnológicas distintas: comunicación entre servicios, frontend fragmentado, video en tiempo real y bases de datos especializadas. Cada una la construye y despliega un equipo, muchas veces por separado.</p>
+          <p><strong>Falta la pieza que las conecta a todas: el ciclo que permite integrar, probar y desplegar cualquiera de ellas de forma rápida y confiable — DevOps.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Patrick Debois y el nacimiento del término "DevOps"</h1>
+          <table>
+            <tbody>
+              <tr><th>Autor del término</th><td>Patrick Debois</td></tr>
+              <tr><th>Evento fundacional</th><td>Primera conferencia <em>"DevOpsDays"</em></td></tr>
+              <tr><th>Lugar y año</th><td>Gante, Bélgica, <strong>2009</strong></td></tr>
+              <tr><th>Motivación</th><td>Frustración con la separación tradicional entre los equipos de desarrollo (Dev) y de operaciones (Ops), que trabajaban con objetivos y calendarios distintos</td></tr>
+              <tr><th>De dónde viene el nombre</th><td>Contracción de "Development" + "Operations", tomada del nombre de la propia conferencia</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Flickr: "10+ Deploys per Day"</h1>
+          <table>
+            <tbody>
+              <tr><th>Autores</th><td>John Allspaw y Paul Hammond</td></tr>
+              <tr><th>Charla</th><td><em>"10+ Deploys per Day: Dev and Ops Cooperation at Flickr"</em></td></tr>
+              <tr><th>Conferencia</th><td>Velocity, <strong>2009</strong></td></tr>
+              <tr><th>Lo que mostraron</th><td>Cómo Flickr lograba desplegar a producción <strong>más de 10 veces al día</strong>, mediante colaboración estrecha entre desarrollo y operaciones — no como equipos separados que se pasan el trabajo</td></tr>
+              <tr><th>Por qué importó</th><td>En 2009, la idea de desplegar a producción tantas veces al día era radical: la norma eran despliegues infrecuentes, planeados y arriesgados</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Debois acuñó el nombre en Gante; Allspaw y Hammond, en Velocity, mostraron con datos por qué el movimiento importaba. Ambas cosas ocurrieron en 2009.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 5</p>
+          <h1>DevOps: una cultura, no una herramienta</h1>
+          <p><strong>DevOps</strong> es una cultura y un conjunto de prácticas que buscan unir el trabajo de desarrollo (Dev) y operaciones (Ops), automatizando la integración, las pruebas y el despliegue para entregar software de forma más rápida y confiable.</p>
+          <p>No es un rol, ni un producto, ni una herramienta específica: es una forma de trabajar donde quienes escriben el código también son responsables de que funcione bien en producción, y donde el ciclo completo — desde el commit hasta el usuario final — está automatizado el mayor tiempo posible.</p>
+          <img class="portada-icon" src="img/infinity.svg" alt="Ciclo continuo de DevOps" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Tema 5 · Prácticas</p>
+          <h1>Qué incluye el ciclo, en corto</h1>
+          <table>
+            <thead>
+              <tr><th>Práctica</th><th>Qué resuelve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>CI/CD</strong> (Integración Continua / Entrega Continua)</td><td>Cada cambio se integra, se prueba y se prepara para desplegar automáticamente, en vez de acumular cambios grandes y riesgosos</td></tr>
+              <tr><td>Infraestructura como código</td><td>Los servidores y entornos se definen en archivos versionados, no se configuran a mano uno por uno</td></tr>
+              <tr><td>Monitoreo y observabilidad</td><td>Saber qué está pasando en producción en tiempo real, para reaccionar rápido cuando algo falla</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Este es el mapa general — las herramientas concretas de cada práctica se ven más adelante en el curso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cuál de las cinco ya está presente en su proyecto?</h1>
+          <p><strong>En equipos, respondan rápido:</strong></p>
+          <ol>
+            <li>De gRPC, microfrontends, WebRTC, persistencia políglota y DevOps: ¿cuál (si alguna) ya usan o consideraron usar en CodeF@ctory?</li>
+            <li>Si ninguna aplica todavía, ¿cuál tendría más sentido agregar primero, y por qué?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>gRPC</strong> (Google, open source 2015) usa HTTP/2 y <strong>Protocol Buffers</strong> (Google, open source 2008) para comunicación eficiente entre servicios — la versión moderna del problema que resolvía Broker/CORBA.</li>
+            <li><strong>Microfrontends</strong> (ThoughtWorks, 2016) extienden la filosofía de microservicios a la interfaz de usuario: fragmentos independientes ensamblados en una sola aplicación.</li>
+            <li><strong>WebRTC</strong> (Google/GIPS, 2010–2011, estandarizado por W3C e IETF) permite audio, video y datos en tiempo real directamente entre navegadores, sin plugins.</li>
+            <li><strong>Persistencia políglota</strong> (Fowler y Sadalage, 2011) usa distintos motores de base de datos según el tipo de dato y patrón de acceso — la norma en sistemas grandes como Netflix.</li>
+            <li><strong>DevOps</strong> (Debois, DevOpsDays 2009; Allspaw y Hammond, Flickr/Velocity 2009) es la cultura y las prácticas que unen desarrollo y operaciones para desplegar rápido y de forma confiable — el ciclo que hace posible llevar las otras cuatro piezas a producción.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <ul>
+            <li>Repasar las cinco piezas de hoy: qué problema resuelve cada una y su dato de origen.</li>
+            <li>Pensar en su proyecto de CodeF@ctory: ¿qué decisión arquitectónica tomarían distinto si tuvieran que priorizar solo una de las cinco?</li>
+          </ul>
+          <p><strong>La próxima sesión cierra la Unidad 2 con Antipatrones de Arquitectura de Software: las decisiones que parecen buena idea y terminan costando caro.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

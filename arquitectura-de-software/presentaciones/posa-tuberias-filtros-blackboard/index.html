@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo POSA: Tuberías y Filtros, Blackboard — Semana 6</title>
+  <meta name="description" content="Dos estilos clásicos para procesar datos: pipelines Unix y sistemas de pizarra, con los casos reales de Unix pipes (Bell Labs) y HEARSAY-II (Carnegie Mellon) — Arquitectura de Software, Semana 6." />
+  <link rel="canonical" href="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-tuberias-filtros-blackboard/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Catálogo POSA: Tuberías y Filtros, Blackboard — Semana 6" />
+  <meta property="og:description" content="Dos estilos clásicos para procesar datos: pipelines Unix y sistemas de pizarra, con los casos reales de Unix pipes (Bell Labs) y HEARSAY-II (Carnegie Mellon) — Arquitectura de Software, Semana 6." />
+  <meta property="og:url" content="https://profejuanfe.dev/arquitectura-de-software/presentaciones/posa-tuberias-filtros-blackboard/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catálogo POSA: Tuberías y Filtros, Blackboard — Semana 6" />
+  <meta name="twitter:description" content="Dos estilos clásicos para procesar datos: pipelines Unix y sistemas de pizarra, con los casos reales de Unix pipes (Bell Labs) y HEARSAY-II (Carnegie Mellon) — Arquitectura de Software, Semana 6." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/posa-tuberias-filtros-blackboard.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554608">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Arquitectura de Software</h1>
+          <h2>Semana 6 — Catálogo POSA: Tuberías y Filtros, Blackboard</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas · 2554608 · 2026-2</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Patrones arquitectónicos POSA" style="display:block;width:240px;height:240px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un solo carácter<br><code>|</code></h1>
+          <img class="portada-icon" src="img/terminal.svg" alt="Operador de tubería en la terminal" style="display:block;width:200px;height:200px;margin:35px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>El pipe de Unix</h1>
+          <table>
+            <tbody>
+              <tr><th>Idea original</th><td>Memo interno de <strong>Doug McIlroy</strong>, investigador de los Bell Labs (AT&amp;T), año 1964</td></tr>
+              <tr><th>Propuesta</th><td>Conectar programas entre sí "como una manguera de jardín": la salida de uno alimenta directamente la entrada de otro</td></tr>
+              <tr><th>Implementación</th><td>Incorporada al sistema operativo Unix por <strong>Ken Thompson</strong> en la versión 3 de Unix (Unix v3), 1973</td></tr>
+              <tr><th>Sintaxis en el shell</th><td>El operador <strong>&#124;</strong> (barra vertical o "pipe")</td></tr>
+              <tr><th>Vigencia</th><td>El mismo operador sigue funcionando igual, más de 50 años después, en Linux, macOS y otros sistemas tipo Unix</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Caso documentado en la historia oficial de Unix y en escritos posteriores del propio McIlroy sobre la filosofía de diseño de Bell Labs.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El problema antes del pipe</p>
+          <h1>Programas que no se hablaban entre sí</h1>
+          <p>Antes de 1973, si un programador quería que la salida de un programa sirviera de entrada a otro, tenía que <strong>guardar un archivo intermedio en disco</strong>, ejecutar el segundo programa apuntando a ese archivo, y borrar el archivo temporal después. Cada combinación de programas exigía este mismo trabajo manual y repetitivo.</p>
+          <p>McIlroy insistía con sus colegas de Bell Labs en que los programas deberían poder <strong>conectarse directamente</strong>, sin pasar por archivos intermedios ni que un programa necesitara saber nada especial sobre el otro.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Un comando real</p>
+          <h1>Encadenando filtros con <code>|</code></h1>
+          <pre><code>cat access.log | grep ERROR | sort | uniq -c | sort -rn | head</code></pre>
+          <p>Cada segmento entre barras es un <strong>programa independiente</strong>, ejecutado como parte de una sola línea:</p>
+          <ul>
+            <li><code>cat access.log</code> — lee el archivo de registro</li>
+            <li><code>grep ERROR</code> — se queda solo con las líneas que contienen "ERROR"</li>
+            <li><code>sort</code> — ordena esas líneas alfabéticamente</li>
+            <li><code>uniq -c</code> — cuenta cuántas veces se repite cada línea</li>
+            <li><code>sort -rn</code> — ordena esos conteos de mayor a menor</li>
+            <li><code>head</code> — muestra solo los primeros resultados</li>
+          </ul>
+          <p class="slide-eyebrow">Ninguno de estos seis programas fue escrito pensando en los otros cinco — y aun así funcionan juntos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué fue tan influyente</p>
+          <h1>"Hacer una cosa, y hacerla bien"</h1>
+          <p>El pipe de Unix popularizó una filosofía de diseño que hoy sigue citándose en la ingeniería de software:</p>
+          <ul>
+            <li><strong>Composabilidad:</strong> programas pequeños se combinan para resolver tareas que ninguno resolvía solo, sin escribir código nuevo.</li>
+            <li><strong>Reutilización:</strong> el mismo <code>grep</code> o <code>sort</code> sirve en miles de combinaciones distintas, escrito una sola vez.</li>
+            <li><strong>Independencia:</strong> cada programa solo conoce su entrada estándar y su salida estándar — no conoce ni le importa qué hay al otro lado del pipe.</li>
+          </ul>
+          <p><strong>Esta filosofía —programas pequeños, independientes, conectados por flujos de datos— es exactamente la idea detrás del patrón arquitectónico que vemos hoy: Pipes and Filters (Tuberías y Filtros).</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un truco de terminal a un patrón arquitectónico</h1>
+          <p>Lo que McIlroy diseñó como una función del shell de Unix, el catálogo <strong>POSA</strong> (<em>Pattern-Oriented Software Architecture</em>, de Frank Buschmann y colegas) lo documentó formalmente como uno de los patrones más usados para diseñar sistemas completos, no solo comandos de terminal.</p>
+          <p><strong>Veamos su definición formal: el patrón Pipes and Filters (Tuberías y Filtros).</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pipes and Filters: definición formal</h1>
+          <p>El patrón <strong>Pipes and Filters</strong> estructura un sistema que procesa un flujo de datos en una serie de pasos de transformación independientes.</p>
+          <ul>
+            <li>Cada paso de procesamiento se encapsula en un componente llamado <strong>filtro</strong>.</li>
+            <li>Los filtros se conectan entre sí mediante <strong>tuberías</strong> (pipes): canales que transportan datos de la salida de un filtro a la entrada del siguiente.</li>
+            <li>Los datos fluyen a través de la cadena de filtros y se transforman de forma <strong>incremental</strong>, un paso a la vez.</li>
+          </ul>
+          <p class="slide-eyebrow">Documentado en el catálogo POSA de Buschmann, Meunier, Rohnert, Sommerlad y Stal — el mismo catálogo del que estudiaremos varios patrones durante toda la Unidad 2.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Filtro y tubería, definidos</h1>
+          <table>
+            <tbody>
+              <tr><th>Filtro</th><td>Componente que <strong>transforma</strong> los datos que recibe y produce una nueva salida. No conoce a los filtros anteriores ni posteriores en la cadena — solo sabe leer una entrada y escribir una salida.</td></tr>
+              <tr><th>Tubería</th><td>Conector que <strong>transporta</strong> datos entre dos filtros, sin transformarlos. En Unix es literalmente un buffer del sistema operativo; en otras arquitecturas puede ser una cola de mensajes o un stream.</td></tr>
+              <tr><th>Fuente / sumidero</th><td>El primer filtro de la cadena típicamente produce datos desde una fuente (un archivo, un sensor); el último los entrega a un sumidero (pantalla, base de datos, otro sistema).</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Propiedad clave:</strong> cada filtro es reemplazable e independiente — se puede insertar, quitar o reordenar un filtro sin modificar los demás, igual que insertar un nuevo comando en medio de una línea de Unix.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ventajas y limitaciones</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Cuándo ayuda</th><th>Cuándo no</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Naturaleza del flujo</th><td>Transformación secuencial y predecible de datos: ETL, procesamiento de streams, compiladores (léxico → sintáctico → semántico)</td><td>Interacción compleja entre pasos, donde un paso necesita "volver atrás" o negociar con otro</td></tr>
+              <tr><th>Estado</th><td>Cada filtro puede ser <strong>sin estado</strong> (stateless), fácil de probar y de paralelizar</td><td>Problemas que requieren <strong>estado compartido</strong> entre varios componentes al mismo tiempo</td></tr>
+              <tr><th>Composición</th><td>Alta reutilización: el mismo filtro sirve en muchas cadenas distintas</td><td>Rendimiento si hay muchas conversiones de formato entre filtros (costo de "traducir" datos en cada tubería)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Cuando la cadena no es la respuesta</h1>
+          <p>Imaginen un sistema que debe reconocer una palabra hablada: necesita analizar el sonido a nivel fonético, compararlo contra palabras conocidas, verificar si encaja gramaticalmente en la frase, y decidir si tiene sentido con el contexto de la conversación — <strong>todo al mismo tiempo</strong>, porque la mejor hipótesis fonética puede depender de lo que ya se entendió a nivel de significado, y viceversa.</p>
+          <p><strong>Un pipeline lineal —fonética, luego léxico, luego sintaxis, luego semántica, en ese orden fijo— no funciona bien aquí: cada etapa necesitaría "consultar" a las demás, no solo pasarles datos hacia adelante.</strong> Este es exactamente el problema que enfrentó uno de los sistemas más citados en la historia de la inteligencia artificial.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>HEARSAY-II</h1>
+          <table>
+            <tbody>
+              <tr><th>Institución</th><td><strong>Carnegie Mellon University</strong> (Pittsburgh, Estados Unidos)</td></tr>
+              <tr><th>Período</th><td>Desarrollado durante la primera mitad de la década de 1970</td></tr>
+              <tr><th>Financiamiento</th><td>Programa <strong>Speech Understanding Research (SUR)</strong> de DARPA (agencia de investigación avanzada del Departamento de Defensa de EE. UU.)</td></tr>
+              <tr><th>Objetivo</th><td>Comprensión de habla continua: entender oraciones completas dichas en voz natural, no solo palabras aisladas</td></tr>
+              <tr><th>Legado</th><td>El sistema del que la literatura de arquitectura de software tomó el nombre y la estructura del patrón <strong>Blackboard</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Documentado por su propio equipo (Erman, Hayes-Roth, Lesser, Reddy, entre otros) en publicaciones académicas de la época, incluida una revisión extensa en ACM Computing Surveys.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · El contexto del problema</p>
+          <h1>Entender voz requiere varias fuentes de conocimiento a la vez</h1>
+          <p>Para que una computadora entendiera una frase hablada, HEARSAY-II tenía que combinar información de <strong>fuentes de conocimiento muy distintas</strong>, cada una experta en un aspecto del problema:</p>
+          <ul>
+            <li><strong>Acústico-fonética:</strong> qué sonidos hay realmente en la señal de audio.</li>
+            <li><strong>Léxica:</strong> qué palabras del vocabulario coinciden con esos sonidos.</li>
+            <li><strong>Sintáctica:</strong> qué combinaciones de palabras son gramaticalmente válidas.</li>
+            <li><strong>Semántica y de contexto:</strong> qué tiene sentido dado el tema de la conversación.</li>
+          </ul>
+          <p><strong>Ninguna de estas fuentes, por sí sola, tenía suficiente información para decidir la respuesta correcta — y la mejor hipótesis de una fuente casi siempre dependía de pistas producidas por otra.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La solución</p>
+          <h1>Una pizarra compartida, no una cadena fija</h1>
+          <p>El equipo de HEARSAY-II diseñó una <strong>estructura de datos compartida</strong> —la "pizarra" (blackboard)— donde cada fuente de conocimiento podía leer las hipótesis que otras habían escrito, y escribir las suyas propias, <strong>sin seguir un orden fijo</strong>. Una fuente sintáctica, por ejemplo, podía escribir en la pizarra una restricción que hiciera que la fuente fonética reconsiderara una hipótesis ya descartada.</p>
+          <p>Un componente de <strong>control</strong> decidía, en cada momento, cuál fuente de conocimiento debía actuar a continuación, según qué tan prometedoras se veían las hipótesis disponibles en ese instante.</p>
+          <p class="slide-eyebrow">Este mecanismo de colaboración oportunista —sin secuencia fija— es lo que la literatura posterior formalizó como el patrón arquitectónico Blackboard.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De un sistema de reconocimiento de voz a un patrón general</h1>
+          <p>Igual que el pipe de Unix se convirtió en el patrón Pipes and Filters, la arquitectura de HEARSAY-II se convirtió en el patrón <strong>Blackboard</strong> del catálogo POSA — usado hoy en diagnóstico médico asistido, sistemas de planeación, y otros problemas donde no hay un algoritmo determinista claro.</p>
+          <p><strong>Veamos su definición formal.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Blackboard: definición formal</h1>
+          <p>El patrón <strong>Blackboard</strong> se usa para problemas en los que <strong>no existe una estrategia determinista</strong> conocida para llegar a la solución, y en cambio se necesita combinar de forma oportunista los aportes de varios expertos parciales sobre un mismo espacio de trabajo compartido.</p>
+          <ul>
+            <li>Un componente <strong>pizarra</strong> (blackboard): estructura de datos compartida donde se acumulan hipótesis parciales de la solución.</li>
+            <li>Varias <strong>fuentes de conocimiento</strong> (knowledge sources): módulos independientes, cada uno experto en un subproblema, que leen y modifican la pizarra.</li>
+            <li>Un componente de <strong>control</strong>: decide en qué orden actúan las fuentes de conocimiento, según el estado actual de la pizarra.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo colaboran los tres componentes</h1>
+          <table>
+            <tbody>
+              <tr><th>Pizarra</th><td>Organiza las hipótesis en distintos niveles de abstracción (ej. sonidos → palabras → frases). Cualquier fuente de conocimiento puede leerla o escribir en ella.</td></tr>
+              <tr><th>Fuentes de conocimiento</th><td>No se comunican directamente entre sí — solo a través de lo que leen y escriben en la pizarra. Cada una decide si tiene algo útil que aportar según el estado actual.</td></tr>
+              <tr><th>Control</th><td>Evalúa qué fuente de conocimiento parece más prometedora en cada momento y le da el turno — no hay una secuencia predefinida, como sí la hay en Pipes and Filters.</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Este ciclo (una fuente actúa, la pizarra cambia, el control reevalúa) se repite hasta que una hipótesis alcanza suficiente certeza como solución final.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ventajas y limitaciones</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Cuándo ayuda</th><th>Cuándo no</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Tipo de problema</th><td>Sin algoritmo determinista conocido: diagnóstico, interpretación de señales ambiguas, planeación con múltiples restricciones</td><td>Problemas donde sí existe un procedimiento claro y secuencial — usarlo aquí es sobre-ingeniería</td></tr>
+              <tr><th>Flexibilidad</th><td>Fácil agregar una nueva fuente de conocimiento sin tocar las demás</td><td>Difícil de depurar: el orden de ejecución no es fijo ni fácil de predecir de antemano</td></tr>
+              <tr><th>Rendimiento</th><td>Cada fuente se enfoca solo en su subproblema</td><td>El componente de control puede volverse un cuello de botella complejo por sí mismo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Flujo lineal vs. colaboración oportunista</h1>
+          <p><strong>Pipes and Filters</strong> asume que el problema se puede resolver en una secuencia fija de pasos, cada uno sin necesidad de "ver" lo que hacen los demás — como el pipeline de Unix del inicio de la sesión.</p>
+          <p><strong>Blackboard</strong> asume lo contrario: que no hay una secuencia fija posible, y que la solución emerge de que varios expertos colaboren sin orden predeterminado sobre un mismo espacio compartido — como las fuentes de conocimiento de HEARSAY-II.</p>
+          <p><strong>La pregunta arquitectónica real no es cuál patrón es "mejor", sino: ¿el problema que tengo se puede descomponer en pasos secuenciales, o necesita que varios componentes negocien entre sí sin un orden fijo?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Su proyecto tiene un flujo tipo pipeline?</h1>
+          <p><strong>En equipos de Fábrica Escuela, respondan:</strong></p>
+          <ol>
+            <li>Identifiquen un flujo de su proyecto que reciba datos, los transforme en varios pasos, y entregue un resultado (ej. validar → transformar → guardar → notificar).</li>
+            <li>¿Podrían implementarlo como una cadena de filtros independientes, donde cada paso no necesita saber nada de los demás?</li>
+            <li>¿Hay alguna parte de su proyecto donde, en cambio, varios componentes necesiten "negociar" o revisar hipótesis entre sí, más parecido a Blackboard?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Pipes and Filters</strong> encadena filtros independientes conectados por tuberías, ideal para transformación secuencial de datos — su origen real es el operador <code>|</code> de Unix, diseñado por Doug McIlroy en Bell Labs (memo de 1964, implementado en 1973).</li>
+            <li><strong>Blackboard</strong> coordina fuentes de conocimiento que leen y escriben oportunistamente sobre una estructura compartida, guiadas por un control central — su origen real es HEARSAY-II, sistema de comprensión de habla de Carnegie Mellon University de los años 70.</li>
+            <li>La elección entre ambos depende de si el problema admite una <strong>secuencia fija de pasos</strong> o si necesita <strong>colaboración sin orden predeterminado</strong> entre componentes.</li>
+            <li>Ambos son patrones del catálogo <strong>POSA</strong> (Buschmann et al.) — el mismo catálogo que seguiremos recorriendo durante toda la Unidad 2.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <ul>
+            <li>Repasar las definiciones de filtro, tubería, pizarra, fuente de conocimiento y control — se seguirán usando como vocabulario base del catálogo POSA.</li>
+            <li>Pensar en al menos un flujo de su propio proyecto de Fábrica Escuela que podría modelarse con alguno de los dos patrones de hoy.</li>
+          </ul>
+          <p><strong>La próxima sesión continúa el catálogo POSA con dos patrones más: Brokers y MVC (Modelo-Vista-Controlador).</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
