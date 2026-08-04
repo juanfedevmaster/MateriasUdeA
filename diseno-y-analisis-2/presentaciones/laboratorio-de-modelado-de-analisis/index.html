@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio de Modelado de Análisis — Semana 4</title>
+  <meta name="description" content="Cierre de la Unidad 2: laboratorio integrador donde cada equipo consolida su modelo de dominio, diagrama de clases y Diagramas de Secuencia del Sistema sobre su propio proyecto — Análisis y Diseño de Sistemas II, Semana 4." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-de-modelado-de-analisis/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Laboratorio de Modelado de Análisis — Semana 4" />
+  <meta property="og:description" content="Cierre de la Unidad 2: laboratorio integrador donde cada equipo consolida su modelo de dominio, diagrama de clases y Diagramas de Secuencia del Sistema sobre su propio proyecto — Análisis y Diseño de Sistemas II, Semana 4." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-de-modelado-de-analisis/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laboratorio de Modelado de Análisis — Semana 4" />
+  <meta name="twitter:description" content="Cierre de la Unidad 2: laboratorio integrador donde cada equipo consolida su modelo de dominio, diagrama de clases y Diagramas de Secuencia del Sistema sobre su propio proyecto — Análisis y Diseño de Sistemas II, Semana 4." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/laboratorio-de-modelado-de-analisis.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 4 — Laboratorio de Modelado de Análisis</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio integrador" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cierre de la Unidad 2</h1>
+          <p>En dos semanas, cada equipo construyó tres artefactos sobre su propio proyecto: el <strong>modelo de dominio</strong>, su versión en <strong>diagrama de clases UML</strong> y el <strong>DSS</strong> de su caso de uso principal.</p>
+          <p>Hoy no hay contenido nuevo: es una sesión de <strong>trabajo dirigido</strong> para revisar, corregir y dejar consolidados esos tres artefactos antes de cerrar la unidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Recapitulación</p>
+          <h1>Los tres artefactos de la Unidad 2</h1>
+          <table>
+            <thead>
+              <tr><th>Artefacto</th><th>Responde</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Modelo de dominio</strong></td><td>¿Qué conceptos existen en el dominio y cómo se relacionan?</td></tr>
+              <tr><td><strong>Diagrama de clases UML</strong></td><td>Lo mismo, con notación formal (agregación, composición, generalización)</td></tr>
+              <tr><td><strong>DSS</strong></td><td>¿Cómo interactúa un actor externo con el sistema, visto como caja negra?</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Los tres deben ser consistentes entre sí:</strong> las clases del DSS y del modelo de dominio son las mismas; los eventos del DSS corresponden a operaciones que el modelo de dominio hace posibles.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Checklist</p>
+          <h1>Calidad del modelo de dominio y diagrama de clases</h1>
+          <ul>
+            <li>Nombres de clase claros, en singular y en el vocabulario del negocio (no de la implementación).</li>
+            <li>Sin métodos ni visibilidad — el modelo de dominio no tiene comportamiento.</li>
+            <li>Sin clases redundantes o sinónimas, ni atributos que en realidad son clases.</li>
+            <li>Multiplicidades correctas y coherentes con las historias de usuario.</li>
+            <li>Agregación/composición usadas correctamente, no "porque se ve más completo".</li>
+          </ul>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Checklist del modelo" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Checklist</p>
+          <h1>Calidad del DSS</h1>
+          <ul>
+            <li>El actor es el correcto para ese caso de uso (no un objeto interno del sistema).</li>
+            <li>Cada evento tiene nombre y parámetros claros — no pasos de "solo lectura" convertidos en evento.</li>
+            <li>El orden de los mensajes coincide exactamente con el flujo del caso de uso.</li>
+            <li>El sistema aparece como una única caja negra <code>:Sistema</code> — sin objetos internos.</li>
+          </ul>
+          <img class="portada-icon" src="img/clipboard-list.svg" alt="Checklist del DSS" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Agenda del laboratorio</p>
+          <h1>Cómo se organiza la sesión</h1>
+          <ol>
+            <li><strong>Revisión individual (10 min):</strong> cada equipo revisa sus tres artefactos contra los checklists de las diapositivas anteriores.</li>
+            <li><strong>Ajustes (30 min):</strong> corrección de inconsistencias, clases faltantes o mal nombradas, eventos incompletos del DSS.</li>
+            <li><strong>Revisión entre pares (15 min):</strong> intercambio de artefactos con otro equipo, usando los mismos checklists.</li>
+            <li><strong>Cierre (10 min):</strong> cada equipo deja su versión final consolidada, lista para servir de base a la Unidad 3.</li>
+          </ol>
+          <img class="portada-icon" src="img/route.svg" alt="Agenda de la sesión" style="display:block;width:160px;height:160px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Rol del docente</p>
+          <h1>Acompañamiento por equipos</h1>
+          <p>Durante todo el laboratorio, el docente <strong>rota entre las salas de Zoom</strong> de cada equipo, resolviendo dudas puntuales sobre su modelo específico — no hay explicación general nueva, el trabajo es sobre el proyecto real de cada uno.</p>
+          <p><strong>Aprovechen este tiempo para las dudas que arrastran desde semanas anteriores</strong> — es la última sesión dedicada exclusivamente al modelado de análisis antes de pasar a arquitectura.</p>
+          <img class="portada-icon" src="img/people-group.svg" alt="Acompañamiento docente" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción · Revisión por pares</p>
+          <h1>Intercambio final entre equipos</h1>
+          <p><strong>Al intercambiar sus tres artefactos con otro equipo, cada revisor responde por escrito:</strong></p>
+          <ol>
+            <li>¿El modelo de dominio y el diagrama de clases representan exactamente lo mismo?</li>
+            <li>¿Los eventos del DSS coinciden con las operaciones que el modelo de dominio hace posibles?</li>
+            <li>¿Hay algo en el enunciado del proyecto que no quedó reflejado en ningún artefacto?</li>
+          </ol>
+          <p class="slide-eyebrow">15 minutos · retroalimentación breve pero puntual, no un rediseño completo</p>
+          <img class="portada-icon" src="img/handshake.svg" alt="Revisión entre pares" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de Unidad 2</p>
+          <h1>Lo que debe quedar listo hoy</h1>
+          <ol>
+            <li>Modelo de dominio y diagrama de clases <strong>consistentes entre sí</strong>, sin clases redundantes ni atributos disfrazados.</li>
+            <li>DSS del caso de uso principal, con eventos y respuestas correctamente ordenados.</li>
+            <li>Retroalimentación de un equipo par, incorporada donde aplique.</li>
+            <li>Los tres artefactos versionados en el repositorio del equipo — son insumo directo de la Unidad 3.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Cierre de la Unidad 2 · Para la Unidad 3</h1>
+          <p><strong>Con esto se cierra la Unidad 2 — Modelo de Análisis.</strong> Cada equipo tiene ahora un entendimiento preciso del dominio y de cómo el sistema se ve desde afuera.</p>
+          <p>La semana 5 arranca la <strong>Unidad 3 — Introducción al Diseño Arquitectural</strong>: cómo pasar de este análisis a decisiones de arquitectura (monolítica, cliente/servidor, microservicios, entre otras), con el primer Coworking de Planning Sprint 1 el miércoles.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre de Unidad 2" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 10</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

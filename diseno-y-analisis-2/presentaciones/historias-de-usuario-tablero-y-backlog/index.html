@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historias de Usuario, Tablero y Backlog — Semana 1</title>
+  <meta name="description" content="Historia de usuario, criterios de aceptación INVEST, tablero de trabajo, límites WIP y estimación con story points — Análisis y Diseño de Sistemas II, Semana 1." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/historias-de-usuario-tablero-y-backlog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Historias de Usuario, Tablero y Backlog — Semana 1" />
+  <meta property="og:description" content="Historia de usuario, criterios de aceptación INVEST, tablero de trabajo, límites WIP y estimación con story points — Análisis y Diseño de Sistemas II, Semana 1." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/historias-de-usuario-tablero-y-backlog/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Historias de Usuario, Tablero y Backlog — Semana 1" />
+  <meta name="twitter:description" content="Historia de usuario, criterios de aceptación INVEST, tablero de trabajo, límites WIP y estimación con story points — Análisis y Diseño de Sistemas II, Semana 1." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/historias-de-usuario-tablero-y-backlog.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 1 — Historias de Usuario, Tablero y Backlog</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/note-sticky.svg" alt="Historia de usuario" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Como &lt;usuario&gt;<br>quiero &lt;funcionalidad&gt;<br>para &lt;beneficio&gt;</h1>
+          <p class="slide-eyebrow">Tres líneas que reemplazan un documento de requisitos de veinte páginas</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una historia de usuario</h1>
+          <p>Una <strong>historia de usuario</strong> es una descripción breve, en lenguaje natural, de una funcionalidad vista desde la perspectiva de quien la va a usar. Es la unidad de trabajo que compone el Product Backlog.</p>
+          <blockquote>Como &lt;rol o tipo de usuario&gt;, quiero &lt;acción o funcionalidad&gt;, para &lt;beneficio o motivación&gt;.</blockquote>
+          <p>Ejemplo: <em>"Como estudiante, quiero ver el estado de mis entregas, para saber qué me falta antes de la fecha de cierre."</em></p>
+          <img class="portada-icon" src="img/note-sticky.svg" alt="Historia de usuario" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>INVEST: cuándo una historia está bien escrita</h1>
+          <table>
+            <thead>
+              <tr><th>Letra</th><th>Significa</th><th>En la práctica</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>I</strong></td><td>Independiente</td><td>No depende de que otra historia se haga primero</td></tr>
+              <tr><td><strong>N</strong></td><td>Negociable</td><td>Es un punto de partida para conversar, no un contrato cerrado</td></tr>
+              <tr><td><strong>V</strong></td><td>Valiosa</td><td>Entrega valor real a quien la usa, no solo trabajo técnico interno</td></tr>
+              <tr><td><strong>E</strong></td><td>Estimable</td><td>El equipo puede darle un tamaño aproximado</td></tr>
+              <tr><td><strong>S</strong></td><td>Pequeña (Small)</td><td>Cabe dentro de un solo Sprint</td></tr>
+              <tr><td><strong>T</strong></td><td>Comprobable (Testable)</td><td>Existe una forma clara de verificar que se cumplió</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Criterios de aceptación</h1>
+          <p>Una historia de usuario, por sí sola, no dice <strong>cuándo se considera terminada</strong>. Para eso existen los <strong>criterios de aceptación</strong>: condiciones concretas y verificables que el equipo revisa antes de dar la historia por hecha.</p>
+          <p>Formato común (Gherkin, "Dado / Cuando / Entonces"):</p>
+          <blockquote>Dado que el estudiante tiene entregas pendientes,<br>Cuando abre la vista de estado,<br>Entonces ve cada entrega con su fecha límite y su estado (pendiente, entregada, calificada).</blockquote>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Criterios de aceptación" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Una historia mal escrita</h1>
+          <blockquote>"Como usuario, quiero que el sistema sea rápido y fácil de usar."</blockquote>
+          <p>Este enunciado <strong>falla varios criterios de INVEST</strong> a la vez:</p>
+          <ul>
+            <li>No es <strong>estimable</strong>: "rápido" y "fácil" no tienen tamaño.</li>
+            <li>No es <strong>comprobable</strong>: no hay forma de decir "esto ya se cumplió".</li>
+            <li>Probablemente no es <strong>pequeña</strong>: "todo el sistema" no cabe en un Sprint.</li>
+          </ul>
+          <p><strong>Una historia bien escrita se puede convertir directamente en criterios de aceptación verificables. Esta no.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El tablero: hacer visible el trabajo</h1>
+          <p>El <strong>tablero</strong> (Scrum board o Kanban board) es la representación visual del Sprint Backlog. Cada historia (o cada tarea en que se divide) es una tarjeta que se mueve entre columnas a medida que avanza.</p>
+          <table>
+            <thead>
+              <tr><th>Columna típica</th><th>Significa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>To Do (Por hacer)</strong></td><td>Comprometido para este Sprint, aún sin empezar</td></tr>
+              <tr><td><strong>In Progress (En curso)</strong></td><td>Alguien del equipo lo está trabajando ahora</td></tr>
+              <tr><td><strong>In Review</strong></td><td>Terminado por quien lo hizo, pendiente de revisión</td></tr>
+              <tr><td><strong>Done (Hecho)</strong></td><td>Cumple los criterios de aceptación, integrado</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/table-cells.svg" alt="Tablero de trabajo" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>WIP: límites de trabajo en progreso</h1>
+          <p><strong>WIP</strong> (Work In Progress) es la cantidad de tarjetas que están activas al mismo tiempo en una columna. Un <strong>límite de WIP</strong> es un tope explícito a esa cantidad — por ejemplo, "máximo 2 tarjetas en In Progress por persona".</p>
+          <p>La razón no es estética: <strong>cuantas más cosas se empiezan a la vez, más tarda en terminarse cada una</strong> (cambios de contexto, trabajo a medias que se olvida, cuellos de botella invisibles). Limitar el WIP obliga a terminar antes de empezar algo nuevo.</p>
+          <img class="portada-icon" src="img/gauge-high.svg" alt="Límite de trabajo en progreso" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Estimación: story points y Planning Poker</h1>
+          <p>Antes de comprometerse a hacer una historia en un Sprint, el equipo la <strong>estima</strong>. En Scrum no se suele estimar en horas, sino en <strong>story points</strong>: un número relativo que combina complejidad, riesgo y esfuerzo — no tiempo de reloj.</p>
+          <ul>
+            <li>Escala común: secuencia de Fibonacci (1, 2, 3, 5, 8, 13...) — obliga a decidir entre "parecido" y "claramente distinto".</li>
+            <li><strong>Planning Poker:</strong> cada integrante estima en privado (carta o app) y se revela al mismo tiempo, para evitar que la primera opinión ancle a las demás.</li>
+            <li>Si hay mucha diferencia entre estimaciones, se discute y se vuelve a estimar — no se promedia sin conversar.</li>
+          </ul>
+          <img class="portada-icon" src="img/chart-simple.svg" alt="Estimación con story points" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Escribe tu primera historia de usuario</h1>
+          <p><strong>En parejas, tomen la idea de aplicación de la que hablamos el miércoles y redacten:</strong></p>
+          <ol>
+            <li>Una historia de usuario en el formato "Como / quiero / para".</li>
+            <li>Al menos dos criterios de aceptación, en formato Dado/Cuando/Entonces.</li>
+            <li>Revisen la historia contra INVEST: ¿cuál de las seis letras es la más débil?</li>
+          </ol>
+          <p class="slide-eyebrow">10 minutos · en parejas, compartimos 2 o 3 ejemplos al final</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Una historia de usuario sigue el formato <strong>Como / quiero / para</strong>, y se valida con <strong>INVEST</strong>.</li>
+            <li>Los <strong>criterios de aceptación</strong> son los que dicen cuándo una historia está realmente terminada.</li>
+            <li>El <strong>tablero</strong> hace visible en qué estado está cada historia del Sprint.</li>
+            <li>Los <strong>límites de WIP</strong> existen para terminar más rápido, no para "trabajar menos".</li>
+            <li>Se estima en <strong>story points</strong>, no en horas, típicamente con Planning Poker.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p><strong>El martes de la semana 2 se arranca formalmente la identificación y definición del proyecto de Fábrica Escuela</strong>: de qué se trata, quién lo necesita, y cómo se distribuyen los roles del equipo.</p>
+          <p>Llega pensando en una idea de proyecto, o en el problema que ya te haya asignado o propuesto Fábrica Escuela.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 12</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

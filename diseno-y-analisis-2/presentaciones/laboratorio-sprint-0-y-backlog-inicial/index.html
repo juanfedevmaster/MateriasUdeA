@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio: Sprint 0 y Backlog Inicial — Semana 2</title>
+  <meta name="description" content="Cierre de la Unidad 1: qué es un Sprint 0, la Definición de Terminado y demostración en vivo del montaje del backlog inicial — Análisis y Diseño de Sistemas II, Semana 2." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-sprint-0-y-backlog-inicial/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Laboratorio: Sprint 0 y Backlog Inicial — Semana 2" />
+  <meta property="og:description" content="Cierre de la Unidad 1: qué es un Sprint 0, la Definición de Terminado y demostración en vivo del montaje del backlog inicial — Análisis y Diseño de Sistemas II, Semana 2." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-sprint-0-y-backlog-inicial/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laboratorio: Sprint 0 y Backlog Inicial — Semana 2" />
+  <meta name="twitter:description" content="Cierre de la Unidad 1: qué es un Sprint 0, la Definición de Terminado y demostración en vivo del montaje del backlog inicial — Análisis y Diseño de Sistemas II, Semana 2." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/laboratorio-sprint-0-y-backlog-inicial.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 2 — Laboratorio: Sprint 0 y Backlog Inicial</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cierre de la Unidad 1</h1>
+          <p>Con el enunciado del problema, los interesados, el alcance y el elevator pitch definidos el martes, hoy se cierran dos cosas pendientes antes de pasar a la Unidad 2:</p>
+          <ul>
+            <li><strong>Conformación final del equipo:</strong> roles Scrum confirmados (Product Owner, Scrum Master, Developers) y alcance revisado con los ajustes que haya sugerido cada equipo.</li>
+            <li><strong>Sprint 0:</strong> el laboratorio de hoy, demostrado en vivo por el docente.</li>
+          </ul>
+          <img class="portada-icon" src="img/users.svg" alt="Conformación del equipo" style="display:block;width:160px;height:160px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un Sprint 0</h1>
+          <p>El <strong>Sprint 0</strong> no es un Sprint donde se construyen historias de usuario funcionales: es el ciclo corto de <strong>preparación</strong> que deja al equipo listo para que el Sprint 1 sí produzca un Incremento real.</p>
+          <ul>
+            <li>No entrega funcionalidad visible al usuario final.</li>
+            <li>Sí entrega la infraestructura mínima de trabajo: repositorio, tablero, backlog inicial, Definición de Terminado.</li>
+            <li>Debe ser corto — un Sprint 0 que se alarga retrasa todo lo demás sin generar valor de producto.</li>
+          </ul>
+          <img class="portada-icon" src="img/rocket.svg" alt="Sprint 0" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué se produce en un Sprint 0</h1>
+          <table>
+            <thead>
+              <tr><th>Entregable</th><th>Para qué sirve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Repositorio del proyecto</td><td>Base de código y control de versiones desde el día uno</td></tr>
+              <tr><td>Tablero configurado</td><td>Columnas y límites de WIP listos para el Sprint 1</td></tr>
+              <tr><td>Backlog inicial</td><td>Primer conjunto de historias de usuario, priorizadas por el Product Owner</td></tr>
+              <tr><td>Definición de Terminado (DoD)</td><td>Criterio común de "esto ya está hecho", igual para todo el equipo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición de Terminado (Definition of Done)</h1>
+          <p>La <strong>Definición de Terminado</strong> es la lista de condiciones que <strong>toda</strong> historia de usuario debe cumplir para considerarse hecha — más allá de sus propios criterios de aceptación particulares.</p>
+          <p>Ejemplo típico para un proyecto de Fábrica Escuela:</p>
+          <blockquote>Código integrado a la rama principal · compila sin errores · cumple sus criterios de aceptación · fue revisado por al menos otro integrante del equipo · no rompe funcionalidad ya existente.</blockquote>
+          <p><strong>Sin DoD, cada integrante decide por su cuenta cuándo algo "ya quedó" — y eso es la fuente más común de retrabajo en un equipo.</strong></p>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Definición de Terminado" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se ve un backlog inicial</h1>
+          <p>El backlog inicial de un Sprint 0 no necesita estar completo ni perfectamente estimado — necesita ser <strong>suficiente para arrancar el Sprint 1</strong>. Una forma práctica de armarlo:</p>
+          <ol>
+            <li>Volcar todas las historias de usuario que el equipo ya identificó (desde la definición del proyecto).</li>
+            <li>Ordenarlas por valor: qué le sirve primero a quien va a usar el sistema.</li>
+            <li>Marcar cuáles son candidatas realistas para el Sprint 1 — no todo el backlog, solo lo que cabe en un ciclo.</li>
+            <li>Dejar el resto en el backlog, sin descartarlo: se refina más adelante.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Backlog inicial" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramientas</p>
+          <h1>Dónde se monta el tablero y el backlog</h1>
+          <p>Cualquiera de estas herramientas cumple lo mínimo que necesita un Sprint 0 (tablero con columnas y backlog priorizado). El equipo elige una, según lo que ya use o lo que indique Fábrica Escuela para el proyecto:</p>
+          <table>
+            <thead>
+              <tr><th>Herramienta</th><th>Cuándo conviene</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Trello</strong></td><td>Tablero simple, curva de aprendizaje mínima</td></tr>
+              <tr><td><strong>GitHub Projects</strong></td><td>Integrado con el repositorio de código del equipo</td></tr>
+              <tr><td><strong>Azure DevOps</strong></td><td>Gestión más cercana a un entorno profesional, con work items y sprints nativos</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Laboratorio · Demostración en vivo</p>
+          <h1>Qué se monta hoy en clase</h1>
+          <p><strong>El docente hace el montaje completo en vivo</strong>, sobre un proyecto de ejemplo, en Trello, GitHub Projects y Azure DevOps. Cada equipo replica los mismos pasos sobre su propio proyecto en la herramienta que haya elegido:</p>
+          <ol>
+            <li>Crear el tablero/proyecto y sus columnas (To Do, In Progress, In Review, Done).</li>
+            <li>Configurar el límite de WIP por columna.</li>
+            <li>Cargar el backlog inicial con las historias de usuario ya redactadas.</li>
+            <li>Escribir la Definición de Terminado del equipo, visible en el tablero.</li>
+            <li>Seleccionar las historias candidatas al Sprint 1.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El <strong>Sprint 0</strong> prepara al equipo; no entrega funcionalidad de producto.</li>
+            <li>Sus entregables mínimos: repositorio, tablero, backlog inicial y <strong>Definición de Terminado</strong>.</li>
+            <li>La DoD evita que cada integrante decida por su cuenta qué significa "terminado".</li>
+            <li>El backlog inicial no necesita estar completo — necesita ser suficiente para el Sprint 1.</li>
+            <li>La herramienta (Trello, GitHub Projects, Azure DevOps) es un detalle de implementación, no cambia los conceptos.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Cierre de la Unidad 1 · Para la Unidad 2</h1>
+          <p><strong>Con esto se cierra la Unidad 1 — Diagnóstico, Scrum y Proyecto.</strong> El equipo ya tiene: problema, interesados, alcance, roles y un Sprint 0 montado.</p>
+          <p>La semana 3 arranca la <strong>Unidad 2 — Modelo de Análisis</strong>: modelado conceptual, elaboración del Modelo de Dominio y Diagramas de Secuencia del Sistema, ya sobre el proyecto que se definió esta semana.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima unidad" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 10</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

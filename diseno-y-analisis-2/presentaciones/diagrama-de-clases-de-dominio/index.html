@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelado en UML: Diagrama de Clases de Dominio — Semana 4</title>
+  <meta name="description" content="Notación formal UML del diagrama de clases: asociación, agregación, composición, generalización, multiplicidad, paquetes y herramientas — Análisis y Diseño de Sistemas II, Semana 4." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/diagrama-de-clases-de-dominio/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Modelado en UML: Diagrama de Clases de Dominio — Semana 4" />
+  <meta property="og:description" content="Notación formal UML del diagrama de clases: asociación, agregación, composición, generalización, multiplicidad, paquetes y herramientas — Análisis y Diseño de Sistemas II, Semana 4." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/diagrama-de-clases-de-dominio/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Modelado en UML: Diagrama de Clases de Dominio — Semana 4" />
+  <meta name="twitter:description" content="Notación formal UML del diagrama de clases: asociación, agregación, composición, generalización, multiplicidad, paquetes y herramientas — Análisis y Diseño de Sistemas II, Semana 4." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/diagrama-de-clases-de-dominio.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 4 — Modelado en UML: Diagrama de Clases de Dominio</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Diagrama de clases UML" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Del modelo refinado a la notación formal</h1>
+          <p>La semana pasada cada equipo elaboró y refinó su modelo de dominio en un formato libre (borrador, papel, herramienta de diagramación). Hoy formalizamos ese mismo contenido con la <strong>notación UML estándar</strong> de diagrama de clases.</p>
+          <p><strong>El contenido no cambia — cambia la precisión con la que se comunica.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Elementos de un diagrama de clases UML</h1>
+          <table>
+            <thead>
+              <tr><th>Elemento</th><th>Qué agrega respecto al modelo de dominio libre</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Clase</td><td>Notación estándar de rectángulo con compartimentos</td></tr>
+              <tr><td>Asociación</td><td>Tipos formales: simple, agregación, composición</td></tr>
+              <tr><td>Multiplicidad</td><td>Notación UML estándar en cada extremo de la línea</td></tr>
+              <tr><td>Generalización</td><td>Flecha de triángulo hueco, estandarizada</td></tr>
+              <tr><td>Paquete</td><td>Notación de carpeta</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>La clase, formalmente</h1>
+          <p>En el diagrama de clases de dominio se usan dos compartimentos (nombre y atributos) — el tercero, de operaciones, se deja <strong>vacío</strong>: el dominio todavía no tiene comportamiento de software.</p>
+          <blockquote>┌────────────────┐<br>│&nbsp;&nbsp;&nbsp;&nbsp;Curso&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>├────────────────┤<br>│ nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>│ codigo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>│ creditos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>└────────────────┘</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tres tipos de asociación</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Notación</th><th>Significado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Asociación simple</strong></td><td>Línea recta</td><td>Relación entre clases independientes entre sí</td></tr>
+              <tr><td><strong>Agregación</strong></td><td>Línea con rombo hueco</td><td>"Es parte de", pero puede existir sin el todo</td></tr>
+              <tr><td><strong>Composición</strong></td><td>Línea con rombo relleno</td><td>"Es parte de" y <strong>no existe</strong> sin el todo</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/object-group.svg" alt="Tipos de asociación" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Agregación vs. composición, bien y mal usadas</h1>
+          <table>
+            <thead>
+              <tr><th>Relación</th><th>Correcto</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Curso — Módulo</td><td><strong>Composición:</strong> un Módulo no existe fuera de su Curso</td></tr>
+              <tr><td>Pedido — LíneaDePedido</td><td><strong>Composición:</strong> una línea no tiene sentido sin su pedido</td></tr>
+              <tr><td>Equipo — Estudiante</td><td><strong>Agregación (o ni eso):</strong> un Estudiante existe aunque el Equipo se disuelva</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Error común:</strong> usar composición "porque se ve más completo" en relaciones donde el objeto contenido tiene vida propia (como Estudiante).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Multiplicidad, aplicada al proyecto</h1>
+          <p>Repaso rápido de la notación (vista la semana pasada), ahora con ejemplos típicos de un proyecto de Fábrica Escuela:</p>
+          <table>
+            <thead>
+              <tr><th>Relación</th><th>Multiplicidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cliente — Pedido</td><td>1 — 0..*</td></tr>
+              <tr><td>Pedido — LíneaDePedido</td><td>1 — 1..*</td></tr>
+              <tr><td>Estudiante — Curso (vía Matrícula)</td><td>0..* — 0..*</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Una asociación muchos-a-muchos (<code>0..* — 0..*</code>) casi siempre esconde una clase de asociación</strong> — como Matrícula en el ejemplo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Generalización en UML</h1>
+          <p>Se dibuja con una <strong>flecha de triángulo hueco</strong>, apuntando de la subclase hacia la superclase. Repasando el ejemplo de la semana pasada:</p>
+          <blockquote>Estudiante ──▷ Persona<br>Docente ──▷ Persona</blockquote>
+          <p>Persona concentra los atributos comunes (nombre, correo, documento); Estudiante y Docente agregan solo lo que les es propio (programa académico / departamento).</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Generalización UML" style="display:block;width:160px;height:160px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Clase de asociación en UML</h1>
+          <p>Se dibuja como una clase normal, conectada con una <strong>línea punteada</strong> a la línea de la asociación que describe:</p>
+          <blockquote>Estudiante ── se matricula en ── Curso<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matrícula<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fecha, nota</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Paquetes en UML</h1>
+          <p>Un paquete se dibuja como una <strong>carpeta</strong> (rectángulo con una pestaña) que agrupa un conjunto de clases relacionadas. Dentro del diagrama grande, cada paquete puede desplegarse por separado para mayor legibilidad.</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Paquetes UML" style="display:block;width:160px;height:160px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Buenas prácticas</p>
+          <h1>Legibilidad del diagrama</h1>
+          <ul>
+            <li><strong>Minimizar cruces de líneas:</strong> reubicar clases para que las asociaciones no se enreden visualmente.</li>
+            <li><strong>Agrupar clases relacionadas</strong> cerca unas de otras en el lienzo.</li>
+            <li><strong>Nombrar siempre la asociación y la dirección de lectura</strong> — no dejar líneas sin verbo.</li>
+            <li><strong>No saturar una sola vista:</strong> si supera ~20 clases, dividir en paquetes con diagramas propios.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramientas</p>
+          <h1>Dónde formalizar el diagrama</h1>
+          <table>
+            <thead>
+              <tr><th>Herramienta</th><th>Cuándo conviene</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>draw.io / diagrams.net</strong></td><td>Gratuita, plantillas UML nativas, exporta a PNG/SVG fácilmente</td></tr>
+              <tr><td><strong>Lucidchart</strong></td><td>Colaboración en tiempo real; útil si el equipo trabaja distribuido</td></tr>
+              <tr><td><strong>PlantUML</strong></td><td>Diagrama como texto — versionable junto con el código en el repositorio</td></tr>
+            </tbody>
+          </table>
+          <p>El equipo elige una y la mantiene igual durante todo el proyecto — cambiar de herramienta a mitad de camino cuesta más de lo que ahorra.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El diagrama de clases no basta solo</h1>
+          <p>El diagrama de clases de dominio describe la <strong>estructura estática</strong> del dominio: qué clases existen y cómo se relacionan. Pero no dice nada sobre <strong>cómo interactúa un usuario con el sistema</strong> a lo largo del tiempo.</p>
+          <p><strong>Esa perspectiva — el sistema como caja negra reaccionando a eventos — es el tema de mañana: los Diagramas de Secuencia del Sistema.</strong></p>
+          <img class="portada-icon" src="img/route.svg" alt="Hacia el DSS" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción · Taller</p>
+          <h1>Formalización del modelo del equipo</h1>
+          <p><strong>En equipos, con la herramienta que hayan elegido:</strong></p>
+          <ol>
+            <li>Recreen su modelo de dominio refinado con la notación UML de hoy.</li>
+            <li>Marquen explícitamente agregación vs. composición donde aplique.</li>
+            <li>Verifiquen que cada asociación tenga nombre, dirección de lectura y multiplicidad.</li>
+            <li>Agrupen en paquetes si el modelo lo amerita.</li>
+          </ol>
+          <p class="slide-eyebrow">20 minutos · en salas de Zoom por equipo</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El diagrama de clases de dominio formaliza el contenido de la semana pasada con <strong>notación UML estándar</strong>.</li>
+            <li>Tres tipos de asociación: simple, <strong>agregación</strong> (rombo hueco) y <strong>composición</strong> (rombo relleno).</li>
+            <li>Generalización: flecha de triángulo hueco de la subclase a la superclase.</li>
+            <li>Clases de asociación y paquetes tienen notación propia y estándar.</li>
+            <li>La estructura estática no basta: el comportamiento del sistema se modela con DSS, tema de mañana.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para mañana</h1>
+          <p>Traigan identificado el <strong>caso de uso principal</strong> de su proyecto (el flujo central que un usuario ejecuta) — mañana lo usamos para construir el primer Diagrama de Secuencia del Sistema de cada equipo.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 16</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

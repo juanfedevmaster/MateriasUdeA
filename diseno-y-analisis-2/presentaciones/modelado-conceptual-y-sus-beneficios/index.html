@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelado Conceptual y sus Beneficios — Semana 3</title>
+  <meta name="description" content="Qué es el modelado conceptual, por qué importa en el desarrollo de software y qué pasa cuando no existe un modelo compartido del dominio — Análisis y Diseño de Sistemas II, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/modelado-conceptual-y-sus-beneficios/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Modelado Conceptual y sus Beneficios — Semana 3" />
+  <meta property="og:description" content="Qué es el modelado conceptual, por qué importa en el desarrollo de software y qué pasa cuando no existe un modelo compartido del dominio — Análisis y Diseño de Sistemas II, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/modelado-conceptual-y-sus-beneficios/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Modelado Conceptual y sus Beneficios — Semana 3" />
+  <meta name="twitter:description" content="Qué es el modelado conceptual, por qué importa en el desarrollo de software y qué pasa cuando no existe un modelo compartido del dominio — Análisis y Diseño de Sistemas II, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/modelado-conceptual-y-sus-beneficios.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 3 — Modelado Conceptual: Beneficios en el Marco del Desarrollo de Software</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Modelado conceptual" style="display:block;width:260px;height:260px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Arranca la Unidad 2 — Modelo de Análisis</h1>
+          <p>Con el equipo, el alcance y el Sprint 0 ya montados, esta unidad construye el puente entre <strong>"lo que el negocio necesita"</strong> y <strong>"lo que el sistema va a construir"</strong>. Tres semanas, tres artefactos:</p>
+          <table>
+            <thead>
+              <tr><th>Cuándo</th><th>Qué se construye</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Semana 3</td><td>Modelo de dominio (elaboración y refinamiento)</td></tr>
+              <tr><td>Semana 4</td><td>Diagrama de clases UML + Diagramas de Secuencia del Sistema (DSS)</td></tr>
+            </tbody>
+          </table>
+          <p>Hoy arrancamos por la pregunta previa: <strong>¿por qué invertir tiempo en modelar antes de programar?</strong></p>
+          <img class="portada-icon" src="img/route.svg" alt="Ruta de la Unidad 2" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>5 años<br>170 millones de dólares<br>Cero líneas en producción</h1>
+          <img class="portada-icon" src="img/money-bill-trend-up.svg" alt="Pérdida por falta de modelado" style="display:block;width:280px;height:280px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>FBI Virtual Case File (VCF)</h1>
+          <table>
+            <tbody>
+              <tr><th>Organización</th><td>Federal Bureau of Investigation (FBI), Estados Unidos</td></tr>
+              <tr><th>Contratista</th><td>Science Applications International Corporation (SAIC)</td></tr>
+              <tr><th>Objetivo</th><td>Reemplazar el sistema de casos en papel/formularios por un sistema digital de gestión de casos e investigaciones</td></tr>
+              <tr><th>Periodo</th><td>Programa Trilogy, iniciado en 2000-2001; VCF cancelado en 2005</td></tr>
+              <tr><th>Inversión reportada</th><td>Cerca de 170 millones de dólares</td></tr>
+              <tr><th>Desenlace</th><td>Proyecto cancelado sin entrar en producción; reemplazado años después por el programa Sentinel</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Caso ampliamente documentado en informes de la Oficina del Inspector General del Departamento de Justicia de EE. UU. y citado en textos clásicos de Ingeniería de Software.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Contexto</p>
+          <h1>Un problema real, urgente — y mal entendido</h1>
+          <p>Tras los atentados del 11 de septiembre de 2001, el FBI necesitaba con urgencia dejar de depender de archivos en papel para correlacionar información entre investigaciones. La presión por entregar rápido era enorme.</p>
+          <p>El equipo de desarrollo empezó a <strong>construir pantallas y código</strong> casi en paralelo con la definición de qué era exactamente un "caso", un "expediente" o una "pista" para los agentes del FBI — sin un modelo conceptual estable que fijara ese vocabulario antes de programar.</p>
+          <img class="portada-icon" src="img/landmark.svg" alt="Contexto institucional" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Lo que falló</p>
+          <h1>Sin modelo compartido, todo se vuelve movible</h1>
+          <ul>
+            <li>Agentes, analistas y desarrolladores usaban las mismas palabras ("caso", "pista", "expediente") con significados distintos entre sí.</li>
+            <li>Cientos de solicitudes de cambio llegaron durante el desarrollo, muchas de ellas producto de ambigüedades que un modelo conceptual habría expuesto desde el principio.</li>
+            <li>El código se escribió antes de que el equipo tuviera acuerdo sobre las entidades centrales del dominio y cómo se relacionaban entre sí.</li>
+          </ul>
+          <img class="portada-icon" src="img/clock-rotate-left.svg" alt="Cambios constantes" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Qué habría evitado esto?</h1>
+          <p>No un mejor lenguaje de programación, ni más horas de código: un <strong>modelo conceptual del dominio</strong>, acordado antes de construir, que respondiera con precisión preguntas como "¿qué es un caso?", "¿un caso puede tener varias pistas?", "¿quién puede cerrar un caso?".</p>
+          <p><strong>Eso es exactamente lo que esta unidad enseña a construir.</strong></p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="La pieza que faltó" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un modelo conceptual</h1>
+          <p>Un <strong>modelo conceptual</strong> es una representación de los conceptos, términos y relaciones más importantes de un dominio del mundo real — construida para lograr que todos los interesados (negocio, analistas, desarrolladores) compartan el mismo entendimiento antes de diseñar o programar.</p>
+          <ul>
+            <li>No describe software: describe el <strong>dominio del problema</strong>.</li>
+            <li>No tiene botones, pantallas ni bases de datos.</li>
+            <li>Se expresa típicamente como un <strong>modelo de dominio</strong> (el tema del resto de esta semana).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los beneficios, uno por uno</h1>
+          <table>
+            <thead>
+              <tr><th>Beneficio</th><th>Qué previene</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Vocabulario compartido</strong></td><td>Que "caso" signifique una cosa para el negocio y otra para el desarrollador</td></tr>
+              <tr><td><strong>Detección temprana de errores</strong></td><td>Diseñar y programar sobre una idea del dominio que era incorrecta desde el inicio</td></tr>
+              <tr><td><strong>Base para el diseño</strong></td><td>Empezar a codificar clases y tablas sin saber qué entidades existen ni cómo se relacionan</td></tr>
+              <tr><td><strong>Trazabilidad</strong></td><td>Perder el hilo entre un requisito del negocio y la parte del sistema que lo implementa</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El costo de corregir crece con el tiempo</h1>
+          <p>La intuición detrás de modelar temprano: un malentendido sobre el dominio detectado en una conversación de análisis cuesta una corrección de texto. El mismo malentendido detectado después de programar cuesta reescribir código, pruebas y, a veces, datos ya en producción.</p>
+          <p>Requisitos/Análisis → Diseño → Código → Pruebas → Producción<br><em>(el costo de corregir crece en cada etapa)</em></p>
+          <img class="portada-icon" src="img/money-bill-trend-up.svg" alt="Costo creciente de corregir" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>Honestidad sobre esa curva</h1>
+          <p><strong>Afirmación clásica:</strong> corregir un defecto de análisis cuesta muchísimo más en producción que en la etapa de requisitos.</p>
+          <blockquote><strong>Advertencia:</strong> los multiplicadores concretos que suelen citarse (ej. 1 : 10 : 100) <strong>no tienen respaldo empírico sólido y uniforme</strong> — varían mucho según el proyecto, el dominio y la tecnología.</blockquote>
+          <p>La idea general —modelar antes reduce sorpresas costosas después— sí se sostiene; los números exactos de la curva, no hay que citarlos como ley universal.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Lo que el modelado conceptual NO es</h1>
+          <ul>
+            <li><strong>No es</strong> un mockup o boceto de pantallas — eso es diseño de interfaz.</li>
+            <li><strong>No es</strong> un esquema de base de datos — eso viene después, en diseño/persistencia.</li>
+            <li><strong>No es</strong> un diagrama de clases de software con métodos y visibilidad — eso es diseño orientado a objetos.</li>
+          </ul>
+          <p><strong>El modelo conceptual vive antes que todo eso: describe el dominio, no la solución de software.</strong></p>
+          <img class="portada-icon" src="img/box.svg" alt="Lo que no es" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Modelar antes choca con ser ágil?</h1>
+          <p><strong>Postura 1 — "Just enough analysis":</strong> Scrum y el desarrollo ágil desconfían del "Big Design Up Front"; prefieren descubrir el dominio incrementalmente, historia a historia.</p>
+          <p><strong>Postura 2 — "Sin modelo, no hay con qué conversar":</strong> incluso un Sprint corto necesita que el equipo se ponga de acuerdo en qué significan sus propias historias de usuario.</p>
+          <p><strong>La resolución que sigue este curso:</strong> un modelo de dominio ligero, que se refina en cada Sprint — no un documento congelado de 100 páginas antes de escribir la primera línea de código.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión ágil vs. modelado" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dónde encaja en lo que viene</h1>
+          <p>El modelo conceptual de esta semana no es un ejercicio aislado: es el insumo directo de todo lo que sigue en la Unidad 2 y en la Unidad 3 (arquitectura):</p>
+          <ol>
+            <li><strong>Modelo de dominio</strong> (miércoles y viernes) — las clases conceptuales y sus relaciones.</li>
+            <li><strong>Diagrama de clases UML</strong> (semana 4) — la notación formal del mismo modelo.</li>
+            <li><strong>Diagramas de Secuencia del Sistema</strong> (semana 4) — cómo el sistema, ya entendido como caja negra, reacciona a eventos externos.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Encuentren su propia ambigüedad</h1>
+          <p><strong>En equipos, sobre el enunciado del problema de su proyecto de Fábrica Escuela:</strong></p>
+          <ol>
+            <li>Identifiquen un término que usan todo el tiempo (ej. "pedido", "usuario", "solicitud", "reserva").</li>
+            <li>Pregúntense: ¿todos en el equipo lo definirían exactamente igual, con los mismos atributos y límites?</li>
+            <li>Anoten un término donde encontraron desacuerdo o ambigüedad.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · compartan un ejemplo en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cierre de la apertura</p>
+          <h1>Volviendo al caso del FBI</h1>
+          <p>El VCF no falló por falta de talento técnico ni de presupuesto: falló porque el equipo empezó a construir sin haber fijado, con precisión, los conceptos del dominio que el sistema debía representar.</p>
+          <p><strong>Eso es exactamente lo que el modelo de dominio de esta semana busca evitar en su propio proyecto — antes de llegar a un punto donde corregirlo sea caro.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un <strong>modelo conceptual</strong> describe el dominio del problema, no el software.</li>
+            <li>Sus beneficios: vocabulario compartido, detección temprana de errores, base para el diseño y trazabilidad.</li>
+            <li>El caso del FBI VCF (~170 millones de dólares, cancelado sin producción) es un ejemplo real de lo que cuesta construir sin ese acuerdo previo.</li>
+            <li>Modelar no es incompatible con ser ágil: el modelo se mantiene ligero y se refina Sprint a Sprint.</li>
+            <li>El modelo de dominio (miércoles/viernes) es la forma concreta que toma el modelado conceptual en este curso.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para el miércoles</h1>
+          <p>Traigan a la sesión del miércoles el <strong>enunciado del problema y las historias de usuario</strong> ya definidas de su proyecto — sobre eso construimos, en vivo, el primer modelo de dominio de cada equipo.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

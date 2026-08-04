@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundamentos de Scrum — Semana 1</title>
+  <meta name="description" content="Repaso del marco metodológico Scrum: valores ágiles, roles, eventos y artefactos — Análisis y Diseño de Sistemas II, Semana 1." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/fundamentos-de-scrum/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Fundamentos de Scrum — Semana 1" />
+  <meta property="og:description" content="Repaso del marco metodológico Scrum: valores ágiles, roles, eventos y artefactos — Análisis y Diseño de Sistemas II, Semana 1." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/fundamentos-de-scrum/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fundamentos de Scrum — Semana 1" />
+  <meta name="twitter:description" content="Repaso del marco metodológico Scrum: valores ágiles, roles, eventos y artefactos — Análisis y Diseño de Sistemas II, Semana 1." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/fundamentos-de-scrum.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 1 — Fundamentos de Scrum</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Ciclo iterativo" style="display:block;width:280px;height:280px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>No se planea todo el proyecto una vez.<br>Se planea dos o tres semanas<br>y se vuelve a mirar.</h1>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Planeación iterativa vs. planeación total" style="display:block;width:220px;height:220px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué "ágil" y no "cascada"</h1>
+          <p>El ciclo en cascada (requisitos → diseño → código → pruebas, cada fase cerrada antes de abrir la siguiente) asume que <strong>los requisitos no cambian</strong> mientras dura el proyecto. En proyectos de software reales eso casi nunca es cierto.</p>
+          <p>Las metodologías ágiles —Scrum es la más usada— parten de lo contrario: <strong>el cambio es inevitable, así que el proceso debe estar diseñado para absorberlo</strong> en ciclos cortos, con entregas frecuentes de software funcionando en vez de una sola entrega al final.</p>
+          <p class="slide-eyebrow">Scrum no es la única metodología ágil (existen Kanban, XP, entre otras) — es la que se adopta en este curso y en Fábrica Escuela.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es Scrum</h1>
+          <p><strong>Scrum es un marco de trabajo (framework) ligero</strong> para desarrollar, entregar y sostener productos complejos, organizado en ciclos cortos de trabajo llamados <strong>Sprints</strong>.</p>
+          <ul>
+            <li>No prescribe técnicas de ingeniería (eso lo definen otras prácticas, como XP).</li>
+            <li>Sí prescribe roles, eventos y artefactos mínimos — y ese mínimo es lo que se revisa hoy.</li>
+            <li>Se basa en tres pilares: <strong>transparencia, inspección y adaptación</strong>.</li>
+          </ul>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Scrum" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los tres roles de Scrum</h1>
+          <table>
+            <thead>
+              <tr><th>Rol</th><th>Responde por</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Product Owner</strong></td><td>Maximizar el valor del producto; decide <em>qué</em> se construye y en qué orden (dueño del Product Backlog)</td></tr>
+              <tr><td><strong>Scrum Master</strong></td><td>Que el equipo entienda y aplique Scrum; remueve obstáculos, no es un "jefe" del equipo</td></tr>
+              <tr><td><strong>Developers</strong></td><td>Construir el Incremento cada Sprint; deciden <em>cómo</em> se construye</td></tr>
+            </tbody>
+          </table>
+          <p><strong>En Fábrica Escuela, estos roles se distribuyen entre los integrantes del equipo</strong> — se define en la sesión del martes de la semana 2.</p>
+          <img class="portada-icon" src="img/users.svg" alt="Roles de Scrum" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El Sprint: el corazón de Scrum</h1>
+          <p>Un <strong>Sprint</strong> es un ciclo de trabajo de duración fija (típicamente 1 a 4 semanas) al final del cual se obtiene un <strong>Incremento</strong> de producto potencialmente utilizable.</p>
+          <ul>
+            <li>Dentro de un Sprint no se cambia el objetivo acordado.</li>
+            <li>Cada Sprint contiene, en orden: Planning → días de trabajo con Daily Scrum → Review → Retrospectiva.</li>
+            <li>Al terminar un Sprint, empieza el siguiente inmediatamente — no hay pausas entre ellos.</li>
+          </ul>
+          <img class="portada-icon" src="img/calendar-days.svg" alt="El Sprint" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los cuatro eventos dentro del Sprint</h1>
+          <table>
+            <thead>
+              <tr><th>Evento</th><th>Para qué sirve</th><th>Cuándo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Sprint Planning</strong></td><td>Definir qué se hará este Sprint y cómo</td><td>Al inicio del Sprint</td></tr>
+              <tr><td><strong>Daily Scrum</strong></td><td>Sincronizar al equipo, detectar bloqueos</td><td>Todos los días, ~15 min</td></tr>
+              <tr><td><strong>Sprint Review</strong></td><td>Inspeccionar el Incremento con interesados</td><td>Al final del Sprint</td></tr>
+              <tr><td><strong>Retrospectiva</strong></td><td>Inspeccionar cómo trabajó el equipo y mejorar</td><td>Después del Review</td></tr>
+            </tbody>
+          </table>
+          <p><strong>En este curso, Review y Retrospectiva coinciden con los Coworkings de Fábrica Escuela</strong> — por eso esos miércoles reemplazan la clase regular.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los tres artefactos de Scrum</h1>
+          <table>
+            <thead>
+              <tr><th>Artefacto</th><th>Qué contiene</th><th>Lo mantiene</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Product Backlog</strong></td><td>Todo lo que el producto podría necesitar, ordenado por valor</td><td>Product Owner</td></tr>
+              <tr><td><strong>Sprint Backlog</strong></td><td>El subconjunto elegido para este Sprint, más el plan para lograrlo</td><td>Developers</td></tr>
+              <tr><td><strong>Incremento</strong></td><td>La suma de todo lo terminado, integrado y utilizable</td><td>Todo el equipo</td></tr>
+            </tbody>
+          </table>
+          <p>El Product Backlog <strong>nunca está "completo"</strong>: se refina constantemente a medida que el producto y el mercado (o, en este caso, el proyecto) evolucionan.</p>
+          <img class="portada-icon" src="img/list-ol.svg" alt="Artefactos de Scrum" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Ejercicio rápido de vocabulario</h1>
+          <p><strong>Para cada situación, identifica qué evento o artefacto de Scrum corresponde:</strong></p>
+          <ol>
+            <li>El equipo se reúne 15 minutos cada mañana para contar en qué está trabajando cada quien.</li>
+            <li>Se decide qué historias de usuario entran en las próximas dos semanas de trabajo.</li>
+            <li>La lista completa de funcionalidades pendientes del proyecto, ordenada por prioridad.</li>
+            <li>El equipo conversa sobre qué salió bien y qué mejorar en la forma de trabajar, no en el producto.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Scrum organiza el trabajo en <strong>Sprints</strong> de duración fija, no en una sola entrega al final.</li>
+            <li>Tres roles: <strong>Product Owner</strong> (qué), <strong>Scrum Master</strong> (proceso), <strong>Developers</strong> (cómo).</li>
+            <li>Cuatro eventos por Sprint: <strong>Planning, Daily, Review, Retrospectiva</strong>.</li>
+            <li>Tres artefactos: <strong>Product Backlog, Sprint Backlog, Incremento</strong>.</li>
+            <li>En Fábrica Escuela, Review y Retrospectiva ocurren en los Coworkings de los miércoles.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión (viernes)</h1>
+          <p><strong>El viernes se profundiza en el artefacto que más se usa día a día: el Product Backlog</strong>, a través de las historias de usuario, el tablero de trabajo y los límites de trabajo en progreso (WIP).</p>
+          <p>Piensa en una funcionalidad de una aplicación que uses seguido (ej. un banco, una red social) y cómo la describirías en una sola frase desde el punto de vista de quien la usa.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 11</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

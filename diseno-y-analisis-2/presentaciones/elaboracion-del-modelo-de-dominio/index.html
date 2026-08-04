@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elaboración del Modelo de Dominio — Semana 3</title>
+  <meta name="description" content="Qué es un modelo de dominio, cómo identificar clases conceptuales y asociaciones, y su construcción práctica sobre el proyecto del curso — Análisis y Diseño de Sistemas II, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/elaboracion-del-modelo-de-dominio/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Elaboración del Modelo de Dominio — Semana 3" />
+  <meta property="og:description" content="Qué es un modelo de dominio, cómo identificar clases conceptuales y asociaciones, y su construcción práctica sobre el proyecto del curso — Análisis y Diseño de Sistemas II, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/elaboracion-del-modelo-de-dominio/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Elaboración del Modelo de Dominio — Semana 3" />
+  <meta name="twitter:description" content="Qué es un modelo de dominio, cómo identificar clases conceptuales y asociaciones, y su construcción práctica sobre el proyecto del curso — Análisis y Diseño de Sistemas II, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/elaboracion-del-modelo-de-dominio.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 3 — Elaboración del Modelo de Dominio</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/shapes.svg" alt="Modelo de dominio" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>De la idea al primer modelo</h1>
+          <p>El martes vimos <strong>por qué</strong> modelar el dominio antes de construir. Hoy aprendemos <strong>cómo</strong> se construye ese modelo, paso a paso, y lo aplicamos en vivo sobre el proyecto de cada equipo.</p>
+          <ul>
+            <li>Qué es exactamente un modelo de dominio (y qué no es).</li>
+            <li>Cómo identificar clases conceptuales, atributos y asociaciones.</li>
+            <li>Notación básica en UML.</li>
+            <li>Ejercicio guiado con el proyecto de Fábrica Escuela.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un modelo de dominio</h1>
+          <p>Un <strong>modelo de dominio</strong> es la representación visual de las <strong>clases conceptuales</strong> (cosas, ideas o entidades importantes) de un dominio del mundo real, junto con sus atributos y las asociaciones entre ellas.</p>
+          <p>Es la forma concreta que toma el modelado conceptual (visto el martes): un diagrama, no un documento de texto.</p>
+          <img class="portada-icon" src="img/circle-nodes.svg" alt="Clases y relaciones" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>No es un diagrama de clases de diseño</h1>
+          <table>
+            <thead>
+              <tr><th>Modelo de dominio</th><th>Diagrama de clases de diseño (más adelante)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Clases <strong>conceptuales</strong> del mundo real</td><td>Clases de <strong>software</strong></td></tr>
+              <tr><td>Solo nombre y atributos</td><td>Nombre, atributos, <strong>métodos</strong> y visibilidad</td></tr>
+              <tr><td>Sin tipos de dato de programación</td><td>Tipos concretos (String, int, List...)</td></tr>
+              <tr><td>No dice cómo se implementa nada</td><td>Es la base directa del código</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Confundir estos dos diagramas es el error más común al empezar a modelar — y es justo lo que le pasó al equipo del FBI VCF que vimos el martes.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los tres elementos del modelo</h1>
+          <table>
+            <thead>
+              <tr><th>Elemento</th><th>Qué representa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Clase conceptual</strong></td><td>Una cosa, idea o entidad relevante del dominio (ej. Pedido, Cliente, Curso)</td></tr>
+              <tr><td><strong>Atributo</strong></td><td>Un dato simple que describe a la clase (ej. fecha, nombre, cantidad)</td></tr>
+              <tr><td><strong>Asociación</strong></td><td>Una relación significativa y duradera entre dos clases conceptuales</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/cubes.svg" alt="Elementos del modelo" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Técnica 1</p>
+          <h1>Categorías de clases conceptuales</h1>
+          <p>Una forma sistemática de no dejar candidatas por fuera: revisar el dominio contra una lista de categorías típicas (Larman).</p>
+          <table>
+            <thead>
+              <tr><th>Categoría</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Transacciones / líneas de transacción</td><td>Pedido, Matrícula, LíneaDePedido</td></tr>
+              <tr><td>Roles de personas u organizaciones</td><td>Cliente, Estudiante, Vendedor</td></tr>
+              <tr><td>Lugares</td><td>Sede, Bodega, Aula</td></tr>
+              <tr><td>Eventos</td><td>Reserva, Entrega, Cancelación</td></tr>
+              <tr><td>Contenedores / cosas contenidas</td><td>Carrito, Curso — Módulo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Técnica 2</p>
+          <h1>Análisis de frases nominales</h1>
+          <p>La segunda técnica: subrayar los <strong>sustantivos</strong> del enunciado del problema y de las historias de usuario. Cada sustantivo relevante es candidato a clase conceptual o a atributo.</p>
+          <blockquote>"El <u>cliente</u> agrega <u>productos</u> a su <u>carrito</u> y genera un <u>pedido</u> que incluye la <u>fecha</u> y el <u>total</u>."</blockquote>
+          <p>Candidatas a clase: Cliente, Producto, Carrito, Pedido. Candidatos a atributo: fecha, total (dependen de a qué clase describen).</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Análisis de frases nominales" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Candidatas que casi siempre sobran</h1>
+          <ul>
+            <li><strong>Detalles de implementación:</strong> "Base de Datos", "Servidor", "Interfaz" — no existen en el dominio real, existen en la solución de software.</li>
+            <li><strong>Atributos disfrazados de clase:</strong> "Nombre del Cliente" no es una clase, es un atributo de Cliente.</li>
+            <li><strong>Sinónimos duplicados:</strong> "Usuario" y "Cliente" describiendo lo mismo — se elige uno solo, con el vocabulario que use el negocio.</li>
+          </ul>
+          <img class="portada-icon" src="img/magnifying-glass.svg" alt="Filtrar candidatas" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Asociaciones: cómo se nombran</h1>
+          <p>Una asociación se nombra con una <strong>frase verbal</strong> que se lea de forma natural en un sentido (y opcionalmente en el otro):</p>
+          <ul>
+            <li>Cliente <strong>realiza</strong> Pedido</li>
+            <li>Pedido <strong>contiene</strong> LíneaDePedido</li>
+            <li>Estudiante <strong>se matricula en</strong> Curso</li>
+          </ul>
+          <p><strong>Regla práctica:</strong> si no se puede nombrar la relación con un verbo claro, probablemente no es una asociación relevante para el modelo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Multiplicidad de una asociación</h1>
+          <p>La <strong>multiplicidad</strong> indica cuántas instancias de una clase se pueden asociar con una instancia de la otra, en un momento dado.</p>
+          <table>
+            <thead>
+              <tr><th>Notación</th><th>Significado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>1</code></td><td>Exactamente una</td></tr>
+              <tr><td><code>0..1</code></td><td>Cero o una (opcional)</td></tr>
+              <tr><td><code>*</code> o <code>0..*</code></td><td>Cero o muchas</td></tr>
+              <tr><td><code>1..*</code></td><td>Una o muchas (al menos una)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Ejemplo:</strong> un Pedido tiene <code>1..*</code> LíneaDePedido; una LíneaDePedido pertenece a <code>1</code> Pedido.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Atributos: qué sí entra</h1>
+          <p>Un atributo del modelo de dominio es un <strong>dato simple</strong> — no otro objeto complejo del dominio (eso debería ser una asociación, no un atributo).</p>
+          <ul>
+            <li>Tipos válidos: texto, número, fecha, booleano, valores simples.</li>
+            <li>Si un "atributo" en realidad tiene su propio comportamiento o identidad propia (ej. "Cliente" como atributo de "Pedido"), es una <strong>clase asociada</strong>, no un atributo.</li>
+          </ul>
+          <p><strong>Ejemplo correcto:</strong> Pedido tiene atributos <em>fecha</em> y <em>total</em>; se asocia (no "tiene como atributo") con Cliente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Cómo se dibuja en UML</h1>
+          <p>En el modelo de dominio, la clase se dibuja como un <strong>rectángulo con dos compartimentos</strong> (nombre y atributos) — <strong>sin</strong> el tercer compartimento de operaciones, porque el modelo de dominio no tiene comportamiento:</p>
+          <blockquote>┌──────────────┐<br>│&nbsp;&nbsp;&nbsp;Pedido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>├──────────────┤<br>│ fecha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>│ total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>└──────────────┘</blockquote>
+          <p>Las asociaciones se dibujan como líneas entre rectángulos, con el nombre de la relación y la multiplicidad en cada extremo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la teoría a su propio proyecto</h1>
+          <p>Con las dos técnicas de identificación de clases, la notación de multiplicidad y la forma de nombrar asociaciones ya cubiertas, es momento de aplicarlas — no sobre un ejemplo genérico, sino sobre el <strong>proyecto real de cada equipo</strong>.</p>
+          <img class="portada-icon" src="img/route.svg" alt="A la práctica" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción · Ejercicio guiado</p>
+          <h1>Primer borrador del modelo de dominio</h1>
+          <p><strong>En equipos, sobre el enunciado del problema y las historias de usuario ya escritas:</strong></p>
+          <ol>
+            <li>Apliquen análisis de frases nominales sobre 3-4 historias de usuario clave.</li>
+            <li>Contrasten contra las categorías de clases conceptuales (transacciones, roles, eventos, lugares).</li>
+            <li>Descarten candidatas de implementación, atributos disfrazados y sinónimos.</li>
+            <li>Dibujen 5-8 clases conceptuales con sus asociaciones principales (sin atributos todavía).</li>
+          </ol>
+          <p class="slide-eyebrow">15 minutos · en salas de Zoom por equipo · el docente pasa por cada sala</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Herramientas</p>
+          <h1>Dónde dibujar el modelo</h1>
+          <table>
+            <thead>
+              <tr><th>Herramienta</th><th>Cuándo conviene</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>draw.io / diagrams.net</strong></td><td>Gratuita, sin cuenta obligatoria, plantillas UML listas</td></tr>
+              <tr><td><strong>Lucidchart</strong></td><td>Colaboración en tiempo real entre el equipo</td></tr>
+              <tr><td><strong>Papel o pizarra virtual</strong></td><td>Para el primer borrador rápido, antes de formalizar</td></tr>
+            </tbody>
+          </table>
+          <p>El formato final no importa esta semana — lo que importa es que las clases y asociaciones sean correctas. La notación 100 % UML se retoma en la semana 4.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Un modelo de dominio tiene <strong>clases conceptuales, atributos y asociaciones</strong> — nunca métodos.</li>
+            <li>Dos técnicas para encontrar clases: <strong>categorías típicas</strong> y <strong>análisis de frases nominales</strong>.</li>
+            <li>Hay que filtrar activamente: implementación, atributos disfrazados y sinónimos no van al modelo.</li>
+            <li>La multiplicidad (<code>1</code>, <code>0..1</code>, <code>*</code>, <code>1..*</code>) precisa cada asociación.</li>
+            <li>El primer borrador nunca es el definitivo — para eso está la sesión del viernes.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para el viernes</h1>
+          <p>Cada equipo llega con el <strong>borrador de hoy</strong> (clases y asociaciones identificadas) — el viernes lo revisamos, corregimos errores comunes y lo refinamos con generalización, paquetes y clases de asociación.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

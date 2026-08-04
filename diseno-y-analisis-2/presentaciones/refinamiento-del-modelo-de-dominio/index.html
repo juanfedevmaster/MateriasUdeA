@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refinamiento del Modelo de Dominio — Semana 3</title>
+  <meta name="description" content="Errores comunes al modelar el dominio, generalización, paquetes conceptuales, clases de asociación y taller de refinamiento por equipos — Análisis y Diseño de Sistemas II, Semana 3." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/refinamiento-del-modelo-de-dominio/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Refinamiento del Modelo de Dominio — Semana 3" />
+  <meta property="og:description" content="Errores comunes al modelar el dominio, generalización, paquetes conceptuales, clases de asociación y taller de refinamiento por equipos — Análisis y Diseño de Sistemas II, Semana 3." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/refinamiento-del-modelo-de-dominio/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Refinamiento del Modelo de Dominio — Semana 3" />
+  <meta name="twitter:description" content="Errores comunes al modelar el dominio, generalización, paquetes conceptuales, clases de asociación y taller de refinamiento por equipos — Análisis y Diseño de Sistemas II, Semana 3." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/refinamiento-del-modelo-de-dominio.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 3 — Refinamiento del Modelo de Dominio</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Refinamiento" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>El primer borrador nunca es el final</h1>
+          <p>El miércoles cada equipo salió con un primer borrador de su modelo de dominio: clases candidatas y asociaciones iniciales. Hoy lo revisamos con ojo crítico y lo llevamos a un nivel más maduro, listo para convertirse en UML formal la próxima semana.</p>
+          <p class="slide-eyebrow">Traigan el borrador del miércoles — hoy se trabaja directamente sobre él.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué hay que refinar</h1>
+          <p>El primer paso de modelado prioriza <strong>cobertura</strong>: sacar todas las candidatas posibles del enunciado. Eso casi siempre deja el modelo con ruido — clases redundantes, atributos mal ubicados, asociaciones que sobran.</p>
+          <p><strong>Refinar es el paso donde se prioriza precisión sobre cobertura.</strong></p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Ciclo de refinamiento" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Error común 1</p>
+          <h1>Clases redundantes o sinónimas</h1>
+          <p>Dos clases que en realidad describen el mismo concepto del dominio, con nombres distintos porque distintos miembros del equipo escribieron distintas historias de usuario.</p>
+          <blockquote>"Usuario" y "Cliente" en el mismo modelo, ambos con atributos de contacto y ambos asociados a "Pedido" — casi siempre es la misma clase con dos nombres.</blockquote>
+          <p><strong>Corrección:</strong> elegir un solo nombre (el que use el negocio) y fusionar los atributos y asociaciones.</p>
+          <img class="portada-icon" src="img/clone.svg" alt="Clases redundantes" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Error común 2</p>
+          <h1>Atributos que en realidad son clases</h1>
+          <p>Un atributo "disfrazado" aparece cuando el dato tiene <strong>identidad propia</strong>, comportamiento o puede relacionarse con más de una cosa a la vez.</p>
+          <table>
+            <thead>
+              <tr><th>Se ve como atributo</th><th>En realidad es</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pedido.cliente</td><td>Asociación a la clase Cliente</td></tr>
+              <tr><td>Curso.profesor</td><td>Asociación a la clase Docente</td></tr>
+              <tr><td>Factura.items</td><td>Asociación 1..* a LíneaDeFactura</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Prueba rápida:</strong> si el "atributo" tiene sus propios atributos o se relaciona con otras clases, es una clase, no un atributo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Error común 3</p>
+          <h1>Asociaciones innecesarias o derivadas</h1>
+          <p>No toda relación observable en el dominio merece una línea en el modelo. Se descarta una asociación cuando:</p>
+          <ul>
+            <li>Es <strong>derivable</strong> de otras dos asociaciones ya presentes (ej. Cliente–Pedido y Pedido–Producto ya implican qué productos compró un Cliente).</li>
+            <li>No tiene relevancia para ningún caso de uso o historia de usuario del proyecto.</li>
+            <li>Es una relación de implementación (ej. "Pedido se guarda en Base de Datos"), no del dominio.</li>
+          </ul>
+          <p><strong>Regla práctica:</strong> cada asociación que queda en el modelo debe poder justificarse con una historia de usuario real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Generalización conceptual</h1>
+          <p>Cuando dos o más clases comparten atributos y asociaciones, pero cada una tiene también diferencias propias, se introduce una <strong>superclase</strong> que captura lo común.</p>
+          <blockquote>Estudiante y Docente comparten nombre, correo y documento de identidad → ambos son especializaciones de <strong>Persona</strong>.</blockquote>
+          <p><strong>Cuándo usarla:</strong> solo si simplifica el modelo — generalizar por generalizar agrega complejidad sin beneficio.</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Generalización" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Paquetes conceptuales</h1>
+          <p>Cuando el modelo crece (más de 15-20 clases), agruparlo en <strong>paquetes</strong> por subsistema o área funcional ayuda a leerlo — igual que capítulos en un libro.</p>
+          <ul>
+            <li>Ejemplo: paquete "Gestión de Pedidos", paquete "Gestión de Usuarios", paquete "Catálogo".</li>
+            <li>Las clases que participan en varios paquetes suelen señalar un punto de acoplamiento importante del dominio.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Paquetes conceptuales" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Clases de asociación</h1>
+          <p>Aparecen cuando una <strong>asociación misma tiene atributos propios</strong>, que no pertenecen a ninguna de las dos clases que relaciona.</p>
+          <blockquote>Estudiante <strong>se matricula en</strong> Curso — la <em>fecha de matrícula</em> y la <em>nota final</em> no son atributos de Estudiante ni de Curso: son atributos de la matrícula misma → clase de asociación <strong>Matrícula</strong>.</blockquote>
+          <p>Señal de alerta: si están a punto de agregarle un atributo a una asociación en vez de a una clase, probablemente necesitan una clase de asociación.</p>
+          <img class="portada-icon" src="img/link.svg" alt="Clase de asociación" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Lo que NO se refina todavía</h1>
+          <ul>
+            <li><strong>No</strong> se agregan métodos ni comportamiento — eso es diseño, no dominio.</li>
+            <li><strong>No</strong> se piensa en cómo se va a persistir (tablas, claves foráneas, índices).</li>
+            <li><strong>No</strong> se decide visibilidad (público/privado) — el modelo de dominio no la tiene.</li>
+          </ul>
+          <p><strong>Refinar es hacer el modelo más correcto y más simple, no más técnico.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Cuánto detalle es "suficiente"?</h1>
+          <p><strong>Sobre-modelar:</strong> agregar cada atributo imaginable y cada asociación posible, aunque ninguna historia de usuario la necesite — el modelo se vuelve difícil de leer y de mantener.</p>
+          <p><strong>Sub-modelar:</strong> dejar clases centrales sin sus asociaciones clave, lo que obliga a improvisar decisiones de dominio más adelante, en diseño.</p>
+          <p><strong>Criterio de este curso:</strong> si una historia de usuario del backlog la necesita, entra al modelo; si no, se deja fuera hasta que aparezca esa necesidad.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Balance en el modelado" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción · Taller</p>
+          <h1>Refinamiento del modelo del equipo</h1>
+          <p><strong>Sobre el borrador del miércoles, en salas de Zoom por equipo:</strong></p>
+          <ol>
+            <li>Busquen y fusionen clases redundantes o sinónimas.</li>
+            <li>Revisen si algún atributo debería ser una clase asociada.</li>
+            <li>Eliminen asociaciones que no respondan a ninguna historia de usuario.</li>
+            <li>Evalúen si hace falta una generalización o una clase de asociación.</li>
+            <li>Agrupen en paquetes si el modelo ya supera 15 clases.</li>
+          </ol>
+          <p class="slide-eyebrow">20 minutos · el docente pasa por cada sala a resolver dudas</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción · Revisión por pares</p>
+          <h1>Intercambio de modelos entre equipos</h1>
+          <p><strong>Checklist para revisar el modelo de otro equipo (5 minutos):</strong></p>
+          <ul>
+            <li>¿Cada clase tiene un nombre claro y en singular?</li>
+            <li>¿Hay algún atributo que en realidad debería ser una clase asociada?</li>
+            <li>¿Las multiplicidades tienen sentido con la historia de usuario que las originó?</li>
+            <li>¿Hay clases que parecen decir lo mismo con nombres distintos?</li>
+          </ul>
+          <p class="slide-eyebrow">Cada equipo recibe retroalimentación escrita de otro equipo antes de cerrar la sesión</p>
+          <img class="portada-icon" src="img/handshake.svg" alt="Revisión entre pares" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>Refinar es priorizar <strong>precisión</strong> sobre cobertura: menos ruido, más exactitud.</li>
+            <li>Tres errores comunes a cazar: clases redundantes, atributos disfrazados de clase, asociaciones sin justificación.</li>
+            <li><strong>Generalización</strong> para lo común entre clases; <strong>clases de asociación</strong> cuando la relación misma tiene datos propios.</li>
+            <li>Nada de métodos, persistencia ni visibilidad todavía — eso es diseño, no dominio.</li>
+            <li>Cada asociación debe justificarse con una historia de usuario real del proyecto.</li>
+          </ol>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Ideas clave" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Cierre de Unidad 2, próxima semana</h1>
+          <p>Con el modelo de dominio ya refinado, la semana 4 lo lleva a <strong>notación UML formal</strong> (diagrama de clases) y a los <strong>Diagramas de Secuencia del Sistema</strong> — con eso se cierra la Unidad 2.</p>
+          <p>Guarden bien la versión refinada de hoy: es la base directa de lo que viene el martes.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 15</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

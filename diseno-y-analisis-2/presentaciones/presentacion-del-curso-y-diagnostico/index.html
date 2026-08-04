@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentación del Curso y Evaluación Diagnóstica — Semana 1</title>
+  <meta name="description" content="Cómo funciona el curso, evaluación, unidades y evaluación diagnóstica — Análisis y Diseño de Sistemas II, Semana 1." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/presentacion-del-curso-y-diagnostico/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Presentación del Curso y Evaluación Diagnóstica — Semana 1" />
+  <meta property="og:description" content="Cómo funciona el curso, evaluación, unidades y evaluación diagnóstica — Análisis y Diseño de Sistemas II, Semana 1." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/presentacion-del-curso-y-diagnostico/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Presentación del Curso y Evaluación Diagnóstica — Semana 1" />
+  <meta name="twitter:description" content="Cómo funciona el curso, evaluación, unidades y evaluación diagnóstica — Análisis y Diseño de Sistemas II, Semana 1." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/presentacion-del-curso-y-diagnostico.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 1 — Presentación del curso y evaluación diagnóstica</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Análisis y diseño de sistemas" style="display:block;width:300px;height:300px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cómo funciona este curso</h1>
+          <p><strong>Tres sesiones por semana, martes, miércoles y viernes.</strong></p>
+          <ul>
+            <li>El curso se orienta con <strong>Aprendizaje Basado en Proyectos (ABP)</strong>: todo lo que se enseña se aplica sobre un proyecto real de software.</li>
+            <li>Ese proyecto se desarrolla en el marco de <strong>Fábrica Escuela (CodeF@ctory)</strong>, en equipo interdisciplinario con estudiantes de otros cursos y roles.</li>
+            <li>Los miércoles de Fábrica Escuela con Coworking programado <strong>reemplazan la sesión de clase</strong> de ese día; el tema se recorre al viernes siguiente.</li>
+            <li>Aula invertida: antes de varias sesiones hay material para revisar — la clase asume que ya se leyó.</li>
+          </ul>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Calendario del curso" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Cómo se califica</h1>
+          <p>La nota se compone de dos familias de entregables, ligadas al mismo proyecto de Fábrica Escuela pero calificadas por separado:</p>
+          <table>
+            <thead>
+              <tr><th>Rubro</th><th>Peso</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Entrega 1 Fábrica Escuela (Coworking Review Sprint 1)</td><td>15 %</td></tr>
+              <tr><td>Entrega 2 Fábrica Escuela (Coworking Review Sprint 2)</td><td>15 %</td></tr>
+              <tr><td>Entrega 3 Fábrica Escuela (Coworking Review Sprint 3)</td><td>15 %</td></tr>
+              <tr><td>Momento 1 — Diagrama de Clases y Principios básicos de Diseño</td><td>20 %</td></tr>
+              <tr><td>Momento 2 — Diseño de software y propuesta de Arquitectura</td><td>20 %</td></tr>
+              <tr><td>Momento 3 — Diseño de Software y aplicación de Calidad</td><td>15 %</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Cada Momento evalúa, con su propio porcentaje, el mismo trabajo que ya se entregó a Fábrica Escuela</strong> — no es un entregable distinto, normalmente se revisa el miércoles de la semana siguiente.</p>
+          <img class="portada-icon" src="img/scale-balanced.svg" alt="Evaluación" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Las seis unidades del curso</h1>
+          <table>
+            <thead>
+              <tr><th>Unidad</th><th>Tema</th><th>Duración</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Diagnóstico, Scrum y Proyecto</td><td>2 semanas</td></tr>
+              <tr><td>2</td><td>Modelo de Análisis</td><td>2 semanas</td></tr>
+              <tr><td>3</td><td>Introducción al Diseño Arquitectural</td><td>2 semanas</td></tr>
+              <tr><td>4</td><td>Principios Básicos de Diseño (SOLID)</td><td>3 semanas</td></tr>
+              <tr><td>5</td><td>Patrones de Diseño y Antipatrones</td><td>5 semanas</td></tr>
+              <tr><td>6</td><td>Calidad en el Diseño de Software</td><td>2 semanas</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Estamos empezando la Unidad 1</strong> — hoy es la sesión 1 de 51 del semestre.</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Unidades del curso" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>La mayor parte del costo de un sistema<br>no se paga al construirlo.<br>Se paga después.</h1>
+          <img class="portada-icon" src="img/chart-line.svg" alt="Costo del software en el tiempo" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Análisis y diseño: dos preguntas distintas</h1>
+          <table>
+            <thead>
+              <tr><th>Actividad</th><th>Pregunta que responde</th><th>Resultado típico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Análisis</strong></td><td>¿Qué debe hacer el sistema?</td><td>Modelo de dominio, casos de uso, diagramas de secuencia del sistema</td></tr>
+              <tr><td><strong>Diseño</strong></td><td>¿Cómo lo va a hacer, con qué estructura de software?</td><td>Arquitectura, diagramas de clases de diseño, patrones aplicados</td></tr>
+            </tbody>
+          </table>
+          <p>Un sistema puede tener un análisis correcto (entendió bien el problema) y un diseño pobre (la estructura de código es rígida, difícil de mantener y de extender) — o al revés. <strong>Este curso trabaja el puente entre las dos cosas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · De dónde venimos</p>
+          <h1>Lo que este curso asume de Análisis y Diseño I</h1>
+          <p>Análisis y Diseño de Sistemas II tiene como <strong>prerrequisito</strong> Análisis y Diseño de Sistemas I. Se asume que ya se domina:</p>
+          <ul>
+            <li>Elicitación y especificación de requisitos.</li>
+            <li>Casos de uso y actores.</li>
+            <li>Nociones básicas de UML: diagramas de clases y de casos de uso.</li>
+            <li>Fundamentos de programación orientada a objetos.</li>
+          </ul>
+          <p><strong>Si algo de esta lista no está firme, es el momento de repasarlo</strong> — la Unidad 2 (Modelo de Análisis) construye directamente sobre esta base.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · A dónde vamos</p>
+          <h1>El hilo conductor: un solo diseño, tres versiones</h1>
+          <p>Durante el semestre no se entrega un documento de diseño nuevo cada vez: <strong>se entrega el mismo documento del sistema de Fábrica Escuela, refinado tres veces (RTF V1, V2 y V3)</strong>, cada vez incorporando lo aprendido en las unidades recién vistas.</p>
+          <table>
+            <thead>
+              <tr><th>Versión</th><th>Incorpora</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>RTF V1</td><td>Modelo de dominio, DSS y arquitectura N-Capas (Unidades 2-3)</td></tr>
+              <tr><td>RTF V2</td><td>Principios SOLID aplicados sobre el diseño (Unidad 4)</td></tr>
+              <tr><td>RTF V3</td><td>Patrones GRASP/GoF, antipatrones evitados y calidad (Unidades 5-6)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Fábrica Escuela: el proyecto real</h1>
+          <p>Fábrica Escuela (CodeF@ctory) es el espacio donde varios cursos —y varios roles— convergen sobre <strong>un mismo producto de software</strong>, con coworkings, sprints y entregas propias.</p>
+          <ul>
+            <li>Se trabaja en <strong>equipo interdisciplinario</strong>, no solo con compañeros de este curso.</li>
+            <li>Tiene su propio calendario de Coworkings (Onboarding, Planning, Review) los miércoles.</li>
+            <li>Lo que se entrega ahí <strong>es lo mismo</strong> que se evalúa en los Momentos de esta asignatura — no son dos trabajos distintos.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Fábrica Escuela" style="display:block;width:200px;height:200px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dónde vive el diseño en el ciclo de vida</h1>
+          <p><strong>Requisitos → Análisis → Diseño → Implementación → Pruebas → Mantenimiento</strong></p>
+          <p>El diseño es la fase donde las decisiones son más baratas de cambiar en papel y más caras de cambiar una vez el código ya existe. No se trata de "hacer el diagrama antes de programar" por formalidad: es la fase donde se decide <strong>qué tan fácil será modificar el sistema después</strong>, que es exactamente lo que Fábrica Escuela va a exigir sprint tras sprint.</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Ciclo de vida del software" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Evaluación diagnóstica</h1>
+          <p><strong>Individual, en la plataforma que se indique en clase (Moodle o formulario de Google).</strong></p>
+          <ul>
+            <li>No tiene nota — es un termómetro, no un examen.</li>
+            <li>Su único propósito es calibrar el curso: qué se repasa a fondo y qué se puede dar por sabido.</li>
+            <li>Responde con honestidad: marcar "no lo sé" es más útil para el curso que adivinar.</li>
+          </ul>
+          <p class="slide-eyebrow">10 minutos · se resuelve ahora, individualmente</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué mide el diagnóstico</h1>
+          <table>
+            <thead>
+              <tr><th>Bloque</th><th>Qué revisa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>UML básico</td><td>Lectura de un diagrama de clases: atributos, métodos, relaciones</td></tr>
+              <tr><td>POO</td><td>Herencia, polimorfismo, interfaces, encapsulamiento</td></tr>
+              <tr><td>Metodología ágil</td><td>Vocabulario de Scrum: sprint, backlog, historia de usuario</td></tr>
+              <tr><td>Trabajo en equipo de software</td><td>Experiencia previa con control de versiones y proyectos grupales</td></tr>
+            </tbody>
+          </table>
+          <p>Estos cuatro bloques son exactamente los que se refuerzan en <strong>lo que queda de esta Unidad 1</strong> antes de entrar al Modelo de Análisis.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El curso es <strong>un solo proyecto</strong>, refinado en tres versiones (RTF V1, V2, V3), no seis trabajos independientes.</li>
+            <li>Las <strong>Entregas de Fábrica Escuela</strong> y los <strong>Momentos</strong> de la asignatura evalúan lo mismo, en momentos distintos.</li>
+            <li>Los miércoles con Coworking <strong>reemplazan</strong> la clase de ese día; el tema se recorre al viernes.</li>
+            <li>Análisis responde <strong>qué</strong> debe hacer el sistema; diseño responde <strong>cómo</strong> lo va a hacer.</li>
+            <li>La evaluación diagnóstica de hoy no es examen: es el punto de partida del curso.</li>
+          </ol>
+          <img class="portada-icon" src="img/lightbulb.svg" alt="Ideas clave" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión (miércoles)</h1>
+          <p><strong>Antes de la clase del miércoles, repasar:</strong></p>
+          <ul>
+            <li>Qué es una metodología ágil y en qué se diferencia de un ciclo en cascada.</li>
+            <li>Vocabulario básico de Scrum: sprint, product backlog, sprint backlog.</li>
+          </ul>
+          <p><strong>El miércoles se hace el repaso formal del marco metodológico Scrum</strong>, base del trabajo de equipo que se usará durante todo el semestre en Fábrica Escuela.</p>
+          <img class="portada-icon" src="img/circle-question.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:30px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 14</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
