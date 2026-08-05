@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones GoF de Comportamiento I: Strategy, Observer, Command — Semana 14</title>
+  <meta name="description" content="Se abre la familia de patrones GoF de Comportamiento: Strategy (algoritmos intercambiables sin condicionales), Observer (notificación uno-a-muchos entre objetos desacoplados) y Command (una solicitud encapsulada como objeto), con ejemplos de código y su relación con Polymorphism y Low Coupling de GRASP — Análisis y Diseño de Sistemas II, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-comportamiento-i-strategy-observer-command/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones GoF de Comportamiento I: Strategy, Observer, Command — Semana 14" />
+  <meta property="og:description" content="Se abre la familia de patrones GoF de Comportamiento: Strategy (algoritmos intercambiables sin condicionales), Observer (notificación uno-a-muchos entre objetos desacoplados) y Command (una solicitud encapsulada como objeto), con ejemplos de código y su relación con Polymorphism y Low Coupling de GRASP — Análisis y Diseño de Sistemas II, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-comportamiento-i-strategy-observer-command/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones GoF de Comportamiento I: Strategy, Observer, Command — Semana 14" />
+  <meta name="twitter:description" content="Se abre la familia de patrones GoF de Comportamiento: Strategy (algoritmos intercambiables sin condicionales), Observer (notificación uno-a-muchos entre objetos desacoplados) y Command (una solicitud encapsulada como objeto), con ejemplos de código y su relación con Polymorphism y Low Coupling de GRASP — Análisis y Diseño de Sistemas II, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gof-comportamiento-i-strategy-observer-command.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 14 — Patrones GoF de Comportamiento I: Strategy, Observer, Command</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/chess.svg" alt="Piezas de ajedrez representando decisiones y comportamientos intercambiables" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Ya saben componer objetos sin duplicar código.<br>Hoy: cómo hacen que esos objetos <em>se comporten</em> y <em>se comuniquen</em> sin acoplarse entre sí.</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De componer estructuras a coordinar comportamiento</h1>
+          <p>La <strong>semana 13</strong> cerró los 6 patrones <strong>estructurales</strong> de GoF: Adapter, Facade, Composite, Decorator, Proxy y Bridge. Todos resuelven la misma pregunta: <em>¿cómo se combinan clases y objetos ya existentes en estructuras más grandes, sin duplicar código?</em></p>
+          <p>Hoy se abre la <strong>tercera y última familia</strong> del catálogo GoF: los patrones <strong>de comportamiento</strong>. Ya no se trata de cómo nace un objeto (creacionales) ni de cómo se combina con otros (estructurales), sino de <strong>cómo se distribuyen responsabilidades y algoritmos</strong> entre objetos que colaboran, y de <strong>cómo se comunican</strong> entre sí de forma flexible.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué resuelven los patrones de comportamiento</h1>
+          <p>Los <strong>patrones de comportamiento</strong> son la tercera de las tres familias del catálogo GoF (creacional, estructural, <strong>de comportamiento</strong>). Responden a preguntas como:</p>
+          <ul>
+            <li>¿Cómo cambio el <strong>algoritmo</strong> que usa un objeto sin llenar el código de condicionales <code>if/elif</code>?</li>
+            <li>¿Cómo hago que un objeto <strong>avise automáticamente</strong> a otros cuando cambia, sin conocer sus clases concretas?</li>
+            <li>¿Cómo convierto una <strong>acción o solicitud</strong> en algo que puedo guardar, encolar o deshacer, en vez de ejecutarla directo?</li>
+          </ul>
+          <p>El catálogo GoF define <strong>11 patrones de comportamiento</strong> en total. Esta semana se ven <strong>6 de los 11</strong>: hoy, martes, <strong>Strategy, Observer y Command</strong>; el miércoles, <strong>State, Template Method e Iterator</strong>. El viernes se cierra la <strong>Unidad 5</strong> con antipatrones de diseño y un laboratorio final.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Primer problema: elegir entre varias formas de hacer lo mismo</h1>
+          <p>Imaginen un sistema de ventas que debe calcular el descuento de una compra, pero existen varias formas de calcularlo: descuento fijo por temporada, descuento porcentual por volumen, o ninguno. La forma más directa —y la más tentadora— es escribir un método con un <code>if/elif</code> que decida cuál aplicar según un parámetro.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Varios caminos posibles para llegar al mismo resultado" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El cálculo de descuento resuelto con condicionales</h1>
+          <pre><code>class CarritoDeCompras:
+    def calcular_descuento(self, tipo, subtotal):
+        if tipo == "temporada":
+            return 20000
+        elif tipo == "volumen":
+            return subtotal * 0.15
+        elif tipo == "ninguno":
+            return 0
+        else:
+            raise ValueError("tipo desconocido")</code></pre>
+          <p>Cada vez que aparece una nueva forma de calcular el descuento, hay que <strong>modificar</strong> <code>calcular_descuento()</code> y agregar otra rama. El método crece indefinidamente, mezcla todos los algoritmos en un solo lugar, y probar uno solo de ellos obliga a leer el método completo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Strategy</h1>
+          <p><strong>Strategy</strong> (Estrategia) encapsula una <strong>familia de algoritmos intercambiables</strong> detrás de una interfaz común, de modo que el algoritmo usado puede <strong>cambiarse en tiempo de ejecución</strong> sin condicionales que distingan casos.</p>
+          <p>Cada algoritmo concreto —cada <strong>estrategia</strong>— se implementa en su propia clase, todas cumpliendo la misma interfaz. El objeto que necesita el algoritmo (el <strong>contexto</strong>, en este caso <code>CarritoDeCompras</code>) recibe la estrategia inyectada y simplemente la invoca, sin saber cuál de las implementaciones concretas está usando.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Strategy, en código</h1>
+          <pre><code>interface EstrategiaDescuento:
+    def calcular(self, subtotal) -> float: ...
+
+class DescuentoTemporada(EstrategiaDescuento):
+    def calcular(self, subtotal):
+        return 20000
+
+class DescuentoPorVolumen(EstrategiaDescuento):
+    def calcular(self, subtotal):
+        return subtotal * 0.15
+
+class SinDescuento(EstrategiaDescuento):
+    def calcular(self, subtotal):
+        return 0
+
+class CarritoDeCompras:
+    def __init__(self, estrategia: EstrategiaDescuento):
+        self.estrategia = estrategia   # inyectada
+
+    def calcular_descuento(self, subtotal):
+        return self.estrategia.calcular(subtotal)</code></pre>
+          <p>Agregar un descuento nuevo ya no toca <code>CarritoDeCompras</code>: se crea otra clase que implementa <code>EstrategiaDescuento</code> y se inyecta. El carrito puede incluso <strong>cambiar de estrategia en tiempo de ejecución</strong> asignando otro objeto a <code>self.estrategia</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Strategy y Polymorphism: el patrón GRASP hecho catálogo</h1>
+          <p>En la <strong>semana 10</strong> vieron <strong>Polymorphism</strong> como patrón GRASP: cuando el comportamiento varía según el tipo, la responsabilidad de esa variación se asigna mediante operaciones polimórficas definidas en una interfaz común, en vez de condicionales que pregunten por el tipo.</p>
+          <p><code>EstrategiaDescuento</code> y sus tres implementaciones son exactamente eso: <strong>polimorfismo</strong> aplicado a la variación de un algoritmo. <strong>Strategy es la forma catalogada y con nombre propio</strong> de aplicar Polymorphism (GRASP) al problema específico de <strong>algoritmos intercambiables</strong> — GRASP da el principio general de asignación de responsabilidades; GoF da la estructura concreta de clases para resolver este caso particular.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Segundo problema: avisar a otros sin conocerlos</h1>
+          <p>Strategy resuelve qué algoritmo usar. El segundo problema de hoy es distinto: un objeto cambia de estado (por ejemplo, un pedido pasa de "pendiente" a "confirmado") y varias partes del sistema necesitan enterarse de ese cambio para reaccionar —enviar un correo, actualizar un inventario— sin que el objeto que cambió tenga que <strong>conocer las clases concretas</strong> de quienes reaccionan.</p>
+          <img class="portada-icon" src="img/bell.svg" alt="Una notificación avisando a quienes están suscritos a un cambio" style="display:block;width:110px;height:110px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Observer</h1>
+          <p><strong>Observer</strong> (Observador) define una dependencia <strong>uno-a-muchos</strong> entre objetos: cuando un objeto —el <strong>sujeto</strong> u <strong>observable</strong>— cambia de estado, <strong>notifica automáticamente</strong> a todos los objetos que se registraron como sus <strong>observadores</strong>, sin acoplarse a las clases concretas de esos observadores.</p>
+          <ul>
+            <li>El sujeto solo conoce una interfaz común de observador (por ejemplo, un método <code>notificar(evento)</code>).</li>
+            <li>Cualquier clase puede registrarse como observador implementando esa interfaz, sin que el sujeto sepa nada de ella más allá de eso.</li>
+            <li>Los observadores pueden agregarse o quitarse en tiempo de ejecución, sin tocar el sujeto.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Observer, en código</h1>
+          <pre><code>interface ObservadorPedido:
+    def notificar(self, pedido, evento): ...
+
+class NotificadorEmail(ObservadorPedido):
+    def notificar(self, pedido, evento):
+        enviar_correo(pedido.cliente, evento)
+
+class ActualizadorInventario(ObservadorPedido):
+    def notificar(self, pedido, evento):
+        reservar_stock(pedido.items)
+
+class Pedido:
+    def __init__(self):
+        self.observadores = []
+        self.estado = "pendiente"
+
+    def agregar_observador(self, obs):
+        self.observadores.append(obs)
+
+    def confirmar(self):
+        self.estado = "confirmado"
+        for obs in self.observadores:
+            obs.notificar(self, "confirmado")</code></pre>
+          <p><code>Pedido</code> nunca importa <code>NotificadorEmail</code> ni <code>ActualizadorInventario</code>: solo recorre su lista de <code>ObservadorPedido</code>. Se pueden agregar más observadores (un registro de auditoría, por ejemplo) sin modificar <code>Pedido</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Observer y Low Coupling</h1>
+          <p>En la <strong>semana 10</strong> vieron <strong>Low Coupling</strong> como patrón GRASP: minimizar el conocimiento que una clase tiene de otras, para que los cambios en una no se propaguen a las demás. <code>Pedido</code> tendría <strong>alto acoplamiento</strong> si conociera directamente a <code>NotificadorEmail</code> y a <code>ActualizadorInventario</code>: agregar un tercer observador obligaría a modificarlo.</p>
+          <p>Observer logra bajo acoplamiento porque el sujeto solo depende de una <strong>interfaz</strong> de observador, nunca de clases concretas. Este mismo principio —notificar cambios sin conocer a quién— es la base conceptual de las <strong>arquitecturas orientadas a eventos</strong> (event-driven), donde sistemas completos se comunican publicando y suscribiéndose a eventos en vez de llamarse directamente. Es solo una mención breve hoy: se profundiza en cursos posteriores.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Strategy u Observer?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los dos patrones calza mejor:</p>
+          <ol>
+            <li>Un sistema de envíos que puede calcular el costo de envío por peso, por distancia o por una tarifa plana, y el cliente decide cuál usar al momento de cotizar.</li>
+            <li>Un blog donde, al publicarse un nuevo artículo, deben actualizarse simultáneamente el feed RSS, el índice de búsqueda y la lista de suscriptores por correo.</li>
+            <li>Un videojuego que ofrece tres dificultades con reglas de puntaje distintas, seleccionables por el jugador en cualquier momento.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Tercer problema: convertir una acción en un objeto</h1>
+          <p>Strategy encapsula un algoritmo. Observer encapsula una notificación. El tercer problema de hoy es distinto: hay operaciones —"agregar un producto", "cancelar un pedido"— que un cliente ejecuta directamente llamando a un método, pero que en ciertos escenarios se necesita <strong>tratar como un objeto</strong>: guardarlas en una cola, ejecutarlas después, deshacerlas, o dejar un registro de qué se hizo.</p>
+          <img class="portada-icon" src="img/terminal.svg" alt="Una acción ejecutada como si fuera un comando de terminal" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Command</h1>
+          <p><strong>Command</strong> (Comando) encapsula una <strong>solicitud o acción</strong> como un objeto, permitiendo <strong>parametrizar</strong> a los clientes con distintas solicitudes, <strong>encolarlas</strong>, <strong>deshacerlas</strong> (undo) o <strong>registrarlas</strong> (log) — cosas imposibles si la acción es solo una llamada directa a un método.</p>
+          <p>Cada acción concreta se convierte en una clase que implementa una interfaz común con un método <code>ejecutar()</code>. Un <strong>invocador</strong> (el objeto que dispara la acción, por ejemplo un botón de una interfaz o un controlador) solo conoce esa interfaz común: nunca conoce el detalle interno de cada acción concreta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Command, en código</h1>
+          <pre><code>interface Comando:
+    def ejecutar(self) -> None: ...
+
+class ComandoAgregarProducto(Comando):
+    def __init__(self, carrito, producto):
+        self.carrito, self.producto = carrito, producto
+    def ejecutar(self):
+        self.carrito.agregar(self.producto)
+
+class ComandoCancelarPedido(Comando):
+    def __init__(self, pedido):
+        self.pedido = pedido
+    def ejecutar(self):
+        self.pedido.cancelar()
+
+class Invocador:
+    def __init__(self):
+        self.historial = []
+    def ejecutar_comando(self, comando: Comando):
+        comando.ejecutar()
+        self.historial.append(comando)   # queda registrado</code></pre>
+          <p><code>Invocador</code> llama <code>ejecutar_comando(comando)</code> sin importar si el comando agrega un producto o cancela un pedido: solo conoce la interfaz <code>Comando</code>. Cada comando ejecutado queda además registrado en <code>historial</code>, listo para auditoría o para una futura función de deshacer.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Command como base de undo y colas de tareas</h1>
+          <p>Que cada acción sea un objeto con su propio estado (los parámetros que recibió) hace posible construir, sobre la misma estructura de Command, dos funcionalidades muy comunes en software real:</p>
+          <ul>
+            <li><strong>Deshacer (undo):</strong> si cada comando concreto además implementa un método <code>deshacer()</code> con la operación inversa, el invocador puede recorrer su <code>historial</code> en reversa y revertir acciones una por una.</li>
+            <li><strong>Colas de tareas:</strong> como un comando es un objeto y no una llamada inmediata, puede guardarse en una lista o en una cola y ejecutarse más tarde, incluso en otro proceso —la base conceptual de sistemas de trabajos en segundo plano (background jobs).</li>
+          </ul>
+          <p>Hoy solo se ve la estructura base de Command (interfaz + comandos concretos + invocador); undo y colas son extensiones naturales del mismo patrón, no patrones distintos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Strategy sin variación real es sobre-ingeniería</h1>
+          <p>Si <code>CarritoDeCompras</code> nunca va a tener más de <strong>una</strong> forma de calcular el descuento —y no hay ninguna variación prevista en el futuro cercano—, crear una interfaz <code>EstrategiaDescuento</code> con una sola implementación concreta no resuelve ningún problema real: solo agrega una capa de indirección y una clase más que mantener.</p>
+          <p>Es la misma tensión que ya vieron con <strong>DIP</strong> (semana 9) y con <strong>Pure Fabrication</strong> (semana 10, GRASP): una abstracción se justifica cuando existe —o es razonablemente previsible— una <strong>variación genuina</strong> que necesita intercambiarse. Strategy se aplica cuando la familia de algoritmos es real, no como plantilla por defecto para "cualquier cálculo".</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Observer mal implementado: acoplamiento implícito por eventos</h1>
+          <p>Observer reduce el acoplamiento explícito (el sujeto no importa las clases de sus observadores), pero puede introducir un <strong>acoplamiento implícito</strong> más difícil de rastrear: si un observador, al reaccionar a una notificación, dispara a su vez otra notificación en otro sujeto —que activa otro observador, que activa otro—, se forma una <strong>cadena de notificaciones</strong> cuyo flujo completo ya no es visible leyendo una sola clase.</p>
+          <p>El código de cada clase individual puede verse limpio y desacoplado; el problema aparece al intentar entender <strong>el comportamiento completo del sistema</strong> en tiempo de ejecución. Por eso Observer exige documentar bien qué reacciona a qué, especialmente cuando hay varias cadenas de notificaciones cruzadas.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Un patrón de comportamiento en tensión con la sobre-ingeniería o el acoplamiento oculto" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los tres primeros patrones de comportamiento, en una frase</h1>
+          <ol>
+            <li><strong>De comportamiento:</strong> la tercera y última familia GoF — cómo se distribuyen algoritmos y responsabilidades, y cómo se comunican los objetos que colaboran.</li>
+            <li><strong>Strategy:</strong> encapsula una familia de algoritmos intercambiables detrás de una interfaz común — la forma catalogada de aplicar Polymorphism (GRASP) a algoritmos que varían.</li>
+            <li><strong>Observer:</strong> notifica automáticamente a observadores registrados cuando un sujeto cambia de estado, sin conocer sus clases concretas — Low Coupling llevado a la comunicación entre objetos.</li>
+            <li><strong>Command:</strong> convierte una solicitud en un objeto, permitiendo encolarla, deshacerla o registrarla — base de funcionalidades como undo o colas de tareas.</li>
+            <li>Ninguno se justifica sin un problema real: variación genuina de algoritmo, necesidad real de notificar a varios sin acoplarse, o necesidad real de tratar una acción como dato.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de Strategy, Observer y Command" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>El miércoles: los otros tres patrones de comportamiento</h1>
+          <p>Hoy vieron 3 de los 6 patrones de comportamiento que cubre esta semana. El <strong>miércoles</strong> se completan los otros tres: <strong>State</strong> (cambiar el comportamiento de un objeto cuando cambia su estado interno, como si cambiara de clase), <strong>Template Method</strong> (definir el esqueleto de un algoritmo dejando que las subclases redefinan ciertos pasos) e <strong>Iterator</strong> (recorrer los elementos de una colección sin exponer su representación interna).</p>
+          <p class="slide-eyebrow">El viernes se cierra la Unidad 5 (Patrones de Diseño y Antipatrones) con antipatrones de diseño y un laboratorio final aplicando el catálogo completo de patrones GoF al proyecto de curso.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión: los patrones de comportamiento restantes" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

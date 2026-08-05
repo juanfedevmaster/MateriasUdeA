@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio: aplicación de patrones GRASP — Semana 11</title>
+  <meta name="description" content="Laboratorio práctico donde cada equipo audita su propio diagrama de clases de diseño y diagrama de secuencia de diseño en busca de dónde ya aplican los nueve patrones GRASP y dónde los violan, proponiendo la corrección correspondiente — Análisis y Diseño de Sistemas II, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-de-aplicacion-de-patrones-grasp/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Laboratorio: aplicación de patrones GRASP — Semana 11" />
+  <meta property="og:description" content="Laboratorio práctico donde cada equipo audita su propio diagrama de clases de diseño y diagrama de secuencia de diseño en busca de dónde ya aplican los nueve patrones GRASP y dónde los violan, proponiendo la corrección correspondiente — Análisis y Diseño de Sistemas II, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-de-aplicacion-de-patrones-grasp/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laboratorio: aplicación de patrones GRASP — Semana 11" />
+  <meta name="twitter:description" content="Laboratorio práctico donde cada equipo audita su propio diagrama de clases de diseño y diagrama de secuencia de diseño en busca de dónde ya aplican los nueve patrones GRASP y dónde los violan, proponiendo la corrección correspondiente — Análisis y Diseño de Sistemas II, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/laboratorio-de-aplicacion-de-patrones-grasp.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 11 — Laboratorio: aplicación de patrones GRASP</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio de aplicación de patrones GRASP" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Ya aplicaron GRASP sin saberlo<br>— hoy lo hacen a propósito</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ya tienen el material propio para auditar</h1>
+          <p>El martes trazaron el <strong>diagrama de secuencia de diseño</strong> de un caso de uso relevante de su proyecto, y el miércoles el <strong>diagrama de clases de diseño</strong> correspondiente. Ambos diagramas ya reflejan decisiones de asignación de responsabilidades — algunas buenas, otras no tanto.</p>
+          <p>Hoy no hay conceptos nuevos: la sesión completa es un <strong>laboratorio en equipo</strong> donde usan esos dos diagramas, más el diagrama de clases de dominio de la Unidad 2, para revisar su propio diseño con el vocabulario de los nueve patrones GRASP vistos la semana pasada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Recordatorio breve</p>
+          <h1>Los nueve patrones GRASP, en una tabla</h1>
+          <table>
+            <thead><tr><th>Patrón</th><th>Idea central</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Information Expert</strong></td><td>Asignar la responsabilidad a quien tiene la información necesaria</td></tr>
+              <tr><td><strong>Creator</strong></td><td>Quién debe crear una instancia, según quién la contiene o usa</td></tr>
+              <tr><td><strong>Controller</strong></td><td>Un objeto no-UI recibe y coordina eventos del sistema</td></tr>
+              <tr><td><strong>Low Coupling</strong></td><td>Minimizar dependencias entre elementos</td></tr>
+              <tr><td><strong>High Cohesion</strong></td><td>Cada clase con responsabilidades enfocadas y relacionadas</td></tr>
+              <tr><td><strong>Polymorphism</strong></td><td>Comportamiento variable por tipo, resuelto con operaciones polimórficas</td></tr>
+              <tr><td><strong>Pure Fabrication</strong></td><td>Clase inventada, sin equivalente en el dominio, para mantener cohesión/acoplamiento</td></tr>
+              <tr><td><strong>Indirection</strong></td><td>Un intermediario desacopla dos elementos</td></tr>
+              <tr><td><strong>Protected Variations</strong></td><td>Encapsular puntos de variación previstos detrás de una interfaz estable</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Vistos en detalle la semana 10 — esta tabla es solo el recordatorio de vocabulario para el laboratorio de hoy</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Qué es "cumplir" y qué es "violar"</p>
+          <h1>Cada patrón tiene su síntoma de violación</h1>
+          <p>Para auditar un diseño no basta con nombrar el patrón — hay que reconocer su <strong>síntoma de violación</strong>. Algunos ejemplos ya vistos la semana pasada:</p>
+          <ul>
+            <li><strong>High Cohesion violado:</strong> una clase con responsabilidades que no se relacionan entre sí (ej. validar datos, calcular impuestos y generar reporte, todo en la misma clase).</li>
+            <li><strong>Controller violado — el "Controller gordo" (God Controller):</strong> un controller que deja de <em>coordinar</em> y empieza a <em>hacerlo todo</em> él mismo (acceso directo a datos, reglas de negocio, formato de salida).</li>
+            <li><strong>Low Coupling violado:</strong> una clase que conoce detalles internos de muchas otras clases para hacer su trabajo.</li>
+          </ul>
+          <p>Encontrar una violación no es un error de la sesión pasada — es exactamente lo que el laboratorio de hoy busca identificar, para poder corregirlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Dos vistas, un mismo diseño</p>
+          <h1>Por qué se necesitan los dos diagramas juntos</h1>
+          <p>El <strong>diagrama de clases de diseño</strong> (miércoles) muestra la <strong>estructura estática</strong>: qué clases existen, qué atributos y métodos tiene cada una, cómo se relacionan. Ahí se ve directamente si una clase tiene demasiadas responsabilidades (High Cohesion) o depende de demasiadas otras (Low Coupling).</p>
+          <p>El <strong>diagrama de secuencia de diseño</strong> (martes) muestra la <strong>colaboración dinámica</strong>: qué objeto envía cada mensaje, en qué orden, y quién termina haciendo el trabajo real. Ahí se ve si el Controller delega correctamente (Controller, Indirection) o si un objeto termina creando instancias que no le corresponden (Creator).</p>
+          <p>Una violación puede ser visible solo en uno de los dos diagramas — por eso el laboratorio pide revisar ambos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora, a auditar su propio diseño</h1>
+          <p>El resto de la sesión es el <strong>laboratorio de aplicación de GRASP</strong>: cada equipo retoma sus propios diagramas — clases de dominio, clases de diseño y secuencia de diseño — y los revisa con la tabla de la diapositiva anterior en la mano.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Laboratorio: auditoría GRASP del proyecto</h1>
+          <p><strong>Trabajo en equipo — el mismo equipo del proyecto de Fábrica Escuela.</strong></p>
+          <ul>
+            <li>Reúnan los tres artefactos de su propio proyecto: el <strong>diagrama de clases de dominio</strong> (Unidad 2), el <strong>diagrama de clases de diseño</strong> y el <strong>diagrama de secuencia de diseño</strong> de un caso de uso relevante (ambos de esta semana).</li>
+            <li>De los nueve patrones GRASP, elijan <strong>al menos 4 o 5</strong> para analizar sobre su propio diseño — no hace falta cubrir los nueve.</li>
+            <li>Para cada patrón elegido, ubiquen una <strong>clase o responsabilidad concreta</strong> de su proyecto donde ese patrón esté en juego.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Trabajo en equipo sobre el proyecto propio" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Cómo clasificar cada caso encontrado</h1>
+          <p>Para cada uno de los 4-5 patrones elegidos, el equipo decide y registra:</p>
+          <ul>
+            <li><strong>Si el patrón se cumple:</strong> señalen la clase y expliquen en una frase por qué esa asignación de responsabilidad es correcta según el patrón — aunque el equipo no lo hubiera hecho de forma consciente.</li>
+            <li><strong>Si el patrón se viola:</strong> señalen la clase o método afectado, el síntoma concreto (ej. un "Controller gordo", una clase con responsabilidades no relacionadas) y <strong>propongan la corrección</strong>: qué clase nueva o reasignación de responsabilidad resolvería la violación, y con qué patrón GRASP se apoya esa corrección.</li>
+          </ul>
+          <p class="slide-eyebrow">Durante el resto de la sesión · trabajo en equipo sobre el proyecto propio</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable y formato</h1>
+          <ul>
+            <li><strong>Formato exacto:</strong> un documento breve en markdown o en la herramienta de gestión del proyecto del equipo (el mismo tablero/repositorio que ya usan para el proyecto).</li>
+            <li>Debe listar, <strong>por cada patrón analizado</strong> (mínimo 4 distintos): la clase o responsabilidad identificada, si <strong>cumple o viola</strong> el patrón, y en caso de violación, la <strong>propuesta de corrección</strong>.</li>
+            <li>No es un entregable calificado directamente — es la <strong>preparación</strong> para seguir refinando el diseño de detalle en las próximas semanas.</li>
+          </ul>
+          <p><strong>Durante la sesión</strong> el profesor pasa por las salas de equipo resolviendo dudas; quien no alcance a terminar puede completar el documento <strong>antes de la próxima clase</strong>.</p>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Entregable del laboratorio de GRASP" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Qué debieron lograr en este laboratorio</h1>
+          <ol>
+            <li>Revisar su <strong>propio</strong> diagrama de clases de diseño y diagrama de secuencia de diseño con el vocabulario de los nueve patrones GRASP.</li>
+            <li>Identificar al menos <strong>4-5 patrones</strong> distintos donde su diseño cumple o viola el patrón.</li>
+            <li>Para cada violación, dejar una <strong>propuesta concreta de corrección</strong>, no solo el diagnóstico.</li>
+            <li>Dejar el análisis documentado en un formato reutilizable para las próximas semanas de diseño de detalle.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis del laboratorio GRASP" style="display:block;width:110px;height:110px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>De GRASP a los patrones GoF</h1>
+          <p>Con este laboratorio cierran el bloque de <strong>GRASP aplicado al proyecto</strong> dentro de la Unidad 5. El análisis de hoy —qué se cumple y qué se corrige— es la base con la que van a seguir refinando el diseño de detalle en las próximas semanas.</p>
+          <p>La <strong>semana 12</strong> arranca la segunda familia de patrones de esta unidad: los <strong>patrones GoF Creacionales</strong> (Factory Method, Abstract Factory), un nivel de patrones de diseño más específico que GRASP, apoyado en varias de las correcciones que hoy quedaron propuestas.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre del laboratorio de GRASP" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 12</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

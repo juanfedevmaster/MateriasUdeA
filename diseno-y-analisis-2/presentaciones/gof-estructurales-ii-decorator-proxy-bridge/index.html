@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones GoF Estructurales II: Decorator, Proxy, Bridge — Semana 13</title>
+  <meta name="description" content="Cierre del catálogo de patrones estructurales GoF: Decorator, Proxy y Bridge, síntesis de los seis estructurales completos y laboratorio de implementación sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-estructurales-ii-decorator-proxy-bridge/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones GoF Estructurales II: Decorator, Proxy, Bridge — Semana 13" />
+  <meta property="og:description" content="Cierre del catálogo de patrones estructurales GoF: Decorator, Proxy y Bridge, síntesis de los seis estructurales completos y laboratorio de implementación sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-estructurales-ii-decorator-proxy-bridge/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones GoF Estructurales II: Decorator, Proxy, Bridge — Semana 13" />
+  <meta name="twitter:description" content="Cierre del catálogo de patrones estructurales GoF: Decorator, Proxy y Bridge, síntesis de los seis estructurales completos y laboratorio de implementación sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gof-estructurales-ii-decorator-proxy-bridge.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 13 — Patrones GoF Estructurales II: Decorator, Proxy, Bridge, y Laboratorio de implementación</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Familia completa de patrones estructurales GoF" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Añadir una funcionalidad no debería obligarte<br>a crear una subclase nueva por cada combinación posible</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cerrando la familia de estructurales GoF</h1>
+          <p>El martes vieron <strong>Adapter</strong>, <strong>Facade</strong> y <strong>Composite</strong>, los tres primeros patrones estructurales del catálogo GoF — soluciones para componer clases y objetos en estructuras más grandes sin acoplar el diseño a implementaciones concretas. Hoy completan la familia con los tres patrones estructurales que faltan: <strong>Decorator</strong>, <strong>Proxy</strong> y <strong>Bridge</strong>.</p>
+          <p>Con estos seis (Adapter, Facade, Composite, Decorator, Proxy, Bridge) se cierra el catálogo completo de estructurales GoF — de los siete clásicos del libro original, esta semana cubre seis. La segunda mitad de la sesión es el <strong>laboratorio de implementación</strong>: cada equipo aplica al menos uno de los seis sobre su propio proyecto de Fábrica Escuela, con código real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El problema: una subclase por cada combinación de extras</h1>
+          <pre><code>class Cafe: ...
+class CafeConLeche(Cafe): ...
+class CafeConCanela(Cafe): ...
+class CafeConLecheYCanela(Cafe): ...
+class CafeConLecheYCanelaYChocolate(Cafe): ...
+# cada combinación nueva de extras exige una subclase nueva</code></pre>
+          <p>Si cada "extra" (leche, canela, chocolate) se modela como una subclase distinta de <code>Cafe</code>, el número de clases crece más rápido que el número de extras: con solo tres extras ya hay ocho combinaciones posibles, cada una con su propia subclase. Además, la herencia fija la combinación <strong>en tiempo de compilación</strong> — no se puede decidir en tiempo de ejecución qué extras agregar a una taza concreta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Decorator: añadir responsabilidades envolviendo, no heredando</h1>
+          <p><strong>Decorator</strong> (Erich Gamma et al., "Design Patterns", 1994) añade responsabilidades o comportamiento adicional a un objeto <strong>individual</strong>, de forma dinámica, envolviéndolo en uno o más objetos decoradores que implementan la <strong>misma interfaz</strong> que el objeto original.</p>
+          <p>Cada decorador guarda una referencia al objeto que envuelve (el original u otro decorador) y, al recibir una llamada, hace su parte adicional y <strong>delega</strong> el resto al objeto envuelto. Como el cliente solo conoce la interfaz común, puede tratar un objeto decorado exactamente igual que uno sin decorar.</p>
+          <img class="portada-icon" src="img/gift.svg" alt="Decorator: envolver un objeto para añadirle comportamiento" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La solución: decoradores apilables</h1>
+          <pre><code>class Cafe:                    # interfaz común
+    def costo(self): return 3000
+
+class ConLeche(Cafe):          # implementa la misma interfaz
+    def __init__(self, envuelto):
+        self.envuelto = envuelto
+    def costo(self):
+        return self.envuelto.costo() + 800   # delega y suma
+
+class ConCanela(Cafe):
+    def __init__(self, envuelto):
+        self.envuelto = envuelto
+    def costo(self):
+        return self.envuelto.costo() + 300
+
+# uso: se apilan los decoradores en tiempo de ejecución
+pedido = ConCanela(ConLeche(Cafe()))
+pedido.costo()          # 3000 + 800 + 300</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aclaración importante</p>
+          <h1>Por qué esto evita la explosión de subclases</h1>
+          <p>Con <code>ConLeche</code> y <code>ConCanela</code> como decoradores independientes, cualquier combinación se logra <strong>componiendo</strong> objetos en tiempo de ejecución (<code>ConCanela(ConLeche(Cafe()))</code>), sin declarar una clase nueva por combinación. Con <em>N</em> extras posibles, se necesitan solo <em>N</em> clases decoradoras, no una por cada subconjunto.</p>
+          <ul>
+            <li>El <strong>orden</strong> en que se apilan los decoradores puede importar (ej. aplicar un descuento antes o después de un impuesto da resultados distintos) — hay que decidirlo con intención, no dejarlo al azar.</li>
+            <li>Cada decorador implementa la <strong>misma interfaz</strong> que <code>Cafe</code>: el cliente que recibe <code>pedido</code> no necesita saber cuántos decoradores hay ni en qué orden se aplicaron.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cuándo usarlo</p>
+          <h1>Cuándo vale la pena un Decorator — y en qué se diferencia de Composite</h1>
+          <ul>
+            <li>Se necesita añadir comportamiento a un objeto <strong>individual</strong>, no a todos los objetos de la clase, y sin modificar su código fuente.</li>
+            <li>Las combinaciones posibles de comportamiento adicional son <strong>numerosas o cambian en tiempo de ejecución</strong> — la herencia fija la combinación al escribir el código, Decorator la decide al ejecutarlo.</li>
+          </ul>
+          <p><strong>Diferencia con Composite</strong> (martes): Composite organiza objetos en una jerarquía <strong>todo-parte</strong> (una carpeta contiene archivos y otras carpetas) para tratar grupos e individuos de forma uniforme; Decorator envuelve <strong>un solo objeto a la vez</strong> para agregarle comportamiento, no para representar una jerarquía de contenido. Ambos usan composición y una interfaz común, pero resuelven problemas distintos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Proxy: un sustituto que controla el acceso al objeto real</h1>
+          <p><strong>Proxy</strong> provee un objeto sustituto o representante que controla el acceso a otro objeto (el <strong>objeto real</strong>), interceptando las llamadas para agregar control adicional — sin que el cliente note la diferencia, porque el proxy implementa la <strong>misma interfaz</strong> que el objeto real.</p>
+          <p>A simple vista se parece a Decorator (ambos envuelven un objeto detrás de la misma interfaz), pero el propósito es distinto: Decorator <strong>añade</strong> comportamiento nuevo; Proxy <strong>controla el acceso</strong> al objeto que envuelve — puede incluso decidir no delegar la llamada en absoluto (ej. negarla por falta de permisos).</p>
+          <img class="portada-icon" src="img/user-shield.svg" alt="Proxy: sustituto que controla el acceso al objeto real" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El proxy interceptando la llamada</h1>
+          <pre><code>class RepositorioDocumentos:      # interfaz común
+    def obtener(self, id): ...
+
+class RepositorioDocumentosReal(RepositorioDocumentos):
+    def obtener(self, id):
+        return cargarDesdeDisco(id)   # operación costosa
+
+class RepositorioDocumentosProxy(RepositorioDocumentos):
+    def __init__(self, real, usuario):
+        self.real, self.usuario, self.cache = real, usuario, {}
+    def obtener(self, id):
+        if not self.usuario.tienePermiso(id):
+            raise PermisoDenegado()          # control de acceso
+        if id not in self.cache:
+            self.cache[id] = self.real.obtener(id)  # carga diferida
+        return self.cache[id]
+# el cliente usa el proxy igual que el objeto real:
+repo = RepositorioDocumentosProxy(RepositorioDocumentosReal(), usuarioActual)</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cuándo usarlo</p>
+          <h1>Subtipos conocidos de Proxy</h1>
+          <p>El ejemplo anterior mezcla dos responsabilidades de proxy que la literatura suele nombrar por separado:</p>
+          <ul>
+            <li><strong>Proxy de protección:</strong> valida permisos antes de permitir el acceso al objeto real (la validación de <code>tienePermiso</code> del ejemplo).</li>
+            <li><strong>Proxy virtual:</strong> retrasa la creación o carga de un objeto costoso hasta el momento en que realmente se necesita (<strong>carga diferida</strong> o <em>lazy loading</em>, el <code>cache</code> del ejemplo).</li>
+          </ul>
+          <p>Ambos subtipos comparten la misma estructura — un objeto que implementa la interfaz del objeto real y decide cuándo y cómo delegarle la llamada — solo cambia la razón por la que interceptan. No es necesario memorizar más subtipos que estos dos para reconocer el patrón en código real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Bridge: separar la abstracción de su implementación</h1>
+          <p><strong>Bridge</strong> separa una <strong>abstracción</strong> (qué hace algo) de su <strong>implementación</strong> (cómo lo hace), de modo que ambas puedan variar de forma independiente, evitando una jerarquía de herencia que combine dos dimensiones distintas de variación.</p>
+          <p>El problema que resuelve aparece cuando hay <strong>dos ejes de variación</strong> a la vez — ej. tipo de notificación (correo, SMS) × canal de envío (proveedor A, proveedor B) — y modelarlos con herencia obligaría a crear una subclase por cada combinación (<code>NotificacionCorreoProveedorA</code>, <code>NotificacionSMSProveedorB</code>, ...), la misma explosión combinatoria vista al inicio de la sesión, pero ahora entre dos jerarquías, no entre extras de un mismo objeto.</p>
+          <img class="portada-icon" src="img/arrows-split-up-and-left.svg" alt="Bridge: separar abstracción e implementación en dos jerarquías" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dos jerarquías, unidas por una referencia</h1>
+          <pre><code>class CanalEnvio:                 # interfaz de implementación
+    def enviar(self, destino, texto): ...
+
+class ProveedorA(CanalEnvio):
+    def enviar(self, destino, texto): ...   # API del proveedor A
+
+class ProveedorB(CanalEnvio):
+    def enviar(self, destino, texto): ...   # API del proveedor B
+
+class Notificacion:               # abstracción
+    def __init__(self, canal: CanalEnvio):
+        self.canal = canal        # el "puente" hacia la implementación
+class NotificacionUrgente(Notificacion):
+    def notificar(self, destino, mensaje):
+        self.canal.enviar(destino, "URGENTE: " + mensaje)
+
+# cualquier tipo de notificación combina con cualquier canal:
+NotificacionUrgente(ProveedorA()).notificar("ana@x.com", "Falla")</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Bridge no es Adapter, aunque ambos "conectan" dos partes</h1>
+          <p>Es común confundirlos porque ambos hacen que dos piezas de código colaboren a través de una interfaz intermedia. La diferencia está en <strong>cuándo y por qué</strong> aparece esa interfaz:</p>
+          <ul>
+            <li><strong>Adapter</strong> (martes) se aplica <strong>después</strong>, sobre una interfaz <strong>ya existente que no se puede cambiar</strong> (una librería externa, un sistema legado): traduce esa interfaz a la que el cliente espera. Resuelve un problema de <strong>compatibilidad</strong>.</li>
+            <li><strong>Bridge</strong> se <strong>diseña desde el principio</strong>, antes de que exista el problema, para separar dos jerarquías que se sabe que van a variar de forma independiente. Resuelve un problema de <strong>combinatoria de diseño</strong>, no de compatibilidad con algo externo.</li>
+          </ul>
+          <img class="portada-icon" src="img/code-compare.svg" alt="Bridge frente a Adapter: diseño anticipado frente a compatibilidad posterior" style="display:block;width:110px;height:110px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cuál de los seis patrones estructurales aplica?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los seis patrones estructurales (Adapter, Facade, Composite, Decorator, Proxy o Bridge) es la mejor opción:</p>
+          <ol>
+            <li>Necesitan agregar validación de permisos antes de que cualquier código acceda a un objeto de reporte financiero, sin que el resto del sistema note el cambio.</li>
+            <li>Un mismo cálculo de impuestos debe poder aplicarse solo, o combinado con un descuento, o con ambos, decidido en tiempo de ejecución.</li>
+            <li>Un tipo de figura (círculo, cuadrado) debe poder dibujarse con distintos motores de renderizado, y ambas listas — figuras y motores — van a seguir creciendo por separado.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los seis patrones estructurales GoF, completos</h1>
+          <table>
+            <thead><tr><th>Patrón</th><th>Idea central</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Adapter</strong></td><td>Traducir una interfaz existente e incompatible a la que el cliente espera</td></tr>
+              <tr><td><strong>Facade</strong></td><td>Ofrecer una interfaz simple sobre un subsistema complejo</td></tr>
+              <tr><td><strong>Composite</strong></td><td>Tratar objetos individuales y grupos de objetos de forma uniforme, en una jerarquía todo-parte</td></tr>
+              <tr><td><strong>Decorator</strong></td><td>Añadir comportamiento a un objeto individual envolviéndolo, sin usar herencia por cada combinación</td></tr>
+              <tr><td><strong>Proxy</strong></td><td>Interponer un sustituto que controla el acceso al objeto real</td></tr>
+              <tr><td><strong>Bridge</strong></td><td>Separar una abstracción de su implementación para que ambas varíen independientemente</td></tr>
+            </tbody>
+          </table>
+          <p>Con esto se completa el catálogo de estructurales GoF cubierto en el curso, iniciado el martes con Adapter, Facade y Composite.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de los seis patrones estructurales" style="display:block;width:100px;height:100px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora, a implementarlos sobre el proyecto real</h1>
+          <p>Los seis patrones se vieron con ejemplos de clase. El resto de la sesión es el <strong>laboratorio de implementación de patrones estructurales</strong>: cada equipo busca en su propio proyecto de Fábrica Escuela un punto donde la composición de clases podría beneficiarse de alguno de los seis patrones vistos (martes + hoy), y lo implementa con código real.</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio de implementación de patrones estructurales" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Laboratorio: implementación de patrones estructurales</h1>
+          <p><strong>Trabajo en equipo — el mismo equipo del proyecto de Fábrica Escuela conformado desde la semana 2.</strong></p>
+          <ul>
+            <li>Revisen el diseño actual de su proyecto y ubiquen <strong>al menos un punto</strong> donde la composición de clases sea rígida o incompatible: una interfaz externa que no encaja, un objeto que necesitaría comportamiento adicional según el caso, un acceso que debería controlarse, o dos dimensiones de variación mezcladas en una sola jerarquía.</li>
+            <li>Elijan cuál de los <strong>seis patrones estructurales</strong> (Adapter, Facade, Composite, Decorator, Proxy o Bridge) resuelve mejor ese punto específico — no hace falta usar más de uno.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Trabajo en equipo sobre el proyecto propio" style="display:block;width:120px;height:120px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Implementación y justificación</h1>
+          <ul>
+            <li>Impleméntenlo con <strong>código real</strong> sobre su proyecto — o <strong>pseudocódigo suficientemente detallado</strong> si esa parte del sistema aún no está construida.</li>
+            <li>Además del código, escriban una <strong>nota corta</strong> que justifique la elección: por qué ese patrón y no otro de los seis, y qué problema concreto de composición resolvía en su proyecto.</li>
+            <li>Si consideraron un patrón y terminaron usando otro (ej. "pensamos en Decorator pero el problema real era el acceso controlado, así que usamos Proxy"), vale la pena dejarlo escrito — es evidencia de que la elección fue consciente.</li>
+          </ul>
+          <p class="slide-eyebrow">Durante la sesión · trabajo en equipo sobre el proyecto propio</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable y cierre del laboratorio</h1>
+          <ul>
+            <li><strong>Formato exacto:</strong> código funcional (o pseudocódigo detallado) que aplique al menos un patrón estructural al proyecto propio, más la nota corta de justificación, en el repositorio o herramienta de gestión del equipo.</li>
+            <li>Debe quedar identificable qué <strong>patrón</strong> se aplicó, en qué clase u objeto, y <strong>por qué</strong> se eligió ese y no otro.</li>
+            <li>Quien no alcance a terminar durante la sesión puede completarlo <strong>antes de la próxima clase</strong>.</li>
+          </ul>
+          <p>Esta implementación es parte del insumo de diseño para el <strong>Momento 2 — Diseño de software y propuesta de Arquitectura de Software (20%)</strong>, que se evalúa la próxima semana. El miércoles de esta semana es Coworking (Planning Sprint 3), sin relación directa con este laboratorio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Qué debieron lograr en este laboratorio</h1>
+          <ol>
+            <li>Identificar un punto real de su proyecto donde la composición de clases podría mejorar.</li>
+            <li>Elegir, entre los seis patrones estructurales vistos (martes + hoy), el más adecuado para ese punto.</li>
+            <li>Implementarlo con código real o pseudocódigo suficientemente detallado.</li>
+            <li>Dejar por escrito por qué se eligió ese patrón y no otro de los seis.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis del laboratorio de patrones estructurales" style="display:block;width:100px;height:100px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Sigue la última familia GoF: los de comportamiento</h1>
+          <p>Con esto se completa el catálogo de <strong>patrones estructurales GoF</strong> (Adapter, Facade, Composite, Decorator, Proxy, Bridge) aplicado al proyecto propio.</p>
+          <p>La <strong>semana 14</strong> abre la última familia de la Unidad 5: los <strong>patrones GoF de Comportamiento</strong> — el martes se ven Strategy, Observer y Command; el miércoles, State, Template Method e Iterator; y el viernes cierra con Antipatrones y el laboratorio de cierre de toda la Unidad 5.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre de la sesión de patrones estructurales" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

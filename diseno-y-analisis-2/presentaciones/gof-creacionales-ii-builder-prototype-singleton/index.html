@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones GoF Creacionales II: Builder, Prototype, Singleton — Semana 12</title>
+  <meta name="description" content="Cierre del catálogo de patrones creacionales GoF: Builder, Prototype y Singleton, con la controversia de Singleton frente a la inyección de dependencias, síntesis de los cinco creacionales completos y laboratorio de implementación sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-creacionales-ii-builder-prototype-singleton/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones GoF Creacionales II: Builder, Prototype, Singleton — Semana 12" />
+  <meta property="og:description" content="Cierre del catálogo de patrones creacionales GoF: Builder, Prototype y Singleton, con la controversia de Singleton frente a la inyección de dependencias, síntesis de los cinco creacionales completos y laboratorio de implementación sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-creacionales-ii-builder-prototype-singleton/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones GoF Creacionales II: Builder, Prototype, Singleton — Semana 12" />
+  <meta name="twitter:description" content="Cierre del catálogo de patrones creacionales GoF: Builder, Prototype y Singleton, con la controversia de Singleton frente a la inyección de dependencias, síntesis de los cinco creacionales completos y laboratorio de implementación sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gof-creacionales-ii-builder-prototype-singleton.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 12 — Patrones GoF Creacionales II: Builder, Prototype, Singleton, y Laboratorio de implementación</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Familia completa de patrones creacionales GoF" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un constructor con doce parámetros<br>no es un objeto complejo — es un objeto mal construido</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cerrando la familia de creacionales GoF</h1>
+          <p>El martes vieron <strong>Factory Method</strong> y <strong>Abstract Factory</strong>, los dos primeros patrones creacionales del catálogo GoF (Gang of Four) — soluciones concretas y documentadas para problemas recurrentes de creación de objetos, un nivel más específico que los patrones GRASP de la semana 10. Hoy completan la familia con los tres patrones creacionales que faltan: <strong>Builder</strong>, <strong>Prototype</strong> y <strong>Singleton</strong>.</p>
+          <p>Con estos cinco (Factory Method, Abstract Factory, Builder, Prototype, Singleton) se cierra el catálogo completo de creacionales GoF. La segunda mitad de la sesión es el <strong>laboratorio de implementación</strong>: cada equipo aplica al menos uno de los cinco sobre su propio proyecto de Fábrica Escuela, con código real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El problema: un constructor que crece sin control</h1>
+          <pre><code>class Pedido:
+    def __init__(self, cliente, producto=None, cantidad=None,
+                 descuento=None, direccionEnvio=None, notas=None,
+                 metodoPago=None, cuponRegalo=None, prioridad=None):
+        # nueve parámetros, la mayoría opcionales
+        ...
+
+# para usarlo sin varios de esos datos, hay que pasar None
+# explícito en cada uno de los que no aplican:
+pedido = Pedido("Ana", "Teclado", 1, None, None, None, "tarjeta", None, None)</code></pre>
+          <p>A medida que <code>Pedido</code> gana parámetros opcionales, cada llamada al constructor se vuelve ilegible: hay que contar posiciones para saber qué <code>None</code> corresponde a qué dato. La alternativa de crear una combinación de <strong>constructores sobrecargados</strong> — uno por cada subconjunto de datos usado en la práctica — tampoco escala: el número de combinaciones crece más rápido que el número de parámetros.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Builder: separar la construcción de la representación</h1>
+          <p><strong>Builder</strong> (Erich Gamma et al., "Design Patterns", 1994) separa el proceso de construir un objeto complejo — con muchos parámetros opcionales o varios pasos de configuración — de su representación final, permitiendo construir el mismo proceso paso a paso y terminar con distintas configuraciones del objeto.</p>
+          <p>En vez de un constructor gigante o varias combinaciones sobrecargadas, un objeto <strong>Builder</strong> aparte expone un método por cada dato configurable, cada uno retornando el propio builder — a este estilo se le llama <strong>interfaz fluida</strong> o <strong>encadenamiento de métodos</strong> (method chaining) — y un método final que entrega el objeto ya construido.</p>
+          <img class="portada-icon" src="img/hammer.svg" alt="Builder: construcción paso a paso" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La solución: un Builder encadenable</h1>
+          <pre><code>class PedidoBuilder:
+    def conCliente(self, cliente):
+        self.pedido.cliente = cliente
+        return self          # retorna self: encadenable
+
+    def conProducto(self, producto, cantidad):
+        self.pedido.agregarLinea(producto, cantidad)
+        return self
+
+    def construir(self):
+        return self.pedido
+
+# uso:
+pedido = (PedidoBuilder()
+    .conCliente(cliente)
+    .conProducto(productoA, 2)
+    .construir())</code></pre>
+          <p>Cada llamada solo aparece si el dato aplica — no hay que pasar <code>None</code> explícito para los pasos que no se usan, y el orden de las llamadas no importa mientras <code>construir()</code> sea la última.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aclaración importante</p>
+          <h1>¿Y valores por defecto en el constructor no resuelven lo mismo?</h1>
+          <p>En lenguajes que soportan parámetros con valor por defecto (ej. <code>descuento=0</code>), es tentador pensar que eso ya resuelve el problema del constructor con muchos parámetros. Resuelve <strong>parte</strong>: evita el <code>None</code> explícito, pero no resuelve la <strong>legibilidad posicional</strong> ni los <strong>pasos de construcción con lógica propia</strong> (ej. <code>agregarLinea</code> valida stock antes de aceptar un producto).</p>
+          <p>Builder también aporta algo que los valores por defecto no dan: un <strong>objeto separado</strong> que puede acumular estado de construcción a través de varias líneas de código, e incluso ser reutilizado para construir varias variantes del mismo objeto base — algo que un constructor, con o sin valores por defecto, no permite.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cuándo usarlo</p>
+          <h1>Cuándo vale la pena un Builder — y en qué se diferencia de Factory Method</h1>
+          <ul>
+            <li>Un objeto con <strong>varios parámetros opcionales</strong> que rara vez se usan todos juntos.</li>
+            <li>Un proceso de construcción con <strong>pasos o validaciones intermedias</strong>, no solo asignación directa de atributos.</li>
+            <li>Se necesita que el mismo proceso de construcción pueda producir <strong>representaciones distintas</strong> de un objeto (ej. exportar el mismo pedido en un formato u otro).</li>
+          </ul>
+          <p><strong>Diferencia con Factory Method</strong> (martes): Factory Method resuelve <em>qué clase concreta</em> instanciar cuando hay varias posibles; Builder resuelve <em>cómo ensamblar</em> un objeto complejo paso a paso, sin importar si al final hay una sola clase o varias. Son problemas distintos y pueden combinarse: una fábrica puede usar un builder internamente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Prototype: crear clonando, no instanciando desde cero</h1>
+          <p><strong>Prototype</strong> crea nuevos objetos clonando una instancia existente (el <strong>prototipo</strong>) en lugar de instanciar la clase desde cero, dando a cada objeto un método — habitualmente <code>clonar()</code> o <code>clone()</code> — que retorna una copia de sí mismo.</p>
+          <p>Es útil cuando crear un objeto desde cero es <strong>costoso</strong> (ej. requiere consultar una base de datos o realizar cálculos pesados para dejarlo en su estado inicial) o cuando se necesita <strong>duplicar</strong> un objeto ya configurado, con pequeñas variaciones sobre esa copia, en lugar de repetir toda la configuración desde el principio.</p>
+          <img class="portada-icon" src="img/clone.svg" alt="Prototype: clonar en vez de instanciar" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El método clonar()</h1>
+          <pre><code>class ConfiguracionReporte:
+    def __init__(self, formato, filtros, columnas):
+        self.formato = formato
+        self.filtros = list(filtros)
+        self.columnas = list(columnas)
+
+    def clonar(self):
+        return ConfiguracionReporte(self.formato, self.filtros, self.columnas)
+
+# uso:
+base = ConfiguracionReporte("PDF", filtrosEstandar, columnasEstandar)
+variante = base.clonar()
+variante.formato = "Excel"</code></pre>
+          <p><code>variante</code> nace como copia exacta de <code>base</code>, y solo se le cambia el atributo que sí necesita variar — el resto de la configuración (filtros, columnas) no se vuelve a construir desde cero.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aclaración importante</p>
+          <h1>Clonar no siempre es tan simple como copiar</h1>
+          <p>Si un atributo del objeto es a su vez una lista u otro objeto (como <code>filtros</code> y <code>columnas</code> en el ejemplo anterior), <code>clonar()</code> debe decidir cómo copiarlo:</p>
+          <ul>
+            <li><strong>Copia superficial (shallow clone):</strong> se copia solo la referencia a esa lista — el original y la copia terminan <strong>compartiendo</strong> la misma lista en memoria.</li>
+            <li><strong>Copia profunda (deep clone):</strong> se crea una lista nueva con los mismos valores — modificar la copia <strong>no afecta</strong> al original.</li>
+          </ul>
+          <p>El código de la diapositiva anterior usa <code>list(...)</code> precisamente para forzar una copia profunda de esas listas. Si se hubiera copiado solo la referencia, modificar los filtros de <code>variante</code> también habría modificado silenciosamente los de <code>base</code> — un error difícil de detectar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Cuándo usarlo</p>
+          <h1>Cuándo vale la pena Prototype</h1>
+          <ul>
+            <li>Crear el objeto desde cero implica un <strong>costo real</strong>: consulta a base de datos, cálculo pesado, o inicialización con muchos pasos.</li>
+            <li>Se necesitan <strong>varias variantes</strong> de un objeto ya configurado, cambiando solo algunos atributos sobre una base común.</li>
+            <li>La clase concreta que hay que copiar <strong>no siempre se conoce de antemano</strong> en el código que hace la copia — se clona lo que se tenga a mano, sin preguntar de qué clase exacta es.</li>
+          </ul>
+          <p><strong>Diferencia con Factory Method y Abstract Factory</strong> (martes): esos dos patrones crean instancias <strong>nuevas desde cero</strong>, decidiendo qué clase concreta usar; Prototype no decide una clase — <strong>copia</strong> una instancia que ya existe y ya está configurada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Singleton: una única instancia accesible globalmente</h1>
+          <p><strong>Singleton</strong> garantiza que una clase tenga una <strong>única instancia</strong> en todo el sistema y provee un <strong>punto de acceso global y controlado</strong> a esa instancia — ningún otro código puede crear una segunda instancia de esa clase.</p>
+          <p>Se usa típicamente cuando existe un recurso que por definición debe ser único y compartido: la configuración global de la aplicación, un registro central de logs, o el acceso a un recurso que no admite múltiples instancias simultáneas.</p>
+          <img class="portada-icon" src="img/key.svg" alt="Singleton: instancia única, acceso global" style="display:block;width:110px;height:110px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El Singleton clásico: getInstancia() estático</h1>
+          <pre><code>class ConfiguracionApp:
+    _instancia = None
+
+    def __init__(self):
+        if ConfiguracionApp._instancia is not None:
+            raise Exception("Usar getInstancia(), no el constructor")
+        self.valores = cargarConfiguracion()
+
+    @staticmethod
+    def getInstancia():
+        if ConfiguracionApp._instancia is None:
+            ConfiguracionApp._instancia = ConfiguracionApp()
+        return ConfiguracionApp._instancia
+
+# uso, desde cualquier parte del código:
+config = ConfiguracionApp.getInstancia()</code></pre>
+          <p>La primera llamada a <code>getInstancia()</code> crea la única instancia; cualquier llamada posterior, desde cualquier parte del sistema, recibe esa misma instancia ya creada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Singleton es de los patrones GoF más criticados hoy</h1>
+          <p>A diferencia de Builder o Prototype, Singleton tiene una reputación mucho más discutida en la práctica moderna. El problema no es la idea de "instancia única" en sí, sino cómo <code>getInstancia()</code> la entrega: queda como <strong>estado global</strong> accesible desde cualquier punto del código, sin que quede explícito en la firma de ninguna clase que la está usando.</p>
+          <ul>
+            <li><strong>Dificulta las pruebas unitarias:</strong> el estado de la instancia única persiste entre pruebas si no se reinicia explícitamente, y no hay forma sencilla de reemplazarla por una versión de prueba.</li>
+            <li><strong>Esconde dependencias:</strong> una clase que llama a <code>ConfiguracionApp.getInstancia()</code> en medio de su código no declara esa dependencia en su constructor — hay que leer el cuerpo del método para descubrirla.</li>
+            <li><strong>Si se usa para "todo":</strong> termina funcionando como una bolsa global de estado compartido, lo que viola la cohesión de responsabilidad vista en la semana 7.</li>
+          </ul>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Singleton en tensión con estado global y pruebas unitarias" style="display:block;width:110px;height:110px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Alternativa moderna</p>
+          <h1>La alternativa: ciclo de vida único, gestionado por fuera</h1>
+          <p>Por estas críticas, muchos equipos hoy prefieren lograr "una sola instancia compartida" con <strong>inyección de dependencias</strong> (DI, técnica vista junto con DIP en la semana 9) en lugar de un Singleton clásico: se crea una única instancia del objeto en un punto central de arranque de la aplicación, y esa misma instancia se <strong>inyecta por constructor</strong> a cada clase que la necesita.</p>
+          <p>La diferencia clave: con DI la dependencia queda <strong>explícita</strong> en el constructor de cada clase — se puede ver, y se puede reemplazar por una versión de prueba en un test — mientras que con <code>getInstancia()</code> estático la dependencia queda <strong>oculta</strong> dentro del cuerpo del método. El resultado (una sola instancia compartida) es el mismo; lo que cambia es qué tan visible y reemplazable es esa dependencia.</p>
+          <p>Esto no invalida a Singleton — sigue siendo razonable en casos simples, sin necesidad real de aislarlo en pruebas — pero conocer la controversia evita aplicarlo por defecto sin pensarlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cuál de los cinco patrones creacionales aplica?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los cinco patrones creacionales (Factory Method, Abstract Factory, Builder, Prototype o Singleton) es la mejor opción:</p>
+          <ol>
+            <li>Una clase de configuración de reportes con nueve parámetros opcionales, donde casi nunca se usan todos a la vez.</li>
+            <li>Un objeto de configuración ya armado, con datos costosos de calcular, del cual se necesitan variantes menores.</li>
+            <li>Un registro central de auditoría del que debe existir una sola instancia en toda la aplicación.</li>
+            <li>Una función que decide, según el tipo de documento recibido, qué clase concreta de validador instanciar.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los cinco patrones creacionales GoF, completos</h1>
+          <table>
+            <thead><tr><th>Patrón</th><th>Idea central</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Factory Method</strong></td><td>Delegar en una subclase qué clase concreta instanciar</td></tr>
+              <tr><td><strong>Abstract Factory</strong></td><td>Crear familias completas de objetos relacionados sin acoplarse a sus clases concretas</td></tr>
+              <tr><td><strong>Builder</strong></td><td>Separar la construcción paso a paso de un objeto complejo de su representación final</td></tr>
+              <tr><td><strong>Prototype</strong></td><td>Crear objetos nuevos clonando una instancia existente en vez de instanciar desde cero</td></tr>
+              <tr><td><strong>Singleton</strong></td><td>Garantizar una única instancia de una clase, con acceso global controlado (con las reservas vistas hoy)</td></tr>
+            </tbody>
+          </table>
+          <p>Con esto se completa el catálogo de creacionales GoF, iniciado el martes con Factory Method y Abstract Factory.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de los cinco patrones creacionales" style="display:block;width:100px;height:100px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora, a implementarlos sobre el proyecto real</h1>
+          <p>Los cinco patrones se vieron con ejemplos de clase. El resto de la sesión es el <strong>laboratorio de implementación de patrones creacionales</strong>: cada equipo busca en su propio proyecto de Fábrica Escuela un punto donde la creación de objetos podría beneficiarse de alguno de los cinco patrones vistos (martes + hoy), y lo implementa con código real.</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio de implementación de patrones creacionales" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Laboratorio: implementación de patrones creacionales</h1>
+          <p><strong>Trabajo en equipo — el mismo equipo del proyecto de Fábrica Escuela conformado desde la semana 2.</strong></p>
+          <ul>
+            <li>Revisen el código actual de su proyecto y ubiquen <strong>al menos un punto</strong> donde la creación de un objeto sea compleja, repetitiva o poco flexible: constructores con muchos parámetros, instanciación directa de clases concretas, objetos costosos de recrear, un recurso que debería ser único, etc.</li>
+            <li>Elijan cuál de los <strong>cinco patrones creacionales</strong> (Factory Method, Abstract Factory, Builder, Prototype o Singleton) resuelve mejor ese punto específico — no hace falta usar más de uno.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Trabajo en equipo sobre el proyecto propio" style="display:block;width:120px;height:120px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Implementación y justificación</h1>
+          <ul>
+            <li>Impleméntenlo con <strong>código real</strong> sobre su proyecto — o <strong>pseudocódigo suficientemente detallado</strong> si esa parte del sistema aún no está construida.</li>
+            <li>Además del código, escriban una <strong>nota corta</strong> que justifique la elección: por qué ese patrón y no otro de los cinco, y qué problema concreto de creación resolvía en su proyecto.</li>
+            <li>Si consideraron un patrón y terminaron usando otro (ej. "pensamos en Factory Method pero el problema real era la cantidad de parámetros opcionales, así que usamos Builder"), vale la pena dejarlo escrito — es evidencia de que la elección fue consciente.</li>
+          </ul>
+          <p class="slide-eyebrow">Durante la sesión · trabajo en equipo sobre el proyecto propio</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable y cierre del laboratorio</h1>
+          <ul>
+            <li><strong>Formato exacto:</strong> código funcional (o pseudocódigo detallado) que aplique al menos un patrón creacional al proyecto propio, más la nota corta de justificación, en el repositorio o herramienta de gestión del equipo.</li>
+            <li>Debe quedar identificable qué <strong>patrón</strong> se aplicó, en qué clase u objeto, y <strong>por qué</strong> se eligió ese y no otro.</li>
+            <li>Quien no alcance a terminar durante la sesión puede completarlo <strong>antes de la próxima clase</strong>.</li>
+          </ul>
+          <p>Esta implementación es parte del código que los equipos estarán mostrando en la <strong>Entrega 2 de Fábrica Escuela (15%)</strong>, que se presenta el miércoles de esta semana en el Review Sprint 2 de Coworking — esa sesión no es hoy, pero el trabajo de hoy alimenta directamente esa entrega.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Qué debieron lograr en este laboratorio</h1>
+          <ol>
+            <li>Identificar un punto real de su proyecto donde la creación de objetos podría mejorar.</li>
+            <li>Elegir, entre los cinco patrones creacionales vistos (martes + hoy), el más adecuado para ese punto.</li>
+            <li>Implementarlo con código real o pseudocódigo suficientemente detallado.</li>
+            <li>Dejar por escrito por qué se eligió ese patrón y no otro de los cinco.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis del laboratorio de patrones creacionales" style="display:block;width:100px;height:100px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Sigue la segunda familia GoF: los estructurales</h1>
+          <p>Con esto se completa el catálogo de <strong>patrones creacionales GoF</strong> (Factory Method, Abstract Factory, Builder, Prototype, Singleton) aplicado al proyecto propio.</p>
+          <p>La <strong>semana 13</strong> abre la siguiente familia de la Unidad 5: los <strong>patrones GoF Estructurales</strong> — el martes se ven los primeros, y el viernes los restantes junto con su propio laboratorio de implementación.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre de la sesión de patrones creacionales" style="display:block;width:170px;height:170px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 24</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

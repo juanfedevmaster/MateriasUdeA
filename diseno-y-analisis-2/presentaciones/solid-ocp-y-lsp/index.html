@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLID: OCP y LSP — Semana 8</title>
+  <meta name="description" content="Segundo y tercer principio SOLID: Open/Closed (abierto a extensión, cerrado a modificación) y Liskov Substitution (sustitución segura de subtipos). Retoma el caso Cuadrado-Rectángulo de la semana 7 — Análisis y Diseño de Sistemas II, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/solid-ocp-y-lsp/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="SOLID: OCP y LSP — Semana 8" />
+  <meta property="og:description" content="Segundo y tercer principio SOLID: Open/Closed (abierto a extensión, cerrado a modificación) y Liskov Substitution (sustitución segura de subtipos). Retoma el caso Cuadrado-Rectángulo de la semana 7 — Análisis y Diseño de Sistemas II, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/solid-ocp-y-lsp/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SOLID: OCP y LSP — Semana 8" />
+  <meta name="twitter:description" content="Segundo y tercer principio SOLID: Open/Closed (abierto a extensión, cerrado a modificación) y Liskov Substitution (sustitución segura de subtipos). Retoma el caso Cuadrado-Rectángulo de la semana 7 — Análisis y Diseño de Sistemas II, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/solid-ocp-y-lsp.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 8 — SOLID: Open/Closed (OCP) y Liskov Substitution (LSP)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Abierto a extensión, cerrado a modificación" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Cada vez que llega un caso nuevo, alguien edita<br>el mismo switch — y algo que ya funcionaba se rompe</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Dos principios más para cerrar la Unidad 4</h1>
+          <p>El martes vimos <strong>SRP</strong>: una clase, una razón para cambiar. Hoy vemos los dos principios que le siguen en el acrónimo SOLID: <strong>Open/Closed (O)</strong>, sobre cómo agregar comportamiento sin arriesgar lo que ya funciona, y <strong>Liskov Substitution (L)</strong>, sobre cuándo una subclase puede reemplazar a su superclase con seguridad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El switch que crece con cada tipo nuevo</h1>
+          <pre><code>class CalculadoraDeDescuento:
+    def calcular(self, tipo_cliente, monto):
+        if tipo_cliente == "regular":
+            return monto * 0.0
+        elif tipo_cliente == "frecuente":
+            return monto * 0.05
+        elif tipo_cliente == "vip":
+            return monto * 0.10
+        # cada cliente nuevo = una rama más aquí</code></pre>
+          <p>Agregar un tipo de cliente <strong>"corporativo"</strong> exige abrir esta clase, editar un método que ya estaba probado y funcionando, y volver a probar todo el <code>if/elif</code> completo — no solo el caso nuevo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El problema: tocar código que ya funciona</h1>
+          <p>Cada vez que se modifica un método que ya estaba en producción y ya tenía pruebas pasando, se corre el riesgo de introducir una <strong>regresión</strong>: romper un caso que antes funcionaba, al intentar agregar uno nuevo.</p>
+          <p>El <code>if/elif</code> del ejemplo anterior mezcla en un mismo bloque de código la lógica de <strong>todos</strong> los tipos de cliente, presentes y futuros — cualquier cambio, por pequeño que sea, pasa por el mismo punto de falla único.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición formal de OCP</h1>
+          <p><strong>Open/Closed Principle:</strong> las entidades de software (clases, módulos, funciones) deben estar <strong>abiertas a extensión</strong> pero <strong>cerradas a modificación</strong>.</p>
+          <ul>
+            <li><strong>Abierta a extensión:</strong> se puede agregar comportamiento nuevo cuando el sistema lo necesite.</li>
+            <li><strong>Cerrada a modificación:</strong> agregar ese comportamiento nuevo no debería requerir editar el código fuente que ya existe, probado y en producción.</li>
+          </ul>
+          <p>El principio lo formuló originalmente Bertrand Meyer en 1988 y Robert C. Martin lo incorporó como la "O" de SOLID.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La solución: polimorfismo en vez de condicionales</h1>
+          <p>La semana pasada vimos que una <strong>interfaz</strong> es un contrato que varias clases pueden implementar, cada una con su propio comportamiento, y que el <strong>polimorfismo de subtipo</strong> permite tratarlas todas de manera uniforme. Esa es exactamente la herramienta que resuelve OCP.</p>
+          <pre><code>interface EstrategiaDeDescuento:
+    def calcular(self, monto): ...
+
+class DescuentoRegular implements EstrategiaDeDescuento:
+    def calcular(self, monto): return monto * 0.0
+
+class DescuentoFrecuente implements EstrategiaDeDescuento:
+    def calcular(self, monto): return monto * 0.05</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Agregar un caso nuevo, sin tocar el viejo</h1>
+          <pre><code>class DescuentoVip implements EstrategiaDeDescuento:
+    def calcular(self, monto): return monto * 0.10
+
+class DescuentoCorporativo implements EstrategiaDeDescuento:
+    def calcular(self, monto): return monto * 0.15  # clase NUEVA
+
+def aplicar_descuento(estrategia: EstrategiaDeDescuento, monto):
+    return estrategia.calcular(monto)  # este código nunca cambia</code></pre>
+          <p><code>DescuentoCorporativo</code> se agrega como una <strong>clase nueva</strong>. <code>aplicar_descuento()</code> y todas las estrategias anteriores <strong>quedan intactas</strong> — literalmente cerradas a modificación, abiertas a extensión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué importa: el costo de re-probar</h1>
+          <ul>
+            <li><strong>Menos riesgo de regresión:</strong> el código que calculaba el descuento "vip" nunca se vuelve a tocar al agregar "corporativo".</li>
+            <li><strong>Pruebas más baratas:</strong> solo hay que escribir y correr pruebas nuevas para <code>DescuentoCorporativo</code>, no repetir toda la suite del método gigante.</li>
+            <li><strong>Despliegue más seguro:</strong> un cambio aislado en una clase nueva es más fácil de revisar en un pull request que un diff dentro de un método de 40 líneas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>OCP no significa "prever todo desde el día uno"</h1>
+          <p>Un error común es leer OCP como licencia para <strong>sobre-diseñar</strong>: crear interfaces y jerarquías de estrategias "por si acaso" se necesitan en el futuro, sin que exista todavía una variación real. Eso agrega complejidad e indirección que nadie usa.</p>
+          <p><strong>OCP se aplica cuando el punto de variación ya se conoce o ya se repitió</strong> —como los tipos de descuento, que cambian cada trimestre—, no de forma especulativa sobre un caso que quizás nunca llegue. Empezar simple (incluso con un <code>if</code>) y refactorizar hacia OCP cuando aparece el segundo o tercer caso real suele ser mejor que anticiparlo todo.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Extensibilidad en tensión con sobre-diseño" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Aplicar OCP ahora o esperar?</h1>
+          <p>En el chat, para cada escenario decidan si conviene introducir polimorfismo ya (OCP) o esperar a que aparezca un segundo caso real:</p>
+          <ol>
+            <li>Un sistema de facturación que hoy solo calcula IVA, y no hay planes de otro impuesto.</li>
+            <li>Un validador de formularios que ya tiene tres tipos de campo y el negocio anuncia dos más el próximo mes.</li>
+            <li>Un método que exporta reportes solo a PDF, "por si algún día" piden Excel.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>La extensión con polimorfismo tiene una condición oculta</h1>
+          <p>La solución de OCP funciona porque <code>aplicar_descuento()</code> confía en que <strong>cualquier</strong> implementación de <code>EstrategiaDeDescuento</code> se va a comportar de forma consistente. Esa confianza no es automática: es exactamente lo que garantiza el tercer principio de hoy.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición formal de LSP</h1>
+          <p><strong>Liskov Substitution Principle</strong> (Barbara Liskov, 1987): los objetos de una subclase deben poder <strong>sustituir</strong> a los objetos de su superclase en cualquier parte del programa, <strong>sin alterar la corrección</strong> de ese programa.</p>
+          <p>En otras palabras: si <code>B</code> es subclase de <code>A</code>, cualquier código escrito para trabajar con <code>A</code> debe seguir funcionando correctamente si en su lugar recibe un objeto de tipo <code>B</code> — sin que el código que lo usa necesite saberlo ni adaptarse.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Cuadrado–Rectángulo: la violación clásica de LSP</h1>
+          <pre><code>class Rectangulo:
+    def set_ancho(self, a): self.ancho = a
+    def set_alto(self, h): self.alto = h
+
+class Cuadrado(Rectangulo):
+    def set_ancho(self, a):
+        self.ancho = a; self.alto = a
+    def set_alto(self, h):
+        self.ancho = h; self.alto = h
+
+def probar(r: Rectangulo):
+    r.set_ancho(5); r.set_alto(4)
+    assert r.ancho * r.alto == 20   # falla si r es Cuadrado</code></pre>
+          <p>La semana pasada vimos este código sin nombrar el problema. Ahora sí: <code>Cuadrado</code> no puede <strong>sustituir</strong> a <code>Rectangulo</code> en <code>probar()</code> sin romper una suposición válida — es el ejemplo canónico de violación de LSP.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Señales de violación de LSP</h1>
+          <table>
+            <thead><tr><th>Señal</th><th>Qué implica</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Excepciones nuevas</strong></td><td>La subclase lanza una excepción en un método donde la superclase nunca lanzaba nada</td></tr>
+              <tr><td><strong>Precondiciones más fuertes</strong></td><td>La subclase exige condiciones de entrada más estrictas que las que la superclase aceptaba</td></tr>
+              <tr><td><strong>Postcondiciones más débiles</strong></td><td>La subclase entrega un resultado que cumple menos garantías que las que la superclase prometía</td></tr>
+              <tr><td><strong>Efecto secundario inesperado</strong></td><td>Un método que en la superclase no modificaba cierto estado, en la subclase sí lo hace (como <code>set_ancho</code> alterando <code>alto</code> en <code>Cuadrado</code>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Precondición y postcondición, con código</h1>
+          <p><strong>Precondición:</strong> lo que un método exige para poder ejecutarse. <strong>Postcondición:</strong> lo que un método garantiza al terminar. Una subclase viola LSP si es más exigente al entrar o cumple menos al salir que su superclase.</p>
+          <pre><code>class RepositorioDeArchivos:
+    def guardar(self, archivo):
+        ...  # acepta cualquier tamaño de archivo
+
+class RepositorioDeArchivosEnCache(RepositorioDeArchivos):
+    def guardar(self, archivo):
+        if archivo.tamano > 1024:
+            raise ValueError("archivo muy grande")  # precondición NUEVA
+        ...</code></pre>
+          <p>Cualquier código que ya llamaba <code>guardar()</code> confiando en la superclase puede romperse al recibir la subclase — precondición fortalecida sin aviso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>LSP es lo que hace segura a la herencia</h1>
+          <p>La semana pasada listamos cuándo <strong>no</strong> usar herencia, y uno de los criterios era: "cuando heredar rompe el comportamiento esperado de la superclase, la subclase debería poder sustituirla sin sorpresas". Eso era LSP dicho en palabras — hoy queda con nombre y reglas verificables.</p>
+          <p><strong>LSP no prohíbe la herencia: le pone una condición.</strong> Una jerarquía de herencia es segura de usar exactamente cuando toda subclase cumple LSP frente a su superclase — si no lo cumple, la relación "es-un" que parecía obvia en el dominio no debería modelarse como herencia.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Lo que viene</p>
+          <h1>OCP y LSP se necesitan mutuamente</h1>
+          <p>OCP propone extender el sistema agregando subclases o implementaciones nuevas, sin tocar el código existente. Eso solo es seguro si esas subclases <strong>cumplen LSP</strong> frente a la superclase o interfaz que extienden — si no la cumplen, "extender" en realidad significa "romper" en algún punto del sistema.</p>
+          <p><strong>Los cinco principios SOLID se apoyan entre sí:</strong> SRP ordena las responsabilidades, OCP dice cómo crecer sin arriesgar lo existente, y LSP garantiza que esa forma de crecer —agregando subtipos— sea segura.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>OCP:</strong> abierto a extensión, cerrado a modificación — agregar comportamiento sin tocar código ya probado.</li>
+            <li>El polimorfismo/interfaces (semana 7) es la herramienta que hace posible OCP en la práctica.</li>
+            <li>OCP se aplica sobre puntos de variación conocidos o repetidos — no de forma especulativa.</li>
+            <li><strong>LSP:</strong> toda subclase debe poder sustituir a su superclase sin alterar la corrección del programa.</li>
+            <li>Señales de violación de LSP: excepciones nuevas, precondiciones más fuertes, postcondiciones más débiles.</li>
+            <li>LSP es el criterio formal que decide si una relación de herencia es segura de usar.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:130px;height:130px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p>Revisen las jerarquías de herencia de su modelo de diseño: para cada subclase, pregúntense si puede sustituir a su superclase sin lanzar excepciones nuevas ni exigir condiciones adicionales. Si alguna no puede, tráiganla identificada.</p>
+          <p><strong>La semana 9 cierra la Unidad 4</strong> con los dos principios SOLID que faltan —<strong>Interface Segregation</strong> y <strong>Dependency Inversion</strong>— y un laboratorio de casos de estudio aplicando los cinco principios completos.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:170px;height:170px;margin:16px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

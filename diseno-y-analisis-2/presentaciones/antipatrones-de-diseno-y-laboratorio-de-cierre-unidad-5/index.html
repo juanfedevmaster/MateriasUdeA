@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antipatrones de Diseño y Laboratorio de Cierre de la Unidad 5 — Semana 14</title>
+  <meta name="description" content="God Object, Spaghetti Code, Golden Hammer, Copy-Paste Programming y Lava Flow: los antipatrones clásicos como consecuencia de no aplicar SOLID, GRASP y GoF, y laboratorio de cierre de toda la Unidad 5 sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/antipatrones-de-diseno-y-laboratorio-de-cierre-unidad-5/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Antipatrones de Diseño y Laboratorio de Cierre de la Unidad 5 — Semana 14" />
+  <meta property="og:description" content="God Object, Spaghetti Code, Golden Hammer, Copy-Paste Programming y Lava Flow: los antipatrones clásicos como consecuencia de no aplicar SOLID, GRASP y GoF, y laboratorio de cierre de toda la Unidad 5 sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/antipatrones-de-diseno-y-laboratorio-de-cierre-unidad-5/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Antipatrones de Diseño y Laboratorio de Cierre de la Unidad 5 — Semana 14" />
+  <meta name="twitter:description" content="God Object, Spaghetti Code, Golden Hammer, Copy-Paste Programming y Lava Flow: los antipatrones clásicos como consecuencia de no aplicar SOLID, GRASP y GoF, y laboratorio de cierre de toda la Unidad 5 sobre el proyecto de curso — Análisis y Diseño de Sistemas II, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/antipatrones-de-diseno-y-laboratorio-de-cierre-unidad-5.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 14 — Antipatrones de Diseño de Software y Laboratorio de Cierre de la Unidad 5</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/bug.svg" alt="Antipatrones de diseño de software" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>La misma solución que evitó un problema hace un año<br>hoy es la que nadie se atreve a tocar</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De los patrones que funcionan a lo que sale mal sin ellos</h1>
+          <p>El martes vieron <strong>Strategy, Observer y Command</strong>; el miércoles, <strong>State, Template Method e Iterator</strong>. Con eso se completó el catálogo de patrones de comportamiento GoF y las cuatro familias de patrones de esta unidad: GRASP (semana 10), creacionales (semana 12), estructurales (semana 13) y comportamiento (semana 14).</p>
+          <p>Hoy no se ve un patrón nuevo. Se ve qué pasa cuando esos patrones <strong>no se aplican, se aplican mal, o se ignoran</strong>: los antipatrones. La segunda mitad de la sesión es el <strong>laboratorio de cierre de la Unidad 5 completa</strong>, donde cada equipo busca antipatrones en su propio proyecto y repasa los patrones que ya aplicó.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un antipatrón</h1>
+          <p>Un <strong>patrón de diseño</strong> es una solución probada y recomendada a un problema recurrente — los GRASP y los GoF vistos en las últimas cinco semanas son ejemplos. Un <strong>antipatrón</strong> es distinto: es una solución que a primera vista parece razonable, e incluso resuelve el problema inmediato, pero que se repite tanto en la práctica de la industria que terminó documentada con nombre propio — y que, sostenida en el tiempo, produce <strong>más problemas de los que resolvió</strong>.</p>
+          <p>Casi ningún equipo elige un antipatrón a propósito. Aparece de forma gradual: una decisión razonable en el momento, que nunca se revisa después, y que termina consolidándose como "la forma normal de hacer las cosas" en ese proyecto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué se ven al final de la unidad, y no al principio</h1>
+          <p>Reconocer un antipatrón exige primero saber cómo se ve una solución bien aplicada. Por eso los antipatrones se ven después de las nueve GRASP, los cinco creacionales, los seis estructurales y los seis de comportamiento GoF — no antes.</p>
+          <p>Varios de los que se ven hoy ya aparecieron de pasada, sin nombre propio, en semanas anteriores del curso: hoy se formalizan como antipatrones con nombre, y se conecta cada uno con el principio o patrón que, de haberse aplicado bien, lo habría evitado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>God Object / God Class</h1>
+          <p>Un <strong>God Object</strong> (o God Class) es una clase que acumula demasiadas responsabilidades y termina conociendo o controlando una porción desproporcionada del sistema. En vez de colaborar con otras clases especializadas, todo pasa por ella: validaciones, cálculos, persistencia, notificaciones, reportes.</p>
+          <p>Ya se insinuó dos veces antes en el curso, sin llamarlo por su nombre: en la <strong>semana 7</strong>, al hablar de una clase con demasiadas razones para cambiar (baja cohesión); y en la <strong>semana 10</strong>, como <strong>"God Controller"</strong>, cuando un único Controller GRASP concentraba toda la lógica de una operación en vez de delegarla a colaboradores.</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="God Object: una clase que conoce y controla demasiado del sistema" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Una sola clase haciendo de todo</h1>
+          <pre><code>class GestorMatricula:
+    def validar_prerrequisitos(self, estudiante, curso): ...
+    def calcular_costo_semestre(self, estudiante): ...
+    def guardar_en_base_de_datos(self, matricula): ...
+    def generar_pdf_recibo(self, matricula): ...
+    def enviar_correo_confirmacion(self, estudiante): ...
+    def generar_reporte_financiero(self, periodo): ...
+    def validar_cupos_disponibles(self, curso): ...
+# una clase, siete responsabilidades sin relación entre sí</code></pre>
+          <p><code>GestorMatricula</code> mezcla reglas de negocio, acceso a datos, generación de documentos, notificaciones y reportería. Cualquier cambio en cualquiera de esas áreas obliga a tocar la misma clase, y cualquier prueba unitaria arrastra todas las demás responsabilidades.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>God Object es la negación directa de High Cohesion y SRP</h1>
+          <p><strong>High Cohesion</strong> (GRASP, semana 10) pide asignar responsabilidades de modo que una clase se mantenga enfocada y manejable. <strong>Single Responsibility</strong> (SOLID, semana 8) pide que una clase tenga una sola razón para cambiar. God Object es lo que ocurre cuando ninguna de las dos se respeta de forma sostenida: cada responsabilidad nueva se agrega a la misma clase porque "ya está ahí y es fácil", en vez de crear una colaboradora.</p>
+          <p><strong>Corrección típica:</strong> identificar las responsabilidades mezcladas y extraerlas en clases nuevas, usando <strong>Information Expert</strong> (¿quién tiene los datos para hacer cada cosa?) para decidir a cuál colaboradora le corresponde cada una.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Spaghetti Code</h1>
+          <p><strong>Spaghetti Code</strong> es código con flujo de control enredado, sin una estructura modular clara — como los hilos de un plato de espagueti, es difícil seguir una sola "hebra" de lógica sin perderse en las demás, y modificar una parte suele romper otra sin que sea obvio por qué.</p>
+          <p>Aparece con frecuencia como cadenas largas de condicionales anidados (<code>if/elif</code> profundos o <code>switch</code> gigantes) que deciden el comportamiento según un tipo o un estado, en vez de delegar esa decisión a una clase especializada.</p>
+          <img class="portada-icon" src="img/shuffle.svg" alt="Spaghetti Code: flujo de control enredado" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Condicionales anidados donde ya había un patrón para esto</h1>
+          <pre><code>def calcular_envio(tipo, estado_pedido, peso):
+    if tipo == "aereo":
+        if estado_pedido == "pendiente":
+            ...
+        elif estado_pedido == "en_transito":
+            ...
+    elif tipo == "terrestre":
+        if estado_pedido == "pendiente":
+            ...
+        elif estado_pedido == "en_transito":
+            ...
+    elif tipo == "maritimo":
+        ...  # y sigue creciendo con cada tipo nuevo</code></pre>
+          <p>Esta es la estructura que <strong>Strategy</strong> (martes) resuelve delegando el algoritmo variable (el tipo de envío) a una clase intercambiable, o que <strong>State</strong> (miércoles) resuelve delegando el comportamiento dependiente del estado a una jerarquía de clases estado. Spaghetti Code, muchas veces, es la señal de que un patrón de comportamiento ya visto en la unidad hacía falta y no se aplicó.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Golden Hammer</h1>
+          <p><strong>Golden Hammer</strong> es aplicar la misma solución, patrón o tecnología favorita a todos los problemas, sin evaluar si realmente encaja — la idea popular de "si solo tienes un martillo, todo parece un clavo".</p>
+          <p>No es un antipatrón de código enredado como los dos anteriores: es un antipatrón de <strong>criterio de diseño</strong>. Ocurre cuando un equipo (o una persona) domina bien una herramienta y, en vez de evaluar cada problema nuevo por sus propios méritos, fuerza esa misma herramienta una y otra vez.</p>
+          <img class="portada-icon" src="img/hammer.svg" alt="Golden Hammer: la misma solución para todos los problemas" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Un nombre para varias advertencias que ya escucharon</h1>
+          <p>Golden Hammer agrupa, bajo un solo nombre, varias tensiones ya vistas en el curso sin llamarlas antipatrón:</p>
+          <ul>
+            <li><strong>DIP (semana 9):</strong> crear una interfaz para cada clase, aunque el detalle nunca vaya a cambiar.</li>
+            <li><strong>Pure Fabrication (semana 10):</strong> fabricar clases artificiales de más, donde una solución simple bastaba.</li>
+            <li><strong>Strategy / Adapter en exceso (semanas 13-14):</strong> encapsular una variación que en la práctica no existe ni se espera.</li>
+          </ul>
+          <p>En el fondo, un patrón aplicado sin que el problema realmente lo amerite es, ni más ni menos, <strong>Golden Hammer</strong> — la solución favorita del equipo, disfrazada de buena práctica.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Copy-Paste Programming</h1>
+          <p><strong>Copy-Paste Programming</strong> (duplicación de código) es resolver un problema nuevo copiando y pegando código existente con pequeñas modificaciones, en vez de abstraer la lógica común en un solo lugar (una función, una clase, un método de plantilla).</p>
+          <p>El riesgo principal no es solo el volumen de código repetido: es que, cuando se encuentra un error en la lógica compartida, se corrige en la copia que se está mirando y <strong>no en las demás</strong> — porque nadie recuerda cuántas copias existen ni dónde quedaron.</p>
+          <img class="portada-icon" src="img/copy.svg" alt="Copy-Paste Programming: duplicar en vez de abstraer" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El mismo cálculo, copiado tres veces</h1>
+          <pre><code>class ReporteMatricula:
+    def calcular_total(self, items):
+        subtotal = sum(i.precio * i.cantidad for i in items)
+        return subtotal * 1.19          # IVA
+
+class ReporteMaterial:
+    def calcular_total(self, items):
+        subtotal = sum(i.precio * i.cantidad for i in items)
+        return subtotal * 1.19          # IVA, copiado y pegado
+
+class ReporteExtension:
+    def calcular_total(self, items):
+        subtotal = sum(i.precio * i.cantidad for i in items)
+        return subtotal * 1.18          # <- copiado con un error: 1.18, no 1.19</code></pre>
+          <p>Cuando cambie la tarifa del IVA, alguien tendrá que recordar que existen tres copias — y, como ya pasó en <code>ReporteExtension</code>, una copia puede quedar con un valor distinto sin que nadie lo note. Extraer <code>calcular_total</code> a un solo lugar común elimina el riesgo de raíz.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Lava Flow</h1>
+          <p><strong>Lava Flow</strong> es código muerto o de dudosa utilidad que nadie se atreve a eliminar por miedo a romper algo, porque ya nadie entiende bien para qué servía. El nombre evoca la lava de un volcán: fluyó una vez con un propósito, pero quedó <strong>solidificada</strong> en el sistema mucho después de que ese propósito dejara de existir.</p>
+          <p>Suele aparecer tras requisitos que cambiaron sin limpiar el código anterior, refactorizaciones que quedaron a medias, o código de prueba/prototipo que migró a producción sin depurarse. Cada bloque de Lava Flow que se acumula hace más lento y más riesgoso cualquier cambio futuro en esa zona del sistema.</p>
+          <img class="portada-icon" src="img/skull.svg" alt="Lava Flow: código muerto que nadie se atreve a eliminar" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual · Cierre del arco</p>
+          <h1>Los antipatrones son, casi siempre, principios no aplicados</h1>
+          <p>Ninguno de los cinco antipatrones de hoy es un problema "nuevo" e independiente de lo visto en el curso: cada uno es la sombra de un principio o patrón de las <strong>Unidades 4 y 5</strong> que no se aplicó, o que se aplicó a medias.</p>
+          <ul>
+            <li><strong>God Object</strong> ← falta de High Cohesion / SRP.</li>
+            <li><strong>Spaghetti Code</strong> ← falta de un patrón de comportamiento donde hacía falta.</li>
+            <li><strong>Golden Hammer</strong> ← un patrón aplicado sin que el problema lo pidiera.</li>
+            <li><strong>Copy-Paste Programming</strong> ← falta de abstracción de lo común.</li>
+            <li><strong>Lava Flow</strong> ← falta de disciplina de refactorización sostenida.</li>
+          </ul>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Antipatrones como principios no aplicados o desbalanceados" style="display:block;width:110px;height:110px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los cinco antipatrones de hoy</h1>
+          <table>
+            <thead><tr><th>Antipatrón</th><th>Problema central</th><th>Lo que lo evita o corrige</th></tr></thead>
+            <tbody>
+              <tr><td><strong>God Object</strong></td><td>Una clase acumula demasiadas responsabilidades</td><td>High Cohesion (GRASP) / SRP (SOLID)</td></tr>
+              <tr><td><strong>Spaghetti Code</strong></td><td>Flujo de control enredado por condicionales anidados</td><td>Strategy / State (GoF comportamiento)</td></tr>
+              <tr><td><strong>Golden Hammer</strong></td><td>La misma solución para todos los problemas, sin evaluar si encaja</td><td>Aplicar patrones con criterio real, no por costumbre</td></tr>
+              <tr><td><strong>Copy-Paste Programming</strong></td><td>Duplicar código en vez de abstraer lo común</td><td>Template Method / extraer una función o clase compartida</td></tr>
+              <tr><td><strong>Lava Flow</strong></td><td>Código muerto que nadie se atreve a eliminar</td><td>Refactorización disciplinada y sostenida (Unidad 6)</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de los cinco antipatrones" style="display:block;width:100px;height:100px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Cuál antipatrón reconocen en cada caso?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los cinco antipatrones vistos hoy (God Object, Spaghetti Code, Golden Hammer, Copy-Paste Programming o Lava Flow) describe mejor la situación:</p>
+          <ol>
+            <li>Una clase <code>Sistema</code> tiene 40 métodos, valida usuarios, calcula notas, genera certificados y envía correos — todo en la misma clase.</li>
+            <li>Un módulo de reportes tiene tres funciones casi idénticas que calculan el mismo total, cada una copiada de la anterior con un pequeño ajuste.</li>
+            <li>Nadie del equipo actual sabe para qué sirve un archivo de 300 líneas, pero nadie se atreve a borrarlo por si algo más lo usa.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Ahora, a buscarlos en su propio proyecto</h1>
+          <p>Los cinco antipatrones se vieron con ejemplos de clase. El resto de la sesión es el <strong>laboratorio de cierre de la Unidad 5 completa</strong>: cada equipo revisa su propio diseño del proyecto de Fábrica Escuela buscando antipatrones reales o potenciales, y repasa los patrones GRASP y GoF que ya aplicó a lo largo de las semanas 10 a 14.</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio de cierre de la Unidad 5" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Laboratorio de cierre — parte 1: antipatrones en su proyecto</h1>
+          <p><strong>Trabajo en equipo — el mismo equipo del proyecto de Fábrica Escuela conformado desde la semana 2.</strong></p>
+          <ul>
+            <li>Revisen el <strong>diagrama de clases y de secuencia de diseño</strong> actual, junto con el código ya construido de su proyecto.</li>
+            <li>Identifiquen <strong>al menos un antipatrón</strong> real o potencial presente en su propio diseño — de los cinco vistos hoy, u otro que reconozcan y sepan justificar.</li>
+            <li>Para cada antipatrón identificado, propongan una <strong>corrección concreta</strong>: qué clase, método o responsabilidad cambiaría, y citando explícitamente <strong>qué patrón GRASP o GoF</strong> de los vistos en la unidad (semanas 10 a 14) resolvería el problema.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Trabajo en equipo sobre el proyecto propio" style="display:block;width:120px;height:120px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Parte 2: repaso de los patrones ya aplicados en la unidad</h1>
+          <ul>
+            <li>Hagan un <strong>repaso breve</strong> de qué patrones GRASP y/o GoF ya aplicaron a lo largo de la Unidad 5: en el laboratorio de patrones GRASP (semana 11), en el laboratorio de patrones creacionales (semana 12) y en el laboratorio de patrones estructurales (semana 13).</li>
+            <li>Para cada patrón aplicado, confirmen si sigue teniendo sentido a la luz de lo visto hoy, o si alguno merece <strong>revisión</strong> — por ejemplo, si al revisarlo hoy reconocen que en realidad fue un caso de Golden Hammer.</li>
+            <li>No es necesario rehacer el trabajo ya entregado: es un chequeo de coherencia general del diseño, no una nueva implementación.</li>
+          </ul>
+          <p class="slide-eyebrow">Durante el resto de la sesión · trabajo en equipo sobre el proyecto propio</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable y cierre del laboratorio</h1>
+          <ul>
+            <li><strong>Formato exacto:</strong> un documento breve (markdown o la herramienta de gestión del proyecto del equipo) que liste el o los <strong>antipatrones identificados</strong> en su propio proyecto, la <strong>corrección propuesta</strong> para cada uno y el <strong>patrón GRASP o GoF</strong> citado para corregirla.</li>
+            <li>Debe incluir también el repaso breve de la parte 2: qué patrones ya se aplicaron en la unidad y si alguno quedó marcado para revisión.</li>
+            <li>Este análisis es <strong>preparación directa</strong> para el diseño de detalle que el equipo sigue documentando de cara a la recta final del curso — no reemplaza ninguna entrega ya evaluada, es insumo para lo que viene.</li>
+          </ul>
+          <img class="portada-icon" src="img/flask.svg" alt="Entregable del laboratorio de cierre de la Unidad 5" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Qué debieron lograr en este laboratorio</h1>
+          <ol>
+            <li>Identificar al menos un antipatrón real o potencial en el diseño actual de su propio proyecto.</li>
+            <li>Proponer una corrección concreta, citando el patrón GRASP o GoF de la unidad que la resuelve.</li>
+            <li>Repasar los patrones GRASP y/o GoF ya aplicados en las semanas 10 a 14, marcando si alguno merece revisión.</li>
+            <li>Dejar todo documentado en un entregable breve, en el repositorio o herramienta de gestión del equipo.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s24">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la Unidad 5</p>
+          <h1>Los veintiséis patrones de la Unidad 5, completos</h1>
+          <table>
+            <thead><tr><th>Familia</th><th>Semana</th><th>Patrones</th></tr></thead>
+            <tbody>
+              <tr><td><strong>GRASP</strong> (9)</td><td>10</td><td>Information Expert, Creator, Controller, Low Coupling, High Cohesion, Polymorphism, Pure Fabrication, Indirection, Protected Variations</td></tr>
+              <tr><td><strong>Creacionales GoF</strong> (5)</td><td>12</td><td>Factory Method, Abstract Factory, Builder, Prototype, Singleton</td></tr>
+              <tr><td><strong>Estructurales GoF</strong> (6)</td><td>13</td><td>Adapter, Facade, Composite, Decorator, Proxy, Bridge</td></tr>
+              <tr><td><strong>Comportamiento GoF</strong> (6)</td><td>14</td><td>Strategy, Observer, Command, State, Template Method, Iterator</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/link.svg" alt="Los veintiséis patrones de la Unidad 5, conectados" style="display:block;width:100px;height:100px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s25">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Cierre de la Unidad 5</h1>
+          <p><strong>Con esto se cierra la Unidad 5 — Patrones de Diseño y Antipatrones.</strong> En cinco semanas se cubrieron los nueve patrones GRASP, los cinco creacionales, los seis estructurales y los seis de comportamiento GoF, y hoy los cinco antipatrones clásicos que aparecen cuando esos principios no se aplican bien — cerrando también el arco abierto desde SOLID en la Unidad 4.</p>
+          <p>La <strong>semana 15</strong> abre la <strong>Unidad 6 — Calidad en el Diseño de Software</strong>, empezando por el concepto de <strong>deuda técnica</strong> y, luego, código limpio: nombres, funciones, comentarios y refactorización.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre de la Unidad 5" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 25</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

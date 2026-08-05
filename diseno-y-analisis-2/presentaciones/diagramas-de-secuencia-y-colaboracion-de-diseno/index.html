@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelado UML Dinámico: Diagramas de Secuencia y Colaboración de Diseño — Semana 11</title>
+  <meta name="description" content="Cómo colaboran en el tiempo los objetos internos de un sistema para cumplir un caso de uso: notación de diagramas de secuencia de diseño, el rol del Controller, verificación de GRASP, y el diagrama de colaboración como notación alternativa — Análisis y Diseño de Sistemas II, Semana 11." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/diagramas-de-secuencia-y-colaboracion-de-diseno/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Modelado UML Dinámico: Diagramas de Secuencia y Colaboración de Diseño — Semana 11" />
+  <meta property="og:description" content="Cómo colaboran en el tiempo los objetos internos de un sistema para cumplir un caso de uso: notación de diagramas de secuencia de diseño, el rol del Controller, verificación de GRASP, y el diagrama de colaboración como notación alternativa — Análisis y Diseño de Sistemas II, Semana 11." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/diagramas-de-secuencia-y-colaboracion-de-diseno/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Modelado UML Dinámico: Diagramas de Secuencia y Colaboración de Diseño — Semana 11" />
+  <meta name="twitter:description" content="Cómo colaboran en el tiempo los objetos internos de un sistema para cumplir un caso de uso: notación de diagramas de secuencia de diseño, el rol del Controller, verificación de GRASP, y el diagrama de colaboración como notación alternativa — Análisis y Diseño de Sistemas II, Semana 11." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/diagramas-de-secuencia-y-colaboracion-de-diseno.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 11 — Modelado UML Dinámico: Diagramas de Secuencia y Colaboración de Diseño</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Objetos colaborando en el tiempo" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De "quién es responsable" a "quién le habla a quién"</h1>
+          <p>La semana pasada cerramos los <strong>nueve patrones GRASP</strong> (Information Expert, Creator, Controller, Low Coupling, High Cohesion, Polymorphism, Pure Fabrication, Indirection, Protected Variations): un vocabulario para decidir <strong>qué clase debe tener cada responsabilidad</strong> dentro del diseño.</p>
+          <p>Esa decisión responde una pregunta estática. Hoy respondemos la pregunta que sigue, dinámica: una vez repartidas las responsabilidades, <strong>¿en qué orden colaboran esos objetos, en el tiempo, para cumplir un caso de uso completo?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un diagrama de clases dice qué existe.<br>Ninguno dice, por sí solo, qué pasa primero.</h1>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo · Recordando la Semana 4</p>
+          <h1>Lo que la caja negra dejaba oculto</h1>
+          <p>En la semana 4 vimos el <strong>Diagrama de Secuencia del Sistema (DSS)</strong>: el sistema completo tratado como una sola caja negra, un único objeto <code>:Sistema</code> que recibe un evento del actor y devuelve una respuesta. Usamos como ejemplo el caso de uso <strong>"Confirmar Pedido"</strong>: el actor Cliente envía <code>confirmarPedido(idCliente)</code> y el sistema responde con <code>numeroConfirmacion</code>.</p>
+          <p>El DSS nunca dijo <strong>cómo</strong> el sistema calculó el total, ni <strong>quién</strong> generó el número de confirmación — eso quedaba deliberadamente oculto, "responsabilidad del diseño interno, no de ese diagrama". Hoy abrimos esa caja.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un diagrama de secuencia de diseño</h1>
+          <p>Un <strong>diagrama de secuencia de diseño</strong> muestra los <strong>objetos internos</strong> del sistema (instancias de las clases del diseño) y los <strong>mensajes</strong> que se envían entre sí, ordenados en el tiempo, para cumplir un escenario concreto de un caso de uso.</p>
+          <p>A diferencia del DSS de la semana 4 —que trataba el sistema como una única caja negra <code>:Sistema</code>— aquí <strong>cada objeto de diseño aparece por separado</strong>: se ve exactamente quién le envía el mensaje a quién, y en qué orden ocurre cada paso dentro del sistema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Línea de vida y activación</h1>
+          <ul>
+            <li><strong>Línea de vida (lifeline):</strong> línea vertical punteada que representa la existencia de un objeto a lo largo del tiempo. Se etiqueta <code>:NombreClase</code> (objeto anónimo) o <code>nombre:NombreClase</code> (objeto con nombre propio). El tiempo avanza de arriba hacia abajo, igual que en el DSS.</li>
+            <li><strong>Activación (activation / execution occurrence):</strong> una barra rectangular delgada sobre la línea de vida que marca el período en que ese objeto está <strong>ejecutando</strong> un método — desde que recibe un mensaje hasta que termina de procesarlo (incluye el tiempo de cualquier llamada que él mismo haga a otros objetos).</li>
+          </ul>
+          <img class="portada-icon" src="img/timeline.svg" alt="Líneas de vida en el tiempo" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Mensajes: síncrono, asíncrono y de retorno</h1>
+          <ul>
+            <li><strong>Mensaje síncrono:</strong> flecha sólida con punta llena. El objeto que envía el mensaje <strong>se detiene y espera</strong> a que el receptor termine de procesarlo antes de continuar — es el caso más común entre objetos dentro de una misma aplicación.</li>
+            <li><strong>Mensaje asíncrono:</strong> flecha sólida con punta abierta (en forma de "v"). El emisor <strong>continúa su propia ejecución</strong> sin esperar respuesta inmediata — típico de colas de mensajes, eventos o notificaciones que se disparan y no bloquean.</li>
+            <li><strong>Mensaje de retorno:</strong> flecha punteada que regresa del receptor hacia el emisor, con el valor devuelto al terminar la activación. Es el mismo concepto de "retorno" que ya vimos en el DSS de la semana 4, ahora entre objetos internos.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Creación y destrucción de objetos</h1>
+          <ul>
+            <li><strong>Mensaje de creación:</strong> flecha que apunta directamente al <strong>inicio</strong> de una línea de vida nueva (no a un punto intermedio), normalmente etiquetada <code>«create»</code> o con el nombre del constructor. Indica que ese objeto no existía antes y se instancia en ese momento del escenario.</li>
+            <li><strong>Mensaje de destrucción:</strong> se marca con una <strong>X</strong> al final de la línea de vida del objeto destruido, indicando que deja de existir a partir de ese punto — útil en lenguajes con manejo explícito de memoria; en la práctica de este curso se usa poco, pero conviene reconocerlo.</li>
+          </ul>
+          <p>Estos dos elementos conectan directamente con el patrón GRASP <strong>Creator</strong> visto la semana pasada: el diagrama de secuencia es donde se <strong>ve</strong> literalmente qué objeto crea a cuál.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Marcos de interacción combinados (introducción)</h1>
+          <p>Cuando el flujo de mensajes no es una línea recta, UML define <strong>marcos de interacción combinados (combined fragments)</strong>: un recuadro con una etiqueta que envuelve un grupo de mensajes y le da una condición.</p>
+          <ul>
+            <li><strong><code>alt</code> (alternative):</strong> el recuadro se divide en secciones con una guarda (<code>[condición]</code>) cada una — solo se ejecuta la sección cuya condición es verdadera, como un if/else.</li>
+            <li><strong><code>loop</code>:</strong> el conjunto de mensajes dentro del recuadro se repite mientras se cumpla la condición indicada, como un ciclo.</li>
+          </ul>
+          <p><strong>Hoy solo se introducen a nivel de reconocimiento</strong> — vasta con identificarlos al leer un diagrama; construirlos con detalle no es el foco de esta sesión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · GRASP</p>
+          <h1>El Controller como punto de entrada</h1>
+          <p>El patrón GRASP <strong>Controller</strong> (semana 10) asigna la responsabilidad de recibir un evento de sistema a un objeto que <strong>no es la interfaz de usuario</strong> y coordina lo que sigue, sin hacer él mismo el trabajo de negocio.</p>
+          <p>En un diagrama de secuencia de diseño, el <strong>Controller es casi siempre el primer objeto interno</strong> que recibe el mensaje: el mismo evento de sistema que en el DSS de la semana 4 llegaba a <code>:Sistema</code> ahora llega, específicamente, a un objeto Controller — y desde ahí se reparte hacia los demás objetos según lo que decidió GRASP.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El diagrama de secuencia como verificación de GRASP</h1>
+          <p>Asignar responsabilidades con GRASP es una decisión <strong>de diseño</strong>; el diagrama de secuencia es la forma de <strong>comprobar</strong> que esa asignación realmente funciona en la práctica, mensaje por mensaje:</p>
+          <ul>
+            <li>Si al trazar la secuencia un objeto necesita datos que no tiene y que nadie le pasa, probablemente la responsabilidad quedó mal asignada (viola Information Expert).</li>
+            <li>Si el Controller termina haciendo cálculos de negocio él mismo en vez de delegarlos, el diagrama lo deja ver de inmediato.</li>
+            <li>Si dos objetos terminan enviándose mensajes de ida y vuelta excesivos, probablemente hay un problema de acoplamiento (Low Coupling).</li>
+          </ul>
+          <p>El diagrama de secuencia, entonces, no solo documenta el diseño: lo <strong>pone a prueba</strong> contra un caso de uso real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo trabajado · Parte 1</p>
+          <h1>Abriendo la caja de "Confirmar Pedido"</h1>
+          <p>Retomamos el mismo caso de uso de la semana 4. En el DSS, el actor <strong>Cliente</strong> enviaba un único evento a la caja negra:</p>
+          <pre><code>Cliente -> :Sistema : confirmarPedido(idCliente)
+:Sistema --> Cliente : numeroConfirmacion</code></pre>
+          <p>Hoy diseñamos qué hay <strong>dentro</strong> de <code>:Sistema</code>. Usamos tres objetos de diseño: <code>:ControladorPedido</code> (el <strong>Controller</strong>, punto de entrada), <code>:Pedido</code> (conoce sus líneas de producto y su total — <strong>Information Expert</strong>) y <code>:Pago</code> (un objeto nuevo que <code>:ControladorPedido</code> crea — aplicando <strong>Creator</strong>, porque el controlador es quien agrega y usa el pago).</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo trabajado · Parte 2</p>
+          <h1>La secuencia completa, mensaje por mensaje</h1>
+          <pre><code>1. Cliente -> :ControladorPedido : confirmarPedido(idCliente)
+2. :ControladorPedido -> :Pedido : calcularTotal()
+3. :Pedido --> :ControladorPedido : total
+4. :ControladorPedido -> :Pago : «create»(idPedido, total)
+5. :ControladorPedido -> :Pago : confirmar()
+6. :Pago --> :ControladorPedido : numeroConfirmacion
+7. :ControladorPedido --> Cliente : numeroConfirmacion</code></pre>
+          <p>El mensaje 1 es exactamente el evento de sistema que ya conocíamos del DSS. Los mensajes 2 a 6 son <strong>nuevos</strong>: son la colaboración interna que el DSS mantenía oculta. El mensaje 7 es el mismo retorno que el DSS ya mostraba, ahora con su origen interno explícito.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Ejemplo trabajado · Parte 3</p>
+          <h1>Leyendo la secuencia con lentes de GRASP</h1>
+          <table>
+            <thead><tr><th>Objeto</th><th>Rol en la secuencia</th><th>Patrón GRASP</th></tr></thead>
+            <tbody>
+              <tr><td><code>:ControladorPedido</code></td><td>Recibe el evento (mensaje 1), delega el cálculo, crea <code>:Pago</code>, le pide confirmar y devuelve el resultado</td><td><strong>Controller</strong></td></tr>
+              <tr><td><code>:Pedido</code></td><td>Conoce sus propias líneas de producto y calcula su total (mensaje 2–3)</td><td><strong>Information Expert</strong></td></tr>
+              <tr><td><code>:Pago</code></td><td>Se crea a partir de datos que ya existen (mensaje 4) y encapsula la lógica de confirmación (mensaje 5–6)</td><td><strong>Creator</strong></td></tr>
+            </tbody>
+          </table>
+          <p>Ningún objeto conoce más de lo que necesita para su propia tarea: <code>:Pedido</code> no sabe nada de pagos, <code>:Pago</code> no sabe nada del cliente. Esa separación es exactamente lo que <strong>Low Coupling</strong> y <strong>High Cohesion</strong> buscaban en el diseño de clases — el diagrama de secuencia confirma que se cumple en tiempo de ejecución.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Errores comunes al trazar la secuencia</h1>
+          <ul>
+            <li><strong>Saltarse el Controller:</strong> hacer que el actor le envíe el evento directamente a un objeto de negocio (por ejemplo, a <code>:Pedido</code>) en vez de a un Controller — mezcla la interfaz externa con la lógica interna.</li>
+            <li><strong>Un objeto "todopoderoso":</strong> si un solo objeto recibe casi todos los mensajes y hace casi todo el trabajo, probablemente no se aplicaron bien los patrones GRASP de la semana pasada — el diagrama de secuencia es donde ese problema se hace visible.</li>
+            <li><strong>Confundir mensaje con llamada de método sin más:</strong> cada flecha debe corresponder a un método que existirá en el diagrama de clases de diseño — no se inventan mensajes que después no tienen dónde vivir.</li>
+          </ul>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Errores comunes en el diseño de la secuencia" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Misma información, dos formas de organizarla</h1>
+          <p>El diagrama de secuencia organiza los mensajes <strong>en el tiempo</strong> (de arriba hacia abajo). Existe una notación alternativa, el <strong>diagrama de colaboración</strong> (llamado <em>diagrama de comunicación</em> en UML 2), que muestra <strong>los mismos objetos y los mismos mensajes</strong>, pero organizados <strong>en el espacio</strong>: los objetos se dibujan como nodos conectados por líneas, y el orden temporal se indica con <strong>números de secuencia</strong> sobre cada mensaje en vez de con la posición vertical.</p>
+          <p>Ninguna de las dos notaciones "vale más" que la otra — son la misma colaboración vista con un énfasis distinto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>Diagrama de colaboración: la misma escena, en el espacio</h1>
+          <p>En un diagrama de colaboración, cada objeto es un nodo (igual que en un diagrama de clases: <code>:ControladorPedido</code>, <code>:Pedido</code>, <code>:Pago</code>) unido por líneas a los objetos con los que se comunica. Sobre cada línea se dibuja una flecha con un <strong>número de secuencia</strong> que indica en qué orden ocurre ese mensaje:</p>
+          <pre><code>Cliente ---1: confirmarPedido(idCliente)---> :ControladorPedido
+:ControladorPedido ---2: calcularTotal()---> :Pedido
+:ControladorPedido ---3: «create»(total)---> :Pago
+:ControladorPedido ---4: confirmar()---> :Pago</code></pre>
+          <p>Los mensajes anidados dentro de otro (por ejemplo, algo que <code>:Pago</code> hiciera como parte de responder al mensaje 4) se numerarían <code>4.1</code>, <code>4.2</code>, siguiendo la misma lógica de anidamiento.</p>
+          <img class="portada-icon" src="img/route.svg" alt="Objetos conectados espacialmente" style="display:block;width:130px;height:130px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuándo preferir cada notación</h1>
+          <ul>
+            <li><strong>Diagrama de secuencia:</strong> se prefiere cuando lo importante es comunicar <strong>el orden exacto y la duración relativa</strong> de las interacciones — por ejemplo, para revisar con el equipo si un flujo tiene demasiados pasos o esperas innecesarias. Es la notación más usada en la práctica profesional y en este curso.</li>
+            <li><strong>Diagrama de colaboración:</strong> se prefiere cuando lo importante es mostrar <strong>la red de relaciones entre objetos</strong> — quién conoce a quién — de forma compacta, sin ocupar tanto espacio vertical como una secuencia larga. Es útil como complemento visual rápido, especialmente con pocos objetos.</li>
+          </ul>
+          <p>Ambas se derivan del mismo análisis: primero se piensa la colaboración (con ayuda de GRASP), y después se elige cómo dibujarla según qué se quiera resaltar.</p>
+          <img class="portada-icon" src="img/right-left.svg" alt="Dos notaciones, una misma colaboración" style="display:block;width:130px;height:130px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Tracen la secuencia de su propio caso de uso</h1>
+          <p>En el chat, sobre un caso de uso simple de su proyecto (o retomando el DSS que ya construyeron en la semana 4):</p>
+          <ol>
+            <li>Identifiquen qué objeto de su diseño actuaría como <strong>Controller</strong> — el que recibe el evento de sistema.</li>
+            <li>Listen, en texto, de 3 a 5 mensajes que ese Controller enviaría a otros objetos para cumplir el caso de uso (formato <code>objeto1 -&gt; objeto2 : mensaje()</code>).</li>
+            <li>Para cada mensaje, digan qué patrón GRASP justifica que ese objeto —y no otro— lo reciba.</li>
+          </ol>
+          <p class="slide-eyebrow">10 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Lo que hay que llevarse de hoy</h1>
+          <ol>
+            <li>El diagrama de secuencia de diseño abre la caja negra del DSS: muestra los <strong>objetos internos</strong> colaborando, no solo actor y sistema.</li>
+            <li>Notación clave: <strong>línea de vida, activación, mensaje síncrono/asíncrono, retorno, creación y destrucción</strong> de objetos, y marcos combinados (<code>alt</code>, <code>loop</code>) para flujos condicionales o repetitivos.</li>
+            <li>El <strong>Controller</strong> (GRASP) es casi siempre el punto de entrada del diagrama; los demás mensajes reflejan cómo se repartieron las demás responsabilidades.</li>
+            <li>El diagrama de secuencia no solo documenta el diseño: lo <strong>verifica</strong> contra un caso de uso real, mensaje por mensaje.</li>
+            <li>El <strong>diagrama de colaboración</strong> muestra la misma información en el espacio, con números de secuencia — alternativa complementaria, no una notación distinta en el fondo.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave de la sesión" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Lo que sigue esta semana</h1>
+          <p>El <strong>miércoles</strong> se ve el <strong>diagrama de clases de diseño</strong>: ahí van a aparecer, formalmente, los métodos que hoy escribimos como mensajes en la secuencia (<code>calcularTotal()</code>, <code>confirmar()</code>, etc.) — el diagrama de secuencia de hoy es, en buena medida, el borrador de esos métodos.</p>
+          <p>El <strong>viernes</strong> hay <strong>laboratorio de aplicación de GRASP</strong> sobre el proyecto propio de cada equipo.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próximas sesiones de la semana" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

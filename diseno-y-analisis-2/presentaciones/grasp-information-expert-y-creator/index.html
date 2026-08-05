@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRASP: Information Expert y Creator — Semana 10</title>
+  <meta name="description" content="Apertura de la Unidad 5 (Patrones de Diseño y Antipatrones): qué es GRASP, y a fondo los patrones Information Expert y Creator para asignar responsabilidades a clases, con ejemplos de diseño y contraejemplos — Análisis y Diseño de Sistemas II, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/grasp-information-expert-y-creator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="GRASP: Information Expert y Creator — Semana 10" />
+  <meta property="og:description" content="Apertura de la Unidad 5 (Patrones de Diseño y Antipatrones): qué es GRASP, y a fondo los patrones Information Expert y Creator para asignar responsabilidades a clases, con ejemplos de diseño y contraejemplos — Análisis y Diseño de Sistemas II, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/grasp-information-expert-y-creator/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GRASP: Information Expert y Creator — Semana 10" />
+  <meta name="twitter:description" content="Apertura de la Unidad 5 (Patrones de Diseño y Antipatrones): qué es GRASP, y a fondo los patrones Information Expert y Creator para asignar responsabilidades a clases, con ejemplos de diseño y contraejemplos — Análisis y Diseño de Sistemas II, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/grasp-information-expert-y-creator.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 10 — Patrones GRASP: Information Expert, Creator</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Asignación de responsabilidades entre clases" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>El diagrama de clases ya existe.<br>¿Quién hace qué?</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición · Nueva unidad</p>
+          <h1>Cierra la Unidad 4, abre la Unidad 5</h1>
+          <p>Las semanas 7 a 9 dejaron un conjunto de criterios para <strong>evaluar</strong> un diseño: alta cohesión, bajo acoplamiento (semana 7) y los cinco principios SOLID (semanas 8-9). Todos responden a la pregunta "¿este diseño es bueno o malo?" una vez ya está escrito.</p>
+          <p>Hoy arranca la <strong>Unidad 5 — Patrones de Diseño y Antipatrones</strong>, que responde una pregunta distinta y anterior: <strong>¿a qué clase le asigno esta responsabilidad, mientras estoy diseñando?</strong> El primer conjunto de guías para eso se llama <strong>GRASP</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué es GRASP?</h1>
+          <p><strong>GRASP</strong> (General Responsibility Assignment Software Patterns) es un conjunto de guías para decidir <strong>a qué clase asignar una responsabilidad</strong> durante el diseño de detalle de un sistema orientado a objetos. Fue propuesto por <strong>Craig Larman</strong> en su libro <em>Applying UML and Patterns</em>.</p>
+          <p>Una <strong>responsabilidad</strong>, en diseño de clases, es una obligación de comportamiento: algo que un objeto debe <strong>hacer</strong> (un cálculo, una validación, una acción) o <strong>saber</strong> (un dato, una relación con otro objeto). Diseñar un sistema es, en gran parte, repartir responsabilidades entre clases.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Guías, no reglas mecánicas</h1>
+          <p>GRASP no dice "la responsabilidad X siempre va en la clase Y". Da un <strong>criterio de razonamiento</strong> para decidir, caso por caso, entre varias clases candidatas. Los criterios están directamente conectados con lo que ya se vio:</p>
+          <ul>
+            <li>Aplicar bien GRASP tiende a producir clases con <strong>alta cohesión</strong> y <strong>bajo acoplamiento</strong> (semana 7) — no es casualidad, varios patrones GRASP se llaman exactamente así.</li>
+            <li>Aplicar bien GRASP ayuda a cumplir <strong>SOLID</strong> (semanas 8-9): una responsabilidad bien ubicada es más fácil de mantener con una sola razón de cambio (SRP) y con dependencias limpias (DIP).</li>
+          </ul>
+          <p>GRASP son nueve patrones en total. Esta semana se ven los dos primeros: <strong>Information Expert</strong> y <strong>Creator</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aclaración importante</p>
+          <h1>GRASP no es lo mismo que los patrones de diseño "clásicos"</h1>
+          <p>Es fácil confundir GRASP con los <strong>patrones de diseño GoF</strong> (Gang of Four: Strategy, Observer, Factory, etc.), que se ven más adelante en el curso (semanas 12-14). Son cosas distintas:</p>
+          <ul>
+            <li><strong>GRASP</strong> son <strong>principios de asignación de responsabilidades</strong>: guían el razonamiento de "¿quién debería hacer esto?" en cualquier diseño de clases.</li>
+            <li>Los <strong>patrones GoF</strong> son <strong>soluciones estructurales reusables</strong> a problemas de diseño recurrentes y específicos (ej. "cómo desacoplar la creación de un objeto de su uso").</li>
+          </ul>
+          <p>De hecho, aplicar bien GRASP durante el diseño de detalle es lo que después hace evidente <strong>cuándo</strong> conviene introducir un patrón GoF. Por eso GRASP se ve primero.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El primer patrón: Information Expert</h1>
+          <p>El patrón más usado de los nueve GRASP, y el más intuitivo una vez se entiende: la responsabilidad se asigna a la clase que ya tiene la información para cumplirla.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Information Expert: la definición</h1>
+          <p><strong>Information Expert:</strong> asigna una responsabilidad a la clase que tiene la <strong>información necesaria</strong> para cumplirla — ya sea porque la tiene directamente (sus propios atributos) o porque tiene una <strong>referencia</strong> a otro objeto que la tiene.</p>
+          <p>La pregunta guía es siempre la misma: <strong>"¿quién sabe lo suficiente para hacer esto?"</strong> En vez de crear una clase externa que pida datos a otras (con getters) para hacer el cálculo, se busca la clase que ya está en la mejor posición para hacerlo con lo que ya conoce.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Dominio del ejemplo</p>
+          <h1>Un sistema de alquiler de vehículos</h1>
+          <p>Para fijar el patrón, un dominio simple: una agencia que alquila vehículos por día.</p>
+          <ul>
+            <li><strong><code>Vehiculo</code></strong>: conoce su placa y su <code>tarifaDiaria</code>.</li>
+            <li><strong><code>Cliente</code></strong>: conoce su nombre y documento.</li>
+            <li><strong><code>Alquiler</code></strong>: representa un contrato — conoce su <code>fechaInicio</code>, <code>fechaFin</code>, y tiene una <strong>referencia</strong> al <code>Vehiculo</code> y al <code>Cliente</code> involucrados.</li>
+          </ul>
+          <p>La responsabilidad a asignar: <strong>calcular el costo total del alquiler</strong> (días de uso × tarifa diaria del vehículo). ¿A qué clase le corresponde?</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Poner el cálculo en una clase que no tiene la información</h1>
+          <pre><code>class ReporteDeCobros:
+    def calcularCostoTotal(self, alquiler):
+        dias = alquiler.getFechaFin() - alquiler.getFechaInicio()
+        vehiculo = alquiler.getVehiculo()
+        tarifa = vehiculo.getTarifaDiaria()
+        return dias * tarifa</code></pre>
+          <p><code>ReporteDeCobros</code> no tiene ni las fechas ni la tarifa: tiene que <strong>pedirlas prestadas</strong> con una cadena de getters (<code>alquiler.getVehiculo().getTarifaDiaria()</code>). Esto expone los atributos internos de <code>Alquiler</code> y <code>Vehiculo</code> hacia afuera y aumenta el <strong>acoplamiento</strong> entre las tres clases, en vez de reducirlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La solución: <code>Alquiler</code> es el experto</h1>
+          <pre><code>class Alquiler:
+    def __init__(self, cliente, vehiculo, fechaInicio, fechaFin):
+        self.cliente = cliente
+        self.vehiculo = vehiculo
+        self.fechaInicio = fechaInicio
+        self.fechaFin = fechaFin
+
+    def calcularCostoTotal(self):
+        dias = self.fechaFin - self.fechaInicio
+        return dias * self.vehiculo.tarifaDiaria</code></pre>
+          <p><code>Alquiler</code> es la <strong>experta en información</strong>: conoce directamente las fechas y tiene la referencia al <code>Vehiculo</code> que necesita para su tarifa. Nadie más tiene que pedirle sus datos por fuera — el cálculo vive donde vive la información.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué se gana con Information Expert</h1>
+          <ul>
+            <li><strong>Encapsulamiento:</strong> los atributos de <code>Alquiler</code> y <code>Vehiculo</code> no necesitan exponerse con getters públicos solo para que otra clase calcule algo con ellos.</li>
+            <li><strong>Bajo acoplamiento (semana 7):</strong> el cálculo depende de menos clases externas — vive en la clase que ya tenía la relación necesaria.</li>
+            <li><strong>Alta cohesión (semana 7):</strong> <code>Alquiler</code> concentra el comportamiento relacionado con sus propios datos, en vez de dispersarlo en clases "de servicio" genéricas como <code>ReporteDeCobros</code>.</li>
+          </ul>
+          <p>Information Expert casi siempre coincide con el sentido común de "esto debería ir aquí" — pero da un criterio explícito para justificarlo cuando el diseño no es obvio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Y si la información está repartida entre varias clases?</h1>
+          <p>En el ejemplo, <code>Alquiler</code> era experta parcial (fechas) y necesitó una referencia a <code>Vehiculo</code> (experta en tarifa) para completar el cálculo. Es común que ninguna clase sea experta <strong>total</strong> — Larman llama a esto <strong>"experto parcial"</strong>: varias clases colaboran, cada una aportando la parte que conoce, y el cálculo final queda en quien puede alcanzar todas las partes con el menor número de referencias.</p>
+          <p>Information Expert no elimina el juicio del diseñador: cuando hay varios candidatos parciales razonables, hay que sopesarlo junto con acoplamiento y cohesión — no existe una única respuesta mecánica.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Información repartida entre varias clases candidatas" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Quién es la experta?</h1>
+          <p>En el chat: en el mismo dominio de alquiler de vehículos, ¿a qué clase le asignarían cada responsabilidad, y por qué esa clase tiene la información?</p>
+          <ol>
+            <li>Verificar si un <code>Cliente</code> tiene alquileres activos vencidos (sin devolver a tiempo).</li>
+            <li>Calcular cuántos días lleva un <code>Vehiculo</code> sin ser alquilado.</li>
+            <li>Determinar si un <code>Alquiler</code> aplica un recargo por devolución tardía.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat con la clase y el porqué</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El segundo patrón: Creator</h1>
+          <p>Information Expert resuelve "¿quién hace este cálculo?". Ahora una pregunta distinta, igual de frecuente en cada diagrama de clases: <strong>¿quién debería crear una instancia nueva de esta clase?</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Creator: cuatro criterios para decidir quién crea</h1>
+          <p><strong>Creator</strong> asigna a la clase <code>B</code> la responsabilidad de crear una instancia de la clase <code>A</code> si se cumple <strong>al menos uno</strong> de estos criterios:</p>
+          <ul>
+            <li><strong>B contiene o agrega</strong> objetos A (relación todo-parte).</li>
+            <li><strong>B registra</strong> instancias de A (guarda un histórico o control de ellas).</li>
+            <li><strong>B usa íntimamente</strong> a A (las dos colaboran de forma cercana y constante).</li>
+            <li><strong>B tiene los datos de inicialización</strong> que A necesita para crearse (B se los pasaría en el constructor de todos modos).</li>
+          </ul>
+          <p>Mientras más de estos criterios cumpla una clase candidata, más fuerte es la razón para que sea ella la que cree la instancia.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Ejemplo: ¿quién crea un <code>Extra</code>?</h1>
+          <p>Al dominio se agrega <code>Extra</code>: un servicio adicional contratado dentro de un alquiler (seguro, GPS, silla infantil), con su propio costo.</p>
+          <pre><code>class Extra:
+    def __init__(self, descripcion, costo):
+        self.descripcion = descripcion
+        self.costo = costo
+
+class Alquiler:
+    def __init__(self, cliente, vehiculo, fechaInicio, fechaFin):
+        # ... atributos previos ...
+        self.extras = []
+
+    def agregarExtra(self, descripcion, costo):
+        nuevoExtra = Extra(descripcion, costo)   # Alquiler crea el Extra
+        self.extras.append(nuevoExtra)</code></pre>
+          <p><code>Alquiler</code> cumple dos criterios de Creator a la vez: <strong>contiene/agrega</strong> los <code>Extra</code> (los guarda en <code>self.extras</code>) y <strong>tiene los datos</strong> de inicialización necesarios para crear cada uno dentro de ese alquiler.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Crear el objeto en una clase sin relación con él</h1>
+          <pre><code>class Cliente:
+    def solicitarExtraPara(self, alquiler, descripcion, costo):
+        nuevoExtra = Extra(descripcion, costo)   # Cliente crea el Extra
+        alquiler.extras.append(nuevoExtra)        # y lo empuja "de afuera"</code></pre>
+          <p><code>Cliente</code> no contiene los <code>Extra</code>, no los registra, no los usa íntimamente, y no tiene por sí mismo los datos que definen un alquiler específico — solo los recibe de paso como parámetro. Ninguno de los cuatro criterios de Creator se cumple en <code>Cliente</code>. El resultado: <code>Cliente</code> termina conociendo y manipulando el atributo interno <code>extras</code> de <code>Alquiler</code> desde afuera, subiendo el acoplamiento sin necesidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Creator y bajo acoplamiento</h1>
+          <p>Cuando la clase creadora ya tiene una relación estructural con la clase creada (la contiene, la usa íntimamente o ya tiene sus datos), <strong>no se agrega ninguna dependencia nueva</strong> al crearla — la relación ya existía en el diseño. Es la opción de menor acoplamiento posible para esa creación.</p>
+          <p>En cambio, hacer que una clase externa sin relación previa (como <code>Cliente</code> en el contraejemplo) cree y manipule el objeto agrega un vínculo nuevo entre dos clases que no lo necesitaban, y expone estructura interna que debería quedar encapsulada.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Quién debería crear cada objeto?</h1>
+          <p>En el chat, usando los cuatro criterios de Creator, para cada caso indiquen qué clase debería crear la instancia y cuál(es) criterio(s) cumple:</p>
+          <ol>
+            <li>Un <code>Pago</code> que salda el costo total de un <code>Alquiler</code> ya cerrado.</li>
+            <li>Un nuevo <code>Vehiculo</code> que la agencia acaba de comprar e incorpora a su flota (clase <code>Flota</code> que administra todos los vehículos disponibles).</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat con la clase y el criterio</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Information Expert y Creator, en una frase</h1>
+          <ol>
+            <li><strong>GRASP:</strong> guías de Larman para asignar responsabilidades durante el diseño, no soluciones estructurales como los patrones GoF.</li>
+            <li><strong>Information Expert:</strong> la responsabilidad va a la clase que tiene (directa o indirectamente) la información para cumplirla.</li>
+            <li><strong>Creator:</strong> la clase que contiene/agrega, registra, usa íntimamente o tiene los datos de inicialización de otra es quien debería crear sus instancias.</li>
+            <li>Ambos patrones, bien aplicados, refuerzan lo ya conocido: alta cohesión, bajo acoplamiento y SOLID.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de Information Expert y Creator" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>La próxima sesión: tres patrones GRASP más</h1>
+          <p>El miércoles se ven los siguientes tres patrones GRASP: <strong>Controller</strong> (quién recibe y coordina un evento de entrada al sistema), <strong>Low Coupling</strong> y <strong>High Cohesion</strong> — las versiones formalizadas de los criterios de calidad que ya se conocen desde la semana 7, ahora como guías explícitas de asignación de responsabilidades.</p>
+          <img class="portada-icon" src="img/arrow-right-long.svg" alt="Hacia los próximos patrones GRASP" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

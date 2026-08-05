@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLID: Principio de Responsabilidad Única (SRP) — Semana 8</title>
+  <meta name="description" content="Primer principio SOLID: una clase debe tener una sola razón para cambiar. Su relación con alta cohesión, el error común de confundirlo con 'un solo método', God Class y refactor guiado por SRP — Análisis y Diseño de Sistemas II, Semana 8." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/solid-principio-de-responsabilidad-unica/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="SOLID: Principio de Responsabilidad Única (SRP) — Semana 8" />
+  <meta property="og:description" content="Primer principio SOLID: una clase debe tener una sola razón para cambiar. Su relación con alta cohesión, el error común de confundirlo con 'un solo método', God Class y refactor guiado por SRP — Análisis y Diseño de Sistemas II, Semana 8." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/solid-principio-de-responsabilidad-unica/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SOLID: Principio de Responsabilidad Única (SRP) — Semana 8" />
+  <meta name="twitter:description" content="Primer principio SOLID: una clase debe tener una sola razón para cambiar. Su relación con alta cohesión, el error común de confundirlo con 'un solo método', God Class y refactor guiado por SRP — Análisis y Diseño de Sistemas II, Semana 8." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/solid-principio-de-responsabilidad-unica.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 8 — SOLID: Principio de Responsabilidad Única (SRP)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/bullseye.svg" alt="Responsabilidad única" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Una clase que valida, guarda, notifica<br>y audita — y nadie sabe qué se rompe si la tocan</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la intuición al principio formal</h1>
+          <p>La semana pasada, en cohesión y acoplamiento, propusimos una pregunta simple para detectar clases problemáticas: <strong>"¿puedo describir esta clase en una sola frase, sin usar la palabra 'y'?"</strong> Dijimos que esa heurística anticipaba, sin nombrarlo, un principio formal.</p>
+          <p>Hoy le ponemos nombre, autor y reglas precisas: es el primero de los cinco principios <strong>SOLID</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es SOLID</h1>
+          <p><strong>SOLID</strong> es un acrónimo que agrupa cinco principios de diseño orientado a objetos, propuestos y difundidos por <strong>Robert C. Martin ("Uncle Bob")</strong>, pensados para producir software más fácil de mantener y extender en el tiempo.</p>
+          <table>
+            <thead><tr><th>Letra</th><th>Principio</th><th>Cuándo lo vemos</th></tr></thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>Single Responsibility Principle</td><td><strong>Hoy</strong></td></tr>
+              <tr><td><strong>O</strong></td><td>Open/Closed Principle</td><td>Viernes</td></tr>
+              <tr><td><strong>L</strong></td><td>Liskov Substitution Principle</td><td>Viernes</td></tr>
+              <tr><td><strong>I</strong></td><td>Interface Segregation Principle</td><td>Semana 9</td></tr>
+              <tr><td><strong>D</strong></td><td>Dependency Inversion Principle</td><td>Semana 9</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La clase que hace todo: registro de usuarios</h1>
+          <pre><code>class GestorDeUsuario:
+    def validar_datos(self, datos): ...
+    def hashear_contrasena(self, contrasena): ...
+    def guardar_en_base_de_datos(self, usuario): ...
+    def enviar_correo_de_bienvenida(self, usuario): ...
+    def registrar_en_log_de_auditoria(self, usuario): ...</code></pre>
+          <p>Una sola clase mezcla validación de negocio, seguridad, persistencia, notificación y auditoría. <strong>Cambiar el proveedor de correo obliga a tocar la misma clase que valida contraseñas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición formal de SRP</h1>
+          <blockquote>"A class should have only one reason to change."<br>— Robert C. Martin</blockquote>
+          <p><strong>Una clase debe tener una sola razón para cambiar.</strong> "Razón para cambiar" significa: un solo actor, área de negocio o motivo externo puede pedir que esa clase se modifique.</p>
+          <p><code>GestorDeUsuario</code> tiene al menos cuatro razones para cambiar: reglas de validación, política de seguridad, esquema de base de datos y plantilla de correo — cuatro equipos o decisiones distintas pueden pedir un cambio ahí.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Error común: "un método" no es lo mismo que "una razón"</h1>
+          <p>SRP <strong>no dice</strong> que una clase deba tener un solo método. Una clase con cinco métodos puede cumplir SRP perfectamente si los cinco giran alrededor de la misma responsabilidad; una clase con un solo método puede violarlo si ese método mezcla varias tareas no relacionadas.</p>
+          <table>
+            <thead><tr><th>Caso</th><th>¿Cumple SRP?</th></tr></thead>
+            <tbody>
+              <tr><td><code>CalculadoraDeImpuestos</code> con 5 métodos, todos sobre cálculo de impuestos</td><td>Sí — una sola razón para cambiar</td></tr>
+              <tr><td><code>procesar()</code>, un único método que valida, calcula, guarda y notifica en 80 líneas</td><td>No — cuatro razones para cambiar, disfrazadas de un método</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>SRP formaliza lo que ya vimos como cohesión</h1>
+          <p>La semana pasada dijimos: <strong>alta cohesión</strong> es que todos los métodos y atributos de una clase giren alrededor de un único propósito. SRP es esa misma idea, expresada con un criterio verificable: en vez de preguntar "¿está relacionado?", pregunta <strong>"¿qué actor o motivo externo pediría este cambio?"</strong></p>
+          <p>Una clase de baja cohesión —la clase "todóloga" o <strong>God Class</strong> que vimos la semana pasada— es, dicho con el vocabulario de hoy, la violación más visible de SRP.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo identificar "razones para cambiar"</h1>
+          <p>Para cada método de la clase, pregúntense: <strong>¿quién pediría este cambio?</strong> Si las respuestas son personas o áreas distintas, la clase agrupa más de una responsabilidad.</p>
+          <ul>
+            <li><code>validar_datos()</code> — lo pide el área de negocio, si cambian las reglas de registro.</li>
+            <li><code>hashear_contrasena()</code> — lo pide seguridad, si cambia el algoritmo de cifrado.</li>
+            <li><code>guardar_en_base_de_datos()</code> — lo pide el equipo de datos, si cambia el motor o el esquema.</li>
+            <li><code>enviar_correo_de_bienvenida()</code> — lo pide marketing/producto, si cambia la plantilla o el proveedor.</li>
+          </ul>
+          <p><strong>Cuatro actores distintos, cuatro razones para cambiar → cuatro clases candidatas.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Refactorizando hacia SRP</h1>
+          <pre><code>class ValidadorDeUsuario:
+    def validar(self, datos): ...
+
+class GestorDeSeguridad:
+    def hashear_contrasena(self, contrasena): ...
+
+class RepositorioDeUsuario:
+    def guardar(self, usuario): ...
+
+class NotificadorDeBienvenida:
+    def enviar(self, usuario): ...</code></pre>
+          <p><code>GestorDeUsuario</code> se divide en cuatro clases, cada una con una sola razón para cambiar. <strong>Cambiar el proveedor de correo ahora solo toca <code>NotificadorDeBienvenida</code></strong> — nada más se ve afectado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué se gana aplicando SRP</h1>
+          <ul>
+            <li><strong>Pruebas más simples:</strong> cada clase se prueba de forma aislada, sin simular las otras cuatro responsabilidades.</li>
+            <li><strong>Menos riesgo de regresión:</strong> un cambio en la política de seguridad no puede romper accidentalmente el envío de correos.</li>
+            <li><strong>Reutilización real:</strong> <code>RepositorioDeUsuario</code> se puede usar en otro flujo (ej. actualización de perfil) sin arrastrar validación ni notificación.</li>
+            <li><strong>Trabajo en equipo sin choques:</strong> dos desarrolladores pueden tocar seguridad y notificaciones el mismo día sin pisarse en el mismo archivo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>God Class: la violación de SRP llevada al extremo</h1>
+          <p>Cuando una clase acumula responsabilidades durante meses sin que nadie la refactorice, se convierte en una <strong>God Class</strong> ("clase Dios"): decenas de métodos no relacionados, cientos o miles de líneas, y prácticamente todo el sistema depende de ella de alguna forma.</p>
+          <p>Es un <strong>antipatrón</strong> ampliamente documentado en la literatura de diseño de software: una clase así es difícil de probar, de entender y de modificar sin miedo — el destino más común de una clase que empezó violando SRP "solo un poco".</p>
+          <img class="portada-icon" src="img/boxes-stacked.svg" alt="God Class: responsabilidades acumuladas" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Encuentren las razones para cambiar</h1>
+          <pre><code>class ReporteDeVentas:
+    def calcular_totales(self, ventas): ...
+    def formatear_como_html(self, totales): ...
+    def enviar_por_correo(self, reporte, destinatario): ...
+    def guardar_copia_en_disco(self, reporte): ...</code></pre>
+          <p>En el chat: identifiquen cuántas "razones para cambiar" distintas tiene esta clase, quién pediría cada una, y propongan un nombre para cada clase resultante del refactor.</p>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>SRP no es "una clase por cada verbo"</h1>
+          <p>Llevar SRP al extremo —una clase distinta por cada método, sin importar qué tan relacionados estén— produce el mismo problema que vimos con la sobre-fragmentación de la cohesión: decenas de clases diminutas que obligan a saltar entre demasiados archivos para entender un solo flujo.</p>
+          <p><strong>El criterio no es "cuántas clases", sino "cuántos actores distintos pueden pedir un cambio en esta clase".</strong> Si la respuesta sigue siendo uno, agrupar esos métodos en la misma clase no viola SRP.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Lo que viene</p>
+          <h1>SRP es la base de los otros cuatro principios</h1>
+          <p>Clases con una sola responsabilidad son más fáciles de <strong>extender sin modificar</strong> (Open/Closed, el viernes), más fáciles de <strong>sustituir de forma segura</strong> (Liskov, también el viernes) y más fáciles de conectar a través de <strong>contratos pequeños</strong> (Interface Segregation, semana 9).</p>
+          <p><strong>SOLID no son cinco reglas sueltas</strong> — SRP ordena el terreno sobre el que se construyen las otras cuatro.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>SRP:</strong> una clase debe tener una sola razón para cambiar (Robert C. Martin).</li>
+            <li>"Razón para cambiar" es un actor o motivo de negocio distinto — <strong>no</strong> es el número de métodos.</li>
+            <li>SRP formaliza con un criterio verificable lo que la semana pasada llamamos alta cohesión.</li>
+            <li>Una <strong>God Class</strong> es el destino de una clase que acumuló violaciones de SRP sin refactorizar.</li>
+            <li>Aplicado al extremo, SRP produce sobre-fragmentación — el criterio es "actores distintos", no "clases por verbo".</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <p>Revisen una clase del proyecto de Fábrica Escuela: para cada método, anoten quién pediría ese cambio. Si aparece más de un actor, esa clase es candidata a refactor con SRP — tráiganla identificada.</p>
+          <p><strong>El miércoles es CoWorking — Review Sprint 1, con la Entrega 1 de Fábrica Escuela (15%).</strong> El viernes cerramos la semana con los siguientes dos principios SOLID: <strong>Open/Closed</strong> y <strong>Liskov Substitution</strong>.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

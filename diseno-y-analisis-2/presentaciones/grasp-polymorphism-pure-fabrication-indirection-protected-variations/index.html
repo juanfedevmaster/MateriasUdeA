@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRASP: Polymorphism, Pure Fabrication, Indirection y Protected Variations — Semana 10</title>
+  <meta name="description" content="Cierre de los patrones GRASP de Larman: Polymorphism, Pure Fabrication, Indirection y Protected Variations, con su conexión a herencia/polimorfismo, modelo de dominio, OCP y DIP, y la tabla completa de los nueve patrones GRASP — Análisis y Diseño de Sistemas II, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/grasp-polymorphism-pure-fabrication-indirection-protected-variations/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="GRASP: Polymorphism, Pure Fabrication, Indirection y Protected Variations — Semana 10" />
+  <meta property="og:description" content="Cierre de los patrones GRASP de Larman: Polymorphism, Pure Fabrication, Indirection y Protected Variations, con su conexión a herencia/polimorfismo, modelo de dominio, OCP y DIP, y la tabla completa de los nueve patrones GRASP — Análisis y Diseño de Sistemas II, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/grasp-polymorphism-pure-fabrication-indirection-protected-variations/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GRASP: Polymorphism, Pure Fabrication, Indirection y Protected Variations — Semana 10" />
+  <meta name="twitter:description" content="Cierre de los patrones GRASP de Larman: Polymorphism, Pure Fabrication, Indirection y Protected Variations, con su conexión a herencia/polimorfismo, modelo de dominio, OCP y DIP, y la tabla completa de los nueve patrones GRASP — Análisis y Diseño de Sistemas II, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/grasp-polymorphism-pure-fabrication-indirection-protected-variations.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 10 — GRASP: Polymorphism, Pure Fabrication, Indirection y Protected Variations</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Los cuatro patrones GRASP que completan el conjunto de nueve" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Hoy se cierra la lista completa<br>de los nueve patrones GRASP de Larman</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Cinco patrones ya vistos, cuatro por cerrar</h1>
+          <p>El martes y el miércoles de esta semana vieron cinco de los nueve patrones GRASP (<em>General Responsibility Assignment Software Patterns</em>, de Craig Larman): <strong>Information Expert, Creator, Controller, Low Coupling</strong> y <strong>High Cohesion</strong>. No los repetimos hoy — se asumen ya entendidos.</p>
+          <p>Hoy cerramos los <strong>cuatro patrones restantes</strong>: <strong>Polymorphism, Pure Fabrication, Indirection</strong> y <strong>Protected Variations</strong>. Con estos cuatro se completa la introducción a GRASP y a la <strong>Unidad 5 — Patrones de Diseño y Antipatrones</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Retomando la semana 7</p>
+          <h1>De "polimorfismo" como mecanismo a Polymorphism como patrón</h1>
+          <p>En la semana 7 (<strong>Herencia, polimorfismo e interfaces</strong>) vimos el <strong>polimorfismo</strong> como mecanismo de POO: distintas clases que comparten una interfaz común pueden responder de forma distinta al mismo mensaje, según su tipo concreto.</p>
+          <p>El patrón GRASP <strong>Polymorphism</strong> toma ese mecanismo y lo convierte en una <strong>guía de asignación de responsabilidades</strong>: cuando el comportamiento de una operación <strong>varía según el tipo</strong> de un objeto, esa responsabilidad debe asignarse usando <strong>operaciones polimórficas</strong> definidas en cada tipo — no mediante lógica condicional que pregunte por el tipo desde afuera.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El síntoma: condicionales sobre el tipo</h1>
+          <pre><code>class CalculadorDeEnvio:
+    def calcular(self, pedido):
+        if pedido.tipo == "terrestre":
+            return pedido.peso * 1200
+        elif pedido.tipo == "aereo":
+            return pedido.peso * 4500
+        elif pedido.tipo == "maritimo":
+            return pedido.peso * 800
+        else:
+            raise ValueError("tipo desconocido")</code></pre>
+          <p>Cada vez que aparece un nuevo tipo de envío hay que <strong>editar</strong> este método y agregar una rama más. El conocimiento de "cómo se calcula cada tipo" vive centralizado en un único lugar que pregunta por el tipo, en vez de vivir en cada tipo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La solución: cada tipo responde por sí mismo</h1>
+          <pre><code>abstract class Pedido:
+    def calcularCosto(self): ...   # operación polimórfica
+
+class PedidoTerrestre(Pedido):
+    def calcularCosto(self):
+        return self.peso * 1200
+
+class PedidoAereo(Pedido):
+    def calcularCosto(self):
+        return self.peso * 4500
+
+class PedidoMaritimo(Pedido):
+    def calcularCosto(self):
+        return self.peso * 800
+
+# en cualquier punto del código:
+total = pedido.calcularCosto()   # sin preguntar el tipo</code></pre>
+          <p>Quien llama a <code>calcularCosto()</code> no necesita saber qué subtipo de <code>Pedido</code> tiene enfrente: cada subclase <strong>sabe calcular su propio costo</strong>. Agregar un nuevo tipo de envío significa <strong>agregar una clase nueva</strong>, no editar un método existente que ya funciona.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Polymorphism es el patrón detrás de OCP</h1>
+          <p>En la semana 8 vimos <strong>Open/Closed Principle (OCP)</strong>: el diseño debe estar abierto a extensión, cerrado a modificación. El refactor anterior es exactamente eso en la práctica: <code>CalculadorDeEnvio</code> con el <code>if/elif</code> quedaba <strong>cerrado a extensión</strong> (había que modificarlo cada vez); la jerarquía de <code>Pedido</code> queda <strong>abierta a extensión</strong> (una clase nueva) y <strong>cerrada a modificación</strong> (las clases existentes no cambian).</p>
+          <p><strong>Polymorphism</strong> es el patrón GRASP que explica <em>cómo</em> asignar responsabilidades para lograr ese efecto: repartiendo el comportamiento variable entre los tipos, en vez de centralizarlo en condicionales.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y cuando ningún concepto del dominio encaja?</h1>
+          <p>Polymorphism resuelve variación de comportamiento entre tipos que <strong>ya existen</strong> en el dominio. Pero hay responsabilidades —como guardar datos en un archivo, validar un formato o hacer un cálculo auxiliar complejo— que no le pertenecen naturalmente a ningún concepto del negocio. El segundo patrón de hoy resuelve justamente ese caso: <strong>Pure Fabrication</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Pure Fabrication: inventar una clase que no está en el dominio</h1>
+          <p><strong>Pure Fabrication</strong> ("fabricación pura") es el patrón que dice: cuando asignar una responsabilidad a una clase del dominio real violaría <strong>High Cohesion</strong> o <strong>Low Coupling</strong> (ya vistos esta semana), y ningún concepto del dominio encaja bien, se <strong>inventa una clase artificial</strong> que no representa nada del negocio, pero que organiza el diseño de forma limpia.</p>
+          <p>Ejemplos típicos: un <code>Repositorio</code> que persiste datos, un <code>Validador</code> que verifica reglas de formato, un <code>Calculador</code> que hace un cómputo auxiliar reutilizable. Ninguna de esas clases representa "algo" del mundo real que el negocio reconozca — son decisiones puramente de <strong>diseño de software</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ejemplo</p>
+          <h1>Sin Pure Fabrication vs. con Pure Fabrication</h1>
+          <pre><code>// Sin Pure Fabrication: Estudiante mezcla su rol de dominio
+// con la responsabilidad técnica de persistencia
+class Estudiante:
+    def guardarEnBaseDeDatos(self): ...   // baja cohesión, mucho acoplamiento
+
+// Con Pure Fabrication: una clase inventada asume la persistencia
+class RepositorioEstudiantes:            // no existe en el dominio real
+    def guardar(self, estudiante): ...
+    def buscarPorId(self, id): ...
+
+class Estudiante:
+    # solo conoce reglas de negocio de un estudiante
+    ...</code></pre>
+          <p><code>RepositorioEstudiantes</code> no aparece en el vocabulario del negocio — nadie en la vida real habla de "el repositorio de estudiantes". Es una <strong>clase de diseño</strong>, no de dominio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual · Relación con lo visto</p>
+          <h1>Pure Fabrication tensiona el modelo de dominio</h1>
+          <p>En la semana 3 (<strong>Modelado conceptual</strong>) insistimos en que el <strong>modelo de dominio</strong> solo debe contener conceptos que expertos del negocio reconocen — nada de detalles técnicos. <code>RepositorioEstudiantes</code> jamás debería aparecer en ese modelo conceptual.</p>
+          <p>La tensión es real y es sana: el <strong>modelo de dominio</strong> (análisis, semana 3) y el <strong>modelo de diseño</strong> (esta unidad) responden preguntas distintas. Pure Fabrication es una decisión legítima <strong>en diseño</strong> — nunca debería "colarse" hacia el modelo conceptual del negocio como si fuera un concepto real.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Desacoplar dos elementos que se necesitan pero no deberían conocerse</h1>
+          <p>Pure Fabrication resuelve dónde poner una responsabilidad que no encaja en el dominio. El tercer patrón resuelve un problema distinto: dos elementos del sistema necesitan comunicarse, pero acoplarlos directamente los volvería frágiles entre sí. Ahí entra <strong>Indirection</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Indirection: un intermediario que desacopla</h1>
+          <p><strong>Indirection</strong> asigna la responsabilidad de mediar entre dos (o más) elementos a un <strong>objeto intermediario</strong>, para que esos elementos no se acoplen directamente entre sí. El intermediario típico es un <strong>adaptador</strong> o una <strong>fachada</strong>: una clase que traduce o simplifica el contacto entre el dominio y algo externo.</p>
+          <p>Ejemplo típico: el módulo de dominio no llama directamente a la librería de un proveedor de pagos externo (con su API particular); llama a un <code>AdaptadorDePagos</code> propio, y ese adaptador es el único que conoce los detalles de la librería externa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Indirection normalmente se logra a través de una abstracción</h1>
+          <pre><code>interface PasarelaDePagos:
+    def cobrar(self, monto): ...
+
+class AdaptadorProveedorX implements PasarelaDePagos:
+    def cobrar(self, monto):
+        # traduce la llamada al SDK específico del proveedor X
+        ...
+
+class ServicioDeCompras:
+    def __init__(self, pasarela: PasarelaDePagos):
+        self.pasarela = pasarela        # depende del intermediario, no del proveedor
+    def pagar(self, monto):
+        self.pasarela.cobrar(monto)</code></pre>
+          <p>Esto es exactamente lo que vimos en <strong>DIP</strong> la semana 9: <code>ServicioDeCompras</code> (alto nivel) no depende del SDK del proveedor (bajo nivel) — ambos dependen de <code>PasarelaDePagos</code>, la abstracción que actúa como intermediario. <strong>Indirection es el patrón GRASP; DIP es el principio SOLID que explica por qué esa indirección debe apuntar hacia una abstracción y no hacia otro detalle concreto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El último patrón: el "paraguas" que los resume</h1>
+          <p>Los tres patrones anteriores —Polymorphism, Pure Fabrication e Indirection— son, en el fondo, <strong>técnicas concretas</strong> para lograr algo más general: que el diseño resista el cambio. El cuarto patrón nombra esa idea general de forma explícita: <strong>Protected Variations</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Protected Variations: proteger el diseño de lo que va a cambiar</h1>
+          <p><strong>Protected Variations (PV)</strong> dice: identifiquen los <strong>puntos de variación o inestabilidad previstos</strong> en el diseño —lo que ya se sabe o se sospecha que va a cambiar— y encapsúlenlos detrás de una <strong>interfaz estable</strong>, de modo que el cambio quede contenido ahí y no se propague al resto del sistema.</p>
+          <p>Un <strong>punto de variación</strong> es cualquier parte del sistema donde se anticipa que la implementación cambiará con el tiempo: el proveedor de pagos, el motor de base de datos, el formato de un reporte, la regla de cálculo de un descuento.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Síntesis de los patrones anteriores</p>
+          <h1>PV es el "porqué"; los otros tres son el "cómo"</h1>
+          <ul>
+            <li><strong>Polymorphism</strong> protege el punto de variación "comportamiento según el tipo", usando jerarquías de clases.</li>
+            <li><strong>Pure Fabrication</strong> protege la cohesión del dominio creando una clase de diseño separada para lo que no encaja.</li>
+            <li><strong>Indirection</strong> protege contra el acoplamiento directo, insertando un intermediario.</li>
+          </ul>
+          <p>Los tres son, en realidad, <strong>formas específicas de aplicar Protected Variations</strong>. Por eso Larman lo llama el patrón "paraguas": resume en una sola idea la motivación de <strong>OCP</strong> (semana 8, abierto a extensión) y de <strong>DIP</strong> (semana 9, depender de abstracciones) — proteger el diseño de cambios futuros.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué patrón GRASP aplica en cada caso?</h1>
+          <p>En el chat, para cada situación identifiquen si el patrón más pertinente es <strong>Polymorphism, Pure Fabrication, Indirection</strong> o <strong>Protected Variations</strong>:</p>
+          <ol>
+            <li>Un método calcula el descuento distinto según si el cliente es "regular", "frecuente" o "VIP", con un bloque <code>if/elif</code> larguísimo.</li>
+            <li>El equipo necesita registrar en un log cada operación importante, pero "Log" no es un concepto que el negocio reconozca.</li>
+            <li>El sistema hoy envía correos con una librería específica, y el negocio anticipa que el proveedor de correo puede cambiar en seis meses.</li>
+            <li>El módulo de reportes no debe conocer directamente el motor de base de datos que usa el módulo de persistencia.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Los nueve patrones GRASP completos</p>
+          <h1>El conjunto completo, de Larman</h1>
+          <table>
+            <thead><tr><th>Patrón</th><th>Idea central</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Information Expert</strong></td><td>Asignar la responsabilidad a quien tiene la información necesaria</td></tr>
+              <tr><td><strong>Creator</strong></td><td>Quién debe crear una instancia, según quién la contiene o usa</td></tr>
+              <tr><td><strong>Controller</strong></td><td>Un objeto no-UI recibe y coordina eventos del sistema</td></tr>
+              <tr><td><strong>Low Coupling</strong></td><td>Minimizar dependencias entre elementos</td></tr>
+              <tr><td><strong>High Cohesion</strong></td><td>Cada clase con responsabilidades enfocadas y relacionadas</td></tr>
+              <tr><td><strong>Polymorphism</strong></td><td>Comportamiento variable por tipo, resuelto con operaciones polimórficas</td></tr>
+              <tr><td><strong>Pure Fabrication</strong></td><td>Clase inventada, sin equivalente en el dominio, para mantener cohesión/acoplamiento</td></tr>
+              <tr><td><strong>Indirection</strong></td><td>Un intermediario desacopla dos elementos</td></tr>
+              <tr><td><strong>Protected Variations</strong></td><td>Encapsular puntos de variación previstos detrás de una interfaz estable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la introducción a GRASP</p>
+          <h1>Los cuatro patrones de hoy, en una frase</h1>
+          <ol>
+            <li><strong>Polymorphism:</strong> reemplaza condicionales sobre el tipo por operaciones polimórficas — es el patrón detrás de OCP.</li>
+            <li><strong>Pure Fabrication:</strong> inventa una clase de diseño (Repositorio, Validador, Calculador) cuando ningún concepto del dominio encaja sin dañar cohesión o acoplamiento.</li>
+            <li><strong>Indirection:</strong> un objeto intermediario (adaptador, fachada) desacopla dos elementos — se logra normalmente a través de una abstracción, como en DIP.</li>
+            <li><strong>Protected Variations:</strong> el patrón "paraguas" — encapsular puntos de variación previstos detrás de una interfaz estable, resumiendo la motivación de OCP y DIP.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de los cuatro patrones GRASP de hoy" style="display:block;width:110px;height:110px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Con esto se cierra la introducción a GRASP</h1>
+          <p>En dos sesiones vieron los <strong>nueve patrones GRASP</strong> completos: cinco el martes y miércoles (Information Expert, Creator, Controller, Low Coupling, High Cohesion) y cuatro hoy (Polymorphism, Pure Fabrication, Indirection, Protected Variations).</p>
+          <p>La <strong>semana 11</strong> se usa este vocabulario de patrones para modelar en <strong>UML dinámico y estático</strong> el diseño de detalle del sistema. El <strong>viernes de la semana 11</strong> hay un <strong>laboratorio de aplicación de GRASP</strong> directamente sobre el proyecto propio de cada equipo.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre de la introducción a los patrones GRASP" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

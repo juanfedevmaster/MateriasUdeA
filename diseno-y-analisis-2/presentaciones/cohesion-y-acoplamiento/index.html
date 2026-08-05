@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cohesión y Acoplamiento — Semana 7</title>
+  <meta name="description" content="Alta cohesión y bajo acoplamiento como objetivo central del diseño orientado a objetos: tipos de acoplamiento, señales de baja cohesión (clases todólogas, God Object) y el puente hacia GRASP — Análisis y Diseño de Sistemas II, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/cohesion-y-acoplamiento/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Cohesión y Acoplamiento — Semana 7" />
+  <meta property="og:description" content="Alta cohesión y bajo acoplamiento como objetivo central del diseño orientado a objetos: tipos de acoplamiento, señales de baja cohesión (clases todólogas, God Object) y el puente hacia GRASP — Análisis y Diseño de Sistemas II, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/cohesion-y-acoplamiento/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cohesión y Acoplamiento — Semana 7" />
+  <meta name="twitter:description" content="Alta cohesión y bajo acoplamiento como objetivo central del diseño orientado a objetos: tipos de acoplamiento, señales de baja cohesión (clases todólogas, God Object) y el puente hacia GRASP — Análisis y Diseño de Sistemas II, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/cohesion-y-acoplamiento.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 7 — Cohesión y Acoplamiento</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/link.svg" alt="Cohesión y acoplamiento" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Una clase que valida, guarda, envía correos<br>y genera reportes — todo a la vez</h1>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La clase que hace todo</h1>
+          <pre><code>class GestorPedidos:
+    def validar_pedido(self, pedido): ...
+    def calcular_impuestos(self, pedido): ...
+    def guardar_en_base_de_datos(self, pedido): ...
+    def enviar_correo_confirmacion(self, pedido): ...
+    def generar_reporte_pdf(self, pedido): ...
+    def registrar_en_log_de_auditoria(self, pedido): ...</code></pre>
+          <p>Una sola clase mezcla validación, cálculo de negocio, persistencia, notificación, generación de reportes y auditoría. <strong>Cambiar cómo se envían los correos obliga a tocar la misma clase que calcula impuestos.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El problema tiene nombre: baja cohesión, alto acoplamiento</h1>
+          <p>Ayer vimos cómo proteger el estado interno de una clase con encapsulamiento. Hoy damos un paso más: <strong>¿cómo se reparten bien las responsabilidades entre varias clases?</strong> Esa pregunta la responden dos propiedades del diseño: cohesión y acoplamiento.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es cohesión</h1>
+          <p><strong>Cohesión</strong> mide qué tan relacionadas entre sí están las responsabilidades que agrupa una clase (o un módulo). Una clase tiene <strong>alta cohesión</strong> cuando todos sus métodos y atributos giran alrededor de un único propósito bien definido.</p>
+          <p>Una clase <code>CalculadoraDeImpuestos</code> con métodos que solo calculan impuestos es altamente cohesiva. <code>GestorPedidos</code> del ejemplo anterior no lo es: agrupa seis responsabilidades sin relación directa entre sí.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es acoplamiento</h1>
+          <p><strong>Acoplamiento</strong> mide qué tan dependiente es una clase (o módulo) de los detalles internos de otras. Una clase tiene <strong>bajo acoplamiento</strong> cuando puede cambiar sin obligar a modificar muchas otras clases, y cuando entiende de las demás solo lo mínimo necesario para colaborar con ellas.</p>
+          <p><strong>Alta cohesión y bajo acoplamiento no son ideas aisladas</strong> — son, junto con abstracción y encapsulamiento de ayer, el objetivo central de todo diseño orientado a objetos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Tipos de acoplamiento, de peor a mejor</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Qué implica</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>De contenido</strong></td><td>Una clase modifica directamente el estado interno de otra (ej. accede a un atributo privado por algún atajo)</td></tr>
+              <tr><td><strong>Común</strong></td><td>Varias clases comparten y modifican la misma variable o estado global</td></tr>
+              <tr><td><strong>De control</strong></td><td>Una clase le indica a otra <em>cómo</em> hacer su trabajo, pasándole banderas o parámetros que alteran su lógica interna</td></tr>
+              <tr><td><strong>De datos</strong></td><td>Una clase solo intercambia los datos estrictamente necesarios a través de parámetros bien definidos — el más deseable</td></tr>
+            </tbody>
+          </table>
+          <p><strong>El objetivo de diseño es siempre acercarse al acoplamiento de datos</strong> y alejarse del acoplamiento de contenido.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué son el objetivo central del diseño OO</h1>
+          <ul>
+            <li><strong>Alta cohesión</strong> hace que cada clase sea fácil de entender, probar y reutilizar — tiene un solo motivo para cambiar.</li>
+            <li><strong>Bajo acoplamiento</strong> hace que un cambio en una clase no se propague como una reacción en cadena por todo el sistema.</li>
+            <li>Juntas, reducen el <strong>costo del cambio</strong> — la métrica que más le importa a un sistema que va a vivir varios años en producción.</li>
+            <li>Un sistema con clases muy cohesivas pero muy acopladas entre sí sigue siendo frágil — <strong>hay que perseguir ambas propiedades a la vez</strong>, no una sola.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Señales de baja cohesión: la clase "todóloga"</h1>
+          <p>Una clase de baja cohesión —conocida coloquialmente como <strong>God Object ("objeto Dios")</strong>— acumula responsabilidades no relacionadas hasta volverse el centro de gravedad de todo el sistema. Señales típicas:</p>
+          <ul>
+            <li>No se puede describir su propósito en una sola frase sin usar la palabra "y".</li>
+            <li>Tiene decenas de métodos que operan sobre subconjuntos distintos de sus atributos.</li>
+            <li>Casi cualquier cambio en el sistema termina tocándola.</li>
+            <li>Su nombre es genérico: <code>Manager</code>, <code>Utils</code>, <code>Helper</code>, <code>GestorTodo</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Una pregunta simple para detectarlas</h1>
+          <p><strong>"¿Puedo describir esta clase en una sola frase, sin usar la palabra 'y'?"</strong></p>
+          <p>Si la respuesta natural es <em>"esta clase valida pedidos <strong>y</strong> envía correos <strong>y</strong> genera reportes"</em>, la clase probablemente debería dividirse en tres: cada "y" es una responsabilidad candidata a su propia clase.</p>
+          <p>Esta heurística anticipa —sin nombrarlo todavía formalmente— el <strong>Principio de Responsabilidad Única</strong> que verán en la Unidad 5 como parte de SOLID.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Refactorizando hacia alta cohesión</h1>
+          <pre><code>class ValidadorDePedidos:
+    def validar(self, pedido): ...
+
+class CalculadoraDeImpuestos:
+    def calcular(self, pedido): ...
+
+class RepositorioDePedidos:
+    def guardar(self, pedido): ...
+
+class NotificadorDePedidos:
+    def enviar_confirmacion(self, pedido): ...</code></pre>
+          <p><code>GestorPedidos</code> se divide en cuatro clases, cada una con un único motivo para cambiar. <strong>Cambiar el proveedor de correo ahora solo toca <code>NotificadorDePedidos</code>.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cohesión y acoplamiento suelen moverse juntos</h1>
+          <p>Cuando se divide una clase de baja cohesión en varias clases cohesivas, es fácil introducir <strong>acoplamiento innecesario</strong> entre ellas si no se diseña con cuidado quién conoce a quién.</p>
+          <table>
+            <thead>
+              <tr><th>Situación</th><th>Diagnóstico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Clase cohesiva, pero conocida y usada por 20 clases distintas</td><td>Cohesión alta, acoplamiento alto</td></tr>
+              <tr><td>Clases pequeñas que constantemente se llaman entre sí en cadena</td><td>Cohesión alta, acoplamiento alto</td></tr>
+              <tr><td>Clase con una sola responsabilidad, usada por pocas clases a través de una interfaz clara</td><td>Cohesión alta, acoplamiento bajo — el objetivo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Cohesión perfecta también tiene un costo</h1>
+          <p>Dividir una clase hasta el extremo —una clase por cada método— no mejora el diseño: produce <strong>sobre-fragmentación</strong>. El sistema termina con decenas de clases diminutas, difíciles de rastrear, donde entender un solo flujo de negocio exige saltar entre demasiados archivos.</p>
+          <p><strong>El objetivo no es maximizar el número de clases, sino que cada una tenga un propósito claro y las dependencias entre ellas sean pocas y explícitas.</strong> Cohesión y simplicidad de navegación también deben balancearse.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Cohesión perfecta en tensión con sobre-fragmentación" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Identifiquen el tipo de acoplamiento</h1>
+          <pre><code>class ReporteVentas:
+    def generar(self, tipo_reporte):
+        if tipo_reporte == "resumen":
+            # ...
+        elif tipo_reporte == "detallado":
+            # el llamador decide, con una bandera,
+            # qué rama de lógica interna ejecutar</code></pre>
+          <p>En el chat: ¿qué tipo de acoplamiento de la tabla de la diapositiva 7 ilustra este ejemplo? ¿Cómo lo rediseñarían para bajarlo a acoplamiento de datos?</p>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Acoplamiento entre capas</h1>
+          <p>La arquitectura N-capas de la semana 6 es, en el fondo, una estrategia para <strong>controlar el acoplamiento a gran escala</strong>: cada capa (<code>Controller</code>, <code>Service</code>, <code>Repository</code>) solo conoce la interfaz de la capa vecina, nunca su implementación interna.</p>
+          <p><strong>Las mismas reglas que aplican entre dos clases aplican entre dos capas completas</strong> — es el mismo principio de diseño, aplicado en una escala más grande.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Lo que viene</p>
+          <h1>El puente hacia GRASP</h1>
+          <p>En la Unidad 5 (semanas 10–13) van a conocer <strong>GRASP (General Responsibility Assignment Software Patterns)</strong>, un conjunto de patrones para decidir qué clase debe asumir cada responsabilidad. Dos de esos patrones se llaman literalmente <strong>Low Coupling</strong> y <strong>High Cohesion</strong>.</p>
+          <p><strong>Todo lo visto hoy es la intuición que esos patrones formalizan más adelante</strong> — hoy aprenden a reconocerlas a simple vista; ahí aprenderán reglas explícitas para decidir dónde poner cada responsabilidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Cohesión:</strong> qué tan relacionadas están las responsabilidades dentro de una misma clase.</li>
+            <li><strong>Acoplamiento:</strong> qué tan dependiente es una clase de los detalles internos de otras.</li>
+            <li>Cuatro tipos de acoplamiento, de peor a mejor: de contenido, común, de control, de datos.</li>
+            <li>Una clase "todóloga" (God Object) es la señal más clara de baja cohesión.</li>
+            <li>Alta cohesión y bajo acoplamiento deben perseguirse <strong>juntas</strong> — y anticipan los patrones GRASP de la Unidad 5.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima sesión</h1>
+          <p>Vuelvan a revisar su modelo de dominio: ¿hay alguna clase que no puedan describir en una frase sin usar "y"? Anótenla — la vamos a usar como insumo en próximas sesiones de diseño.</p>
+          <p><strong>El viernes cerramos la semana con herencia, polimorfismo e interfaces</strong> — los mecanismos que permiten reutilizar y especializar comportamiento entre clases relacionadas, sin sacrificar todo lo visto esta semana.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

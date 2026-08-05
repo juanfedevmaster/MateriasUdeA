@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRASP: Controller, Low Coupling y High Cohesion — Semana 10</title>
+  <meta name="description" content="Tercera sesión de la serie GRASP (Craig Larman): Controller para manejar eventos de sistema sin acoplar la UI, y la formalización de Low Coupling y High Cohesion como patrones con criterios concretos de evaluación — Análisis y Diseño de Sistemas II, Semana 10." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/grasp-controller-low-coupling-high-cohesion/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="GRASP: Controller, Low Coupling y High Cohesion — Semana 10" />
+  <meta property="og:description" content="Tercera sesión de la serie GRASP (Craig Larman): Controller para manejar eventos de sistema sin acoplar la UI, y la formalización de Low Coupling y High Cohesion como patrones con criterios concretos de evaluación — Análisis y Diseño de Sistemas II, Semana 10." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/grasp-controller-low-coupling-high-cohesion/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GRASP: Controller, Low Coupling y High Cohesion — Semana 10" />
+  <meta name="twitter:description" content="Tercera sesión de la serie GRASP (Craig Larman): Controller para manejar eventos de sistema sin acoplar la UI, y la formalización de Low Coupling y High Cohesion como patrones con criterios concretos de evaluación — Análisis y Diseño de Sistemas II, Semana 10." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/grasp-controller-low-coupling-high-cohesion.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 10 — Patrones GRASP: Controller, Low Coupling y High Cohesion</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/gamepad.svg" alt="Controller: quién maneja el evento de sistema" style="display:block;width:190px;height:190px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>¿Quién debería recibir el clic —<br>el botón, o la clase que representa el caso de uso?</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Seguimos la serie de patrones GRASP</h1>
+          <p>El martes vimos los dos primeros patrones de <strong>GRASP</strong> (<em>General Responsibility Assignment Software Patterns</em>, el catálogo de Craig Larman para decidir en qué clase recae cada responsabilidad): <strong>Information Expert</strong> (asignarle la responsabilidad a la clase que tiene la información necesaria para cumplirla) y <strong>Creator</strong> (quién debe instanciar un objeto nuevo).</p>
+          <p>Hoy vemos <strong>tres patrones más</strong>: <strong>Controller</strong> (quién recibe un evento de la interfaz), <strong>Low Coupling</strong> y <strong>High Cohesion</strong> — estos dos últimos ya los conocen como conceptos de la semana 7, hoy se formalizan como patrones GRASP con criterios concretos para evaluarlos en un diseño.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El patrón Controller</h1>
+          <p>Un <strong>evento de sistema</strong> es una entrada externa que un actor genera sobre el sistema (un clic, un envío de formulario, una llamada a una API) — es el mismo concepto de los <strong>Diagramas de Secuencia del Sistema</strong> de la semana 4, donde el sistema se trataba como una caja negra que recibía estos eventos.</p>
+          <p><strong>Controller (GRASP):</strong> asigna la responsabilidad de <strong>manejar un evento de sistema</strong> a una clase que representa una de estas tres cosas:</p>
+          <ul>
+            <li>El <strong>sistema completo</strong> o un subsistema.</li>
+            <li>Un <strong>caso de uso</strong> específico (o un escenario de ese caso de uso).</li>
+            <li>Una <strong>sesión</strong> de un actor con el sistema.</li>
+          </ul>
+          <p>La regla clave: <strong>nunca la interfaz de usuario misma</strong> (el botón, la ventana, el endpoint HTTP). La UI recibe el evento y se lo delega al Controller; no decide qué hacer con él.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dos variantes de Controller</h1>
+          <table>
+            <thead><tr><th>Variante</th><th>Cuándo usarla</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Controller de caso de uso</strong></td><td>Un controller por cada caso de uso (o familia muy cercana de casos de uso)</td><td><code>RegistrarPedidoController</code>, <code>CancelarPedidoController</code></td></tr>
+              <tr><td><strong>Controller de fachada (sesión/subsistema)</strong></td><td>Un controller que agrupa varios eventos relacionados del mismo actor o subsistema</td><td><code>VentasController</code> maneja registrar, cancelar y consultar pedidos</td></tr>
+            </tbody>
+          </table>
+          <p>La primera variante suele dar controllers más pequeños y con responsabilidad más clara; la segunda reduce la cantidad de clases pero, como se verá más adelante en la sesión, puede crecer demasiado si se le agregan casos de uso sin control.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Un Controller bien delimitado</h1>
+          <pre><code>class PedidoController:
+    def __init__(self, repositorio_pedidos, servicio_inventario):
+        self.repositorio = repositorio_pedidos
+        self.inventario = servicio_inventario
+
+    def registrar_pedido(self, datos_evento):
+        pedido = Pedido.crear(datos_evento)          # delega en el experto (Creator)
+        self.inventario.reservar(pedido.items)        # delega en otro experto
+        self.repositorio.guardar(pedido)              # delega la persistencia
+        return pedido.id</code></pre>
+          <p><code>PedidoController</code> recibe el evento de sistema ("registrar pedido") y <strong>orquesta</strong> la operación, pero no contiene lógica de interfaz (no sabe qué botón lo llamó) ni lógica de persistencia (no sabe cómo se guarda un pedido en la base de datos) — solo coordina, delegando cada tarea a la clase experta correspondiente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El Controller gordo (God Controller)</h1>
+          <pre><code>class VentasController:
+    def registrar_pedido(self, datos_evento):
+        # valida campos del formulario HTML directamente
+        if not datos_evento.get("cliente_id"): raise ...
+        # arma el SQL a mano
+        conexion.execute("INSERT INTO pedidos VALUES (...)")
+        # calcula impuestos con reglas de negocio embebidas
+        total = sum(i.precio for i in datos_evento["items"]) * 1.19
+        # arma el HTML de la respuesta
+        return f"&lt;div&gt;Pedido creado, total: {total}&lt;/div&gt;"</code></pre>
+          <p>Este <code>VentasController</code> acumuló validación de formulario, acceso directo a base de datos, reglas de negocio (el cálculo de impuestos) y hasta generación de HTML — todo en un solo método. Es un <strong>Controller gordo</strong> (o <em>God Controller</em>): un antipatrón donde el controller deja de <em>coordinar</em> y pasa a <em>hacerlo todo</em> él mismo. Es la misma idea del <strong>God Object</strong> visto en la semana 7, aplicada específicamente a la capa de control.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo evitarlo: el Controller delega, no ejecuta</h1>
+          <p>El Controller gordo aparece cuando se le asignan responsabilidades que <strong>ya tienen dueño</strong> según otros patrones GRASP: la validación y el cálculo de impuestos son trabajo del <strong>Information Expert</strong> (la clase <code>Pedido</code>, que tiene los datos para calcularlo), la creación del objeto es trabajo de <strong>Creator</strong>, y el acceso a datos es trabajo de un repositorio dedicado.</p>
+          <ul>
+            <li><strong>Señal de alerta:</strong> un controller con métodos de más de 15-20 líneas, o que importa librerías de base de datos, de HTML o de validación de formularios directamente.</li>
+            <li><strong>Corrección:</strong> extraer esa lógica a la clase que le corresponde por Information Expert o Creator, y dejar en el controller solo la secuencia de llamadas — como en el ejemplo de <code>PedidoController</code> de la diapositiva anterior.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De quién maneja el evento, a cómo se conectan las clases entre sí</h1>
+          <p>Controller responde "¿quién recibe la orden?". Los dos patrones que siguen responden una pregunta distinta: una vez que las responsabilidades están repartidas entre varias clases (como en <code>PedidoController</code>, <code>Pedido</code> y el repositorio), <strong>¿qué tan bien está hecho ese reparto?</strong> Eso es lo que miden Low Coupling y High Cohesion.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Retomando la semana 7</p>
+          <h1>Low Coupling como patrón GRASP</h1>
+          <p>En la semana 7 (Cohesión y Acoplamiento) vimos el <strong>acoplamiento</strong> como la medida de cuánto depende una clase de otras. Larman lo formaliza como patrón: <strong>Low Coupling</strong> asigna responsabilidades de forma que el acoplamiento entre clases se mantenga bajo, para que un cambio en una clase no obligue a cambiar muchas otras.</p>
+          <p>Criterios concretos para evaluar el acoplamiento de una clase en el diseño:</p>
+          <ul>
+            <li><strong>Cuántas otras clases conoce</strong> (por atributo, por parámetro, por tipo de retorno, por herencia).</li>
+            <li><strong>Cuántos métodos distintos</strong> llama de cada una de esas clases.</li>
+            <li><strong>Qué tan estable</strong> es lo que conoce: depender de una interfaz estable acopla menos que depender del detalle interno de otra clase concreta (esto es exactamente DIP, visto en la semana 9).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Reducir el acoplamiento: un refactor</h1>
+          <pre><code>## Antes: acoplamiento alto — conoce el detalle de MySQL
+class ReporteVentas:
+    def generar(self):
+        cursor = ConexionMySQL().obtener_cursor()
+        cursor.execute("SELECT * FROM pedidos")
+        ...
+
+## Después: acoplamiento bajo — conoce solo el contrato
+class ReporteVentas:
+    def __init__(self, repositorio: RepositorioPedidos):
+        self.repositorio = repositorio
+
+    def generar(self):
+        pedidos = self.repositorio.obtener_todos()
+        ...</code></pre>
+          <p>En la versión "antes", <code>ReporteVentas</code> conoce el detalle de MySQL: si el equipo cambia de motor de base de datos, hay que editar esta clase. En la versión "después" solo conoce la interfaz <code>RepositorioPedidos</code> — el mismo mecanismo de inyección de dependencias que se vio con DIP en la semana 9, aplicado aquí para bajar el acoplamiento.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Retomando la semana 7</p>
+          <h1>High Cohesion como patrón GRASP</h1>
+          <p>También en la semana 7 vimos la <strong>cohesión</strong> como qué tan relacionadas están las responsabilidades dentro de una misma clase. Como patrón GRASP, <strong>High Cohesion</strong> asigna responsabilidades de forma que las de una clase estén fuertemente relacionadas y enfocadas en un solo propósito.</p>
+          <p>Criterios concretos para evaluar la cohesión de una clase:</p>
+          <ul>
+            <li><strong>La prueba de la frase:</strong> ¿se puede describir lo que hace la clase en una sola oración, sin usar la palabra "y"? Si hace falta "y", probablemente tiene más de una responsabilidad.</li>
+            <li><strong>Relación entre sus métodos:</strong> ¿todos los métodos usan la mayoría de los atributos de la clase, o hay grupos de métodos que solo usan un subconjunto y nunca se mezclan con el resto?</li>
+            <li><strong>Nivel de abstracción:</strong> mezclar operaciones de muy alto nivel (orquestar un proceso) con operaciones de muy bajo nivel (formatear una cadena de texto) en la misma clase es señal de baja cohesión.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cohesión baja vs. alta: el mismo caso</h1>
+          <pre><code>## Cohesión baja: reportes + envío de correo + cálculo de impuestos
+class GestorDeVentas:
+    def generar_reporte(self): ...
+    def enviar_correo_a_cliente(self, msj): ...
+    def calcular_impuestos(self, pedido): ...
+
+## Cohesión alta: una responsabilidad por clase
+class ReporteVentas:
+    def generar(self): ...
+
+class NotificadorCliente:
+    def enviar(self, msj): ...
+
+class CalculadorImpuestos:
+    def calcular(self, pedido): ...</code></pre>
+          <p><code>GestorDeVentas</code> no pasa la prueba de la frase: hace reportes <strong>y</strong> envía correos <strong>y</strong> calcula impuestos. Al dividirlo en tres clases, cada una se describe sin "y" — y, como efecto colateral, cada clase también terminó con <strong>menos</strong> clases de las que depende: separar por cohesión casi siempre reduce el acoplamiento también.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Low Coupling y High Cohesion se refuerzan mutuamente</h1>
+          <p>No es casualidad que el refactor de la diapositiva anterior haya mejorado ambos a la vez. En la mayoría de los diseños:</p>
+          <ul>
+            <li>Una clase con <strong>responsabilidades mezcladas</strong> (baja cohesión) suele necesitar conocer más clases externas para cumplir cada una de esas responsabilidades distintas (alto acoplamiento).</li>
+            <li>Al dividirla en clases con <strong>una sola responsabilidad</strong> (alta cohesión), cada clase resultante necesita menos colaboradores para cumplir su propósito, más acotado (bajo acoplamiento).</li>
+          </ul>
+          <p>Por eso Larman los presenta como pareja: <strong>diseñar pensando en alta cohesión es, la mayoría de las veces, el camino más directo hacia el bajo acoplamiento.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>El propio Controller puede volverse de baja cohesión</h1>
+          <p>Los tres patrones de hoy pueden entrar en conflicto entre sí. Un <strong>Controller de fachada</strong> (diapositiva 5) agrupa a propósito varios eventos relacionados en una sola clase para reducir la cantidad de controllers — pero si se le siguen agregando casos de uso sin relación real entre sí, esa misma clase deja de pasar la <strong>prueba de la frase</strong> de High Cohesion.</p>
+          <p>No hay una regla absoluta: un Controller de fachada bien delimitado (eventos genuinamente relacionados, como todo lo de "gestión de un pedido") mantiene alta cohesión; uno que agrupa eventos de módulos distintos "para no crear más clases" la pierde. La decisión se evalúa caso por caso, con los criterios ya vistos.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Controller de fachada en tensión con High Cohesion" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Evalúen un diseño con los tres patrones de hoy</h1>
+          <p>En el chat, para el siguiente diseño respondan: ¿quién debería ser el Controller?, ¿dónde ven acoplamiento alto?, ¿qué clase no pasa la prueba de la frase?</p>
+          <ol>
+            <li>Un botón "Confirmar pago" en la interfaz web ejecuta directamente la validación de la tarjeta, calcula el total con impuestos, y guarda el registro en la base de datos.</li>
+            <li>Una clase <code>Utilidades</code> del sistema tiene métodos para formatear fechas, enviar correos, validar contraseñas y generar reportes en PDF.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los tres patrones de hoy, en una frase</h1>
+          <ol>
+            <li><strong>Controller:</strong> el evento de sistema lo maneja una clase de caso de uso, de sesión o del sistema — nunca la interfaz de usuario.</li>
+            <li><strong>Controller gordo:</strong> antipatrón cuando el controller ejecuta la lógica en vez de delegarla al Information Expert o Creator correspondiente.</li>
+            <li><strong>Low Coupling:</strong> minimizar cuántas clases conoce cada clase y qué tan atada está a sus detalles internos.</li>
+            <li><strong>High Cohesion:</strong> cada clase debe describirse en una frase sin "y" — una responsabilidad, bien enfocada.</li>
+            <li>Los tres pueden entrar en tensión entre sí: un buen diseño los balancea caso por caso, no aplica ninguno "a ciegas".</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de Controller, Low Coupling y High Cohesion" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para el viernes: los últimos cuatro patrones GRASP</h1>
+          <p>Con Information Expert y Creator (martes) y Controller, Low Coupling y High Cohesion (hoy), quedan cinco de los nueve patrones GRASP. <strong>El viernes cerramos la serie completa</strong> con los cuatro restantes: <strong>Polymorphism</strong>, <strong>Pure Fabrication</strong>, <strong>Indirection</strong> y <strong>Protected Variations</strong> — los patrones más orientados a manejar variación y cambio en el diseño.</p>
+          <p>Antes de esa sesión, revisen el diagrama de clases de su propio proyecto: identifiquen quién actúa hoy como Controller y busquen una clase que no pase la prueba de la frase de High Cohesion.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

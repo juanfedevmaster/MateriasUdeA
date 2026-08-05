@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estilos de Arquitectura I y II — Semana 5</title>
+  <meta name="description" content="Ocho estilos arquitectónicos —monolítica, cliente/servidor, SOA, basada en componentes, concurrente/tiempo real, líneas de producto, orientada a objetos y microservicios— con el caso real de la migración de Netflix — Análisis y Diseño de Sistemas II, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/estilos-de-arquitectura/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Estilos de Arquitectura I y II — Semana 5" />
+  <meta property="og:description" content="Ocho estilos arquitectónicos —monolítica, cliente/servidor, SOA, basada en componentes, concurrente/tiempo real, líneas de producto, orientada a objetos y microservicios— con el caso real de la migración de Netflix — Análisis y Diseño de Sistemas II, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/estilos-de-arquitectura/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estilos de Arquitectura I y II — Semana 5" />
+  <meta name="twitter:description" content="Ocho estilos arquitectónicos —monolítica, cliente/servidor, SOA, basada en componentes, concurrente/tiempo real, líneas de producto, orientada a objetos y microservicios— con el caso real de la migración de Netflix — Análisis y Diseño de Sistemas II, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/estilos-de-arquitectura.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 5 — Estilos de Arquitectura I y II</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/shapes.svg" alt="Estilos de arquitectura" style="display:block;width:230px;height:230px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>Hoy reemplazamos el Coworking del miércoles</h1>
+          <p>Esta semana el Coworking de CodeF@ctory (Planning Sprint 1) se dictó el miércoles, así que el tema que originalmente le correspondía a esa sesión se recorre y se dicta hoy, junto con el tema propio del viernes: por eso vemos <strong>ocho estilos arquitectónicos completos</strong> en una sola sesión.</p>
+          <p>El martes vimos qué es una decisión arquitectónica y qué atributos de calidad compromete. <strong>Hoy vemos las opciones concretas entre las que cada equipo debe elegir para su proyecto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>De un centro de datos<br>a 700+ microservicios</h1>
+          <img class="portada-icon" src="img/chart-line.svg" alt="Crecimiento de microservicios" style="display:block;width:260px;height:260px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Netflix, 2008–2016</h1>
+          <table>
+            <tbody>
+              <tr><th>Sistema</th><td>Netflix — plataforma de streaming de video</td></tr>
+              <tr><th>Arquitectura original</th><td>Aplicación monolítica desplegada en centros de datos propios</td></tr>
+              <tr><th>Detonante</th><td>Agosto de 2008 — corrupción de base de datos deja el servicio caído tres días completos</td></tr>
+              <tr><th>Respuesta</th><td>Migración progresiva a microservicios sobre la nube pública de AWS (2009–2016)</td></tr>
+              <tr><th>Resultado</th><td>Más de 700 microservicios independientes, cada uno con su propio ciclo de despliegue</td></tr>
+              <tr><th>Fuente</th><td>Netflix Technology Blog, charlas públicas de ingeniería (ej. Adrian Cockcroft, "Migrating to Microservices")</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Por qué no bastó con "arreglar el monolito"</p>
+          <h1>Un solo punto de falla para todo el catálogo</h1>
+          <p>La caída de 2008 no fue un bug puntual: fue la consecuencia directa del <strong>estilo arquitectónico elegido</strong>. Un monolito desplegado en infraestructura propia significaba que un solo problema —una base de datos corrupta— podía tumbar la plataforma completa durante días.</p>
+          <p><strong>Ningún parche de código podía resolver eso: hacía falta cambiar la estructura misma del sistema, empezando por elegir un estilo distinto.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>El catálogo de opciones</h1>
+          <p>Netflix no saltó directo de "monolito" a "microservicios" — pasó por decisiones intermedias (separar servicios, exponerlos como APIs, aislar fallos) que corresponden a varios de los estilos que existen en la disciplina.</p>
+          <p><strong>Hoy recorremos ocho estilos arquitectónicos, del más simple al más distribuido, para que cada equipo elija el que mejor sirva a su proyecto — no el más de moda.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un estilo arquitectónico</h1>
+          <p>Un <strong>estilo arquitectónico</strong> es una categoría de solución estructural, reconocida y reutilizada por la industria, que define: qué tipos de componentes existen, cómo se conectan entre sí, y qué restricciones rigen esa interacción a nivel de sistema completo.</p>
+          <p><strong>No es una tecnología ni un framework</strong> — es una forma de organizar el sistema que puede implementarse con distintas tecnologías. Elegirlo es la decisión arquitectónica más temprana y más costosa de revertir de todo el proyecto.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 1 · Monolítica</p>
+          <h1>Todo el sistema, un solo despliegue</h1>
+          <p>Toda la lógica de negocio, acceso a datos e interfaz corren como <strong>un único proceso desplegable</strong>. Es el estilo con el que casi todo proyecto empieza — incluido Netflix en 2007 y Twitter en 2006.</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Simple de desarrollar, probar y desplegar al inicio</td><td>Un fallo en cualquier parte puede tumbar todo el sistema</td></tr>
+              <tr><td>Sin latencia de red entre módulos internos</td><td>Escalar significa escalar el sistema completo, no solo lo que lo necesita</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/cube.svg" alt="Arquitectura monolítica" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 2 · Cliente/Servidor</p>
+          <h1>Quien pide y quien responde</h1>
+          <p>Divide el sistema en <strong>clientes</strong> (piden servicios) y <strong>servidores</strong> (los proveen), comunicados por red. Variantes comunes: 2 capas (cliente habla directo con la base de datos) y 3 capas (cliente, servidor de aplicación, base de datos).</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Separa responsabilidades de presentación y procesamiento</td><td>El servidor puede volverse cuello de botella con muchos clientes</td></tr>
+              <tr><td>Varios clientes pueden compartir un mismo servidor</td><td>Depende de disponibilidad de red entre cliente y servidor</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/server.svg" alt="Cliente/servidor" style="display:block;width:140px;height:140px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 3 · Orientada a Servicios (SOA)</p>
+          <h1>Servicios de negocio, reutilizables entre sistemas</h1>
+          <p>Organiza el sistema como un conjunto de <strong>servicios de negocio con contrato bien definido</strong> (ej. "ValidarPago", "GenerarFactura"), pensados para reutilizarse entre múltiples aplicaciones de la organización, normalmente coordinados por un <strong>bus de servicios (ESB)</strong> centralizado.</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Reutilización de servicios entre distintas aplicaciones de la empresa</td><td>El ESB centralizado puede volverse un cuello de botella y un punto único de falla</td></tr>
+              <tr><td>Contratos formales facilitan la integración entre sistemas heterogéneos</td><td>Gobernanza y versionado de contratos añaden complejidad operativa</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 4 · Basada en Componentes</p>
+          <h1>Piezas reemplazables con interfaz explícita</h1>
+          <p>Organiza el sistema como <strong>componentes de software independientes</strong> —unidades de despliegue con interfaces bien definidas y dependencias explícitas— que se ensamblan para formar la aplicación completa. Cada componente puede desarrollarse, probarse y reemplazarse por separado.</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Alta reutilización dentro del mismo sistema o entre proyectos</td><td>Diseñar buenas interfaces de componente exige más disciplina inicial</td></tr>
+              <tr><td>Reemplazar un componente no obliga a tocar los demás</td><td>Gestionar versiones de componentes puede volverse complejo</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Arquitectura basada en componentes" style="display:block;width:140px;height:140px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>SOA no es "lo mismo pero con otro nombre" que microservicios</h1>
+          <p>Es común confundir SOA con microservicios porque ambos hablan de "servicios". <strong>La diferencia clave está en la coordinación y el tamaño</strong>:</p>
+          <ul>
+            <li><strong>SOA:</strong> servicios de grano grueso (procesos de negocio completos), coordinados por un ESB centralizado, con frecuencia comparten base de datos.</li>
+            <li><strong>Microservicios:</strong> servicios de grano fino, comunicación descentralizada (sin ESB), cada uno con su propia base de datos.</li>
+          </ul>
+          <p><strong>No son el mismo estilo con distinto nombre de moda — resuelven problemas de coordinación de forma opuesta.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 5 · Concurrente / Tiempo Real</p>
+          <h1>Cuando el tiempo de respuesta es parte del requisito</h1>
+          <p>Organiza el sistema en <strong>procesos o hilos que se ejecutan simultáneamente</strong>, coordinados para cumplir restricciones temporales estrictas — no basta con que el resultado sea correcto, debe llegar <strong>dentro de una ventana de tiempo garantizada</strong>. Típico en sistemas embebidos, control industrial y monitoreo.</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Aprovecha múltiples núcleos/procesos para responder más rápido</td><td>Condiciones de carrera y bloqueos son difíciles de depurar</td></tr>
+              <tr><td>Único estilo viable cuando hay plazos de tiempo estrictos (ej. control de tráfico aéreo)</td><td>Exige diseño cuidadoso de sincronización entre procesos</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/bolt.svg" alt="Arquitectura concurrente / tiempo real" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 6 · Líneas de Producto de Software</p>
+          <h1>Un núcleo común, muchas variantes</h1>
+          <p>Diseña un <strong>núcleo de funcionalidad compartida</strong> del cual se derivan múltiples productos o variantes, configurando qué características ("features") incluye cada uno — sin duplicar el código base. Ejemplo típico: un mismo sistema de punto de venta configurado distinto para cada tipo de cliente (retail, restaurante, farmacia).</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Reduce duplicación cuando se venden varias variantes del mismo producto</td><td>Diseñar el núcleo configurable exige inversión inicial alta</td></tr>
+              <tr><td>Cada variante se mantiene sincronizada con las correcciones del núcleo</td><td>Solo rentable si de verdad hay múltiples variantes que mantener</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/clone.svg" alt="Líneas de producto de software" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 7 · Orientada a Objetos</p>
+          <h1>Objetos como unidad estructural del sistema</h1>
+          <p>Organiza el sistema como una red de <strong>objetos que encapsulan estado y comportamiento</strong>, colaborando entre sí mediante el envío de mensajes (llamadas a métodos). Es el estilo que subyace al modelo de clases de dominio ya construido en la Unidad 2.</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Encapsulamiento facilita mantener y extender el sistema (herencia, polimorfismo)</td><td>Sin disciplina, las relaciones entre objetos pueden volverse difíciles de rastrear</td></tr>
+              <tr><td>Mapea naturalmente al modelo de dominio ya elaborado por cada equipo</td><td>No resuelve por sí solo cómo distribuir el sistema entre varios procesos o servidores</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/object-group.svg" alt="Arquitectura orientada a objetos" style="display:block;width:140px;height:140px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Estilo 8 · Microservicios</p>
+          <h1>Servicios pequeños, independientes de punta a punta</h1>
+          <p>Divide el sistema en <strong>servicios de grano fino</strong>, cada uno con una responsabilidad de negocio acotada, su <strong>propia base de datos</strong> y su propio ciclo de despliegue — sin coordinador central. Es el estilo al que Netflix migró entre 2009 y 2016.</p>
+          <table>
+            <thead>
+              <tr><th>A favor</th><th>En contra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cada servicio escala, despliega y falla de forma independiente</td><td>Complejidad operativa alta: monitoreo, trazabilidad y consistencia entre servicios</td></tr>
+              <tr><td>Equipos pequeños pueden ser dueños de servicios completos (Ley de Conway a favor)</td><td>No recomendable para equipos pequeños o proyectos de corta duración</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/circle-nodes.svg" alt="Microservicios" style="display:block;width:150px;height:150px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Resumen</p>
+          <h1>Los ocho estilos, en una tabla</h1>
+          <table>
+            <thead>
+              <tr><th>Estilo</th><th>Idea central</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Monolítica</td><td>Un solo proceso desplegable</td></tr>
+              <tr><td>Cliente/Servidor</td><td>Quien pide vs. quien provee, por red</td></tr>
+              <tr><td>SOA</td><td>Servicios de negocio reutilizables, coordinados por un ESB</td></tr>
+              <tr><td>Basada en componentes</td><td>Piezas reemplazables con interfaz explícita</td></tr>
+              <tr><td>Concurrente / tiempo real</td><td>Procesos simultáneos con plazos de respuesta garantizados</td></tr>
+              <tr><td>Líneas de producto</td><td>Núcleo común, variantes configurables</td></tr>
+              <tr><td>Orientada a objetos</td><td>Objetos que encapsulan estado y colaboran por mensajes</td></tr>
+              <tr><td>Microservicios</td><td>Servicios de grano fino, independientes, sin coordinador central</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Microservicios no siempre es la respuesta correcta</h1>
+          <p>Netflix necesitó ocho años y equipos dedicados de infraestructura para completar su migración a microservicios. <strong>La complejidad operativa que ganaron —monitoreo distribuido, consistencia entre servicios, cientos de despliegues independientes— no es gratis.</strong></p>
+          <p><strong>Para un proyecto de Fábrica Escuela, de equipo pequeño y duración de un semestre, un monolito bien modularizado casi siempre es la elección correcta.</strong> El estilo "de moda" no es automáticamente el mejor para el contexto propio.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Microservicios en tensión con simplicidad operativa" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Criterios para elegir, no para adivinar</h1>
+          <ul>
+            <li><strong>Tamaño y experiencia del equipo:</strong> equipos pequeños rara vez se benefician de microservicios o SOA.</li>
+            <li><strong>Duración y ciclo de vida del proyecto:</strong> un semestre no justifica la inversión de una línea de producto.</li>
+            <li><strong>Atributos de calidad prioritarios</strong> (vistos el martes): si prima la disponibilidad ante fallos parciales, un estilo distribuido puede justificarse; si prima simplicidad y velocidad de entrega, un monolito modular gana.</li>
+            <li><strong>Presupuesto operativo:</strong> más servicios independientes significa más infraestructura, monitoreo y coordinación que mantener.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción · Insumo para Planning Sprint 1</p>
+          <h1>Elijan el estilo dominante de su proyecto</h1>
+          <p><strong>En equipos, en salas de Zoom:</strong></p>
+          <ol>
+            <li>Revisen el atributo de calidad crítico que trajeron identificado desde el martes.</li>
+            <li>Elijan, de los ocho estilos de hoy, el que mejor sirva a ese atributo dado su tamaño de equipo y duración del proyecto.</li>
+            <li>Justifiquen la elección en una frase, usando los criterios de la diapositiva anterior.</li>
+          </ol>
+          <p class="slide-eyebrow">10 minutos · el resultado alimenta directamente el Planning Sprint 1 de esta semana</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Empezar en microservicios o migrar después?</h1>
+          <p><strong>Postura "microservicios desde el día uno":</strong> evita la reescritura costosa que vivieron Twitter y Netflix — si se sabe que el sistema va a crecer, mejor diseñarlo distribuido desde el inicio.</p>
+          <p><strong>Postura "monolito modular primero":</strong> defendida por buena parte de la industria (incluye a ingenieros de Shopify y a Martin Fowler con el término "monolito primero") — dividir un sistema que aún no se conoce bien suele producir fronteras de servicio equivocadas, más caras de corregir que empezar simple.</p>
+          <p><strong>No hay consenso único</strong>: depende de qué tan predecible es el crecimiento y qué tan cara es la migración posterior en el contexto específico.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Un <strong>estilo arquitectónico</strong> define qué componentes existen, cómo se conectan y qué restricciones rigen esa interacción, a nivel de sistema completo.</li>
+            <li>Ocho estilos: monolítica, cliente/servidor, SOA, basada en componentes, concurrente/tiempo real, líneas de producto, orientada a objetos y microservicios.</li>
+            <li><strong>SOA y microservicios no son lo mismo:</strong> difieren en grano de servicio y en coordinación centralizada vs. descentralizada.</li>
+            <li>Elegir un estilo depende de atributos de calidad prioritarios, tamaño de equipo y duración del proyecto — no de qué tan de moda esté.</li>
+            <li>No hay consenso sobre empezar distribuido o migrar después — para Fábrica Escuela, un monolito modular suele ser la opción más sensata.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s23">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p>Lleguen al Planning Sprint 1 (Coworking de esta semana) con el <strong>estilo arquitectónico dominante de su proyecto ya elegido y justificado</strong> — es uno de los insumos que se revisan en esa sesión.</p>
+          <p><strong>La semana 6 profundiza en el estilo cliente/servidor con arquitecturas N-capas, y cierra la Unidad 3 formalizando estas decisiones con diagramas UML de despliegue, paquetes y componentes.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 23</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

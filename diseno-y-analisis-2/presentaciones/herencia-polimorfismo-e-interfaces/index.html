@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herencia, Polimorfismo e Interfaces — Semana 7</title>
+  <meta name="description" content="Herencia como reutilización y especialización, cuándo preferir composición, polimorfismo de subtipo, interfaces como contrato frente a herencia de implementación — Análisis y Diseño de Sistemas II, Semana 7." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/herencia-polimorfismo-e-interfaces/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Herencia, Polimorfismo e Interfaces — Semana 7" />
+  <meta property="og:description" content="Herencia como reutilización y especialización, cuándo preferir composición, polimorfismo de subtipo, interfaces como contrato frente a herencia de implementación — Análisis y Diseño de Sistemas II, Semana 7." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/herencia-polimorfismo-e-interfaces/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Herencia, Polimorfismo e Interfaces — Semana 7" />
+  <meta name="twitter:description" content="Herencia como reutilización y especialización, cuándo preferir composición, polimorfismo de subtipo, interfaces como contrato frente a herencia de implementación — Análisis y Diseño de Sistemas II, Semana 7." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/herencia-polimorfismo-e-interfaces.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 7 — Herencia, Polimorfismo e Interfaces</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Herencia, polimorfismo e interfaces" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un Cuadrado hereda de Rectángulo…<br>y rompe todo el código que ya funcionaba</h1>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El clásico problema Cuadrado–Rectángulo</h1>
+          <pre><code>class Rectangulo:
+    def set_ancho(self, a): self.ancho = a
+    def set_alto(self, h): self.alto = h
+
+class Cuadrado(Rectangulo):
+    def set_ancho(self, a):
+        self.ancho = a
+        self.alto = a          # un cuadrado debe medir igual
+    def set_alto(self, h):
+        self.ancho = h
+        self.alto = h
+
+def probar(r: Rectangulo):
+    r.set_ancho(5); r.set_alto(4)
+    assert r.ancho * r.alto == 20   # falla si r es un Cuadrado</code></pre>
+          <p>Matemáticamente un cuadrado <strong>es un</strong> rectángulo especial. Pero como clase, <code>Cuadrado</code> no puede sustituir a <code>Rectangulo</code> sin romper el comportamiento que el código que ya existía esperaba.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Heredar no siempre es la herramienta correcta</h1>
+          <p>El error de <code>Cuadrado</code> no está en el álgebra — está en usar <strong>herencia</strong> para modelar una relación que no se comporta como el resto del sistema espera. Hoy cerramos la Unidad 4 viendo tres mecanismos que suelen confundirse: herencia, polimorfismo e interfaces, y cuándo cada uno es la herramienta correcta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es herencia</h1>
+          <p><strong>Herencia</strong> es un mecanismo que permite que una clase (subclase) reutilice atributos y comportamiento de otra clase (superclase), y los especialice agregando o redefiniendo lo que necesita. Representa una relación <strong>"es-un"</strong>: un <code>EmpleadoAsalariado</code> es-un <code>Empleado</code>.</p>
+          <p>Sirve para dos cosas a la vez: <strong>reutilización</strong> (no repetir código común) y <strong>especialización</strong> (agregar comportamiento propio de un caso concreto).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Un ejemplo donde sí funciona bien</h1>
+          <pre><code>class Empleado:
+    def __init__(self, nombre):
+        self.nombre = nombre
+    def calcular_pago(self):
+        raise NotImplementedError
+
+class EmpleadoAsalariado(Empleado):
+    def __init__(self, nombre, salario_mensual):
+        super().__init__(nombre)
+        self.salario_mensual = salario_mensual
+    def calcular_pago(self):
+        return self.salario_mensual
+
+class EmpleadoPorHoras(Empleado):
+    def __init__(self, nombre, horas, tarifa):
+        super().__init__(nombre)
+        self.horas, self.tarifa = horas, tarifa
+    def calcular_pago(self):
+        return self.horas * self.tarifa</code></pre>
+          <p>Ambas subclases <strong>son</strong> genuinamente empleados y pueden sustituir a <code>Empleado</code> en cualquier parte del sistema sin sorpresas — a diferencia del ejemplo del cuadrado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuándo NO usar herencia</h1>
+          <ul>
+            <li><strong>Cuando la relación no es realmente "es-un"</strong>, sino "tiene-un" o "usa-un" — un <code>Auto</code> no es un <code>Motor</code>, un auto <em>tiene</em> un motor.</li>
+            <li><strong>Cuando solo se quiere reutilizar código</strong>, sin que exista una verdadera relación de especialización entre los conceptos.</li>
+            <li><strong>Cuando heredar rompe el comportamiento esperado</strong> de la superclase, como en <code>Cuadrado</code>–<code>Rectangulo</code>: la subclase debería poder sustituir a la superclase sin sorpresas, y si no puede, la relación de herencia es la señal equivocada.</li>
+            <li><strong>Cuando el árbol de herencia empieza a crecer solo para acomodar excepciones</strong> (<code>PatoQueNoVuela extends Pato</code>, con un método vacío que sobreescribe "volar").</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La alternativa: composición</h1>
+          <p><strong>Composición</strong> es construir una clase incluyendo instancias de otras clases como atributos, en vez de heredar de ellas — modela relaciones "tiene-un" en lugar de "es-un".</p>
+          <pre><code>class MotorElectrico:
+    def encender(self): ...
+
+class Auto:
+    def __init__(self, motor):
+        self.motor = motor       # composición, no herencia
+    def arrancar(self):
+        self.motor.encender()</code></pre>
+          <p><code>Auto</code> no hereda de <code>MotorElectrico</code>: lo <strong>usa</strong>. Se puede cambiar el tipo de motor sin tocar la jerarquía de clases de <code>Auto</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>"Preferir composición sobre herencia"</h1>
+          <p>Es una guía de diseño ampliamente aceptada en la industria, no una prohibición absoluta de la herencia: <strong>ante la duda, empezar modelando con composición</strong> suele producir un diseño más flexible que empezar con una jerarquía de clases.</p>
+          <table>
+            <thead>
+              <tr><th>Herencia</th><th>Composición</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Acopla fuertemente subclase y superclase (cambios en la superclase afectan a todas sus subclases)</td><td>Acopla solo a través de la interfaz del objeto compuesto</td></tr>
+              <tr><td>La relación se fija en tiempo de compilación</td><td>Se puede cambiar de componente en tiempo de ejecución</td></tr>
+              <tr><td>Útil cuando la relación "es-un" es genuina y estable</td><td>Útil para reutilizar comportamiento sin comprometerse a una jerarquía rígida</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es polimorfismo</h1>
+          <p><strong>Polimorfismo</strong> (del griego "muchas formas") es la capacidad de tratar objetos de distintas clases a través de una misma interfaz, de modo que el mismo mensaje (llamada a método) produce un comportamiento distinto según el objeto que lo reciba.</p>
+          <p>El polimorfismo más relevante para el diseño OO es el <strong>polimorfismo de subtipo</strong>: cualquier subclase puede usarse donde se espera su superclase, y cada una responde a su manera.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Polimorfismo en acción</h1>
+          <pre><code>empleados = [
+    EmpleadoAsalariado("Ana", 3000000),
+    EmpleadoPorHoras("Luis", 80, 25000),
+]
+
+for e in empleados:
+    print(e.nombre, e.calcular_pago())
+    # cada objeto ejecuta SU PROPIA versión
+    # de calcular_pago(), sin que el código
+    # que recorre la lista sepa de qué tipo es cada uno</code></pre>
+          <p>El código que recorre <code>empleados</code> no necesita saber si cada elemento es asalariado o por horas — <strong>solo confía en que todos responden a <code>calcular_pago()</code></strong>. Esto es lo que hace posible agregar un tercer tipo de empleado sin tocar este bloque de código.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una interfaz</h1>
+          <p>Una <strong>interfaz</strong> es un contrato: declara qué operaciones debe ofrecer una clase (sus firmas de método), <strong>sin proveer ninguna implementación</strong>. Cualquier clase que "implemente" la interfaz se compromete a cumplir ese contrato, sin heredar código de ella.</p>
+          <pre><code>interface Notificable:
+    def notificar(self, mensaje): ...
+
+class NotificadorEmail implements Notificable:
+    def notificar(self, mensaje): ...   # su propia implementación
+
+class NotificadorSMS implements Notificable:
+    def notificar(self, mensaje): ...   # otra implementación distinta</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Interfaz (contrato) vs. herencia de implementación</h1>
+          <table>
+            <thead>
+              <tr><th>Herencia de implementación</th><th>Interfaz</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>La subclase recibe código ya escrito de la superclase</td><td>Solo se recibe el compromiso de implementar cada operación</td></tr>
+              <tr><td>Acopla a la subclase con los detalles internos de la superclase</td><td>Acopla únicamente al contrato — cero detalle de implementación compartido</td></tr>
+              <tr><td>En la mayoría de lenguajes, una clase hereda de una sola superclase</td><td>Una clase puede implementar varias interfaces a la vez</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Cuando lo único que se necesita es garantizar que varias clases respondan al mismo conjunto de mensajes, una interfaz es un compromiso más liviano que una jerarquía de herencia.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Por qué no se permite herencia múltiple de clases?</h1>
+          <p>Muchos lenguajes (Java, C#) permiten que una clase implemente <strong>varias interfaces</strong>, pero prohíben heredar de <strong>varias clases</strong> a la vez. La razón: heredar implementación de dos superclases distintas puede generar ambigüedad —si ambas definen el mismo método de forma distinta, ¿cuál gana?—, mientras que combinar varios contratos sin implementación no genera ese conflicto.</p>
+          <p><strong>Esta asimetría es una de las razones de diseño por las que "preferir interfaces sobre herencia de implementación" es una guía tan repetida en la industria.</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Herencia múltiple en tensión con interfaces múltiples" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Herencia o composición?</h1>
+          <p>En el chat, para cada par, decidan si la relación debería modelarse con herencia ("es-un") o composición ("tiene-un"):</p>
+          <ol>
+            <li><code>GerenteDeVentas</code> y <code>Empleado</code></li>
+            <li><code>Pedido</code> y <code>DireccionDeEnvio</code></li>
+            <li><code>ReproductorDeMusica</code> y <code>Ecualizador</code></li>
+            <li><code>CuentaDeAhorros</code> y <code>CuentaBancaria</code></li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Lo que viene</p>
+          <h1>Sustituir sin sorpresas</h1>
+          <p>El ejemplo de <code>Cuadrado</code>–<code>Rectangulo</code> con el que abrimos hoy ilustra una idea más general: <strong>toda subclase debería poder sustituir a su clase base en cualquier parte del sistema, sin que el comportamiento se rompa</strong> para el código que ya la estaba usando.</p>
+          <p><strong>Esa idea se formaliza en la semana 8</strong> como uno de los cinco principios SOLID — hoy la sembramos con intuición de diseñador; ahí le pondremos nombre, autor y reglas precisas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>Herencia:</strong> reutilización y especialización a través de una relación "es-un" genuina.</li>
+            <li>No usar herencia solo para reutilizar código, ni cuando la subclase no puede sustituir a la superclase sin sorpresas.</li>
+            <li><strong>Composición</strong> ("tiene-un") suele ser más flexible que herencia — "preferir composición sobre herencia" es la guía por defecto.</li>
+            <li><strong>Polimorfismo de subtipo:</strong> mismo mensaje, comportamiento distinto según el objeto que lo recibe.</li>
+            <li><strong>Interfaces</strong> son un contrato sin implementación — más livianas de acoplar que la herencia de implementación.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para la próxima semana</h1>
+          <p>Revisen su modelo de dominio y su diagrama de clases: identifiquen si alguna relación de generalización ("es-un") que dibujaron en la Unidad 2 en realidad debería ser una composición, y si hay algún comportamiento compartido que hoy no está expresado como interfaz.</p>
+          <p><strong>La semana 8 abre la Unidad 5 con los cinco principios SOLID</strong> — la formalización de todo lo que hemos construido intuitivamente en abstracción, encapsulamiento, cohesión, acoplamiento, herencia y polimorfismo durante esta semana.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima semana" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 18</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

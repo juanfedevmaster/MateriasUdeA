@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones GoF Estructurales I: Adapter, Facade, Composite — Semana 13</title>
+  <meta name="description" content="Se abre la familia de patrones GoF Estructurales: Adapter (adaptar una interfaz incompatible sin modificar el código original), Facade (interfaz simplificada a un subsistema complejo) y Composite (estructuras de árbol parte-todo tratadas de forma uniforme), con ejemplos de código y su relación con DIP y con el antipatrón God Object — Análisis y Diseño de Sistemas II, Semana 13." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-estructurales-i-adapter-facade-composite/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones GoF Estructurales I: Adapter, Facade, Composite — Semana 13" />
+  <meta property="og:description" content="Se abre la familia de patrones GoF Estructurales: Adapter (adaptar una interfaz incompatible sin modificar el código original), Facade (interfaz simplificada a un subsistema complejo) y Composite (estructuras de árbol parte-todo tratadas de forma uniforme), con ejemplos de código y su relación con DIP y con el antipatrón God Object — Análisis y Diseño de Sistemas II, Semana 13." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-estructurales-i-adapter-facade-composite/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones GoF Estructurales I: Adapter, Facade, Composite — Semana 13" />
+  <meta name="twitter:description" content="Se abre la familia de patrones GoF Estructurales: Adapter (adaptar una interfaz incompatible sin modificar el código original), Facade (interfaz simplificada a un subsistema complejo) y Composite (estructuras de árbol parte-todo tratadas de forma uniforme), con ejemplos de código y su relación con DIP y con el antipatrón God Object — Análisis y Diseño de Sistemas II, Semana 13." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gof-estructurales-i-adapter-facade-composite.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 13 — Patrones GoF Estructurales I: Adapter, Facade, Composite</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/puzzle-piece.svg" alt="Piezas que encajan entre sí" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Ya saben crear objetos sin acoplarse a la clase concreta.<br>Hoy: cómo <em>componerlos</em> sin duplicar código.</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De crear objetos a componerlos</h1>
+          <p>En las <strong>semanas 11 y 12</strong> vieron GRASP aplicado en UML y los dos primeros patrones creacionales del catálogo GoF: <strong>Factory Method</strong> y <strong>Abstract Factory</strong>. Ambos resuelven el mismo tipo de pregunta: <em>¿cómo se crea un objeto sin que el cliente dependa de su clase concreta?</em></p>
+          <p>Hoy cambia la pregunta. La familia <strong>estructural</strong> de GoF no se ocupa de cómo nace un objeto, sino de cómo se <strong>combinan clases y objetos ya existentes</strong> para armar estructuras más grandes — sin que esa combinación duplique código ni vuelva frágil el diseño.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué resuelven los patrones estructurales</h1>
+          <p>Los <strong>patrones estructurales</strong> son la segunda de las tres familias del catálogo GoF (creacional, <strong>estructural</strong>, de comportamiento — vista en la semana 12, slide de las 3 familias). Responden a una pregunta común: <em>¿cómo se organizan clases y objetos en una estructura más grande, manteniendo el diseño flexible y sin repetir lógica?</em></p>
+          <ul>
+            <li>Unas veces el problema es una <strong>interfaz que no calza</strong> con lo que el cliente espera.</li>
+            <li>Otras veces el problema es un <strong>subsistema con demasiadas piezas</strong> para usarlo cómodamente.</li>
+            <li>Otras veces el problema es representar una <strong>jerarquía parte-todo</strong> (un árbol) de forma uniforme.</li>
+          </ul>
+          <p>El catálogo GoF define <strong>7 patrones estructurales</strong> en total. Esta semana se ven <strong>6 de los 7</strong>: hoy, martes, <strong>Adapter, Facade y Composite</strong>; el viernes, <strong>Decorator, Proxy y Bridge</strong>, junto con un laboratorio de implementación.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Primer problema: una interfaz que no es la que el cliente espera</h1>
+          <p>Imaginen que su dominio ya define cómo quiere hablar con un servicio de pagos: un método <code>cobrar(monto, moneda)</code>. Pero el proveedor externo que van a usar (una librería, una API de un tercero, o código legado del mismo proyecto) expone un método completamente distinto, con otros nombres de parámetros y otro formato de datos. El dominio no puede modificar esa librería externa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El dominio hablando directamente con la interfaz externa</h1>
+          <pre><code>class ProcesadorDeCompras:
+    def __init__(self):
+        self.pasarela = PasarelaPagosLegacy()
+
+    def pagar(self, monto, moneda):
+        # el dominio se dobla para hablar
+        # el idioma de la librería externa
+        codigo = self.pasarela.ejecutar_transaccion(
+            {"amount_cents": int(monto * 100),
+             "curr": moneda.upper()})
+        return codigo == "OK"</code></pre>
+          <p><code>ProcesadorDeCompras</code> —una clase del dominio— conoce el formato exacto que exige <code>PasarelaPagosLegacy</code> (centavos como entero, moneda en mayúsculas, un código de texto como respuesta). Si el proveedor cambia o se reemplaza por otro, hay que tocar el dominio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Adapter</h1>
+          <p><strong>Adapter</strong> (Adaptador) convierte la interfaz de una clase existente —a menudo de una librería externa o de código legado, con una interfaz incompatible— en otra interfaz que el cliente ya espera, <strong>sin modificar el código original</strong> de esa clase.</p>
+          <p>El adaptador es una clase nueva que <strong>envuelve</strong> (compone) al objeto de interfaz incompatible y traduce cada llamada: recibe la petición en el formato que el dominio espera, y por dentro la reescribe en el formato que la librería externa exige — y viceversa con la respuesta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Adapter, en código</h1>
+          <pre><code>interface PasarelaDePagos:          # interfaz esperada
+    def cobrar(self, monto, moneda) -> bool: ...
+
+class AdaptadorPasarelaLegacy(PasarelaDePagos):
+    def __init__(self):
+        self.legacy = PasarelaPagosLegacy()
+
+    def cobrar(self, monto, moneda):
+        codigo = self.legacy.ejecutar_transaccion(
+            {"amount_cents": int(monto * 100),
+             "curr": moneda.upper()})
+        return codigo == "OK"</code></pre>
+          <p>Ahora <code>ProcesadorDeCompras</code> recibe una <code>PasarelaDePagos</code> inyectada (igual que en DIP) y llama <code>pasarela.cobrar(monto, moneda)</code>. Ya no conoce <code>PasarelaPagosLegacy</code> ni su formato de datos: toda la traducción vive dentro de <code>AdaptadorPasarelaLegacy</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Adapter y DIP: el adaptador es la abstracción hecha concreta</h1>
+          <p>En la <strong>semana 9</strong> vieron <strong>DIP (Dependency Inversion Principle)</strong>: los módulos de alto nivel no deben depender de módulos de bajo nivel, sino de abstracciones. En el ejemplo anterior, <code>ProcesadorDeCompras</code> (alto nivel) depende de la interfaz <code>PasarelaDePagos</code> (abstracción), no de <code>PasarelaPagosLegacy</code> (bajo nivel, de un tercero).</p>
+          <p><code>AdaptadorPasarelaLegacy</code> es exactamente la pieza que DIP exige que exista en algún lugar: una <strong>implementación concreta</strong> de la abstracción que el dominio ya define. Adapter es el patrón con nombre y estructura fija para el caso particular en que esa implementación concreta debe traducir hacia una interfaz externa que no se puede modificar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Segundo problema: un subsistema con demasiadas piezas</h1>
+          <p>Adapter resuelve una interfaz incompatible. Pero hay otro problema distinto: un subsistema que <strong>sí</strong> tiene una interfaz correcta, pero está formado por <strong>varias clases que colaboran entre sí</strong>, y el cliente tendría que conocer y coordinar todas ellas para completar una sola operación de negocio.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Facade</h1>
+          <p><strong>Facade</strong> (Fachada) provee una <strong>interfaz simplificada y unificada</strong> a un subsistema complejo compuesto por varias clases y sus interacciones internas. El cliente llama a un único método de la fachada, y esta se encarga de <strong>orquestar</strong> las llamadas a las clases internas en el orden correcto.</p>
+          <p>Un punto clave: Facade <strong>no oculta por completo</strong> el subsistema. El cliente puede seguir accediendo directamente a las clases internas si necesita algo puntual que la fachada no expone — simplemente, la mayoría de las veces no hace falta, porque la fachada cubre el caso de uso común.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Facade, en código</h1>
+          <pre><code>class ValidadorDePedido:
+    def validar(self, pedido): ...
+class Inventario:
+    def reservar(self, pedido): ...
+class Pagos:
+    def cobrar(self, pedido): ...
+class Notificaciones:
+    def enviarConfirmacion(self, pedido): ...
+
+class FachadaDePedidos:
+    def procesarPedido(self, pedido):
+        ValidadorDePedido().validar(pedido)
+        Inventario().reservar(pedido)
+        Pagos().cobrar(pedido)
+        Notificaciones().enviarConfirmacion(pedido)</code></pre>
+          <p>El cliente solo llama <code>FachadaDePedidos().procesarPedido(pedido)</code>. Las cuatro clases internas siguen existiendo y siguen siendo utilizables por separado — la fachada solo evita que el cliente tenga que coordinarlas manualmente cada vez.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Cuando la Facade absorbe lógica que no es suya</h1>
+          <p>Una Facade bien diseñada <strong>delega</strong>: cada método interno sigue viviendo en su clase (<code>ValidadorDePedido</code>, <code>Inventario</code>, <code>Pagos</code>). El riesgo es que, con el tiempo, alguien empiece a agregar reglas de negocio directamente <strong>dentro</strong> de <code>procesarPedido()</code> —validaciones extra, cálculos, condicionales— en vez de en las clases que corresponden.</p>
+          <p>Ese es el mismo problema que ya vieron con <strong>God Controller / God Object</strong> (semanas 7 y 10): una clase que termina concentrando demasiadas responsabilidades. Una Facade que deja de delegar y empieza a <strong>reemplazar</strong> el subsistema —en vez de solo simplificar su acceso— se convierte en un God Object con otro nombre.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Tercer problema: tratar "uno" y "muchos" de la misma forma</h1>
+          <p>Adapter traduce una interfaz. Facade simplifica un subsistema. El tercer problema de hoy es distinto: hay estructuras que son naturalmente un <strong>árbol</strong> —una categoría contiene productos y también subcategorías, que a su vez contienen más productos— y el cliente quisiera operar sobre <strong>un elemento suelto</strong> o sobre <strong>una rama completa del árbol</strong> exactamente de la misma manera, sin distinguir casos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Composite</h1>
+          <p><strong>Composite</strong> compone objetos en estructuras de árbol para representar jerarquías <strong>parte-todo</strong>, de modo que los clientes traten un objeto individual (una "hoja") y una composición de objetos (un "nodo" con hijos) <strong>de manera uniforme</strong>, a través de una interfaz común.</p>
+          <p>Tanto la hoja como el nodo compuesto implementan la <strong>misma interfaz</strong>. La hoja resuelve la operación directamente; el nodo compuesto la resuelve <strong>delegando recursivamente</strong> en cada uno de sus hijos —que a su vez pueden ser hojas u otros nodos compuestos— y combinando los resultados.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Composite, en código</h1>
+          <pre><code>interface ElementoCatalogo:
+    def calcularTotal(self) -> float: ...
+
+class Producto(ElementoCatalogo):     # hoja
+    def __init__(self, precio):
+        self.precio = precio
+    def calcularTotal(self):
+        return self.precio
+
+class Categoria(ElementoCatalogo):    # nodo compuesto
+    def __init__(self):
+        self.elementos = []           # Productos u otras Categorias
+    def agregar(self, elemento):
+        self.elementos.append(elemento)
+    def calcularTotal(self):
+        return sum(e.calcularTotal() for e in self.elementos)</code></pre>
+          <p>El cliente llama <code>calcularTotal()</code> sobre un <code>Producto</code> suelto o sobre una <code>Categoria</code> con subcategorías anidadas, sin necesitar saber cuál de los dos es — la recursión de <code>Categoria</code> resuelve el árbol completo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Adapter, Facade o Composite?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los tres patrones calza mejor:</p>
+          <ol>
+            <li>Su aplicación necesita usar una librería de generación de PDF de un tercero cuya interfaz no se parece en nada a la interfaz de exportación que ya define el dominio.</li>
+            <li>Un módulo de "cierre de caja" que internamente coordina cinco clases (conteo de ventas, arqueo, impuestos, reporte, respaldo) y el cliente solo quiere invocar <code>cerrarCaja()</code>.</li>
+            <li>Un árbol de carpetas y archivos donde se necesita calcular el tamaño total de una carpeta, que puede contener archivos sueltos y otras carpetas anidadas.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>No toda integración externa necesita un Adapter</h1>
+          <p>Si la interfaz de la librería externa ya calza razonablemente bien con lo que el dominio necesita, envolver esa librería en un Adaptador de todas formas agrega una <strong>capa de indirección sin beneficio real</strong>: más código para mantener, sin resolver ninguna incompatibilidad concreta.</p>
+          <p>El mismo criterio de la semana pasada aplica aquí: un patrón se justifica cuando hay un problema <strong>real</strong> que resolver —en este caso, una incompatibilidad de interfaces genuina—, no porque "envolver todo en una interfaz propia" suene a buena práctica por defecto. Si no hay traducción que hacer, una dependencia directa y bien inyectada (vía DIP) ya es suficiente.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Un patrón estructural en tensión con la sobre-ingeniería" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los tres primeros patrones estructurales, en una frase</h1>
+          <ol>
+            <li><strong>Estructurales:</strong> la segunda familia GoF — cómo componer clases y objetos en estructuras más grandes sin duplicar código.</li>
+            <li><strong>Adapter:</strong> traduce una interfaz incompatible (a menudo externa o legada) hacia la interfaz que el dominio ya espera, sin tocar el código original — suele ser la implementación concreta de una abstracción definida por DIP.</li>
+            <li><strong>Facade:</strong> una interfaz simplificada que orquesta un subsistema de varias clases, delegando en ellas sin ocultarlas por completo ni absorber su lógica de negocio.</li>
+            <li><strong>Composite:</strong> una interfaz común para hojas y nodos compuestos permite tratar "uno" y "un árbol de muchos" exactamente igual.</li>
+            <li>Ninguno se justifica sin un problema real detrás: incompatibilidad genuina, subsistema realmente complejo, o una jerarquía parte-todo real.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de Adapter, Facade y Composite" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>El viernes: los otros tres patrones estructurales</h1>
+          <p>Hoy vieron 3 de los 6 patrones estructurales que cubre esta semana. El <strong>viernes</strong> se completan los otros tres: <strong>Decorator</strong> (agregar responsabilidades a un objeto dinámicamente, sin herencia), <strong>Proxy</strong> (un sustituto que controla el acceso a otro objeto) y <strong>Bridge</strong> (separar una abstracción de su implementación para que ambas varíen de forma independiente), junto con un <strong>laboratorio de implementación</strong> aplicando los seis patrones estructurales al proyecto de curso.</p>
+          <p class="slide-eyebrow">Recuerden: el miércoles de esta semana es Coworking (Planning Sprint 3) — no hay sesión teórica nueva ese día.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión: los patrones estructurales restantes" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelado en UML: Diagramas de Despliegue, Paquetes y Componentes — Semana 6</title>
+  <meta name="description" content="Notación formal UML de los diagramas de paquetes, componentes (con interfaces provistas y requeridas) y despliegue, con el caso real del modelo 4+1 de Kruchten — Análisis y Diseño de Sistemas II, Semana 6." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/diagramas-de-despliegue-paquetes-y-componentes/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Modelado en UML: Diagramas de Despliegue, Paquetes y Componentes — Semana 6" />
+  <meta property="og:description" content="Notación formal UML de los diagramas de paquetes, componentes (con interfaces provistas y requeridas) y despliegue, con el caso real del modelo 4+1 de Kruchten — Análisis y Diseño de Sistemas II, Semana 6." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/diagramas-de-despliegue-paquetes-y-componentes/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Modelado en UML: Diagramas de Despliegue, Paquetes y Componentes — Semana 6" />
+  <meta name="twitter:description" content="Notación formal UML de los diagramas de paquetes, componentes (con interfaces provistas y requeridas) y despliegue, con el caso real del modelo 4+1 de Kruchten — Análisis y Diseño de Sistemas II, Semana 6." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/diagramas-de-despliegue-paquetes-y-componentes.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 6 — Modelado en UML: Diagramas de Despliegue, Paquetes y Componentes</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Vistas arquitectónicas con UML" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>De la conversación al diagrama formal</h1>
+          <p>Ayer describieron las capas de su proyecto en tablas y conversación: presentación, lógica de negocio, persistencia. <strong>Hoy formalizamos exactamente esa misma estructura con notación UML estándar</strong> — tres diagramas que, juntos, documentan la arquitectura del Sprint 1.</p>
+          <p><strong>El contenido no cambia — cambia, otra vez, la precisión con la que se comunica.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>4 vistas<br>1 solo sistema</h1>
+          <img class="portada-icon" src="img/shapes.svg" alt="Múltiples vistas de un sistema" style="display:block;width:250px;height:250px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>El modelo 4+1 de Kruchten, 1995</h1>
+          <table>
+            <tbody>
+              <tr><th>Autor</th><td>Philippe Kruchten, en Rational Software (hoy parte de IBM)</td></tr>
+              <tr><th>Publicación</th><td>"Architectural Blueprints — The '4+1' View Model of Software Architecture", revista <em>IEEE Software</em>, 1995</td></tr>
+              <tr><th>Problema que resolvía</th><td>Ningún diagrama único lograba describir un sistema completo sin volverse ilegible: un gerente no necesita ver clases; un administrador de infraestructura no necesita ver lógica interna</td></tr>
+              <tr><th>Solución</th><td>Cuatro vistas independientes —lógica, desarrollo, procesos, física— más los <strong>escenarios (+1)</strong> que muestran cómo trabajan juntas</td></tr>
+              <tr><th>Legado</th><td>Influyó directamente en la organización de <strong>UML</strong> y sigue siendo referencia estándar hoy</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Tres de las cuatro vistas, con notación UML</h1>
+          <p><strong>UML</strong> (Unified Modeling Language) es la notación gráfica estándar, mantenida por el <em>Object Management Group</em> (OMG), para representar la estructura de un sistema. No se ejecuta — es un lenguaje para <strong>comunicar decisiones de diseño y arquitectura entre personas</strong>.</p>
+          <p><strong>Hoy cubrimos tres diagramas concretos, uno por cada vista que corresponde: paquetes (lógica), componentes (desarrollo) y despliegue (física).</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Panorama</p>
+          <h1>Qué responde cada diagrama de hoy</h1>
+          <table>
+            <thead>
+              <tr><th>Diagrama</th><th>Vista (4+1)</th><th>Pregunta que responde</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Paquetes</strong></td><td>Lógica</td><td>¿Cómo se agrupan las clases del dominio en módulos?</td></tr>
+              <tr><td><strong>Componentes</strong></td><td>Desarrollo</td><td>¿Qué piezas construye el equipo y con qué interfaz se comunican?</td></tr>
+              <tr><td><strong>Despliegue</strong></td><td>Física</td><td>¿En qué hardware o infraestructura corre cada parte?</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Los tres, juntos, formalizan las capas identificadas ayer: presentación, lógica de negocio y persistencia.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>El diagrama de paquetes</h1>
+          <p>Un <strong>paquete</strong> se dibuja como una <strong>carpeta</strong> (rectángulo con una pestaña en la esquina superior izquierda) que agrupa un conjunto de clases relacionadas — normalmente las de una misma capa o un mismo módulo funcional.</p>
+          <blockquote>┌─────────────┐<br>│ Presentación├──┐<br>└─────────────┘&nbsp;&nbsp;│<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>┌─────────────┐&nbsp;&nbsp;│<br>│&nbsp;&nbsp;&nbsp;Negocio&nbsp;&nbsp;&nbsp;&nbsp;├◁─┘</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Dependencias entre paquetes</h1>
+          <p>Una <strong>flecha punteada</strong> entre dos paquetes indica que el paquete de origen <strong>depende de</strong> (usa clases de) el paquete de destino.</p>
+          <ul>
+            <li><strong>Presentación depende de Negocio</strong>, y Negocio depende de Persistencia — exactamente el sentido de las capas vistas ayer.</li>
+            <li><strong>Regla de buena práctica: nunca debe haber un ciclo de dependencias</strong> entre paquetes (A depende de B, B depende de A) — es la señal más clara de que las responsabilidades no están bien separadas.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="Dependencias entre paquetes" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado al proyecto</p>
+          <h1>Paquetes, sobre las capas de ayer</h1>
+          <table>
+            <thead>
+              <tr><th>Paquete</th><th>Qué agrupa</th><th>Depende de</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>presentacion</code></td><td>Controladores, vistas, componentes de interfaz</td><td><code>negocio</code></td></tr>
+              <tr><td><code>negocio</code></td><td>Clases de dominio y servicios con las reglas de negocio</td><td><code>persistencia</code></td></tr>
+              <tr><td><code>persistencia</code></td><td>Repositorios y acceso a la base de datos</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Este es el mismo mapeo de capas de la sesión de ayer, ahora expresado como estructura de paquetes de código.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>El diagrama de componentes</h1>
+          <p>Un <strong>componente</strong> es una pieza de software reemplazable con una interfaz bien definida. Se dibuja como un rectángulo con el <strong>estereotipo <code>«component»</code></strong> (o el ícono de dos rectángulos pequeños sobresaliendo del borde izquierdo).</p>
+          <blockquote>┌─────────────────────┐<br>│&nbsp;&nbsp;&nbsp;«component»&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>│&nbsp;&nbsp;&nbsp;&nbsp;ServicioPedido&nbsp;&nbsp;&nbsp;│<br>└─────────────────────┘</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Interfaz provista vs. interfaz requerida</h1>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Notación</th><th>Significado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Provista</strong></td><td>Círculo relleno ("lollipop") unido al componente</td><td>Lo que el componente <strong>ofrece</strong> a otros</td></tr>
+              <tr><td><strong>Requerida</strong></td><td>Media luna abierta ("socket")</td><td>Lo que el componente <strong>necesita</strong> de otro para funcionar</td></tr>
+            </tbody>
+          </table>
+          <p>Dos componentes se conectan cuando el <strong>socket</strong> de uno encaja con el <strong>lollipop</strong> del otro — igual que un enchufe con su toma.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Ejemplo</p>
+          <h1>Dos componentes conectados</h1>
+          <blockquote>┌───────────────┐&nbsp;&nbsp;&nbsp;&nbsp;○──┐&nbsp;&nbsp;&nbsp;&nbsp;┌───────────────┐<br>│&nbsp;«component»&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;«component»&nbsp;&nbsp;│<br>│ControladorPedido├──)&nbsp;&nbsp;&nbsp;&nbsp;├────│ServicioPedido&nbsp;│<br>└───────────────┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└───────────────┘</blockquote>
+          <p><strong>ControladorPedido</strong> requiere la interfaz que <strong>ServicioPedido</strong> provee — igual que ocurre en el código cuando el Controller invoca al Service.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Del código al diagrama</p>
+          <h1>Componentes, aplicados al proyecto</h1>
+          <table>
+            <thead>
+              <tr><th>Elemento del código</th><th>Elemento del diagrama de componentes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>PedidoController</code></td><td>Componente "Controlador", expone la interfaz REST <code>/api/pedidos</code></td></tr>
+              <tr><td><code>PedidoService</code></td><td>Componente "Servicio", provee la interfaz que requiere el Controlador</td></tr>
+              <tr><td><code>PedidoRepository</code></td><td>Componente "Repositorio", provee la interfaz que requiere el Servicio</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Cada flecha del diagrama corresponde exactamente a una dependencia real en el código — el diagrama no es una idealización, es un reflejo fiel de la estructura.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "UML es solo el diagrama de clases"</h1>
+          <p>Es común reducir UML a un único diagrama —normalmente el de clases— porque es el más enseñado. <strong>UML incluye más de una decena de tipos de diagrama</strong>, cada uno útil para una vista distinta: clases y paquetes (lógica), componentes (desarrollo), secuencia y actividad (procesos), despliegue (física).</p>
+          <p><strong>Usar solo el diagrama de clases para "documentar la arquitectura" es como describir un edificio solo con el plano eléctrico.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Notación</p>
+          <h1>El diagrama de despliegue</h1>
+          <p>Un <strong>nodo</strong> representa hardware o infraestructura de ejecución (un servidor, un dispositivo) y se dibuja como una <strong>caja en 3D (prisma)</strong>. Dentro de cada nodo se colocan los <strong>artefactos</strong> desplegados en él (un archivo <code>.jar</code>, un contenedor).</p>
+          <blockquote>&nbsp;&nbsp;&nbsp;&nbsp;╱──────────────╲<br>&nbsp;&nbsp;&nbsp;╱&nbsp;&nbsp;Servidor Web&nbsp;&nbsp;╱│<br>&nbsp;&nbsp;╱──────────────╱&nbsp;│<br>&nbsp;&nbsp;│ app.jar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│╱</blockquote>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Caminos de comunicación entre nodos</h1>
+          <p>Una <strong>línea sólida</strong> entre dos nodos representa un <strong>camino de comunicación</strong> físico o de red, normalmente etiquetado con el protocolo que usa (<code>TCP/IP</code>, <code>HTTPS</code>, <code>JDBC</code>).</p>
+          <p><strong>A diferencia del diagrama de componentes —que muestra dependencias lógicas entre piezas de software— el diagrama de despliegue muestra qué hardware necesita comunicarse con cuál, y por qué canal.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado al proyecto</p>
+          <h1>Despliegue típico de un proyecto de Fábrica Escuela</h1>
+          <table>
+            <thead>
+              <tr><th>Nodo</th><th>Artefacto desplegado</th><th>Se comunica con</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Navegador del cliente</td><td>Aplicación web (React/HTML/JS)</td><td>Servidor de aplicación, vía <code>HTTPS</code></td></tr>
+              <tr><td>Servidor de aplicación</td><td><code>app.jar</code> (backend Spring Boot)</td><td>Servidor de base de datos, vía <code>JDBC</code></td></tr>
+              <tr><td>Servidor de base de datos</td><td>Motor de base de datos (PostgreSQL, MySQL)</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/server.svg" alt="Despliegue del proyecto" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se relacionan los tres diagramas</h1>
+          <p>No son tres vistas aisladas: <strong>los paquetes agrupan las clases que implementan cada componente; los componentes, a su vez, se despliegan dentro de los nodos del diagrama de despliegue.</strong></p>
+          <p>Presentación (paquete) → Controlador (componente) → Servidor de aplicación (nodo): la misma pieza de software, vista desde tres ángulos distintos y con tres preguntas distintas.</p>
+          <img class="portada-icon" src="img/cubes.svg" alt="Relación entre los tres diagramas" style="display:block;width:140px;height:140px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿Hay que modelar todo en UML antes de programar?</h1>
+          <p>Algunos equipos insisten en documentar exhaustivamente los tres diagramas antes de escribir una sola línea de código. Otros consideran que eso retrasa la entrega sin garantizar que el modelo sea correcto — y prefieren programar primero y diagramar solo lo esencial, después.</p>
+          <p><strong>¿Cuánto UML es "suficiente" antes de empezar a programar el Sprint 1 de este curso?</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Tensión conceptual" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué diagrama responde esta pregunta?</h1>
+          <p><strong>Para cada pregunta, identifiquen si corresponde a paquetes, componentes o despliegue:</strong></p>
+          <ol>
+            <li>¿Cuántos servidores necesita el sistema y cómo están conectados en red?</li>
+            <li>¿Qué módulos existen y cómo se agrupan las clases del dominio?</li>
+            <li>¿Qué componente expone la función de "registrar pedido" y con qué interfaz?</li>
+            <li>¿En qué máquina corre el motor de base de datos?</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en voz alta o en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>Los tres diagramas de hoy cubren tres de las cuatro vistas del modelo <strong>4+1 de Kruchten (1995)</strong>: paquetes (lógica), componentes (desarrollo) y despliegue (física).</li>
+            <li><strong>Paquetes:</strong> notación de carpeta, dependencias con flecha punteada, nunca deben formar ciclos.</li>
+            <li><strong>Componentes:</strong> estereotipo <code>«component»</code>, con interfaces <strong>provistas</strong> (lollipop) y <strong>requeridas</strong> (socket) que se conectan entre sí.</li>
+            <li><strong>Despliegue:</strong> nodos en 3D con artefactos dentro, unidos por caminos de comunicación etiquetados con su protocolo.</li>
+            <li>Los tres diagramas son la misma estructura de software, vista desde tres ángulos distintos — no vistas aisladas.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s22">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para el viernes</h1>
+          <p>Traigan un borrador —a mano o en la herramienta que su equipo eligió en la Unidad 2— de los <strong>tres diagramas de hoy aplicados a su propio proyecto</strong>.</p>
+          <p><strong>El viernes cerramos la Unidad 3 con el Laboratorio de Modelado de Arquitectura: consolidación de estilo, capas y los tres diagramas UML del proyecto de cada equipo.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 22</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

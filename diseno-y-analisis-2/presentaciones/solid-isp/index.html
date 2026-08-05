@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLID: Interface Segregation Principle (ISP) — Semana 9</title>
+  <meta name="description" content="Cuarto principio SOLID: Interface Segregation. Interfaces gordas, el caso Trabajador/RobotTrabajador, cómo dividir interfaces por cliente y su relación con SRP y la cohesión — Análisis y Diseño de Sistemas II, Semana 9." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/solid-isp/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="SOLID: Interface Segregation Principle (ISP) — Semana 9" />
+  <meta property="og:description" content="Cuarto principio SOLID: Interface Segregation. Interfaces gordas, el caso Trabajador/RobotTrabajador, cómo dividir interfaces por cliente y su relación con SRP y la cohesión — Análisis y Diseño de Sistemas II, Semana 9." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/solid-isp/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SOLID: Interface Segregation Principle (ISP) — Semana 9" />
+  <meta name="twitter:description" content="Cuarto principio SOLID: Interface Segregation. Interfaces gordas, el caso Trabajador/RobotTrabajador, cómo dividir interfaces por cliente y su relación con SRP y la cohesión — Análisis y Diseño de Sistemas II, Semana 9." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/solid-isp.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 9 — SOLID: Interface Segregation Principle (ISP)</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/object-ungroup.svg" alt="Separar una interfaz en piezas más pequeñas" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>¿Por qué un robot que no come<br>tiene que implementar el método <code>comer()</code>?</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>La cuarta letra de SOLID</h1>
+          <p>Ya vimos <strong>SRP</strong> (una clase, una razón para cambiar) y <strong>OCP/LSP</strong> (extender sin romper, sustituir sin sorpresas). Hoy vemos la <strong>I de SOLID: Interface Segregation Principle (ISP)</strong> — el mismo problema de responsabilidades mezcladas que vimos en clases, pero aplicado a interfaces.</p>
+          <p>Es el primero de los dos principios que cierran la <strong>Unidad 4</strong> esta semana: el viernes vemos el último, <strong>Dependency Inversion</strong>, junto con el laboratorio de cierre de unidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La interfaz "gorda" <code>Trabajador</code></h1>
+          <pre><code>interface Trabajador:
+    def trabajar(self): ...
+    def comer(self): ...
+
+class Empleado implements Trabajador:
+    def trabajar(self): print("Empleado trabajando")
+    def comer(self): print("Empleado almorzando")
+
+class RobotTrabajador implements Trabajador:
+    def trabajar(self): print("Robot trabajando")
+    def comer(self):
+        raise NotImplementedError("un robot no come")</code></pre>
+          <p><code>RobotTrabajador</code> está obligado a implementar <code>comer()</code> solo porque la interfaz <code>Trabajador</code> lo declaró — aunque nunca lo va a usar de forma válida.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El problema: interfaces gordas (fat interfaces)</h1>
+          <p>Una <strong>interfaz gorda</strong> ("fat interface") es una interfaz que agrupa métodos que pertenecen a <strong>responsabilidades distintas</strong>, pensada para servir a varios tipos de cliente a la vez en lugar de a uno solo.</p>
+          <ul>
+            <li><code>Trabajador</code> mezcla la responsabilidad de "trabajar" (aplica a cualquier trabajador) con la de "comer" (solo aplica a trabajadores biológicos).</li>
+            <li>Cualquier clase que implemente <code>Trabajador</code> queda forzada a declarar <strong>todos</strong> sus métodos, los use o no.</li>
+            <li>Las clases que no pueden cumplir un método terminan lanzando excepciones, dejándolo vacío, o retornando valores sin sentido — todas son señales de una interfaz mal segmentada.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición formal de ISP</h1>
+          <p><strong>Interface Segregation Principle</strong> (Robert C. Martin): <strong>los clientes no deben verse forzados a depender de métodos que no usan.</strong></p>
+          <p>Aquí "cliente" es cualquier clase que depende de una interfaz para usarla — no el usuario final del sistema. Si una clase cliente solo necesita uno de los métodos de una interfaz, no debería tener que conocer ni implementar los demás por el simple hecho de compartir la misma interfaz con otro cliente que sí los necesita.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La solución: dividir por rol, no por clase</h1>
+          <p>En lugar de una interfaz única, se define una interfaz pequeña <strong>por cada rol o capacidad</strong> que un cliente realmente necesita. Cada clase implementa solo las interfaces que le aplican.</p>
+          <pre><code>interface Laborable:
+    def trabajar(self): ...
+
+interface Alimentable:
+    def comer(self): ...
+
+class Empleado implements Laborable, Alimentable:
+    def trabajar(self): print("Empleado trabajando")
+    def comer(self): print("Empleado almorzando")
+
+class RobotTrabajador implements Laborable:
+    def trabajar(self): print("Robot trabajando")</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué se gana al segregar</h1>
+          <ul>
+            <li><code>RobotTrabajador</code> ya <strong>no implementa</strong> <code>comer()</code> — desaparece el método vacío o la excepción artificial.</li>
+            <li>Un cliente que solo necesita "algo que trabaje" depende de <code>Laborable</code>, no de <code>Trabajador</code> completa — no conoce métodos que no le interesan.</li>
+            <li>Agregar un rol nuevo (por ejemplo <code>Descansable</code>, con <code>dormir()</code>) no obliga a tocar <code>Laborable</code> ni <code>Alimentable</code> — cada interfaz sigue siendo pequeña y estable.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>ISP es SRP aplicado a interfaces</h1>
+          <p><strong>SRP</strong> (semana 8) dice que una clase debe tener una sola razón para cambiar. <strong>ISP dice exactamente lo mismo, pero sobre interfaces:</strong> una interfaz debería agrupar solo los métodos que cambian juntos, por la misma razón, para el mismo tipo de cliente.</p>
+          <p><code>Trabajador</code> violaba SRP tanto como ISP: mezclaba dos razones para cambiar (la lógica de trabajo y la lógica de alimentación) en un solo contrato. Separarla en <code>Laborable</code> y <code>Alimentable</code> resuelve ambos principios a la vez, porque son la misma idea vista desde dos ángulos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>ISP y la cohesión de la semana 7</h1>
+          <p>En la semana 7 definimos <strong>cohesión</strong> como qué tan relacionados están los elementos dentro de un mismo módulo, y vimos que baja cohesión es señal de un <strong>God Object</strong> agrupando responsabilidades que no deberían estar juntas.</p>
+          <p>Una interfaz gorda es el mismo síntoma, un nivel más arriba: en vez de una clase con demasiadas responsabilidades, es un <strong>contrato</strong> con demasiadas responsabilidades. Una interfaz cohesionada agrupa solo métodos que un mismo tipo de cliente necesita en conjunto — igual que una clase cohesionada agrupa solo atributos y métodos relacionados entre sí.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>ISP no significa "una interfaz por método"</h1>
+          <p>Un error común es leer ISP como licencia para <strong>fragmentar en exceso</strong>: crear una interfaz distinta para cada método individual "por si algún cliente solo necesita ese uno". Eso multiplica el número de tipos que hay que conocer y navegar, sin ninguna ganancia real de diseño.</p>
+          <p><strong>La segregación correcta agrupa por rol coherente</strong>, no por método aislado: <code>Laborable</code> agrupa lo que todo trabajador necesita para trabajar, aunque en el futuro tenga más de un método. El criterio es el mismo de la cohesión — juntar lo que cambia junto, separar lo que no.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Segregar interfaces en tensión con fragmentar de más" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Interfaz gorda o interfaz correcta?</h1>
+          <p>En el chat, para cada interfaz digan si viola ISP y, si lo hace, cómo la dividirían:</p>
+          <ol>
+            <li><code>ImpresoraMultifuncion</code> con <code>imprimir()</code>, <code>escanear()</code> y <code>enviarFax()</code>, implementada también por una impresora que solo imprime.</li>
+            <li><code>Repositorio&lt;T&gt;</code> con <code>guardar()</code> y <code>buscarPorId()</code>, implementada por todos los repositorios del sistema que necesitan ambas operaciones.</li>
+            <li><code>Vehiculo</code> con <code>conducir()</code> y <code>volar()</code>, implementada tanto por <code>Carro</code> como por <code>Avion</code>.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Señales de que una interfaz viola ISP</h1>
+          <table>
+            <thead><tr><th>Señal</th><th>Qué implica</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Método vacío o con <code>pass</code></strong></td><td>La clase implementa el método solo para cumplir el contrato, sin comportamiento real</td></tr>
+              <tr><td><strong>Excepción tipo <code>NotImplementedError</code></strong></td><td>La clase declara que ese método de la interfaz nunca debería llamarse en su caso</td></tr>
+              <tr><td><strong>Parámetros o retornos ignorados</strong></td><td>El método existe pero no usa lo que la interfaz le exige recibir o devolver</td></tr>
+              <tr><td><strong>La interfaz crece con cada cliente nuevo</strong></td><td>Cada vez que aparece un tipo de cliente distinto, se le agregan métodos a la misma interfaz en vez de crear una nueva</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Lo que viene</p>
+          <h1>Interfaces pequeñas, la base del principio del viernes</h1>
+          <p>Dividir <code>Trabajador</code> en <code>Laborable</code> y <code>Alimentable</code> no solo resuelve ISP: también deja el terreno listo para el último principio SOLID, <strong>Dependency Inversion</strong>, que vemos el viernes.</p>
+          <p>DIP dice que el código de alto nivel debe depender de <strong>abstracciones</strong> —como estas interfaces pequeñas— en vez de depender directamente de clases concretas. Interfaces bien segregadas, como las de hoy, son exactamente el tipo de abstracción que DIP necesita para funcionar.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li><strong>ISP:</strong> los clientes no deben verse forzados a depender de métodos que no usan.</li>
+            <li>Una <strong>interfaz gorda</strong> mezcla responsabilidades de distintos tipos de cliente en un solo contrato.</li>
+            <li>La solución es dividir en interfaces pequeñas, una por rol o capacidad, no una por método.</li>
+            <li><strong>ISP es SRP aplicado a interfaces</strong>: una interfaz, una razón para cambiar.</li>
+            <li>Se conecta con la <strong>cohesión</strong> de la semana 7 — agrupar lo que pertenece junto, separar lo que no.</li>
+            <li>Señales de violación: métodos vacíos, excepciones de "no implementado", parámetros ignorados.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:130px;height:130px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para el viernes</h1>
+          <p>Revisen las interfaces de su diagrama de clases del proyecto: identifiquen si alguna mezcla métodos que distintos tipos de cliente usan de forma diferente. Tráiganla identificada, junto con una propuesta de cómo la dividirían.</p>
+          <p><strong>El viernes cerramos la Unidad 4</strong> con <strong>Dependency Inversion (DIP)</strong>, el último principio SOLID, y el laboratorio de cierre de unidad donde cada equipo aplica los cinco principios completos sobre su propio proyecto — insumo directo del <strong>Momento 1 (20%)</strong> que se evalúa el miércoles 30/09.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:170px;height:170px;margin:16px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 16</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

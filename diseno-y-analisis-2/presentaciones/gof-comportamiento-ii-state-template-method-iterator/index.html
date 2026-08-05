@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones GoF de Comportamiento II: State, Template Method, Iterator — Semana 14</title>
+  <meta name="description" content="Se cierra la familia de patrones GoF de Comportamiento: State (comportamiento que cambia según el estado interno del objeto), Template Method (esqueleto fijo de un algoritmo con pasos delegados a subclases) e Iterator (recorrido secuencial de una colección sin exponer su estructura interna), con ejemplos de código y su relación con Strategy, herencia y polimorfismo — Análisis y Diseño de Sistemas II, Semana 14." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-comportamiento-ii-state-template-method-iterator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones GoF de Comportamiento II: State, Template Method, Iterator — Semana 14" />
+  <meta property="og:description" content="Se cierra la familia de patrones GoF de Comportamiento: State (comportamiento que cambia según el estado interno del objeto), Template Method (esqueleto fijo de un algoritmo con pasos delegados a subclases) e Iterator (recorrido secuencial de una colección sin exponer su estructura interna), con ejemplos de código y su relación con Strategy, herencia y polimorfismo — Análisis y Diseño de Sistemas II, Semana 14." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-comportamiento-ii-state-template-method-iterator/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones GoF de Comportamiento II: State, Template Method, Iterator — Semana 14" />
+  <meta name="twitter:description" content="Se cierra la familia de patrones GoF de Comportamiento: State, Template Method e Iterator, con ejemplos de código y su relación con Strategy, herencia y polimorfismo — Análisis y Diseño de Sistemas II, Semana 14." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gof-comportamiento-ii-state-template-method-iterator.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 14 — Patrones GoF de Comportamiento II: State, Template Method, Iterator</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/shuffle.svg" alt="Comportamiento que cambia según el estado interno del objeto" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Ayer eligieron un algoritmo, reaccionaron a eventos y encapsularon una petición.<br>Hoy: comportamiento que cambia <em>solo</em>, pasos que se heredan, y recorridos que no exponen su estructura.</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De tres patrones de comportamiento a los siguientes tres</h1>
+          <p>Ayer, martes, vieron los tres primeros patrones de la familia de <strong>comportamiento</strong> de GoF: <strong>Strategy</strong> (encapsula un algoritmo intercambiable que el cliente elige), <strong>Observer</strong> (notifica automáticamente a los objetos dependientes cuando cambia el estado de un sujeto) y <strong>Command</strong> (encapsula una petición como un objeto, para poder parametrizarla, encolarla o deshacerla). No se repite esa explicación hoy — se asume vista.</p>
+          <p>Hoy se cierra la familia con tres patrones más, que resuelven problemas distintos: un objeto cuyo comportamiento cambia <strong>según su propio estado interno</strong> (State), un algoritmo con una estructura fija pero pasos que varían entre subclases (Template Method), y una forma de recorrer una colección sin exponer cómo está construida por dentro (Iterator).</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Recordando: la familia de comportamiento</h1>
+          <p>Las tres familias del catálogo GoF son: creacional (semana 12), estructural (semana 13) y <strong>de comportamiento</strong> (semanas 13-14). Los patrones de <strong>comportamiento</strong> se ocupan de cómo se distribuyen responsabilidades y se comunican los objetos entre sí — no de cómo se crean ni de cómo se ensamblan en estructuras más grandes, sino de <strong>cómo colaboran en tiempo de ejecución</strong>.</p>
+          <ul>
+            <li>El catálogo GoF original define <strong>11 patrones de comportamiento</strong> en total.</li>
+            <li>Ayer se vieron 3: <strong>Strategy, Observer, Command</strong>.</li>
+            <li>Hoy se ven 3 más: <strong>State, Template Method, Iterator</strong> — 6 de los 11, sin pretender agotar el catálogo completo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Primer problema: un objeto que se comporta distinto según su propio estado</h1>
+          <p>Piensen en un pedido de una tienda en línea: puede estar <em>pendiente</em>, <em>enviado</em> o <em>cancelado</em>. Las operaciones <code>enviar()</code> y <code>cancelar()</code> deben comportarse de forma completamente distinta según en cuál de esos estados se encuentre el pedido en ese momento — y esa diferencia no depende de una elección externa del cliente, sino de la <strong>historia interna del propio objeto</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Un atributo de texto y condicionales repetidos por todo el código</h1>
+          <pre><code>class Pedido:
+    def __init__(self):
+        self.estado = "pendiente"
+
+    def enviar(self):
+        if self.estado == "pendiente":
+            self.estado = "enviado"
+        elif self.estado == "enviado":
+            raise Exception("Ya fue enviado")
+        elif self.estado == "cancelado":
+            raise Exception("Pedido cancelado")
+
+    def cancelar(self):
+        if self.estado == "pendiente":
+            self.estado = "cancelado"
+        elif self.estado == "enviado":
+            raise Exception("No se puede cancelar")</code></pre>
+          <p>Cada método nuevo (<code>reactivar()</code>, <code>reembolsar()</code>...) repetirá la misma cadena de <code>if</code>/<code>elif</code> sobre <code>self.estado</code>. Agregar un estado nuevo obliga a tocar <strong>todos</strong> los métodos existentes, uno por uno.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: State</h1>
+          <p><strong>State</strong> permite que un objeto altere su comportamiento cuando cambia su <strong>estado interno</strong>, dando la impresión de que el objeto cambiara de clase. Cada estado posible se modela como una <strong>clase separada</strong> que implementa una interfaz común, y el objeto original <strong>delega</strong> el comportamiento dependiente del estado al objeto-estado que tiene en ese momento — en vez de usar un atributo de tipo texto/enum con condicionales repetidos.</p>
+          <img class="portada-icon" src="img/toggle-on.svg" alt="Un objeto que cambia de comportamiento según su estado" style="display:block;width:110px;height:110px;margin:16px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>State, en código</h1>
+          <pre><code>class EstadoPedido:                # interfaz común
+    def enviar(self, pedido): ...
+    def cancelar(self, pedido): ...
+
+class EstadoPedidoPendiente(EstadoPedido):
+    def enviar(self, pedido):
+        pedido.estado = EstadoPedidoEnviado()
+    def cancelar(self, pedido):
+        pedido.estado = EstadoPedidoCancelado()
+
+class EstadoPedidoEnviado(EstadoPedido):
+    def cancelar(self, pedido):
+        raise Exception("Ya fue enviado")
+
+class Pedido:
+    def __init__(self):
+        self.estado = EstadoPedidoPendiente()
+    def enviar(self):   self.estado.enviar(self)
+    def cancelar(self): self.estado.cancelar(self)</code></pre>
+          <p><code>Pedido</code> ya no pregunta "¿en qué estado estoy?" — simplemente delega en <code>self.estado</code>. Agregar un estado nuevo significa agregar una clase nueva, sin tocar las que ya existen.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>State y Strategy: se parecen en la estructura, no en la intención</h1>
+          <p>State y Strategy (visto ayer) comparten la misma forma en el diagrama de clases: un objeto delega en una interfaz común implementada por varias clases. La diferencia está en <strong>quién decide el cambio</strong> y <strong>por qué</strong>:</p>
+          <ul>
+            <li><strong>Strategy:</strong> el cliente <strong>elige</strong> el algoritmo concreto (ej. qué método de ordenamiento usar) y ese algoritmo normalmente <strong>no cambia por sí solo</strong> mientras el objeto vive.</li>
+            <li><strong>State:</strong> las transiciones ocurren <strong>desde dentro</strong> del propio objeto-estado (<code>EstadoPedidoPendiente.enviar()</code> es quien decide pasar a <code>EstadoPedidoEnviado</code>) — el objeto se mueve solo de un estado a otro a medida que ocurren eventos de su ciclo de vida.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Segundo problema: un algoritmo con la misma forma, pero pasos distintos</h1>
+          <p>State resuelve un objeto que cambia de comportamiento con el tiempo. El problema siguiente es distinto: varios algoritmos comparten exactamente la <strong>misma secuencia de pasos</strong> (leer datos, transformarlos, validarlos, exportarlos), pero uno o más de esos pasos concretos varían según el caso — y no se quiere duplicar la secuencia completa cada vez.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Template Method</h1>
+          <p><strong>Template Method</strong> define el <strong>esqueleto de un algoritmo</strong> en un método de una clase base —fijando el orden de los pasos—, delegando la implementación de algunos de esos pasos a las subclases mediante métodos que estas sobrescriben. La <strong>estructura general</strong> del algoritmo no cambia nunca; solo cambian los pasos concretos que cada subclase decide implementar distinto.</p>
+          <img class="portada-icon" src="img/stairs.svg" alt="Un esqueleto de pasos fijo, con escalones que cada subclase completa distinto" style="display:block;width:110px;height:110px;margin:16px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Template Method, en código</h1>
+          <pre><code>class ProcesadorDeReporte:            # clase base
+    def procesar(self, datos):        # esqueleto fijo
+        datos = self.leer(datos)
+        datos = self.transformar(datos)   # abstracto
+        self.validar(datos)               # con default
+        self.exportar(datos)              # abstracto
+
+    def leer(self, datos):
+        return datos
+
+    def validar(self, datos):
+        if not datos:
+            raise ValueError("Reporte vacío")
+
+    def transformar(self, datos): raise NotImplementedError
+    def exportar(self, datos): raise NotImplementedError
+
+class ReporteCSV(ProcesadorDeReporte):
+    def transformar(self, datos):
+        return [",".join(f) for f in datos]
+    def exportar(self, datos):
+        print("\n".join(datos))</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Template Method vive de herencia y polimorfismo</h1>
+          <p>En la <strong>semana 7</strong> vieron <strong>herencia</strong> (una subclase reutiliza y extiende lo definido en su clase base) y <strong>polimorfismo</strong> (el mismo mensaje, <code>transformar()</code> o <code>exportar()</code>, produce comportamientos distintos según la clase concreta que responde). Template Method es exactamente ese mecanismo aplicado con disciplina: el método <code>procesar()</code> de la clase base <strong>nunca se sobrescribe</strong> —fija el orden—, y solo los pasos marcados como abstractos se dejan a criterio de cada subclase.</p>
+          <p>A diferencia de State, aquí no hay objetos delegados en tiempo de ejecución: la variación ocurre <strong>por herencia</strong>, en tiempo de diseño de la jerarquía de clases.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>El costo de fijar el algoritmo en una jerarquía de herencia</h1>
+          <p>Template Method resuelve la duplicación de la secuencia de pasos, pero paga un precio: la variación queda <strong>atada a la herencia</strong>. Si en tiempo de ejecución se necesitara cambiar de "receta" dinámicamente —no solo elegirla al crear el objeto, sino intercambiarla sobre la marcha— la jerarquía de subclases se vuelve rígida para eso.</p>
+          <p>Ese es precisamente el escenario donde conviene <strong>Strategy</strong> (visto ayer) en lugar de Template Method: Strategy resuelve el mismo tipo de "paso variable" pero mediante <strong>composición</strong> (un objeto colaborador inyectado) en vez de herencia, permitiendo cambiar el comportamiento en tiempo de ejecución sin tocar la jerarquía de clases.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>Tercer problema: recorrer una colección sin exponer cómo está construida</h1>
+          <p>State y Template Method resuelven variación de comportamiento. El tercer problema de hoy es distinto: un cliente necesita recorrer, uno por uno, los elementos de una colección —que puede ser una lista, un árbol o cualquier otra estructura— <strong>sin conocer los detalles</strong> de cómo esa colección está construida por dentro.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Iterator</h1>
+          <p><strong>Iterator</strong> provee una forma de acceder secuencialmente a los elementos de una colección —lista, árbol u otra estructura— <strong>sin exponer su representación interna</strong>, a través de una interfaz común de recorrido: típicamente dos operaciones, <code>hayMas()</code> (¿queda algún elemento por visitar?) y <code>siguiente()</code> (entregar el próximo elemento y avanzar).</p>
+          <img class="portada-icon" src="img/arrow-right-arrow-left.svg" alt="Recorrido secuencial de una colección" style="display:block;width:110px;height:110px;margin:16px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Iterator, en código</h1>
+          <pre><code>interface Iterador:
+    def hayMas(self) -> bool: ...
+    def siguiente(self): ...
+
+class IteradorDeLista(Iterador):
+    def __init__(self, elementos):
+        self.elementos = elementos
+        self.posicion = 0
+
+    def hayMas(self):
+        return self.posicion < len(self.elementos)
+
+    def siguiente(self):
+        elemento = self.elementos[self.posicion]
+        self.posicion += 1
+        return elemento
+
+it = IteradorDeLista([10, 20, 30])
+while it.hayMas():
+    print(it.siguiente())</code></pre>
+          <p>El cliente solo conoce <code>hayMas()</code> y <code>siguiente()</code> — no sabe (ni necesita saber) que por dentro hay un arreglo con un índice.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué rara vez se implementa Iterator desde cero hoy</h1>
+          <p>La mayoría de los lenguajes modernos ya integran este patrón <strong>de forma nativa</strong> en sus estructuras de datos: el <code>for</code>/<code>for-each</code> de Java, Python, C# o JavaScript sobre una lista, un diccionario o un árbol está usando, por dentro, exactamente esta idea —una interfaz común de recorrido que oculta la representación interna de la colección.</p>
+          <p>Por eso Iterator rara vez se escribe a mano en un proyecto actual: el lenguaje o su librería estándar ya lo resuelve. Aun así, entender el patrón importa: explica <strong>por qué</strong> esas estructuras nativas funcionan como funcionan, y sigue siendo relevante cuando se diseña una colección propia que debe poder recorrerse igual que las nativas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿State, Template Method o Iterator?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los tres patrones de hoy calza mejor:</p>
+          <ol>
+            <li>Un reproductor multimedia cuyo botón "play/pausa" hace algo distinto según si el reproductor está <em>detenido</em>, <em>reproduciendo</em> o en <em>pausa</em>.</li>
+            <li>Un proceso de "generar informe" que siempre sigue los mismos cuatro pasos en el mismo orden, pero el paso de "dar formato a la salida" cambia según se exporte a PDF o a HTML.</li>
+            <li>Un menú de restaurante propio (no una lista nativa del lenguaje) sobre el que se necesita recorrer cada plato uno por uno, sin que el código cliente sepa si por dentro es un arreglo o una lista enlazada.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los 6 patrones de comportamiento vistos esta semana</h1>
+          <table>
+            <thead>
+              <tr><th>Patrón</th><th>Idea central</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Strategy</strong></td><td>Encapsula un algoritmo intercambiable que el cliente elige.</td></tr>
+              <tr><td><strong>Observer</strong></td><td>Notifica automáticamente a los dependientes cuando cambia un sujeto.</td></tr>
+              <tr><td><strong>Command</strong></td><td>Encapsula una petición como objeto, para parametrizarla, encolarla o deshacerla.</td></tr>
+              <tr><td><strong>State</strong></td><td>Un objeto cambia de comportamiento según su propio estado interno.</td></tr>
+              <tr><td><strong>Template Method</strong></td><td>Esqueleto fijo de un algoritmo; las subclases completan pasos concretos.</td></tr>
+              <tr><td><strong>Iterator</strong></td><td>Recorrido secuencial de una colección sin exponer su estructura interna.</td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">GoF define 11 patrones de comportamiento en total; esta semana se cubrieron 6, sin pretender agotar el catálogo completo.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de los 6 patrones de comportamiento" style="display:block;width:110px;height:110px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s21">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>El viernes: antipatrones y laboratorio de cierre de la Unidad 5</h1>
+          <p>Con los seis patrones de comportamiento, más los patrones creacionales y estructurales de las semanas 12 y 13, se completa el recorrido por el catálogo GoF de esta unidad. El <strong>viernes</strong> se cierra la <strong>Unidad 5 (Patrones de Diseño y Antipatrones)</strong> con dos bloques: una revisión de <strong>antipatrones de diseño</strong> —las formas comunes en que estos mismos problemas se resuelven mal— y un <strong>laboratorio de cierre de unidad</strong> aplicando lo visto al proyecto de curso.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión: antipatrones y laboratorio de cierre de unidad" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 21</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción al Diseño Arquitectural — Semana 5</title>
+  <meta name="description" content="Qué es arquitectura de software, la diferencia entre decisiones arquitectónicas y de diseño, atributos de calidad y la Ley de Conway, con el caso real de Twitter — Análisis y Diseño de Sistemas II, Semana 5." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/introduccion-al-diseno-arquitectural/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Introducción al Diseño Arquitectural — Semana 5" />
+  <meta property="og:description" content="Qué es arquitectura de software, la diferencia entre decisiones arquitectónicas y de diseño, atributos de calidad y la Ley de Conway, con el caso real de Twitter — Análisis y Diseño de Sistemas II, Semana 5." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/introduccion-al-diseno-arquitectural/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Introducción al Diseño Arquitectural — Semana 5" />
+  <meta name="twitter:description" content="Qué es arquitectura de software, la diferencia entre decisiones arquitectónicas y de diseño, atributos de calidad y la Ley de Conway, con el caso real de Twitter — Análisis y Diseño de Sistemas II, Semana 5." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/introduccion-al-diseno-arquitectural.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 5 — Introducción al Diseño Arquitectural</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/drafting-compass.svg" alt="Diseño arquitectural" style="display:block;width:250px;height:250px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-encuadre" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Encuadre</p>
+          <h1>De qué existe a cómo se organiza</h1>
+          <p>La Unidad 2 cerró con el <strong>modelo de análisis</strong>: qué clases de dominio existen, cómo se relacionan y cómo el sistema reacciona a eventos externos (DSS). Esa vista describe el <strong>problema</strong>.</p>
+          <p><strong>La Unidad 3 abre la pregunta de la solución: ¿cómo se organiza el software que va a resolver ese problema?</strong> A esa organización la llamamos <em>arquitectura de software</em>, y es el tema de las próximas dos semanas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Un proceso<br>Rails para todo</h1>
+          <img class="portada-icon" src="img/chart-line.svg" alt="Crecimiento descontrolado" style="display:block;width:280px;height:280px;margin:40px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Ficha técnica</p>
+          <h1>Twitter, 2006–2010</h1>
+          <table>
+            <tbody>
+              <tr><th>Sistema</th><td>Twitter — red social de microblogging</td></tr>
+              <tr><th>Arquitectura original</th><td>Aplicación monolítica en Ruby on Rails, un solo proceso para todo</td></tr>
+              <tr><th>Síntoma público</th><td>La "Fail Whale" — página de error mostrada durante caídas frecuentes, 2007–2010</td></tr>
+              <tr><th>Crecimiento</th><td>De unos pocos miles de tweets/día en 2007 a cientos de millones años después</td></tr>
+              <tr><th>Respuesta</th><td>Rearquitectura progresiva: del monolito a servicios independientes sobre la JVM (2010–2013)</td></tr>
+              <tr><th>Fuente</th><td>Charlas públicas de ingeniería de Twitter (ej. Raffi Krikorian, "Twitter's Architecture") y su blog de ingeniería</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · Qué había dentro</p>
+          <h1>Todo en un mismo proceso</h1>
+          <p>La primera versión de Twitter atendía en un <strong>único proceso Rails</strong> tareas que hoy consideraríamos completamente distintas: recibir un tweet nuevo, calcular a quién mostrárselo, generar la línea de tiempo de cada usuario, enviar notificaciones, servir la página web.</p>
+          <p><strong>Ninguna de esas tareas podía escalar, desplegarse o fallar por separado</strong> — si una se saturaba, arrastraba a todas las demás. No era un error de código: era la <strong>estructura</strong> del sistema.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso · La rearquitectura</p>
+          <h1>De un proceso a varios servicios</h1>
+          <p>Entre 2010 y 2013, los equipos de ingeniería de Twitter separaron el monolito en <strong>servicios independientes</strong> sobre la JVM (Scala/Java), cada uno con una responsabilidad clara — por ejemplo, un servicio dedicado a datos de usuario y otro a la generación de líneas de tiempo.</p>
+          <p><strong>El comportamiento visible para el usuario cambió poco. Lo que cambió fue la estructura interna</strong>: cómo se dividían las responsabilidades y cómo se comunicaban entre sí.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Qué fue exactamente lo que cambió?</h1>
+          <p>Nadie reescribió "el código de Twitter" desde cero. Lo que cambió fue algo más abstracto: <strong>la forma en que las piezas del sistema estaban organizadas y relacionadas entre sí</strong>.</p>
+          <p><strong>A ese "algo más abstracto" es a lo que esta unidad llama arquitectura de software — y hoy le ponemos definición formal.</strong></p>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Qué cambió" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuatro definiciones formales</h1>
+          <table>
+            <thead>
+              <tr><th>Autor(es)</th><th>Definición, en síntesis</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Perry &amp; Wolf (1992)</strong></td><td>Arquitectura = {Elementos, Formas, Restricciones} — de proceso, de datos, de conexión</td></tr>
+              <tr><td><strong>Garlan &amp; Shaw (1994)</strong></td><td>La organización del sistema como conjunto de <strong>componentes</strong>, sus <strong>conectores</strong> y sus patrones de interacción</td></tr>
+              <tr><td><strong>Bass, Clements &amp; Kazman (SEI)</strong></td><td>El conjunto de estructuras necesarias para <strong>razonar</strong> sobre el sistema: elementos, relaciones y propiedades de ambos</td></tr>
+              <tr><td><strong>ISO/IEC/IEEE 42010</strong></td><td>Los conceptos fundamentales de un sistema, encarnados en sus elementos, relaciones y principios de diseño y <strong>evolución</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="slide-eyebrow">Las cuatro coinciden en algo: elementos + relaciones + una razón para existir más allá del dibujo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Mito: "la arquitectura es el diagrama"</h1>
+          <p>Es común confundir la arquitectura con su representación gráfica: el diagrama de cajas y flechas que se dibuja en una herramienta.</p>
+          <p><strong>El diagrama es una vista de la arquitectura, no la arquitectura misma.</strong> Twitter tuvo arquitectura —buena o mala— incluso en 2007, cuando nadie había dibujado un diagrama formal: la arquitectura es la estructura real que existe en el sistema en ejecución, se haya documentado o no.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>¿Qué hace que una decisión sea "arquitectónica"?</h1>
+          <p>No toda decisión de programación es una decisión de arquitectura. Una decisión es <strong>arquitectónica</strong> cuando cumple varias de estas condiciones:</p>
+          <ul>
+            <li>Es <strong>costosa o difícil de revertir</strong> una vez tomada.</li>
+            <li>Afecta a <strong>múltiples componentes</strong> del sistema, no a uno aislado.</li>
+            <li>Compromete <strong>atributos de calidad</strong> del sistema completo: rendimiento, escalabilidad, seguridad, mantenibilidad.</li>
+            <li>Restringe las decisiones que se pueden tomar después.</li>
+          </ul>
+          <img class="portada-icon" src="img/boxes-stacked.svg" alt="Decisión arquitectónica vs de diseño" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Arquitectura vs. diseño de detalle, lado a lado</h1>
+          <table>
+            <thead>
+              <tr><th></th><th>Arquitectura</th><th>Diseño de detalle</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Alcance</th><td>El sistema completo</td><td>Un componente o módulo</td></tr>
+              <tr><th>Costo de cambiar</th><td>Alto — a veces rehacer el proyecto</td><td>Bajo a moderado — se ajusta sin rehacer todo</td></tr>
+              <tr><th>Cuándo se decide</th><td>Muy temprano, con menos información</td><td>A lo largo de todo el desarrollo</td></tr>
+              <tr><th>Ejemplo</th><td>Monolito vs. servicios independientes</td><td>El algoritmo de ordenamiento de una lista</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Lo que separa arquitectura de diseño no es cuánto código involucra, sino qué tan costoso es dar marcha atrás.</strong></p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Atributos de calidad: lo que la arquitectura compromete</h1>
+          <p>Un <strong>atributo de calidad</strong> es una propiedad medible del sistema completo, más allá de si "hace lo que debe hacer" (eso lo cubre el modelo de análisis). La arquitectura es la que determina cuánto de cada atributo es alcanzable.</p>
+          <table>
+            <thead>
+              <tr><th>Atributo</th><th>Pregunta que responde</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Rendimiento</strong></td><td>¿Qué tan rápido responde bajo carga normal?</td></tr>
+              <tr><td><strong>Escalabilidad</strong></td><td>¿Aguanta crecer en usuarios o datos sin rediseñarse?</td></tr>
+              <tr><td><strong>Disponibilidad</strong></td><td>¿Sigue funcionando si una parte falla?</td></tr>
+              <tr><td><strong>Seguridad</strong></td><td>¿Resiste accesos e intenciones no autorizadas?</td></tr>
+              <tr><td><strong>Mantenibilidad</strong></td><td>¿Qué tan barato es modificarlo después?</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/gauge-high.svg" alt="Atributos de calidad" style="display:block;width:130px;height:130px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>Los atributos de calidad compiten entre sí</h1>
+          <p>Optimizar un atributo casi siempre cuesta algo de otro. Ejemplos frecuentes:</p>
+          <ul>
+            <li><strong>Seguridad vs. rendimiento:</strong> más capas de validación y cifrado, más tiempo de respuesta.</li>
+            <li><strong>Disponibilidad vs. consistencia:</strong> replicar datos en varios servidores para no caerse implica que, por un instante, no todos vean lo mismo.</li>
+            <li><strong>Mantenibilidad vs. rendimiento:</strong> el código más fácil de leer no siempre es el más rápido de ejecutar.</li>
+          </ul>
+          <p><strong>No existe una arquitectura que maximice todos los atributos a la vez — toda decisión arquitectónica es un compromiso explícito.</strong></p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Atributos en tensión" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La Ley de Conway (1967)</h1>
+          <blockquote>Las organizaciones que diseñan sistemas están limitadas a producir diseños que son copias de las estructuras de comunicación de esas organizaciones.</blockquote>
+          <p>En otras palabras: <strong>si tres equipos se comunican poco entre sí, es muy probable que construyan tres módulos poco integrados</strong> — la estructura social se filtra, casi siempre sin querer, en la estructura técnica. En Twitter, cada servicio nuevo terminó teniendo un equipo propio responsable.</p>
+          <img class="portada-icon" src="img/sitemap.svg" alt="Ley de Conway" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Arquitectónica o de diseño?</h1>
+          <p><strong>Clasifiquen cada decisión y justifiquen con el criterio de "costo de revertir":</strong></p>
+          <ol>
+            <li>Elegir si el sistema del proyecto va a ser un monolito o estar dividido en varios servicios.</li>
+            <li>Elegir qué estructura de datos usar para ordenar una lista dentro de un solo método.</li>
+            <li>Decidir que la aplicación va a exponer sus funciones como una API REST, en vez de embeber la lógica en el frontend.</li>
+            <li>Cambiar el algoritmo de validación de un formulario de registro.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat o en voz alta</p>
+        </div>
+      </section>
+
+      <section class="slide type-disputa" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto en disputa</p>
+          <h1>¿Toda la arquitectura se diseña por adelantado?</h1>
+          <p><strong>Postura clásica (Big Design Up Front):</strong> la arquitectura se define completa antes de escribir la primera línea de código de negocio.</p>
+          <p><strong>Postura ágil/evolutiva:</strong> Twitter no diseñó en 2006 la arquitectura de servicios que tuvo en 2013 — la arquitectura <strong>emergió y se transformó</strong> a medida que el sistema creció, con decisiones tomadas cuando hubo evidencia real de que el diseño original no aguantaba.</p>
+          <p><strong>No hay consenso único en la industria</strong> sobre cuánto diseñar por adelantado y cuánto dejar evolucionar — depende del riesgo, el dominio y qué tan cara es la reversión de cada decisión.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aplicado al proyecto</p>
+          <h1>Por qué importa esta semana, exactamente</h1>
+          <p>La arquitectura no es un ejercicio académico separado del código: es lo que determina si el proyecto de Fábrica Escuela va a <strong>aguantar cambios, crecer y mantenerse</strong> sin reescribirse cada sprint.</p>
+          <ul>
+            <li>Una mala decisión arquitectónica tomada en el Sprint 1 puede ser muy costosa de corregir en el Sprint 2 o 3.</li>
+            <li>El viernes vemos los <strong>estilos de arquitectura</strong> disponibles (monolítica, cliente/servidor, SOA, microservicios, entre otros) para que cada equipo elija con criterio, no por intuición.</li>
+            <li>La semana 6 formaliza esas decisiones con <strong>diagramas UML de despliegue, paquetes y componentes</strong> — el entregable arquitectónico del Sprint 1.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de hoy</h1>
+          <ol>
+            <li>La arquitectura es la <strong>estructura</strong> del sistema —elementos, relaciones y principios de diseño y evolución— no un diagrama.</li>
+            <li>Una decisión es <strong>arquitectónica</strong> si es costosa de revertir, afecta a varios componentes o compromete atributos de calidad.</li>
+            <li>Los <strong>atributos de calidad</strong> (rendimiento, escalabilidad, disponibilidad, seguridad, mantenibilidad) compiten entre sí: toda arquitectura es un compromiso explícito.</li>
+            <li>La <strong>Ley de Conway</strong> conecta la estructura del sistema con la estructura de quienes lo construyen.</li>
+            <li>No hay consenso sobre diseñar toda la arquitectura por adelantado — Twitter es evidencia de arquitectura que evolucionó bajo presión real.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Ideas clave" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Para el viernes</h1>
+          <p>Traigan identificado, en su propio proyecto de Fábrica Escuela, un atributo de calidad que consideren <strong>crítico</strong> (por ejemplo: disponibilidad si el sistema es transaccional, o escalabilidad si esperan muchos usuarios concurrentes).</p>
+          <p><strong>El viernes recorremos los estilos de arquitectura disponibles y cada equipo empieza a decidir cuál se ajusta mejor a su proyecto — insumo directo para el Planning Sprint 1 del Coworking de esta semana.</strong></p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión" style="display:block;width:190px;height:190px;margin:20px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 19</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

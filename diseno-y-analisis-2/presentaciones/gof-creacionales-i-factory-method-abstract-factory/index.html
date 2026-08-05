@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrones GoF Creacionales I: Factory Method, Abstract Factory — Semana 12</title>
+  <meta name="description" content="Se abre el catálogo de patrones GoF (Gang of Four): diferencia con GRASP, las tres familias (creacional, estructural, de comportamiento) y los dos primeros patrones creacionales, Factory Method y Abstract Factory, con ejemplos de código y su relación con Creator, DIP y OCP — Análisis y Diseño de Sistemas II, Semana 12." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-creacionales-i-factory-method-abstract-factory/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Patrones GoF Creacionales I: Factory Method, Abstract Factory — Semana 12" />
+  <meta property="og:description" content="Se abre el catálogo de patrones GoF (Gang of Four): diferencia con GRASP, las tres familias (creacional, estructural, de comportamiento) y los dos primeros patrones creacionales, Factory Method y Abstract Factory, con ejemplos de código y su relación con Creator, DIP y OCP — Análisis y Diseño de Sistemas II, Semana 12." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/gof-creacionales-i-factory-method-abstract-factory/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patrones GoF Creacionales I: Factory Method, Abstract Factory — Semana 12" />
+  <meta name="twitter:description" content="Se abre el catálogo de patrones GoF (Gang of Four): diferencia con GRASP, las tres familias (creacional, estructural, de comportamiento) y los dos primeros patrones creacionales, Factory Method y Abstract Factory, con ejemplos de código y su relación con Creator, DIP y OCP — Análisis y Diseño de Sistemas II, Semana 12." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/gof-creacionales-i-factory-method-abstract-factory.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 12 — Patrones GoF Creacionales I: Factory Method, Abstract Factory</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/industry.svg" alt="Una fábrica de objetos" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>GRASP les dijo <em>qué</em> buscar.<br>Hoy empieza el catálogo de <em>cómo</em> resolverlo, ya inventado.</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De los principios generales a un catálogo concreto</h1>
+          <p>En la <strong>semana 10</strong> vieron los 9 patrones <strong>GRASP</strong> (Larman): guías para decidir a qué clase asignarle cada responsabilidad. En la <strong>semana 11</strong> modelaron ese diseño en UML (diagramas de secuencia/colaboración y de clases de diseño) y aplicaron GRASP en un laboratorio sobre su propio proyecto.</p>
+          <p>Hoy se abre un catálogo distinto: los <strong>patrones GoF</strong>. Ya no son principios para razonar el diseño desde cero — son <strong>soluciones concretas, con nombre y estructura fija</strong>, para problemas de diseño que se repiten una y otra vez en software orientado a objetos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un patrón de diseño</h1>
+          <p>Un <strong>patrón de diseño</strong> es una solución reutilizable a un problema que aparece repetidamente en un contexto dado, descrita de forma lo bastante general como para aplicarse en distintos lenguajes y dominios, pero lo bastante concreta como para traducirse directamente en clases, objetos y sus colaboraciones.</p>
+          <p>No es código que se copia y pega tal cual: es una <strong>estructura de diseño con nombre</strong> (clases, roles, relaciones) que, una vez que un equipo la reconoce, se comunica en una sola palabra — "usemos un Factory Method aquí" — en vez de reexplicar la solución completa cada vez.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>GoF: el catálogo de Gamma, Helm, Johnson y Vlissides</h1>
+          <p><strong>GoF</strong> ("Gang of Four", Pandilla de los Cuatro) es el apodo con el que se conoce a los cuatro autores del libro <em>Design Patterns: Elements of Reusable Object-Oriented Software</em> (1994): Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides.</p>
+          <p>Ese libro cataloga <strong>23 patrones de diseño</strong> documentados con un formato fijo: nombre, problema que resuelve, estructura de clases, código de ejemplo y consecuencias (ventajas y costos de usarlo). Es, hasta hoy, el catálogo de patrones de diseño orientado a objetos más citado y enseñado en la industria.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Aclaración importante</p>
+          <h1>GRASP y GoF no son lo mismo, y no compiten entre sí</h1>
+          <table>
+            <thead><tr><th></th><th>GRASP (Larman)</th><th>GoF (Gamma et al.)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Qué es</strong></td><td>Principios / guías generales para razonar</td><td>Soluciones concretas y catalogadas</td></tr>
+              <tr><td><strong>Pregunta que responde</strong></td><td>"¿A qué clase le asigno esta responsabilidad?"</td><td>"¿Qué estructura de clases ya resuelve este problema?"</td></tr>
+              <tr><td><strong>Resultado</strong></td><td>Un criterio de decisión (ej. Information Expert, Creator)</td><td>Una plantilla de clases con nombre fijo (ej. Factory Method)</td></tr>
+              <tr><td><strong>Cuándo se usa</strong></td><td>Durante todo el diseño de detalle</td><td>Cuando el problema calza con uno ya catalogado</td></tr>
+            </tbody>
+          </table>
+          <p>No son alternativos: los patrones GoF a menudo son la <strong>forma concreta</strong> de lograr lo que un principio GRASP pide en abstracto — como van a ver hoy mismo con <strong>Creator</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los 23 patrones GoF, en tres familias</h1>
+          <ul>
+            <li><strong>Creacionales:</strong> cómo se crean los objetos, ocultando la decisión de qué clase concreta instanciar. <strong>Se ven hoy y el viernes.</strong></li>
+            <li><strong>Estructurales:</strong> cómo se componen clases y objetos para formar estructuras más grandes sin duplicar código. Se ven en la <strong>semana 13</strong>.</li>
+            <li><strong>De comportamiento:</strong> cómo colaboran los objetos e intercambian responsabilidades en tiempo de ejecución. Se ven en la <strong>semana 14</strong>.</li>
+          </ul>
+          <p>Hoy, dentro de la familia creacional, se ven los dos primeros: <strong>Factory Method</strong> y <strong>Abstract Factory</strong>.</p>
+          <img class="portada-icon" src="img/shapes.svg" alt="Tres familias de patrones GoF" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>El código cliente decidiendo qué clase concreta crear</h1>
+          <pre><code>class GeneradorDeReportes:
+    def generar(self, tipo, datos):
+        if tipo == "pdf":
+            reporte = ReportePdf(datos)
+        elif tipo == "excel":
+            reporte = ReporteExcel(datos)
+        elif tipo == "html":
+            reporte = ReporteHtml(datos)
+        else:
+            raise ValueError("tipo no soportado")
+        reporte.exportar()</code></pre>
+          <p><code>GeneradorDeReportes</code> conoce y crea directamente cada clase concreta (<code>ReportePdf</code>, <code>ReporteExcel</code>, <code>ReporteHtml</code>) con <code>new</code>/instanciación directa dentro de un <code>if/elif</code>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué ese <code>if/elif</code> es un problema de diseño</h1>
+          <p>Cada vez que aparece un nuevo tipo de reporte (por ejemplo, <code>"word"</code>), hay que <strong>modificar</strong> <code>GeneradorDeReportes</code> agregando otro <code>elif</code>. Eso viola <strong>Open/Closed Principle (OCP)</strong>, visto en la semana 8: la clase debería estar cerrada a modificación y abierta a extensión.</p>
+          <p>Además, <code>GeneradorDeReportes</code> queda <strong>acoplado</strong> a las tres clases concretas de reporte — si el constructor de <code>ReportePdf</code> cambia, hay que tocar también el generador. Esto es exactamente el tipo de decisión de "quién crea el objeto" que GRASP llama <strong>Creator</strong> (semana 10): alguien debe crearlo, pero ¿quién y cómo, sin acoplarse a cada clase concreta?</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Factory Method</h1>
+          <p><strong>Factory Method</strong> define un método —a menudo abstracto, o con una implementación por defecto que las subclases pueden sobrescribir— cuya única responsabilidad es <strong>crear y devolver un objeto</strong>. Cada subclase concreta decide, al sobrescribir ese método, qué clase concreta instanciar.</p>
+          <p>El código cliente ya no depende de <code>new ClaseConcreta()</code>: depende de un <strong>creador</strong> (una clase o interfaz) y de su método de fábrica, sin saber cuál subclase de creador está usando en realidad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Factory Method, en código</h1>
+          <pre><code>abstract class GeneradorDeReportes:
+    def generar(self, datos):
+        reporte = self.crear(datos)   # método de fábrica
+        reporte.exportar()
+
+    @abstractmethod
+    def crear(self, datos): ...       # las subclases deciden qué crear
+
+class GeneradorPdf(GeneradorDeReportes):
+    def crear(self, datos):
+        return ReportePdf(datos)
+
+class GeneradorExcel(GeneradorDeReportes):
+    def crear(self, datos):
+        return ReporteExcel(datos)</code></pre>
+          <p>Agregar un nuevo tipo de reporte ya no exige tocar <code>GeneradorDeReportes</code>: se agrega una nueva subclase (<code>GeneradorWord</code>) con su propio <code>crear()</code>. La clase base queda <strong>cerrada a modificación</strong> y el sistema queda <strong>abierto a extensión</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con lo visto</p>
+          <h1>Factory Method conecta tres cosas que ya conocen</h1>
+          <ul>
+            <li><strong>Creator (GRASP, semana 10):</strong> GRASP pregunta en abstracto "¿quién debería crear este objeto?". Factory Method es una <strong>respuesta concreta y catalogada</strong>: una jerarquía de creadores, cada uno responsable de crear su propia familia de productos.</li>
+            <li><strong>OCP (semana 8):</strong> el <code>if/elif</code> del contraejemplo obligaba a modificar código existente para extenderlo. Factory Method resuelve eso agregando subclases en vez de editar la clase base.</li>
+            <li><strong>DIP (semana 9):</strong> el código cliente (<code>generar()</code>) ya no depende de las clases concretas de reporte — depende del método abstracto <code>crear()</code>, una abstracción.</li>
+          </ul>
+          <p>Factory Method no es una idea nueva: es la <strong>forma con nombre y estructura fija</strong> de lograr, a la vez, lo que Creator, OCP y DIP piden por separado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>¿Y si no es un objeto, sino una familia completa?</h1>
+          <p>Factory Method resuelve la creación de <strong>un</strong> producto a la vez, mediante herencia (una subclase por variante). Pero hay problemas donde no se crea un objeto suelto, sino <strong>varios objetos relacionados que deben ser consistentes entre sí</strong> — por ejemplo, todos los componentes visuales de un mismo tema, o todos los conectores de una misma base de datos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Definición: Abstract Factory</h1>
+          <p><strong>Abstract Factory</strong> define una interfaz con <strong>varios métodos de creación</strong>, uno por cada tipo de producto de una familia, sin especificar las clases concretas. Cada implementación concreta de esa interfaz (cada "fábrica concreta") crea <strong>toda una familia de productos que son compatibles entre sí</strong>.</p>
+          <p>Ejemplo típico: una fábrica de componentes de interfaz gráfica para distintos temas visuales. <code>FabricaTemaOscuro</code> crea un <code>Boton</code> y una <code>BarraDeMenu</code> con el estilo oscuro; <code>FabricaTemaClaro</code> crea las mismas dos piezas, pero con el estilo claro. El código cliente pide los componentes a "una fábrica" sin saber cuál, y siempre obtiene una combinación coherente.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Abstract Factory, en código</h1>
+          <pre><code>interface FabricaDeComponentesUI:
+    def crearBoton(self) -> Boton: ...
+    def crearBarraDeMenu(self) -> BarraDeMenu: ...
+
+class FabricaTemaOscuro implements FabricaDeComponentesUI:
+    def crearBoton(self): return BotonOscuro()
+    def crearBarraDeMenu(self): return BarraDeMenuOscura()
+
+class FabricaTemaClaro implements FabricaDeComponentesUI:
+    def crearBoton(self): return BotonClaro()
+    def crearBarraDeMenu(self): return BarraDeMenuClara()
+
+class Ventana:
+    def __init__(self, fabrica: FabricaDeComponentesUI):
+        self.boton = fabrica.crearBoton()
+        self.menu = fabrica.crearBarraDeMenu()</code></pre>
+          <p><code>Ventana</code> recibe una fábrica (inyectada, igual que en DIP) y arma toda su interfaz llamando a los métodos de esa fábrica — nunca mezcla un <code>BotonOscuro</code> con una <code>BarraDeMenuClara</code>, porque ambos salen de la misma fábrica concreta.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Comparación</p>
+          <h1>Factory Method vs. Abstract Factory</h1>
+          <table>
+            <thead><tr><th></th><th>Factory Method</th><th>Abstract Factory</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Qué crea</strong></td><td>Un producto</td><td>Varios productos relacionados (una familia)</td></tr>
+              <tr><td><strong>Mecanismo</strong></td><td>Herencia — subclase sobrescribe un método</td><td>Composición — un objeto fábrica con varios métodos</td></tr>
+              <tr><td><strong>Se extiende agregando</strong></td><td>Una subclase de creador nueva</td><td>Una implementación de fábrica nueva</td></tr>
+              <tr><td><strong>Garantiza</strong></td><td>Que el cliente no dependa de la clase concreta del producto</td><td>Que los productos creados juntos sean compatibles entre sí</td></tr>
+            </tbody>
+          </table>
+          <p>De hecho, es común que una <strong>Abstract Factory</strong> implemente cada uno de sus métodos de creación <strong>usando</strong> un <strong>Factory Method</strong> internamente — no son excluyentes.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Factory Method o Abstract Factory?</h1>
+          <p>En el chat, para cada caso indiquen cuál de los dos patrones calza mejor:</p>
+          <ol>
+            <li>Un sistema de notificaciones que hoy envía solo por correo, pero podría necesitar una subclase que envíe por SMS más adelante — un solo tipo de objeto (el canal).</li>
+            <li>Un sistema que debe generar, coordinados entre sí, un conector de base de datos, un serializador y un validador — distintos para PostgreSQL vs. para MongoDB, pero siempre los tres juntos y compatibles.</li>
+            <li>Una jerarquía de exportadores de reportes (PDF, Excel, HTML) donde cada exportador crea un solo tipo de documento de salida.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s18">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>No todo lo que se crea necesita un Factory</h1>
+          <p>Si hoy solo existe <strong>una</strong> clase concreta y el equipo no tiene ninguna razón para prever otra variante en el futuro cercano, crear una jerarquía de creadores o una fábrica abstracta es <strong>sobre-ingeniería</strong>: agrega clases, interfaces e indirección para un problema que no existe todavía.</p>
+          <p>Esta es la misma tensión que ya vieron con <strong>DIP</strong> (semana 9, "no una interfaz para cada clase") y con <strong>Pure Fabrication</strong> (semana 10, "no crear una clase artificial si no resuelve un problema real"): un patrón de diseño se justifica cuando hay <strong>variación real o prevista</strong>, no por aplicarlo porque "así se ve más profesional". Un simple <code>new ClaseConcreta()</code> sigue siendo la opción correcta cuando no hay variantes que anticipar.</p>
+          <img class="portada-icon" src="img/scale-unbalanced.svg" alt="Un patrón de creación en tensión con la sobre-ingeniería" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s19">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Los dos primeros patrones creacionales, en una frase</h1>
+          <ol>
+            <li><strong>GoF</strong> es un catálogo de 23 soluciones concretas (Gamma, Helm, Johnson, Vlissides, 1994), organizado en tres familias: creacional, estructural, de comportamiento.</li>
+            <li><strong>Factory Method:</strong> un método sobrescrito por subclases decide qué clase concreta crear — una jerarquía de creadores, un producto por creador.</li>
+            <li><strong>Abstract Factory:</strong> una interfaz con varios métodos de creación produce una familia completa de productos compatibles entre sí — composición, no herencia.</li>
+            <li>Ambos son formas concretas de lograr lo que <strong>Creator</strong>, <strong>OCP</strong> y <strong>DIP</strong> ya pedían en abstracto — y ninguno se justifica si no hay variación real que anticipar.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de Factory Method y Abstract Factory" style="display:block;width:120px;height:120px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s20">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>El viernes: los otros tres patrones creacionales</h1>
+          <p>Hoy vieron 2 de los 5 patrones creacionales del catálogo GoF. El <strong>viernes</strong> se completan los otros tres: <strong>Builder</strong> (construcción de objetos complejos paso a paso), <strong>Prototype</strong> (creación de objetos clonando una instancia existente) y <strong>Singleton</strong> (garantizar una única instancia de una clase), junto con un <strong>laboratorio de implementación</strong> aplicando los cinco patrones creacionales al proyecto de curso.</p>
+          <p class="slide-eyebrow">Recuerden: el miércoles de esta semana es Coworking (Review y Retrospectiva del Sprint 2) — no hay sesión teórica nueva ese día.</p>
+          <img class="portada-icon" src="img/calendar-week.svg" alt="Próxima sesión: los patrones creacionales restantes" style="display:block;width:150px;height:150px;margin:10px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 20</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
