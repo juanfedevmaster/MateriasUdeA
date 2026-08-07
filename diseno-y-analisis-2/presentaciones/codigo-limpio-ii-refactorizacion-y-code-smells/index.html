@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Código Limpio II: Refactorización y Code Smells — Semana 15</title>
+  <meta name="description" content="Qué es refactorizar, cuándo hacerlo, el catálogo de code smells de Martin Fowler y las técnicas básicas de refactorización — Análisis y Diseño de Sistemas II, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/codigo-limpio-ii-refactorizacion-y-code-smells/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Código Limpio II: Refactorización y Code Smells — Semana 15" />
+  <meta property="og:description" content="Qué es refactorizar, cuándo hacerlo, el catálogo de code smells de Martin Fowler y las técnicas básicas de refactorización — Análisis y Diseño de Sistemas II, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/codigo-limpio-ii-refactorizacion-y-code-smells/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Código Limpio II: Refactorización y Code Smells — Semana 15" />
+  <meta name="twitter:description" content="Qué es refactorizar, cuándo hacerlo, el catálogo de code smells de Martin Fowler y las técnicas básicas de refactorización — Análisis y Diseño de Sistemas II, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/codigo-limpio-ii-refactorizacion-y-code-smells.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 15 — Código Limpio II: Refactorización y Code Smells</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/broom.svg" alt="Refactorización" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Cambiar cómo se ve el código,<br>sin cambiar lo que hace</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De nombrar y estructurar bien, a corregir lo que ya existe</h1>
+          <p>El martes se vio la primera mitad de código limpio: nombres significativos y funciones pequeñas que hacen una sola cosa. Eso ayuda a escribir código limpio <strong>nuevo</strong>. Pero la mayor parte del trabajo real no es escribir código desde cero — es modificar código que <strong>ya existe</strong>, y que casi nunca está tan limpio como debería.</p>
+          <p>Hoy se cierra código limpio con <strong>refactorización</strong>: cómo mejorar la estructura interna de código existente, el catálogo de <strong>code smells</strong> de Martin Fowler que ayuda a reconocer cuándo hace falta, y su conexión directa con los antipatrones ya vistos en la Unidad 5.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es refactorizar</h1>
+          <p><strong>Refactorizar</strong> (refactoring) es el proceso de cambiar la <strong>estructura interna</strong> de un fragmento de código sin alterar su <strong>comportamiento externo observable</strong>. El término y su catálogo sistemático de técnicas los formalizó <strong>Martin Fowler</strong> en su libro <em>Refactoring: Improving the Design of Existing Code</em> (1999).</p>
+          <p>El punto clave de la definición es "sin alterar el comportamiento externo": el software, desde el punto de vista de quien lo usa, se comporta exactamente igual antes y después. Lo único que cambia es qué tan fácil es de leer, entender y modificar por dentro — es, literalmente, la forma de <strong>pagar el capital de la deuda técnica</strong> vista al inicio de la semana.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Refactorizar solo es seguro con pruebas</h1>
+          <p>Fowler es enfático en un requisito previo: refactorizar <strong>sin una red de pruebas automatizadas</strong> que confirmen que el comportamiento no cambió es apostar a ciegas. Sin pruebas, cada refactorización es un salto de fe — se puede introducir un error sin que nadie lo note hasta producción.</p>
+          <p>Por eso el proceso disciplinado de refactorización sigue un ciclo corto y repetido: <strong>ejecutar las pruebas, hacer un cambio pequeño, ejecutar las pruebas de nuevo</strong>. Si algo falla, se revierte el último cambio pequeño — nunca se avanza sobre una base que ya se sabe rota. Este es el puente directo hacia las pruebas unitarias que se ven la próxima semana.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuándo refactorizar</h1>
+          <ul>
+            <li><strong>La regla del Boy Scout:</strong> principio popularizado también por Robert C. Martin — "deja el código un poco más limpio de lo que lo encontraste". No es necesario limpiar todo un módulo de una vez; basta con mejorar algo pequeño cada vez que se pasa por ahí.</li>
+            <li><strong>Antes de agregar una funcionalidad:</strong> si el diseño actual dificulta agregar lo nuevo, primero se refactoriza para que agregarlo sea fácil, y luego se agrega — no al revés.</li>
+            <li><strong>Durante el code review:</strong> cuando un compañero señala una oportunidad de mejora que no cambia el comportamiento, es el momento natural de aplicarla.</li>
+            <li><strong>Al corregir un bug:</strong> mientras se investiga la causa, suele encontrarse la zona de código que más lo merece.</li>
+          </ul>
+          <img class="portada-icon" src="img/wrench.svg" alt="Cuándo refactorizar" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es un code smell</h1>
+          <p>Un <strong>code smell</strong> (mal olor de código) es una señal superficial en el código que, sin ser un error en sí mismo, sugiere que existe un problema de diseño más profundo debajo. El término también lo popularizó Fowler en <em>Refactoring</em>: el código "funciona", pero algo en cómo está escrito indica que conviene revisarlo.</p>
+          <p>La relación con lo que se vio en la Unidad 5 es directa: los <strong>antipatrones</strong> (God Object, Spaghetti Code) son el resultado consolidado y con nombre propio de acumular muchos code smells sin corregirlos — un code smell es la señal temprana; un antipatrón es lo que queda cuando esa señal se ignoró durante mucho tiempo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Catálogo de code smells (I)</h1>
+          <table>
+            <thead><tr><th>Code smell</th><th>Síntoma</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Long Method</strong></td><td>Una función que creció tanto que ya no se entiende de un vistazo — el opuesto directo de "funciones pequeñas" visto el martes.</td></tr>
+              <tr><td><strong>Large Class</strong></td><td>Una clase que intenta hacer demasiado — la versión de code smell de lo que en la Unidad 5 se llamó God Object.</td></tr>
+              <tr><td><strong>Duplicated Code</strong></td><td>El mismo fragmento de lógica repetido en varios lugares — la versión de code smell de Copy-Paste Programming.</td></tr>
+              <tr><td><strong>Long Parameter List</strong></td><td>Una función con demasiados argumentos, difícil de llamar y de recordar en qué orden van.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Catálogo de code smells (II)</h1>
+          <table>
+            <thead><tr><th>Code smell</th><th>Síntoma</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Feature Envy</strong></td><td>Un método que usa más los datos de otra clase que los propios — señal de que está en la clase equivocada (recuerden Information Expert, semana 10).</td></tr>
+              <tr><td><strong>Data Clumps</strong></td><td>El mismo grupo de datos (ej. día, mes, año) viajando siempre juntos como parámetros sueltos, en vez de agruparse en una clase propia.</td></tr>
+              <tr><td><strong>Primitive Obsession</strong></td><td>Usar tipos primitivos (<code>string</code>, <code>int</code>) para representar conceptos del dominio (email, dinero, rango de fechas) en vez de crear un tipo propio.</td></tr>
+              <tr><td><strong>Switch Statements</strong></td><td><code>switch</code> o cadenas de <code>if/elif</code> repetidas en varios lugares del código según el mismo tipo — la versión de code smell de Spaghetti Code.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Primitive Obsession y Data Clumps juntos</h1>
+          <pre><code>// Antes: primitivos sueltos que siempre viajan juntos
+def crear_reserva(dia, mes, anio, email_cliente):
+    if "@" not in email_cliente:
+        raise ValueError("email invalido")
+    ...
+
+// Después: dos tipos propios del dominio
+def crear_reserva(fecha: Fecha, email: Email):
+    ...  # Fecha y Email ya se validan a sí mismos al construirse</code></pre>
+          <p><code>dia, mes, anio</code> es un <strong>Data Clump</strong> — siempre viajan juntos y deberían ser una sola clase <code>Fecha</code>. Usar un <code>string</code> plano para el correo es <strong>Primitive Obsession</strong> — un tipo <code>Email</code> propio puede validarse a sí mismo una sola vez, en vez de repetir la validación en cada función que lo recibe.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Técnicas básicas de refactorización</h1>
+          <p>Fowler documenta docenas de refactorizaciones con nombre propio y pasos mecánicos. Las cuatro más frecuentes en el día a día:</p>
+          <ul>
+            <li><strong>Extract Method:</strong> tomar un bloque de código dentro de una función larga y convertirlo en una función propia con un nombre que explique qué hace — la corrección directa de Long Method.</li>
+            <li><strong>Rename:</strong> cambiar el nombre de una variable, función o clase para que revele mejor su intención, sin tocar su lógica.</li>
+            <li><strong>Extract Class:</strong> mover un grupo de campos y métodos relacionados de una clase sobrecargada a una clase nueva — la corrección directa de Large Class.</li>
+            <li><strong>Replace Conditional with Polymorphism:</strong> reemplazar un <code>switch</code> o cadena de <code>if</code> que decide comportamiento según un tipo, por una jerarquía de clases polimórfica — el mismo principio que resuelve Switch Statements y Spaghetti Code, y que ya vieron con Strategy y State en la Unidad 5.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual · Cierre del arco</p>
+          <h1>Code smells, antipatrones y principios: la misma idea, tres niveles</h1>
+          <p>Con esto se cierra el hilo que conecta las últimas tres semanas del curso: un <strong>principio</strong> no aplicado (SOLID, GRASP) se manifiesta primero como un <strong>code smell</strong> local y pequeño; si se ignora durante suficiente tiempo, se consolida como un <strong>antipatrón</strong> con nombre propio a nivel de todo el sistema.</p>
+          <table>
+            <thead><tr><th>Code smell (hoy)</th><th>Antipatrón (semana 14)</th><th>Principio que lo evita</th></tr></thead>
+            <tbody>
+              <tr><td>Large Class</td><td>God Object</td><td>SRP / High Cohesion</td></tr>
+              <tr><td>Duplicated Code</td><td>Copy-Paste Programming</td><td>Extract Method/Class</td></tr>
+              <tr><td>Switch Statements</td><td>Spaghetti Code</td><td>Strategy / State</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué code smell y qué refactorización aplicarían?</h1>
+          <p>En el chat, para cada caso indiquen el code smell presente y qué técnica de refactorización lo corrige:</p>
+          <ol>
+            <li>Un método <code>calcularEnvio(peso, destino)</code> que consulta y usa casi exclusivamente los atributos de la clase <code>Destino</code>, y casi nada de su propia clase.</li>
+            <li>Una función de 80 líneas que valida, calcula, guarda y notifica en un solo bloque continuo.</li>
+            <li>Un parámetro <code>tipoDocumento: string</code> que recibe literalmente <code>"CC"</code>, <code>"TI"</code> o <code>"CE"</code>, y un <code>if/elif</code> distinto por cada valor en cuatro archivos distintos del proyecto.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de la sesión</h1>
+          <ol>
+            <li>Refactorizar es cambiar la estructura interna del código <strong>sin alterar su comportamiento externo</strong>, y solo es seguro con pruebas automatizadas.</li>
+            <li>Se refactoriza con la regla del Boy Scout, antes de agregar funcionalidad, y durante el code review.</li>
+            <li>Un code smell es una señal temprana de un problema de diseño; un antipatrón es lo que queda cuando esa señal se ignora por mucho tiempo.</li>
+            <li>Extract Method, Rename, Extract Class y Replace Conditional with Polymorphism son las técnicas básicas para corregirlos.</li>
+            <li>Con nombres, funciones, comentarios, refactorización y code smells se cierra código limpio — falta la herramienta que hace segura toda refactorización: <strong>pruebas unitarias</strong>.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de código limpio parte 2" style="display:block;width:85px;height:85px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima semana</h1>
+          <p><strong>Refactorizar sin pruebas es peligroso.</strong> Con esto se cierra la primera semana de la Unidad 6 — deuda técnica y código limpio. La semana 16, que cierra la unidad, se dedica por completo a <strong>pruebas unitarias de software</strong>: fundamentos y frameworks el martes, TDD y buenas prácticas el miércoles, y un laboratorio práctico sobre el proyecto el viernes.</p>
+          <img class="portada-icon" src="img/arrow-right-long.svg" alt="Cierre, hacia pruebas unitarias" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 15</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

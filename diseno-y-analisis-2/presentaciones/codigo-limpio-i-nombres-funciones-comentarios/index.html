@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Código Limpio I: Nombres, Funciones, Comentarios — Semana 15</title>
+  <meta name="description" content="Basado en Clean Code de Robert C. Martin: nombres significativos, funciones pequeñas que hacen una sola cosa, y por qué la mayoría de comentarios son un síntoma — Análisis y Diseño de Sistemas II, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/codigo-limpio-i-nombres-funciones-comentarios/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Código Limpio I: Nombres, Funciones, Comentarios — Semana 15" />
+  <meta property="og:description" content="Basado en Clean Code de Robert C. Martin: nombres significativos, funciones pequeñas que hacen una sola cosa, y por qué la mayoría de comentarios son un síntoma — Análisis y Diseño de Sistemas II, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/codigo-limpio-i-nombres-funciones-comentarios/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Código Limpio I: Nombres, Funciones, Comentarios — Semana 15" />
+  <meta name="twitter:description" content="Basado en Clean Code de Robert C. Martin: nombres significativos, funciones pequeñas que hacen una sola cosa, y por qué la mayoría de comentarios son un síntoma — Análisis y Diseño de Sistemas II, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/codigo-limpio-i-nombres-funciones-comentarios.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 15 — Código Limpio I: Nombres, Funciones, Comentarios</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/book-open.svg" alt="Código limpio" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>El código se lee muchas más veces<br>de las que se escribe</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la deuda técnica a la primera forma de pagarla</h1>
+          <p>El martes se vio que la deuda técnica se paga como <strong>fricción</strong>: código cada vez más lento y arriesgado de cambiar. La forma más directa de reducir esa fricción no requiere una herramienta nueva ni una reunión — es escribir código que se explique a sí mismo.</p>
+          <p>Hoy se ve la primera mitad de <strong>código limpio</strong>, basada en el libro <em>Clean Code</em> (2008) de <strong>Robert C. Martin</strong> ("Uncle Bob"): nombres significativos, funciones pequeñas y el rol real de los comentarios. La segunda mitad —refactorización y code smells— se ve el miércoles.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué importa el código limpio</h1>
+          <p>Robert C. Martin parte de una proporción concreta en la vida real de cualquier proyecto: por cada línea de código nueva que se <strong>escribe</strong>, un desarrollador va a <strong>leer</strong> código existente muchas más veces — al depurar, al agregar una funcionalidad relacionada, al hacer code review, al volver a un módulo meses después.</p>
+          <p>De ahí la idea central del libro: la <strong>relación entre tiempo de lectura y tiempo de escritura</strong> es tan desbalanceada que hace que escribir código fácil de leer sea, en la práctica, más importante que escribirlo rápido. Código limpio no es una cuestión de estética — es una inversión que se recupera cada vez que alguien (incluido uno mismo) vuelve a leerlo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Nombres significativos (I)</h1>
+          <p>El nombre de una variable, función o clase debería responder, sin necesidad de un comentario aparte, tres preguntas: <strong>por qué existe, qué hace y cómo se usa</strong>. Reglas centrales del capítulo de nombres en Clean Code:</p>
+          <ul>
+            <li><strong>Intención reveladora:</strong> el nombre debe decir qué representa, no requerir que alguien lea el cuerpo del código para entenderlo.</li>
+            <li><strong>Evitar desinformación:</strong> no llamar <code>listaDeCuentas</code> a algo que en realidad es un mapa, ni usar nombres que se parezcan demasiado entre sí (<code>datos</code> vs. <code>dato</code>).</li>
+            <li><strong>Hacer distinciones significativas:</strong> evitar nombres como <code>datos1</code>, <code>datos2</code> o sufijos vacíos (<code>ClienteInfo</code> cuando ya existe <code>Cliente</code>) que no aportan información real.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Nombres significativos (II)</h1>
+          <ul>
+            <li><strong>Pronunciables:</strong> un nombre que no se puede decir en voz alta (<code>genymdhms</code> para "generation year, month, day, hour, minute, second") hace imposible discutirlo en equipo.</li>
+            <li><strong>Buscables:</strong> preferir <code>DIAS_MAXIMO_RETRASO</code> a un número mágico como <code>7</code> suelto en el código — un nombre se puede buscar con "Find"; una constante numérica se confunde con cualquier otro <code>7</code> del archivo.</li>
+            <li><strong>Evitar codificaciones tipo húngara:</strong> prefijos como <code>strNombre</code> o <code>iContador</code> eran útiles cuando los editores no mostraban tipos — hoy son ruido que el lenguaje o el IDE ya resuelven.</li>
+            <li><strong>Un concepto, una palabra:</strong> no mezclar <code>obtener</code>, <code>traer</code> y <code>recuperar</code> para la misma operación en distintas clases del mismo proyecto.</li>
+          </ul>
+          <img class="portada-icon" src="img/tag.svg" alt="Nombres significativos" style="display:block;width:90px;height:90px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Antes y después: nombrar con intención</h1>
+          <pre><code>// Antes: nombres que no revelan intención
+int d;              // días transcurridos
+List&lt;int[]&gt; l = getList();
+for (int[] x : l) {
+    if (x[0] == 4) l2.add(x);
+}
+
+// Después: el nombre reemplaza al comentario
+int diasTranscurridos;
+List&lt;Celda&gt; celdasMarcadas = tablero.obtenerCeldas();
+for (Celda celda : celdasMarcadas) {
+    if (celda.getEstado() == ESTADO_MARCADA) {
+        celdasCandidatas.add(celda);
+    }
+}</code></pre>
+          <p>La segunda versión no necesita el comentario "días transcurridos" porque el nombre ya lo dice, y reemplaza <code>x[0] == 4</code> (un número mágico sin significado visible) por una constante con nombre.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Funciones pequeñas (I): hacer una sola cosa</h1>
+          <p>La primera regla de Martin sobre funciones es contundente: <strong>deben ser pequeñas</strong>, y luego <strong>más pequeñas todavía</strong>. Una función larga casi siempre es una señal de que está haciendo más de una cosa — el mismo problema de baja cohesión que ya vieron en la semana 7, aplicado ahora al nivel de la función y no de la clase.</p>
+          <p>Una función <strong>hace una sola cosa</strong> cuando todas sus instrucciones están al mismo nivel de abstracción y contribuyen a un único propósito identificable. Una buena prueba práctica: si se puede extraer un bloque de la función y ponerle un nombre que no sea simplemente una repetición de su implementación, esa función estaba haciendo más de una cosa.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Funciones pequeñas (II): nivel de abstracción y argumentos</h1>
+          <ul>
+            <li><strong>Un solo nivel de abstracción por función:</strong> no mezclar una línea de alto nivel ("procesar pedido") con detalle de bajo nivel ("concatenar el string del encabezado HTTP") en la misma función.</li>
+            <li><strong>Pocos argumentos:</strong> el ideal es cero o uno; dos es aceptable; tres empieza a justificar revisión; cuatro o más casi siempre indica que esos argumentos deberían agruparse en un objeto propio.</li>
+            <li><strong>Sin efectos secundarios ocultos:</strong> una función llamada <code>validarPassword(password)</code> que además, sin decirlo en su nombre, inicia una sesión de usuario, engaña a quien la llama — hace algo que su nombre no anuncia.</li>
+            <li><strong>Preferir excepciones a códigos de error:</strong> devolver códigos de error obliga a quien llama a verificar el resultado inmediatamente, mezclando el flujo normal con el manejo de errores.</li>
+          </ul>
+          <img class="portada-icon" src="img/diagram-project.svg" alt="Funciones pequeñas, un solo nivel de abstracción" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Una función que hace demasiado</h1>
+          <pre><code>def procesar_pedido(pedido):
+    if pedido.items == []:
+        return False
+    total = 0
+    for item in pedido.items:
+        total += item.precio * item.cantidad
+    if pedido.cliente.tipo == "premium":
+        total = total * 0.9
+    conexion = conectar_base_datos()
+    conexion.execute("INSERT INTO pedidos ...")
+    enviar_email(pedido.cliente.email, "Pedido confirmado")
+    return True</code></pre>
+          <p>Esta función <strong>valida, calcula el total, aplica un descuento, persiste y notifica</strong> — cinco responsabilidades distintas en cinco niveles de abstracción distintos. Extraer cada bloque en una función propia (<code>calcularTotal</code>, <code>aplicarDescuento</code>, <code>guardarPedido</code>, <code>notificarCliente</code>) deja <code>procesar_pedido</code> como una lista legible de pasos de alto nivel.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Comentarios: por qué la mayoría son un síntoma</h1>
+          <p>Martin es deliberadamente provocador en este punto: <strong>"cada comentario es un fracaso de nuestra parte para expresarnos en código"</strong>. Un comentario que explica <em>qué</em> hace un bloque de código casi siempre significa que ese código pudo haberse escrito de forma que no necesitara explicación — con mejores nombres, funciones más pequeñas.</p>
+          <p>El riesgo adicional de un comentario es que, a diferencia del código, <strong>no se ejecuta</strong>: nada obliga a mantenerlo sincronizado cuando el código cambia. Un comentario desactualizado es peor que no tener comentario, porque miente con autoridad.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cuándo un comentario SÍ es apropiado</h1>
+          <p>Clean Code no dice "nunca comenten" — dice que un buen comentario compensa nuestra incapacidad de expresar algo en el código mismo, y lista casos legítimos:</p>
+          <ul>
+            <li><strong>Advertencias de consecuencias:</strong> ej. <code>// no ejecutar en paralelo: la conexión no es thread-safe</code>.</li>
+            <li><strong>Intención legal:</strong> encabezados de licencia o copyright requeridos contractualmente.</li>
+            <li><strong>Explicación de intención:</strong> por qué se eligió un algoritmo poco obvio en vez de uno más simple.</li>
+            <li><strong><code>TODO</code>:</strong> marcar trabajo pendiente conocido — de hecho, es una de las formas más simples de dejar visible una deuda técnica deliberada, conectando con la sesión del martes.</li>
+            <li><strong>Amplificación de importancia:</strong> señalar que algo que parece trivial en realidad es crítico.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Comentario redundante vs. comentario que aporta</h1>
+          <pre><code>// Redundante: repite lo que el código ya dice
+// Incrementa i en 1
+i = i + 1;
+
+// Apropiado: advierte algo que el código no puede decir por sí solo
+// CUIDADO: este orden importa — el descuento debe aplicarse
+// ANTES de calcular el impuesto, o el cliente paga de más.
+total = aplicarDescuento(subtotal);
+total = aplicarImpuesto(total);</code></pre>
+          <p>El primer comentario no agrega nada que <code>i = i + 1</code> no diga ya. El segundo explica una <strong>intención no obvia</strong> (el orden de las operaciones) que ningún nombre de variable podría comunicar por sí solo — ese es el tipo de comentario que vale la pena escribir.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Qué está mal en cada fragmento?</h1>
+          <p>En el chat, para cada fragmento indiquen si el problema es de <strong>nombres</strong>, de <strong>funciones que hacen demasiado</strong>, o de <strong>comentarios innecesarios</strong>:</p>
+          <ol>
+            <li><code>def calc(a, b, c, d, e, f): ...</code> — una función con seis parámetros sueltos.</li>
+            <li><code>// suma los dos números</code> justo encima de <code>total = precio + impuesto;</code></li>
+            <li>Una función <code>guardarUsuario(usuario)</code> que, además de guardar, también envía un correo de bienvenida sin que su nombre lo mencione.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de la sesión</h1>
+          <ol>
+            <li>El código se lee muchas más veces de las que se escribe — código limpio es una inversión, no estética.</li>
+            <li>Un buen nombre revela intención, evita desinformación, es pronunciable y buscable.</li>
+            <li>Una función debe ser pequeña, hacer una sola cosa, mantener un único nivel de abstracción y usar pocos argumentos.</li>
+            <li>La mayoría de comentarios son síntoma de código que no se explica solo; los buenos comentarios explican intención, advierten o marcan <code>TODO</code>.</li>
+            <li>Nombres y funciones limpias son la primera forma concreta de reducir el interés de la deuda técnica vista el martes.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de código limpio parte 1" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <p>Revisen un fragmento de su propio proyecto y anoten, informalmente, si algún nombre o función viola alguna de las reglas vistas hoy — no hace falta corregirlo todavía. El viernes se completa código limpio con <strong>refactorización y code smells</strong>: el catálogo de Martin Fowler y las técnicas concretas para pasar del código de hoy al código limpio.</p>
+          <img class="portada-icon" src="img/eye-slash.svg" alt="Cierre, hacia refactorización y code smells" style="display:block;width:130px;height:130px;margin:10px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 16</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

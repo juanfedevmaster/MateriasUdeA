@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concepto de Deuda Técnica — Semana 15</title>
+  <meta name="description" content="Origen del término (Ward Cunningham, 1992), el cuadrante de Martin Fowler, causas comunes, cómo se paga el interés y cómo se mide la deuda técnica — Análisis y Diseño de Sistemas II, Semana 15." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/concepto-de-deuda-tecnica/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Concepto de Deuda Técnica — Semana 15" />
+  <meta property="og:description" content="Origen del término (Ward Cunningham, 1992), el cuadrante de Martin Fowler, causas comunes, cómo se paga el interés y cómo se mide la deuda técnica — Análisis y Diseño de Sistemas II, Semana 15." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/concepto-de-deuda-tecnica/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Concepto de Deuda Técnica — Semana 15" />
+  <meta name="twitter:description" content="Origen del término (Ward Cunningham, 1992), el cuadrante de Martin Fowler, causas comunes, cómo se paga el interés y cómo se mide la deuda técnica — Análisis y Diseño de Sistemas II, Semana 15." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/concepto-de-deuda-tecnica.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 15 — Concepto de Deuda Técnica</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/credit-card.svg" alt="Deuda técnica" style="display:block;width:210px;height:210px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Todo el código que escriben hoy<br>es una decisión financiera que pagarán mañana</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De los antipatrones a por qué existen</h1>
+          <p>La semana pasada se cerró la <strong>Unidad 5</strong> con los antipatrones de diseño: God Object, Spaghetti Code, Golden Hammer, Copy-Paste Programming y Lava Flow. Todos comparten algo — no aparecieron porque un equipo quisiera escribir mal código. Aparecieron porque, en algún momento, alguien tomó un atajo razonable y nadie volvió a pagarlo.</p>
+          <p>Hoy se abre la <strong>Unidad 6 — Calidad en el Diseño de Software</strong>, con el concepto que le da nombre a ese fenómeno: la <strong>deuda técnica</strong>. En las próximas tres semanas se conecta con código limpio, refactorización y pruebas unitarias — las tres formas concretas de gestionarla.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>El origen del término: Ward Cunningham, 1992</h1>
+          <p>El término <strong>"deuda técnica"</strong> (technical debt) lo acuñó <strong>Ward Cunningham</strong> — coautor del Manifiesto Ágil e inventor del primer wiki — en un reporte de experiencia de 1992 para la conferencia OOPSLA, mientras trabajaba en <strong>WyCash</strong>, un sistema financiero para gestión de portafolios de inversión desarrollado en Smalltalk.</p>
+          <p>Cunningham no usó la metáfora para justificar código descuidado. La usó para explicar a su equipo <strong>por qué valía la pena reescribir</strong> ciertas partes del sistema, aun cuando el código "funcionaba": el diseño actual, aunque válido en su momento, ya no reflejaba el entendimiento del negocio que el equipo había ganado con el tiempo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>La metáfora original, en palabras de Cunningham</h1>
+          <blockquote>"Enviar código a medio terminar es como endeudarse. Un poco de deuda acelera el desarrollo, siempre que se pague pronto con una reescritura (...) El peligro ocurre cuando la deuda no se paga. Cada minuto dedicado a código que no es exactamente correcto cuenta como interés sobre esa deuda."</blockquote>
+          <p>Es una <strong>metáfora financiera deliberada</strong>: así como una deuda monetaria permite comprar algo hoy a cambio de pagar intereses después, un atajo de diseño permite entregar software hoy a cambio de que el código sea más costoso de cambiar mañana. La metáfora funcionó porque le dio a los equipos de desarrollo un lenguaje que los gerentes de negocio ya entendían.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es la deuda técnica</h1>
+          <p>La <strong>deuda técnica</strong> es el costo implícito de trabajo adicional futuro que se genera al elegir una solución fácil o rápida hoy, en vez de una solución mejor que habría tomado más tiempo. No es sinónimo de "código malo": es una <strong>relación entre una decisión de diseño y su costo diferido</strong>.</p>
+          <p>Como toda deuda financiera tiene dos componentes:</p>
+          <ul>
+            <li><strong>El capital (principal):</strong> el trabajo que falta por hacer para llegar al diseño correcto — la refactorización pendiente.</li>
+            <li><strong>El interés:</strong> el costo adicional que paga el equipo, sesión tras sesión, mientras esa deuda no se salda — código más difícil de entender, cambios más lentos, más bugs.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El cuadrante de Martin Fowler</h1>
+          <p><strong>Martin Fowler</strong> (el mismo autor del catálogo de code smells que se ve la próxima sesión) refinó la metáfora en 2009: no toda deuda técnica es igual. Propuso clasificarla en dos ejes independientes — si fue <strong>deliberada</strong> o <strong>inadvertida</strong>, y si se tomó de forma <strong>prudente</strong> o <strong>imprudente</strong> — formando un cuadrante de cuatro combinaciones.</p>
+          <img class="portada-icon" src="img/chart-pie.svg" alt="Cuadrante de deuda técnica de Martin Fowler" style="display:block;width:120px;height:120px;margin:10px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Los cuatro tipos de deuda técnica</h1>
+          <table>
+            <thead><tr><th></th><th>Deliberada</th><th>Inadvertida</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Imprudente</strong></td><td>"No hay tiempo para diseñar bien" — el equipo sabe que hay un atajo y no le importa el costo futuro.</td><td>"¿Qué es diseño en capas?" — el equipo no conoce las prácticas que evitarían la deuda.</td></tr>
+              <tr><td><strong>Prudente</strong></td><td>"Hay que entregar ahora y aceptamos las consecuencias" — decisión consciente, documentada, con plan de pago.</td><td>"Ahora sabemos cómo debimos haberlo hecho" — solo se descubre en retrospectiva, con más experiencia.</td></tr>
+            </tbody>
+          </table>
+          <p>Las dos casillas de la izquierda son <strong>decisiones conscientes</strong> del equipo; las dos de la derecha se descubren después, sin que nadie las eligiera a propósito.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué la deliberada-prudente no siempre es un error</h1>
+          <p>La casilla <strong>deliberada y prudente</strong> es la más importante para desmontar un mito: "toda deuda técnica es un error del equipo". No lo es. Un equipo puede decidir, con conocimiento completo, entregar una versión más simple de una funcionalidad para validar una hipótesis de negocio antes de invertir en la solución robusta — y eso es una <strong>decisión de ingeniería válida</strong>, siempre que:</p>
+          <ul>
+            <li>Se tome de forma <strong>consciente y explícita</strong>, no por omisión.</li>
+            <li>Se <strong>documente</strong> qué se sacrificó y por qué (ej. un comentario <code>TODO</code>, un ticket en el backlog).</li>
+            <li>Exista un <strong>plan realista de pago</strong> — no quede indefinidamente pendiente.</li>
+          </ul>
+          <p>El problema nunca es tomar la deuda: es tomarla <strong>sin saberlo o sin plan de pago</strong>.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Causas comunes de deuda técnica</h1>
+          <ul>
+            <li><strong>Presión de tiempo:</strong> fechas de entrega que fuerzan a omitir diseño, pruebas o revisión de código.</li>
+            <li><strong>Falta de conocimiento:</strong> el equipo no conoce todavía SOLID, GRASP o los patrones GoF que evitarían el problema (deuda inadvertida).</li>
+            <li><strong>Rotación de equipo:</strong> quien entendía el diseño original se va, y quien llega no conoce el contexto ni las decisiones tomadas.</li>
+            <li><strong>Falta de pruebas automatizadas:</strong> sin una red de seguridad, refactorizar da miedo — y lo que da miedo, no se hace (tema central de la próxima semana).</li>
+            <li><strong>Requisitos que cambian:</strong> el diseño que era correcto para el problema original deja de encajar cuando el problema cambia.</li>
+          </ul>
+          <img class="portada-icon" src="img/triangle-exclamation.svg" alt="Causas comunes de la deuda técnica" style="display:block;width:100px;height:100px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se paga el "interés"</h1>
+          <p>El interés de la deuda técnica no llega como un cargo mensual explícito — llega como <strong>fricción</strong>, cada vez que alguien intenta cambiar el código:</p>
+          <ul>
+            <li>Cada cambio nuevo toma <strong>más tiempo</strong> del que debería, porque hay que entender primero el desorden existente.</li>
+            <li>Aumenta la <strong>probabilidad de introducir bugs</strong> al modificar código enredado o duplicado.</li>
+            <li>El equipo empieza a <strong>evitar tocar</strong> ciertas zonas del sistema — exactamente el síntoma de Lava Flow visto la semana pasada.</li>
+            <li>Con el tiempo, incluso agregar una funcionalidad pequeña requiere un esfuerzo desproporcionado.</li>
+          </ul>
+          <p>Igual que con una deuda financiera impagada, el interés compuesto puede llegar a superar el valor del capital original: el costo de mantener el código termina siendo mayor que el que habría costado hacerlo bien desde el principio.</p>
+          <img class="portada-icon" src="img/percent.svg" alt="El interés de la deuda técnica" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Cómo se mide y se hace visible</h1>
+          <p>A diferencia de una deuda financiera, la deuda técnica no aparece en un estado de cuenta — hay que hacerla visible deliberadamente. Algunas formas comunes:</p>
+          <ul>
+            <li><strong>Herramientas de análisis estático</strong> como <strong>SonarQube</strong>, que escanean el código y reportan métricas de complejidad, duplicación y cobertura de pruebas, además de estimar el "tiempo de remediación" en horas.</li>
+            <li><strong>Code smells</strong> (síntomas que se ven en detalle la próxima sesión) como señal indirecta: mientras más smells acumula una clase, más deuda probablemente arrastra.</li>
+            <li><strong>Revisión de código (code review)</strong>, donde el equipo señala atajos antes de que se fusionen al proyecto.</li>
+            <li><strong>Backlog explícito de deuda técnica:</strong> registrar cada atajo tomado como un ítem visible, igual que una historia de usuario.</li>
+          </ul>
+          <img class="portada-icon" src="img/sonarqube.svg" alt="SonarQube: herramienta de análisis de deuda técnica" style="display:block;width:80px;height:80px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>"Deuda cero" no es la meta</h1>
+          <p>Un error común es pensar que el objetivo de un buen equipo es <strong>nunca</strong> tener deuda técnica. En la práctica, eso ni es posible ni es deseable: incluso el mejor entendimiento del negocio de hoy va a quedar parcialmente obsoleto mañana, y siempre habrá presión legítima de tiempo de mercado.</p>
+          <p>La meta realista no es cero deuda, es <strong>deuda gestionada</strong>: tomarla de forma consciente cuando aporta valor, hacerla visible, y pagarla antes de que su interés supere lo que aportó. Un equipo maduro no es el que nunca toma atajos — es el que sabe exactamente cuáles tomó y cuándo piensa pagarlos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Clasifiquen estos tres casos en el cuadrante de Fowler</h1>
+          <p>En el chat, para cada caso indiquen si la deuda técnica es deliberada o inadvertida, y prudente o imprudente:</p>
+          <ol>
+            <li>Un equipo entrega una funcionalidad copiando y pegando código de otra pantalla similar, porque nunca se les ocurrió que se pudiera reutilizar.</li>
+            <li>Un equipo decide, en una reunión, entregar sin pruebas automatizadas dos historias de esta iteración para cumplir la fecha del demo, y lo anota en el backlog para corregirlo la próxima semana.</li>
+            <li>Un equipo sabe que su diseño actual no escala, pero decide seguir agregando funcionalidades encima sin decírselo a nadie, "porque total ya funciona".</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto · Relación con el proyecto</p>
+          <h1>Deuda técnica y el proyecto de Fábrica Escuela</h1>
+          <p>A partir de esta semana, cada equipo debe empezar a <strong>auditar su propia deuda técnica</strong> en el proyecto que vienen construyendo desde la semana 2. No es un ejercicio teórico aislado: es revisar con honestidad las decisiones de diseño ya tomadas —muchas de ellas, razonables en su momento— y hacer visible lo que quedó pendiente.</p>
+          <ul>
+            <li>¿Qué atajos tomaron a propósito, y quedaron documentados?</li>
+            <li>¿Qué partes del diseño ya no reflejan lo que el equipo entiende hoy del problema?</li>
+            <li>¿Qué antipatrones de la semana pasada (God Object, Spaghetti Code) son, en el fondo, deuda técnica acumulada?</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Auditoría de deuda técnica en el proyecto de Fábrica Escuela" style="display:block;width:100px;height:100px;margin:6px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s16">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de la sesión</h1>
+          <ol>
+            <li>La deuda técnica es una <strong>metáfora financiera</strong> acuñada por Ward Cunningham en 1992: capital (trabajo pendiente) más interés (costo de no pagarlo).</li>
+            <li>El cuadrante de Fowler la clasifica en <strong>deliberada/inadvertida</strong> y <strong>prudente/imprudente</strong> — no toda deuda es un error.</li>
+            <li>Las causas más comunes son presión de tiempo, falta de conocimiento, rotación de equipo y falta de pruebas.</li>
+            <li>El interés se paga como <strong>fricción creciente</strong>: cambios más lentos, más riesgo de bugs, zonas del código que nadie quiere tocar.</li>
+            <li>Se hace visible con herramientas como SonarQube, code smells y un backlog explícito de deuda.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de la deuda técnica" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s17">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <p>Empiecen a identificar, de manera informal, uno o dos lugares de su proyecto donde reconocen deuda técnica — no hace falta documentarlo todavía formalmente, solo tenerlo presente. La próxima sesión se aborda la primera herramienta concreta para pagarla: <strong>código limpio</strong>, empezando por nombres, funciones y comentarios, según "Clean Code" de Robert C. Martin.</p>
+          <img class="portada-icon" src="img/door-open.svg" alt="Cierre de la sesión, hacia código limpio" style="display:block;width:150px;height:150px;margin:15px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 17</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

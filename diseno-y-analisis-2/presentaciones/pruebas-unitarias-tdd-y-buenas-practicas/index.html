@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pruebas Unitarias: TDD y Buenas Prácticas — Semana 16</title>
+  <meta name="description" content="Test-Driven Development de Kent Beck, el ciclo Red-Green-Refactor, buenas prácticas de pruebas y la relación entre TDD y bajo acoplamiento — Análisis y Diseño de Sistemas II, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/pruebas-unitarias-tdd-y-buenas-practicas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Pruebas Unitarias: TDD y Buenas Prácticas — Semana 16" />
+  <meta property="og:description" content="Test-Driven Development de Kent Beck, el ciclo Red-Green-Refactor, buenas prácticas de pruebas y la relación entre TDD y bajo acoplamiento — Análisis y Diseño de Sistemas II, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/pruebas-unitarias-tdd-y-buenas-practicas/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pruebas Unitarias: TDD y Buenas Prácticas — Semana 16" />
+  <meta name="twitter:description" content="Test-Driven Development de Kent Beck, el ciclo Red-Green-Refactor, buenas prácticas de pruebas y la relación entre TDD y bajo acoplamiento — Análisis y Diseño de Sistemas II, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/pruebas-unitarias-tdd-y-buenas-practicas.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 16 — Pruebas Unitarias: TDD y Buenas Prácticas</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/arrows-rotate.svg" alt="Test-Driven Development" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>¿Y si la prueba se escribe<br>antes que el código?</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De probar lo que ya existe, a diseñar probando</h1>
+          <p>El martes se vio pruebas unitarias como una herramienta de <strong>verificación</strong>: se escribe código, y luego se escribe una prueba que confirma que funciona. Hoy se ve un enfoque distinto, donde la prueba no viene después del código, sino <strong>antes</strong>: <strong>TDD</strong> (Test-Driven Development, desarrollo guiado por pruebas), creado por <strong>Kent Beck</strong> — el mismo coautor de JUnit visto la sesión pasada.</p>
+          <p>TDD no es solo una técnica de pruebas: es una técnica de <strong>diseño</strong>. Escribir la prueba primero cambia cómo se piensa el código, y conecta directamente con SOLID y DIP, vistos en la Unidad 4.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es TDD</h1>
+          <p><strong>Test-Driven Development (TDD)</strong> es una práctica de desarrollo en la que se escribe una prueba unitaria <strong>antes</strong> de escribir el código de producción que la hace pasar. Kent Beck la formalizó y popularizó a principios de los años 2000, como parte de las prácticas de <strong>Extreme Programming (XP)</strong>, aunque el propio Beck reconoce haber "redescubierto" una práctica que ya circulaba de forma informal en los primeros equipos de programación.</p>
+          <p>La idea central: en vez de escribir código y después preguntarse "¿cómo pruebo esto?", primero se pregunta "¿cómo se vería una prueba que confirme que esto funciona?" — y esa pregunta se responde escribiendo la prueba antes de que el código exista.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El ciclo Red-Green-Refactor</h1>
+          <p>TDD se ejecuta en un ciclo corto y repetido, con tres pasos que le dan nombre:</p>
+          <ul>
+            <li><strong>Red (rojo):</strong> se escribe una prueba unitaria para una funcionalidad que todavía no existe. La prueba falla — no puede ser de otra forma, porque el código aún no está escrito.</li>
+            <li><strong>Green (verde):</strong> se escribe el código de producción <strong>mínimo</strong> necesario para que esa prueba pase. No se busca la solución elegante todavía, solo que la prueba pase.</li>
+            <li><strong>Refactor:</strong> con la prueba en verde como red de seguridad, se mejora la estructura interna del código —aplicando lo visto la semana pasada— sin romper la prueba.</li>
+          </ul>
+          <p>El ciclo se repite, prueba por prueba, hasta completar la funcionalidad — cada vuelta agrega un incremento pequeño y verificado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué escribir la prueba primero cambia el diseño</h1>
+          <p>Escribir la prueba antes de la implementación obliga a pensar primero en la <strong>interfaz</strong> —cómo se va a llamar la función, qué recibe, qué devuelve— antes que en el <strong>algoritmo interno</strong> que la resuelve. Esto tiene un efecto de diseño concreto: para que algo sea fácil de probar de forma aislada, tiene que ser fácil de aislar de sus dependencias.</p>
+          <p>Código difícil de probar casi siempre es código con <strong>alto acoplamiento</strong> —una clase que depende directamente de una base de datos concreta, o de otra clase con muchas responsabilidades. TDD, sin proponérselo explícitamente, empuja hacia el mismo tipo de diseño que ya perseguían Low Coupling (GRASP) y DIP (SOLID).</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>Un ciclo TDD completo, paso a paso</h1>
+          <pre><code>// RED: la prueba existe, la función aun no
+def test_debe_rechazar_deposito_con_monto_negativo():
+    cuenta = CuentaBancaria(saldo=100)
+    with pytest.raises(ValueError):
+        cuenta.depositar(-50)
+# Falla: CuentaBancaria.depositar no existe todavia
+
+// GREEN: código mínimo para que pase
+class CuentaBancaria:
+    def __init__(self, saldo):
+        self.saldo = saldo
+    def depositar(self, monto):
+        if monto < 0:
+            raise ValueError("monto invalido")
+        self.saldo += monto
+# La prueba pasa
+
+// REFACTOR: con la prueba en verde, se puede mejorar
+# (ej. extraer la validación a un método propio) sin miedo</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas de pruebas (I)</h1>
+          <ul>
+            <li><strong>Una aserción lógica por prueba:</strong> cada prueba debería verificar un solo comportamiento. Varias aserciones sueltas y sin relación en la misma prueba dificultan saber, cuando falla, cuál de todas era el problema real.</li>
+            <li><strong>Nombres descriptivos:</strong> el nombre de la prueba debería leerse casi como una frase que describe el comportamiento esperado — ej. <code>debe_devolver_error_cuando_el_monto_es_negativo</code> comunica mucho más que <code>test1</code> o <code>testDepositar</code>.</li>
+            <li><strong>Evitar pruebas frágiles acopladas a la implementación:</strong> una prueba no debería fallar porque se renombró una variable interna o se reordenó el código, solo porque cambió el <strong>comportamiento observable</strong>.</li>
+          </ul>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="Buenas prácticas de pruebas unitarias" style="display:block;width:75px;height:75px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Buenas prácticas de pruebas (II): cobertura</h1>
+          <p>La <strong>cobertura de código</strong> (code coverage) mide qué porcentaje de las líneas o ramas del código se ejecutan al correr la suite de pruebas. Es una métrica <strong>útil pero no suficiente</strong>: un 100% de cobertura no garantiza que las pruebas verifiquen realmente el comportamiento correcto, solo que el código se ejecutó al menos una vez.</p>
+          <p>Es perfectamente posible tener 100% de cobertura con pruebas que no tienen ninguna aserción significativa — cubren la línea, pero no verifican nada real. Por eso <strong>perseguir 100% de cobertura de forma ciega</strong> es un objetivo equivocado: la meta es cubrir los casos que importan (incluyendo casos límite y de error), no maximizar un número.</p>
+        </div>
+      </section>
+
+      <section class="slide type-tension" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Tensión conceptual</p>
+          <h1>¿TDD siempre, o solo cuando aporta?</h1>
+          <p>Kent Beck y la comunidad de XP defienden TDD como práctica sistemática para todo código de producción. En la práctica de la industria, esa postura no es unánime: hay desarrolladores expertos —incluido el propio <strong>Robert C. Martin</strong>, defensor entusiasta de TDD en su libro <em>Clean Code</em>, en tensión con voces como la de <strong>David Heinemeier Hansson</strong> (creador de Ruby on Rails), crítico público de TDD como dogma— que cuestionan escribir la prueba primero en <strong>todos</strong> los casos, especialmente en exploración temprana de un diseño incierto.</p>
+          <p>Lo que sí tiene consenso amplio: sin importar el orden en que se escriban prueba y código, <strong>terminar con buena cobertura de pruebas automatizadas es innegociable</strong> para cualquier proyecto que se vaya a mantener en el tiempo.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>Escriban el primer paso de un ciclo TDD</h1>
+          <p>En el chat, para la función <code>calcularEdadMinima(fechaNacimiento)</code> —que debe validar que una persona tenga al menos 18 años— escriban:</p>
+          <ol>
+            <li>El <strong>nombre</strong> de una prueba unitaria (siguiendo la convención descriptiva vista hoy) para el caso "persona menor de edad".</li>
+            <li>Qué esperarían que devuelva o lance esa función en ese caso (paso <strong>Red</strong>).</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de la sesión</h1>
+          <ol>
+            <li>TDD (Kent Beck) escribe la prueba <strong>antes</strong> que el código de producción.</li>
+            <li>El ciclo es <strong>Red → Green → Refactor</strong>, repetido en incrementos pequeños.</li>
+            <li>Escribir la prueba primero fuerza a pensar en la interfaz antes que en la implementación, empujando hacia bajo acoplamiento — el mismo objetivo de DIP y Low Coupling.</li>
+            <li>Una aserción lógica por prueba, nombres descriptivos y evitar acoplar la prueba a detalles de implementación son buenas prácticas centrales.</li>
+            <li>La cobertura de código es útil, pero perseguir 100% de forma ciega no garantiza pruebas de calidad.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de TDD y buenas prácticas" style="display:block;width:85px;height:85px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <p>Confirmen con su equipo cuáles 3 métodos o funciones clave de su proyecto de Fábrica Escuela van a probar en el laboratorio del viernes, y aseguren tener listo el entorno del framework de pruebas de su stack (JUnit 5, xUnit/NUnit, pytest o Jest). El viernes se cierra la <strong>Unidad 6</strong> completa con el <strong>laboratorio de pruebas unitarias sobre el proyecto</strong>.</p>
+          <img class="portada-icon" src="img/code.svg" alt="Cierre, hacia el laboratorio de pruebas unitarias" style="display:block;width:130px;height:130px;margin:12px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 13</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

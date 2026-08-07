@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pruebas Unitarias de Software: Fundamentos y Frameworks — Semana 16</title>
+  <meta name="description" content="Qué es una prueba unitaria, la pirámide de pruebas, la estructura AAA, las propiedades FIRST, frameworks por lenguaje y el concepto de dobles de prueba — Análisis y Diseño de Sistemas II, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/pruebas-unitarias-fundamentos-y-frameworks/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Pruebas Unitarias de Software: Fundamentos y Frameworks — Semana 16" />
+  <meta property="og:description" content="Qué es una prueba unitaria, la pirámide de pruebas, la estructura AAA, las propiedades FIRST, frameworks por lenguaje y el concepto de dobles de prueba — Análisis y Diseño de Sistemas II, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/pruebas-unitarias-fundamentos-y-frameworks/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pruebas Unitarias de Software: Fundamentos y Frameworks — Semana 16" />
+  <meta name="twitter:description" content="Qué es una prueba unitaria, la pirámide de pruebas, la estructura AAA, las propiedades FIRST, frameworks por lenguaje y el concepto de dobles de prueba — Análisis y Diseño de Sistemas II, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/pruebas-unitarias-fundamentos-y-frameworks.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 16 — Pruebas Unitarias de Software: Fundamentos y Frameworks</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/vial.svg" alt="Pruebas unitarias de software" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Refactorizar sin pruebas<br>es apostar a que nada se rompió</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De la advertencia de la semana pasada, a la herramienta que la resuelve</h1>
+          <p>La semana pasada se cerró con una advertencia pendiente: refactorizar sin una red de pruebas automatizadas es peligroso, porque nada garantiza que el comportamiento externo del código siga siendo el mismo después del cambio. Hoy se abre la <strong>semana 16, cierre de la Unidad 6</strong>, con esa herramienta: las <strong>pruebas unitarias de software</strong>.</p>
+          <p>Esta sesión cubre los fundamentos — qué es una prueba unitaria, cómo se estructura, qué la hace buena, y qué frameworks existen por lenguaje. El miércoles se profundiza en <strong>TDD</strong> (Test-Driven Development), y el viernes se cierra la unidad completa con un laboratorio práctico sobre el proyecto de curso.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué es una prueba unitaria</h1>
+          <p>Una <strong>prueba unitaria</strong> (unit test) es un fragmento de código que verifica automáticamente que la <strong>unidad más pequeña de código</strong> con comportamiento propio —típicamente un método o una función— se comporta como se espera, de forma aislada del resto del sistema.</p>
+          <p>Cuatro características la distinguen de simplemente "probar la aplicación a mano":</p>
+          <ul>
+            <li><strong>Aísla</strong> la unidad bajo prueba de sus dependencias externas (base de datos, red, sistema de archivos).</li>
+            <li>Es <strong>rápida</strong> — se puede ejecutar cientos o miles de veces al día.</li>
+            <li>Es <strong>repetible</strong> — el mismo resultado, sin importar cuántas veces se ejecute ni en qué máquina.</li>
+            <li>Es <strong>automatizada</strong> — no requiere que una persona verifique el resultado manualmente.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide type-caso" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Caso real</p>
+          <h1>El origen de JUnit: Kent Beck y Erich Gamma, 1997</h1>
+          <p>Uno de los frameworks de pruebas más influyentes de la historia, <strong>JUnit</strong>, nació casi por accidente. En 1997, <strong>Kent Beck</strong> (creador de Extreme Programming y de TDD) y <strong>Erich Gamma</strong> (uno de los cuatro autores del libro de patrones GoF que vieron en la Unidad 5) lo escribieron durante un vuelo transatlántico, como ejercicio para que Beck le enseñara a Gamma a programar en Java.</p>
+          <p>JUnit popularizó el patrón <strong>xUnit</strong> — una familia de frameworks de pruebas con la misma filosofía adaptada a distintos lenguajes (JUnit para Java, NUnit para .NET, PyUnit/pytest para Python) — y ayudó a que las pruebas automatizadas pasaran de ser una práctica minoritaria a un estándar de la industria.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>La pirámide de pruebas</h1>
+          <p>No todo el software se verifica solo con pruebas unitarias. La <strong>pirámide de pruebas</strong> es un modelo que organiza los distintos niveles de prueba según su alcance y costo:</p>
+          <ul>
+            <li><strong>Pruebas unitarias</strong> (base, la capa más ancha): verifican una función o clase aislada. Rápidas y baratas de escribir y ejecutar — deberían ser la mayoría.</li>
+            <li><strong>Pruebas de integración</strong> (medio): verifican que varios componentes trabajen bien juntos (ej. un servicio con su base de datos real).</li>
+            <li><strong>Pruebas end-to-end / E2E</strong> (punta, la más angosta): verifican el sistema completo desde la perspectiva del usuario, a través de la interfaz real.</li>
+          </ul>
+          <img class="portada-icon" src="img/layer-group.svg" alt="La pirámide de pruebas" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Por qué esa proporción, y no otra</h1>
+          <p>La forma de pirámide no es arbitraria: refleja una relación inversa entre <strong>alcance</strong> y <strong>velocidad/costo</strong>. Mientras más "arriba" está una prueba, más partes reales del sistema involucra —y por eso es más lenta, más costosa de mantener y más frágil ante cambios que no tienen relación directa con lo que se quiere verificar.</p>
+          <p>Una prueba E2E puede tardar segundos o minutos y romperse por un cambio de interfaz sin relación con la lógica que prueba; una prueba unitaria bien aislada tarda milisegundos y solo se rompe si la lógica que prueba realmente cambió. Por eso conviene tener <strong>muchas</strong> pruebas unitarias baratas, y <strong>pocas</strong> pruebas E2E costosas, reservadas para los flujos más críticos.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Estructura AAA (Arrange-Act-Assert)</h1>
+          <p>Casi toda prueba unitaria bien escrita sigue el mismo patrón de tres pasos, conocido como <strong>AAA</strong> (o su equivalente en lenguaje de negocio, <strong>Given-When-Then</strong>):</p>
+          <ul>
+            <li><strong>Arrange (Given):</strong> preparar los datos y el estado necesario para la prueba.</li>
+            <li><strong>Act (When):</strong> ejecutar la acción o el método que se quiere probar.</li>
+            <li><strong>Assert (Then):</strong> verificar que el resultado obtenido es el esperado.</li>
+          </ul>
+          <pre><code>def test_calcula_descuento_para_cliente_premium():
+    # Arrange
+    cliente = Cliente(tipo="premium")
+    carrito = Carrito(subtotal=100)
+    # Act
+    total = calcular_total(carrito, cliente)
+    # Assert
+    assert total == 90</code></pre>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Qué hace buena una prueba unitaria: FIRST</h1>
+          <p><strong>FIRST</strong> es un acrónimo que resume las cinco propiedades que debería tener toda buena prueba unitaria:</p>
+          <table>
+            <thead><tr><th>Letra</th><th>Propiedad</th><th>Significa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>F</strong></td><td>Fast (rápida)</td><td>Se ejecuta en milisegundos, no segundos.</td></tr>
+              <tr><td><strong>I</strong></td><td>Independent (independiente)</td><td>No depende del resultado ni del orden de otra prueba.</td></tr>
+              <tr><td><strong>R</strong></td><td>Repeatable (repetible)</td><td>Mismo resultado en cualquier entorno, sin depender de red o fecha del sistema.</td></tr>
+              <tr><td><strong>S</strong></td><td>Self-validating (autoverificable)</td><td>Da un resultado claro de aprobado/fallido, sin revisión manual.</td></tr>
+              <tr><td><strong>T</strong></td><td>Timely (oportuna)</td><td>Se escribe junto con el código, no meses después.</td></tr>
+            </tbody>
+          </table>
+          <img class="portada-icon" src="img/clipboard-check.svg" alt="FIRST: propiedades de una buena prueba" style="display:block;width:75px;height:75px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Frameworks comunes por lenguaje</h1>
+          <p>Casi todo lenguaje moderno tiene uno o varios frameworks de pruebas maduros, siguiendo el modelo xUnit que originó JUnit:</p>
+          <table>
+            <thead><tr><th>Lenguaje / plataforma</th><th>Framework</th></tr></thead>
+            <tbody>
+              <tr><td>Java</td><td><strong>JUnit 5</strong></td></tr>
+              <tr><td>.NET (C#)</td><td><strong>xUnit.net</strong> / NUnit</td></tr>
+              <tr><td>Python</td><td><strong>pytest</strong></td></tr>
+              <tr><td>JavaScript / TypeScript</td><td><strong>Jest</strong></td></tr>
+            </tbody>
+          </table>
+          <p>Cada equipo de la Fábrica Escuela debería usar el framework correspondiente a su propio stack tecnológico — es el que se usa en el laboratorio del viernes.</p>
+        </div>
+      </section>
+
+      <section class="slide type-contraejemplo" id="s11">
+        <div class="slide-content">
+          <p class="slide-kicker">Contraejemplo</p>
+          <h1>La misma prueba en tres frameworks</h1>
+          <pre><code>// JUnit 5 (Java)
+@Test
+void debeCalcularDescuentoParaClientePremium() {
+    assertEquals(90, calcularTotal(carrito, clientePremium));
+}
+
+// Jest (JavaScript)
+test("calcula descuento para cliente premium", () => {
+    expect(calcularTotal(carrito, clientePremium)).toBe(90);
+});
+
+// pytest (Python)
+def test_calcula_descuento_para_cliente_premium():
+    assert calcular_total(carrito, cliente_premium) == 90</code></pre>
+          <p>La sintaxis cambia según el lenguaje, pero la estructura <strong>AAA</strong> y la intención son idénticas en los tres — por eso aprender bien un framework hace mucho más fácil aprender cualquier otro de la familia xUnit.</p>
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s12">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>Mocks, stubs y dobles de prueba</h1>
+          <p>Para que una prueba unitaria esté realmente <strong>aislada</strong> (la "I" de FIRST) e independiente del entorno, no puede depender de una base de datos real, una API externa o el reloj del sistema. La solución es reemplazar esas dependencias por objetos falsos, llamados en conjunto <strong>dobles de prueba</strong> (test doubles):</p>
+          <ul>
+            <li><strong>Stub:</strong> un objeto falso que devuelve respuestas predefinidas, sin lógica real — ej. un stub de repositorio que siempre devuelve el mismo usuario de prueba.</li>
+            <li><strong>Mock:</strong> similar a un stub, pero además <strong>verifica</strong> que fue llamado correctamente (con qué argumentos, cuántas veces) — útil para confirmar que se envió una notificación sin enviarla de verdad.</li>
+          </ul>
+          <p><strong>Cuándo usar un doble en vez del objeto real:</strong> siempre que la dependencia real sea lenta, no determinista (red, fecha actual), o costosa de configurar en un entorno de pruebas.</p>
+        </div>
+      </section>
+
+      <section class="slide type-interaccion" id="s13">
+        <div class="slide-content">
+          <p class="slide-kicker">Interacción</p>
+          <h1>¿Unitaria, integración o E2E?</h1>
+          <p>En el chat, para cada prueba indiquen en qué nivel de la pirámide la ubicarían:</p>
+          <ol>
+            <li>Verificar que <code>calcularDescuento(cliente, monto)</code> devuelve el valor correcto para un cliente premium, sin tocar base de datos.</li>
+            <li>Verificar que, al hacer clic en "Comprar" en el navegador, el pedido aparece completo en la pantalla de confirmación.</li>
+            <li>Verificar que el servicio de pedidos realmente guarda y recupera un registro en la base de datos de pruebas.</li>
+          </ol>
+          <p class="slide-eyebrow">5 minutos · respondan en el chat</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s14">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Ideas clave de la sesión</h1>
+          <ol>
+            <li>Una prueba unitaria aísla la unidad más pequeña de código, y es rápida, repetible y automatizada.</li>
+            <li>La pirámide de pruebas prioriza muchas pruebas unitarias baratas sobre pocas pruebas E2E costosas.</li>
+            <li>AAA (Arrange-Act-Assert) es la estructura estándar de cualquier prueba bien escrita.</li>
+            <li>FIRST resume qué hace buena una prueba: rápida, independiente, repetible, autoverificable y oportuna.</li>
+            <li>Los dobles de prueba (mocks, stubs) aíslan la unidad de sus dependencias externas lentas o no deterministas.</li>
+          </ol>
+          <img class="portada-icon" src="img/list-check.svg" alt="Síntesis de fundamentos de pruebas unitarias" style="display:block;width:85px;height:85px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s15">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Antes de la próxima sesión</h1>
+          <p>Identifiquen qué framework de pruebas les corresponde según el stack tecnológico de su proyecto (JUnit 5, xUnit/NUnit, pytest o Jest) y confirmen que está instalado y configurado en su repositorio. El miércoles se ve <strong>TDD (Test-Driven Development)</strong>: el ciclo Red-Green-Refactor y las buenas prácticas para escribir pruebas que realmente ayuden al diseño.</p>
+          <img class="portada-icon" src="img/arrow-right-long.svg" alt="Cierre, hacia TDD" style="display:block;width:140px;height:140px;margin:15px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 15</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>

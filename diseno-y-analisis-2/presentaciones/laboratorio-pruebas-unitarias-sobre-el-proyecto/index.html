@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio: Pruebas Unitarias sobre el Proyecto — Semana 16</title>
+  <meta name="description" content="Cierre de la Unidad 6 — Calidad en el Diseño de Software: laboratorio de aplicación de pruebas unitarias sobre el proyecto de Fábrica Escuela, y síntesis de deuda técnica, código limpio y pruebas — Análisis y Diseño de Sistemas II, Semana 16." />
+  <link rel="canonical" href="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-pruebas-unitarias-sobre-el-proyecto/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="profejuanfe.dev" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Laboratorio: Pruebas Unitarias sobre el Proyecto — Semana 16" />
+  <meta property="og:description" content="Cierre de la Unidad 6 — Calidad en el Diseño de Software: laboratorio de aplicación de pruebas unitarias sobre el proyecto de Fábrica Escuela, y síntesis de deuda técnica, código limpio y pruebas — Análisis y Diseño de Sistemas II, Semana 16." />
+  <meta property="og:url" content="https://profejuanfe.dev/diseno-y-analisis-2/presentaciones/laboratorio-pruebas-unitarias-sobre-el-proyecto/" />
+  <meta property="og:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan Felipe Quintana Gómez — profejuanfe.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laboratorio: Pruebas Unitarias sobre el Proyecto — Semana 16" />
+  <meta name="twitter:description" content="Cierre de la Unidad 6 — Calidad en el Diseño de Software: laboratorio de aplicación de pruebas unitarias sobre el proyecto de Fábrica Escuela, y síntesis de deuda técnica, código limpio y pruebas — Análisis y Diseño de Sistemas II, Semana 16." />
+  <meta name="twitter:image" content="https://profejuanfe.dev/assets/img/og-image.png" />
+  <link rel="stylesheet" href="../../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../../assets/css/slides.css" />
+</head>
+<body class="deck-body">
+  <div class="deck">
+    <div class="deck-topbar">
+      <a class="home-link" href="../../../index.html" title="Ir al inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Inicio
+      </a>
+      <a class="home-link" href="../../index.html">&larr; Curso</a>
+      <div class="deck-nav-group">
+        <button class="deck-nav-arrow" id="deck-prev-btn" title="Presentación anterior" disabled>&lsaquo;</button>
+        <div class="deck-picker">
+          <button class="deck-picker-btn" id="deck-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="deck-picker-label" id="deck-picker-label">Cargando…</span>
+            <svg class="deck-picker-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="deck-picker-menu" id="deck-picker-menu" role="listbox"></ul>
+        </div>
+        <button class="deck-nav-arrow" id="deck-next-btn" title="Presentación siguiente" disabled>&rsaquo;</button>
+      </div>
+      <div class="deck-actions">
+        <button class="deck-btn share-btn" id="share-btn" title="Compartir">
+          <svg width="13" height="13" viewBox="0 0 448 512" fill="currentColor"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
+          <span class="label">Compartir</span>
+        </button>
+        <button class="deck-btn" id="fullscreen-btn" title="Pantalla completa (F)">
+          <span class="label">Pantalla completa</span>
+        </button>
+        <a class="deck-btn download" href="../../pdfs/laboratorio-pruebas-unitarias-sobre-el-proyecto.pdf" download>
+          <span class="label">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage" data-sheet="2554506">
+
+      <section class="slide type-portada" id="s01">
+        <div class="slide-content">
+          <p class="slide-kicker">Portada</p>
+          <h1>Análisis y Diseño de Sistemas II</h1>
+          <h2>Semana 16 — Laboratorio: Pruebas Unitarias sobre el Proyecto</h2>
+          <p class="slide-eyebrow">Universidad de Antioquia · Ingeniería de Sistemas</p>
+          <img class="portada-icon" src="img/flask.svg" alt="Laboratorio de pruebas unitarias" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-impacto" id="s02">
+        <div class="slide-content">
+          <p class="slide-kicker">Apertura</p>
+          <h1>Hoy la teoría se vuelve código<br>que corre sobre su propio proyecto</h1>
+        </div>
+      </section>
+
+      <section class="slide type-transicion" id="s03">
+        <div class="slide-content">
+          <p class="slide-kicker">Transición</p>
+          <h1>De TDD en teoría, a pruebas reales en su código</h1>
+          <p>El martes se vieron los fundamentos y frameworks de pruebas unitarias; el miércoles, el ciclo Red-Green-Refactor de TDD y las buenas prácticas para que una prueba realmente aporte. Hoy, en vez de un ejemplo de clase, cada equipo escribe pruebas unitarias <strong>sobre su propio proyecto</strong> de Fábrica Escuela.</p>
+          <p>Esta sesión es también el <strong>cierre de la Unidad 6 — Calidad en el Diseño de Software</strong> completa: deuda técnica, código limpio y pruebas unitarias, las tres semanas que empezaron el lunes pasado.</p>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s04">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Las tres piernas de la calidad del diseño</h1>
+          <table>
+            <thead><tr><th>Sesión</th><th>Tema</th><th>Qué aporta</th></tr></thead>
+            <tbody>
+              <tr><td>Semana 15 · martes</td><td><strong>Deuda técnica</strong></td><td>Nombrar y hacer visible el costo de los atajos de diseño.</td></tr>
+              <tr><td>Semana 15 · miércoles y viernes</td><td><strong>Código limpio</strong></td><td>Nombres, funciones, comentarios, refactorización y code smells: cómo pagar esa deuda.</td></tr>
+              <tr><td>Semana 16 · martes y miércoles</td><td><strong>Pruebas unitarias</strong></td><td>La red de seguridad que hace posible refactorizar sin miedo, y TDD como guía de diseño.</td></tr>
+            </tbody>
+          </table>
+          <p>Ninguna de las tres funciona bien de forma aislada: código limpio sin pruebas es frágil de mantener; pruebas sobre código sucio son difíciles de escribir; y deuda técnica sin visibilidad nunca se paga.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s05">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Laboratorio de cierre de la Unidad 6</h1>
+          <p><strong>Pruebas Unitarias sobre el Proyecto — 90 minutos, en la sala de Zoom asignada a cada equipo.</strong></p>
+          <ul>
+            <li><strong>Trabajo en equipo</strong> — el mismo equipo del proyecto de Fábrica Escuela conformado desde la semana 2.</li>
+            <li><strong>Herramienta:</strong> el framework de pruebas ya elegido por cada equipo según su stack tecnológico (JUnit 5, xUnit/NUnit, pytest, Jest, u otro equivalente).</li>
+            <li>Cada equipo debe escribir pruebas unitarias para <strong>al menos 3 métodos o funciones clave</strong> de su propio proyecto, aplicando <strong>TDD</strong> (Red-Green-Refactor) o, como mínimo, la estructura <strong>AAA</strong> vista en las dos sesiones anteriores.</li>
+          </ul>
+          <img class="portada-icon" src="img/people-group.svg" alt="Trabajo en equipo sobre el proyecto propio" style="display:block;width:110px;height:110px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s06">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Cómo elegir los 3 métodos o funciones</h1>
+          <ul>
+            <li>Prioricen <strong>lógica de negocio real</strong> del dominio de su proyecto (cálculos, validaciones, reglas) por encima de código trivial (getters/setters) — ahí es donde una prueba unitaria aporta más valor.</li>
+            <li>Si identificaron deuda técnica o code smells en las semanas anteriores en alguno de esos métodos, es un buen candidato: escribir la prueba primero (TDD) ayuda a confirmar el comportamiento actual antes de refactorizar con seguridad.</li>
+            <li>Para cada método, sigan el ciclo visto el miércoles: escriban primero la prueba que falla (<strong>Red</strong>), el código mínimo que la hace pasar (<strong>Green</strong>), y si alcanza el tiempo, una mejora estructural (<strong>Refactor</strong>) sin romper la prueba.</li>
+          </ul>
+          <p class="slide-eyebrow">Recuerden: nombres descriptivos tipo <code>debe_devolver_error_cuando_el_monto_es_negativo</code>, una aserción lógica por prueba.</p>
+        </div>
+      </section>
+
+      <section class="slide type-instrucciones" id="s07">
+        <div class="slide-content">
+          <p class="slide-kicker">Instrucciones</p>
+          <h1>Entregable y cierre del laboratorio</h1>
+          <ul>
+            <li><strong>Formato exacto:</strong> el código de las pruebas unitarias, escrito con el framework del stack del equipo, ejecutándose correctamente contra el código real del proyecto.</li>
+            <li>Deben ser pruebas de <strong>al menos 3 métodos o funciones clave</strong>, siguiendo AAA (o el ciclo TDD completo) y las buenas prácticas de nombres y aserciones vistas el miércoles.</li>
+            <li><strong>Subir el código de las pruebas al repositorio del equipo</strong> antes de que termine la sesión — en la misma rama o carpeta de pruebas que ya use el proyecto.</li>
+          </ul>
+          <p><strong>La entrega cierra al terminar los 90 minutos.</strong></p>
+          <img class="portada-icon" src="img/vial.svg" alt="Entregable del laboratorio de pruebas unitarias" style="display:block;width:100px;height:100px;margin:8px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s08">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis</p>
+          <h1>Qué debieron lograr en este laboratorio</h1>
+          <ol>
+            <li>Escribir pruebas unitarias reales para al menos 3 métodos o funciones clave de su propio proyecto.</li>
+            <li>Aplicar TDD (Red-Green-Refactor) o, como mínimo, la estructura AAA en cada prueba.</li>
+            <li>Usar nombres descriptivos y una aserción lógica por prueba, evitando pruebas frágiles acopladas a la implementación.</li>
+            <li>Dejar el código de las pruebas subido al repositorio del equipo, ejecutándose correctamente.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="slide type-sintesis" id="s09">
+        <div class="slide-content">
+          <p class="slide-kicker">Síntesis · Cierre de la Unidad 6</p>
+          <h1>Deuda técnica, código limpio y pruebas: las tres piernas de la calidad</h1>
+          <p>Con este laboratorio se cierra la <strong>Unidad 6 — Calidad en el Diseño de Software</strong> completa. En dos semanas se cubrió el concepto de deuda técnica y su origen en Ward Cunningham; código limpio según Robert C. Martin —nombres, funciones, comentarios, refactorización y el catálogo de code smells de Martin Fowler—; y pruebas unitarias, desde sus fundamentos hasta TDD de Kent Beck.</p>
+          <p>Las tres ideas se sostienen entre sí: <strong>nombrar la deuda</strong> la hace visible, <strong>código limpio</strong> reduce su interés, y <strong>pruebas unitarias</strong> hacen seguro pagarla — hoy, cada equipo aplicó las tres directamente sobre su propio proyecto de Fábrica Escuela.</p>
+          <img class="portada-icon" src="img/list-check.svg" alt="Las tres piernas de la calidad del diseño de software" style="display:block;width:90px;height:90px;margin:4px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-cierre" id="s10">
+        <div class="slide-content">
+          <p class="slide-kicker">Cierre</p>
+          <h1>Cierre de la Unidad 6</h1>
+          <p><strong>Con esto se cierra la Unidad 6.</strong> El curso entra ahora en su recta final: la <strong>siguiente unidad es el Cierre de Curso</strong>, con la integración final de todo el diseño construido a lo largo del semestre — desde el modelo de dominio de la Unidad 2, pasando por la arquitectura, SOLID, GRASP, GoF y antipatrones, hasta la calidad de diseño vista en estas dos últimas semanas.</p>
+          <img class="portada-icon" src="img/flag-checkered.svg" alt="Cierre de la Unidad 6, hacia el cierre de curso" style="display:block;width:170px;height:170px;margin:15px auto 0" />
+        </div>
+      </section>
+
+    </div>
+
+    <div class="deck-bottombar">
+      <button class="nav-btn" id="prev-btn" title="Anterior (←)">&larr;</button>
+      <span class="slide-counter" id="slide-counter">01 / 10</span>
+      <button class="nav-btn" id="next-btn" title="Siguiente (→)">&rarr;</button>
+    </div>
+  </div>
+
+  <script src="../../topics.js"></script>
+  <script src="../../../assets/js/slides.js"></script>
+  <script src="../../../assets/js/deck-nav.js"></script>
+  <script src="../../../assets/js/share.js"></script>
+</body>
+</html>
