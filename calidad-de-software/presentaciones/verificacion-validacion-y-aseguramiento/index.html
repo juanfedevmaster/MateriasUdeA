@@ -256,6 +256,71 @@
         </div>
       </section>
 
+      <section class="slide type-concepto" id="s15a">
+        <div class="slide-content">
+          <p class="slide-kicker">Concepto</p>
+          <h1>El modelo en V, visualmente</h1>
+          <p>Cada nivel de desarrollo (izquierda, bajando) tiene su contraparte de prueba (derecha, subiendo) — y esa contraparte <strong>se diseña en el mismo momento</strong>, no cuando el desarrollo ya llegó abajo.</p>
+          <svg viewBox="-160 0 1080 300" role="img" aria-labelledby="vmodel-title" style="width:100%;height:auto;max-height:340px;margin-top:6px;font-family:var(--font-body)">
+            <title id="vmodel-title">Diagrama del modelo en V: cinco niveles de desarrollo emparejados con sus pruebas</title>
+            <defs>
+              <marker id="vArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="var(--accent)" />
+              </marker>
+              <marker id="vArrowSide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="var(--text-muted)" />
+              </marker>
+            </defs>
+
+            <line x1="-143" y1="0" x2="94" y2="290" stroke="var(--text-muted)" stroke-width="2" marker-end="url(#vArrowSide)" />
+            <text x="-42" y="159" text-anchor="middle" fill="var(--text-muted)" font-size="13" font-weight="600" letter-spacing="0.5" transform="rotate(50.75 -42 159)">Fase de verificación</text>
+
+            <line x1="666" y1="290" x2="903" y2="0" stroke="var(--text-muted)" stroke-width="2" marker-end="url(#vArrowSide)" />
+            <text x="802" y="159" text-anchor="middle" fill="var(--text-muted)" font-size="13" font-weight="600" letter-spacing="0.5" transform="rotate(-50.75 802 159)">Fase de validación</text>
+
+            <g>
+              <rect x="-98" y="9" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--text)" stroke-width="1.5" />
+              <text x="20" y="35" text-anchor="middle" fill="var(--text)" font-size="15" font-weight="600">Requisitos</text>
+              <rect x="622" y="9" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5" />
+              <text x="740" y="35" text-anchor="middle" fill="var(--accent)" font-size="15" font-weight="600">Pruebas de aceptación</text>
+              <line x1="138" y1="30" x2="622" y2="30" stroke="var(--accent)" stroke-width="1.5" marker-start="url(#vArrow)" marker-end="url(#vArrow)" />
+              <text x="380" y="20" text-anchor="middle" fill="var(--accent)" font-size="13">Diseño de pruebas de aceptación</text>
+            </g>
+
+            <g>
+              <rect x="-33" y="67" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--text)" stroke-width="1.5" />
+              <text x="85" y="93" text-anchor="middle" fill="var(--text)" font-size="15" font-weight="600">Diseño del sistema</text>
+              <rect x="557" y="67" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5" />
+              <text x="675" y="93" text-anchor="middle" fill="var(--accent)" font-size="15" font-weight="600">Pruebas de sistema</text>
+              <line x1="203" y1="88" x2="557" y2="88" stroke="var(--accent)" stroke-width="1.5" marker-start="url(#vArrow)" marker-end="url(#vArrow)" />
+              <text x="380" y="78" text-anchor="middle" fill="var(--accent)" font-size="13">Diseño de pruebas de sistema</text>
+            </g>
+
+            <g>
+              <rect x="32" y="125" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--text)" stroke-width="1.5" />
+              <text x="150" y="151" text-anchor="middle" fill="var(--text)" font-size="15" font-weight="600">Diseño de arquitectura</text>
+              <rect x="492" y="125" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5" />
+              <text x="610" y="151" text-anchor="middle" fill="var(--accent)" font-size="15" font-weight="600">Pruebas de integración</text>
+              <line x1="268" y1="146" x2="492" y2="146" stroke="var(--accent)" stroke-width="1.5" marker-start="url(#vArrow)" marker-end="url(#vArrow)" />
+              <text x="380" y="136" text-anchor="middle" fill="var(--accent)" font-size="13">Diseño de pruebas de integración</text>
+            </g>
+
+            <g>
+              <rect x="44" y="183" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--text)" stroke-width="1.5" />
+              <text x="162" y="209" text-anchor="middle" fill="var(--text)" font-size="15" font-weight="600">Diseño modular</text>
+              <rect x="480" y="183" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5" />
+              <text x="598" y="209" text-anchor="middle" fill="var(--accent)" font-size="15" font-weight="600">Pruebas unitarias</text>
+              <line x1="280" y1="204" x2="480" y2="204" stroke="var(--accent)" stroke-width="1.5" marker-start="url(#vArrow)" marker-end="url(#vArrow)" />
+              <text x="380" y="194" text-anchor="middle" fill="var(--accent)" font-size="13">Diseño de pruebas unitarias</text>
+            </g>
+
+            <rect x="262" y="241" width="236" height="42" rx="8" fill="var(--surface-2)" stroke="var(--text)" stroke-width="1.5" />
+            <text x="380" y="267" text-anchor="middle" fill="var(--text)" font-size="15" font-weight="600">Programación</text>
+          </svg>
+          <p class="slide-eyebrow">La programación es la punta de la V: ahí termina de bajar el diseño y empieza a subir la prueba.</p>
+        </div>
+      </section>
+
       <section class="slide type-concepto" id="s16">
         <div class="slide-content">
           <p class="slide-kicker">Concepto</p>
