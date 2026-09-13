@@ -111,16 +111,51 @@
             </thead>
             <tbody>
               <tr><td>Sprint 1 — vistas arquitectónicas iniciales, estilo preliminar y proyecto base en Spring Boot</td><td>Semana 8</td><td>10 %</td></tr>
-              <tr><td>Entrega 1 — vistas arquitectónicas + PoC funcional del módulo</td><td>Semana 11</td><td>20 %</td></tr>
-              <tr><td>Sprint 2 — diagrama de despliegue, APIs y microservicios documentados</td><td>Semana 12</td><td>10 %</td></tr>
-              <tr><td>Entrega 2 — integración de componentes y framework</td><td>Semana 15</td><td>20 %</td></tr>
-              <tr><td>Seguridad Arquitectónica y Hardening</td><td>Semana 16</td><td>20 %</td></tr>
+              <tr><td>Trabajo 1 — Diseño Arquitectónico Formal: drivers arquitectónicos, estilo justificado, ADR formales, atributos de calidad</td><td>Semana 9 – 10</td><td>20 %</td></tr>
+              <tr><td>Sprint 2 — diagrama de despliegue, APIs documentadas y CI/CD inicial</td><td>Semana 12</td><td>10 %</td></tr>
+              <tr><td>Trabajo 2 — Análisis de Calidad y Trade-offs: APIs implementadas (adjuntar repositorio), trade-offs documentados, riesgos arquitectónicos</td><td>Semana 12 – 13</td><td>20 %</td></tr>
+              <tr><td>Trabajo 3 — Seguridad Arquitectónica y Hardening: threat modeling, hardening de APIs (adjuntar repositorio), OWASP, métricas</td><td>Semana 15 – 16</td><td>20 %</td></tr>
               <tr><td>Sprint 3 — contenedores, orquestador y observabilidad</td><td>Semana 17</td><td>10 %</td></tr>
               <tr><td><strong>Sustentación Final Arquitectónica</strong></td><td>Semana 17</td><td>10 %</td></tr>
             </tbody>
           </table>
           <p class="slide-eyebrow">Suma total: 100 %. Los Sprints y la Sustentación se presentan en los coworkings de Fábrica Escuela, pero los califica Arquitectura de Software.</p>
           <img class="portada-icon" src="img/scale-balanced.svg" alt="Evaluación" style="display:block;width:180px;height:180px;margin:20px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s04b">
+        <div class="slide-content">
+          <p class="slide-kicker">Trabajos del Curso</p>
+          <h1>Detalle de los Trabajos</h1>
+
+          <h2>20 % — Diseño Arquitectónico Formal <span style="font-weight:normal;font-size:0.75em">(sem. 9 – 10)</span></h2>
+          <ul>
+            <li>Drivers arquitectónicos identificados</li>
+            <li>Estilo arquitectónico seleccionado y justificado <em>(preliminar ya definido en Sprint 1 — aquí se formaliza con criterios técnicos completos)</em></li>
+            <li>2 a 3 ADR formales <em>(ya entregados en Sprint 1: mínimo 3 ADR priorizados, y actualizados en Sprint 2 — aquí se consolidan y profundizan)</em></li>
+            <li>Definición de atributos de calidad</li>
+          </ul>
+
+          <h2>20 % — Análisis de Calidad y Trade-offs <span style="font-weight:normal;font-size:0.75em">(sem. 12 – 13)</span></h2>
+          <ul>
+            <li>APIs implementadas — <strong>adjuntar repositorio</strong>; se evalúa diseño y buenas prácticas <em>(ya entregadas en Sprint 2: mínimo 3 APIs REST o GraphQL operativas — aquí se analizan, no se reimplementan)</em></li>
+            <li>Análisis de trade-offs documentados</li>
+            <li>Identificación de riesgos arquitectónicos</li>
+          </ul>
+
+          <h2>20 % — Seguridad Arquitectónica y Hardening <span style="font-weight:normal;font-size:0.75em">(sem. 15 – 16)</span></h2>
+          <ul>
+            <li>Threat modeling documentado</li>
+            <li>Hardening de APIs implementado — <strong>adjuntar repositorio</strong>; se evalúa implementación de políticas de seguridad <em>(aseguramiento mediante tokens ya entregado en Sprint 3 — aquí se amplía con políticas completas)</em></li>
+            <li>Identificación de vulnerabilidades OWASP Top Ten <em>(ya identificadas en Sprint 2 — aquí se documentan con remediación aplicada)</em></li>
+            <li>Métricas básicas: latencia y errores <em>(base disponible desde Sprint 3 con Grafana/Prometheus — aquí se interpretan y documentan)</em></li>
+          </ul>
+
+          <h2>10 % — Sustentación Final Arquitectónica <span style="font-weight:normal;font-size:0.75em">(sem. 17)</span></h2>
+          <ul>
+            <li>Defensa oral de las decisiones arquitectónicas del proyecto</li>
+          </ul>
         </div>
       </section>
 
@@ -172,7 +207,7 @@
             <li>Arquitecturas para aplicaciones modernas: JAMStack, WebAssembly, WebSockets, gRPC-ProtoBuffer, Microfrontends, WebRTC, persistencia políglota, ciclo DevOps.</li>
             <li>Anti-patrones de Arquitectura de Software.</li>
           </ul>
-          <p class="slide-eyebrow">Semana 8: Entrega Sprint 1 (10 %). Semana 11: Entrega 1 — vistas arquitectónicas + PoC (20 %).</p>
+          <p class="slide-eyebrow">Semana 8: Sprint 1 (10 %). Semana 9–10: Trabajo 1 — Diseño Arquitectónico Formal (20 %).</p>
         </div>
       </section>
 
@@ -186,7 +221,7 @@
             <li>Implementación de capas: Persistencia, Presentación, Controlador, Lógica de Negocio, Modelo de Dominio, Servicios.</li>
             <li>Mapeo Objeto-Relacional (<strong>ORM</strong>).</li>
           </ul>
-          <p class="slide-eyebrow">Semana 12: Entrega Sprint 2 (10 %) — diagrama de despliegue y APIs básicas.</p>
+          <p class="slide-eyebrow">Semana 12: Sprint 2 (10 %). Semana 12–13: Trabajo 2 — Análisis de Calidad y Trade-offs (20 %).</p>
         </div>
       </section>
 
@@ -200,7 +235,7 @@
             <li>Web APIs e implementación de servicios web.</li>
             <li>Arquitecturas Cloud Native, Microservicios (DDD, CQRS, Event Sourcing, API Gateway) y Serverless (FaaS).</li>
           </ul>
-          <p class="slide-eyebrow">Semana 15: Entrega 2 — integración de componentes y framework (20 %).</p>
+          <p class="slide-eyebrow">Semanas 14–15: base para el Trabajo 3 — implementación de APIs y servicios web que se evaluarán en Seguridad y Hardening.</p>
         </div>
       </section>
 
@@ -214,7 +249,7 @@
             <li><strong>Threat modeling</strong> aplicado al proyecto de Fábrica Escuela.</li>
             <li>Aseguramiento de API por medio de tokens y hardening general del sistema.</li>
           </ul>
-          <p class="slide-eyebrow">Semana 16: entrega de Seguridad Arquitectónica y Hardening (20 %) — el rubro de mayor peso individual.</p>
+          <p class="slide-eyebrow">Semana 15–16: Trabajo 3 — Seguridad Arquitectónica y Hardening (20 %); adjuntar repositorio para evaluar hardening de APIs. Rubro de mayor peso individual.</p>
         </div>
       </section>
 
@@ -226,7 +261,7 @@
             <li>Arquitectura de Software y Fábrica Escuela avanzan juntas: la teoría de cada semana se aplica directamente al proyecto de los sprints.</li>
             <li>El curso recorre 5 unidades, desde fundamentos y el rol del arquitecto hasta seguridad y hardening de APIs.</li>
             <li>El catálogo POSA (Unidad 2) es el bloque más extenso — vale la pena reservarle tiempo de estudio adicional.</li>
-            <li>La evaluación (100 %) está atada a hitos concretos del proyecto: 3 sprints, 2 entregas de integración, seguridad/hardening y sustentación final.</li>
+            <li>La evaluación (100 %) está atada a hitos concretos: 3 sprints (30 %), 3 trabajos de integración progresiva (60 %) y sustentación final (10 %).</li>
             <li>La semana 17 cierra con parcial teórico-práctico y presentación final del proyecto de Fábrica Escuela.</li>
           </ol>
         </div>

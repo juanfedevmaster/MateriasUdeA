@@ -138,13 +138,45 @@
             </thead>
             <tbody>
               <tr><td>Seguimiento semanal (15 entregas, se descartan las 2 más bajas)</td><td>20 %</td></tr>
-              <tr><td>Trabajo 1 — Plan de pruebas y diseño de casos</td><td>25 %</td></tr>
-              <tr><td>Trabajo 2 — Ejecución, métricas, CI y automatización</td><td>25 %</td></tr>
+              <tr><td>Trabajo 1 — Análisis de riesgo y técnicas de diseño de casos</td><td>25 %</td></tr>
+              <tr><td>Trabajo 2 — Informe ejecutivo de calidad</td><td>25 %</td></tr>
               <tr><td>Fábrica-Escuela (3 entregables)</td><td>30 %</td></tr>
             </tbody>
           </table>
           <p><strong>Dos circuitos separados:</strong> el seguimiento semanal se practica sobre sistemas públicos neutros; los dos trabajos del 25 % aplican esas mismas técnicas al proyecto de Fábrica-Escuela.</p>
           <img class="portada-icon" src="img/scale-balanced.svg" alt="Evaluación" style="display:block;width:200px;height:200px;margin:50px auto 0" />
+        </div>
+      </section>
+
+      <section class="slide type-concepto" id="s05b">
+        <div class="slide-content">
+          <p class="slide-kicker">Fábrica-Escuela — 30 %</p>
+          <h1>Entregables por Sprint</h1>
+
+          <h2>Sprint 1 <span style="font-weight:normal;font-size:0.75em">(sem. 5)</span></h2>
+          <ul>
+            <li>Plan de aseguramiento de calidad; plan de pruebas</li>
+            <li>Casos de prueba y Gherkin para las HU priorizadas</li>
+            <li>Pruebas unitarias con AAA; análisis de cobertura</li>
+          </ul>
+
+          <h2>Sprint 2 <span style="font-weight:normal;font-size:0.75em">(sem. 11)</span></h2>
+          <ul>
+            <li>Gherkin y casos positivos/excepcionales; ejecución y gestión de defectos</li>
+            <li>Sonar y Quality Gate activos</li>
+            <li>Pruebas unitarias con AAA; análisis de cobertura, complejidad y deuda</li>
+          </ul>
+
+          <h2>Sprint 3 <span style="font-weight:normal;font-size:0.75em">(sem. 14)</span></h2>
+          <ul>
+            <li>Automatización de criterios de aceptación y ejecución E2E sobre el objeto de prueba</li>
+          </ul>
+
+          <h2>Quality Gates — Calidad Interna</h2>
+          <ul>
+            <li><strong>Sprint 1:</strong> cobertura de pruebas unitarias ≥ 65 % (nota 4), ≥ 50 % (nota 3), ≥ 40 % (nota 2), ≥ 30 % (nota 1)</li>
+            <li><strong>Sprint 2 y 3:</strong> los 5 gates — cobertura ≥ 65 %, deuda técnica ≤ 2 días, complejidad ciclomática &lt; 50, hallazgos Minor o mejor, 0 vulnerabilidades críticas. Para nota 4 se deben cumplir todos; nota 3: 4 de 5.</li>
+          </ul>
         </div>
       </section>
 
@@ -263,17 +295,25 @@
       <section class="slide type-encuadre" id="s13">
         <div class="slide-content">
           <p class="slide-kicker">Los dos trabajos del 25 %</p>
-          <h1>Qué se entrega y cuándo</h1>
-          <table>
-            <thead>
-              <tr><th>Trabajo</th><th>Piso</th><th>Producto</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Trabajo 1</strong><br>Plan de pruebas y diseño de casos</td><td>Semana 9</td><td>Plan de pruebas, matriz de casos y criterios de aceptación del proyecto de Fábrica. No requiere código ejecutable.</td></tr>
-              <tr><td><strong>Trabajo 2</strong><br>Ejecución, métricas, CI y automatización</td><td>Semana 15 – 16</td><td>Suite ejecutable, pipeline de CI, métricas, registro de defectos y automatización con patrones de diseño.</td></tr>
-            </tbody>
-          </table>
-          <p>Ambos se desarrollan con las 5 horas semanales de trabajo independiente — no consumen el bloque de 4 horas.</p>
+          <h1>Detalle de los Trabajos</h1>
+
+          <h2>25 % — Trabajo 1: Análisis de riesgo y técnicas de diseño de casos</h2>
+          <ul>
+            <li>Identificar riesgos del módulo: qué puede fallar y con qué impacto</li>
+            <li>Aplicar técnicas de caja negra: partición de equivalencia, valores límite, tablas de decisión</li>
+            <li>Priorizar casos de prueba basado en riesgo, no en intuición</li>
+            <li><em>El sprint entrega los casos; este trabajo explica la estrategia que los justifica</em></li>
+          </ul>
+
+          <h2>25 % — Trabajo 2: Informe ejecutivo de calidad</h2>
+          <ul>
+            <li>Calcular e interpretar métricas: DRE, densidad de defectos, tendencia de deuda técnica</li>
+            <li>Evaluar si el Quality Gate fue suficiente o demasiado permisivo</li>
+            <li>Lecciones aprendidas y recomendaciones concretas para el equipo</li>
+            <li><em>El sprint produce los artefactos; este trabajo produce reflexión y criterio sobre ellos</em></li>
+          </ul>
+
+          <p class="slide-eyebrow">Ambos se desarrollan con las 5 horas semanales de trabajo independiente — no consumen el bloque de 4 horas.</p>
         </div>
       </section>
 
