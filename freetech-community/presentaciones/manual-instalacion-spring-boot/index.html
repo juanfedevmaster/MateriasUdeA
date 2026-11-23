@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual de instalación Spring Boot — FreeTech Community</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+--bg:#f1eee3;
+--card:#ffffff;
+--ink:#16233a;
+--muted:#4a5773;
+--blue:#0f2038;
+--line:#dde8f0;
+--div:#e7e2d2;
+--thead:#dde8f0;
+--code-inline:#e7e2d2;
+--navy:#0f2038;
+--navy2:#0a182c;
+--sky:#e2a63b;
+--green:#e2a63b;
+--pale:#bfdcef;
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:clip}
+a{color:var(--sky)}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.1;letter-spacing:-.01em;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(4vw,16px)}
+/* --- header con grid blueprint --- */
+header{
+  background:
+    linear-gradient(rgba(191,220,239,0.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(191,220,239,0.08) 1px,transparent 1px),
+    var(--navy);
+  background-size:32px 32px,32px 32px;
+  color:#fff;
+  padding:0 0 44px;
+}
+.header-nav{display:flex;align-items:center;justify-content:space-between;padding:16px max(4vw,16px);max-width:1040px;margin:0 auto}
+.header-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--sky);font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500}
+.header-brand-mark{width:32px;height:32px;border:1.5px solid var(--sky);border-radius:4px;display:grid;place-items:center;font-weight:700;font-size:13px;font-family:'IBM Plex Mono',monospace;color:var(--sky)}
+.header-back{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--pale);font-size:13px;font-family:'IBM Plex Mono',monospace;transition:color .2s}
+.header-back:hover{color:var(--sky)}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:var(--sky)}
+header h1{font-size:clamp(32px,5vw,50px);margin:18px 0 12px;text-wrap:balance}
+.lead{color:var(--pale);font-size:18px;max-width:62ch;margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pill{background:var(--navy2);color:#fff;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));justify-items:center;margin-top:36px;position:relative}
+.route::before{content:"";position:absolute;left:12.5%;right:12.5%;top:27px;height:3px;background:var(--navy2)}
+.stop{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;position:relative;text-decoration:none;color:#fff;padding:0 6px}
+.dot{width:56px;height:56px;border-radius:50%;background:var(--navy2);border:3px solid var(--sky);display:grid;place-items:center}
+.stop.end .dot{border-color:var(--green)}
+.stop div{display:flex;flex-direction:column;gap:4px}
+.stop strong{font-family:'Space Grotesk',sans-serif;font-size:17px;display:block}
+.stop span{color:var(--pale);font-size:14px;line-height:1.35;display:block}
+.stop:hover strong{color:var(--sky)}
+/* --- barra sticky de OS --- */
+.bar{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-block:10px}
+.nav{display:flex;gap:4px;overflow-x:auto}
+.nav a{flex:none;text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;padding:10px 12px;border-radius:8px}
+.nav a:hover{background:var(--thead)}
+.os{display:flex;gap:4px;background:var(--thead);border-radius:999px;padding:4px}
+.os button{font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border:0;background:transparent;color:var(--muted);padding:9px 16px;border-radius:999px;cursor:pointer;min-height:40px}
+.os button[aria-pressed=true]{background:var(--sky);color:var(--ink)}
+.os button:focus-visible,.copy:focus-visible,.nav a:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+/* --- contenido principal --- */
+main{padding:48px 0 56px;display:flex;flex-direction:column;gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.card>h2{background:var(--navy);color:#fff;font-size:22px;padding:14px 24px}
+.body{padding:22px 24px 26px}
+.body>*:first-child{margin-top:0}
+.body h3{font-size:19px;margin:26px 0 10px;color:var(--ink)}
+.body p{margin:10px 0;max-width:72ch}
+ol,ul{padding-left:22px;margin:10px 0}
+li{margin:6px 0}
+code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:var(--code-inline);padding:1px 6px;border-radius:5px;overflow-wrap:anywhere}
+.code{position:relative;margin:12px 0;background:var(--navy);border-radius:12px;border:1px solid var(--navy2)}
+.code pre{margin:0;padding:16px 18px;padding-right:96px;overflow-x:auto;color:#bfdcef;font:14px/1.6 'JetBrains Mono',monospace}
+.code pre code{background:none;padding:0;font-size:inherit;overflow-wrap:normal}
+.copy{position:absolute;top:8px;right:8px;font:600 13px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--navy2);color:var(--pale);border:1px solid #1e3a63;border-radius:8px;padding:8px 12px;cursor:pointer;min-height:36px}
+.copy:hover{color:#fff}
+.copy.ok{color:var(--green)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{background:var(--thead);color:var(--muted);text-align:left;font-size:13px;font-weight:700;padding:10px 14px}
+td{padding:12px 14px;border-top:1px solid var(--div);vertical-align:top}
+.note{border:1px solid var(--line);background:var(--thead);border-radius:12px;padding:14px 18px;margin:14px 0}
+.ok-box{border-color:#15803d}
+.ok-box strong{color:#15803d}
+[data-os]{display:none}
+body[data-sel=win] [data-os~=win],body[data-sel=mac] [data-os~=mac],body[data-sel=linux] [data-os~=linux]{display:block}
+.reqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:12px;margin-top:14px}
+.req{border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.req b{display:block;font-family:'Space Grotesk',sans-serif;font-size:16px}
+.req span{color:var(--muted);font-size:14px}
+footer{background:var(--navy);color:var(--pale);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:20px}
+footer b{font-family:'Space Grotesk',sans-serif;color:var(--sky)}
+@media(max-width:600px){
+.route{grid-template-columns:minmax(0,1fr);gap:14px}
+.route::before{left:27px;right:auto;top:28px;bottom:28px;width:3px;height:auto}
+.stop{flex-direction:row;text-align:left;gap:14px;padding:0}
+.stop div{display:flex;flex-direction:column}
+.dot{flex:none}
+.body{padding:18px 16px 22px}
+.card>h2{padding:12px 16px;font-size:20px}
+table{font-size:13px}
+th,td{padding:8px 10px}
+.stack thead{display:none}
+.stack tr{display:grid;padding-block:8px;border-top:1px solid var(--div)}
+.stack td{border:0;padding:3px 10px}
+.stack td::before{content:attr(data-l);display:block;font-weight:700;color:var(--muted);font-size:12px}
+}
+@media(prefers-reduced-motion:no-preference){.stop .dot{transition:transform .2s}.stop:hover .dot{transform:translateY(-3px)}}
+</style>
+</head>
+<body data-sel="win">
+
+<header>
+<nav class="header-nav">
+  <a href="../../../index.html" class="header-brand">
+    <span class="header-brand-mark">JF</span>
+    <span>profejuanfe.dev</span>
+  </a>
+  <a href="../../index.html" class="header-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Backend Spring Boot
+  </a>
+</nav>
+<div class="wrap">
+<div class="brand"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e2a63b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/><line x1="14" y1="3" x2="10" y2="21"/></svg>FreeTech Community</div>
+<h1>Manual de instalación para el curso de Spring Boot</h1>
+<p class="lead">Deja listo tu entorno antes de la primera clase: Java 21, Visual Studio Code con sus extensiones y PostgreSQL. Instálalos en este orden, porque VS Code necesita encontrar Java ya instalado.</p>
+<div class="pills"><span class="pill">Java 21 LTS</span><span class="pill">VS Code</span><span class="pill">PostgreSQL 18</span><span class="pill">Spring Boot 4</span></div>
+<nav class="route" aria-label="Ruta de instalación">
+<a class="stop" href="#java"><span class="dot"><svg style="margin-top: 12px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a63b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10h11v4a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2 2 0 0 1 0 4H17"/><path d="M9 3c-1 1.5 1 2.5 0 4M13 3c-1 1.5 1 2.5 0 4"/></svg></span><div><strong>Java 21</strong><span>El JDK que compila y ejecuta</span></div></a>
+<a class="stop" href="#vscode"><span class="dot"><svg style="margin-top: 12px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a63b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="8 10 10 12 8 14"/><line x1="12" y1="14" x2="16" y2="14"/></svg></span><div><strong>VS Code</strong><span>Editor y extensiones de Spring</span></div></a>
+<a class="stop" href="#postgres"><span class="dot"><svg style="margin-top: 12px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a63b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><div><strong>PostgreSQL</strong><span>La base de datos del curso</span></div></a>
+<a class="stop end" href="#prueba"><span class="dot"><svg style="margin-top: 12px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a63b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"/></svg></span><div><strong>Proyecto listo</strong><span>Spring Boot conectado a la base</span></div></a>
+</nav>
+</div>
+</header>
+
+<div class="bar">
+<div class="wrap">
+<div class="nav"><a href="#antes">Antes de empezar</a><a href="#java">Java</a><a href="#vscode">VS Code</a><a href="#postgres">PostgreSQL</a><a href="#prueba">Prueba final</a><a href="#problemas">Problemas</a></div>
+<div class="os" role="group" aria-label="Sistema operativo">
+<button id="os-win" type="button" data-pick="win" aria-pressed="true">Windows</button>
+<button id="os-mac" type="button" data-pick="mac" aria-pressed="false">macOS</button>
+<button id="os-linux" type="button" data-pick="linux" aria-pressed="false">Linux</button>
+</div>
+</div>
+</div>
+
+<main class="wrap">
+
+<section class="card" id="antes" style="margin-top: 12px;">
+<h2>Antes de empezar</h2>
+<div class="body">
+<p>Elige tu sistema operativo arriba: el manual mostrará solo los pasos que te corresponden.</p>
+<div class="tbl"><table class="stack">
+<thead><tr><th>Herramienta</th><th>Para qué la usamos en el curso</th></tr></thead>
+<tbody>
+<tr><td><b>Java 21+ (JDK)</b></td><td>Compilar y ejecutar las aplicaciones Spring Boot</td></tr>
+<tr><td><b>Visual Studio Code</b></td><td>Escribir código, crear proyectos con Spring Initializr y depurar</td></tr>
+<tr><td><b>PostgreSQL</b></td><td>Base de datos de las prácticas desde la semana 2</td></tr>
+</tbody></table></div>
+<div class="reqs">
+<div class="req"><b>Sistema</b><span>Windows 10/11, macOS 12+ o Ubuntu 22.04+</span></div>
+<div class="req"><b>Memoria</b><span>8 GB de RAM mínimo, 16 GB recomendado</span></div>
+<div class="req"><b>Disco</b><span>10 GB libres</span></div>
+<div class="req"><b>Permisos</b><span>Administrador para instalar, e internet</span></div>
+</div>
+</div>
+</section>
+
+<section class="card" id="java">
+<h2>1. Instalar Java 21 (JDK)</h2>
+<div class="body">
+<p>Usaremos <b>Eclipse Temurin 21 LTS</b>, una distribución gratuita de OpenJDK. Temurin 25 LTS también sirve: Spring Boot 4 funciona con Java 17 a 26. Descarga siempre desde <a href="https://adoptium.net/temurin/releases/">adoptium.net</a> e instala el <b>JDK</b>, no el JRE.</p>
+
+<div data-os="win">
+<h3>Windows</h3>
+<ol>
+<li>En <a href="https://adoptium.net/temurin/releases/">adoptium.net</a> elige Windows, x64, JDK, versión 21, y descarga el instalador <code>.msi</code>.</li>
+<li>En la pantalla de funciones activa <b>Add to PATH</b> y <b>Set JAVA_HOME variable</b> (esta última viene desactivada por defecto).</li>
+<li>Termina la instalación y abre una terminal nueva (PowerShell).</li>
+</ol>
+<p>Alternativa por consola:</p>
+<div class="code"><pre><code>winget install EclipseAdoptium.Temurin.21.JDK</code></pre></div>
+</div>
+
+<div data-os="mac">
+<h3>macOS</h3>
+<ol>
+<li>Descarga el <code>.pkg</code> de Temurin 21: <b>aarch64</b> si tu Mac tiene chip Apple (M1 en adelante), <b>x64</b> si es Intel.</li>
+<li>Ejecuta el instalador.</li>
+<li>Configura <code>JAVA_HOME</code> agregando esta línea al archivo <code>~/.zshrc</code>:</li>
+</ol>
+<div class="code"><pre><code>export JAVA_HOME=$(/usr/libexec/java_home -v 21)</code></pre></div>
+<p>Alternativa con Homebrew:</p>
+<div class="code"><pre><code>brew install --cask temurin@21</code></pre></div>
+</div>
+
+<div data-os="linux">
+<h3>Linux (Ubuntu o Debian)</h3>
+<div class="code"><pre><code>sudo apt install -y wget apt-transport-https gpg
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg &gt; /dev/null
+echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+sudo apt update
+sudo apt install -y temurin-21-jdk</code></pre></div>
+<p>Luego agrega <code>JAVA_HOME</code> al archivo <code>~/.bashrc</code>:</p>
+<div class="code"><pre><code>export JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64</code></pre></div>
+</div>
+
+<h3>Verificar</h3>
+<p>En una terminal nueva ejecuta:</p>
+<div class="code"><pre><code>java -version
+javac -version</code></pre></div>
+<p>Ambos deben mostrar la versión 21 (o la que instalaste). Si <code>javac</code> no se reconoce, instalaste el JRE en lugar del JDK.</p>
+</div>
+</section>
+
+<section class="card" id="vscode">
+<h2>2. Instalar Visual Studio Code</h2>
+<div class="body">
+<p>Descarga VS Code desde <a href="https://code.visualstudio.com/download">code.visualstudio.com</a> y luego instala dos paquetes de extensiones: uno para Java y otro para Spring Boot.</p>
+
+<div data-os="win">
+<h3>Windows</h3>
+<ol>
+<li>Descarga el <b>User Installer</b> para x64.</li>
+<li>En el instalador marca <b>Agregar a PATH</b> y <b>Agregar la acción "Abrir con Code"</b> al menú contextual.</li>
+</ol>
+</div>
+<div data-os="mac">
+<h3>macOS</h3>
+<ol>
+<li>Descarga el <code>.zip</code> (Universal), descomprímelo y arrastra <b>Visual Studio Code</b> a la carpeta Aplicaciones.</li>
+<li>Abre VS Code, presiona <code>Cmd+Shift+P</code> y ejecuta <b>Shell Command: Install 'code' command in PATH</b>.</li>
+</ol>
+</div>
+<div data-os="linux">
+<h3>Linux (Ubuntu o Debian)</h3>
+<ol>
+<li>Descarga el paquete <code>.deb</code>.</li>
+<li>Instálalo desde la carpeta de descargas:</li>
+</ol>
+<div class="code"><pre><code>sudo apt install ./code_*.deb</code></pre></div>
+</div>
+
+<h3>Extensiones necesarias</h3>
+<p>Abre la vista de extensiones (<code>Ctrl+Shift+X</code>, o <code>Cmd+Shift+X</code> en macOS) e instala:</p>
+<div class="tbl"><table class="stack">
+<thead><tr><th>Extensión</th><th>Qué incluye</th></tr></thead>
+<tbody>
+<tr><td><a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack"><b>Extension Pack for Java</b></a> (Microsoft)</td><td>Soporte del lenguaje, depurador, pruebas, Maven y gestor de proyectos</td></tr>
+<tr><td><a href="https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack"><b>Spring Boot Extension Pack</b></a></td><td>Spring Initializr, Spring Boot Dashboard y ayuda en <code>application.properties</code></td></tr>
+</tbody></table></div>
+<p>También puedes instalarlas desde la terminal:</p>
+<div class="code"><pre><code>code --install-extension vscjava.vscode-java-pack
+code --install-extension vmware.vscode-boot-dev-pack</code></pre></div>
+
+<h3>Verificar</h3>
+<ol>
+<li>Presiona <code>Ctrl+Shift+P</code> (<code>Cmd+Shift+P</code> en macOS) y ejecuta <b>Java: Configure Java Runtime</b>.</li>
+<li>Debe aparecer el JDK 21 que instalaste. Si no aparece, revisa <code>JAVA_HOME</code> y reinicia VS Code.</li>
+</ol>
+</div>
+</section>
+
+<section class="card" id="postgres">
+<h2>3. Instalar PostgreSQL</h2>
+<div class="body">
+<p>Instala <b>PostgreSQL 18</b>. La versión 19 salió el 19 de noviembre de 2026 y también funciona. Tienes dos caminos: instalarlo directo en tu sistema (opción A) o correrlo con Docker (opción B), que es el que usaremos en clase desde la semana 2.</p>
+
+<h3>Opción A: instalación directa</h3>
+<div data-os="win">
+<ol>
+<li>Descarga el instalador de EDB desde <a href="https://www.postgresql.org/download/windows/">postgresql.org/download/windows</a>.</li>
+<li>Deja marcados PostgreSQL Server, pgAdmin 4 y Command Line Tools. Stack Builder no es necesario.</li>
+<li>Define una contraseña para el usuario <code>postgres</code> y anótala. Deja el puerto <b>5432</b>.</li>
+<li>Agrega <code>C:\Program Files\PostgreSQL\18\bin</code> a la variable PATH para usar <code>psql</code> en la terminal.</li>
+</ol>
+</div>
+<div data-os="mac">
+<div class="code"><pre><code>brew install postgresql@18
+brew services start postgresql@18</code></pre></div>
+<p>Con Homebrew el superusuario es tu usuario de macOS, no <code>postgres</code>. Otra opción sencilla es <a href="https://postgresapp.com/">Postgres.app</a>.</p>
+</div>
+<div data-os="linux">
+<div class="code"><pre><code>sudo apt install -y postgresql-common
+sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+sudo apt install -y postgresql-18</code></pre></div>
+</div>
+
+<p><b>Crear la base de datos y el usuario del curso.</b> Conéctate como superusuario:</p>
+<div data-os="win mac"><div class="code"><pre><code>psql -U postgres -h localhost</code></pre></div></div>
+<div data-os="linux"><div class="code"><pre><code>sudo -u postgres psql</code></pre></div></div>
+<p>Luego ejecuta:</p>
+<div class="code"><pre><code>CREATE USER freetech WITH PASSWORD 'freetech123';
+CREATE DATABASE cursospring OWNER freetech;</code></pre></div>
+<p>Sal con <code>\q</code>. Estas credenciales son solo para tu equipo local; nunca las uses en un servidor real.</p>
+
+<h3>Opción B: con Docker</h3>
+<p>Requiere <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> instalado. Crea un archivo <code>docker-compose.yml</code>:</p>
+<div class="code"><pre><code>services:
+  postgres:
+    image: postgres:18
+    container_name: freetech-postgres
+    environment:
+      POSTGRES_USER: freetech
+      POSTGRES_PASSWORD: freetech123
+      POSTGRES_DB: cursospring
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+volumes:
+  pgdata:</code></pre></div>
+<p>Levántalo con:</p>
+<div class="code"><pre><code>docker compose up -d</code></pre></div>
+<p>Con esta opción la base de datos y el usuario del curso ya quedan creados.</p>
+
+<h3>Verificar</h3>
+<div class="code"><pre><code>psql -h localhost -U freetech -d cursospring -c "SELECT version();"</code></pre></div>
+<p>Debe mostrar la versión de PostgreSQL. Con Docker, si no tienes <code>psql</code> instalado, usa:</p>
+<div class="code"><pre><code>docker exec -it freetech-postgres psql -U freetech -d cursospring</code></pre></div>
+</div>
+</section>
+
+<section class="card" id="prueba">
+<h2>4. Prueba final: tu primer proyecto</h2>
+<div class="body">
+<p>Si este proyecto arranca sin errores, tu entorno está listo para el curso.</p>
+<ol>
+<li>En VS Code presiona <code>Ctrl+Shift+P</code> (<code>Cmd+Shift+P</code> en macOS) y ejecuta <b>Spring Initializr: Create a Maven Project</b>.</li>
+<li>Responde así:
+<ul>
+<li>Versión de Spring Boot: la estable más reciente (sin SNAPSHOT ni M)</li>
+<li>Lenguaje: Java</li>
+<li>Group Id: <code>com.freetech</code> · Artifact Id: <code>demo</code></li>
+<li>Packaging: Jar · Versión de Java: 21</li>
+<li>Dependencias: <b>Spring Web</b>, <b>Spring Data JPA</b> y <b>PostgreSQL Driver</b></li>
+</ul></li>
+<li>Elige una carpeta y abre el proyecto cuando VS Code lo ofrezca.</li>
+<li>Abre <code>src/main/resources/application.properties</code> y agrega:</li>
+</ol>
+<div class="code"><pre><code>spring.datasource.url=jdbc:postgresql://localhost:5432/cursospring
+spring.datasource.username=freetech
+spring.datasource.password=freetech123
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true</code></pre></div>
+<ol start="5">
+<li>Ejecuta la aplicación desde el <b>Spring Boot Dashboard</b> (botón de play) o desde la terminal del proyecto:</li>
+</ol>
+<div data-os="mac linux"><div class="code"><pre><code>./mvnw spring-boot:run</code></pre></div></div>
+<div data-os="win"><div class="code"><pre><code>mvnw.cmd spring-boot:run</code></pre></div></div>
+<div class="note ok-box"><strong>Resultado esperado:</strong> en la consola aparecen <code>HikariPool-1 - Start completed</code> (conectó a PostgreSQL) y <code>Tomcat started on port 8080</code>. Si abres http://localhost:8080 verás una página de error 404 (Whitelabel Error Page): es normal, porque aún no hay controladores.</div>
+</div>
+</section>
+
+<section class="card" id="problemas">
+<h2>Problemas comunes</h2>
+<div class="body">
+<div class="tbl"><table class="stack">
+<thead><tr><th>Síntoma</th><th>Causa probable</th><th>Solución</th></tr></thead>
+<tbody id="faq"></tbody>
+</table></div>
+<p>Si sigues con problemas, comparte en el canal de soporte de Discord el comando que ejecutaste y el error completo.</p>
+<p style="color:var(--muted);font-size:14px">Fuentes: <a href="https://adoptium.net/">Eclipse Temurin</a>, <a href="https://endoflife.date/eclipse-temurin">ciclo de vida de Temurin</a>, <a href="https://docs.spring.io/spring-boot/4.2-SNAPSHOT/system-requirements.html">requisitos de Spring Boot</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://code.visualstudio.com/download">VS Code</a>. Actualizado el 22 de noviembre de 2026.</p>
+</div>
+</section>
+
+</main>
+
+<footer><div class="wrap"><span>Curso de Backend con Spring Boot · FreeTech Community</span><b>Profe JuanFe</b></div></footer>
+
+<script>
+{
+const faq=[
+["<code>java</code> o <code>javac</code> no se reconoce","Java no está en PATH o la terminal se abrió antes de instalar","Cierra y abre la terminal; en Windows reinstala marcando Add to PATH"],
+["VS Code no encuentra el JDK","<code>JAVA_HOME</code> sin configurar","Configúralo (sección 1) y reinicia VS Code"],
+["<code>java -version</code> muestra otra versión","Hay varios JDK instalados","Ajusta <code>JAVA_HOME</code> y PATH al JDK 21"],
+["<code>Connection refused</code> al arrancar","PostgreSQL no está corriendo","Inicia el servicio o ejecuta <code>docker compose up -d</code>"],
+["<code>password authentication failed</code>","Usuario o contraseña distintos a los de <code>application.properties</code>","Revisa las credenciales en ambos lados"],
+["Puerto 5432 ocupado al usar Docker","Ya hay un PostgreSQL local corriendo","Detén el local o usa <code>\"5433:5432\"</code> y cambia el puerto en la URL"],
+["<code>Port 8080 was already in use</code>","Otra aplicación usa el puerto","Cierra la otra app o agrega <code>server.port=8081</code>"],
+["<code>psql</code> no se reconoce en Windows","La carpeta <code>bin</code> de PostgreSQL no está en PATH","Agrega <code>C:\\Program Files\\PostgreSQL\\18\\bin</code> a PATH"]
+];
+const heads=["Síntoma","Causa probable","Solución"];
+document.getElementById('faq').innerHTML=faq.map(r=>'<tr>'+r.map((c,i)=>'<td data-l="'+heads[i]+'">'+c+'</td>').join('')+'</tr>').join('');
+for(const t of document.querySelectorAll('table.stack')){const h=[...t.querySelectorAll('thead th')].map(x=>x.textContent);for(const tr of t.querySelectorAll('tbody tr'))[...tr.children].forEach((td,i)=>{if(!td.dataset.l)td.dataset.l=h[i]||''})}
+for(const box of document.querySelectorAll('.code')){
+const b=document.createElement('button');b.type='button';b.className='copy';b.textContent='Copiar';
+b.addEventListener('click',async()=>{const txt=box.querySelector('code').textContent;try{await navigator.clipboard.writeText(txt);b.textContent='Copiado';b.classList.add('ok')}catch(e){const r=document.createRange();r.selectNodeContents(box.querySelector('code'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Seleccionado'}setTimeout(()=>{b.textContent='Copiar';b.classList.remove('ok')},1600)});
+box.appendChild(b)}
+const btns=[...document.querySelectorAll('[data-pick]')];
+const pick=os=>{document.body.dataset.sel=os;btns.forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.pick===os)));try{localStorage.setItem('ft-os',os)}catch(e){}};
+btns.forEach(x=>x.addEventListener('click',()=>pick(x.dataset.pick)));
+let start='win';
+try{const ua=navigator.userAgent;if(/Mac/i.test(ua)&&!/iPhone|iPad/i.test(ua))start='mac';else if(/Linux/i.test(ua)&&!/Android/i.test(ua))start='linux';const s=localStorage.getItem('ft-os');if(s)start=s}catch(e){}
+pick(start);
+}
+</script>
+</body>
+</html>
