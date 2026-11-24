@@ -1,0 +1,2485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía base de Java</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* VOICE work: guía de estudio para quienes llegan nuevos a Java, cercana y ordenada
+   IDEA la hoja de ruta de un curso: cuatro etapas que se recorren hasta quedar listo para Spring
+   PICTURE la ruta Fundamentos, Objetos, Herramientas, Listo para Spring en la banda navy, más el avance del estudiante
+   COLOUR identidad FreeTech: navy #0B1A33, azul #0369A1, celeste #38BDF8 y verde #4ADE80 solo sobre oscuro, fondo #F0F7FC
+   TYPE Space Grotesk títulos + Inter texto + JetBrains Mono código
+   LAYOUT encabezado navy con ruta; barra fija con secciones y avance; temas en tarjetas blancas; en móvil todo apilado */
+:root{color-scheme:light dark;
+--bg:light-dark(#F0F7FC,#081325);
+--card:light-dark(#FFFFFF,#0F2140);
+--ink:light-dark(#0B1A33,#E6F0F9);
+--muted:light-dark(#3B5574,#9FB8D3);
+--blue:light-dark(#0369A1,#38BDF8);
+--line:light-dark(#CFE4F3,#1E3A63);
+--div:light-dark(#E3EEF6,#18304F);
+--thead:light-dark(#E3F2FC,#13294D);
+--code-inline:light-dark(#E3F2FC,#13294D);
+--navy:#0B1A33;--navy2:#13294D;--sky:#38BDF8;--green:#4ADE80;--pale:#C7E6FA}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Inter',system-ui,sans-serif;overflow-x:clip}
+a{color:var(--blue)}
+h1,h2,h3{font-family:'Space Grotesk','Inter',sans-serif;line-height:1.1;letter-spacing:-.01em;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(4vw,16px)}
+header.top{background:var(--navy);color:#fff;padding:44px 0 40px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:var(--sky)}
+header.top h1{font-size:clamp(32px,5vw,50px);margin:18px 0 12px;text-wrap:balance}
+.lead{color:var(--pale);font-size:18px;max-width:62ch;margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pill{background:var(--navy2);color:#fff;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:36px;position:relative}
+.route::before{content:"";position:absolute;left:12.5%;right:12.5%;top:27px;height:3px;background:var(--navy2)}
+.stop{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;position:relative;text-decoration:none;color:#fff;padding:0 6px}
+.dot{width:56px;height:56px;border-radius:50%;background:var(--navy2);border:3px solid var(--sky);display:grid;place-items:center}
+.stop.end .dot{border-color:var(--green)}
+.stop.full .dot{background:#0369A1}
+.stop div{display:flex;flex-direction:column;gap:2px}
+.stop strong{font-family:'Space Grotesk',sans-serif;font-size:17px}
+.stop span{color:var(--pale);font-size:14px;line-height:1.35}
+.stop:hover strong{color:var(--sky)}
+.bar{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:8px}
+.nav{display:flex;gap:2px;overflow-x:auto;flex:1 1 auto;scrollbar-width:thin}
+.nav a{flex:none;text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;padding:10px 10px;border-radius:8px}
+.nav a:hover{background:var(--thead)}
+.nav a.seen{color:var(--muted)}
+.nav a.seen::after{content:" \2713";color:light-dark(#15803D,#4ADE80)}
+.prog{flex:none;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--muted)}
+.meter{width:90px;height:8px;border-radius:999px;background:var(--thead);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:light-dark(#15803D,#4ADE80);border-radius:999px}
+.nav a:focus-visible,.copy:focus-visible,.done:focus-visible,.stop:focus-visible,input:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+main{padding:32px 0 56px;display:flex;flex-direction:column;gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.shead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;background:#0369A1;padding:12px 16px 12px 24px}
+.shead h2{color:#fff;font-size:22px}
+.done{font:600 14px 'Inter',sans-serif;border:1px solid rgba(255,255,255,.55);background:transparent;color:#fff;border-radius:999px;padding:8px 16px;min-height:40px;cursor:pointer}
+.done:hover{background:rgba(11,26,51,.25)}
+.done[aria-pressed=true]{background:var(--navy);border-color:var(--green);color:var(--green)}
+.body{padding:22px 24px 26px}
+.body>*:first-child{margin-top:0}
+.body>p:first-child{font-size:17px}
+.body h3{font-size:19px;margin:28px 0 10px;color:var(--ink)}
+.body p{margin:10px 0;max-width:72ch}
+ol,ul{padding-left:22px;margin:10px 0}
+li{margin:6px 0}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:var(--code-inline);padding:1px 6px;border-radius:5px;overflow-wrap:anywhere}
+.code{position:relative;margin:12px 0;background:var(--navy);border-radius:12px;border:1px solid var(--navy2)}
+.code pre{margin:0;padding:16px 18px;padding-right:96px;overflow-x:auto;color:#E6F0F9;font:14px/1.6 'JetBrains Mono',monospace;tab-size:4}
+.code pre code{background:none;padding:0;font-size:inherit;overflow-wrap:normal;color:inherit}
+.token.comment{color:#8AA4C2;font-style:italic}
+.token.keyword,.token.boolean{color:#38BDF8}
+.token.string,.token.char{color:#4ADE80}
+.token.number{color:#C7E6FA}
+.token.class-name{color:#fff;font-weight:500}
+.token.annotation,.token.punctuation,.token.operator{color:#9FB8D3}
+.token.function{color:#E6F0F9}
+.token.tag,.token.attr-name{color:#38BDF8}
+.copy{position:absolute;top:8px;right:8px;font:600 13px 'Inter',sans-serif;background:var(--navy2);color:var(--pale);border:1px solid #1E3A63;border-radius:8px;padding:8px 12px;cursor:pointer;min-height:36px}
+.copy:hover{color:#fff}
+.copy.ok{color:var(--green)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{background:var(--thead);color:var(--muted);text-align:left;font-size:13px;font-weight:700;padding:10px 14px}
+td{padding:11px 14px;border-top:1px solid var(--div);vertical-align:top}
+td code{white-space:nowrap}
+blockquote{margin:16px 0;border:1px solid var(--line);background:var(--thead);border-radius:12px;padding:12px 18px}
+blockquote p{margin:4px 0;max-width:none}
+blockquote strong{color:var(--blue)}
+.tasks{list-style:none;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.task{margin:0;border-top:1px solid var(--div)}
+.task:first-child{border-top:0}
+.task label{display:flex;gap:12px;align-items:flex-start;padding:11px 16px;cursor:pointer}
+.task input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:#0369A1}
+.task input:checked+span{color:var(--muted);text-decoration:line-through}
+.flow{display:flex;align-items:stretch;margin:18px 0;gap:0}
+.fstep{flex:1 1 0;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.fstep small{color:var(--muted);font-size:13px;font-weight:600}
+.fstep b{font-family:'Space Grotesk',sans-serif;font-size:17px;overflow-wrap:anywhere}
+.fstep span{font-size:14px;color:var(--muted);line-height:1.4}
+.fstep.main{border:2px solid #0369A1;background:var(--thead)}
+.farrow{flex:0 0 54px;display:flex;flex-direction:column;align-items:center;justify-content:center;font:12px 'JetBrains Mono',monospace;color:var(--muted)}
+.farrow::after{content:"\2192";font:600 22px 'Inter',sans-serif;color:var(--blue);line-height:1}
+.fos{flex:0 0 112px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.fos i{font-style:normal;border:1px solid var(--line);border-radius:999px;padding:5px 10px;text-align:center;font-size:14px}
+.layers{display:flex;flex-direction:column;align-items:stretch;max-width:620px;margin:18px auto}
+.lclient,.ldb{background:var(--navy);color:var(--pale);border-radius:12px;padding:12px 16px;text-align:center;font-size:15px}
+.lclient code{background:var(--navy2);color:#fff}
+.ldb{color:var(--sky);font:600 17px 'Space Grotesk',sans-serif;border-radius:12px 12px 40px 40px/12px 12px 22px 22px}
+.layer{border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;background:var(--card)}
+.layer b{font-family:'Space Grotesk',sans-serif;font-size:18px}
+.layer span{grid-column:1;color:var(--muted);font-size:14px;line-height:1.4}
+.layer em{grid-column:2;grid-row:1/3;align-self:center;font:500 13px 'JetBrains Mono',monospace;font-style:normal;background:var(--navy2);color:#fff;border-radius:999px;padding:5px 12px}
+.layer.main{border:2px solid #0369A1;background:var(--thead)}
+.larrow{height:26px;display:flex;justify-content:center}
+.larrow::after{content:"\2193";font:600 20px 'Inter',sans-serif;color:var(--blue);line-height:26px}
+footer{background:var(--navy);color:var(--pale);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:20px}
+footer b{font-family:'Space Grotesk',sans-serif;color:var(--sky)}
+@media(max-width:760px){
+.flow{flex-direction:column}
+.farrow{flex-basis:40px;flex-direction:row;gap:10px}
+.farrow::after{content:"\2193"}
+.fos{flex:none;flex-direction:row;flex-wrap:wrap;justify-content:center}
+.prog .meter{display:none}
+}
+@media(max-width:600px){
+.route{grid-template-columns:minmax(0,1fr);gap:14px}
+.route::before{left:27px;right:auto;top:28px;bottom:28px;width:3px;height:auto}
+.stop{flex-direction:row;text-align:left;gap:14px;padding:0}
+.stop div{display:flex;flex-direction:column}
+.dot{flex:none}
+.body{padding:18px 16px 22px}
+.shead{padding:12px 16px}
+.shead h2{font-size:20px}
+.code pre{font-size:13px;padding-right:18px;padding-top:48px}
+table{font-size:13px}
+th,td{padding:8px 10px}
+td code{white-space:normal}
+.stack thead{display:none}
+.stack tr{display:grid;padding-block:8px;border-top:1px solid var(--div)}
+.stack td{border:0;padding:3px 10px}
+.stack td::before{content:attr(data-l);display:block;font-weight:700;color:var(--muted);font-size:12px}
+.layer{grid-template-columns:minmax(0,1fr)}
+.layer em{grid-column:1;grid-row:auto;justify-self:start;margin-top:6px}
+}
+@media(prefers-reduced-motion:no-preference){.stop .dot{transition:transform .2s}.stop:hover .dot{transform:translateY(-3px)}.meter i{transition:width .3s}}
+</style>
+</head>
+<body>
+
+<header class="top">
+<div class="wrap">
+<div class="brand"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/><line x1="14" y1="3" x2="10" y2="21"/></svg>FreeTech Community</div>
+<h1>Guía base de Java para el curso de Spring Boot</h1>
+<p class="lead">Todo lo que necesitas saber de Java antes de la primera clase: desde tu primer programa hasta clases, interfaces, colecciones, excepciones y streams, con ejemplos, ejercicios y un proyecto integrador.</p>
+<div class="pills"><span class="pill">Java 21</span><span class="pill">16 temas</span><span class="pill">Ejercicios y proyecto</span><span class="pill">Lista antes del 15 de diciembre</span></div>
+<nav class="route" aria-label="Etapas de la guía">
+<a class="stop" href="#funciona" data-stage="funciona sintaxis flujo arreglos metodos"><span class="dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="8 10 10 12 8 14"/><line x1="12" y1="14" x2="16" y2="14"/></svg></span><div><strong>Fundamentos</strong><span>Secciones 1 a 5: sintaxis, flujo y métodos</span></div></a>
+<a class="stop" href="#clases" data-stage="clases herencia interfaces records"><span class="dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span><div><strong>Objetos</strong><span>Secciones 6 a 9: clases, herencia e interfaces</span></div></a>
+<a class="stop" href="#colecciones" data-stage="colecciones excepciones lambdas maven"><span class="dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><div><strong>Herramientas</strong><span>Secciones 10 a 13: colecciones, errores, streams y Maven</span></div></a>
+<a class="stop end" href="#spring" data-stage="spring ejercicios errores"><span class="dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"/></svg></span><div><strong>Listo para Spring</strong><span>Secciones 14 a 16: puente, ejercicios y errores</span></div></a>
+</nav>
+</div>
+</header>
+
+<div class="bar">
+<div class="wrap">
+<nav class="nav" aria-label="Secciones"><a href="#inicio">Inicio</a><a href="#funciona">Java</a><a href="#sintaxis">Sintaxis</a><a href="#flujo">Flujo</a><a href="#arreglos">Arreglos</a><a href="#metodos">Métodos</a><a href="#clases">Clases</a><a href="#herencia">Herencia</a><a href="#interfaces">Interfaces</a><a href="#records">Records</a><a href="#colecciones">Colecciones</a><a href="#excepciones">Excepciones</a><a href="#lambdas">Lambdas</a><a href="#maven">Maven</a><a href="#spring">Spring</a><a href="#ejercicios">Ejercicios</a><a href="#errores">Errores</a></nav>
+<div class="prog" aria-live="polite"><span id="ptext">0 de 16 estudiadas</span><span class="meter"><i id="pbar"></i></span></div>
+</div>
+</div>
+
+<main class="wrap">
+<section class="card" id="inicio">
+<div class="shead"><h2>Antes de empezar</h2></div>
+<div class="body">
+<p>Si terminas esta guía antes del 15 de diciembre, vas a llegar a la primera clase leyendo y escribiendo clases, interfaces y colecciones en Java sin trabarte. Es para ti si nunca has programado en Java o si te ubicaste en el nivel 1 del formulario de inscripción.</p>
+<p>La semana 1 del curso va rápido y da por hecho que ya manejas lo que hay aquí. No necesitas saber de Spring Boot: la sección 14 te muestra cómo se conecta todo lo que aprendiste con lo que veremos en clase.</p>
+<h3>Lo que necesitas instalado</h3>
+<ul>
+<li>Java 21 (JDK) y Visual Studio Code con el Extension Pack for Java. Si aún no los tienes, sigue primero el Manual de instalación del curso.</li>
+<li>Una carpeta de trabajo, por ejemplo <code>java-base</code>, donde guardes cada ejercicio.</li>
+</ul>
+<h3>Cómo usar la guía</h3>
+<ol>
+<li>Escribe cada ejemplo a mano en lugar de copiarlo. Equivocarte con un punto y coma te enseña más que pegar el código.</li>
+<li>Ejecuta cada ejemplo y cambia algo para ver qué pasa.</li>
+<li>Al terminar cada tema haz sus ejercicios de la sección 15, y al final el proyecto integrador.</li>
+<li>Marca cada sección como estudiada con el botón de su encabezado. Tu avance se guarda en este navegador.</li>
+<li>Si te atascas más de 20 minutos, pregunta en el Discord de FreeTech Community con el código y el error completo.</li>
+</ol>
+<h3>Ruta sugerida (unas 6 a 8 horas por semana)</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Semana</th>
+<th>Secciones</th>
+<th>Meta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24 al 30 de noviembre</td>
+<td>1 a 5: cómo funciona Java, sintaxis, control de flujo, arreglos, cadenas y métodos</td>
+<td>Escribir programas de consola pequeños</td>
+</tr>
+<tr>
+<td>1 al 7 de diciembre</td>
+<td>6 a 9: clases, herencia, interfaces, records y enums</td>
+<td>Modelar un problema con objetos</td>
+</tr>
+<tr>
+<td>8 al 14 de diciembre</td>
+<td>10 a 14: colecciones, excepciones, lambdas, Maven y el puente a Spring Boot</td>
+<td>Terminar el proyecto integrador</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</section>
+
+<section class="card" id="funciona">
+<div class="shead"><h2>1. Cómo funciona Java</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Java es un lenguaje compilado a bytecode: escribes un archivo <code>.java</code>, el compilador lo convierte en un archivo <code>.class</code> y la JVM lo ejecuta en cualquier sistema operativo. Por eso se dice "escribe una vez, ejecuta en cualquier parte".</p>
+<div class="flow" role="img" aria-label="Escribes HolaMundo.java, javac lo compila a HolaMundo.class y la JVM lo ejecuta en Windows, macOS o Linux">
+<div class="fstep"><small>1. Escribes</small><b>HolaMundo.java</b><span>Código fuente en texto plano</span></div>
+<div class="farrow"><span>javac</span></div>
+<div class="fstep"><small>2. Compilas</small><b>HolaMundo.class</b><span>Bytecode que genera el compilador</span></div>
+<div class="farrow"><span>java</span></div>
+<div class="fstep main"><small>3. Ejecutas</small><b>JVM</b><span>Máquina Virtual de Java</span></div>
+<div class="farrow"><span></span></div>
+<div class="fos"><i>Windows</i><i>macOS</i><i>Linux</i></div>
+</div>
+
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué es</th>
+<th>Para qué la usas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JDK (Java Development Kit)</td>
+<td>Kit completo: compilador, JVM, bibliotecas y herramientas</td>
+<td>Programar. Es lo que instalaste</td>
+</tr>
+<tr>
+<td>JRE (Java Runtime Environment)</td>
+<td>Solo lo necesario para ejecutar</td>
+<td>Correr programas ya compilados</td>
+</tr>
+<tr>
+<td>JVM (Java Virtual Machine)</td>
+<td>El programa que lee el bytecode y lo ejecuta</td>
+<td>Funciona por debajo, no la manejas directamente</td>
+</tr>
+<tr>
+<td><code>javac</code></td>
+<td>El compilador</td>
+<td>Convertir <code>.java</code> en <code>.class</code></td>
+</tr>
+<tr>
+<td><code>java</code></td>
+<td>El lanzador</td>
+<td>Ejecutar un programa</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Tu primer programa</h3>
+<p>Crea un archivo llamado <code>HolaMundo.java</code> con este contenido:</p>
+<div class="code"><pre><code class="language-java">public class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hola, FreeTech Community&quot;);
+    }
+}
+</code></pre></div>
+<p>Línea por línea:</p>
+<ul>
+<li><code>public class HolaMundo</code>: todo código en Java vive dentro de una clase. El nombre de la clase pública debe ser igual al nombre del archivo, con mayúsculas y minúsculas.</li>
+<li><code>public static void main(String[] args)</code>: el punto de entrada. La JVM busca exactamente este método para arrancar el programa.</li>
+<li><code>System.out.println(...)</code>: imprime un texto en la consola y salta de línea. <code>System.out.print(...)</code> imprime sin saltar.</li>
+<li>Cada instrucción termina en <code>;</code> y los bloques se delimitan con llaves <code>{ }</code>.</li>
+</ul>
+<h3>Compilar y ejecutar desde la terminal</h3>
+<div class="code"><pre><code class="language-bash">javac HolaMundo.java   # genera HolaMundo.class
+java HolaMundo         # ejecuta la clase (sin la extensión)
+</code></pre></div>
+<p>Desde Java 11 también puedes ejecutar un archivo sin compilarlo antes: <code>java HolaMundo.java</code>. Es cómodo para pruebas rápidas.</p>
+<h3>Ejecutar en VS Code</h3>
+<p>Abre la carpeta del ejercicio en VS Code. Encima del método <code>main</code> aparecen los enlaces <strong>Run</strong> y <strong>Debug</strong>: haz clic en <strong>Run</strong> y el resultado sale en la terminal integrada. Con <strong>Debug</strong> puedes poner puntos de interrupción (clic a la izquierda del número de línea) y avanzar paso a paso para ver cómo cambian las variables.</p>
+<h3>Probar código suelto con jshell</h3>
+<p><code>jshell</code> viene con el JDK y te deja probar líneas sin crear clases. Escribe <code>jshell</code> en la terminal y prueba:</p>
+<div class="code"><pre><code class="language-java">jshell&gt; int a = 5 * 3
+a ==&gt; 15
+jshell&gt; &quot;java&quot;.toUpperCase()
+$2 ==&gt; &quot;JAVA&quot;
+jshell&gt; /exit
+</code></pre></div>
+<blockquote>
+<p><strong>Reglas que debes recordar desde ya.</strong> Java distingue mayúsculas de minúsculas: <code>Main</code>, <code>main</code> y <code>MAIN</code> son tres cosas distintas. Un archivo <code>.java</code> puede tener varias clases, pero solo una pública, y esa da el nombre al archivo. Java es de tipado estático: cada variable tiene un tipo fijo que el compilador revisa antes de ejecutar, así que muchos errores aparecen al compilar y no en producción.</p>
+</blockquote>
+</div>
+</section>
+
+<section class="card" id="sintaxis">
+<div class="shead"><h2>2. Sintaxis básica</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>En Java cada variable se declara con un tipo y ese tipo no cambia. Los tipos se dividen en primitivos (valores simples) y referencias (objetos como <code>String</code>).</p>
+<h3>Variables</h3>
+<div class="code"><pre><code class="language-java">int edad = 20;              // tipo, nombre, valor
+double precio = 49_900.50;  // el guion bajo solo mejora la lectura
+boolean activo = true;
+char inicial = 'J';         // un carácter va entre comillas simples
+String nombre = &quot;Ana&quot;;      // un texto va entre comillas dobles
+
+edad = 21;                  // reasignar: ya no se escribe el tipo
+</code></pre></div>
+<h3>Tipos primitivos</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Guarda</th>
+<th>Tamaño</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>byte</code></td>
+<td>Entero muy pequeño (-128 a 127)</td>
+<td>8 bits</td>
+<td><code>byte nivel = 3;</code></td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>Entero pequeño</td>
+<td>16 bits</td>
+<td><code>short anio = 2026;</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>Entero, el más usado (hasta unos 2.100 millones)</td>
+<td>32 bits</td>
+<td><code>int cantidad = 150;</code></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>Entero grande, termina en <code>L</code></td>
+<td>64 bits</td>
+<td><code>long poblacion = 52_000_000L;</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>Decimal de poca precisión, termina en <code>f</code></td>
+<td>32 bits</td>
+<td><code>float nota = 4.5f;</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>Decimal, el más usado</td>
+<td>64 bits</td>
+<td><code>double saldo = 1250.75;</code></td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>Un carácter Unicode</td>
+<td>16 bits</td>
+<td><code>char letra = 'A';</code></td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>true</code> o <code>false</code></td>
+<td>Lógico</td>
+<td><code>boolean aprobado = false;</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>String</code> no es primitivo: es una clase. Por eso empieza con mayúscula y tiene métodos como <code>nombre.length()</code>.</p>
+<blockquote>
+<p><strong>Dinero y decimales.</strong> No uses <code>double</code> para dinero real, porque acumula errores de redondeo: <code>0.1 + 0.2</code> da <code>0.30000000000000004</code>. En la industria se usa <code>BigDecimal</code>, que veremos en el curso.</p>
+</blockquote>
+<h3>Inferencia de tipos con var</h3>
+<p>Dentro de un método puedes dejar que el compilador deduzca el tipo. La variable sigue teniendo un tipo fijo; solo te ahorras escribirlo.</p>
+<div class="code"><pre><code class="language-java">var ciudad = &quot;Medellín&quot;;   // String
+var total = 0;             // int
+// ciudad = 10;            // error: ciudad es String
+</code></pre></div>
+<h3>Constantes</h3>
+<p><code>final</code> impide reasignar. Por convención las constantes se escriben en mayúsculas.</p>
+<div class="code"><pre><code class="language-java">final double IVA = 0.19;
+final int MAX_INTENTOS = 3;
+</code></pre></div>
+<h3>Operadores</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Operadores</th>
+<th>Ejemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aritméticos</td>
+<td><code>+ - * / %</code></td>
+<td><code>7 / 2</code> y <code>7 % 2</code></td>
+<td><code>3</code> (división entera) y <code>1</code> (residuo)</td>
+</tr>
+<tr>
+<td>Asignación compuesta</td>
+<td><code>+= -= *= /=</code></td>
+<td><code>x += 5</code></td>
+<td>Igual que <code>x = x + 5</code></td>
+</tr>
+<tr>
+<td>Incremento</td>
+<td><code>++ --</code></td>
+<td><code>i++</code></td>
+<td>Suma 1 a <code>i</code></td>
+</tr>
+<tr>
+<td>Relacionales</td>
+<td><code>== != &gt; &lt; &gt;= &lt;=</code></td>
+<td><code>edad &gt;= 18</code></td>
+<td><code>true</code> o <code>false</code></td>
+</tr>
+<tr>
+<td>Concatenación</td>
+<td><code>+</code> con texto</td>
+<td><code>"Hola " + nombre</code></td>
+<td><code>"Hola Ana"</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Los operadores lógicos combinan condiciones: <code>&amp;&amp;</code> (Y, las dos deben cumplirse), <code>||</code> (O, basta una) y <code>!</code> (NO, invierte). Por ejemplo <code>activo &amp;&amp; edad &gt;= 18</code>.</p>
+<p>Ojo con la división: si los dos operandos son enteros, el resultado es entero. <code>7 / 2</code> da <code>3</code>; para obtener <code>3.5</code> escribe <code>7 / 2.0</code> o <code>(double) 7 / 2</code>.</p>
+<h3>Conversiones</h3>
+<div class="code"><pre><code class="language-java">int entero = 10;
+double decimal = entero;            // implícita: de menor a mayor no pierde datos
+int truncado = (int) 9.99;          // explícita (cast): queda 9, se pierde la parte decimal
+
+int numero = Integer.parseInt(&quot;42&quot;);      // texto a número
+double valor = Double.parseDouble(&quot;3.14&quot;);
+String texto = String.valueOf(42);        // número a texto
+</code></pre></div>
+<p><code>Integer.parseInt("hola")</code> lanza <code>NumberFormatException</code>. Aprenderás a manejarla en la sección 11.</p>
+<h3>Comentarios</h3>
+<div class="code"><pre><code class="language-java">// comentario de una línea
+
+/* comentario
+   de varias líneas */
+
+/**
+ * Javadoc: documenta clases y métodos.
+ * VS Code lo muestra al pasar el mouse.
+ */
+</code></pre></div>
+<h3>Convenciones de nombres</h3>
+<p>El compilador no las exige, pero cualquier equipo profesional sí.</p>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Estilo</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clases, interfaces, records, enums</td>
+<td>PascalCase</td>
+<td><code>CuentaBancaria</code>, <code>ProductoService</code></td>
+</tr>
+<tr>
+<td>Variables y métodos</td>
+<td>camelCase</td>
+<td><code>precioTotal</code>, <code>calcularIva()</code></td>
+</tr>
+<tr>
+<td>Constantes</td>
+<td>MAYÚSCULAS_CON_GUION_BAJO</td>
+<td><code>MAX_INTENTOS</code></td>
+</tr>
+<tr>
+<td>Paquetes</td>
+<td>minúsculas, dominio al revés</td>
+<td><code>com.freetech.tienda</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Usa nombres que digan qué guarda la variable: <code>precioConIva</code> es mejor que <code>p2</code>.</p>
+<h3>Leer datos del usuario y mostrar resultados</h3>
+<div class="code"><pre><code class="language-java">import java.util.Scanner;
+
+public class Saludo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print(&quot;¿Cómo te llamas? &quot;);
+        String nombre = sc.nextLine();
+
+        System.out.print(&quot;¿Cuántos años tienes? &quot;);
+        int edad = sc.nextInt();
+
+        System.out.printf(&quot;Hola %s, el próximo año tendrás %d años%n&quot;, nombre, edad + 1);
+        sc.close();
+    }
+}
+</code></pre></div>
+<p>En <code>printf</code>: <code>%s</code> es texto, <code>%d</code> entero, <code>%.2f</code> decimal con 2 cifras y <code>%n</code> salto de línea.</p>
+<blockquote>
+<p><strong>Trampa de Scanner.</strong> Si llamas <code>nextLine()</code> justo después de <code>nextInt()</code>, lee el salto de línea pendiente y te devuelve un texto vacío. Agrega un <code>sc.nextLine()</code> extra para limpiarlo.</p>
+</blockquote>
+</div>
+</section>
+
+<section class="card" id="flujo">
+<div class="shead"><h2>3. Control de flujo</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Con condicionales decides qué código se ejecuta y con ciclos lo repites. Las condiciones siempre deben dar un <code>boolean</code>.</p>
+<h3>if, else if, else</h3>
+<div class="code"><pre><code class="language-java">double nota = 3.8;
+
+if (nota &gt;= 4.5) {
+    System.out.println(&quot;Excelente&quot;);
+} else if (nota &gt;= 3.0) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;Reprobado&quot;);
+}
+</code></pre></div>
+<p>Usa siempre llaves, aunque el bloque tenga una sola línea. Evitas errores cuando alguien agrega una segunda línea después.</p>
+<h3>Operador ternario</h3>
+<p>Un <code>if</code> corto que devuelve un valor: <code>condición ? siEsVerdad : siEsFalso</code>.</p>
+<div class="code"><pre><code class="language-java">String estado = nota &gt;= 3.0 ? &quot;Aprobado&quot; : &quot;Reprobado&quot;;
+</code></pre></div>
+<h3>switch moderno</h3>
+<p>Desde Java 14 el <code>switch</code> puede devolver un valor y usa flechas <code>-&gt;</code>, sin necesidad de <code>break</code>.</p>
+<div class="code"><pre><code class="language-java">int dia = 3;
+
+String nombreDia = switch (dia) {
+    case 1 -&gt; &quot;Lunes&quot;;
+    case 2 -&gt; &quot;Martes&quot;;
+    case 3 -&gt; &quot;Miércoles&quot;;
+    case 4 -&gt; &quot;Jueves&quot;;
+    case 5 -&gt; &quot;Viernes&quot;;
+    case 6, 7 -&gt; &quot;Fin de semana&quot;;
+    default -&gt; &quot;Día inválido&quot;;
+};
+</code></pre></div>
+<p>Si un caso necesita varias líneas, usa un bloque y devuelve el valor con <code>yield</code>:</p>
+<div class="code"><pre><code class="language-java">double descuento = switch (tipoCliente) {
+    case &quot;VIP&quot; -&gt; 0.20;
+    case &quot;FRECUENTE&quot; -&gt; {
+        System.out.println(&quot;Cliente frecuente&quot;);
+        yield 0.10;
+    }
+    default -&gt; 0.0;
+};
+</code></pre></div>
+<p>Vas a encontrar el <code>switch</code> antiguo con <code>case 1:</code> y <code>break;</code> en código viejo. Funciona, pero si olvidas un <code>break</code> el programa sigue ejecutando el caso siguiente. Prefiere el de flechas.</p>
+<h3>while y do-while</h3>
+<p><code>while</code> revisa la condición antes de cada vuelta; <code>do-while</code> ejecuta al menos una vez.</p>
+<div class="code"><pre><code class="language-java">int intentos = 0;
+while (intentos &lt; 3) {
+    System.out.println(&quot;Intento &quot; + (intentos + 1));
+    intentos++;
+}
+
+int opcion;
+do {
+    System.out.println(&quot;1. Listar  2. Agregar  0. Salir&quot;);
+    opcion = sc.nextInt();
+} while (opcion != 0);
+</code></pre></div>
+<p>Si la condición nunca se vuelve falsa tienes un ciclo infinito. Detén el programa con <code>Ctrl+C</code> en la terminal o con el botón de detener en VS Code.</p>
+<h3>for</h3>
+<p>Cuando sabes cuántas veces repetir: inicio, condición y paso.</p>
+<div class="code"><pre><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    System.out.println(&quot;5 x &quot; + i + &quot; = &quot; + (5 * i));
+}
+</code></pre></div>
+<h3>for-each</h3>
+<p>Para recorrer todos los elementos de un arreglo o una colección sin manejar índices. Es el que más vas a usar.</p>
+<div class="code"><pre><code class="language-java">String[] lenguajes = {&quot;Java&quot;, &quot;Python&quot;, &quot;C#&quot;};
+
+for (String lenguaje : lenguajes) {
+    System.out.println(lenguaje);
+}
+</code></pre></div>
+<h3>break y continue</h3>
+<p><code>break</code> sale del ciclo inmediatamente; <code>continue</code> salta a la siguiente vuelta.</p>
+<div class="code"><pre><code class="language-java">for (int i = 1; i &lt;= 10; i++) {
+    if (i % 2 == 0) continue;   // ignora los pares
+    if (i &gt; 7) break;           // termina al pasar de 7
+    System.out.println(i);      // imprime 1, 3, 5, 7
+}
+</code></pre></div>
+</div>
+</section>
+
+<section class="card" id="arreglos">
+<div class="shead"><h2>4. Arreglos y cadenas</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Un arreglo guarda una cantidad fija de valores del mismo tipo; un <code>String</code> es una cadena de texto que no se puede modificar. En el día a día usarás más las colecciones de la sección 10, pero los arreglos son la base.</p>
+<h3>Arreglos</h3>
+<div class="code"><pre><code class="language-java">int[] notas = new int[5];                 // 5 posiciones, todas en 0
+notas[0] = 4;                             // los índices empiezan en 0
+notas[4] = 5;                             // la última posición es length - 1
+
+String[] dias = {&quot;Lun&quot;, &quot;Mar&quot;, &quot;Mié&quot;};    // declarar e inicializar
+System.out.println(dias.length);          // 3 (length es un atributo, sin paréntesis)
+
+// notas[5] = 3;   // ArrayIndexOutOfBoundsException: no existe la posición 5
+</code></pre></div>
+<p>Recorrer un arreglo:</p>
+<div class="code"><pre><code class="language-java">int suma = 0;
+for (int nota : notas) {
+    suma += nota;
+}
+double promedio = (double) suma / notas.length;
+</code></pre></div>
+<p>La clase <code>Arrays</code> tiene utilidades listas:</p>
+<div class="code"><pre><code class="language-java">import java.util.Arrays;
+
+int[] numeros = {5, 2, 9, 1};
+Arrays.sort(numeros);                          // ordena: [1, 2, 5, 9]
+System.out.println(Arrays.toString(numeros));  // imprime &quot;[1, 2, 5, 9]&quot;
+</code></pre></div>
+<p>Si imprimes un arreglo directamente (<code>System.out.println(numeros)</code>) ves algo como <code>[I@1b6d3586</code>, que es su identificador en memoria. Usa <code>Arrays.toString</code>.</p>
+<h3>Matrices</h3>
+<p>Un arreglo de arreglos:</p>
+<div class="code"><pre><code class="language-java">int[][] tablero = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+System.out.println(tablero[1][2]);   // 6: fila 1, columna 2
+
+for (int[] fila : tablero) {
+    for (int celda : fila) {
+        System.out.print(celda + &quot; &quot;);
+    }
+    System.out.println();
+}
+</code></pre></div>
+<h3>Cadenas (String)</h3>
+<p>Un <code>String</code> es inmutable: sus métodos no lo cambian, devuelven uno nuevo. Por eso <code>nombre.trim();</code> sola no hace nada; debes guardar el resultado.</p>
+<div class="code"><pre><code class="language-java">String nombre = &quot;  Juan Felipe  &quot;;
+nombre.trim();                 // no cambia nombre
+nombre = nombre.trim();        // ahora sí: &quot;Juan Felipe&quot;
+</code></pre></div>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Método</th>
+<th>Qué hace</th>
+<th>Ejemplo con <code>s = "Spring Boot"</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>length()</code></td>
+<td>Cantidad de caracteres</td>
+<td><code>11</code></td>
+</tr>
+<tr>
+<td><code>charAt(i)</code></td>
+<td>Carácter en la posición <code>i</code></td>
+<td><code>s.charAt(0)</code> da <code>'S'</code></td>
+</tr>
+<tr>
+<td><code>substring(a, b)</code></td>
+<td>Texto desde <code>a</code> hasta antes de <code>b</code></td>
+<td><code>s.substring(0, 6)</code> da <code>"Spring"</code></td>
+</tr>
+<tr>
+<td><code>indexOf(x)</code></td>
+<td>Posición de <code>x</code>, o <code>-1</code> si no está</td>
+<td><code>s.indexOf("Boot")</code> da <code>7</code></td>
+</tr>
+<tr>
+<td><code>contains(x)</code></td>
+<td>Si contiene <code>x</code></td>
+<td><code>s.contains("ring")</code> da <code>true</code></td>
+</tr>
+<tr>
+<td><code>startsWith(x)</code> y <code>endsWith(x)</code></td>
+<td>Si empieza o termina con <code>x</code></td>
+<td><code>s.endsWith("Boot")</code> da <code>true</code></td>
+</tr>
+<tr>
+<td><code>toUpperCase()</code> y <code>toLowerCase()</code></td>
+<td>Cambia mayúsculas</td>
+<td><code>"SPRING BOOT"</code></td>
+</tr>
+<tr>
+<td><code>strip()</code></td>
+<td>Quita espacios al inicio y al final</td>
+<td><code>" a ".strip()</code> da <code>"a"</code></td>
+</tr>
+<tr>
+<td><code>replace(a, b)</code></td>
+<td>Reemplaza <code>a</code> por <code>b</code></td>
+<td><code>s.replace("Boot", "Cloud")</code></td>
+</tr>
+<tr>
+<td><code>split(sep)</code></td>
+<td>Divide en un arreglo</td>
+<td><code>s.split(" ")</code> da <code>["Spring", "Boot"]</code></td>
+</tr>
+<tr>
+<td><code>isBlank()</code></td>
+<td>Vacío o solo espacios</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>equals(x)</code> y <code>equalsIgnoreCase(x)</code></td>
+<td>Compara el contenido</td>
+<td><code>s.equalsIgnoreCase("spring boot")</code> da <code>true</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Compara textos con equals, nunca con ==</h3>
+<p><code>==</code> compara si dos variables apuntan al mismo objeto en memoria, no si tienen el mismo texto. Es uno de los errores más comunes al empezar.</p>
+<div class="code"><pre><code class="language-java">String a = &quot;java&quot;;
+String b = new String(&quot;java&quot;);
+
+System.out.println(a == b);        // false: son objetos distintos
+System.out.println(a.equals(b));   // true: mismo contenido
+</code></pre></div>
+<p>Si el valor puede ser <code>null</code>, pon primero el texto conocido: <code>"ADMIN".equals(rol)</code> no falla aunque <code>rol</code> sea <code>null</code>.</p>
+<h3>StringBuilder</h3>
+<p>Concatenar con <code>+</code> dentro de un ciclo crea muchos objetos intermedios. <code>StringBuilder</code> arma el texto en un solo objeto modificable.</p>
+<div class="code"><pre><code class="language-java">StringBuilder sb = new StringBuilder();
+for (int i = 1; i &lt;= 3; i++) {
+    sb.append(&quot;Fila &quot;).append(i).append(&quot;\n&quot;);
+}
+String resultado = sb.toString();
+</code></pre></div>
+<h3>Text blocks y formato</h3>
+<p>Desde Java 15 puedes escribir texto de varias líneas con triple comilla. Es muy útil para JSON y SQL, que verás en el curso.</p>
+<div class="code"><pre><code class="language-java">String json = &quot;&quot;&quot;
+    {
+      &quot;nombre&quot;: &quot;Teclado&quot;,
+      &quot;precio&quot;: 120000
+    }
+    &quot;&quot;&quot;;
+
+String mensaje = &quot;Hola %s, tienes %d mensajes&quot;.formatted(&quot;Ana&quot;, 3);
+</code></pre></div>
+</div>
+</section>
+
+<section class="card" id="metodos">
+<div class="shead"><h2>5. Métodos</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Un método es un bloque de código con nombre que recibe datos, hace una tarea y opcionalmente devuelve un resultado. Dividir el programa en métodos pequeños, de una sola responsabilidad, es lo que hace legible el código.</p>
+<h3>Anatomía de un método</h3>
+<div class="code"><pre><code class="language-java">public static double calcularPrecioConIva(double precio, double iva) {
+    return precio * (1 + iva);
+}
+</code></pre></div>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Parte</th>
+<th>En el ejemplo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modificador de acceso</td>
+<td><code>public</code></td>
+<td>Quién puede llamarlo (sección 6)</td>
+</tr>
+<tr>
+<td><code>static</code></td>
+<td><code>static</code></td>
+<td>Pertenece a la clase, no a un objeto</td>
+</tr>
+<tr>
+<td>Tipo de retorno</td>
+<td><code>double</code></td>
+<td>Qué devuelve; <code>void</code> si no devuelve nada</td>
+</tr>
+<tr>
+<td>Nombre</td>
+<td><code>calcularPrecioConIva</code></td>
+<td>Un verbo en camelCase</td>
+</tr>
+<tr>
+<td>Parámetros</td>
+<td><code>(double precio, double iva)</code></td>
+<td>Datos de entrada, cada uno con su tipo</td>
+</tr>
+<tr>
+<td>Cuerpo</td>
+<td><code>{ return ...; }</code></td>
+<td>Lo que hace</td>
+</tr>
+</tbody>
+</table></div>
+<p>La combinación de nombre y tipos de parámetros se llama <strong>firma</strong>.</p>
+<h3>Llamar métodos</h3>
+<div class="code"><pre><code class="language-java">public class Calculadora {
+
+    public static void main(String[] args) {
+        double total = calcularPrecioConIva(100_000, 0.19);
+        imprimirLinea(&quot;Total: &quot; + total);
+    }
+
+    static double calcularPrecioConIva(double precio, double iva) {
+        return precio * (1 + iva);
+    }
+
+    static void imprimirLinea(String texto) {   // void: no devuelve nada
+        System.out.println(&quot;&gt; &quot; + texto);
+    }
+}
+</code></pre></div>
+<p>Si el método declara un tipo de retorno, todos los caminos deben terminar en <code>return</code>. Si no, el compilador muestra <code>missing return statement</code>.</p>
+<h3>Sobrecarga</h3>
+<p>Varios métodos pueden llamarse igual si sus parámetros son distintos. Java elige cuál usar según los argumentos.</p>
+<div class="code"><pre><code class="language-java">static int sumar(int a, int b) { return a + b; }
+static int sumar(int a, int b, int c) { return a + b + c; }
+static double sumar(double a, double b) { return a + b; }
+
+sumar(2, 3);        // usa el primero
+sumar(2, 3, 4);     // usa el segundo
+sumar(2.5, 1.5);    // usa el tercero
+</code></pre></div>
+<h3>Parámetros variables (varargs)</h3>
+<div class="code"><pre><code class="language-java">static double promedio(double... valores) {   // valores es un arreglo
+    double suma = 0;
+    for (double v : valores) suma += v;
+    return valores.length == 0 ? 0 : suma / valores.length;
+}
+
+promedio(4.0, 3.5, 5.0);
+</code></pre></div>
+<h3>Java pasa todo por valor</h3>
+<p>Cuando llamas un método, Java le entrega una copia de cada argumento.</p>
+<ul>
+<li>Con primitivos se copia el valor: cambiarlo dentro del método no afecta la variable original.</li>
+<li>Con objetos se copia la referencia: el método apunta al mismo objeto, así que sí puede modificar su contenido.</li>
+</ul>
+<div class="code"><pre><code class="language-java">static void duplicar(int x) { x = x * 2; }
+static void cambiarPrimero(int[] arr) { arr[0] = 99; }
+
+int n = 5;
+duplicar(n);            // n sigue en 5
+
+int[] datos = {1, 2};
+cambiarPrimero(datos);  // datos[0] ahora es 99
+</code></pre></div>
+<h3>Alcance de las variables</h3>
+<p>Una variable existe solo dentro del bloque <code>{ }</code> donde se declaró.</p>
+<div class="code"><pre><code class="language-java">for (int i = 0; i &lt; 3; i++) {
+    int doble = i * 2;
+}
+// System.out.println(doble);   // error: doble no existe aquí
+</code></pre></div>
+<h3>static o no static</h3>
+<p>Hasta ahora todos los métodos son <code>static</code> porque los llamamos desde <code>main</code> sin crear objetos. En la siguiente sección verás métodos de instancia, que trabajan con los datos de cada objeto. Regla práctica: en una aplicación Spring Boot casi nada es <code>static</code>, salvo constantes y utilidades.</p>
+</div>
+</section>
+
+<section class="card" id="clases">
+<div class="shead"><h2>6. Clases y objetos</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Una clase es un molde que define qué datos tiene algo (atributos) y qué sabe hacer (métodos); un objeto es una instancia concreta creada con ese molde. Todo en Spring Boot gira alrededor de clases: controladores, servicios, entidades y DTO.</p>
+<h3>Tu primera clase</h3>
+<div class="code"><pre><code class="language-java">public class Producto {
+
+    // Atributos: el estado de cada objeto
+    private String nombre;
+    private double precio;
+    private int stock;
+
+    // Constructor: se ejecuta al crear el objeto con new
+    public Producto(String nombre, double precio, int stock) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    // Métodos de instancia: trabajan con los datos de ESTE objeto
+    public boolean hayDisponible() {
+        return stock &gt; 0;
+    }
+
+    public void vender(int cantidad) {
+        stock -= cantidad;
+    }
+}
+</code></pre></div>
+<p>Crear y usar objetos:</p>
+<div class="code"><pre><code class="language-java">Producto teclado = new Producto(&quot;Teclado&quot;, 120_000, 10);
+Producto mouse = new Producto(&quot;Mouse&quot;, 45_000, 0);
+
+teclado.vender(2);
+System.out.println(teclado.hayDisponible());   // true
+System.out.println(mouse.hayDisponible());     // false
+</code></pre></div>
+<p>Cada objeto tiene sus propios atributos: vender teclados no cambia el stock del mouse.</p>
+<h3>this</h3>
+<p><code>this</code> se refiere al objeto actual. En el constructor, <code>this.nombre = nombre</code> significa "asigna al atributo <code>nombre</code> de este objeto el parámetro <code>nombre</code>". Sin <code>this</code>, el parámetro tapa al atributo y la asignación no hace nada.</p>
+<h3>Varios constructores</h3>
+<div class="code"><pre><code class="language-java">public Producto(String nombre, double precio) {
+    this(nombre, precio, 0);   // llama al otro constructor con stock en 0
+}
+</code></pre></div>
+<p>Si no escribes ningún constructor, Java crea uno vacío sin parámetros. Si escribes al menos uno, ese constructor vacío deja de existir, a menos que lo declares tú.</p>
+<h3>Encapsulamiento: getters y setters</h3>
+<p>Los atributos son <code>private</code> para que nadie los cambie sin control. El acceso se hace con métodos que pueden validar.</p>
+<div class="code"><pre><code class="language-java">public String getNombre() {
+    return nombre;
+}
+
+public double getPrecio() {
+    return precio;
+}
+
+public void setPrecio(double precio) {
+    if (precio &lt; 0) {
+        throw new IllegalArgumentException(&quot;El precio no puede ser negativo&quot;);
+    }
+    this.precio = precio;
+}
+</code></pre></div>
+<p>No crees un setter para todo por costumbre. Si un dato no debe cambiar después de crear el objeto, decláralo <code>final</code> y no le pongas setter. VS Code genera getters, setters y constructores: clic derecho, <strong>Source Action</strong>.</p>
+<h3>toString, equals y hashCode</h3>
+<p>Toda clase hereda estos tres métodos de <code>Object</code>. Casi siempre conviene sobrescribirlos.</p>
+<div class="code"><pre><code class="language-java">import java.util.Objects;
+
+@Override
+public String toString() {
+    return &quot;Producto{nombre='&quot; + nombre + &quot;', precio=&quot; + precio + &quot;, stock=&quot; + stock + &quot;}&quot;;
+}
+
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Producto otro)) return false;
+    return Objects.equals(nombre, otro.nombre);
+}
+
+@Override
+public int hashCode() {
+    return Objects.hash(nombre);
+}
+</code></pre></div>
+<ul>
+<li><code>toString()</code> define cómo se ve el objeto al imprimirlo. Sin él verás algo como <code>Producto@4e25154f</code>.</li>
+<li><code>equals()</code> define cuándo dos objetos son iguales por contenido. Sin él, solo son iguales si son el mismo objeto en memoria.</li>
+<li><code>hashCode()</code> debe ser coherente con <code>equals()</code>: si dos objetos son iguales, deben tener el mismo hash. Si no, <code>HashSet</code> y <code>HashMap</code> funcionan mal.</li>
+</ul>
+<h3>Miembros static</h3>
+<p>Un atributo <code>static</code> es compartido por todos los objetos de la clase.</p>
+<div class="code"><pre><code class="language-java">public class Producto {
+    private static int totalCreados = 0;   // uno solo para toda la clase
+
+    public Producto(String nombre, double precio, int stock) {
+        // ...
+        totalCreados++;
+    }
+
+    public static int getTotalCreados() {
+        return totalCreados;
+    }
+}
+
+Producto.getTotalCreados();   // se llama con el nombre de la clase
+</code></pre></div>
+<h3>Paquetes e imports</h3>
+<p>Los paquetes organizan las clases en carpetas y evitan choques de nombres. La declaración <code>package</code> debe coincidir con la carpeta.</p>
+<div class="code"><pre><code class="language-java">// archivo: src/main/java/com/freetech/tienda/modelo/Producto.java
+package com.freetech.tienda.modelo;
+
+import java.util.List;                       // clase de la biblioteca estándar
+import com.freetech.tienda.util.Formatos;    // clase de otro paquete tuyo
+</code></pre></div>
+<p>Las clases de <code>java.lang</code> (<code>String</code>, <code>Math</code>, <code>Integer</code>, <code>System</code>) se importan solas.</p>
+<h3>Modificadores de acceso</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Modificador</th>
+<th>Visible desde</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public</code></td>
+<td>Cualquier clase</td>
+<td>Clases y métodos que otros deben usar</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>El mismo paquete y las subclases</td>
+<td>Métodos pensados para herencia</td>
+</tr>
+<tr>
+<td>Sin modificador (de paquete)</td>
+<td>Solo el mismo paquete</td>
+<td>Clases auxiliares internas</td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>Solo la propia clase</td>
+<td>Atributos y métodos internos</td>
+</tr>
+</tbody>
+</table></div>
+<p>Regla general: empieza con <code>private</code> y abre solo lo necesario.</p>
+<h3>Referencias y null</h3>
+<p>Una variable de tipo objeto no guarda el objeto: guarda una referencia a él. Si no apunta a nada, vale <code>null</code>.</p>
+<div class="code"><pre><code class="language-java">Producto p1 = new Producto(&quot;Monitor&quot;, 800_000, 3);
+Producto p2 = p1;          // p2 apunta al MISMO objeto
+p2.vender(1);              // p1 también ve stock = 2
+
+Producto p3 = null;
+// p3.vender(1);           // NullPointerException: no hay objeto
+</code></pre></div>
+<blockquote>
+<p><strong>El error más frecuente.</strong> <code>NullPointerException</code> aparece cuando usas una variable que vale <code>null</code>. Verifica <code>null</code> antes de usar un objeto que puede no existir, o usa <code>Optional</code> (sección 10).</p>
+</blockquote>
+</div>
+</section>
+
+<section class="card" id="herencia">
+<div class="shead"><h2>7. Herencia y polimorfismo</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>La herencia permite que una clase hija reutilice y especialice a una clase padre; el polimorfismo permite tratar objetos distintos de la misma forma y que cada uno responda a su manera. Java solo permite heredar de una clase.</p>
+<h3>extends y super</h3>
+<div class="code"><pre><code class="language-java">public class Empleado {
+    protected String nombre;
+    protected double salarioBase;
+
+    public Empleado(String nombre, double salarioBase) {
+        this.nombre = nombre;
+        this.salarioBase = salarioBase;
+    }
+
+    public double calcularPago() {
+        return salarioBase;
+    }
+}
+
+public class Gerente extends Empleado {
+    private double bono;
+
+    public Gerente(String nombre, double salarioBase, double bono) {
+        super(nombre, salarioBase);   // llama al constructor del padre, siempre primero
+        this.bono = bono;
+    }
+
+    @Override
+    public double calcularPago() {
+        return super.calcularPago() + bono;   // reutiliza la lógica del padre
+    }
+}
+</code></pre></div>
+<p>Cada clase pública va en su propio archivo: <code>Empleado.java</code> y <code>Gerente.java</code>. Aplica igual para todos los ejemplos de esta guía que muestran varias clases juntas.</p>
+<ul>
+<li><code>extends</code> indica de quién hereda. <code>Gerente</code> tiene todo lo de <code>Empleado</code> más lo suyo.</li>
+<li><code>super(...)</code> llama al constructor del padre. <code>super.metodo()</code> llama a la versión del padre.</li>
+<li><code>@Override</code> le dice al compilador que estás sobrescribiendo un método. Si te equivocas en el nombre o los parámetros, te avisa con un error. Úsalo siempre.</li>
+</ul>
+<h3>Polimorfismo</h3>
+<p>Una variable del tipo padre puede guardar cualquier hijo. Al llamar un método, se ejecuta la versión del objeto real.</p>
+<div class="code"><pre><code class="language-java">Empleado[] equipo = {
+    new Empleado(&quot;Ana&quot;, 3_000_000),
+    new Gerente(&quot;Luis&quot;, 5_000_000, 1_500_000)
+};
+
+double nomina = 0;
+for (Empleado e : equipo) {
+    nomina += e.calcularPago();   // Ana: 3.000.000, Luis: 6.500.000
+}
+</code></pre></div>
+<p>El ciclo no sabe ni le importa qué tipo de empleado es cada uno. Si mañana agregas <code>Practicante</code>, el ciclo sigue funcionando sin cambios.</p>
+<h3>Clases abstractas</h3>
+<p>Una clase <code>abstract</code> no se puede instanciar: existe para ser heredada. Sus métodos <code>abstract</code> no tienen cuerpo y obligan a cada hija a implementarlos.</p>
+<div class="code"><pre><code class="language-java">public abstract class Figura {
+    public abstract double area();
+
+    public String describir() {          // también puede tener métodos normales
+        return &quot;Figura de área &quot; + area();
+    }
+}
+
+public class Circulo extends Figura {
+    private final double radio;
+    public Circulo(double radio) { this.radio = radio; }
+
+    @Override
+    public double area() { return Math.PI * radio * radio; }
+}
+
+public class Rectangulo extends Figura {
+    private final double base, altura;
+    public Rectangulo(double base, double altura) { this.base = base; this.altura = altura; }
+
+    @Override
+    public double area() { return base * altura; }
+}
+
+// Figura f = new Figura();   // error: es abstracta
+Figura f = new Circulo(2);     // válido
+</code></pre></div>
+<h3>instanceof con patrón</h3>
+<p>Para preguntar el tipo real de un objeto y usarlo en la misma línea (Java 16 o superior):</p>
+<div class="code"><pre><code class="language-java">if (f instanceof Circulo c) {
+    System.out.println(&quot;Es un círculo de área &quot; + c.area());
+}
+</code></pre></div>
+<p>Si te descubres llenando el código de <code>instanceof</code>, casi siempre falta un método polimórfico en la clase padre.</p>
+<h3>La clase Object y final</h3>
+<ul>
+<li>Toda clase hereda de <code>Object</code> aunque no lo escribas. De ahí vienen <code>toString()</code>, <code>equals()</code> y <code>hashCode()</code>.</li>
+<li>Una clase <code>final</code> no puede tener hijas. <code>String</code> es <code>final</code>.</li>
+<li>Un método <code>final</code> no se puede sobrescribir.</li>
+</ul>
+<h3>Composición antes que herencia</h3>
+<p>Hereda solo cuando la relación es "es un": un <code>Gerente</code> es un <code>Empleado</code>. Cuando la relación es "tiene un", usa un atributo: un <code>Pedido</code> tiene una lista de productos, no hereda de <code>Producto</code>.</p>
+<div class="code"><pre><code class="language-java">public class Pedido {
+    private Cliente cliente;          // composición: Pedido TIENE un Cliente
+    private Producto[] productos;
+}
+</code></pre></div>
+<p>Las jerarquías profundas de herencia son difíciles de mantener. En Spring Boot casi no verás herencia entre tus clases; verás mucha composición e interfaces.</p>
+</div>
+</section>
+
+<section class="card" id="interfaces">
+<div class="shead"><h2>8. Interfaces</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Una interfaz es un contrato: dice qué métodos debe tener una clase, sin decir cómo se implementan. Es el concepto más importante de esta guía para Spring Boot, porque Spring está construido sobre "programar contra interfaces".</p>
+<h3>Definir e implementar</h3>
+<div class="code"><pre><code class="language-java">public interface Notificador {
+    void enviar(String destino, String mensaje);   // público y abstracto por defecto
+}
+
+public class NotificadorEmail implements Notificador {
+    @Override
+    public void enviar(String destino, String mensaje) {
+        System.out.println(&quot;Email a &quot; + destino + &quot;: &quot; + mensaje);
+    }
+}
+
+public class NotificadorSms implements Notificador {
+    @Override
+    public void enviar(String destino, String mensaje) {
+        System.out.println(&quot;SMS a &quot; + destino + &quot;: &quot; + mensaje);
+    }
+}
+</code></pre></div>
+<p>Una clase que hace <code>implements</code> está obligada a escribir todos los métodos de la interfaz. Si falta uno, no compila.</p>
+<h3>Programar contra la interfaz</h3>
+<p>La clase que usa el notificador no sabe cuál implementación recibe. Solo conoce el contrato.</p>
+<div class="code"><pre><code class="language-java">public class ServicioPedidos {
+
+    private final Notificador notificador;   // depende de la interfaz, no de una clase concreta
+
+    public ServicioPedidos(Notificador notificador) {
+        this.notificador = notificador;      // alguien de afuera le entrega la implementación
+    }
+
+    public void confirmarPedido(String cliente) {
+        // ... lógica del pedido
+        notificador.enviar(cliente, &quot;Tu pedido fue confirmado&quot;);
+    }
+}
+</code></pre></div>
+<div class="code"><pre><code class="language-java">// Hoy por email
+ServicioPedidos servicio = new ServicioPedidos(new NotificadorEmail());
+
+// Mañana por SMS, sin tocar una línea de ServicioPedidos
+ServicioPedidos otro = new ServicioPedidos(new NotificadorSms());
+</code></pre></div>
+<p>Esto se llama <strong>inyección de dependencias</strong>: la clase no crea lo que necesita con <code>new</code>, se lo entregan por el constructor. Ventajas:</p>
+<ul>
+<li>Cambias la implementación sin modificar la clase que la usa.</li>
+<li>En las pruebas le pasas una implementación falsa que no envía emails reales.</li>
+<li>Cada clase tiene una sola responsabilidad.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa para el curso.</strong> En Spring Boot no escribes esos <code>new</code>: Spring crea los objetos y los inyecta por ti. Si entiendes este ejemplo, entiendes la idea central de Spring.</p>
+</blockquote>
+<h3>Varias interfaces a la vez</h3>
+<p>Una clase hereda de una sola clase, pero puede implementar muchas interfaces.</p>
+<div class="code"><pre><code class="language-java">public interface Exportable { String exportarCsv(); }
+public interface Auditable { String getUsuarioCreador(); }
+
+public class Factura implements Exportable, Auditable {
+    @Override public String exportarCsv() { return &quot;...&quot;; }
+    @Override public String getUsuarioCreador() { return &quot;admin&quot;; }
+}
+</code></pre></div>
+<h3>Métodos default y static</h3>
+<p>Desde Java 8 una interfaz puede traer métodos con cuerpo. Las clases los heredan y pueden sobrescribirlos.</p>
+<div class="code"><pre><code class="language-java">public interface Notificador {
+    void enviar(String destino, String mensaje);
+
+    default void enviarATodos(String[] destinos, String mensaje) {
+        for (String d : destinos) {
+            enviar(d, mensaje);
+        }
+    }
+
+    static boolean esDestinoValido(String destino) {
+        return destino != null &amp;&amp; !destino.isBlank();
+    }
+}
+</code></pre></div>
+<p>Las interfaces también pueden tener constantes, pero no atributos de instancia.</p>
+<h3>Interfaz o clase abstracta</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th></th>
+<th>Interfaz</th>
+<th>Clase abstracta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cuántas puede usar una clase</td>
+<td>Varias (<code>implements A, B</code>)</td>
+<td>Solo una (<code>extends A</code>)</td>
+</tr>
+<tr>
+<td>Atributos de instancia</td>
+<td>No, solo constantes</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>Constructores</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>Cuándo usarla</td>
+<td>Definir una capacidad o contrato</td>
+<td>Compartir estado y código entre clases muy parecidas</td>
+</tr>
+</tbody>
+</table></div>
+<p>En la duda, empieza con una interfaz.</p>
+<h3>Interfaces que verás en el curso</h3>
+<ul>
+<li><code>List</code>, <code>Set</code> y <code>Map</code> son interfaces; <code>ArrayList</code> y <code>HashMap</code> son implementaciones (sección 10).</li>
+<li><code>Comparable</code> y <code>Comparator</code> definen cómo ordenar objetos.</li>
+<li><code>JpaRepository</code> de Spring Data es una interfaz que tú declaras y Spring implementa automáticamente para hablar con PostgreSQL.</li>
+</ul>
+</div>
+</section>
+
+<section class="card" id="records">
+<div class="shead"><h2>9. Records y enums</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Un <code>record</code> es una clase inmutable para transportar datos, escrita en una línea; un <code>enum</code> es un tipo con un conjunto cerrado de valores. Los dos aparecen en todas las APIs que construiremos.</p>
+<h3>Records</h3>
+<p>Antes de Java 16, una clase para llevar datos necesitaba atributos, constructor, getters, <code>equals</code>, <code>hashCode</code> y <code>toString</code>. Un record genera todo eso por ti:</p>
+<div class="code"><pre><code class="language-java">public record ProductoDto(String nombre, double precio, int stock) { }
+</code></pre></div>
+<div class="code"><pre><code class="language-java">ProductoDto dto = new ProductoDto(&quot;Teclado&quot;, 120_000, 10);
+
+System.out.println(dto.nombre());   // los accesores se llaman igual que el campo, sin &quot;get&quot;
+System.out.println(dto);            // ProductoDto[nombre=Teclado, precio=120000.0, stock=10]
+
+ProductoDto otro = new ProductoDto(&quot;Teclado&quot;, 120_000, 10);
+System.out.println(dto.equals(otro));   // true: compara por contenido
+</code></pre></div>
+<p>Características:</p>
+<ul>
+<li>Sus campos son <code>private final</code>: no hay setters y no se pueden cambiar.</li>
+<li>Puede tener métodos propios y métodos <code>static</code>.</li>
+<li>No puede heredar de otra clase, pero sí implementar interfaces.</li>
+</ul>
+<p>Validar en el constructor compacto:</p>
+<div class="code"><pre><code class="language-java">public record ProductoDto(String nombre, double precio, int stock) {
+    public ProductoDto {
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException(&quot;El nombre es obligatorio&quot;);
+        }
+        if (precio &lt; 0) {
+            throw new IllegalArgumentException(&quot;El precio no puede ser negativo&quot;);
+        }
+    }
+
+    public double valorInventario() {
+        return precio * stock;
+    }
+}
+</code></pre></div>
+<blockquote>
+<p><strong>Dónde los verás.</strong> En el curso usaremos records como DTO (Data Transfer Object): los objetos que una API recibe y devuelve en JSON. Spring convierte un record a JSON y de JSON a record sin que escribas nada.</p>
+</blockquote>
+<h3>Enums</h3>
+<p>Cuando una variable solo puede tomar ciertos valores, un <code>enum</code> evita errores de escritura como <code>"ENVIADO"</code> contra <code>"Enviado"</code>.</p>
+<div class="code"><pre><code class="language-java">public enum EstadoPedido {
+    PENDIENTE, PAGADO, ENVIADO, ENTREGADO, CANCELADO
+}
+</code></pre></div>
+<div class="code"><pre><code class="language-java">EstadoPedido estado = EstadoPedido.PAGADO;
+
+if (estado == EstadoPedido.PAGADO) {          // los enums sí se comparan con ==
+    System.out.println(&quot;Listo para enviar&quot;);
+}
+
+String mensaje = switch (estado) {
+    case PENDIENTE -&gt; &quot;Esperando pago&quot;;
+    case PAGADO -&gt; &quot;Preparando tu pedido&quot;;
+    case ENVIADO -&gt; &quot;En camino&quot;;
+    case ENTREGADO -&gt; &quot;Entregado&quot;;
+    case CANCELADO -&gt; &quot;Cancelado&quot;;
+};   // el compilador sabe que cubriste todos los casos, no necesitas default
+</code></pre></div>
+<p>Métodos útiles:</p>
+<div class="code"><pre><code class="language-java">EstadoPedido.values();                 // arreglo con todos los valores
+EstadoPedido.valueOf(&quot;ENVIADO&quot;);       // de texto a enum (falla si no existe)
+estado.name();                         // de enum a texto: &quot;PAGADO&quot;
+estado.ordinal();                      // posición: 1 (evita depender de esto)
+</code></pre></div>
+<h3>Enums con atributos y métodos</h3>
+<p>Un enum es una clase especial: puede tener atributos, constructor y métodos.</p>
+<div class="code"><pre><code class="language-java">public enum Plan {
+    BASICO(0), PRO(49_900), EMPRESARIAL(199_900);
+
+    private final int precioMensual;
+
+    Plan(int precioMensual) {          // el constructor de un enum siempre es privado
+        this.precioMensual = precioMensual;
+    }
+
+    public int getPrecioMensual() {
+        return precioMensual;
+    }
+
+    public boolean esGratis() {
+        return precioMensual == 0;
+    }
+}
+
+Plan.PRO.getPrecioMensual();   // 49900
+</code></pre></div>
+</div>
+</section>
+
+<section class="card" id="colecciones">
+<div class="shead"><h2>10. Genéricos y colecciones</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Las colecciones son estructuras que crecen y se encogen según lo necesites; los genéricos (<code>&lt;Tipo&gt;</code>) le dicen al compilador qué guardan. En una API casi todo lo que recibes y devuelves son listas y mapas de objetos.</p>
+<p>Todas viven en el paquete <code>java.util</code>. Si VS Code marca un error en <code>List</code>, <code>Map</code> o <code>Comparator</code>, pon el cursor encima y presiona <code>Ctrl+.</code> para agregar el import.</p>
+<h3>Genéricos y clases envoltorio</h3>
+<div class="code"><pre><code class="language-java">List&lt;String&gt; nombres = new ArrayList&lt;&gt;();   // lista que solo acepta String
+nombres.add(&quot;Ana&quot;);
+// nombres.add(25);                          // error al compilar: 25 no es String
+String primero = nombres.get(0);             // no necesitas hacer cast
+</code></pre></div>
+<p>El <code>&lt;&gt;</code> vacío a la derecha se llama operador diamante: el compilador repite el tipo de la izquierda.</p>
+<p>Las colecciones solo guardan objetos, no primitivos. Para eso existen las clases envoltorio, y Java convierte entre ellas automáticamente (autoboxing):</p>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Primitivo</th>
+<th>Envoltorio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>Integer</code></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td><code>Long</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td><code>Double</code></td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><code>Character</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="code"><pre><code class="language-java">List&lt;Integer&gt; edades = new ArrayList&lt;&gt;();   // List&lt;int&gt; no compila
+edades.add(20);                             // el int 20 se convierte en Integer
+int primera = edades.get(0);                // y de vuelta a int
+</code></pre></div>
+<p>Un <code>Integer</code> puede ser <code>null</code> y un <code>int</code> no. Si conviertes un <code>Integer</code> nulo a <code>int</code>, obtienes <code>NullPointerException</code>.</p>
+<h3>List: ordenada y con duplicados</h3>
+<div class="code"><pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+
+List&lt;String&gt; tareas = new ArrayList&lt;&gt;();
+tareas.add(&quot;Instalar Java&quot;);          // agrega al final
+tareas.add(&quot;Leer la guía&quot;);
+tareas.add(0, &quot;Crear carpeta&quot;);       // agrega en la posición 0
+
+tareas.get(1);                        // &quot;Instalar Java&quot;
+tareas.set(1, &quot;Instalar JDK 21&quot;);     // reemplaza
+tareas.remove(&quot;Leer la guía&quot;);        // elimina por valor
+tareas.size();                        // 2
+tareas.contains(&quot;Crear carpeta&quot;);     // true
+tareas.isEmpty();                     // false
+tareas.indexOf(&quot;Instalar JDK 21&quot;);    // 1
+
+for (String t : tareas) {
+    System.out.println(t);
+}
+</code></pre></div>
+<p>Declara la variable con la interfaz (<code>List</code>) y crea la implementación (<code>ArrayList</code>). Así puedes cambiar de implementación sin tocar el resto del código, igual que en la sección 8.</p>
+<h3>Set: sin duplicados</h3>
+<div class="code"><pre><code class="language-java">import java.util.HashSet;
+import java.util.Set;
+
+Set&lt;String&gt; correos = new HashSet&lt;&gt;();
+correos.add(&quot;ana@mail.com&quot;);
+correos.add(&quot;luis@mail.com&quot;);
+boolean agregado = correos.add(&quot;ana@mail.com&quot;);   // false: ya estaba
+
+correos.size();                     // 2
+correos.contains(&quot;luis@mail.com&quot;);  // true, y muy rápido aunque haya millones
+</code></pre></div>
+<p><code>HashSet</code> no garantiza ningún orden. <code>LinkedHashSet</code> respeta el orden de inserción y <code>TreeSet</code> los mantiene ordenados.</p>
+<p>Para que un <code>Set</code> detecte duplicados de tus propias clases, la clase debe sobrescribir <code>equals</code> y <code>hashCode</code> (sección 6). Los records ya lo traen.</p>
+<h3>Map: pares clave y valor</h3>
+<div class="code"><pre><code class="language-java">import java.util.HashMap;
+import java.util.Map;
+
+Map&lt;String, Integer&gt; inventario = new HashMap&lt;&gt;();
+inventario.put(&quot;Teclado&quot;, 10);
+inventario.put(&quot;Mouse&quot;, 25);
+inventario.put(&quot;Teclado&quot;, 8);                   // misma clave: reemplaza el valor
+
+inventario.get(&quot;Mouse&quot;);                        // 25
+inventario.get(&quot;Monitor&quot;);                      // null: no existe
+inventario.getOrDefault(&quot;Monitor&quot;, 0);          // 0
+inventario.containsKey(&quot;Teclado&quot;);              // true
+inventario.remove(&quot;Mouse&quot;);
+
+for (Map.Entry&lt;String, Integer&gt; e : inventario.entrySet()) {
+    System.out.println(e.getKey() + &quot;: &quot; + e.getValue());
+}
+</code></pre></div>
+<p>Contar ocurrencias es un uso clásico:</p>
+<div class="code"><pre><code class="language-java">String[] votos = {&quot;Java&quot;, &quot;Python&quot;, &quot;Java&quot;, &quot;Go&quot;, &quot;Java&quot;};
+Map&lt;String, Integer&gt; conteo = new HashMap&lt;&gt;();
+for (String v : votos) {
+    conteo.merge(v, 1, Integer::sum);   // si no existe pone 1, si existe suma 1
+}
+// {Java=3, Python=1, Go=1}
+</code></pre></div>
+<h3>Cuál usar</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Necesitas</th>
+<th>Usa</th>
+<th>Implementación habitual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Una secuencia en orden, con posiciones y duplicados</td>
+<td><code>List</code></td>
+<td><code>ArrayList</code></td>
+</tr>
+<tr>
+<td>Elementos únicos o saber rápido si algo existe</td>
+<td><code>Set</code></td>
+<td><code>HashSet</code></td>
+</tr>
+<tr>
+<td>Buscar un valor por una clave (id, correo, código)</td>
+<td><code>Map</code></td>
+<td><code>HashMap</code></td>
+</tr>
+<tr>
+<td>Lo anterior pero conservando el orden de inserción</td>
+<td><code>LinkedHashSet</code> o <code>LinkedHashMap</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Lo anterior pero siempre ordenado</td>
+<td><code>TreeSet</code> o <code>TreeMap</code></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Colecciones inmutables</h3>
+<div class="code"><pre><code class="language-java">List&lt;String&gt; roles = List.of(&quot;ADMIN&quot;, &quot;USER&quot;);
+Set&lt;Integer&gt; primos = Set.of(2, 3, 5, 7);
+Map&lt;String, Integer&gt; puertos = Map.of(&quot;http&quot;, 80, &quot;https&quot;, 443);
+
+// roles.add(&quot;GUEST&quot;);   // UnsupportedOperationException: no se puede modificar
+</code></pre></div>
+<p>Úsalas para datos fijos. Si necesitas una copia que sí se pueda modificar: <code>new ArrayList&lt;&gt;(roles)</code>.</p>
+<h3>Ordenar</h3>
+<div class="code"><pre><code class="language-java">List&lt;Integer&gt; numeros = new ArrayList&lt;&gt;(List.of(5, 2, 9, 1));
+Collections.sort(numeros);                   // [1, 2, 5, 9]
+numeros.sort(Comparator.reverseOrder());     // [9, 5, 2, 1]
+
+List&lt;ProductoDto&gt; productos = new ArrayList&lt;&gt;(/* ... */);
+productos.sort(Comparator.comparing(ProductoDto::precio));            // por precio
+productos.sort(Comparator.comparing(ProductoDto::nombre).reversed()); // por nombre, Z a A
+</code></pre></div>
+<p><code>ProductoDto::precio</code> es una referencia a método; la explicamos en la sección 12.</p>
+<h3>Eliminar mientras recorres</h3>
+<p>Modificar una lista dentro de un for-each lanza <code>ConcurrentModificationException</code>. Usa <code>removeIf</code>:</p>
+<div class="code"><pre><code class="language-java">// for (String t : tareas) { if (t.startsWith(&quot;X&quot;)) tareas.remove(t); }   // falla
+tareas.removeIf(t -&gt; t.startsWith(&quot;X&quot;));                                   // correcto
+</code></pre></div>
+<h3>Optional: un valor que puede no estar</h3>
+<p><code>Optional</code> es una caja que tiene un valor o está vacía. Sirve para que un método diga claramente "puede que no encuentre nada" en lugar de devolver <code>null</code>.</p>
+<div class="code"><pre><code class="language-java">import java.util.Optional;
+
+Optional&lt;ProductoDto&gt; buscarPorNombre(List&lt;ProductoDto&gt; lista, String nombre) {
+    for (ProductoDto p : lista) {
+        if (p.nombre().equalsIgnoreCase(nombre)) {
+            return Optional.of(p);
+        }
+    }
+    return Optional.empty();
+}
+</code></pre></div>
+<div class="code"><pre><code class="language-java">Optional&lt;ProductoDto&gt; resultado = buscarPorNombre(productos, &quot;Teclado&quot;);
+
+resultado.isPresent();                          // true si encontró algo
+resultado.ifPresent(p -&gt; System.out.println(p));
+ProductoDto p = resultado.orElse(null);         // el valor o un reemplazo
+ProductoDto q = resultado.orElseThrow(() -&gt; new IllegalArgumentException(&quot;No existe&quot;));
+</code></pre></div>
+<p>En Spring Data, <code>repository.findById(id)</code> devuelve un <code>Optional</code>. Lo usarás desde la semana 2.</p>
+</div>
+</section>
+
+<section class="card" id="excepciones">
+<div class="shead"><h2>11. Excepciones</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Una excepción es un objeto que representa un error en tiempo de ejecución; si nadie la atrapa, el programa se detiene y muestra la traza del error. Manejarlas bien es lo que diferencia una API que responde "producto no encontrado" de una que se cae.</p>
+<h3>Leer una traza de error</h3>
+<div class="code"><pre><code class="language-text">Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero
+    at Calculadora.dividir(Calculadora.java:12)
+    at Calculadora.main(Calculadora.java:5)
+</code></pre></div>
+<p>Léela de arriba hacia abajo: el tipo de error (<code>ArithmeticException</code>), el mensaje (<code>/ by zero</code>) y la primera línea de tu código donde ocurrió (<code>Calculadora.java:12</code>). Esa línea es donde empiezas a buscar.</p>
+<h3>try, catch y finally</h3>
+<div class="code"><pre><code class="language-java">try {
+    int numero = Integer.parseInt(textoUsuario);
+    System.out.println(&quot;El doble es &quot; + numero * 2);
+} catch (NumberFormatException e) {
+    System.out.println(&quot;Eso no es un número: &quot; + e.getMessage());
+} finally {
+    System.out.println(&quot;Esto se ejecuta siempre, haya error o no&quot;);
+}
+</code></pre></div>
+<ul>
+<li><code>try</code> envuelve el código que puede fallar.</li>
+<li><code>catch</code> atrapa un tipo de excepción y decide qué hacer. Puede haber varios <code>catch</code>, del más específico al más general.</li>
+<li><code>finally</code> es opcional y se ejecuta siempre; sirve para liberar recursos.</li>
+</ul>
+<p>Varios tipos en un solo catch:</p>
+<div class="code"><pre><code class="language-java">catch (NumberFormatException | ArithmeticException e) { ... }
+</code></pre></div>
+<h3>Jerarquía: checked y unchecked</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Hereda de</th>
+<th>El compilador exige manejarla</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checked</td>
+<td><code>Exception</code></td>
+<td>Sí: o la atrapas o la declaras con <code>throws</code></td>
+<td><code>IOException</code>, <code>SQLException</code></td>
+</tr>
+<tr>
+<td>Unchecked</td>
+<td><code>RuntimeException</code></td>
+<td>No</td>
+<td><code>NullPointerException</code>, <code>IllegalArgumentException</code>, <code>NumberFormatException</code></td>
+</tr>
+<tr>
+<td>Error</td>
+<td><code>Error</code></td>
+<td>No, y no debes atraparlos</td>
+<td><code>OutOfMemoryError</code>, <code>StackOverflowError</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Las checked representan problemas externos que pueden pasar aunque tu código esté bien (un archivo que no existe). Las unchecked casi siempre son errores de programación o datos inválidos.</p>
+<h3>Lanzar excepciones con throw</h3>
+<div class="code"><pre><code class="language-java">public void retirar(double monto) {
+    if (monto &lt;= 0) {
+        throw new IllegalArgumentException(&quot;El monto debe ser positivo&quot;);
+    }
+    if (monto &gt; saldo) {
+        throw new IllegalStateException(&quot;Saldo insuficiente&quot;);
+    }
+    saldo -= monto;
+}
+</code></pre></div>
+<p>Valida al inicio del método y falla rápido con un mensaje claro.</p>
+<h3>Declarar con throws</h3>
+<p>Si un método puede lanzar una excepción checked y no quiere manejarla, la declara para que la maneje quien lo llama:</p>
+<div class="code"><pre><code class="language-java">public String leerArchivo(String ruta) throws IOException {
+    return Files.readString(Path.of(ruta));
+}
+</code></pre></div>
+<h3>Tus propias excepciones</h3>
+<div class="code"><pre><code class="language-java">public class ProductoNoEncontradoException extends RuntimeException {
+    public ProductoNoEncontradoException(Long id) {
+        super(&quot;No existe un producto con id &quot; + id);
+    }
+}
+
+// uso
+throw new ProductoNoEncontradoException(15L);
+</code></pre></div>
+<p>Hereda de <code>RuntimeException</code> para que sea unchecked. Un nombre específico dice mucho más que una excepción genérica.</p>
+<h3>try-with-resources</h3>
+<p>Los recursos que hay que cerrar (archivos, conexiones, <code>Scanner</code>) se declaran entre paréntesis y Java los cierra solo, aunque haya error:</p>
+<div class="code"><pre><code class="language-java">try (Scanner sc = new Scanner(Path.of(&quot;datos.txt&quot;))) {
+    while (sc.hasNextLine()) {
+        System.out.println(sc.nextLine());
+    }
+} catch (IOException e) {
+    System.out.println(&quot;No se pudo leer el archivo: &quot; + e.getMessage());
+}
+</code></pre></div>
+<h3>Buenas prácticas</h3>
+<ul>
+<li>Nunca dejes un <code>catch</code> vacío: escondes el error y luego nadie sabe qué pasó.</li>
+<li>Atrapa la excepción más específica posible, no <code>Exception</code> en todas partes.</li>
+<li>No uses excepciones para el flujo normal del programa; úsalas para situaciones excepcionales.</li>
+<li>Escribe mensajes que ayuden a quien lee el error: qué falló y con qué dato.</li>
+</ul>
+<blockquote>
+<p><strong>En Spring Boot.</strong> Lanzarás <code>ProductoNoEncontradoException</code> desde un servicio y un manejador global con <code>@ExceptionHandler</code> la convertirá en una respuesta HTTP 404. Lo verás en clase.</p>
+</blockquote>
+</div>
+</section>
+
+<section class="card" id="lambdas">
+<div class="shead"><h2>12. Lambdas y Streams</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Una lambda es una función corta que puedes pasar como valor; los streams usan lambdas para filtrar, transformar y resumir colecciones en pocas líneas. El código moderno de Java y de Spring está lleno de ambos. Los collectors se importan desde <code>java.util.stream.Collectors</code>.</p>
+<h3>Interfaces funcionales y lambdas</h3>
+<p>Una interfaz funcional tiene un solo método abstracto. Una lambda es una forma corta de implementarla sin crear una clase.</p>
+<div class="code"><pre><code class="language-java">// Con una clase anónima (forma antigua)
+Comparator&lt;String&gt; porLargo = new Comparator&lt;String&gt;() {
+    @Override
+    public int compare(String a, String b) {
+        return Integer.compare(a.length(), b.length());
+    }
+};
+
+// Con una lambda: lo mismo en una línea
+Comparator&lt;String&gt; porLargoLambda = (a, b) -&gt; Integer.compare(a.length(), b.length());
+</code></pre></div>
+<p>Sintaxis: <code>(parámetros) -&gt; expresión</code> o <code>(parámetros) -&gt; { bloque con return; }</code>. Si hay un solo parámetro, los paréntesis son opcionales: <code>x -&gt; x * 2</code>.</p>
+<p>Las interfaces funcionales que más usarás vienen en <code>java.util.function</code>:</p>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Interfaz</th>
+<th>Recibe</th>
+<th>Devuelve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Predicate&lt;T&gt;</code></td>
+<td>Un <code>T</code></td>
+<td><code>boolean</code></td>
+<td><code>p -&gt; p.precio() &gt; 100_000</code></td>
+</tr>
+<tr>
+<td><code>Function&lt;T, R&gt;</code></td>
+<td>Un <code>T</code></td>
+<td>Un <code>R</code></td>
+<td><code>p -&gt; p.nombre()</code></td>
+</tr>
+<tr>
+<td><code>Consumer&lt;T&gt;</code></td>
+<td>Un <code>T</code></td>
+<td>Nada</td>
+<td><code>p -&gt; System.out.println(p)</code></td>
+</tr>
+<tr>
+<td><code>Supplier&lt;T&gt;</code></td>
+<td>Nada</td>
+<td>Un <code>T</code></td>
+<td><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Referencias a métodos</h3>
+<p>Cuando la lambda solo llama un método existente, puedes escribirla más corta con <code>::</code>.</p>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Lambda</th>
+<th>Referencia a método</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p -&gt; p.nombre()</code></td>
+<td><code>ProductoDto::nombre</code></td>
+</tr>
+<tr>
+<td><code>s -&gt; System.out.println(s)</code></td>
+<td><code>System.out::println</code></td>
+</tr>
+<tr>
+<td><code>s -&gt; Integer.parseInt(s)</code></td>
+<td><code>Integer::parseInt</code></td>
+</tr>
+<tr>
+<td><code>() -&gt; new ArrayList&lt;&gt;()</code></td>
+<td><code>ArrayList::new</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Streams</h3>
+<p>Un stream es una tubería: tomas una colección, le aplicas operaciones intermedias y terminas con una operación final que produce el resultado. El stream no modifica la colección original.</p>
+<div class="code"><pre><code class="language-java">List&lt;ProductoDto&gt; productos = List.of(
+    new ProductoDto(&quot;Teclado&quot;, 120_000, 10),
+    new ProductoDto(&quot;Mouse&quot;, 45_000, 0),
+    new ProductoDto(&quot;Monitor&quot;, 800_000, 3),
+    new ProductoDto(&quot;Audífonos&quot;, 95_000, 7)
+);
+
+List&lt;String&gt; disponiblesCaros = productos.stream()
+    .filter(p -&gt; p.stock() &gt; 0)                  // intermedia: conserva los que cumplen
+    .filter(p -&gt; p.precio() &gt; 90_000)
+    .sorted(Comparator.comparing(ProductoDto::precio))   // intermedia: ordena
+    .map(ProductoDto::nombre)                    // intermedia: transforma cada elemento
+    .toList();                                   // final: arma el resultado
+
+// [Audífonos, Teclado, Monitor]
+</code></pre></div>
+<h3>Operaciones que más usarás</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Operación</th>
+<th>Tipo</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter(predicado)</code></td>
+<td>Intermedia</td>
+<td>Deja pasar solo los que cumplen</td>
+</tr>
+<tr>
+<td><code>map(función)</code></td>
+<td>Intermedia</td>
+<td>Convierte cada elemento en otro</td>
+</tr>
+<tr>
+<td><code>sorted(comparador)</code></td>
+<td>Intermedia</td>
+<td>Ordena</td>
+</tr>
+<tr>
+<td><code>distinct()</code></td>
+<td>Intermedia</td>
+<td>Quita duplicados</td>
+</tr>
+<tr>
+<td><code>limit(n)</code></td>
+<td>Intermedia</td>
+<td>Toma los primeros <code>n</code></td>
+</tr>
+<tr>
+<td><code>toList()</code></td>
+<td>Final</td>
+<td>Devuelve una lista (inmutable)</td>
+</tr>
+<tr>
+<td><code>count()</code></td>
+<td>Final</td>
+<td>Cuenta los elementos</td>
+</tr>
+<tr>
+<td><code>anyMatch(predicado)</code></td>
+<td>Final</td>
+<td><code>true</code> si al menos uno cumple</td>
+</tr>
+<tr>
+<td><code>findFirst()</code></td>
+<td>Final</td>
+<td>El primero, dentro de un <code>Optional</code></td>
+</tr>
+<tr>
+<td><code>forEach(acción)</code></td>
+<td>Final</td>
+<td>Ejecuta algo con cada elemento</td>
+</tr>
+<tr>
+<td><code>collect(Collectors...)</code></td>
+<td>Final</td>
+<td>Arma listas, mapas, agrupaciones o textos</td>
+</tr>
+</tbody>
+</table></div>
+<p>Más ejemplos:</p>
+<div class="code"><pre><code class="language-java">long agotados = productos.stream().filter(p -&gt; p.stock() == 0).count();          // 1
+
+double valorTotal = productos.stream()
+    .mapToDouble(p -&gt; p.precio() * p.stock())   // stream de double
+    .sum();
+
+boolean hayCaros = productos.stream().anyMatch(p -&gt; p.precio() &gt; 500_000);       // true
+
+Optional&lt;ProductoDto&gt; masBarato = productos.stream()
+    .min(Comparator.comparing(ProductoDto::precio));
+
+String nombres = productos.stream()
+    .map(ProductoDto::nombre)
+    .collect(Collectors.joining(&quot;, &quot;));         // &quot;Teclado, Mouse, Monitor, Audífonos&quot;
+
+Map&lt;Boolean, List&lt;ProductoDto&gt;&gt; porDisponibilidad = productos.stream()
+    .collect(Collectors.partitioningBy(p -&gt; p.stock() &gt; 0));
+</code></pre></div>
+<p>Agrupar es muy común en reportes:</p>
+<div class="code"><pre><code class="language-java">record Venta(String ciudad, double total) { }
+
+List&lt;Venta&gt; ventas = List.of(
+    new Venta(&quot;Medellín&quot;, 200_000), new Venta(&quot;Bogotá&quot;, 150_000), new Venta(&quot;Medellín&quot;, 50_000));
+
+Map&lt;String, Double&gt; totalPorCiudad = ventas.stream()
+    .collect(Collectors.groupingBy(Venta::ciudad, Collectors.summingDouble(Venta::total)));
+// {Medellín=250000.0, Bogotá=150000.0}
+</code></pre></div>
+<blockquote>
+<p><strong>Cuándo usar streams.</strong> Para filtrar, transformar o resumir datos son más claros que un for. Si la lógica necesita varios pasos con estado o te cuesta leerla, un for normal está bien. La legibilidad manda.</p>
+</blockquote>
+</div>
+</section>
+
+<section class="card" id="maven">
+<div class="shead"><h2>13. Maven y estructura de un proyecto</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Maven es la herramienta que compila tu proyecto, descarga las bibliotecas que necesita y lo empaqueta para ejecutarlo. Todo proyecto Spring Boot del curso es un proyecto Maven, así que conviene que reconozcas sus piezas antes de la primera clase.</p>
+<h3>Qué resuelve</h3>
+<p>Sin Maven tendrías que descargar a mano cada biblioteca (<code>.jar</code>), copiarla al proyecto y compilar con comandos largos. Con Maven declaras qué necesitas en un archivo, <code>pom.xml</code>, y él descarga todo desde Maven Central, incluidas las dependencias de tus dependencias.</p>
+<h3>Estructura estándar</h3>
+<div class="code"><pre><code class="language-text">mi-proyecto/
+├── pom.xml                         configuración y dependencias
+├── mvnw  y  mvnw.cmd               Maven Wrapper: Maven sin instalarlo
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/freetech/tienda/
+│   │   │       └── TiendaApplication.java   tu código
+│   │   └── resources/
+│   │       └── application.properties       configuración de la app
+│   └── test/
+│       └── java/                   pruebas automáticas
+└── target/                         lo que genera la compilación (no se sube a Git)
+</code></pre></div>
+<p>La carpeta de cada paquete debe coincidir con su declaración <code>package</code>, como viste en la sección 6.</p>
+<h3>El archivo pom.xml</h3>
+<div class="code"><pre><code class="language-xml">&lt;project&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;!-- Coordenadas: identifican tu proyecto --&gt;
+    &lt;groupId&gt;com.freetech&lt;/groupId&gt;
+    &lt;artifactId&gt;tienda&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.release&gt;21&lt;/maven.compiler.release&gt;
+    &lt;/properties&gt;
+
+    &lt;!-- Bibliotecas que tu código usa --&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+            &lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;
+            &lt;version&gt;5.11.4&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre></div>
+<ul>
+<li><code>groupId</code>: la organización, en formato de dominio al revés.</li>
+<li><code>artifactId</code>: el nombre del proyecto.</li>
+<li><code>version</code>: <code>SNAPSHOT</code> significa "en desarrollo".</li>
+<li>Cada <code>dependency</code> se identifica con las mismas tres coordenadas.</li>
+<li><code>scope test</code>: la dependencia solo se usa en las pruebas.</li>
+</ul>
+<p>En un proyecto Spring Boot el <code>pom.xml</code> además declara un <code>parent</code> (<code>spring-boot-starter-parent</code>) que fija versiones compatibles de todas las bibliotecas, y dependencias llamadas starters, como <code>spring-boot-starter-web</code>, que traen todo lo necesario para una API. Spring Initializr te genera ese archivo; no lo escribes a mano.</p>
+<h3>Comandos</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Comando</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>./mvnw compile</code></td>
+<td>Compila el código de <code>src/main/java</code></td>
+</tr>
+<tr>
+<td><code>./mvnw test</code></td>
+<td>Compila y ejecuta las pruebas</td>
+</tr>
+<tr>
+<td><code>./mvnw package</code></td>
+<td>Genera el <code>.jar</code> en <code>target/</code></td>
+</tr>
+<tr>
+<td><code>./mvnw clean</code></td>
+<td>Borra la carpeta <code>target/</code></td>
+</tr>
+<tr>
+<td><code>./mvnw spring-boot:run</code></td>
+<td>Arranca una aplicación Spring Boot</td>
+</tr>
+</tbody>
+</table></div>
+<p>En Windows usa <code>mvnw.cmd</code> en lugar de <code>./mvnw</code>. El Maven Wrapper descarga la versión correcta de Maven la primera vez, así que no necesitas instalar Maven aparte.</p>
+<blockquote>
+<p><strong>La primera vez tarda.</strong> El primer comando descarga muchas bibliotecas a la carpeta <code>.m2</code> de tu usuario. Las siguientes ejecuciones son rápidas porque las reutiliza.</p>
+</blockquote>
+<h3>Crear un proyecto Maven en VS Code</h3>
+<p>Para practicar con esta guía no necesitas Spring todavía:</p>
+<ol>
+<li><code>Ctrl+Shift+P</code> (o <code>Cmd+Shift+P</code> en macOS) y ejecuta <strong>Java: Create Java Project</strong>.</li>
+<li>Elige <strong>Maven</strong> y luego <strong>maven-archetype-quickstart</strong>.</li>
+<li>Usa <code>com.freetech</code> como group id y el nombre de tu ejercicio como artifact id.</li>
+<li>Abre la clase <code>App.java</code> que se crea y pulsa <strong>Run</strong> sobre su <code>main</code>.</li>
+</ol>
+</div>
+</section>
+
+<section class="card" id="spring">
+<div class="shead"><h2>14. El puente a Spring Boot</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Todo lo que aprendiste aparece en una aplicación Spring Boot: clases, interfaces, inyección por constructor, records, colecciones, <code>Optional</code> y excepciones. Esta sección te muestra una API pequeña para que en la semana 1 reconozcas cada pieza; no tienes que escribirla todavía.</p>
+<h3>Las capas de una API</h3>
+<div class="layers" role="img" aria-label="Una petición HTTP pasa por el controlador, el servicio y el repositorio hasta PostgreSQL">
+<div class="lclient">Cliente (navegador, Postman o app) envía <code>GET /api/productos/1</code></div>
+<div class="larrow"></div>
+<div class="layer"><b>Controller</b><span>Recibe la petición HTTP y devuelve JSON. No tiene lógica de negocio.</span><em>@RestController</em></div>
+<div class="larrow"></div>
+<div class="layer main"><b>Service</b><span>Reglas de negocio y validaciones. Lanza excepciones cuando algo no cumple.</span><em>@Service</em></div>
+<div class="larrow"></div>
+<div class="layer"><b>Repository</b><span>Lee y guarda en la base de datos. Es una interfaz que Spring implementa.</span><em>JpaRepository</em></div>
+<div class="larrow"></div>
+<div class="ldb">PostgreSQL</div>
+</div>
+
+<p>Cada capa solo conoce a la de abajo, y la recibe por el constructor. Es el mismo patrón de <code>ServicioPedidos</code> y <code>Notificador</code> de la sección 8.</p>
+<h3>Una API completa en cuatro archivos</h3>
+<div class="code"><pre><code class="language-java">// ProductoDto.java: el JSON que entra y sale (sección 9)
+public record ProductoDto(Long id, String nombre, double precio) { }
+</code></pre></div>
+<div class="code"><pre><code class="language-java">// ProductoRepository.java: una interfaz que Spring implementa sola (sección 8)
+public interface ProductoRepository extends JpaRepository&lt;Producto, Long&gt; {
+    List&lt;Producto&gt; findByPrecioLessThan(double precio);   // Spring deduce la consulta del nombre
+}
+</code></pre></div>
+<div class="code"><pre><code class="language-java">// ProductoService.java: lógica de negocio
+@Service
+public class ProductoService {
+
+    private final ProductoRepository repository;
+
+    public ProductoService(ProductoRepository repository) {   // inyección por constructor
+        this.repository = repository;
+    }
+
+    public ProductoDto buscarPorId(Long id) {
+        Producto p = repository.findById(id)                     // devuelve Optional (sección 10)
+            .orElseThrow(() -&gt; new ProductoNoEncontradoException(id));   // sección 11
+        return new ProductoDto(p.getId(), p.getNombre(), p.getPrecio());
+    }
+
+    public List&lt;ProductoDto&gt; listarBaratos(double maximo) {
+        return repository.findByPrecioLessThan(maximo).stream()  // streams (sección 12)
+            .map(p -&gt; new ProductoDto(p.getId(), p.getNombre(), p.getPrecio()))
+            .toList();
+    }
+}
+</code></pre></div>
+<div class="code"><pre><code class="language-java">// ProductoController.java: la puerta HTTP
+@RestController
+@RequestMapping(&quot;/api/productos&quot;)
+public class ProductoController {
+
+    private final ProductoService service;
+
+    public ProductoController(ProductoService service) {
+        this.service = service;
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ProductoDto buscar(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+
+    @GetMapping
+    public List&lt;ProductoDto&gt; baratos(@RequestParam double maximo) {
+        return service.listarBaratos(maximo);
+    }
+}
+</code></pre></div>
+<p>Observa que nunca aparece <code>new ProductoService(...)</code> ni <code>new ProductoController(...)</code>. Spring ve las anotaciones, crea un objeto de cada clase y le pasa a cada constructor lo que pide. A esos objetos que maneja Spring se les llama <strong>beans</strong>.</p>
+<h3>Las anotaciones</h3>
+<p>Una anotación (<code>@Algo</code>) es una etiqueta que le da información a Spring o al compilador sobre una clase, un método o un parámetro. Ya conoces <code>@Override</code>. Las primeras que verás en el curso:</p>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Anotación</th>
+<th>Dónde va</th>
+<th>Qué le dice a Spring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@SpringBootApplication</code></td>
+<td>La clase con el <code>main</code></td>
+<td>Aquí arranca la aplicación</td>
+</tr>
+<tr>
+<td><code>@RestController</code></td>
+<td>Una clase</td>
+<td>Atiende peticiones HTTP y responde JSON</td>
+</tr>
+<tr>
+<td><code>@RequestMapping("/ruta")</code></td>
+<td>Una clase</td>
+<td>Prefijo de las rutas de ese controlador</td>
+</tr>
+<tr>
+<td><code>@GetMapping</code>, <code>@PostMapping</code>, <code>@PutMapping</code>, <code>@DeleteMapping</code></td>
+<td>Un método</td>
+<td>Qué verbo HTTP y qué ruta atiende</td>
+</tr>
+<tr>
+<td><code>@PathVariable</code></td>
+<td>Un parámetro</td>
+<td>Toma el valor de la ruta, como el <code>1</code> de <code>/productos/1</code></td>
+</tr>
+<tr>
+<td><code>@RequestParam</code></td>
+<td>Un parámetro</td>
+<td>Toma un valor de la URL, como <code>?maximo=100000</code></td>
+</tr>
+<tr>
+<td><code>@RequestBody</code></td>
+<td>Un parámetro</td>
+<td>Convierte el JSON recibido en un objeto</td>
+</tr>
+<tr>
+<td><code>@Service</code></td>
+<td>Una clase</td>
+<td>Es un servicio de negocio</td>
+</tr>
+<tr>
+<td><code>@Entity</code></td>
+<td>Una clase</td>
+<td>Representa una tabla de la base de datos</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Lo que aprendiste y dónde reaparece</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Tema de esta guía</th>
+<th>Dónde lo verás en el curso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clases, constructores y encapsulamiento (6)</td>
+<td>Entidades, servicios y controladores</td>
+</tr>
+<tr>
+<td>Interfaces e inyección de dependencias (8)</td>
+<td>Repositorios y comunicación entre capas</td>
+</tr>
+<tr>
+<td>Records (9)</td>
+<td>DTO de entrada y salida de la API</td>
+</tr>
+<tr>
+<td>Enums (9)</td>
+<td>Estados y roles guardados en la base de datos</td>
+</tr>
+<tr>
+<td><code>List</code>, <code>Map</code> y <code>Optional</code> (10)</td>
+<td>Respuestas con listas y búsquedas por id</td>
+</tr>
+<tr>
+<td>Excepciones propias (11)</td>
+<td>Respuestas 400 y 404 con <code>@ExceptionHandler</code></td>
+</tr>
+<tr>
+<td>Streams (12)</td>
+<td>Transformar entidades en DTO y filtrar resultados</td>
+</tr>
+<tr>
+<td>Maven (13)</td>
+<td>Crear, ejecutar y empaquetar el proyecto</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</section>
+
+<section class="card" id="ejercicios">
+<div class="shead"><h2>15. Ejercicios</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Haz los ejercicios de cada tema al terminar de estudiarlo y el proyecto integrador al final. Súbelos a un repositorio de GitHub: te servirá en el curso y como portafolio.</p>
+<h3>Por tema</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Tema</th>
+<th>Ejercicio</th>
+<th>Nivel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2. Sintaxis</td>
+<td>Pide la temperatura en grados Celsius y muéstrala en Fahrenheit (<code>F = C × 9 / 5 + 32</code>) con dos decimales</td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>2. Sintaxis</td>
+<td>Pide el precio de un producto y la cantidad; muestra subtotal, IVA del 19 % y total</td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>3. Control de flujo</td>
+<td>Pide una nota de 0 a 5 y muestra "Excelente", "Aprobado" o "Reprobado"; rechaza notas fuera del rango</td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>3. Control de flujo</td>
+<td>Juego de adivinar: el programa elige un número del 1 al 100 (<code>new Random().nextInt(100) + 1</code>) y dice "mayor" o "menor" hasta acertar, contando los intentos</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>4. Arreglos y cadenas</td>
+<td>Lee 5 notas en un arreglo y muestra el promedio, la mayor y la menor</td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>4. Arreglos y cadenas</td>
+<td>Pide una frase y muestra cuántas palabras y cuántas vocales tiene, y si es palíndromo ignorando espacios y mayúsculas</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>5. Métodos</td>
+<td>Escribe <code>esPrimo(int n)</code> y úsalo para imprimir los primos entre 1 y 100</td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>5. Métodos</td>
+<td>Escribe una calculadora con un método por operación y un menú con <code>switch</code></td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>6. Clases y objetos</td>
+<td>Crea <code>CuentaBancaria</code> con titular y saldo privados, <code>depositar</code> y <code>retirar</code> que validen montos, y <code>toString</code></td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>7. Herencia</td>
+<td>Crea la clase abstracta <code>Vehiculo</code> con <code>calcularPeaje()</code> y las hijas <code>Carro</code>, <code>Moto</code> y <code>Camion</code> con tarifas distintas; suma el peaje de un arreglo mixto</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>8. Interfaces</td>
+<td>Crea la interfaz <code>MetodoPago</code> con <code>pagar(double monto)</code> e implementaciones <code>PagoTarjeta</code> y <code>PagoEfectivo</code>; una clase <code>Caja</code> recibe el método por constructor</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>9. Records y enums</td>
+<td>Crea el record <code>Estudiante(String nombre, double nota)</code> con validación de la nota y el enum <code>Jornada</code> (DIURNA, NOCTURNA) con un atributo de horario</td>
+<td>Básico</td>
+</tr>
+<tr>
+<td>10. Colecciones</td>
+<td>Guarda estudiantes en una <code>List</code>, ordénalos por nota y usa un <code>Map</code> para contar cuántos hay por jornada</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>10. Colecciones</td>
+<td>Escribe <code>Optional&lt;Estudiante&gt; buscar(String nombre)</code> y muestra un mensaje si no existe</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>11. Excepciones</td>
+<td>Haz que la <code>CuentaBancaria</code> lance <code>SaldoInsuficienteException</code> (propia) y atrápala en el <code>main</code> con un mensaje amable</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td>12. Lambdas y Streams</td>
+<td>Con streams obtén: los aprobados, el promedio general, el mejor estudiante y los nombres en mayúscula separados por coma</td>
+<td>Medio</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Proyecto integrador: biblioteca en consola</h3>
+<p>Construye un programa de consola que administre los préstamos de una biblioteca. Es un ensayo de la API que construiremos en el curso: el día que lo conviertas en API, la lógica será casi la misma.</p>
+<p><strong>Requisitos</strong></p>
+<ul class="tasks">
+<li class="task"><label><input type="checkbox"><span>Un record <code>Libro</code> con isbn, título, autor y año, que valide que el título no esté vacío.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Un enum <code>EstadoLibro</code> con DISPONIBLE y PRESTADO.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Una interfaz <code>LibroRepository</code> con <code>guardar</code>, <code>buscarPorIsbn</code> (que devuelva <code>Optional</code>) y <code>listarTodos</code>.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Una implementación <code>LibroRepositoryEnMemoria</code> que guarde los libros en un <code>Map&lt;String, Libro&gt;</code>.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Una clase <code>BibliotecaService</code> que reciba el repositorio por constructor y tenga <code>prestar(isbn)</code> y <code>devolver(isbn)</code>.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Una excepción propia <code>LibroNoDisponibleException</code> cuando se intente prestar un libro ya prestado.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Un menú con <code>switch</code> en el <code>main</code>: listar, agregar, prestar, devolver, buscar por autor y salir.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>Usa streams para buscar por autor y para mostrar los libros disponibles ordenados por año.</span></label></li>
+<li class="task"><label><input type="checkbox"><span>El programa nunca debe terminar por un error: atrapa las excepciones y muestra mensajes claros.</span></label></li>
+</ul>
+<p><strong>Reto opcional:</strong> agrega un enum <code>TipoUsuario</code> (ESTUDIANTE, PROFESOR) con un límite de préstamos distinto para cada uno.</p>
+<p>Comparte el enlace de tu repositorio en el Discord de FreeTech Community; revisaremos algunos en la primera clase.</p>
+</div>
+</section>
+
+<section class="card" id="errores">
+<div class="shead"><h2>16. Errores comunes, glosario y recursos</h2><button type="button" class="done" aria-pressed="false">Marcar como estudiada</button></div>
+<div class="body">
+<p>Casi todos los errores de las primeras semanas son los mismos. Cuando aparezca uno, búscalo aquí antes de preguntar.</p>
+<h3>Errores frecuentes</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Mensaje o síntoma</th>
+<th>Causa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cannot find symbol</code></td>
+<td>Nombre mal escrito, variable fuera de alcance o falta un <code>import</code></td>
+<td>Revisa mayúsculas y el bloque donde la declaraste; en VS Code <code>Ctrl+.</code> sugiere el import</td>
+</tr>
+<tr>
+<td><code>class X is public, should be declared in a file named X.java</code></td>
+<td>El archivo y la clase pública se llaman distinto</td>
+<td>Renombra el archivo o la clase para que coincidan</td>
+</tr>
+<tr>
+<td><code>';' expected</code></td>
+<td>Falta un punto y coma</td>
+<td>Mira la línea indicada y la anterior</td>
+</tr>
+<tr>
+<td><code>incompatible types</code></td>
+<td>Asignas un valor de un tipo a una variable de otro</td>
+<td>Convierte el valor (sección 2) o cambia el tipo</td>
+</tr>
+<tr>
+<td><code>missing return statement</code></td>
+<td>Algún camino del método no tiene <code>return</code></td>
+<td>Agrega el <code>return</code> que falta, por ejemplo después del <code>if</code></td>
+</tr>
+<tr>
+<td><code>NullPointerException</code></td>
+<td>Usaste un objeto que vale <code>null</code></td>
+<td>Busca en la traza la línea; inicializa el objeto o usa <code>Optional</code></td>
+</tr>
+<tr>
+<td><code>ArrayIndexOutOfBoundsException</code> o <code>IndexOutOfBoundsException</code></td>
+<td>Accediste a una posición que no existe</td>
+<td>Los índices van de <code>0</code> a <code>length - 1</code> (o <code>size() - 1</code>)</td>
+</tr>
+<tr>
+<td><code>NumberFormatException</code></td>
+<td>Convertiste a número un texto que no lo es</td>
+<td>Valida la entrada o atrapa la excepción</td>
+</tr>
+<tr>
+<td><code>InputMismatchException</code></td>
+<td><code>Scanner</code> esperaba un número y recibió texto</td>
+<td>Valida con <code>hasNextInt()</code> antes de leer</td>
+</tr>
+<tr>
+<td><code>ConcurrentModificationException</code></td>
+<td>Modificaste una lista mientras la recorrías</td>
+<td>Usa <code>removeIf</code> o un <code>Iterator</code></td>
+</tr>
+<tr>
+<td><code>UnsupportedOperationException</code> al agregar</td>
+<td>La lista viene de <code>List.of</code> y es inmutable</td>
+<td>Copia a <code>new ArrayList&lt;&gt;(lista)</code></td>
+</tr>
+<tr>
+<td>Dos textos iguales dan <code>false</code></td>
+<td>Los comparaste con <code>==</code></td>
+<td>Usa <code>equals</code></td>
+</tr>
+<tr>
+<td><code>7 / 2</code> da <code>3</code></td>
+<td>División entre enteros</td>
+<td>Usa <code>7 / 2.0</code> o un cast a <code>double</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Glosario</h3>
+<div class="tbl"><table class="stack">
+<thead>
+<tr>
+<th>Término</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clase</td>
+<td>Molde que define atributos y métodos</td>
+</tr>
+<tr>
+<td>Objeto o instancia</td>
+<td>Un ejemplar concreto creado con <code>new</code> a partir de una clase</td>
+</tr>
+<tr>
+<td>Atributo</td>
+<td>Variable que pertenece a un objeto</td>
+</tr>
+<tr>
+<td>Método</td>
+<td>Función que pertenece a una clase</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>Método especial que inicializa un objeto al crearlo</td>
+</tr>
+<tr>
+<td>Encapsulamiento</td>
+<td>Ocultar los atributos y exponer solo métodos controlados</td>
+</tr>
+<tr>
+<td>Herencia</td>
+<td>Una clase hija reutiliza y especializa a una clase padre</td>
+</tr>
+<tr>
+<td>Polimorfismo</td>
+<td>Un mismo llamado se comporta distinto según el objeto real</td>
+</tr>
+<tr>
+<td>Interfaz</td>
+<td>Contrato de métodos que una clase se compromete a implementar</td>
+</tr>
+<tr>
+<td>Inyección de dependencias</td>
+<td>Entregarle a una clase lo que necesita desde afuera, por el constructor</td>
+</tr>
+<tr>
+<td>Record</td>
+<td>Clase inmutable y compacta para transportar datos</td>
+</tr>
+<tr>
+<td>Enum</td>
+<td>Tipo con un conjunto cerrado de valores</td>
+</tr>
+<tr>
+<td>Genérico</td>
+<td>Parámetro de tipo, como <code>&lt;String&gt;</code>, que hace seguras las colecciones</td>
+</tr>
+<tr>
+<td>Excepción</td>
+<td>Objeto que representa un error en tiempo de ejecución</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>Función corta que se pasa como valor</td>
+</tr>
+<tr>
+<td>Stream</td>
+<td>Tubería para filtrar, transformar y resumir colecciones</td>
+</tr>
+<tr>
+<td>DTO</td>
+<td>Objeto que transporta datos entre capas o hacia el cliente</td>
+</tr>
+<tr>
+<td>Bean</td>
+<td>Objeto creado y administrado por Spring</td>
+</tr>
+<tr>
+<td>Dependencia (Maven)</td>
+<td>Biblioteca externa que tu proyecto usa</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Para seguir aprendiendo</h3>
+<ul>
+<li><a href="https://dev.java/learn/">Dev.java</a>: los tutoriales oficiales de Java, ordenados de lo básico a lo avanzado.</li>
+<li><a href="https://docs.oracle.com/en/java/javase/21/docs/api/">Documentación de la API de Java 21</a>: la referencia de todas las clases estándar, como <code>String</code>, <code>List</code> o <code>Optional</code>.</li>
+<li><a href="https://www.baeldung.com/">Baeldung</a>: artículos cortos y prácticos sobre Java y Spring.</li>
+<li><a href="https://spring.io/guides">Guías de Spring</a>: proyectos pequeños paso a paso, para cuando termines esta guía.</li>
+</ul>
+<p>Nos vemos el martes 15 de diciembre a las 6:00 p. m. en el Discord de FreeTech Community.</p>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Curso de Web APIs con Spring Boot · FreeTech Community</span><b>Profe JuanFe</b></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" data-manual></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script>
+{
+try{if(window.Prism)Prism.highlightAll()}catch(e){}
+for(const t of document.querySelectorAll('table.stack')){const h=[...t.querySelectorAll('thead th')].map(x=>x.textContent);for(const tr of t.querySelectorAll('tbody tr'))[...tr.children].forEach((td,i)=>{if(!td.dataset.l)td.dataset.l=h[i]||''})}
+for(const box of document.querySelectorAll('.code')){
+const b=document.createElement('button');b.type='button';b.className='copy';b.textContent='Copiar';
+b.addEventListener('click',async()=>{const txt=box.querySelector('code').textContent;try{await navigator.clipboard.writeText(txt);b.textContent='Copiado';b.classList.add('ok')}catch(e){const r=document.createRange();r.selectNodeContents(box.querySelector('code'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Seleccionado'}setTimeout(()=>{b.textContent='Copiar';b.classList.remove('ok')},1600)});
+box.appendChild(b)}
+const load=k=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let done=new Set(load('ft-java-done'));
+const btns=[...document.querySelectorAll('.done')];
+const total=btns.length;
+const paint=()=>{
+for(const b of btns){const id=b.closest('section').id,on=done.has(id);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Estudiada':'Marcar como estudiada'}
+for(const a of document.querySelectorAll('.nav a'))a.classList.toggle('seen',done.has(a.getAttribute('href').slice(1)));
+for(const s of document.querySelectorAll('.stop'))s.classList.toggle('full',s.dataset.stage.split(' ').every(x=>done.has(x)));
+const n=btns.filter(b=>done.has(b.closest('section').id)).length;
+document.getElementById('ptext').textContent=n+' de '+total+' estudiadas';
+document.getElementById('pbar').style.width=(total?n/total*100:0)+'%'};
+btns.forEach(b=>b.addEventListener('click',()=>{const id=b.closest('section').id;done.has(id)?done.delete(id):done.add(id);save('ft-java-done',[...done]);paint()}));
+paint();
+const checks=[...document.querySelectorAll('.task input')];
+const marked=new Set(load('ft-java-proyecto'));
+checks.forEach((c,i)=>{c.checked=marked.has(i);c.addEventListener('change',()=>{c.checked?marked.add(i):marked.delete(i);save('ft-java-proyecto',[...marked])})});
+}
+</script>
+</body>
+</html>

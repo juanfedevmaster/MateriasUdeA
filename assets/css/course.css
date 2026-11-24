@@ -383,6 +383,83 @@ a.session:hover .go svg {
   flex-shrink: 0;
 }
 
+/* ---------- GUÍAS / CARDS DE RECURSOS ---------- */
+.guide-section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 90px;
+  border-top: 1px solid var(--border);
+}
+.guide-section .content-head {
+  margin-top: 48px;
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color var(--transition), background var(--transition);
+}
+.guide-card:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.guide-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.guide-card-tag {
+  font-family: "IBM Plex Mono", var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.guide-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+.guide-card p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.55;
+  flex: 1;
+}
+.guide-card .go {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color var(--transition);
+  margin-top: 4px;
+}
+.guide-card:hover .go {
+  color: var(--accent);
+}
+.guide-card:hover .go svg {
+  transform: translateX(3px);
+  transition: transform 0.2s ease;
+}
+
 .course-footer {
   --bg: var(--blueprint-deep);
   --text-muted: var(--line-muted);

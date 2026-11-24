@@ -52,7 +52,7 @@
         const session = document.createElement(topic.available ? "a" : "div");
         session.className = "session" + (topic.available ? "" : " disabled");
         if (topic.available) {
-          session.href = `presentaciones/${topic.slug}/index.html`;
+          session.href = topic.url || `presentaciones/${topic.slug}/index.html`;
         }
 
         session.innerHTML = `
